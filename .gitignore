@@ -1,0 +1,33 @@
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local virtual environment
+.venv/
+venv/
+env/
+
+# IDE / local machine state
+.idea/
+.vscode/
+
+# Runtime logs
+logs/
+*.log
+
+# Temporary local files
+.pycache_check/
+*.tmp
+*.bak
+=2.31.0
+
+# Manual raw imports can contain ad-hoc local files. Keep directory markers.
+raw/*
+!raw/.gitkeep
+data/raw/*
+!data/raw/.gitkeep

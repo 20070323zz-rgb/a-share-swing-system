@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.dayin.a-share.weekly-review</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/dayin/Documents/量化学习/a-share-swing-system/scripts/run_weekly_review.sh</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/dayin/Documents/量化学习/a-share-swing-system</string>
+
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Weekday</key>
+    <integer>5</integer>
+    <key>Hour</key>
+    <integer>15</integer>
+    <key>Minute</key>
+    <integer>40</integer>
+  </dict>
+
+  <key>StandardOutPath</key>
+  <string>/Users/dayin/Documents/量化学习/a-share-swing-system/logs/launchd_weekly_review.out.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>/Users/dayin/Documents/量化学习/a-share-swing-system/logs/launchd_weekly_review.err.log</string>
+</dict>
+</plist>

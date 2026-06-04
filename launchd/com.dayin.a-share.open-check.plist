@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.dayin.a-share.open-check</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/dayin/Documents/量化学习/a-share-swing-system/scripts/run_open_check.sh</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/dayin/Documents/量化学习/a-share-swing-system</string>
+
+  <key>StartCalendarInterval</key>
+  <array>
+    <dict><key>Weekday</key><integer>1</integer><key>Hour</key><integer>9</integer><key>Minute</key><integer>20</integer></dict>
+    <dict><key>Weekday</key><integer>2</integer><key>Hour</key><integer>9</integer><key>Minute</key><integer>20</integer></dict>
+    <dict><key>Weekday</key><integer>3</integer><key>Hour</key><integer>9</integer><key>Minute</key><integer>20</integer></dict>
+    <dict><key>Weekday</key><integer>4</integer><key>Hour</key><integer>9</integer><key>Minute</key><integer>20</integer></dict>
+    <dict><key>Weekday</key><integer>5</integer><key>Hour</key><integer>9</integer><key>Minute</key><integer>20</integer></dict>
+  </array>
+
+  <key>StandardOutPath</key>
+  <string>/Users/dayin/Documents/量化学习/a-share-swing-system/logs/launchd_open_check.out.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>/Users/dayin/Documents/量化学习/a-share-swing-system/logs/launchd_open_check.err.log</string>
+</dict>
+</plist>

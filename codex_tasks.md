@@ -1,0 +1,87 @@
+# Codex 任务记录
+
+## 第一版目标
+
+- [x] 建立 A 股周线波段模拟盘项目结构
+- [x] 提供本地 CSV 数据读取 fallback
+- [x] 计算 MA20、MA60、20 日涨跌幅、成交量变化、相对强弱
+- [x] 建立模拟账户、持仓、市值、盈亏和回撤统计
+- [x] 生成每日信号报告、周复盘报告、信号 CSV、账户状态 CSV
+- [x] 明确安全边界：不接真实券商 API，不写真实下单代码
+
+## 后续可迭代
+
+- [x] 修复 `data_fetcher.py` 字段读取、enabled/type 判断、日期转换、ETF AKShare 调用和中文字段映射
+- [x] 公开行情下载已从 0 成功推进到 3 成功、2 失败
+- [x] 查看 `reports/data_update_log.md`，确认剩余失败来自 `510300` 偶发断开和 `600519` 股票接口失败
+- [x] 为公开行情接口增加每个接口最多 3 次重试
+- [x] 为本次下载失败但已有合格本地 CSV 的标的增加保留旧数据逻辑
+- [x] 重新验证公开行情下载结果达到成功 4 个、失败 1 个
+- [ ] 确认 `reports/data_quality_report.md` 中已生成 CSV 的质量检查通过
+- [x] 每日信号已生成，`513500` 出现 BUY 候选
+- [ ] 运行周复盘和其余 ETF 回测
+- [ ] 决定是否把 `513500` 作为第一笔模拟买入候选
+- [ ] 开始第一周 ETF 模拟盘测试
+- [ ] 单独处理 `600519` 个股行情下载失败问题
+- [x] 新增 cron/launchd 可调用的自动运行脚本
+- [x] 基础自动化运行层已完成，cron 已配置，三个脚本已手动验证通过
+- [x] 扩展 `watchlist.csv` 为交易池和观察池，新增 `group` / `role` 字段
+- [x] 新增 `reports/latest_daily.md` 和 `reports/latest_weekly.md`
+- [x] 新增 `reports/model_dataset.csv`
+- [x] 新增 Codex 每日/每周研究提示脚本，只生成 prompt，不调用 API
+- [x] 优化 `run_daily_close.sh`，避免重复生成每日信号和风险报告
+- [x] 完成本轮语法检查和主流程验证
+- [x] 新增 `--batch-size`、`--sleep-seconds`、`--retry` 下载节奏参数
+- [x] 新增 `--fetch-code` 单标的下载参数
+- [x] 新增 `--fetch-group` 分组下载参数
+- [x] 新增 `--incremental` 和 `--lookback-days` 增量更新模式
+- [x] 新增 `reports/watchlist_health_report.md`
+- [x] 将收盘 cron 脚本切换为增量更新模式
+- [x] `model_dataset.csv` 改为只记录有本地行情的 enabled 标的
+- [x] 验证宽基分组下载：0 个新下载、3 个缓存可用、2 个失败
+- [x] 验证单标的 510500 下载：失败且无缓存
+- [x] 验证增量 510300 下载：接口失败但缓存可用
+- [x] 修复 `watchlist_health_report.md` 单标的/分组检查时的统计口径
+- [x] 完成行业 ETF 数据源诊断并生成 `reports/industry_etf_diagnosis.md`
+- [x] 确认行业组 5 个 ETF 单标的慢速下载均失败且无缓存
+- [x] 确认行业组 5 个 ETF AKShare 原始接口均失败
+- [x] 新增 `raw/` 原始 CSV 目录
+- [x] 新增 `scripts/normalize_csv.py` 手动 CSV 标准化导入脚本
+- [x] README 新增手动导入 ETF 日线 CSV 说明
+- [x] 新增 `reports/data_source_proposal.md`
+- [x] `watchlist_health_report.md` 对无缓存失败标的提示可通过 `raw/` 手动导入
+- [x] 新增 `baostock` 依赖并接入 BaoStock 免费行情源
+- [x] 新增 `--fetch-source`，支持 `auto`、`akshare`、`baostock`、`tushare`
+- [x] 将 `watchlist.csv` 的 source 调整为 `auto`
+- [x] README 新增 BaoStock / Tushare Pro 预留说明
+- [x] 生成 `reports/baostock_diagnosis.md`
+- [x] 验证 `512880` 和 `510500` 已进入 BaoStock 路径，但当前网络下 BaoStock 登录失败
+- [x] 验证行业组 BaoStock 下载：0 个新下载、0 个缓存可用、5 个失败
+- [x] 记录用户本机 PyCharm/.venv 验证结果：BaoStock 登录成功，股票和 ETF 日线均可获取
+- [x] 新增 `reports/local_validation.md`
+- [x] 明确数据源可用性判断以用户本机验证为准，Codex 沙盒网络失败不能否定数据源
+- [x] 新增 ETF 横截面强弱排名报告 `reports/ranking_report.md`
+- [x] 新增 `reports/latest_ranking.md`
+- [x] `python3 src/main.py` 自动生成排名报告
+- [x] `latest_daily.md` 末尾增加 `latest_ranking.md` 提示
+- [x] Codex 每日研究提示纳入 `latest_ranking.md`
+- [x] Codex 每周研究提示纳入 `latest_ranking.md`
+- [x] 新增 `composite_score` 多因子辅助评分
+- [x] `model_dataset.csv` 新增 `composite_score` 和 `watch_score`
+- [x] `model_dataset.csv` 新增 future returns 和 future rank 字段
+- [x] 新增 `reports/factor_analysis_report.md` 和 `reports/latest_factor_analysis.md`
+- [x] 新增 `--strategy mid_trend / short_swing`
+- [x] 新增 short_swing 实验策略信号
+- [x] 新增双周期决策矩阵：STRONG_RESONANCE / SHORT_TRIAL / MID_HOLD / RISK_ALERT / AVOID / OBSERVE
+- [x] 新增 `reports/latest_short_swing.md`
+- [x] 新增 `reports/strategy_compare_report.md`
+- [x] `backtest.py` 支持单标的指定策略回测
+- [x] `backtest.py` 支持 `--all --compare-strategies`
+- [x] README 更新双周期策略、辅助评分、future returns 和每日报告入口说明
+- [ ] 重新运行每日信号、周复盘和 `510300` 回测
+- [ ] 开始第一周模拟盘测试，并把手动模拟成交记录到 `trades.csv`
+- [x] 加入历史回测模式
+- [ ] 增加更多指数/ETF 观察池
+- [ ] 增加图表输出
+- [ ] 增加 Jupyter Notebook 研究模板
+- [ ] 优化止盈、减仓和再买入规则

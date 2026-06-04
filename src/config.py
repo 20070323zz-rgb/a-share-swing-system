@@ -1,0 +1,85 @@
+"""集中管理模拟盘参数。
+
+这里不包含任何账号、密码、cookie、token 或真实交易接口配置。
+"""
+
+from pathlib import Path
+
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+DATA_DIR = PROJECT_ROOT / "data"
+ETF_DAILY_DIR = DATA_DIR / "etf_daily"
+RAW_DATA_DIR = DATA_DIR / "raw"
+REPORT_DIR = PROJECT_ROOT / "reports"
+WATCHLIST_FILE = PROJECT_ROOT / "watchlist.csv"
+TRADES_FILE = PROJECT_ROOT / "trades.csv"
+PAPER_POSITIONS_FILE = DATA_DIR / "paper_positions.csv"
+PAPER_TRADES_FILE = DATA_DIR / "paper_trades.csv"
+LATEST_PAPER_PORTFOLIO_FILE = REPORT_DIR / "latest_paper_portfolio.md"
+ACCOUNT_STATUS_FILE = REPORT_DIR / "account_status.csv"
+SIGNALS_FILE = REPORT_DIR / "signals.csv"
+RISK_REPORT_FILE = REPORT_DIR / "risk_report.md"
+BACKTEST_RESULT_FILE = REPORT_DIR / "backtest_result.csv"
+BACKTEST_SUMMARY_FILE = REPORT_DIR / "backtest_summary.md"
+DATA_UPDATE_LOG_FILE = REPORT_DIR / "data_update_log.md"
+DATA_QUALITY_REPORT_FILE = REPORT_DIR / "data_quality_report.md"
+DATA_DOWNLOAD_REPORT_FILE = REPORT_DIR / "data_download_report.md"
+DATA_COVERAGE_REPORT_FILE = REPORT_DIR / "data_coverage_report.md"
+LATEST_DATA_COVERAGE_FILE = REPORT_DIR / "latest_data_coverage.md"
+DATA_HEALTH_REPORT_FILE = REPORT_DIR / "data_health_report.md"
+LATEST_DATA_HEALTH_FILE = REPORT_DIR / "latest_data_health.md"
+WATCHLIST_HEALTH_REPORT_FILE = REPORT_DIR / "watchlist_health_report.md"
+LATEST_DAILY_FILE = REPORT_DIR / "latest_daily.md"
+LATEST_BRIEF_FILE = REPORT_DIR / "latest_brief.md"
+LATEST_WEEKLY_FILE = REPORT_DIR / "latest_weekly.md"
+RANKING_REPORT_FILE = REPORT_DIR / "ranking_report.md"
+LATEST_RANKING_FILE = REPORT_DIR / "latest_ranking.md"
+FACTOR_ANALYSIS_REPORT_FILE = REPORT_DIR / "factor_analysis_report.md"
+LATEST_FACTOR_ANALYSIS_FILE = REPORT_DIR / "latest_factor_analysis.md"
+MODEL_RESEARCH_REPORT_FILE = REPORT_DIR / "model_research_report.md"
+LATEST_MODEL_RESEARCH_FILE = REPORT_DIR / "latest_model_research.md"
+STRATEGY_COMPARE_REPORT_FILE = REPORT_DIR / "strategy_compare_report.md"
+LATEST_SHORT_SWING_FILE = REPORT_DIR / "latest_short_swing.md"
+MODEL_DATASET_FILE = REPORT_DIR / "model_dataset.csv"
+
+
+# 模拟账户参数
+INITIAL_CASH = 10_000.0
+MID_TREND_CASH = 7_000.0
+SHORT_SWING_CASH = 3_000.0
+MAX_POSITION_VALUE = 7_000.0
+MIN_CASH = 3_000.0
+MAX_RISK_PER_TRADE = 150.0
+MAX_ETF_POSITIONS = 2
+MAX_STOCK_POSITIONS = 1
+MAX_SINGLE_POSITION_RATIO = 0.50
+
+
+# 策略参数
+BENCHMARK_CODE = "510300"
+MA_SHORT = 20
+MA_LONG = 60
+RET_WINDOW = 20
+ETF_STOP_LOSS = 0.075
+STOCK_STOP_LOSS = 0.09
+PROFIT_ACTIVATE_TRAILING = 0.15
+TRAILING_DRAWDOWN = 0.09
+
+
+# 成交量和追高过滤
+VOLUME_RATIO_MIN = 1.05
+VOLUME_RATIO_MAX = 2.50
+EXTREME_VOLUME_RATIO = 3.00
+MAX_20D_RETURN_TO_CHASE = 0.25
+MAX_5D_RETURN_TO_CHASE = 0.12
+MAX_DISTANCE_ABOVE_MA20 = 0.15
+SHORT_SWING_STOP_LOSS = 0.05
+SHORT_SWING_PROFIT_ACTIVATE_TRAILING = 0.08
+SHORT_SWING_TRAILING_DRAWDOWN = 0.04
+SHORT_SWING_MAX_HOLDING_DAYS = 20
+MAX_5D_RETURN_SHORT_SWING = 0.10
+MAX_DISTANCE_ABOVE_MA10 = 0.10
+
+
+# A 股默认 100 股一手；ETF 也按 100 份处理，便于学习和模拟。
+LOT_SIZE = 100
