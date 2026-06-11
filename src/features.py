@@ -23,6 +23,7 @@ def compute_features(df: pd.DataFrame, benchmark_df: pd.DataFrame | None = None,
     out["return_10d"] = out["close"] / out["close"].shift(10) - 1
     out["return_20d"] = out["close"] / out["close"].shift(20) - 1
     out["return_60d"] = out["close"] / out["close"].shift(60) - 1
+    out["rsi14"] = _rsi(out["close"], 14)
     out["volume_ma5"] = out["volume"].rolling(5).mean()
     out["volume_ma20"] = out["volume"].rolling(20).mean()
     out["volume_ratio_5d"] = out["volume"] / out["volume_ma5"]
@@ -65,3 +66,11 @@ def _window_max_drawdown(close: pd.Series) -> float:
     peak = close.cummax()
     drawdown = close / peak - 1
     return float(drawdown.min())
+
+
+def _rsi(close: pd.Series, window: int = 14) -> pd.Series:
+    delta = close.diff()
+    gain = delta.clip(lower=0).rolling(window).mean()
+    loss = (-delta.clip(upper=0)).rolling(window).mean()
+    rs = gain / loss.replace(0, pd.NA)
+    return 100 - 100 / (1 + rs)

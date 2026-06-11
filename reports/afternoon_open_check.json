@@ -1,0 +1,62 @@
+{
+  "node": "afternoon_open_check",
+  "title": "下午开盘复核",
+  "generated_at": "2026-06-10 13:10:01",
+  "time_window": "13:10",
+  "dry_run": false,
+  "position_count": 3,
+  "positions": [
+    {
+      "symbol": "515220",
+      "name": "煤炭ETF",
+      "entry_date": "2026-06-09",
+      "entry_price": 1.36,
+      "latest_date": "2026-06-09",
+      "latest_close": 1.36,
+      "quantity": 1100.0,
+      "cost": 1496.0,
+      "stop_loss": 1.258,
+      "market_value": 1496.0,
+      "unrealized_pnl": 0.0,
+      "risk_alert": ""
+    },
+    {
+      "symbol": "512800",
+      "name": "银行ETF",
+      "entry_date": "2026-06-09",
+      "entry_price": 0.792,
+      "latest_date": "2026-06-09",
+      "latest_close": 0.792,
+      "quantity": 1100.0,
+      "cost": 871.2,
+      "stop_loss": 0.7326,
+      "market_value": 871.2,
+      "unrealized_pnl": 0.0,
+      "risk_alert": ""
+    },
+    {
+      "symbol": "515880",
+      "name": "证券公司ETF",
+      "entry_date": "2026-06-09",
+      "entry_price": 1.695,
+      "latest_date": "2026-06-09",
+      "latest_close": 1.695,
+      "quantity": 300.0,
+      "cost": 508.5,
+      "stop_loss": 1.567875,
+      "market_value": 508.5,
+      "unrealized_pnl": 0.0,
+      "risk_alert": ""
+    }
+  ],
+  "alerts": [],
+  "conclusion": "manual_review_only",
+  "safety": {
+    "broker_api": false,
+    "real_order": false,
+    "account_credentials": false,
+    "auto_trading": false,
+    "strategy_rule_change": false,
+    "local_paper_only": true
+  }
+}

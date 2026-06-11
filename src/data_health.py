@@ -144,7 +144,7 @@ def check_price_dataframe(raw: pd.DataFrame, relaxed: bool = False) -> dict:
 
 def summarize_health(df: pd.DataFrame) -> dict:
     if df.empty:
-        return {"total": 0, "normal": 0, "warning": 0, "error": 0, "missing": 0, "issue_symbols": []}
+        return {"total": 0, "normal": 0, "warning": 0, "error": 0, "missing": 0, "issue_symbols": [], "warning_symbols": [], "error_symbols": [], "missing_symbols": []}
     status = df["status"].astype(str)
     issue_df = df[status.isin(["异常", "提醒", "缺失"])].copy()
     return {
@@ -154,6 +154,9 @@ def summarize_health(df: pd.DataFrame) -> dict:
         "error": int((status == "异常").sum()),
         "missing": int((status == "缺失").sum()),
         "issue_symbols": issue_df["code"].astype(str).head(20).tolist(),
+        "warning_symbols": df.loc[status == "提醒", "code"].astype(str).tolist(),
+        "error_symbols": df.loc[status == "异常", "code"].astype(str).tolist(),
+        "missing_symbols": df.loc[status == "缺失", "code"].astype(str).tolist(),
     }
 
 

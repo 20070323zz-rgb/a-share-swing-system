@@ -484,6 +484,14 @@ python3 src/backtest.py --code 159915 --benchmark-code 510300
 
 此前用过简单定时配置做验证，但在 macOS 上长期稳定运行更适合使用 launchd。简单定时方式容易受环境、权限和触发机制影响；launchd 是 macOS 原生任务调度方式，更适合登录用户下的长期自动运行。
 
+不建议把长期自动化项目放在 `Documents` / `文稿` 目录中，因为 macOS 可能对该目录做额外隐私权限拦截，导致 launchd 无法进入目录或执行脚本。建议放在：
+
+```text
+/Users/dayin/Code/a-share-swing-system
+```
+
+或类似的 `~/projects` 目录。安装 launchd 前，请先确认项目实际路径与脚本、plist 中的路径一致。
+
 三个定时任务：
 
 - 周一到周五 09:20：开盘前观察，只基于已有本地数据生成报告。
@@ -493,7 +501,7 @@ python3 src/backtest.py --code 159915 --benchmark-code 510300
 安装 launchd 任务：
 
 ```bash
-cd /Users/dayin/Documents/量化学习/a-share-swing-system
+cd /Users/dayin/Code/a-share-swing-system
 bash scripts/install_launchd_jobs.sh
 ```
 
@@ -576,7 +584,7 @@ launchctl kickstart -k gui/$(id -u)/com.dayin.a-share.weekly-review
 - Mac 睡眠时任务可能不会准时执行，可以用系统节能设置或 `caffeinate` 保持唤醒。
 - PyCharm 不需要打开。
 - 不需要手动激活 `.venv`，脚本使用项目内 Python 绝对路径。
-- 如涉及 Documents/文稿目录权限，需要给 Terminal、shell 或相关 launchd 进程访问权限。
+- 不建议把 launchd 长期任务放在 `Documents` / `文稿` 目录。若仍放在该目录，可能需要额外授予 Terminal、shell 或相关进程访问权限。
 - 本系统仍然只生成报告和模拟盘记录，不真实下单。
 
 ## Codex 研究提示

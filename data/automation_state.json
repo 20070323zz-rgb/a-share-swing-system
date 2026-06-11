@@ -1,0 +1,27 @@
+{
+  "2026-06-10": {
+    "daily_close": {
+      "status": "success",
+      "last_run": "2026-06-10 21:29:56",
+      "source": "launchd"
+    },
+    "open_check": {
+      "status": "missed_after_close",
+      "last_run": "2026-06-10 18:30:44",
+      "source": "catchup",
+      "note": "missed_after_close"
+    },
+    "midday_check": {
+      "status": "missed_after_close",
+      "last_run": "2026-06-10 18:30:44",
+      "source": "catchup",
+      "note": "missed_after_close"
+    },
+    "afternoon_open_check": {
+      "status": "missed_after_close",
+      "last_run": "2026-06-10 18:30:44",
+      "source": "catchup",
+      "note": "missed_after_close"
+    }
+  }
+}

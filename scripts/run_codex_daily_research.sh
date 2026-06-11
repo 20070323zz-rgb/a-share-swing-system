@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-PROJECT_ROOT="/Users/dayin/Documents/量化学习/a-share-swing-system"
+PROJECT_ROOT="/Users/dayin/Code/a-share-swing-system"
 
 cd "$PROJECT_ROOT"
 source "$PROJECT_ROOT/.venv/bin/activate"
@@ -10,7 +10,7 @@ python3 - <<'PY'
 from pathlib import Path
 import pandas as pd
 
-root = Path("/Users/dayin/Documents/量化学习/a-share-swing-system")
+root = Path("/Users/dayin/Code/a-share-swing-system")
 reports = root / "reports"
 logs = root / "logs"
 output = reports / "codex_daily_research_prompt.md"

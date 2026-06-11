@@ -114,6 +114,9 @@ def _corr_text(df: pd.DataFrame, factor: str, target: str, method: str) -> str:
     subset = df[[factor, target]].dropna()
     if len(subset) < 3:
         return ""
+    if method == "spearman":
+        ranked = subset.rank(method="average")
+        return _fmt_number(ranked[factor].corr(ranked[target], method="pearson"))
     return _fmt_number(subset[factor].corr(subset[target], method=method))
 
 

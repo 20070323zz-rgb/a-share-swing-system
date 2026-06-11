@@ -1,0 +1,873 @@
+code,name,group,etf_type,rule,event_count,avg_next_5d_return,avg_next_10d_return,avg_next_20d_return,negative_next_10d_rate,evidence_level,suggestion
+510300,沪深300ETF,宽基,broad_index,rank_score_decline_2d,267,0.002949304057339084,0.004342650943537965,0.005336297204686722,0.4828897338403042,evidence_supported,research_only_not_online
+510300,沪深300ETF,宽基,broad_index,rank_score_decline_3d,126,0.005512597588538652,0.004620502163260497,0.004937672826436589,0.46774193548387094,sample_limited,research_only_not_online
+510300,沪深300ETF,宽基,broad_index,rank_score_below_70_proxy,702,0.0002833580890325531,0.0012462916857605016,0.004110478305977597,0.5352517985611511,evidence_supported,research_only_not_online
+510300,沪深300ETF,宽基,broad_index,rank_drop_top3_to_out_top10_proxy,3,-0.01079477647038544,-0.007372410656826663,-0.001132774952874745,0.3333333333333333,hypothesis_only,need_more_data
+510300,沪深300ETF,宽基,broad_index,short_swing_buy_to_watch_proxy,42,0.005956546839260842,0.010064476841972411,0.012792664885986047,0.3333333333333333,sample_limited,research_only_not_online
+510300,沪深300ETF,宽基,broad_index,short_swing_buy_to_sell_proxy,1,-0.03436426116838487,-0.028350515463917536,0.01718213058419238,1.0,hypothesis_only,need_more_data
+510300,沪深300ETF,宽基,broad_index,volume_and_rank_decay_proxy,43,0.004273938662007201,0.00527403855076497,0.004434070449570326,0.4523809523809524,sample_limited,research_only_not_online
+510300,沪深300ETF,宽基,broad_index,type_stop_loss_proxy_7%-10%,83,0.010299503596212739,0.014552102289162589,0.006695223405433801,0.26506024096385544,sample_limited,research_only_type_stop; do_not_online_without_backtest
+510500,中证500ETF,宽基,broad_index,rank_score_decline_2d,28,-0.0022261525776191295,-0.009154840559969946,-0.008522925375899559,0.6956521739130435,hypothesis_only,need_more_data
+510500,中证500ETF,宽基,broad_index,rank_score_decline_3d,12,-0.010213236228775957,-0.020500058609400997,-0.007498672996757907,0.8,hypothesis_only,need_more_data
+510500,中证500ETF,宽基,broad_index,rank_score_below_70_proxy,43,-0.000653722508988214,0.001417837150309569,0.02790891472190917,0.47058823529411764,sample_limited,research_only_not_online
+510500,中证500ETF,宽基,broad_index,rank_drop_top3_to_out_top10_proxy,1,-0.03684459140292862,-0.07581483230987252,-0.05951818611242321,1.0,hypothesis_only,need_more_data
+510500,中证500ETF,宽基,broad_index,short_swing_buy_to_watch_proxy,8,-0.0016293427536395455,0.019490667173451506,0.01663514108505071,0.5,hypothesis_only,need_more_data
+510500,中证500ETF,宽基,broad_index,short_swing_buy_to_sell_proxy,1,0.01265671641791033,-0.035462686567164226,-0.08262686567164179,1.0,hypothesis_only,need_more_data
+510500,中证500ETF,宽基,broad_index,volume_and_rank_decay_proxy,7,-0.02026370184578338,-0.025260045027714267,-0.030175916523218754,0.8571428571428571,hypothesis_only,need_more_data
+510500,中证500ETF,宽基,broad_index,type_stop_loss_proxy_7%-10%,19,0.009283151072587231,0.03495026284898981,0.08490689926644847,0.2,hypothesis_only,research_only_type_stop; do_not_online_without_backtest
+512100,中证1000ETF,宽基,broad_index,rank_score_decline_2d,28,0.007362487593613892,0.006626794176570407,0.01376746126252495,0.5652173913043478,hypothesis_only,need_more_data
+512100,中证1000ETF,宽基,broad_index,rank_score_decline_3d,14,0.015331918614538975,0.011758314142263894,0.016558352718813726,0.45454545454545453,hypothesis_only,need_more_data
+512100,中证1000ETF,宽基,broad_index,rank_score_below_70_proxy,40,0.004805812572368771,0.012161328781657234,0.04068382277309117,0.3870967741935484,sample_limited,research_only_not_online
+512100,中证1000ETF,宽基,broad_index,rank_drop_top3_to_out_top10_proxy,2,-0.031460203657577734,-0.052525998024483045,-0.06800149705213915,1.0,hypothesis_only,need_more_data
+512100,中证1000ETF,宽基,broad_index,short_swing_buy_to_watch_proxy,8,0.006512409822264198,0.009201154414989823,0.018184645538098936,0.375,hypothesis_only,need_more_data
+512100,中证1000ETF,宽基,broad_index,short_swing_buy_to_sell_proxy,1,0.023255813953488413,-0.017135862913096545,-0.0664014687882496,1.0,hypothesis_only,need_more_data
+512100,中证1000ETF,宽基,broad_index,volume_and_rank_decay_proxy,3,0.006827484845055391,-0.0030990129729194424,-0.0036432428482897996,0.3333333333333333,hypothesis_only,need_more_data
+512100,中证1000ETF,宽基,broad_index,type_stop_loss_proxy_7%-10%,15,0.016393141779258855,0.04472320146859722,0.0987589558830401,0.15384615384615385,hypothesis_only,research_only_type_stop; do_not_online_without_backtest
+159915,创业板ETF,宽基,broad_index,rank_score_decline_2d,244,0.007997484892957598,0.011616621380443122,0.009340721886168257,0.5062240663900415,evidence_supported,research_only_not_online
+159915,创业板ETF,宽基,broad_index,rank_score_decline_3d,105,0.013534843896719623,0.01315567622666941,0.007978350158805212,0.5,sample_limited,research_only_not_online
+159915,创业板ETF,宽基,broad_index,rank_score_below_70_proxy,696,-0.0017737484367275794,8.944087919062998e-05,0.004718921563744134,0.5513748191027497,evidence_supported,research_only_not_online
+159915,创业板ETF,宽基,broad_index,rank_drop_top3_to_out_top10_proxy,4,0.018167016810258646,0.06743944353073977,0.10163941611461258,0.25,hypothesis_only,need_more_data
+159915,创业板ETF,宽基,broad_index,short_swing_buy_to_watch_proxy,51,0.0033679212714267342,0.007383369710634575,0.007026366602088587,0.48,sample_limited,research_only_not_online
+159915,创业板ETF,宽基,broad_index,short_swing_buy_to_sell_proxy,5,0.031144252822252284,0.049017586514414034,0.02280448481773385,0.4,hypothesis_only,need_more_data
+159915,创业板ETF,宽基,broad_index,volume_and_rank_decay_proxy,24,0.01701057855731823,-0.0035952799582663806,-0.009768341962372687,0.6666666666666666,hypothesis_only,need_more_data
+159915,创业板ETF,宽基,broad_index,type_stop_loss_proxy_7%-10%,225,0.007323553418227458,0.011040479455082594,0.014536932793517648,0.39732142857142855,evidence_supported,research_only_type_stop; do_not_online_without_backtest
+588000,科创50ETF,宽基,broad_index,rank_score_decline_2d,84,0.00818018805644697,0.010016838454225798,0.022923541388391637,0.45454545454545453,sample_limited,research_only_not_online
+588000,科创50ETF,宽基,broad_index,rank_score_decline_3d,43,0.011572283807523806,0.01127923480470426,0.018401197300659772,0.5,sample_limited,research_only_not_online
+588000,科创50ETF,宽基,broad_index,rank_score_below_70_proxy,152,0.0009363988243028644,0.0035062033520693657,0.01784186756022271,0.496551724137931,sample_limited,research_only_not_online
+588000,科创50ETF,宽基,broad_index,rank_drop_top3_to_out_top10_proxy,0,,,,,hypothesis_only,need_more_data
+588000,科创50ETF,宽基,broad_index,short_swing_buy_to_watch_proxy,17,0.01203529348960749,0.03814181987784363,0.08353828279757858,0.29411764705882354,hypothesis_only,need_more_data
+588000,科创50ETF,宽基,broad_index,short_swing_buy_to_sell_proxy,2,-0.022299145149627997,-0.038306451612903136,-0.06384408602150538,1.0,hypothesis_only,need_more_data
+588000,科创50ETF,宽基,broad_index,volume_and_rank_decay_proxy,16,0.013781421632923039,0.009996810445159052,0.0039487326086390705,0.5714285714285714,hypothesis_only,need_more_data
+588000,科创50ETF,宽基,broad_index,type_stop_loss_proxy_7%-10%,72,0.009812776063907602,0.02197283862255084,0.04248252148466443,0.453125,sample_limited,research_only_type_stop; do_not_online_without_backtest
+510050,上证50ETF,宽基,broad_index,rank_score_decline_2d,74,0.0018181088596063296,0.00131326075859106,0.008999621085699313,0.44285714285714284,sample_limited,research_only_not_online
+510050,上证50ETF,宽基,broad_index,rank_score_decline_3d,33,0.0017633013957747484,0.00018941356099435162,0.008489768349024688,0.4838709677419355,hypothesis_only,need_more_data
+510050,上证50ETF,宽基,broad_index,rank_score_below_70_proxy,188,0.003060273073873903,0.00559818285429088,0.012678902202488117,0.33707865168539325,sample_limited,research_only_not_online
+510050,上证50ETF,宽基,broad_index,rank_drop_top3_to_out_top10_proxy,1,0.011776581426648836,0.0070659488559892125,0.0070659488559892125,0.0,hypothesis_only,need_more_data
+510050,上证50ETF,宽基,broad_index,short_swing_buy_to_watch_proxy,9,-0.0021283560918334216,-0.002600897096692842,-0.0014493498447701993,0.5555555555555556,hypothesis_only,need_more_data
+510050,上证50ETF,宽基,broad_index,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+510050,上证50ETF,宽基,broad_index,volume_and_rank_decay_proxy,11,-0.0025747393864822055,-0.004312637061230284,0.0049510077126001155,0.5,hypothesis_only,need_more_data
+510050,上证50ETF,宽基,broad_index,type_stop_loss_proxy_7%-10%,5,0.016978091062058664,0.029558605135150795,0.04808971549078955,0.0,hypothesis_only,research_only_type_stop; do_not_online_without_backtest
+510180,上证180ETF,宽基,broad_index,rank_score_decline_2d,24,-0.007174807561147871,-0.007973978353584717,-0.005598537133622735,0.7222222222222222,hypothesis_only,need_more_data
+510180,上证180ETF,宽基,broad_index,rank_score_decline_3d,10,-0.012573240655884041,-0.01666711746666442,0.008309918016517454,0.8333333333333334,hypothesis_only,need_more_data
+510180,上证180ETF,宽基,broad_index,rank_score_below_70_proxy,47,-0.0044518265594240755,-0.0034697691182231064,0.0025890709338867047,0.5,sample_limited,candidate_for_simulation_review
+510180,上证180ETF,宽基,broad_index,rank_drop_top3_to_out_top10_proxy,1,-0.0033653846153847145,-0.01971153846153839,-0.0673076923076924,1.0,hypothesis_only,need_more_data
+510180,上证180ETF,宽基,broad_index,short_swing_buy_to_watch_proxy,3,-0.0086224314668543,-0.001597110975488129,-0.024568112675104243,0.6666666666666666,hypothesis_only,need_more_data
+510180,上证180ETF,宽基,broad_index,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+510180,上证180ETF,宽基,broad_index,volume_and_rank_decay_proxy,2,,,,,hypothesis_only,need_more_data
+510180,上证180ETF,宽基,broad_index,type_stop_loss_proxy_7%-10%,5,0.003551730380158935,0.021178321998266636,0.04183294744066013,0.0,hypothesis_only,research_only_type_stop; do_not_online_without_backtest
+159901,深100ETF,宽基,broad_index,rank_score_decline_2d,64,0.012818334039802778,0.019542362704089298,0.0349507666268214,0.2786885245901639,sample_limited,research_only_not_online
+159901,深100ETF,宽基,broad_index,rank_score_decline_3d,23,0.02212912506932059,0.028969088837083365,0.045045205711496485,0.22727272727272727,hypothesis_only,need_more_data
+159901,深100ETF,宽基,broad_index,rank_score_below_70_proxy,164,0.006142505665917047,0.013666494297494856,0.0265694265196706,0.3522012578616352,sample_limited,research_only_not_online
+159901,深100ETF,宽基,broad_index,rank_drop_top3_to_out_top10_proxy,0,,,,,hypothesis_only,need_more_data
+159901,深100ETF,宽基,broad_index,short_swing_buy_to_watch_proxy,18,-0.001163262021485281,0.006635969697170448,0.034540098073639405,0.5294117647058824,hypothesis_only,need_more_data
+159901,深100ETF,宽基,broad_index,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+159901,深100ETF,宽基,broad_index,volume_and_rank_decay_proxy,5,0.006777015877805576,-0.007404748838491265,0.018819038179163305,0.75,hypothesis_only,need_more_data
+159901,深100ETF,宽基,broad_index,type_stop_loss_proxy_7%-10%,16,0.019593036173860753,0.03098905477103138,0.05322091568224706,0.0,hypothesis_only,research_only_type_stop; do_not_online_without_backtest
+159949,创业板50ETF,宽基,broad_index,rank_score_decline_2d,60,0.02556361031372943,0.042287029635137925,0.06685529289798825,0.16071428571428573,sample_limited,research_only_not_online
+159949,创业板50ETF,宽基,broad_index,rank_score_decline_3d,22,0.03490957421178782,0.055028416528457934,0.08927556651708346,0.1,hypothesis_only,need_more_data
+159949,创业板50ETF,宽基,broad_index,rank_score_below_70_proxy,160,0.011271718346509616,0.02571234712926102,0.046916890568187194,0.3375796178343949,sample_limited,research_only_not_online
+159949,创业板50ETF,宽基,broad_index,rank_drop_top3_to_out_top10_proxy,0,,,,,hypothesis_only,need_more_data
+159949,创业板50ETF,宽基,broad_index,short_swing_buy_to_watch_proxy,19,0.018299229388947517,0.021695062597071813,0.05354186671230829,0.42105263157894735,hypothesis_only,need_more_data
+159949,创业板50ETF,宽基,broad_index,short_swing_buy_to_sell_proxy,3,0.031306390632662606,0.07676558271559464,0.09368803692681316,0.0,hypothesis_only,need_more_data
+159949,创业板50ETF,宽基,broad_index,volume_and_rank_decay_proxy,5,0.01516527054084602,0.007648609900587355,0.05064206940447389,0.2,hypothesis_only,need_more_data
+159949,创业板50ETF,宽基,broad_index,type_stop_loss_proxy_7%-10%,34,0.02084708615684922,0.05198330459468466,0.06628110006176602,0.09090909090909091,hypothesis_only,research_only_type_stop; do_not_online_without_backtest
+588080,科创创业50ETF,宽基,broad_index,rank_score_decline_2d,83,0.005837896833133085,0.010013007202629444,0.021857302546029116,0.4594594594594595,sample_limited,research_only_not_online
+588080,科创创业50ETF,宽基,broad_index,rank_score_decline_3d,46,0.006746497573797379,0.011195600742013324,0.01699939845129222,0.47368421052631576,sample_limited,research_only_not_online
+588080,科创创业50ETF,宽基,broad_index,rank_score_below_70_proxy,154,0.001676965086363868,0.00454658480343323,0.02024837291990165,0.4965986394557823,sample_limited,research_only_not_online
+588080,科创创业50ETF,宽基,broad_index,rank_drop_top3_to_out_top10_proxy,0,,,,,hypothesis_only,need_more_data
+588080,科创创业50ETF,宽基,broad_index,short_swing_buy_to_watch_proxy,19,0.0185520431791523,0.04128505507381816,0.08361376303029433,0.3157894736842105,hypothesis_only,need_more_data
+588080,科创创业50ETF,宽基,broad_index,short_swing_buy_to_sell_proxy,2,-0.02345058626465657,-0.038141470180305115,-0.06380027739251026,1.0,hypothesis_only,need_more_data
+588080,科创创业50ETF,宽基,broad_index,volume_and_rank_decay_proxy,16,0.006890499844581717,0.005133630043439173,-0.012986589491734892,0.5714285714285714,hypothesis_only,need_more_data
+588080,科创创业50ETF,宽基,broad_index,type_stop_loss_proxy_7%-10%,71,0.00977979798970092,0.022529614048868364,0.04334662990676037,0.4444444444444444,sample_limited,research_only_type_stop; do_not_online_without_backtest
+512880,证券ETF,金融地产,sector,rank_score_decline_2d,75,-0.001398093752233952,-0.0019166092684728229,0.0002181469913142427,0.5362318840579711,sample_limited,candidate_for_simulation_review
+512880,证券ETF,金融地产,sector,rank_score_decline_3d,36,3.219343190802998e-05,-0.0012128428804522723,0.003941393082038832,0.59375,hypothesis_only,need_more_data
+512880,证券ETF,金融地产,sector,rank_score_below_70_proxy,195,-0.001307925462353965,-0.0015375102208027196,-0.005355811165452384,0.5081081081081081,sample_limited,candidate_for_simulation_review
+512880,证券ETF,金融地产,sector,rank_drop_top3_to_out_top10_proxy,1,-0.04200913242009141,-0.04748858447488591,,1.0,hypothesis_only,need_more_data
+512880,证券ETF,金融地产,sector,short_swing_buy_to_watch_proxy,15,-0.002563419705043472,0.0002749674715142018,0.008022600064529787,0.4666666666666667,hypothesis_only,need_more_data
+512880,证券ETF,金融地产,sector,short_swing_buy_to_sell_proxy,1,-0.03846153846153855,-0.04230769230769227,-0.058461538461538565,1.0,hypothesis_only,need_more_data
+512880,证券ETF,金融地产,sector,volume_and_rank_decay_proxy,8,0.01089687440561384,0.02503143113248672,0.02392347276357239,0.3333333333333333,hypothesis_only,need_more_data
+512880,证券ETF,金融地产,sector,type_stop_loss_proxy_5%-8%,115,-0.0022004920303301347,-0.0008825059521719816,0.0036334526616346088,0.4666666666666667,sample_limited,research_only_type_stop; do_not_online_without_backtest
+512800,银行ETF,金融地产,sector,rank_score_decline_2d,73,0.00015921365647698145,0.002614540439224054,0.009127829894161502,0.49295774647887325,sample_limited,research_only_not_online
+512800,银行ETF,金融地产,sector,rank_score_decline_3d,38,-0.0025597013038557116,0.002805482562757647,0.016748405916754517,0.5263157894736842,hypothesis_only,need_more_data
+512800,银行ETF,金融地产,sector,rank_score_below_70_proxy,193,-0.0011966149883794522,-0.003681328289871142,-0.007322842363863021,0.5691489361702128,sample_limited,candidate_for_simulation_review
+512800,银行ETF,金融地产,sector,rank_drop_top3_to_out_top10_proxy,2,0.02639178601839043,0.033530363168636224,0.020531950520281894,0.0,hypothesis_only,need_more_data
+512800,银行ETF,金融地产,sector,short_swing_buy_to_watch_proxy,11,-0.0011141799276237283,0.003221382570628267,0.00495218662208235,0.36363636363636365,hypothesis_only,need_more_data
+512800,银行ETF,金融地产,sector,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+512800,银行ETF,金融地产,sector,volume_and_rank_decay_proxy,13,0.0003208592813122622,0.011990068217939088,0.01909341577260684,0.38461538461538464,hypothesis_only,need_more_data
+512800,银行ETF,金融地产,sector,type_stop_loss_proxy_5%-8%,35,0.009745745652217993,0.01621639942712558,0.01722375005153899,0.23529411764705882,hypothesis_only,research_only_type_stop; do_not_online_without_backtest
+512200,房地产ETF,金融地产,sector,rank_score_decline_2d,74,0.003872424850786406,6.137507063799785e-05,0.009319169573372942,0.4852941176470588,sample_limited,research_only_not_online
+512200,房地产ETF,金融地产,sector,rank_score_decline_3d,33,0.008925183136033514,0.0025730410816026577,0.014243434838483617,0.4827586206896552,hypothesis_only,need_more_data
+512200,房地产ETF,金融地产,sector,rank_score_below_70_proxy,190,-0.0027770618355094294,-0.0073647779238483636,-0.007566335796764406,0.5666666666666667,sample_limited,candidate_for_simulation_review
+512200,房地产ETF,金融地产,sector,rank_drop_top3_to_out_top10_proxy,2,-0.015186105502924985,-0.028053010301806625,-0.034593881037428165,1.0,hypothesis_only,need_more_data
+512200,房地产ETF,金融地产,sector,short_swing_buy_to_watch_proxy,18,0.005831747445768902,0.008339881912371857,0.01340658289297734,0.3888888888888889,hypothesis_only,need_more_data
+512200,房地产ETF,金融地产,sector,short_swing_buy_to_sell_proxy,2,0.003179881364079651,0.027509345728966794,0.0694694519505854,0.0,hypothesis_only,need_more_data
+512200,房地产ETF,金融地产,sector,volume_and_rank_decay_proxy,16,0.01279890187896813,0.006883776633880882,0.014127514349204626,0.5833333333333334,hypothesis_only,need_more_data
+512200,房地产ETF,金融地产,sector,type_stop_loss_proxy_5%-8%,92,-0.005769381107631629,-0.009699458630543164,0.003869756506163865,0.5853658536585366,sample_limited,research_only_type_stop; do_not_online_without_backtest
+510230,金融ETF,金融地产,sector,rank_score_decline_2d,79,0.0032084744390399036,0.0039980494952423186,0.009688853473968624,0.4025974025974026,sample_limited,research_only_not_online
+510230,金融ETF,金融地产,sector,rank_score_decline_3d,34,0.0050094521140051085,0.011343222177754768,0.022411828612826694,0.23529411764705882,hypothesis_only,need_more_data
+510230,金融ETF,金融地产,sector,rank_score_below_70_proxy,211,-0.0010132101755735122,-0.0014273719943206065,-0.00341712148699695,0.4975124378109453,evidence_supported,candidate_for_simulation_review
+510230,金融ETF,金融地产,sector,rank_drop_top3_to_out_top10_proxy,2,-0.021126970855231686,-0.034042044911610114,-0.016140109890109833,1.0,hypothesis_only,need_more_data
+510230,金融ETF,金融地产,sector,short_swing_buy_to_watch_proxy,5,0.007170829537518774,0.006602554710677988,0.019027383691963197,0.4,hypothesis_only,need_more_data
+510230,金融ETF,金融地产,sector,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+510230,金融ETF,金融地产,sector,volume_and_rank_decay_proxy,4,0.017674713433655148,0.03522093150600408,0.04168246830305827,0.0,hypothesis_only,need_more_data
+510230,金融ETF,金融地产,sector,type_stop_loss_proxy_5%-8%,44,0.005383407936199829,0.01135908569395613,0.018771505391183052,0.37209302325581395,sample_limited,research_only_type_stop; do_not_online_without_backtest
+159940,金融ETF,金融地产,sector,rank_score_decline_2d,82,0.0009511095005102386,0.00018206050899563153,0.004473309422045646,0.46153846153846156,sample_limited,research_only_not_online
+159940,金融ETF,金融地产,sector,rank_score_decline_3d,40,0.0005580110803556447,0.00045298225991353166,0.0016703368434428053,0.5,sample_limited,research_only_not_online
+159940,金融ETF,金融地产,sector,rank_score_below_70_proxy,205,0.00016271895601587593,0.0005886961354828906,-0.0008233852378573285,0.4512820512820513,evidence_supported,research_only_not_online
+159940,金融ETF,金融地产,sector,rank_drop_top3_to_out_top10_proxy,1,-0.027798647633358264,-0.05409466566491361,-0.04958677685950419,1.0,hypothesis_only,need_more_data
+159940,金融ETF,金融地产,sector,short_swing_buy_to_watch_proxy,6,-1.777469079922156e-06,-0.0042586505503576415,-0.0013280382566651094,0.5,hypothesis_only,need_more_data
+159940,金融ETF,金融地产,sector,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+159940,金融ETF,金融地产,sector,volume_and_rank_decay_proxy,10,0.001424036497676151,0.0010602995848446816,-0.01275202643787382,0.5,hypothesis_only,need_more_data
+159940,金融ETF,金融地产,sector,type_stop_loss_proxy_5%-8%,46,0.006960959653897164,0.007183044156793186,0.011493734116189485,0.36585365853658536,sample_limited,research_only_type_stop; do_not_online_without_backtest
+512070,非银ETF,金融地产,sector,rank_score_decline_2d,80,-0.0007907906586604466,-0.001914721604904199,-0.00038318979792134535,0.4868421052631579,sample_limited,candidate_for_simulation_review
+512070,非银ETF,金融地产,sector,rank_score_decline_3d,40,-0.002803244924633167,-0.00170808459234639,0.003041033605680337,0.5128205128205128,sample_limited,candidate_for_simulation_review
+512070,非银ETF,金融地产,sector,rank_score_below_70_proxy,193,8.403690861028995e-05,0.0018908105656814877,0.0018577707164407526,0.4426229508196721,sample_limited,research_only_not_online
+512070,非银ETF,金融地产,sector,rank_drop_top3_to_out_top10_proxy,1,-0.026232948583420734,-0.05141657922350462,-0.039874081846799525,1.0,hypothesis_only,need_more_data
+512070,非银ETF,金融地产,sector,short_swing_buy_to_watch_proxy,15,-3.125668556348919e-05,0.0006033191701185992,-0.00020386381032053703,0.4666666666666667,hypothesis_only,need_more_data
+512070,非银ETF,金融地产,sector,short_swing_buy_to_sell_proxy,1,-0.032786885245901676,-0.041530054644808745,-0.06775956284153006,1.0,hypothesis_only,need_more_data
+512070,非银ETF,金融地产,sector,volume_and_rank_decay_proxy,13,0.006869071157291304,0.01767496015434498,0.0392196527384377,0.3076923076923077,hypothesis_only,need_more_data
+512070,非银ETF,金融地产,sector,type_stop_loss_proxy_5%-8%,106,-0.0042682493570101515,-0.003844633997999973,-0.00022103710025854104,0.5104166666666666,sample_limited,research_only_type_stop; do_not_online_without_backtest
+515880,证券公司ETF,金融地产,sector,rank_score_decline_2d,16,-0.006691726088598264,0.0407339819513509,0.03491669387773146,0.07692307692307693,hypothesis_only,need_more_data
+515880,证券公司ETF,金融地产,sector,rank_score_decline_3d,6,0.06582106804231662,0.11111410794516034,0.09639355393350635,0.0,hypothesis_only,need_more_data
+515880,证券公司ETF,金融地产,sector,rank_score_below_70_proxy,31,0.023371697168650944,0.05201395599313234,0.12836141572146323,0.2857142857142857,hypothesis_only,need_more_data
+515880,证券公司ETF,金融地产,sector,rank_drop_top3_to_out_top10_proxy,1,0.02734375,0.0419921875,0.19140625,0.0,hypothesis_only,need_more_data
+515880,证券公司ETF,金融地产,sector,short_swing_buy_to_watch_proxy,8,-0.028034055939142197,-0.015376942830214985,0.03294744715580216,0.375,hypothesis_only,need_more_data
+515880,证券公司ETF,金融地产,sector,short_swing_buy_to_sell_proxy,2,0.009651935186607286,-0.012867647058823595,0.12316176470588225,1.0,hypothesis_only,need_more_data
+515880,证券公司ETF,金融地产,sector,volume_and_rank_decay_proxy,0,,,,,hypothesis_only,need_more_data
+515880,证券公司ETF,金融地产,sector,type_stop_loss_proxy_5%-8%,30,0.027797810017727992,0.04250875321852089,0.07137269001453375,0.2857142857142857,hypothesis_only,research_only_type_stop; do_not_online_without_backtest
+512010,医药ETF,消费医药,sector,rank_score_decline_2d,73,0.0007563891818527441,-0.004241330376225527,-0.0005049484887268295,0.5072463768115942,sample_limited,candidate_for_simulation_review
+512010,医药ETF,消费医药,sector,rank_score_decline_3d,31,0.006249007154116474,0.0014120574885820743,0.014380846690148986,0.41379310344827586,hypothesis_only,need_more_data
+512010,医药ETF,消费医药,sector,rank_score_below_70_proxy,191,-0.002977238197316724,-0.0034255160070090214,-0.003463331544865811,0.569060773480663,sample_limited,candidate_for_simulation_review
+512010,医药ETF,消费医药,sector,rank_drop_top3_to_out_top10_proxy,1,0.018617021276595702,-0.039893617021276584,-0.015957446808510634,1.0,hypothesis_only,need_more_data
+512010,医药ETF,消费医药,sector,short_swing_buy_to_watch_proxy,16,0.001269757465325351,-0.004922259562012234,-0.004227796018236758,0.5,hypothesis_only,need_more_data
+512010,医药ETF,消费医药,sector,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+512010,医药ETF,消费医药,sector,volume_and_rank_decay_proxy,7,-0.0022597637671797027,0.009039798406164343,0.02190626445954139,0.42857142857142855,hypothesis_only,need_more_data
+512010,医药ETF,消费医药,sector,type_stop_loss_proxy_5%-8%,97,-0.000987149157580917,-0.004512004036627562,-0.0033515860335109463,0.5517241379310345,sample_limited,research_only_type_stop; do_not_online_without_backtest
+159929,医药ETF,消费医药,sector,rank_score_decline_2d,73,0.003680104157524456,0.00025341600318688404,0.0054365321138931345,0.4857142857142857,sample_limited,research_only_not_online
+159929,医药ETF,消费医药,sector,rank_score_decline_3d,33,0.007926324099379201,0.0030760427213764327,0.010375424339928701,0.45161290322580644,hypothesis_only,need_more_data
+159929,医药ETF,消费医药,sector,rank_score_below_70_proxy,194,-0.0025948038830052584,-0.0029401956311247905,-0.0020523015176316835,0.5869565217391305,sample_limited,candidate_for_simulation_review
+159929,医药ETF,消费医药,sector,rank_drop_top3_to_out_top10_proxy,1,0.001506024096385561,-0.005271084337349463,0.0007530120481926694,1.0,hypothesis_only,need_more_data
+159929,医药ETF,消费医药,sector,short_swing_buy_to_watch_proxy,13,0.007622020747917999,-0.007832428477270375,0.00584085455098716,0.46153846153846156,hypothesis_only,need_more_data
+159929,医药ETF,消费医药,sector,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+159929,医药ETF,消费医药,sector,volume_and_rank_decay_proxy,10,0.0009659074930159495,0.0040116892708706555,0.0020849213379990684,0.5,hypothesis_only,need_more_data
+159929,医药ETF,消费医药,sector,type_stop_loss_proxy_5%-8%,83,0.00034568396479145447,-0.0016224641971248348,0.006660113848983995,0.5205479452054794,sample_limited,research_only_type_stop; do_not_online_without_backtest
+512170,医疗ETF,消费医药,sector,rank_score_decline_2d,80,-0.004009108018619245,-0.003821586106654178,-0.004335969828128357,0.4788732394366197,sample_limited,candidate_for_simulation_review
+512170,医疗ETF,消费医药,sector,rank_score_decline_3d,41,-0.00652903581342168,-0.007688664560411688,-0.0014263586882532066,0.5454545454545454,sample_limited,candidate_for_simulation_review
+512170,医疗ETF,消费医药,sector,rank_score_below_70_proxy,187,-0.0038264225964966224,-0.0038578443272861153,3.273039177940909e-06,0.5480225988700564,sample_limited,candidate_for_simulation_review
+512170,医疗ETF,消费医药,sector,rank_drop_top3_to_out_top10_proxy,2,0.01838678109003311,0.010783649503161685,-0.003142878651008818,0.0,hypothesis_only,need_more_data
+512170,医疗ETF,消费医药,sector,short_swing_buy_to_watch_proxy,11,0.0023468557838715346,0.002477532984465534,0.013386834756330502,0.36363636363636365,hypothesis_only,need_more_data
+512170,医疗ETF,消费医药,sector,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+512170,医疗ETF,消费医药,sector,volume_and_rank_decay_proxy,7,-0.015409352045229308,-0.004991045653282411,0.015703610749461472,0.6,hypothesis_only,need_more_data
+512170,医疗ETF,消费医药,sector,type_stop_loss_proxy_5%-8%,110,-0.006207117484366678,-0.00949476214829521,-0.007435559616990764,0.59,sample_limited,research_only_type_stop; do_not_online_without_backtest
+512690,酒ETF,消费医药,sector,rank_score_decline_2d,76,-0.011466652842288596,-0.015318447753230283,-0.03009599890523725,0.6338028169014085,sample_limited,candidate_for_simulation_review
+512690,酒ETF,消费医药,sector,rank_score_decline_3d,37,-0.019445691661400134,-0.021873129096542456,-0.03773207430117878,0.7272727272727273,hypothesis_only,need_more_data
+512690,酒ETF,消费医药,sector,rank_score_below_70_proxy,219,-0.007921892165991259,-0.013285281352959795,-0.02560542118288341,0.6794258373205742,evidence_supported,candidate_for_simulation_review
+512690,酒ETF,消费医药,sector,rank_drop_top3_to_out_top10_proxy,0,,,,,hypothesis_only,need_more_data
+512690,酒ETF,消费医药,sector,short_swing_buy_to_watch_proxy,5,-0.011494131967252397,-0.012351205951650134,-0.018416555324013716,0.8,hypothesis_only,need_more_data
+512690,酒ETF,消费医药,sector,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+512690,酒ETF,消费医药,sector,volume_and_rank_decay_proxy,13,-0.02250888248012621,-0.03463222072134143,-0.05390097233600766,0.9090909090909091,hypothesis_only,need_more_data
+512690,酒ETF,消费医药,sector,type_stop_loss_proxy_5%-8%,112,-0.006058351952170638,-0.010799176338026246,-0.01928722155465469,0.6666666666666666,sample_limited,research_only_type_stop; do_not_online_without_backtest
+159928,消费ETF,消费医药,sector,rank_score_decline_2d,70,-0.006763851720199192,-0.009661227153297773,-0.01431744922204981,0.6461538461538462,sample_limited,candidate_for_simulation_review
+159928,消费ETF,消费医药,sector,rank_score_decline_3d,27,-0.012138363074048426,-0.012822104307006038,-0.014877184827043598,0.6521739130434783,hypothesis_only,need_more_data
+159928,消费ETF,消费医药,sector,rank_score_below_70_proxy,221,-0.004260444181316759,-0.006800171494644712,-0.01475574222198377,0.6066350710900474,evidence_supported,candidate_for_simulation_review
+159928,消费ETF,消费医药,sector,rank_drop_top3_to_out_top10_proxy,0,,,,,hypothesis_only,need_more_data
+159928,消费ETF,消费医药,sector,short_swing_buy_to_watch_proxy,10,-0.013587310832884381,-0.019952316089723966,-0.019734402344766255,0.9,hypothesis_only,need_more_data
+159928,消费ETF,消费医药,sector,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+159928,消费ETF,消费医药,sector,volume_and_rank_decay_proxy,9,-0.014437218781107972,-0.018779285671512352,-0.01470806460414041,0.75,hypothesis_only,need_more_data
+159928,消费ETF,消费医药,sector,type_stop_loss_proxy_5%-8%,47,-0.0005617316038219731,-0.001871384842515874,-0.005642468174305371,0.4864864864864865,sample_limited,research_only_type_stop; do_not_online_without_backtest
+515650,消费50ETF,消费医药,sector,rank_score_decline_2d,81,-0.002570870885088588,-0.005258429258352101,-0.009161645971012898,0.6052631578947368,sample_limited,candidate_for_simulation_review
+515650,消费50ETF,消费医药,sector,rank_score_decline_3d,38,-0.00404215099030939,-0.004445223105984089,-0.010761476773365475,0.6176470588235294,hypothesis_only,need_more_data
+515650,消费50ETF,消费医药,sector,rank_score_below_70_proxy,222,-0.0017937765473570878,-0.002898526809567866,-0.004940173516178861,0.5283018867924528,evidence_supported,candidate_for_simulation_review
+515650,消费50ETF,消费医药,sector,rank_drop_top3_to_out_top10_proxy,1,-0.0033112582781457123,0.019039735099337873,-0.0041390728476820016,0.0,hypothesis_only,need_more_data
+515650,消费50ETF,消费医药,sector,short_swing_buy_to_watch_proxy,6,-0.017180684789148932,-0.023777144538464374,-0.022811825257481138,0.8333333333333334,hypothesis_only,need_more_data
+515650,消费50ETF,消费医药,sector,short_swing_buy_to_sell_proxy,1,0.008547008547008517,-0.06837606837606824,-0.011111111111111072,1.0,hypothesis_only,need_more_data
+515650,消费50ETF,消费医药,sector,volume_and_rank_decay_proxy,11,-0.009193667315581602,-0.014563919508927152,-0.01984178319675804,1.0,hypothesis_only,need_more_data
+515650,消费50ETF,消费医药,sector,type_stop_loss_proxy_5%-8%,39,0.005360788058258135,0.002438731030978205,0.003955537751123552,0.41379310344827586,hypothesis_only,research_only_type_stop; do_not_online_without_backtest
+159996,家电ETF,消费医药,sector,rank_score_decline_2d,89,0.0030956264947792135,0.0017719241211424665,0.00924571986650173,0.4878048780487805,sample_limited,research_only_not_online
+159996,家电ETF,消费医药,sector,rank_score_decline_3d,45,0.0014665931459379043,0.003548297551127041,0.012931266134686138,0.46153846153846156,sample_limited,research_only_not_online
+159996,家电ETF,消费医药,sector,rank_score_below_70_proxy,185,0.0020514717558229503,0.005839348706632056,0.014254195954213431,0.4114285714285714,sample_limited,research_only_not_online
+159996,家电ETF,消费医药,sector,rank_drop_top3_to_out_top10_proxy,0,,,,,hypothesis_only,need_more_data
+159996,家电ETF,消费医药,sector,short_swing_buy_to_watch_proxy,13,0.005726319694367791,0.011440960468135449,0.011288865627938405,0.5384615384615384,hypothesis_only,need_more_data
+159996,家电ETF,消费医药,sector,short_swing_buy_to_sell_proxy,1,-0.0021306818181817677,-0.1335227272727273,-0.08948863636363624,1.0,hypothesis_only,need_more_data
+159996,家电ETF,消费医药,sector,volume_and_rank_decay_proxy,12,-0.00122278615949013,0.0017423477365502316,-0.0011379979272806984,0.4,hypothesis_only,need_more_data
+159996,家电ETF,消费医药,sector,type_stop_loss_proxy_5%-8%,59,0.00747820613246722,0.018533162645243694,0.041398291966888066,0.21568627450980393,sample_limited,research_only_type_stop; do_not_online_without_backtest
+515170,食品饮料ETF,消费医药,sector,rank_score_decline_2d,74,-0.005057135450959947,-0.00773661961703811,-0.016220173514651062,0.6086956521739131,sample_limited,candidate_for_simulation_review
+515170,食品饮料ETF,消费医药,sector,rank_score_decline_3d,31,-0.004630427863897446,-0.00561616528558572,-0.013918127677380609,0.5555555555555556,hypothesis_only,need_more_data
+515170,食品饮料ETF,消费医药,sector,rank_score_below_70_proxy,218,-0.004803145994700209,-0.007562429566155969,-0.015838154900567943,0.5961538461538461,evidence_supported,candidate_for_simulation_review
+515170,食品饮料ETF,消费医药,sector,rank_drop_top3_to_out_top10_proxy,2,-0.010728497092133416,-0.02733394551576368,-0.02742577288031839,1.0,hypothesis_only,need_more_data
+515170,食品饮料ETF,消费医药,sector,short_swing_buy_to_watch_proxy,9,-0.005824957645730001,-0.012726799948597774,-0.018353907885321825,0.7777777777777778,hypothesis_only,need_more_data
+515170,食品饮料ETF,消费医药,sector,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+515170,食品饮料ETF,消费医药,sector,volume_and_rank_decay_proxy,11,-0.009411988837971797,-0.008392209346182936,-0.02363923687890885,0.5555555555555556,hypothesis_only,need_more_data
+515170,食品饮料ETF,消费医药,sector,type_stop_loss_proxy_5%-8%,58,0.0024168083434978204,0.001005324047637604,-0.0011729349791433786,0.3958333333333333,sample_limited,research_only_type_stop; do_not_online_without_backtest
+159736,食品ETF,消费医药,sector,rank_score_decline_2d,72,-0.008093696222358143,-0.010864218855037655,-0.017451400549814818,0.6268656716417911,sample_limited,candidate_for_simulation_review
+159736,食品ETF,消费医药,sector,rank_score_decline_3d,34,-0.011632200690740243,-0.013201671860785795,-0.01930794230374118,0.6333333333333333,hypothesis_only,need_more_data
+159736,食品ETF,消费医药,sector,rank_score_below_70_proxy,213,-0.00476933763385702,-0.006344067955563995,-0.012019795741867909,0.5714285714285714,evidence_supported,candidate_for_simulation_review
+159736,食品ETF,消费医药,sector,rank_drop_top3_to_out_top10_proxy,2,-0.01195219123505975,-0.027309966045329315,-0.022633381524686136,1.0,hypothesis_only,need_more_data
+159736,食品ETF,消费医药,sector,short_swing_buy_to_watch_proxy,6,0.0022098987370396763,-0.006064565867017739,-0.008340327665886715,0.6666666666666666,hypothesis_only,need_more_data
+159736,食品ETF,消费医药,sector,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+159736,食品ETF,消费医药,sector,volume_and_rank_decay_proxy,11,-0.012025595767109015,-0.011763741278736306,-0.023480348120891573,0.625,hypothesis_only,need_more_data
+159736,食品ETF,消费医药,sector,type_stop_loss_proxy_5%-8%,56,0.0018622474545714697,-0.0007308188291057746,-0.004222637987004028,0.391304347826087,sample_limited,research_only_type_stop; do_not_online_without_backtest
+159766,旅游ETF,消费医药,sector,rank_score_decline_2d,72,-0.0070491018451916,0.0009997951281656098,-0.0020789766914990036,0.4696969696969697,sample_limited,research_only_not_online
+159766,旅游ETF,消费医药,sector,rank_score_decline_3d,33,-0.005050928566179085,0.007099704810921818,0.009621931014498045,0.3793103448275862,hypothesis_only,need_more_data
+159766,旅游ETF,消费医药,sector,rank_score_below_70_proxy,195,-0.005029977014097068,-0.005307715771682627,-0.011519198126998939,0.4810810810810811,sample_limited,candidate_for_simulation_review
+159766,旅游ETF,消费医药,sector,rank_drop_top3_to_out_top10_proxy,4,-0.017535503131831026,-0.020803173027335586,-0.004414486499142584,0.75,hypothesis_only,need_more_data
+159766,旅游ETF,消费医药,sector,short_swing_buy_to_watch_proxy,12,-0.0009090019360405247,-0.0031662069480666946,0.0049093333920806614,0.5833333333333334,hypothesis_only,need_more_data
+159766,旅游ETF,消费医药,sector,short_swing_buy_to_sell_proxy,2,-0.00639040660794471,0.006324348878918806,-0.07327792929832216,0.5,hypothesis_only,need_more_data
+159766,旅游ETF,消费医药,sector,volume_and_rank_decay_proxy,14,0.004860209300737136,0.006591267549834207,0.010297080965669872,0.3076923076923077,hypothesis_only,need_more_data
+159766,旅游ETF,消费医药,sector,type_stop_loss_proxy_5%-8%,110,-0.005729802541894898,-0.010529680825950795,-0.010745354253400662,0.57,sample_limited,research_only_type_stop; do_not_online_without_backtest
+516110,汽车ETF,消费医药,sector,rank_score_decline_2d,80,0.0002838488447807405,-0.0026458361126284018,0.0018687459016491171,0.5526315789473685,sample_limited,candidate_for_simulation_review
+516110,汽车ETF,消费医药,sector,rank_score_decline_3d,44,-0.00040251335259791887,-0.006104008886304696,0.002627149123599249,0.5476190476190477,sample_limited,candidate_for_simulation_review
+516110,汽车ETF,消费医药,sector,rank_score_below_70_proxy,184,-0.0011546990946701182,-0.0028141962428965194,0.0004256131685632807,0.5114942528735632,sample_limited,candidate_for_simulation_review
+516110,汽车ETF,消费医药,sector,rank_drop_top3_to_out_top10_proxy,3,0.005329094218273729,0.0025921758012675453,-0.041032716798504766,0.6666666666666666,hypothesis_only,need_more_data
+516110,汽车ETF,消费医药,sector,short_swing_buy_to_watch_proxy,13,0.008602894685713207,0.002467136093722545,-0.009628942211251913,0.6153846153846154,hypothesis_only,need_more_data
+516110,汽车ETF,消费医药,sector,short_swing_buy_to_sell_proxy,1,0.01526717557251911,-0.11526717557251909,-0.05038167938931304,1.0,hypothesis_only,need_more_data
+516110,汽车ETF,消费医药,sector,volume_and_rank_decay_proxy,13,0.004040876896856487,-0.002841075687245129,0.006679132536318731,0.6153846153846154,hypothesis_only,need_more_data
+516110,汽车ETF,消费医药,sector,type_stop_loss_proxy_5%-8%,87,0.005007547553060041,0.005564423239736997,0.006672010372331896,0.41025641025641024,sample_limited,research_only_type_stop; do_not_online_without_backtest
+512480,半导体ETF,科技成长,theme,rank_score_decline_2d,75,0.012651521134322715,0.01904657306451291,0.04265229749952474,0.4057971014492754,sample_limited,research_only_not_online
+512480,半导体ETF,科技成长,theme,rank_score_decline_3d,38,0.01484729177141811,0.016916303049514646,0.029709504150608912,0.4411764705882353,hypothesis_only,need_more_data
+512480,半导体ETF,科技成长,theme,rank_score_below_70_proxy,151,0.004909448167476164,0.010388485721437444,0.03517335874238997,0.4652777777777778,sample_limited,research_only_not_online
+512480,半导体ETF,科技成长,theme,rank_drop_top3_to_out_top10_proxy,1,0.07249070631970245,0.21840148698884754,0.18680297397769507,0.0,hypothesis_only,need_more_data
+512480,半导体ETF,科技成长,theme,short_swing_buy_to_watch_proxy,20,0.0037644065110297442,0.016212923959353004,0.07628050272391824,0.5263157894736842,hypothesis_only,need_more_data
+512480,半导体ETF,科技成长,theme,short_swing_buy_to_sell_proxy,2,-0.017337409935532788,-0.04436860068259396,-0.050511945392491486,1.0,hypothesis_only,need_more_data
+512480,半导体ETF,科技成长,theme,volume_and_rank_decay_proxy,12,0.019520884376275954,0.013024690584821927,0.029946253086198377,0.5833333333333334,hypothesis_only,need_more_data
+512480,半导体ETF,科技成长,theme,type_stop_loss_proxy_4%-6%,121,0.0032979532460902412,0.009629507128132524,0.024910607592832448,0.48672566371681414,sample_limited,research_only_type_stop; do_not_online_without_backtest
+512760,芯片ETF,科技成长,theme,rank_score_decline_2d,75,-0.0067350985594309435,-0.006559574087897382,-0.0315277366931322,0.4057971014492754,sample_limited,candidate_for_simulation_review
+512760,芯片ETF,科技成长,theme,rank_score_decline_3d,41,-0.0029208812607156576,-0.009754377026587957,-0.051733242564222945,0.43243243243243246,sample_limited,candidate_for_simulation_review
+512760,芯片ETF,科技成长,theme,rank_score_below_70_proxy,159,-0.009063831855324741,-0.014428819407038445,-0.015198528809067665,0.46710526315789475,sample_limited,candidate_for_simulation_review
+512760,芯片ETF,科技成长,theme,rank_drop_top3_to_out_top10_proxy,0,,,,,hypothesis_only,need_more_data
+512760,芯片ETF,科技成长,theme,short_swing_buy_to_watch_proxy,19,0.009545620734787229,0.021365101384655194,0.05806856902759432,0.5,hypothesis_only,need_more_data
+512760,芯片ETF,科技成长,theme,short_swing_buy_to_sell_proxy,2,-0.020306775690124346,-0.04528763769889832,-0.057527539779681724,1.0,hypothesis_only,need_more_data
+512760,芯片ETF,科技成长,theme,volume_and_rank_decay_proxy,16,0.013430123055113055,0.007883061946244885,-0.020840703819322452,0.375,hypothesis_only,need_more_data
+512760,芯片ETF,科技成长,theme,type_stop_loss_proxy_4%-6%,137,-0.013603118762083368,-0.018414842443109453,-0.030009051088040785,0.46511627906976744,sample_limited,research_only_type_stop; do_not_online_without_backtest
+159995,芯片ETF,科技成长,theme,rank_score_decline_2d,81,0.010335444254306308,0.020609826650169704,0.03494170084893321,0.3466666666666667,sample_limited,research_only_not_online
+159995,芯片ETF,科技成长,theme,rank_score_decline_3d,44,0.013498812194354113,0.021793185814798388,0.02471119112497426,0.35,sample_limited,research_only_not_online
+159995,芯片ETF,科技成长,theme,rank_score_below_70_proxy,155,0.0032575166754380282,0.007226200271188456,0.03189453790446321,0.47297297297297297,sample_limited,research_only_not_online
+159995,芯片ETF,科技成长,theme,rank_drop_top3_to_out_top10_proxy,0,,,,,hypothesis_only,need_more_data
+159995,芯片ETF,科技成长,theme,short_swing_buy_to_watch_proxy,17,0.011161029696682827,0.019389224638863604,0.08421302802235564,0.47058823529411764,hypothesis_only,need_more_data
+159995,芯片ETF,科技成长,theme,short_swing_buy_to_sell_proxy,3,-0.03379480684410855,-0.01855237540599436,-0.04672393310792283,0.5,hypothesis_only,need_more_data
+159995,芯片ETF,科技成长,theme,volume_and_rank_decay_proxy,17,0.008566548559243973,0.00774316506282291,0.00977009774165002,0.47058823529411764,hypothesis_only,need_more_data
+159995,芯片ETF,科技成长,theme,type_stop_loss_proxy_4%-6%,130,0.0026155083546562665,0.008421781986249259,0.022180184880540594,0.4918032786885246,sample_limited,research_only_type_stop; do_not_online_without_backtest
+588200,科创芯片ETF,科技成长,theme,rank_score_decline_2d,74,0.011848762373960604,0.020619681348857388,0.05100079574140411,0.4057971014492754,sample_limited,research_only_not_online
+588200,科创芯片ETF,科技成长,theme,rank_score_decline_3d,41,0.014425800622737735,0.020220697993875516,0.04193268664304833,0.41025641025641024,sample_limited,research_only_not_online
+588200,科创芯片ETF,科技成长,theme,rank_score_below_70_proxy,150,0.004742105082398871,0.010174776821113554,0.0374285478817117,0.4825174825174825,sample_limited,research_only_not_online
+588200,科创芯片ETF,科技成长,theme,rank_drop_top3_to_out_top10_proxy,1,0.09226006191950464,0.2792569659442723,0.2439628482972136,0.0,hypothesis_only,need_more_data
+588200,科创芯片ETF,科技成长,theme,short_swing_buy_to_watch_proxy,20,0.011469943930790445,0.020886389318245192,0.08738461661108105,0.55,hypothesis_only,need_more_data
+588200,科创芯片ETF,科技成长,theme,short_swing_buy_to_sell_proxy,2,-0.01644183520709186,-0.04547368421052633,-0.052631578947368474,1.0,hypothesis_only,need_more_data
+588200,科创芯片ETF,科技成长,theme,volume_and_rank_decay_proxy,17,0.004524325267889068,-0.003535521893233348,-0.019493066240360284,0.5625,hypothesis_only,need_more_data
+588200,科创芯片ETF,科技成长,theme,type_stop_loss_proxy_4%-6%,128,0.005191783215082266,0.014290478142538022,0.033140591238693354,0.4789915966386555,sample_limited,research_only_type_stop; do_not_online_without_backtest
+515050,5GETF,科技成长,theme,rank_score_decline_2d,65,0.018783010967228946,0.024687689906680643,0.04907848895100374,0.25806451612903225,sample_limited,research_only_not_online
+515050,5GETF,科技成长,theme,rank_score_decline_3d,30,0.010426714824661456,0.026393202669157467,0.06831636241329783,0.2413793103448276,hypothesis_only,need_more_data
+515050,5GETF,科技成长,theme,rank_score_below_70_proxy,159,0.015063214539215374,0.03220272738649593,0.05748055363577794,0.31543624161073824,sample_limited,research_only_not_online
+515050,5GETF,科技成长,theme,rank_drop_top3_to_out_top10_proxy,4,0.06746253461812346,0.1416311846861527,0.250094361019336,0.0,hypothesis_only,need_more_data
+515050,5GETF,科技成长,theme,short_swing_buy_to_watch_proxy,16,0.029288678554038806,0.0052200447313916895,0.06249696073912513,0.26666666666666666,hypothesis_only,need_more_data
+515050,5GETF,科技成长,theme,short_swing_buy_to_sell_proxy,8,0.024794172078445295,0.015224668932789445,0.02455867370257338,0.5714285714285714,hypothesis_only,need_more_data
+515050,5GETF,科技成长,theme,volume_and_rank_decay_proxy,17,0.01355264641753541,0.024783203006671813,0.07080469053430793,0.17647058823529413,hypothesis_only,need_more_data
+515050,5GETF,科技成长,theme,type_stop_loss_proxy_4%-6%,104,0.023990361194209667,0.023354002255690606,0.044997175984506435,0.24210526315789474,sample_limited,research_only_type_stop; do_not_online_without_backtest
+515000,科技ETF,科技成长,unknown,rank_score_decline_2d,278,0.006414220632470696,0.005999364869502157,0.00602007165607618,0.4618181818181818,evidence_supported,research_only_not_online
+515000,科技ETF,科技成长,unknown,rank_score_decline_3d,130,0.007345377772772042,0.00421210223533933,0.0014722889593817411,0.4728682170542636,sample_limited,research_only_not_online
+515000,科技ETF,科技成长,unknown,rank_score_below_70_proxy,692,0.00018790724887992325,0.002610350660887125,0.009408838770041257,0.5050798258345428,evidence_supported,research_only_not_online
+515000,科技ETF,科技成长,unknown,rank_drop_top3_to_out_top10_proxy,0,,,,,hypothesis_only,need_more_data
+515000,科技ETF,科技成长,unknown,short_swing_buy_to_watch_proxy,51,0.005904688209163639,0.008960833996099099,0.017016882237454428,0.4117647058823529,sample_limited,research_only_not_online
+515000,科技ETF,科技成长,unknown,short_swing_buy_to_sell_proxy,9,0.02301096774158684,0.027370565312404546,0.014455457769831509,0.25,hypothesis_only,need_more_data
+515000,科技ETF,科技成长,unknown,volume_and_rank_decay_proxy,56,0.004117687836235165,0.0037452220502249656,-0.010898058698479346,0.44642857142857145,sample_limited,research_only_not_online
+515000,科技ETF,科技成长,unknown,type_stop_loss_proxy_manual_review,317,0.0017559283730937713,0.0016024948236916035,0.006222687657752765,0.4793650793650794,evidence_supported,research_only_type_stop; do_not_online_without_backtest
+515230,软件ETF,科技成长,theme,rank_score_decline_2d,67,-0.00029291147712807975,-0.009682752260855071,0.004544203403576474,0.5161290322580645,sample_limited,candidate_for_simulation_review
+515230,软件ETF,科技成长,theme,rank_score_decline_3d,31,-0.0045771953165433775,-0.013078662109969249,0.003259264232754855,0.5555555555555556,hypothesis_only,need_more_data
+515230,软件ETF,科技成长,theme,rank_score_below_70_proxy,183,-0.0013226472821747887,0.002142627571336593,0.006517187352217539,0.49710982658959535,sample_limited,research_only_not_online
+515230,软件ETF,科技成长,theme,rank_drop_top3_to_out_top10_proxy,0,,,,,hypothesis_only,need_more_data
+515230,软件ETF,科技成长,theme,short_swing_buy_to_watch_proxy,14,-0.018164814594698115,-0.02667951339917304,-0.016994034343085603,0.6428571428571429,hypothesis_only,need_more_data
+515230,软件ETF,科技成长,theme,short_swing_buy_to_sell_proxy,1,-0.06145833333333328,-0.03124999999999989,-0.04062499999999991,1.0,hypothesis_only,need_more_data
+515230,软件ETF,科技成长,theme,volume_and_rank_decay_proxy,9,0.0064564486082840196,0.0001237234341010668,-0.0017063666081981316,0.375,hypothesis_only,need_more_data
+515230,软件ETF,科技成长,theme,type_stop_loss_proxy_4%-6%,181,-0.007381457568558763,-0.01059138582612207,-0.006780351347608953,0.5672514619883041,sample_limited,research_only_type_stop; do_not_online_without_backtest
+159819,人工智能ETF,科技成长,theme,rank_score_decline_2d,74,0.01251875863789826,0.0256372911040306,0.04005677211996842,0.3142857142857143,sample_limited,research_only_not_online
+159819,人工智能ETF,科技成长,theme,rank_score_decline_3d,33,0.008624684618936146,0.01858994311785812,0.031019219481994445,0.28125,hypothesis_only,need_more_data
+159819,人工智能ETF,科技成长,theme,rank_score_below_70_proxy,168,0.007244690101515495,0.01580113464930411,0.03591685493642238,0.39751552795031053,sample_limited,research_only_not_online
+159819,人工智能ETF,科技成长,theme,rank_drop_top3_to_out_top10_proxy,0,,,,,hypothesis_only,need_more_data
+159819,人工智能ETF,科技成长,theme,short_swing_buy_to_watch_proxy,19,0.00842723113900207,0.02016150580308014,0.05793402967763586,0.42105263157894735,hypothesis_only,need_more_data
+159819,人工智能ETF,科技成长,theme,short_swing_buy_to_sell_proxy,4,0.02897954978700329,0.0328710949896213,0.07606820942036734,0.3333333333333333,hypothesis_only,need_more_data
+159819,人工智能ETF,科技成长,theme,volume_and_rank_decay_proxy,13,0.002624955862985706,0.015435716636307162,0.04247056578980801,0.23076923076923078,hypothesis_only,need_more_data
+159819,人工智能ETF,科技成长,theme,type_stop_loss_proxy_4%-6%,113,0.01053694175731167,0.025127401606875426,0.04256257264590501,0.34579439252336447,sample_limited,research_only_type_stop; do_not_online_without_backtest
+515070,AIETF,科技成长,theme,rank_score_decline_2d,77,0.013664148437010528,0.02488169025193936,0.04053066648581931,0.3013698630136986,sample_limited,research_only_not_online
+515070,AIETF,科技成长,theme,rank_score_decline_3d,37,0.013631616921986143,0.020946367166577343,0.03562281264230988,0.2777777777777778,hypothesis_only,need_more_data
+515070,AIETF,科技成长,theme,rank_score_below_70_proxy,168,0.007245282655657322,0.015771056175244776,0.035635478533922973,0.391304347826087,sample_limited,research_only_not_online
+515070,AIETF,科技成长,theme,rank_drop_top3_to_out_top10_proxy,0,,,,,hypothesis_only,need_more_data
+515070,AIETF,科技成长,theme,short_swing_buy_to_watch_proxy,18,0.005179204962799833,0.017145486226223916,0.06261672730027484,0.3888888888888889,hypothesis_only,need_more_data
+515070,AIETF,科技成长,theme,short_swing_buy_to_sell_proxy,3,0.03226529814924831,0.03384854441742602,0.046506772265527296,0.5,hypothesis_only,need_more_data
+515070,AIETF,科技成长,theme,volume_and_rank_decay_proxy,12,-0.0003147106977854826,0.023342425224377055,0.042883682104735865,0.16666666666666666,hypothesis_only,need_more_data
+515070,AIETF,科技成长,theme,type_stop_loss_proxy_4%-6%,111,0.01090351660578371,0.02504260404799668,0.042368608973129454,0.3523809523809524,sample_limited,research_only_type_stop; do_not_online_without_backtest
+159869,游戏ETF,科技成长,theme,rank_score_decline_2d,65,0.0018962596180012717,-0.0020758886279947614,0.0058178769557069325,0.5396825396825397,sample_limited,candidate_for_simulation_review
+159869,游戏ETF,科技成长,theme,rank_score_decline_3d,30,0.0009895031915801299,-0.009832651199642882,0.0024198829155999135,0.5862068965517241,hypothesis_only,need_more_data
+159869,游戏ETF,科技成长,theme,rank_score_below_70_proxy,184,-0.003157988506599058,-0.003350873642288263,-0.0006004290267706209,0.5,sample_limited,candidate_for_simulation_review
+159869,游戏ETF,科技成长,theme,rank_drop_top3_to_out_top10_proxy,2,0.027028445831248193,0.000502879907371967,0.021809778929086532,0.5,hypothesis_only,need_more_data
+159869,游戏ETF,科技成长,theme,short_swing_buy_to_watch_proxy,18,0.012377644976671827,0.02313186533527068,0.061836082029318104,0.3333333333333333,hypothesis_only,need_more_data
+159869,游戏ETF,科技成长,theme,short_swing_buy_to_sell_proxy,3,-0.030592063245436656,-0.03419371054632873,-0.03524295775479084,0.6666666666666666,hypothesis_only,need_more_data
+159869,游戏ETF,科技成长,theme,volume_and_rank_decay_proxy,13,-0.009910850502959192,-0.02667798076567136,-0.012675136949755134,0.6666666666666666,hypothesis_only,need_more_data
+159869,游戏ETF,科技成长,theme,type_stop_loss_proxy_4%-6%,148,-0.00655388859969244,-0.01049950182143979,-0.014974986237386446,0.5507246376811594,sample_limited,research_only_type_stop; do_not_online_without_backtest
+516510,云计算ETF,科技成长,theme,rank_score_decline_2d,78,0.01273896954960635,0.013065309240686782,0.034635554642509656,0.4594594594594595,sample_limited,research_only_not_online
+516510,云计算ETF,科技成长,theme,rank_score_decline_3d,39,0.015925735415954205,0.011997723475020518,0.034466479040783614,0.4722222222222222,hypothesis_only,need_more_data
+516510,云计算ETF,科技成长,theme,rank_score_below_70_proxy,178,0.008232653444509963,0.016932097967983943,0.03542640474424532,0.39285714285714285,sample_limited,research_only_not_online
+516510,云计算ETF,科技成长,theme,rank_drop_top3_to_out_top10_proxy,1,0.0135849056603774,0.10037735849056606,0.2166037735849058,0.0,hypothesis_only,need_more_data
+516510,云计算ETF,科技成长,theme,short_swing_buy_to_watch_proxy,15,0.0015765103691580018,0.011878179189529003,0.07081941816460254,0.26666666666666666,hypothesis_only,need_more_data
+516510,云计算ETF,科技成长,theme,short_swing_buy_to_sell_proxy,1,-0.04026115342763881,0.00489662676822622,-0.09630032644178455,0.0,hypothesis_only,need_more_data
+516510,云计算ETF,科技成长,theme,volume_and_rank_decay_proxy,19,0.019651891820111345,0.02676470121476919,0.07327431898827147,0.3333333333333333,hypothesis_only,need_more_data
+516510,云计算ETF,科技成长,theme,type_stop_loss_proxy_4%-6%,142,0.005641784465349314,0.014437542274442335,0.02266310503855373,0.3787878787878788,sample_limited,research_only_type_stop; do_not_online_without_backtest
+512980,传媒ETF,科技成长,theme,rank_score_decline_2d,63,0.0030881962895767143,4.8188336498863394e-05,-0.0005251819410819232,0.5737704918032787,sample_limited,research_only_not_online
+512980,传媒ETF,科技成长,theme,rank_score_decline_3d,26,0.004579263944259142,-0.013952971929804278,-0.025402223870319023,0.64,hypothesis_only,need_more_data
+512980,传媒ETF,科技成长,theme,rank_score_below_70_proxy,166,-0.0030479721863235797,-0.0006899195795194421,0.013560367755678383,0.5256410256410257,sample_limited,candidate_for_simulation_review
+512980,传媒ETF,科技成长,theme,rank_drop_top3_to_out_top10_proxy,0,,,,,hypothesis_only,need_more_data
+512980,传媒ETF,科技成长,theme,short_swing_buy_to_watch_proxy,17,0.0024505070968862904,0.012918708669917034,0.01600901220509973,0.4117647058823529,hypothesis_only,need_more_data
+512980,传媒ETF,科技成长,theme,short_swing_buy_to_sell_proxy,2,-0.0725567669160686,-0.07874404317901246,-0.09798095120211342,1.0,hypothesis_only,need_more_data
+512980,传媒ETF,科技成长,theme,volume_and_rank_decay_proxy,9,0.013839424015871668,-0.028139073902703288,-0.06642459724121819,0.75,hypothesis_only,need_more_data
+512980,传媒ETF,科技成长,theme,type_stop_loss_proxy_4%-6%,141,-0.005014534392376735,-0.004797139380766809,0.004757487076158826,0.48854961832061067,sample_limited,research_only_type_stop; do_not_online_without_backtest
+515790,光伏ETF,新能源制造,commodity_resource,rank_score_decline_2d,68,0.009514915070009842,0.01305925782351247,0.03146054631971552,0.3387096774193548,sample_limited,research_only_not_online
+515790,光伏ETF,新能源制造,commodity_resource,rank_score_decline_3d,28,0.010914547606786182,0.003972786937738465,0.02992814437243949,0.34782608695652173,hypothesis_only,need_more_data
+515790,光伏ETF,新能源制造,commodity_resource,rank_score_below_70_proxy,179,0.006827341400696179,0.01901649031292642,0.0391001350983582,0.32941176470588235,sample_limited,research_only_not_online
+515790,光伏ETF,新能源制造,commodity_resource,rank_drop_top3_to_out_top10_proxy,3,0.009542979076083813,0.0510541267597453,0.05922752618875019,0.0,hypothesis_only,need_more_data
+515790,光伏ETF,新能源制造,commodity_resource,short_swing_buy_to_watch_proxy,19,0.0313999071488163,0.05005978657951685,0.08979681171409437,0.21052631578947367,hypothesis_only,need_more_data
+515790,光伏ETF,新能源制造,commodity_resource,short_swing_buy_to_sell_proxy,8,0.014188069096530323,0.003620994339873348,1.9475822862340714e-05,0.2857142857142857,hypothesis_only,need_more_data
+515790,光伏ETF,新能源制造,commodity_resource,volume_and_rank_decay_proxy,14,0.01362598447398985,0.022213015763467493,0.03158125856437792,0.2,hypothesis_only,need_more_data
+515790,光伏ETF,新能源制造,commodity_resource,type_stop_loss_proxy_5%-8%,95,0.0005704786258864947,0.009815707876013595,0.034766384092270466,0.367816091954023,sample_limited,research_only_type_stop; do_not_online_without_backtest
+159857,光伏ETF,新能源制造,commodity_resource,rank_score_decline_2d,63,0.008519686769461722,0.013945465376088938,0.03169675646468598,0.3333333333333333,sample_limited,research_only_not_online
+159857,光伏ETF,新能源制造,commodity_resource,rank_score_decline_3d,25,0.009831679777777875,0.014880221104493602,0.0293349731535842,0.3,hypothesis_only,need_more_data
+159857,光伏ETF,新能源制造,commodity_resource,rank_score_below_70_proxy,179,0.006941864243570067,0.019450007308982324,0.03996248247977376,0.3176470588235294,sample_limited,research_only_not_online
+159857,光伏ETF,新能源制造,commodity_resource,rank_drop_top3_to_out_top10_proxy,3,0.008849822273520233,0.05028195765836744,0.05733838234337063,0.0,hypothesis_only,need_more_data
+159857,光伏ETF,新能源制造,commodity_resource,short_swing_buy_to_watch_proxy,20,0.02399782828134765,0.04099846612740028,0.09113756540427585,0.2,hypothesis_only,need_more_data
+159857,光伏ETF,新能源制造,commodity_resource,short_swing_buy_to_sell_proxy,6,0.00840781164531662,-0.011211535585456355,-0.01675622502210119,0.4,hypothesis_only,need_more_data
+159857,光伏ETF,新能源制造,commodity_resource,volume_and_rank_decay_proxy,13,0.008256212382201467,0.02130128685609641,0.03396363787037808,0.3,hypothesis_only,need_more_data
+159857,光伏ETF,新能源制造,commodity_resource,type_stop_loss_proxy_5%-8%,94,0.002754704024239264,0.01487169222259288,0.034553410829319946,0.3488372093023256,sample_limited,research_only_type_stop; do_not_online_without_backtest
+516160,新能源ETF,新能源制造,commodity_resource,rank_score_decline_2d,61,0.010137999411534954,0.013446750299155008,0.0384508517582055,0.36363636363636365,sample_limited,research_only_not_online
+516160,新能源ETF,新能源制造,commodity_resource,rank_score_decline_3d,32,0.010714167388793201,0.008912610453061768,0.03688917114011479,0.48148148148148145,hypothesis_only,need_more_data
+516160,新能源ETF,新能源制造,commodity_resource,rank_score_below_70_proxy,181,0.009999233085492842,0.02161080519795425,0.04532267822093634,0.28654970760233917,sample_limited,research_only_not_online
+516160,新能源ETF,新能源制造,commodity_resource,rank_drop_top3_to_out_top10_proxy,2,0.005142000059182139,0.0335725276676333,0.08646745724093041,0.5,hypothesis_only,need_more_data
+516160,新能源ETF,新能源制造,commodity_resource,short_swing_buy_to_watch_proxy,24,0.01254890329722525,0.0365644729366276,0.0515236220981539,0.2916666666666667,hypothesis_only,need_more_data
+516160,新能源ETF,新能源制造,commodity_resource,short_swing_buy_to_sell_proxy,3,-0.0029175302766650444,-0.027361169568855332,0.020746975529429872,0.6666666666666666,hypothesis_only,need_more_data
+516160,新能源ETF,新能源制造,commodity_resource,volume_and_rank_decay_proxy,15,0.018107591675895835,0.03537839815352629,0.08328842788990551,0.2727272727272727,hypothesis_only,need_more_data
+516160,新能源ETF,新能源制造,commodity_resource,type_stop_loss_proxy_5%-8%,88,0.0044667144339465064,0.021208345506595574,0.056413431871258087,0.2948717948717949,sample_limited,research_only_type_stop; do_not_online_without_backtest
+515700,新能源车ETF,新能源制造,commodity_resource,rank_score_decline_2d,62,0.014969249587627796,0.02483437606723275,0.048788096373727156,0.3275862068965517,sample_limited,research_only_not_online
+515700,新能源车ETF,新能源制造,commodity_resource,rank_score_decline_3d,28,0.01879488885788737,0.026756056649767657,0.0626104519387082,0.34615384615384615,hypothesis_only,need_more_data
+515700,新能源车ETF,新能源制造,commodity_resource,rank_score_below_70_proxy,171,0.008184113545608005,0.016562605187740727,0.03900699579399144,0.33540372670807456,sample_limited,research_only_not_online
+515700,新能源车ETF,新能源制造,commodity_resource,rank_drop_top3_to_out_top10_proxy,3,0.01707970010821258,0.008781836564313824,0.03528926803248433,0.6666666666666666,hypothesis_only,need_more_data
+515700,新能源车ETF,新能源制造,commodity_resource,short_swing_buy_to_watch_proxy,26,0.0024674601549027086,0.015253392100157017,0.02543044589201133,0.4230769230769231,hypothesis_only,need_more_data
+515700,新能源车ETF,新能源制造,commodity_resource,short_swing_buy_to_sell_proxy,1,0.008095440988495906,0.035364294844482336,0.06263314870046877,0.0,hypothesis_only,need_more_data
+515700,新能源车ETF,新能源制造,commodity_resource,volume_and_rank_decay_proxy,10,0.03296427477462577,0.02620011610196782,0.07041994883480081,0.3,hypothesis_only,need_more_data
+515700,新能源车ETF,新能源制造,commodity_resource,type_stop_loss_proxy_5%-8%,105,0.008332098193631053,0.017105782389025912,0.05203036028899558,0.29473684210526313,sample_limited,research_only_type_stop; do_not_online_without_backtest
+159755,电池ETF,新能源制造,commodity_resource,rank_score_decline_2d,64,0.013817688889271092,0.023441973133621903,0.042626581866790816,0.3225806451612903,sample_limited,research_only_not_online
+159755,电池ETF,新能源制造,commodity_resource,rank_score_decline_3d,30,0.022884908905647226,0.03072519780912011,0.06390802724225135,0.3333333333333333,hypothesis_only,need_more_data
+159755,电池ETF,新能源制造,commodity_resource,rank_score_below_70_proxy,173,0.010781677690687034,0.02037832740091932,0.04635597540886602,0.294478527607362,sample_limited,research_only_not_online
+159755,电池ETF,新能源制造,commodity_resource,rank_drop_top3_to_out_top10_proxy,4,-0.003960832867144659,-0.015345750379322731,-0.013203504840871155,0.75,hypothesis_only,need_more_data
+159755,电池ETF,新能源制造,commodity_resource,short_swing_buy_to_watch_proxy,21,0.01563060801569189,0.02784056630363055,0.06253158321388423,0.3333333333333333,hypothesis_only,need_more_data
+159755,电池ETF,新能源制造,commodity_resource,short_swing_buy_to_sell_proxy,4,0.008466038538519544,0.013467609105669465,-0.013540890239804926,0.25,hypothesis_only,need_more_data
+159755,电池ETF,新能源制造,commodity_resource,volume_and_rank_decay_proxy,11,0.04002112786035355,0.040268736783210655,0.08419903694978384,0.36363636363636365,hypothesis_only,need_more_data
+159755,电池ETF,新能源制造,commodity_resource,type_stop_loss_proxy_5%-8%,104,0.005691265959290893,0.02145259763027617,0.05771662687015508,0.2872340425531915,sample_limited,research_only_type_stop; do_not_online_without_backtest
+516390,新能源汽车ETF,新能源制造,commodity_resource,rank_score_decline_2d,62,0.01241608848106555,0.02020659182787681,0.040729527383183146,0.3275862068965517,sample_limited,research_only_not_online
+516390,新能源汽车ETF,新能源制造,commodity_resource,rank_score_decline_3d,26,0.011726533801607448,0.014580371381258736,0.041674561381250426,0.3333333333333333,hypothesis_only,need_more_data
+516390,新能源汽车ETF,新能源制造,commodity_resource,rank_score_below_70_proxy,174,0.008298178890876121,0.01730878243142316,0.03987519991594816,0.32926829268292684,sample_limited,research_only_not_online
+516390,新能源汽车ETF,新能源制造,commodity_resource,rank_drop_top3_to_out_top10_proxy,2,0.051185941828254866,0.019604108956601973,0.030137638504155073,0.5,hypothesis_only,need_more_data
+516390,新能源汽车ETF,新能源制造,commodity_resource,short_swing_buy_to_watch_proxy,25,0.0012268249531440921,0.014314368933928154,0.02728821203183727,0.44,hypothesis_only,need_more_data
+516390,新能源汽车ETF,新能源制造,commodity_resource,short_swing_buy_to_sell_proxy,1,0.005219206680584509,0.030271398747390377,0.05845511482254695,0.0,hypothesis_only,need_more_data
+516390,新能源汽车ETF,新能源制造,commodity_resource,volume_and_rank_decay_proxy,13,0.008235543836834558,0.01614075662825906,0.04487494751090983,0.36363636363636365,hypothesis_only,need_more_data
+516390,新能源汽车ETF,新能源制造,commodity_resource,type_stop_loss_proxy_5%-8%,108,0.005883978939383722,0.015158284271070592,0.04713372783986432,0.30612244897959184,sample_limited,research_only_type_stop; do_not_online_without_backtest
+516800,智能制造ETF,新能源制造,commodity_resource,rank_score_decline_2d,74,0.004295688014397793,0.011637005299588138,0.024585331121105357,0.42028985507246375,sample_limited,research_only_not_online
+516800,智能制造ETF,新能源制造,commodity_resource,rank_score_decline_3d,39,0.0063393919592476065,0.011648331302796295,0.022573887555182758,0.43243243243243246,hypothesis_only,need_more_data
+516800,智能制造ETF,新能源制造,commodity_resource,rank_score_below_70_proxy,159,0.0044990595421057185,0.011083374209905678,0.025292921512555865,0.4276315789473684,sample_limited,research_only_not_online
+516800,智能制造ETF,新能源制造,commodity_resource,rank_drop_top3_to_out_top10_proxy,1,0.03965517241379324,0.03965517241379324,0.13793103448275867,0.0,hypothesis_only,need_more_data
+516800,智能制造ETF,新能源制造,commodity_resource,short_swing_buy_to_watch_proxy,21,0.002082699742792827,0.029229609531555394,0.06068425639084665,0.35,hypothesis_only,need_more_data
+516800,智能制造ETF,新能源制造,commodity_resource,short_swing_buy_to_sell_proxy,3,-0.02432751249886796,-0.026682955791012097,-0.045795274631591776,1.0,hypothesis_only,need_more_data
+516800,智能制造ETF,新能源制造,commodity_resource,volume_and_rank_decay_proxy,16,0.0040423207195314295,0.0019789614458511143,0.02058311458645469,0.5,hypothesis_only,need_more_data
+516800,智能制造ETF,新能源制造,commodity_resource,type_stop_loss_proxy_5%-8%,94,0.006730688254786562,0.015809189717073877,0.03249172510590769,0.39080459770114945,sample_limited,research_only_type_stop; do_not_online_without_backtest
+512660,军工ETF,新能源制造,commodity_resource,rank_score_decline_2d,82,0.0015713110736708558,0.004619049455210655,0.020958794575786324,0.4675324675324675,sample_limited,research_only_not_online
+512660,军工ETF,新能源制造,commodity_resource,rank_score_decline_3d,40,0.0016163835094777689,-0.004557792708189409,0.016815262065690065,0.5135135135135135,sample_limited,candidate_for_simulation_review
+512660,军工ETF,新能源制造,commodity_resource,rank_score_below_70_proxy,172,0.005735745500094462,0.010621372846869002,0.033237647452549014,0.3765432098765432,sample_limited,research_only_not_online
+512660,军工ETF,新能源制造,commodity_resource,rank_drop_top3_to_out_top10_proxy,0,,,,,hypothesis_only,need_more_data
+512660,军工ETF,新能源制造,commodity_resource,short_swing_buy_to_watch_proxy,16,-0.007683161352392151,0.00813473282601563,0.01268344382595056,0.4375,hypothesis_only,need_more_data
+512660,军工ETF,新能源制造,commodity_resource,short_swing_buy_to_sell_proxy,5,-0.016709235220036645,-0.038398045509978516,-0.044375682043598236,1.0,hypothesis_only,need_more_data
+512660,军工ETF,新能源制造,commodity_resource,volume_and_rank_decay_proxy,9,0.00048305040609191655,0.005632233162570061,0.02530695520012649,0.3333333333333333,hypothesis_only,need_more_data
+512660,军工ETF,新能源制造,commodity_resource,type_stop_loss_proxy_5%-8%,121,-0.002190104179430648,-0.0017821030503945893,0.01656182933388741,0.45045045045045046,sample_limited,research_only_type_stop; do_not_online_without_backtest
+512670,国防ETF,新能源制造,commodity_resource,rank_score_decline_2d,79,0.004047691799327086,0.005504969212876745,0.01690064956142028,0.4666666666666667,sample_limited,research_only_not_online
+512670,国防ETF,新能源制造,commodity_resource,rank_score_decline_3d,40,0.005129474491132982,0.001845097158271792,0.012591035522753721,0.4594594594594595,sample_limited,research_only_not_online
+512670,国防ETF,新能源制造,commodity_resource,rank_score_below_70_proxy,172,0.004483998147178202,0.005952105828371629,0.023117750494061135,0.4074074074074074,sample_limited,research_only_not_online
+512670,国防ETF,新能源制造,commodity_resource,rank_drop_top3_to_out_top10_proxy,0,,,,,hypothesis_only,need_more_data
+512670,国防ETF,新能源制造,commodity_resource,short_swing_buy_to_watch_proxy,15,0.0024143450695154776,0.021102140054459168,0.033557141351837044,0.3333333333333333,hypothesis_only,need_more_data
+512670,国防ETF,新能源制造,commodity_resource,short_swing_buy_to_sell_proxy,3,-0.012804225315194836,-0.04646292364551382,-0.07637037037037037,1.0,hypothesis_only,need_more_data
+512670,国防ETF,新能源制造,commodity_resource,volume_and_rank_decay_proxy,12,0.01680407818637286,0.03663171537495787,0.03142714154638205,0.16666666666666666,hypothesis_only,need_more_data
+512670,国防ETF,新能源制造,commodity_resource,type_stop_loss_proxy_5%-8%,141,0.0008617236530947773,-7.742755849073471e-05,0.01145087753454595,0.45038167938931295,sample_limited,research_only_type_stop; do_not_online_without_backtest
+159806,新能源车电池ETF,新能源制造,commodity_resource,rank_score_decline_2d,60,0.01607458973282972,0.027246572266478,0.049720179680109916,0.30357142857142855,sample_limited,research_only_not_online
+159806,新能源车电池ETF,新能源制造,commodity_resource,rank_score_decline_3d,27,0.01986512101665675,0.029255119901926873,0.062373542491022935,0.28,hypothesis_only,need_more_data
+159806,新能源车电池ETF,新能源制造,commodity_resource,rank_score_below_70_proxy,171,0.008004620155638237,0.016996755457690617,0.038567441110683415,0.3416149068322981,sample_limited,research_only_not_online
+159806,新能源车电池ETF,新能源制造,commodity_resource,rank_drop_top3_to_out_top10_proxy,3,0.0191326574458525,0.008223028582768058,0.037005737407071214,0.6666666666666666,hypothesis_only,need_more_data
+159806,新能源车电池ETF,新能源制造,commodity_resource,short_swing_buy_to_watch_proxy,26,0.0037533581314533626,0.0146307852683754,0.023413886218865747,0.4230769230769231,hypothesis_only,need_more_data
+159806,新能源车电池ETF,新能源制造,commodity_resource,short_swing_buy_to_sell_proxy,1,0.009138381201044377,0.036553524804177506,0.06788511749347248,0.0,hypothesis_only,need_more_data
+159806,新能源车电池ETF,新能源制造,commodity_resource,volume_and_rank_decay_proxy,7,0.033295179095732444,0.01699498533632815,0.043709733993870126,0.2857142857142857,hypothesis_only,need_more_data
+159806,新能源车电池ETF,新能源制造,commodity_resource,type_stop_loss_proxy_5%-8%,107,0.006745337977447134,0.016647557914532818,0.05003933505263905,0.29896907216494845,sample_limited,research_only_type_stop; do_not_online_without_backtest
+512400,有色ETF,周期资源,commodity_resource,rank_score_decline_2d,75,0.009561966521614642,0.02577376314164573,0.054880596660548994,0.30985915492957744,sample_limited,research_only_not_online
+512400,有色ETF,周期资源,commodity_resource,rank_score_decline_3d,43,0.01580382065572538,0.02969875172355838,0.06692683900503991,0.2682926829268293,sample_limited,research_only_not_online
+512400,有色ETF,周期资源,commodity_resource,rank_score_below_70_proxy,162,0.0137529159934054,0.02182284714139387,0.045308275259557204,0.3157894736842105,sample_limited,research_only_not_online
+512400,有色ETF,周期资源,commodity_resource,rank_drop_top3_to_out_top10_proxy,3,-0.0025268166082101917,-0.0011647429584736118,0.08038581875147006,0.3333333333333333,hypothesis_only,need_more_data
+512400,有色ETF,周期资源,commodity_resource,short_swing_buy_to_watch_proxy,22,0.013496599589325243,0.01924442752507071,0.0586018853351861,0.2857142857142857,hypothesis_only,need_more_data
+512400,有色ETF,周期资源,commodity_resource,short_swing_buy_to_sell_proxy,1,0.010009532888465289,0.04289799809342254,-0.001429933269780581,0.0,hypothesis_only,need_more_data
+512400,有色ETF,周期资源,commodity_resource,volume_and_rank_decay_proxy,11,0.018485110570943042,0.0104325946056953,0.02639862212527628,0.1,hypothesis_only,need_more_data
+512400,有色ETF,周期资源,commodity_resource,type_stop_loss_proxy_5%-8%,93,0.011004637493262975,0.014487183717593772,0.02252258309592755,0.3373493975903614,sample_limited,research_only_type_stop; do_not_online_without_backtest
+516780,稀土ETF,周期资源,commodity_resource,rank_score_decline_2d,61,-0.0038254505019126067,-0.010122722874192957,0.027888700243212546,0.3442622950819672,sample_limited,candidate_for_simulation_review
+516780,稀土ETF,周期资源,commodity_resource,rank_score_decline_3d,25,-0.025662397675368237,-0.02669341527148582,0.05876677034182851,0.28,hypothesis_only,need_more_data
+516780,稀土ETF,周期资源,commodity_resource,rank_score_below_70_proxy,167,0.000999531815984335,0.004776114609150932,0.030467116441102685,0.3503184713375796,sample_limited,research_only_not_online
+516780,稀土ETF,周期资源,commodity_resource,rank_drop_top3_to_out_top10_proxy,1,-0.0035149384885765356,0.06854130052724083,0.21968365553602798,0.0,hypothesis_only,need_more_data
+516780,稀土ETF,周期资源,commodity_resource,short_swing_buy_to_watch_proxy,19,0.02972742774124144,0.010740097933261958,0.028162820239888964,0.3684210526315789,hypothesis_only,need_more_data
+516780,稀土ETF,周期资源,commodity_resource,short_swing_buy_to_sell_proxy,4,0.018176725114172343,0.04567056469266406,-0.04825819345214292,0.0,hypothesis_only,need_more_data
+516780,稀土ETF,周期资源,commodity_resource,volume_and_rank_decay_proxy,9,0.015899605933001833,0.04733848820475931,0.04068773925501569,0.3333333333333333,hypothesis_only,need_more_data
+516780,稀土ETF,周期资源,commodity_resource,type_stop_loss_proxy_5%-8%,127,-0.013055332462539874,-0.013067369075228005,0.029936557393726165,0.452991452991453,sample_limited,research_only_type_stop; do_not_online_without_backtest
+515220,煤炭ETF,周期资源,commodity_resource,rank_score_decline_2d,75,-0.0008899213437336805,0.0049178924091778315,0.002917786487113943,0.5205479452054794,sample_limited,research_only_not_online
+515220,煤炭ETF,周期资源,commodity_resource,rank_score_decline_3d,37,-0.006134342396924595,0.0003791625873660239,-0.0058755531645429595,0.5833333333333334,hypothesis_only,need_more_data
+515220,煤炭ETF,周期资源,commodity_resource,rank_score_below_70_proxy,170,0.007592947196200236,0.014231713597331497,0.03395920168480255,0.46107784431137727,sample_limited,research_only_not_online
+515220,煤炭ETF,周期资源,commodity_resource,rank_drop_top3_to_out_top10_proxy,2,0.06833066872484694,0.054013451678703306,0.062222283477589735,0.0,hypothesis_only,need_more_data
+515220,煤炭ETF,周期资源,commodity_resource,short_swing_buy_to_watch_proxy,14,0.008166154687484469,0.01306039856930746,0.030439897491745325,0.46153846153846156,hypothesis_only,need_more_data
+515220,煤炭ETF,周期资源,commodity_resource,short_swing_buy_to_sell_proxy,1,0.06679209783631235,0.110065851364064,0.16086547507055515,0.0,hypothesis_only,need_more_data
+515220,煤炭ETF,周期资源,commodity_resource,volume_and_rank_decay_proxy,13,-0.00517401237437253,0.006186054466178788,-0.007483094521473403,0.6153846153846154,hypothesis_only,need_more_data
+515220,煤炭ETF,周期资源,commodity_resource,type_stop_loss_proxy_5%-8%,90,0.012249722592595963,0.019142356920049473,0.023630566117354906,0.45454545454545453,sample_limited,research_only_type_stop; do_not_online_without_backtest
+159930,能源ETF,周期资源,commodity_resource,rank_score_decline_2d,65,0.008489460015970004,0.01659481639467083,0.020141137437481346,0.4,sample_limited,research_only_not_online
+159930,能源ETF,周期资源,commodity_resource,rank_score_decline_3d,29,0.013752327672812177,0.01840448227140654,0.022643067187986792,0.3793103448275862,hypothesis_only,need_more_data
+159930,能源ETF,周期资源,commodity_resource,rank_score_below_70_proxy,171,0.006810930162427008,0.012514641192015516,0.030242025378985182,0.3780487804878049,sample_limited,research_only_not_online
+159930,能源ETF,周期资源,commodity_resource,rank_drop_top3_to_out_top10_proxy,4,0.04341307666869901,0.06052855373173155,0.06741783279441743,0.25,hypothesis_only,need_more_data
+159930,能源ETF,周期资源,commodity_resource,short_swing_buy_to_watch_proxy,17,0.017368293439948904,0.03217689324485954,0.04400648540795147,0.3125,hypothesis_only,need_more_data
+159930,能源ETF,周期资源,commodity_resource,short_swing_buy_to_sell_proxy,2,0.00805198965283821,0.03087452253167,0.10669906198626822,0.5,hypothesis_only,need_more_data
+159930,能源ETF,周期资源,commodity_resource,volume_and_rank_decay_proxy,8,0.001115262914569884,-0.0029940305610402923,0.03776315969983701,0.875,hypothesis_only,need_more_data
+159930,能源ETF,周期资源,commodity_resource,type_stop_loss_proxy_5%-8%,57,0.007637643762654588,0.008120256077465372,0.005969618699281747,0.5,sample_limited,research_only_type_stop; do_not_online_without_backtest
+510410,资源ETF,周期资源,commodity_resource,rank_score_decline_2d,75,0.00721828711542441,0.01600135158913725,0.03776235469976575,0.3055555555555556,sample_limited,research_only_not_online
+510410,资源ETF,周期资源,commodity_resource,rank_score_decline_3d,38,0.010579402108855834,0.016015499304385162,0.0393740852112468,0.2972972972972973,hypothesis_only,need_more_data
+510410,资源ETF,周期资源,commodity_resource,rank_score_below_70_proxy,169,0.010826316626475915,0.019619787055675117,0.03467673712665119,0.2893081761006289,sample_limited,research_only_not_online
+510410,资源ETF,周期资源,commodity_resource,rank_drop_top3_to_out_top10_proxy,0,,,,,hypothesis_only,need_more_data
+510410,资源ETF,周期资源,commodity_resource,short_swing_buy_to_watch_proxy,24,0.021035690625688584,0.028998864088214827,0.050534233351325446,0.2608695652173913,hypothesis_only,need_more_data
+510410,资源ETF,周期资源,commodity_resource,short_swing_buy_to_sell_proxy,3,0.028477380498822907,0.007012571907212643,0.05435510360492202,0.3333333333333333,hypothesis_only,need_more_data
+510410,资源ETF,周期资源,commodity_resource,volume_and_rank_decay_proxy,11,0.010928040141128137,0.011582263856722867,0.03568031489746297,0.2727272727272727,hypothesis_only,need_more_data
+510410,资源ETF,周期资源,commodity_resource,type_stop_loss_proxy_5%-8%,65,0.010641067668850042,0.018926059594135732,0.018008039609396665,0.2631578947368421,sample_limited,research_only_type_stop; do_not_online_without_backtest
+159865,养殖ETF,周期资源,commodity_resource,rank_score_decline_2d,69,-0.00021248956133637257,-0.000560336260792407,0.00132038620145084,0.38461538461538464,sample_limited,candidate_for_simulation_review
+159865,养殖ETF,周期资源,commodity_resource,rank_score_decline_3d,33,0.00011580487256989495,0.0024443295297712536,0.0024682992285754513,0.3,hypothesis_only,need_more_data
+159865,养殖ETF,周期资源,commodity_resource,rank_score_below_70_proxy,204,0.0002455686983618815,0.0005206370347799351,0.0009557433404528728,0.4329896907216495,evidence_supported,research_only_not_online
+159865,养殖ETF,周期资源,commodity_resource,rank_drop_top3_to_out_top10_proxy,0,,,,,hypothesis_only,need_more_data
+159865,养殖ETF,周期资源,commodity_resource,short_swing_buy_to_watch_proxy,11,-0.015273042780443875,-0.024776237889694297,-0.038106280209946976,0.8181818181818182,hypothesis_only,need_more_data
+159865,养殖ETF,周期资源,commodity_resource,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+159865,养殖ETF,周期资源,commodity_resource,volume_and_rank_decay_proxy,8,-0.0008432063754552771,-0.002268917042918636,0.015188071341960176,0.25,hypothesis_only,need_more_data
+159865,养殖ETF,周期资源,commodity_resource,type_stop_loss_proxy_5%-8%,53,-0.005117863129291904,-0.010867583220275985,-0.004248086427233056,0.4883720930232558,sample_limited,research_only_type_stop; do_not_online_without_backtest
+159825,农业ETF,周期资源,commodity_resource,rank_score_decline_2d,72,0.0012009321671279834,0.005124117007504228,0.017954673582302166,0.3333333333333333,sample_limited,research_only_not_online
+159825,农业ETF,周期资源,commodity_resource,rank_score_decline_3d,37,-0.0029613469585258734,0.0003526237260375999,0.022523039343042683,0.3333333333333333,hypothesis_only,need_more_data
+159825,农业ETF,周期资源,commodity_resource,rank_score_below_70_proxy,196,0.003442878749571582,0.004088355281828505,0.00713812630283711,0.3602150537634409,sample_limited,research_only_not_online
+159825,农业ETF,周期资源,commodity_resource,rank_drop_top3_to_out_top10_proxy,1,-0.017521902377972465,0.02002503128911126,0.007509386733416834,0.0,hypothesis_only,need_more_data
+159825,农业ETF,周期资源,commodity_resource,short_swing_buy_to_watch_proxy,12,-0.012522829121432488,0.00015230199359580107,-0.01147602567524685,0.5833333333333334,hypothesis_only,need_more_data
+159825,农业ETF,周期资源,commodity_resource,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+159825,农业ETF,周期资源,commodity_resource,volume_and_rank_decay_proxy,14,0.01426306149558852,0.022073877767009704,0.0380685512090617,0.07142857142857142,hypothesis_only,need_more_data
+159825,农业ETF,周期资源,commodity_resource,type_stop_loss_proxy_5%-8%,47,-0.009562504162416652,-0.018499201693156428,-0.010251548895988878,0.5675675675675675,sample_limited,research_only_type_stop; do_not_online_without_backtest
+159876,有色金属ETF,周期资源,commodity_resource,rank_score_decline_2d,71,0.0071044573755055275,0.018385834914390137,0.04742967398428837,0.31343283582089554,sample_limited,research_only_not_online
+159876,有色金属ETF,周期资源,commodity_resource,rank_score_decline_3d,37,0.009909700622222774,0.010521434518150194,0.047849835848119124,0.34285714285714286,hypothesis_only,need_more_data
+159876,有色金属ETF,周期资源,commodity_resource,rank_score_below_70_proxy,162,0.01348049341392846,0.021244596714511843,0.04585187957506018,0.3026315789473684,sample_limited,research_only_not_online
+159876,有色金属ETF,周期资源,commodity_resource,rank_drop_top3_to_out_top10_proxy,2,-0.03369041712467136,-0.018385749176962063,0.007273023818073654,0.5,hypothesis_only,need_more_data
+159876,有色金属ETF,周期资源,commodity_resource,short_swing_buy_to_watch_proxy,20,0.011867492377962825,0.016304676711992157,0.05541709921616262,0.35,hypothesis_only,need_more_data
+159876,有色金属ETF,周期资源,commodity_resource,short_swing_buy_to_sell_proxy,3,0.02761958453009387,0.0403517368577494,0.10578036407413821,0.0,hypothesis_only,need_more_data
+159876,有色金属ETF,周期资源,commodity_resource,volume_and_rank_decay_proxy,10,0.024097863709007374,0.0253290430465716,0.036305088226802285,0.1111111111111111,hypothesis_only,need_more_data
+159876,有色金属ETF,周期资源,commodity_resource,type_stop_loss_proxy_5%-8%,92,0.009565544544789284,0.012116811063203206,0.019333885899248483,0.3170731707317073,sample_limited,research_only_type_stop; do_not_online_without_backtest
+510880,红利ETF,防御风格,sector,rank_score_decline_2d,26,-0.0027271133433728104,-0.0015013284430115065,0.004759221429649008,0.6521739130434783,hypothesis_only,need_more_data
+510880,红利ETF,防御风格,sector,rank_score_decline_3d,13,-0.00590981926727117,-0.010326474968376511,0.0022504050514054554,0.8333333333333334,hypothesis_only,need_more_data
+510880,红利ETF,防御风格,sector,rank_score_below_70_proxy,49,0.005963257702998715,0.007084113310855599,0.004518660637156301,0.47619047619047616,sample_limited,research_only_not_online
+510880,红利ETF,防御风格,sector,rank_drop_top3_to_out_top10_proxy,0,,,,,hypothesis_only,need_more_data
+510880,红利ETF,防御风格,sector,short_swing_buy_to_watch_proxy,2,0.013909367257849525,0.018639404255197056,0.008662027293971863,0.0,hypothesis_only,need_more_data
+510880,红利ETF,防御风格,sector,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+510880,红利ETF,防御风格,sector,volume_and_rank_decay_proxy,5,-0.011054467263044238,-0.018176892346786516,-0.021123483567747736,1.0,hypothesis_only,need_more_data
+510880,红利ETF,防御风格,sector,type_stop_loss_proxy_5%-8%,6,0.02998464425677592,0.048822857952811105,0.07970627586662549,0.0,hypothesis_only,research_only_type_stop; do_not_online_without_backtest
+512890,红利低波ETF,防御风格,sector,rank_score_decline_2d,66,0.0011137616521279328,-0.0011355225672279048,0.0027650340178054012,0.5396825396825397,sample_limited,candidate_for_simulation_review
+512890,红利低波ETF,防御风格,sector,rank_score_decline_3d,28,-0.0004616121892029724,-0.00198091967719895,0.004968258191977557,0.5555555555555556,hypothesis_only,need_more_data
+512890,红利低波ETF,防御风格,sector,rank_score_below_70_proxy,197,0.000903406369811194,0.0008481770072386372,0.0022410953286474415,0.5053191489361702,sample_limited,research_only_not_online
+512890,红利低波ETF,防御风格,sector,rank_drop_top3_to_out_top10_proxy,1,0.009442060085836923,0.010300429184549431,0.03090128755364807,0.0,hypothesis_only,need_more_data
+512890,红利低波ETF,防御风格,sector,short_swing_buy_to_watch_proxy,5,0.0019397570554185784,0.002843955006932486,0.019659452538696675,0.4,hypothesis_only,need_more_data
+512890,红利低波ETF,防御风格,sector,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+512890,红利低波ETF,防御风格,sector,volume_and_rank_decay_proxy,6,-0.0019913565549251055,0.003247991976231731,0.0008213053658902569,0.3333333333333333,hypothesis_only,need_more_data
+512890,红利低波ETF,防御风格,sector,type_stop_loss_proxy_5%-8%,5,0.005125170122190825,0.014596349747553528,0.023342806000523388,0.2,hypothesis_only,research_only_type_stop; do_not_online_without_backtest
+515080,中证红利ETF,防御风格,sector,rank_score_decline_2d,76,-0.0007736347711018965,-0.0007975364970956105,0.0017924890302237078,0.43243243243243246,sample_limited,candidate_for_simulation_review
+515080,中证红利ETF,防御风格,sector,rank_score_decline_3d,40,-0.0034671388379710955,-0.0030628885335079402,-0.0008883412371793085,0.475,sample_limited,candidate_for_simulation_review
+515080,中证红利ETF,防御风格,sector,rank_score_below_70_proxy,185,0.0023674140608330933,0.0043738978640471,0.010477787409701659,0.4,sample_limited,research_only_not_online
+515080,中证红利ETF,防御风格,sector,rank_drop_top3_to_out_top10_proxy,3,0.004754492798714353,0.005322879918275403,0.022211482765392088,0.3333333333333333,hypothesis_only,need_more_data
+515080,中证红利ETF,防御风格,sector,short_swing_buy_to_watch_proxy,5,-0.002420473644895782,0.0007528040989571161,-0.004048644041478866,0.5,hypothesis_only,need_more_data
+515080,中证红利ETF,防御风格,sector,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+515080,中证红利ETF,防御风格,sector,volume_and_rank_decay_proxy,12,-0.0015519739940105526,0.00045063516185784674,0.0013497577869813853,0.4166666666666667,hypothesis_only,need_more_data
+515080,中证红利ETF,防御风格,sector,type_stop_loss_proxy_5%-8%,20,0.007695570225098858,0.009609615761329867,0.02085014868083024,0.2777777777777778,hypothesis_only,research_only_type_stop; do_not_online_without_backtest
+159905,深红利ETF,防御风格,sector,rank_score_decline_2d,73,6.85798895038059e-05,0.0004904102993062311,0.006703229955787173,0.391304347826087,sample_limited,research_only_not_online
+159905,深红利ETF,防御风格,sector,rank_score_decline_3d,33,-0.002117563845952541,-0.0009963806577802292,0.01311426055589063,0.3870967741935484,hypothesis_only,need_more_data
+159905,深红利ETF,防御风格,sector,rank_score_below_70_proxy,195,9.014541823226924e-05,0.002018891024881554,0.006926750029483653,0.3837837837837838,sample_limited,research_only_not_online
+159905,深红利ETF,防御风格,sector,rank_drop_top3_to_out_top10_proxy,2,0.003082690078670347,0.0077313867173050554,-0.008976793509087755,0.5,hypothesis_only,need_more_data
+159905,深红利ETF,防御风格,sector,short_swing_buy_to_watch_proxy,6,-0.001274391358907297,0.0007191557340638551,0.0070516385511373665,0.3333333333333333,hypothesis_only,need_more_data
+159905,深红利ETF,防御风格,sector,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+159905,深红利ETF,防御风格,sector,volume_and_rank_decay_proxy,8,-0.016128294892312062,-0.017038537841243158,0.01039273693588103,0.42857142857142855,hypothesis_only,need_more_data
+159905,深红利ETF,防御风格,sector,type_stop_loss_proxy_5%-8%,36,0.004078457981785303,0.008246630342366197,0.0321765374605417,0.34615384615384615,hypothesis_only,research_only_type_stop; do_not_online_without_backtest
+518880,黄金ETF,防御风格,commodity_resource,rank_score_decline_2d,62,0.006053527300662868,0.008626340435347267,0.02795635566436106,0.4,sample_limited,research_only_not_online
+518880,黄金ETF,防御风格,commodity_resource,rank_score_decline_3d,24,0.00682623894011003,0.003111824692084685,0.015098509822158684,0.5,hypothesis_only,need_more_data
+518880,黄金ETF,防御风格,commodity_resource,rank_score_below_70_proxy,203,0.0006788514586332195,0.0020885257554557465,0.006835880205675097,0.46632124352331605,evidence_supported,research_only_not_online
+518880,黄金ETF,防御风格,commodity_resource,rank_drop_top3_to_out_top10_proxy,1,-0.003866666666666685,-0.01653333333333329,-0.010000000000000009,1.0,hypothesis_only,need_more_data
+518880,黄金ETF,防御风格,commodity_resource,short_swing_buy_to_watch_proxy,12,0.016911416243253475,0.0406606810082012,0.0735101836783373,0.16666666666666666,hypothesis_only,need_more_data
+518880,黄金ETF,防御风格,commodity_resource,short_swing_buy_to_sell_proxy,4,0.024883439965778714,0.054085433001925864,0.060326197452817115,0.25,hypothesis_only,need_more_data
+518880,黄金ETF,防御风格,commodity_resource,volume_and_rank_decay_proxy,8,0.005658854850668471,0.006372502454746201,0.00941298081061806,0.25,hypothesis_only,need_more_data
+518880,黄金ETF,防御风格,commodity_resource,type_stop_loss_proxy_5%-8%,90,-0.00039498803786069893,0.003065878375736561,-0.007603982241035937,0.45,sample_limited,research_only_type_stop; do_not_online_without_backtest
+513500,标普500ETF,QDII观察,qdii,rank_score_decline_2d,75,0.005179620411493783,0.013083153035538789,0.022698761436194582,0.29577464788732394,sample_limited,research_only_not_online
+513500,标普500ETF,QDII观察,qdii,rank_score_decline_3d,40,0.008025927451581318,0.018129673307507452,0.029621768695552782,0.24324324324324326,sample_limited,research_only_not_online
+513500,标普500ETF,QDII观察,qdii,rank_score_below_70_proxy,186,0.005688295894199836,0.010871461203989683,0.02096455718179878,0.358695652173913,sample_limited,research_only_not_online
+513500,标普500ETF,QDII观察,qdii,rank_drop_top3_to_out_top10_proxy,0,,,,,hypothesis_only,need_more_data
+513500,标普500ETF,QDII观察,qdii,short_swing_buy_to_watch_proxy,16,0.004054045513177244,0.01571799012027259,0.02615370913802825,0.2857142857142857,hypothesis_only,need_more_data
+513500,标普500ETF,QDII观察,qdii,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+513500,标普500ETF,QDII观察,qdii,volume_and_rank_decay_proxy,18,0.010396772152778375,0.014392578852336746,0.02790245157851232,0.2222222222222222,hypothesis_only,need_more_data
+513500,标普500ETF,QDII观察,qdii,type_stop_loss_proxy_price+premium+fx,23,0.016521182443052798,0.0417348638897403,0.08870083669171126,0.08695652173913043,hypothesis_only,research_only_type_stop; do_not_online_without_backtest
+513100,纳指ETF,QDII观察,qdii,rank_score_decline_2d,69,0.009911858940193629,0.0212014686209449,0.027462571723245177,0.38461538461538464,sample_limited,research_only_not_online
+513100,纳指ETF,QDII观察,qdii,rank_score_decline_3d,35,0.014674074681686286,0.02355494093102396,0.033817780961522284,0.375,hypothesis_only,need_more_data
+513100,纳指ETF,QDII观察,qdii,rank_score_below_70_proxy,170,0.005185163906247414,0.010838175726399191,0.02380915722826546,0.46706586826347307,sample_limited,research_only_not_online
+513100,纳指ETF,QDII观察,qdii,rank_drop_top3_to_out_top10_proxy,1,,,,,hypothesis_only,need_more_data
+513100,纳指ETF,QDII观察,qdii,short_swing_buy_to_watch_proxy,22,0.012363362105489262,0.010898476424353761,0.037480373747399195,0.42857142857142855,hypothesis_only,need_more_data
+513100,纳指ETF,QDII观察,qdii,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+513100,纳指ETF,QDII观察,qdii,volume_and_rank_decay_proxy,8,0.013017054095368089,0.017630566702464226,0.050274152120934584,0.375,hypothesis_only,need_more_data
+513100,纳指ETF,QDII观察,qdii,type_stop_loss_proxy_price+premium+fx,28,0.022396645361186667,0.04311781473165516,0.08212192385250891,0.16,hypothesis_only,research_only_type_stop; do_not_online_without_backtest
+513180,恒生科技ETF,QDII观察,qdii,rank_score_decline_2d,75,0.005302558665297895,0.0037016169303525923,0.0013899598113370642,0.4507042253521127,sample_limited,research_only_not_online
+513180,恒生科技ETF,QDII观察,qdii,rank_score_decline_3d,37,0.012406178205043944,0.009426984006475125,0.009365310223128469,0.42857142857142855,hypothesis_only,need_more_data
+513180,恒生科技ETF,QDII观察,qdii,rank_score_below_70_proxy,184,0.0012871011682993965,-0.0007475004359916306,-0.00782099435538089,0.4606741573033708,sample_limited,candidate_for_simulation_review
+513180,恒生科技ETF,QDII观察,qdii,rank_drop_top3_to_out_top10_proxy,1,0.009422850412249772,-0.051825677267373305,-0.03062426383981154,1.0,hypothesis_only,need_more_data
+513180,恒生科技ETF,QDII观察,qdii,short_swing_buy_to_watch_proxy,20,-0.0113736966233035,-0.01491795196660091,-0.024550908048420264,0.6842105263157895,hypothesis_only,need_more_data
+513180,恒生科技ETF,QDII观察,qdii,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+513180,恒生科技ETF,QDII观察,qdii,volume_and_rank_decay_proxy,8,0.020618890385948958,0.029567118683104687,0.034873394442760663,0.16666666666666666,hypothesis_only,need_more_data
+513180,恒生科技ETF,QDII观察,qdii,type_stop_loss_proxy_price+premium+fx,101,-0.005271203204543508,-0.01038924095114115,-0.015014825193525034,0.5454545454545454,sample_limited,research_only_type_stop; do_not_online_without_backtest
+159920,恒生ETF,QDII观察,qdii,rank_score_decline_2d,79,0.005306404150437677,-0.00023032029569825874,0.003477613411994058,0.43243243243243246,sample_limited,candidate_for_simulation_review
+159920,恒生ETF,QDII观察,qdii,rank_score_decline_3d,40,0.007976993103961388,-0.0011252893217771223,0.005279850313274316,0.3783783783783784,sample_limited,candidate_for_simulation_review
+159920,恒生ETF,QDII观察,qdii,rank_score_below_70_proxy,197,0.005114992835900014,0.008003092083537475,0.01320361089581104,0.37433155080213903,sample_limited,research_only_not_online
+159920,恒生ETF,QDII观察,qdii,rank_drop_top3_to_out_top10_proxy,1,0.015037593984962516,-0.009398496240601628,-0.03884711779448624,1.0,hypothesis_only,need_more_data
+159920,恒生ETF,QDII观察,qdii,short_swing_buy_to_watch_proxy,15,0.00032470108878570605,0.004673174107629545,0.0067422250735711545,0.26666666666666666,hypothesis_only,need_more_data
+159920,恒生ETF,QDII观察,qdii,short_swing_buy_to_sell_proxy,1,-0.010914051841746208,-0.1302864938608459,-0.08594815825375168,1.0,hypothesis_only,need_more_data
+159920,恒生ETF,QDII观察,qdii,volume_and_rank_decay_proxy,9,-0.000875229696453753,-0.0002670602887859649,-0.018724375001018805,0.42857142857142855,hypothesis_only,need_more_data
+159920,恒生ETF,QDII观察,qdii,type_stop_loss_proxy_price+premium+fx,35,0.0034212490832562707,0.015275665593769753,0.03171963088356075,0.3125,hypothesis_only,research_only_type_stop; do_not_online_without_backtest
+513050,中概互联网ETF,QDII观察,qdii,rank_score_decline_2d,70,-0.0018724712883614308,-0.00529973648270822,-0.008417304192944609,0.5384615384615384,sample_limited,candidate_for_simulation_review
+513050,中概互联网ETF,QDII观察,qdii,rank_score_decline_3d,32,-0.0012390464739960591,-0.0011198269413604915,-0.003298797219379385,0.5172413793103449,hypothesis_only,need_more_data
+513050,中概互联网ETF,QDII观察,qdii,rank_score_below_70_proxy,192,-0.0005204229644383523,-0.004010362309625773,-0.014733688608661727,0.5737704918032787,sample_limited,candidate_for_simulation_review
+513050,中概互联网ETF,QDII观察,qdii,rank_drop_top3_to_out_top10_proxy,1,-0.02883031301482697,-0.06013179571663918,-0.09637561779242176,1.0,hypothesis_only,need_more_data
+513050,中概互联网ETF,QDII观察,qdii,short_swing_buy_to_watch_proxy,23,-0.0059881688308324596,-0.012764505106778084,-0.03348905061573644,0.6818181818181818,hypothesis_only,need_more_data
+513050,中概互联网ETF,QDII观察,qdii,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+513050,中概互联网ETF,QDII观察,qdii,volume_and_rank_decay_proxy,3,-0.023302666942319528,0.01224054165805255,-0.013204982427124201,0.0,hypothesis_only,need_more_data
+513050,中概互联网ETF,QDII观察,qdii,type_stop_loss_proxy_price+premium+fx,118,-0.0065423918560054035,-0.01271664073516607,-0.01594494925922687,0.6055045871559633,sample_limited,research_only_type_stop; do_not_online_without_backtest
+513060,恒生医疗ETF,QDII观察,qdii,rank_score_decline_2d,95,0.014037043076449726,0.016265244622862225,0.03568941690486257,0.4659090909090909,sample_limited,research_only_not_online
+513060,恒生医疗ETF,QDII观察,qdii,rank_score_decline_3d,49,0.0315650851414301,0.03660319119218433,0.07517915493005684,0.36363636363636365,sample_limited,research_only_not_online
+513060,恒生医疗ETF,QDII观察,qdii,rank_score_below_70_proxy,195,-0.001361453984610363,-0.0023620574092506055,0.0006778318901680029,0.5945945945945946,sample_limited,candidate_for_simulation_review
+513060,恒生医疗ETF,QDII观察,qdii,rank_drop_top3_to_out_top10_proxy,1,-0.0116861435726211,0.02003338898163598,-0.03505843071786319,0.0,hypothesis_only,need_more_data
+513060,恒生医疗ETF,QDII观察,qdii,short_swing_buy_to_watch_proxy,13,-0.007773989665612286,0.004571600214697004,0.000613205507477779,0.6153846153846154,hypothesis_only,need_more_data
+513060,恒生医疗ETF,QDII观察,qdii,short_swing_buy_to_sell_proxy,1,0.017889087656529412,0.02325581395348819,0.0894454382826475,0.0,hypothesis_only,need_more_data
+513060,恒生医疗ETF,QDII观察,qdii,volume_and_rank_decay_proxy,15,0.030075863835581904,0.04619633112000272,0.08023986470587907,0.3333333333333333,hypothesis_only,need_more_data
+513060,恒生医疗ETF,QDII观察,qdii,type_stop_loss_proxy_price+premium+fx,122,0.0010285882216571212,0.002359084918011934,0.019786825450164303,0.5357142857142857,sample_limited,research_only_type_stop; do_not_online_without_backtest
+159941,纳指ETF,QDII观察,qdii,rank_score_decline_2d,77,0.009221896065291446,0.020974572723556288,0.02919683626167969,0.3698630136986301,sample_limited,research_only_not_online
+159941,纳指ETF,QDII观察,qdii,rank_score_decline_3d,40,0.011163269238762841,0.02266020866604802,0.03201399785124561,0.32432432432432434,sample_limited,research_only_not_online
+159941,纳指ETF,QDII观察,qdii,rank_score_below_70_proxy,172,0.005498346629442213,0.010449079352393514,0.02243330308865527,0.47337278106508873,sample_limited,research_only_not_online
+159941,纳指ETF,QDII观察,qdii,rank_drop_top3_to_out_top10_proxy,2,-0.027179006560449803,0.024367385192127555,0.10215557638238049,0.0,hypothesis_only,need_more_data
+159941,纳指ETF,QDII观察,qdii,short_swing_buy_to_watch_proxy,20,0.010965990531206475,0.014253328046968619,0.04505378638564836,0.42105263157894735,hypothesis_only,need_more_data
+159941,纳指ETF,QDII观察,qdii,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+159941,纳指ETF,QDII观察,qdii,volume_and_rank_decay_proxy,11,0.017729673204545538,0.02068961168602731,0.04522825750887267,0.2727272727272727,hypothesis_only,need_more_data
+159941,纳指ETF,QDII观察,qdii,type_stop_loss_proxy_price+premium+fx,23,0.028673945720134552,0.04587338107287671,0.08539344389970197,0.1,hypothesis_only,research_only_type_stop; do_not_online_without_backtest
+511010,国债ETF,债券货币观察,bond_cash,rank_score_decline_2d,76,0.0004445169698089841,0.0004563163305546107,0.0008047271082875,0.4647887323943662,sample_limited,research_only_not_online
+511010,国债ETF,债券货币观察,bond_cash,rank_score_decline_3d,41,0.0005040600416196364,0.0003958744829806562,0.00047732497567766946,0.4473684210526316,sample_limited,research_only_not_online
+511010,国债ETF,债券货币观察,bond_cash,rank_score_below_70_proxy,185,0.00043277665055573125,0.0006854348141408378,0.001630527518899972,0.2967032967032967,sample_limited,research_only_not_online
+511010,国债ETF,债券货币观察,bond_cash,rank_drop_top3_to_out_top10_proxy,0,,,,,hypothesis_only,need_more_data
+511010,国债ETF,债券货币观察,bond_cash,short_swing_buy_to_watch_proxy,0,,,,,hypothesis_only,need_more_data
+511010,国债ETF,债券货币观察,bond_cash,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+511010,国债ETF,债券货币观察,bond_cash,volume_and_rank_decay_proxy,12,0.00010874251515180511,-7.567755485565764e-05,0.0008052708341709791,0.5833333333333334,hypothesis_only,need_more_data
+511010,国债ETF,债券货币观察,bond_cash,type_stop_loss_proxy_low_vol_or_none,0,,,,,hypothesis_only,research_only_type_stop; do_not_online_without_backtest
+511260,十年国债ETF,债券货币观察,bond_cash,rank_score_decline_2d,77,0.0009477375401234926,0.0013432180629706287,0.0016542868102576314,0.3972602739726027,sample_limited,research_only_not_online
+511260,十年国债ETF,债券货币观察,bond_cash,rank_score_decline_3d,46,0.001588152118062493,0.0017246141741921622,0.002145050762610799,0.3488372093023256,sample_limited,research_only_not_online
+511260,十年国债ETF,债券货币观察,bond_cash,rank_score_below_70_proxy,181,0.0003830539524585404,0.00046329722073749224,0.001257384466433923,0.441340782122905,sample_limited,research_only_not_online
+511260,十年国债ETF,债券货币观察,bond_cash,rank_drop_top3_to_out_top10_proxy,0,,,,,hypothesis_only,need_more_data
+511260,十年国债ETF,债券货币观察,bond_cash,short_swing_buy_to_watch_proxy,0,,,,,hypothesis_only,need_more_data
+511260,十年国债ETF,债券货币观察,bond_cash,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+511260,十年国债ETF,债券货币观察,bond_cash,volume_and_rank_decay_proxy,16,0.001751700073383225,0.001166075735286591,0.002768699945888062,0.5,hypothesis_only,need_more_data
+511260,十年国债ETF,债券货币观察,bond_cash,type_stop_loss_proxy_low_vol_or_none,0,,,,,hypothesis_only,research_only_type_stop; do_not_online_without_backtest
+511880,银华日利ETF,债券货币观察,bond_cash,rank_score_decline_2d,71,0.00028199440916907746,0.0005142572448511416,0.000953751250968568,0.0,sample_limited,research_only_not_online
+511880,银华日利ETF,债券货币观察,bond_cash,rank_score_decline_3d,27,0.000282595989259974,0.0005691205382535036,0.0009846159556676781,0.0,hypothesis_only,need_more_data
+511880,银华日利ETF,债券货币观察,bond_cash,rank_score_below_70_proxy,180,0.0002648397857105447,0.0005002444753724435,0.0009319798332477693,0.005747126436781609,sample_limited,research_only_not_online
+511880,银华日利ETF,债券货币观察,bond_cash,rank_drop_top3_to_out_top10_proxy,4,0.00010290325511058684,0.0003538009687919508,0.0007922599432040878,0.0,hypothesis_only,need_more_data
+511880,银华日利ETF,债券货币观察,bond_cash,short_swing_buy_to_watch_proxy,0,,,,,hypothesis_only,need_more_data
+511880,银华日利ETF,债券货币观察,bond_cash,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+511880,银华日利ETF,债券货币观察,bond_cash,volume_and_rank_decay_proxy,5,0.00024252053541742313,0.0004967537449042769,0.0009213003565463395,0.0,hypothesis_only,need_more_data
+511880,银华日利ETF,债券货币观察,bond_cash,type_stop_loss_proxy_low_vol_or_none,0,,,,,hypothesis_only,research_only_type_stop; do_not_online_without_backtest
+511990,华宝添益ETF,债券货币观察,bond_cash,rank_score_decline_2d,46,1.3558237781251413e-05,4.1165704682940536e-05,2.9500600292786672e-05,0.3023255813953488,sample_limited,research_only_not_online
+511990,华宝添益ETF,债券货币观察,bond_cash,rank_score_decline_3d,5,2.8000880019218856e-05,3.2500674373991956e-10,6.333613333875387e-05,0.5,hypothesis_only,need_more_data
+511990,华宝添益ETF,债券货币观察,bond_cash,rank_score_below_70_proxy,201,1.5730181460548383e-05,2.464105526331562e-05,2.0577383828598438e-05,0.3865979381443299,evidence_supported,research_only_not_online
+511990,华宝添益ETF,债券货币观察,bond_cash,rank_drop_top3_to_out_top10_proxy,7,-9.997585875213108e-06,-1.8566957392948274e-05,6.71404433980933e-05,0.5714285714285714,hypothesis_only,need_more_data
+511990,华宝添益ETF,债券货币观察,bond_cash,short_swing_buy_to_watch_proxy,0,,,,,hypothesis_only,need_more_data
+511990,华宝添益ETF,债券货币观察,bond_cash,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+511990,华宝添益ETF,债券货币观察,bond_cash,volume_and_rank_decay_proxy,2,7.000180004801404e-05,-4.999949994588526e-06,0.00024000480009611636,0.5,hypothesis_only,need_more_data
+511990,华宝添益ETF,债券货币观察,bond_cash,type_stop_loss_proxy_low_vol_or_none,0,,,,,hypothesis_only,research_only_type_stop; do_not_online_without_backtest
+511360,短融ETF,债券货币观察,bond_cash,rank_score_decline_2d,75,0.0003654375849803239,0.000707502963474669,0.0013598650937994869,0.0,sample_limited,research_only_not_online
+511360,短融ETF,债券货币观察,bond_cash,rank_score_decline_3d,31,0.0003942356536789989,0.0007396830450460099,0.001432832719152607,0.0,hypothesis_only,need_more_data
+511360,短融ETF,债券货币观察,bond_cash,rank_score_below_70_proxy,217,0.0003148438027854866,0.0006354614715547073,0.0012501577970492753,0.0,evidence_supported,research_only_not_online
+511360,短融ETF,债券货币观察,bond_cash,rank_drop_top3_to_out_top10_proxy,0,,,,,hypothesis_only,need_more_data
+511360,短融ETF,债券货币观察,bond_cash,short_swing_buy_to_watch_proxy,0,,,,,hypothesis_only,need_more_data
+511360,短融ETF,债券货币观察,bond_cash,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+511360,短融ETF,债券货币观察,bond_cash,volume_and_rank_decay_proxy,7,0.00043228256816980296,0.0007475363768409959,0.001363637361647558,0.0,hypothesis_only,need_more_data
+511360,短融ETF,债券货币观察,bond_cash,type_stop_loss_proxy_low_vol_or_none,0,,,,,hypothesis_only,research_only_type_stop; do_not_online_without_backtest
+159001,货币ETF,债券货币观察,bond_cash,rank_score_decline_2d,45,7.045561368223087e-06,4.3183113698270166e-06,7.381090482023416e-06,0.11363636363636363,sample_limited,research_only_not_online
+159001,货币ETF,债券货币观察,bond_cash,rank_score_decline_3d,12,1.3333641682285643e-05,5.000391688131378e-06,1.1818572747568368e-05,0.25,hypothesis_only,need_more_data
+159001,货币ETF,债券货币观察,bond_cash,rank_score_below_70_proxy,202,1.6583432172442665e-06,2.422738146063379e-06,3.0108118295024926e-06,0.15463917525773196,evidence_supported,research_only_not_online
+159001,货币ETF,债券货币观察,bond_cash,rank_drop_top3_to_out_top10_proxy,10,0.0,0.0,-4.999999999988347e-06,0.2,hypothesis_only,need_more_data
+159001,货币ETF,债券货币观察,bond_cash,short_swing_buy_to_watch_proxy,0,,,,,hypothesis_only,need_more_data
+159001,货币ETF,债券货币观察,bond_cash,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+159001,货币ETF,债券货币观察,bond_cash,volume_and_rank_decay_proxy,2,1.5000100001105743e-05,5.000050000480982e-06,5.000050000480982e-06,0.0,hypothesis_only,need_more_data
+159001,货币ETF,债券货币观察,bond_cash,type_stop_loss_proxy_low_vol_or_none,0,,,,,hypothesis_only,research_only_type_stop; do_not_online_without_backtest
+159338,国泰中证A500ETF,新宽基与新风格,broad_index,rank_score_decline_2d,71,0.009628046621618954,0.010594145563843695,0.02684761112905079,0.3283582089552239,sample_limited,research_only_not_online
+159338,国泰中证A500ETF,新宽基与新风格,broad_index,rank_score_decline_3d,27,0.01572194185798416,0.016654146892530454,0.04462282692521805,0.2,hypothesis_only,need_more_data
+159338,国泰中证A500ETF,新宽基与新风格,broad_index,rank_score_below_70_proxy,172,0.004683005086446659,0.009154442989536804,0.023371040168073294,0.38271604938271603,sample_limited,research_only_not_online
+159338,国泰中证A500ETF,新宽基与新风格,broad_index,rank_drop_top3_to_out_top10_proxy,1,0.007892659826361559,0.04419889502762442,0.04340962904498835,0.0,hypothesis_only,need_more_data
+159338,国泰中证A500ETF,新宽基与新风格,broad_index,short_swing_buy_to_watch_proxy,18,0.00504025290995086,0.01465477105229627,0.029652403149387403,0.2777777777777778,hypothesis_only,need_more_data
+159338,国泰中证A500ETF,新宽基与新风格,broad_index,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+159338,国泰中证A500ETF,新宽基与新风格,broad_index,volume_and_rank_decay_proxy,10,0.01678312366018255,0.012002533635186542,0.055282532250363836,0.3,hypothesis_only,need_more_data
+159338,国泰中证A500ETF,新宽基与新风格,broad_index,type_stop_loss_proxy_7%-10%,12,0.015737016332611323,0.024215231572629756,0.061662235784708086,0.0,hypothesis_only,research_only_type_stop; do_not_online_without_backtest
+159352,南方中证A500ETF,新宽基与新风格,broad_index,rank_score_decline_2d,75,0.00848926716843804,0.008814321091660754,0.023180052127305378,0.3380281690140845,sample_limited,research_only_not_online
+159352,南方中证A500ETF,新宽基与新风格,broad_index,rank_score_decline_3d,29,0.013125425691169167,0.0112586203031678,0.036813019344397624,0.25925925925925924,hypothesis_only,need_more_data
+159352,南方中证A500ETF,新宽基与新风格,broad_index,rank_score_below_70_proxy,170,0.004630178822922608,0.009180585478783957,0.023462964323422417,0.3875,sample_limited,research_only_not_online
+159352,南方中证A500ETF,新宽基与新风格,broad_index,rank_drop_top3_to_out_top10_proxy,1,0.0075987841945288626,0.04483282674772027,0.04483282674772027,0.0,hypothesis_only,need_more_data
+159352,南方中证A500ETF,新宽基与新风格,broad_index,short_swing_buy_to_watch_proxy,18,0.004396426240314283,0.014991620233745494,0.028042267134165185,0.3333333333333333,hypothesis_only,need_more_data
+159352,南方中证A500ETF,新宽基与新风格,broad_index,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+159352,南方中证A500ETF,新宽基与新风格,broad_index,volume_and_rank_decay_proxy,15,0.008547004872076935,0.009054992228718365,0.02630161365275155,0.38461538461538464,hypothesis_only,need_more_data
+159352,南方中证A500ETF,新宽基与新风格,broad_index,type_stop_loss_proxy_7%-10%,13,0.02091393116329159,0.03079102862027185,0.06885168449455283,0.0,hypothesis_only,research_only_type_stop; do_not_online_without_backtest
+563360,华泰柏瑞中证A500ETF,新宽基与新风格,broad_index,rank_score_decline_2d,72,0.00819577652309666,0.009607125333059404,0.0247952359386493,0.3088235294117647,sample_limited,research_only_not_online
+563360,华泰柏瑞中证A500ETF,新宽基与新风格,broad_index,rank_score_decline_3d,25,0.015217958147717363,0.017248563240542886,0.04628454554250722,0.13043478260869565,hypothesis_only,need_more_data
+563360,华泰柏瑞中证A500ETF,新宽基与新风格,broad_index,rank_score_below_70_proxy,170,0.0048459544346671395,0.00918953988864726,0.022820283319399032,0.375,sample_limited,research_only_not_online
+563360,华泰柏瑞中证A500ETF,新宽基与新风格,broad_index,rank_drop_top3_to_out_top10_proxy,1,0.008988764044943753,0.04569288389513115,0.04494382022471921,0.0,hypothesis_only,need_more_data
+563360,华泰柏瑞中证A500ETF,新宽基与新风格,broad_index,short_swing_buy_to_watch_proxy,20,0.005238895480003708,0.013205647792812764,0.027821994243807584,0.35,hypothesis_only,need_more_data
+563360,华泰柏瑞中证A500ETF,新宽基与新风格,broad_index,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+563360,华泰柏瑞中证A500ETF,新宽基与新风格,broad_index,volume_and_rank_decay_proxy,11,0.011541953390266667,0.011539911539477593,0.0363965050696557,0.18181818181818182,hypothesis_only,need_more_data
+563360,华泰柏瑞中证A500ETF,新宽基与新风格,broad_index,type_stop_loss_proxy_7%-10%,12,0.01756294591146267,0.025641447989761312,0.06334488366000356,0.0,hypothesis_only,research_only_type_stop; do_not_online_without_backtest
+563800,广发中证A500ETF,新宽基与新风格,broad_index,rank_score_decline_2d,71,0.008248516966174811,0.009945697578451007,0.02451079797418012,0.29850746268656714,sample_limited,research_only_not_online
+563800,广发中证A500ETF,新宽基与新风格,broad_index,rank_score_decline_3d,25,0.01177591587196906,0.01499378115670802,0.04278640100848977,0.21739130434782608,hypothesis_only,need_more_data
+563800,广发中证A500ETF,新宽基与新风格,broad_index,rank_score_below_70_proxy,171,0.004813651635965851,0.009333031035973086,0.02328338224881379,0.37888198757763975,sample_limited,research_only_not_online
+563800,广发中证A500ETF,新宽基与新风格,broad_index,rank_drop_top3_to_out_top10_proxy,1,0.007930214115781098,0.04520222045995248,0.04520222045995248,0.0,hypothesis_only,need_more_data
+563800,广发中证A500ETF,新宽基与新风格,broad_index,short_swing_buy_to_watch_proxy,18,0.0037892371107018066,0.01322760435152815,0.02639961099529539,0.3888888888888889,hypothesis_only,need_more_data
+563800,广发中证A500ETF,新宽基与新风格,broad_index,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+563800,广发中证A500ETF,新宽基与新风格,broad_index,volume_and_rank_decay_proxy,9,0.01600630220165332,0.017027214434305105,0.03681364751581784,0.125,hypothesis_only,need_more_data
+563800,广发中证A500ETF,新宽基与新风格,broad_index,type_stop_loss_proxy_7%-10%,13,0.023173946261217118,0.03404284014804166,0.07235816478615903,0.0,hypothesis_only,research_only_type_stop; do_not_online_without_backtest
+512050,华夏中证A500ETF,新宽基与新风格,broad_index,rank_score_decline_2d,75,0.006617756251274069,0.009184450167038465,0.024002508317718302,0.29577464788732394,sample_limited,research_only_not_online
+512050,华夏中证A500ETF,新宽基与新风格,broad_index,rank_score_decline_3d,28,0.011019288138591462,0.013077769246165823,0.03496701122750812,0.19230769230769232,hypothesis_only,need_more_data
+512050,华夏中证A500ETF,新宽基与新风格,broad_index,rank_score_below_70_proxy,170,0.004901375964845648,0.009479496603456684,0.023874256362547336,0.3625,sample_limited,research_only_not_online
+512050,华夏中证A500ETF,新宽基与新风格,broad_index,rank_drop_top3_to_out_top10_proxy,1,0.008750994431185433,0.04693715194908532,0.046141607000795615,0.0,hypothesis_only,need_more_data
+512050,华夏中证A500ETF,新宽基与新风格,broad_index,short_swing_buy_to_watch_proxy,18,0.00477469638372064,0.010846147973665596,0.022022619641560322,0.3333333333333333,hypothesis_only,need_more_data
+512050,华夏中证A500ETF,新宽基与新风格,broad_index,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+512050,华夏中证A500ETF,新宽基与新风格,broad_index,volume_and_rank_decay_proxy,15,0.012400833948152914,0.013638620848369634,0.03521411491781238,0.14285714285714285,hypothesis_only,need_more_data
+512050,华夏中证A500ETF,新宽基与新风格,broad_index,type_stop_loss_proxy_7%-10%,12,0.01748540071515718,0.02583705448673618,0.06390163602641201,0.0,hypothesis_only,research_only_type_stop; do_not_online_without_backtest
+560510,泰康中证A500ETF,新宽基与新风格,broad_index,rank_score_decline_2d,65,0.005932531655111661,0.008427560910388328,0.02424970953749106,0.3387096774193548,sample_limited,research_only_not_online
+560510,泰康中证A500ETF,新宽基与新风格,broad_index,rank_score_decline_3d,24,0.011065043619240612,0.012507525472108944,0.0427539345562328,0.17391304347826086,hypothesis_only,need_more_data
+560510,泰康中证A500ETF,新宽基与新风格,broad_index,rank_score_below_70_proxy,168,0.004790721867382955,0.009464953353405199,0.02408671961044495,0.379746835443038,sample_limited,research_only_not_online
+560510,泰康中证A500ETF,新宽基与新风格,broad_index,rank_drop_top3_to_out_top10_proxy,1,0.008899676375404564,0.046925566343042124,0.0444983818770226,0.0,hypothesis_only,need_more_data
+560510,泰康中证A500ETF,新宽基与新风格,broad_index,short_swing_buy_to_watch_proxy,15,0.0022590927834177377,0.014079938158584333,0.02730119462363254,0.4,hypothesis_only,need_more_data
+560510,泰康中证A500ETF,新宽基与新风格,broad_index,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+560510,泰康中证A500ETF,新宽基与新风格,broad_index,volume_and_rank_decay_proxy,9,-0.0011438415285044412,0.0032225732438253673,0.02900581522077524,0.3333333333333333,hypothesis_only,need_more_data
+560510,泰康中证A500ETF,新宽基与新风格,broad_index,type_stop_loss_proxy_7%-10%,11,0.015007402354271358,0.023726510376589995,0.0606143059154495,0.0,hypothesis_only,research_only_type_stop; do_not_online_without_backtest
+588220,科创100ETF基金,新宽基与新风格,unknown,rank_score_decline_2d,74,0.015689412802827627,0.01610084223973741,0.0315394248951974,0.4,sample_limited,research_only_not_online
+588220,科创100ETF基金,新宽基与新风格,unknown,rank_score_decline_3d,29,0.022742637803736483,0.012523294359273966,0.02074647112507646,0.39285714285714285,hypothesis_only,need_more_data
+588220,科创100ETF基金,新宽基与新风格,unknown,rank_score_below_70_proxy,152,0.0069135192882426,0.01469704218338431,0.036886640043920595,0.43356643356643354,sample_limited,research_only_not_online
+588220,科创100ETF基金,新宽基与新风格,unknown,rank_drop_top3_to_out_top10_proxy,2,0.01486518765930911,0.04732825245681738,0.20419325432999091,0.0,hypothesis_only,need_more_data
+588220,科创100ETF基金,新宽基与新风格,unknown,short_swing_buy_to_watch_proxy,23,0.009659001741244648,0.02834634319770921,0.07211927142987813,0.34782608695652173,hypothesis_only,need_more_data
+588220,科创100ETF基金,新宽基与新风格,unknown,short_swing_buy_to_sell_proxy,4,-0.008784087566203885,0.025593442505207193,0.01975118075523763,0.6666666666666666,hypothesis_only,need_more_data
+588220,科创100ETF基金,新宽基与新风格,unknown,volume_and_rank_decay_proxy,10,0.019521618554447465,0.019655405940119178,0.01413248873232763,0.3333333333333333,hypothesis_only,need_more_data
+588220,科创100ETF基金,新宽基与新风格,unknown,type_stop_loss_proxy_manual_review,54,0.012725822995666944,0.025335539719238583,0.044823041664823135,0.36,sample_limited,research_only_type_stop; do_not_online_without_backtest
+588030,博时科创100ETF,新宽基与新风格,unknown,rank_score_decline_2d,78,0.016391622402702356,0.017936518993317812,0.03920076671914362,0.3835616438356164,sample_limited,research_only_not_online
+588030,博时科创100ETF,新宽基与新风格,unknown,rank_score_decline_3d,35,0.022103250024434376,0.015009082530719803,0.034563456890862876,0.36363636363636365,hypothesis_only,need_more_data
+588030,博时科创100ETF,新宽基与新风格,unknown,rank_score_below_70_proxy,155,0.00722812322893009,0.015562750664648486,0.037897865598579085,0.4178082191780822,sample_limited,research_only_not_online
+588030,博时科创100ETF,新宽基与新风格,unknown,rank_drop_top3_to_out_top10_proxy,0,,,,,hypothesis_only,need_more_data
+588030,博时科创100ETF,新宽基与新风格,unknown,short_swing_buy_to_watch_proxy,19,0.0060057428785834175,0.03028468933848565,0.06459087731606478,0.3684210526315789,hypothesis_only,need_more_data
+588030,博时科创100ETF,新宽基与新风格,unknown,short_swing_buy_to_sell_proxy,4,-0.010060947201058545,0.024869097015490487,0.020539155504023226,0.6666666666666666,hypothesis_only,need_more_data
+588030,博时科创100ETF,新宽基与新风格,unknown,volume_and_rank_decay_proxy,12,0.02143244322442422,0.028682663316709666,0.03646835430128698,0.18181818181818182,hypothesis_only,need_more_data
+588030,博时科创100ETF,新宽基与新风格,unknown,type_stop_loss_proxy_manual_review,57,0.008941655150278963,0.021553770208932142,0.03898804390534597,0.3888888888888889,sample_limited,research_only_type_stop; do_not_online_without_backtest
+588190,银华科创100ETF,新宽基与新风格,unknown,rank_score_decline_2d,78,0.014484664671620994,0.018759627729306096,0.039181191405655874,0.3783783783783784,sample_limited,research_only_not_online
+588190,银华科创100ETF,新宽基与新风格,unknown,rank_score_decline_3d,35,0.018349271325147163,0.01630301082096004,0.031126941971864313,0.35294117647058826,hypothesis_only,need_more_data
+588190,银华科创100ETF,新宽基与新风格,unknown,rank_score_below_70_proxy,154,0.007499954761169291,0.015163169715686476,0.03802449100345241,0.42758620689655175,sample_limited,research_only_not_online
+588190,银华科创100ETF,新宽基与新风格,unknown,rank_drop_top3_to_out_top10_proxy,1,0.032139577594123114,0.058769513314967936,0.2084481175390267,0.0,hypothesis_only,need_more_data
+588190,银华科创100ETF,新宽基与新风格,unknown,short_swing_buy_to_watch_proxy,22,0.013919506262946312,0.03362787463523429,0.07427615985881766,0.3181818181818182,hypothesis_only,need_more_data
+588190,银华科创100ETF,新宽基与新风格,unknown,short_swing_buy_to_sell_proxy,3,-0.03680090369128589,-0.014762969682904692,-0.05264615287242347,1.0,hypothesis_only,need_more_data
+588190,银华科创100ETF,新宽基与新风格,unknown,volume_and_rank_decay_proxy,11,0.02057639601387351,0.027976556698971956,0.04355405007562617,0.2,hypothesis_only,need_more_data
+588190,银华科创100ETF,新宽基与新风格,unknown,type_stop_loss_proxy_manual_review,55,0.011297723803426533,0.02583014189467237,0.04443215497986042,0.34615384615384615,sample_limited,research_only_type_stop; do_not_online_without_backtest
+588120,国泰科创100ETF,新宽基与新风格,unknown,rank_score_decline_2d,80,0.013950066304471686,0.017284539923644714,0.037914989432946626,0.38666666666666666,sample_limited,research_only_not_online
+588120,国泰科创100ETF,新宽基与新风格,unknown,rank_score_decline_3d,37,0.019041653676028537,0.015700860481389977,0.032331546120666695,0.37142857142857144,hypothesis_only,need_more_data
+588120,国泰科创100ETF,新宽基与新风格,unknown,rank_score_below_70_proxy,155,0.008176158621104017,0.015797031069658317,0.03877029552420653,0.4041095890410959,sample_limited,research_only_not_online
+588120,国泰科创100ETF,新宽基与新风格,unknown,rank_drop_top3_to_out_top10_proxy,1,0.03281677301731989,0.05651777575205119,0.2105742935278032,0.0,hypothesis_only,need_more_data
+588120,国泰科创100ETF,新宽基与新风格,unknown,short_swing_buy_to_watch_proxy,21,0.008837135604992144,0.030376169995342185,0.06807009395932626,0.38095238095238093,hypothesis_only,need_more_data
+588120,国泰科创100ETF,新宽基与新风格,unknown,short_swing_buy_to_sell_proxy,3,-0.03564403181582639,-0.014588481545422805,-0.05298850185617732,1.0,hypothesis_only,need_more_data
+588120,国泰科创100ETF,新宽基与新风格,unknown,volume_and_rank_decay_proxy,13,0.0019324571825943548,0.00953005839361982,0.022320704355938036,0.4166666666666667,hypothesis_only,need_more_data
+588120,国泰科创100ETF,新宽基与新风格,unknown,type_stop_loss_proxy_manual_review,57,0.011278714205556388,0.025089840777426695,0.043430595358985934,0.3584905660377358,sample_limited,research_only_type_stop; do_not_online_without_backtest
+588800,华夏科创100ETF,新宽基与新风格,unknown,rank_score_decline_2d,73,0.015054851514050846,0.015471508931510017,0.03521848157922303,0.39705882352941174,sample_limited,research_only_not_online
+588800,华夏科创100ETF,新宽基与新风格,unknown,rank_score_decline_3d,29,0.021084145246935495,0.012110159327756078,0.02352733497056443,0.4074074074074074,hypothesis_only,need_more_data
+588800,华夏科创100ETF,新宽基与新风格,unknown,rank_score_below_70_proxy,155,0.007635518541641438,0.014902838449059994,0.03817822529306455,0.4178082191780822,sample_limited,research_only_not_online
+588800,华夏科创100ETF,新宽基与新风格,unknown,rank_drop_top3_to_out_top10_proxy,1,0.0319849482596426,0.05832549388523045,0.20884289746001872,0.0,hypothesis_only,need_more_data
+588800,华夏科创100ETF,新宽基与新风格,unknown,short_swing_buy_to_watch_proxy,24,0.012202841824290938,0.02954427167302043,0.06337247695322733,0.375,hypothesis_only,need_more_data
+588800,华夏科创100ETF,新宽基与新风格,unknown,short_swing_buy_to_sell_proxy,3,-0.036879108393560976,-0.014002129544828323,-0.05307183118517356,1.0,hypothesis_only,need_more_data
+588800,华夏科创100ETF,新宽基与新风格,unknown,volume_and_rank_decay_proxy,11,0.017274608705342108,0.019612225794502426,0.031133568347683837,0.4,hypothesis_only,need_more_data
+588800,华夏科创100ETF,新宽基与新风格,unknown,type_stop_loss_proxy_manual_review,56,0.013578564742438457,0.02704725178117434,0.04561421919950355,0.34615384615384615,sample_limited,research_only_type_stop; do_not_online_without_backtest
+159593,中证A50ETF,新宽基与新风格,broad_index,rank_score_decline_2d,73,0.005153170221288476,0.004976429205871786,0.020665716960974464,0.35714285714285715,sample_limited,research_only_not_online
+159593,中证A50ETF,新宽基与新风格,broad_index,rank_score_decline_3d,31,0.004333886879516134,0.006317011736322023,0.031208657113115896,0.3103448275862069,hypothesis_only,need_more_data
+159593,中证A50ETF,新宽基与新风格,broad_index,rank_score_below_70_proxy,185,0.004284770307621674,0.008883471489035812,0.018397784038230974,0.3446327683615819,sample_limited,research_only_not_online
+159593,中证A50ETF,新宽基与新风格,broad_index,rank_drop_top3_to_out_top10_proxy,3,0.0014187624788256636,0.013407419570189575,0.008701424995317267,0.0,hypothesis_only,need_more_data
+159593,中证A50ETF,新宽基与新风格,broad_index,short_swing_buy_to_watch_proxy,13,0.00021732271794563726,-0.004792300102943523,0.006053838460095311,0.5384615384615384,hypothesis_only,need_more_data
+159593,中证A50ETF,新宽基与新风格,broad_index,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+159593,中证A50ETF,新宽基与新风格,broad_index,volume_and_rank_decay_proxy,10,0.011695312017931036,0.01146886417658316,0.031241128359465464,0.1,hypothesis_only,need_more_data
+159593,中证A50ETF,新宽基与新风格,broad_index,type_stop_loss_proxy_7%-10%,4,0.0263354196517685,0.0346642157127785,0.0610311954094353,0.0,hypothesis_only,research_only_type_stop; do_not_online_without_backtest
+562500,机器人ETF华夏,科技与新质生产力,hot_theme,rank_score_decline_2d,81,0.0010491678932092019,0.0071190986755624835,0.011064065587587013,0.4605263157894737,sample_limited,research_only_not_online
+562500,机器人ETF华夏,科技与新质生产力,hot_theme,rank_score_decline_3d,42,0.004046736587685874,0.012174093957252382,0.016177695395409725,0.4473684210526316,sample_limited,research_only_not_online
+562500,机器人ETF华夏,科技与新质生产力,hot_theme,rank_score_below_70_proxy,167,0.0055831869657645885,0.008620344385479142,0.019804282434389454,0.44654088050314467,sample_limited,research_only_not_online
+562500,机器人ETF华夏,科技与新质生产力,hot_theme,rank_drop_top3_to_out_top10_proxy,2,0.0011297343168193974,0.003206896662988401,-0.08098271155595993,0.5,hypothesis_only,need_more_data
+562500,机器人ETF华夏,科技与新质生产力,hot_theme,short_swing_buy_to_watch_proxy,21,0.008487639021254215,0.018894232655983223,0.04275930872500095,0.3333333333333333,hypothesis_only,need_more_data
+562500,机器人ETF华夏,科技与新质生产力,hot_theme,short_swing_buy_to_sell_proxy,1,-0.025130890052355914,0.029319371727748678,0.1465968586387434,0.0,hypothesis_only,need_more_data
+562500,机器人ETF华夏,科技与新质生产力,hot_theme,volume_and_rank_decay_proxy,13,-0.019767248410072977,-0.013845081064158484,0.005602562861839005,0.6923076923076923,hypothesis_only,need_more_data
+562500,机器人ETF华夏,科技与新质生产力,hot_theme,type_stop_loss_proxy_3%-5%,156,-0.0012501619439662568,0.0015428387222503105,0.010321174453740613,0.4931506849315068,sample_limited,research_only_type_stop; do_not_online_without_backtest
+159770,机器人ETF,科技与新质生产力,hot_theme,rank_score_decline_2d,78,0.00039783495525189897,0.007148168057699497,0.010598169322190898,0.4594594594594595,sample_limited,research_only_not_online
+159770,机器人ETF,科技与新质生产力,hot_theme,rank_score_decline_3d,40,0.0030792713893411706,0.009997247865752675,0.014736934163097447,0.4444444444444444,sample_limited,research_only_not_online
+159770,机器人ETF,科技与新质生产力,hot_theme,rank_score_below_70_proxy,166,0.005279240789009391,0.008290015258075696,0.01969160490417593,0.44936708860759494,sample_limited,research_only_not_online
+159770,机器人ETF,科技与新质生产力,hot_theme,rank_drop_top3_to_out_top10_proxy,2,0.0014865711191449638,0.003945348445487495,-0.08179419525065956,0.5,hypothesis_only,need_more_data
+159770,机器人ETF,科技与新质生产力,hot_theme,short_swing_buy_to_watch_proxy,20,0.003538006634277413,0.011511210607290772,0.03860324125792986,0.4,hypothesis_only,need_more_data
+159770,机器人ETF,科技与新质生产力,hot_theme,short_swing_buy_to_sell_proxy,1,-0.02628918099089994,0.029322548028311468,0.1456016177957533,0.0,hypothesis_only,need_more_data
+159770,机器人ETF,科技与新质生产力,hot_theme,volume_and_rank_decay_proxy,13,-0.02680708454082945,-0.02377040751883276,0.011796497110640064,0.6363636363636364,hypothesis_only,need_more_data
+159770,机器人ETF,科技与新质生产力,hot_theme,type_stop_loss_proxy_3%-5%,153,-0.001336749396697367,0.0012466467406769906,0.009610652005732705,0.4930555555555556,sample_limited,research_only_type_stop; do_not_online_without_backtest
+515120,广发创新药ETF,医药与消费升级,theme,rank_score_decline_2d,72,0.01307771673861706,0.00619488285908288,0.022211118717842135,0.47058823529411764,sample_limited,research_only_not_online
+515120,广发创新药ETF,医药与消费升级,theme,rank_score_decline_3d,28,0.02522876293056281,0.017139279484973333,0.04600007706924899,0.38461538461538464,hypothesis_only,need_more_data
+515120,广发创新药ETF,医药与消费升级,theme,rank_score_below_70_proxy,196,-0.0016166134200097295,-0.0005511811965346861,0.005949502137564716,0.5483870967741935,sample_limited,candidate_for_simulation_review
+515120,广发创新药ETF,医药与消费升级,theme,rank_drop_top3_to_out_top10_proxy,2,0.014356602591896694,-0.0070150364268011245,-0.026183937948643876,0.5,hypothesis_only,need_more_data
+515120,广发创新药ETF,医药与消费升级,theme,short_swing_buy_to_watch_proxy,14,0.004536089167533468,0.005867458243110564,0.01584960501427903,0.5714285714285714,hypothesis_only,need_more_data
+515120,广发创新药ETF,医药与消费升级,theme,short_swing_buy_to_sell_proxy,2,0.0034461274333342784,-0.027870849832470346,-0.024808240799712056,1.0,hypothesis_only,need_more_data
+515120,广发创新药ETF,医药与消费升级,theme,volume_and_rank_decay_proxy,4,0.018800279536655234,0.0171642019445359,0.009870959064467888,0.3333333333333333,hypothesis_only,need_more_data
+515120,广发创新药ETF,医药与消费升级,theme,type_stop_loss_proxy_4%-6%,146,-0.001604468752379982,-0.003599973191475747,0.008866243646969156,0.5514705882352942,sample_limited,research_only_type_stop; do_not_online_without_backtest
+516080,易方达创新药ETF,医药与消费升级,theme,rank_score_decline_2d,74,0.012599449886394063,0.00721443964278333,0.020730336592385473,0.4857142857142857,sample_limited,research_only_not_online
+516080,易方达创新药ETF,医药与消费升级,theme,rank_score_decline_3d,31,0.02479868463809583,0.017614613105677163,0.04292293233207612,0.41379310344827586,hypothesis_only,need_more_data
+516080,易方达创新药ETF,医药与消费升级,theme,rank_score_below_70_proxy,195,-0.0014514559672500213,-0.0004760617886267,0.005775953633180081,0.5459459459459459,sample_limited,candidate_for_simulation_review
+516080,易方达创新药ETF,医药与消费升级,theme,rank_drop_top3_to_out_top10_proxy,3,-0.003362060580444822,-0.012966353145560458,-0.007379979393224804,0.6666666666666666,hypothesis_only,need_more_data
+516080,易方达创新药ETF,医药与消费升级,theme,short_swing_buy_to_watch_proxy,13,-0.0023027359205943874,-0.0027419958319076466,0.016359534433290523,0.6153846153846154,hypothesis_only,need_more_data
+516080,易方达创新药ETF,医药与消费升级,theme,short_swing_buy_to_sell_proxy,1,0.03208556149732611,-0.03743315508021394,-0.0017825311942959443,1.0,hypothesis_only,need_more_data
+516080,易方达创新药ETF,医药与消费升级,theme,volume_and_rank_decay_proxy,7,0.012323822619248486,0.013268816976692212,0.03425720387756326,0.42857142857142855,hypothesis_only,need_more_data
+516080,易方达创新药ETF,医药与消费升级,theme,type_stop_loss_proxy_4%-6%,147,-0.0015808699099491704,-0.0035512708615896196,0.009654836094453409,0.5474452554744526,sample_limited,research_only_type_stop; do_not_online_without_backtest
+159992,银华创新药ETF,医药与消费升级,theme,rank_score_decline_2d,75,0.010234387517071813,0.009481114876950797,0.0230182446143808,0.43661971830985913,sample_limited,research_only_not_online
+159992,银华创新药ETF,医药与消费升级,theme,rank_score_decline_3d,31,0.021821674279024345,0.022516932217897342,0.04589579930569475,0.3448275862068966,hypothesis_only,need_more_data
+159992,银华创新药ETF,医药与消费升级,theme,rank_score_below_70_proxy,196,-0.0014472994930372293,-0.0005959253966178546,0.005875197120517597,0.543010752688172,sample_limited,candidate_for_simulation_review
+159992,银华创新药ETF,医药与消费升级,theme,rank_drop_top3_to_out_top10_proxy,2,0.014465408805031443,-0.007208687951246628,-0.024881794028909776,0.5,hypothesis_only,need_more_data
+159992,银华创新药ETF,医药与消费升级,theme,short_swing_buy_to_watch_proxy,15,-0.005349496156469113,-0.006888716823428324,0.008638436511511622,0.6666666666666666,hypothesis_only,need_more_data
+159992,银华创新药ETF,医药与消费升级,theme,short_swing_buy_to_sell_proxy,1,0.03185595567867039,-0.0498614958448752,-0.0041551246537395725,1.0,hypothesis_only,need_more_data
+159992,银华创新药ETF,医药与消费升级,theme,volume_and_rank_decay_proxy,9,0.014654433030820882,0.027890098636367086,0.056052781349624964,0.125,hypothesis_only,need_more_data
+159992,银华创新药ETF,医药与消费升级,theme,type_stop_loss_proxy_4%-6%,149,-0.0009684323259216629,-0.0029422919957422648,0.009560388796962287,0.5467625899280576,sample_limited,research_only_type_stop; do_not_online_without_backtest
+159858,南方创新药ETF,医药与消费升级,theme,rank_score_decline_2d,75,0.008182478497838023,0.003756325573237872,0.015941705027590278,0.4788732394366197,sample_limited,research_only_not_online
+159858,南方创新药ETF,医药与消费升级,theme,rank_score_decline_3d,33,0.017659218208900724,0.011996270397542324,0.028627657593168904,0.3870967741935484,hypothesis_only,need_more_data
+159858,南方创新药ETF,医药与消费升级,theme,rank_score_below_70_proxy,196,-0.0015013341749079434,-0.00029994296477219094,0.006584936184580671,0.543010752688172,sample_limited,candidate_for_simulation_review
+159858,南方创新药ETF,医药与消费升级,theme,rank_drop_top3_to_out_top10_proxy,2,0.014354066985645897,-0.0044654706139752864,-0.02307936940620603,0.5,hypothesis_only,need_more_data
+159858,南方创新药ETF,医药与消费升级,theme,short_swing_buy_to_watch_proxy,14,-0.0007775005317473312,-0.0044260207650706086,0.015432142792359835,0.6428571428571429,hypothesis_only,need_more_data
+159858,南方创新药ETF,医药与消费升级,theme,short_swing_buy_to_sell_proxy,1,0.035211267605633756,-0.035211267605633645,-0.0035211267605633756,1.0,hypothesis_only,need_more_data
+159858,南方创新药ETF,医药与消费升级,theme,volume_and_rank_decay_proxy,11,0.002627707145382932,0.010389331490809915,0.01779937768297234,0.36363636363636365,hypothesis_only,need_more_data
+159858,南方创新药ETF,医药与消费升级,theme,type_stop_loss_proxy_4%-6%,146,-0.002114782678449382,-0.004782090800813321,0.008624128906237684,0.5735294117647058,sample_limited,research_only_type_stop; do_not_online_without_backtest
+159835,建信创新药ETF,医药与消费升级,theme,rank_score_decline_2d,78,0.012152935001435305,0.010136465222343384,0.0230600691165068,0.4246575342465753,sample_limited,research_only_not_online
+159835,建信创新药ETF,医药与消费升级,theme,rank_score_decline_3d,35,0.02458040343717819,0.02381937769380412,0.045999597853097415,0.3225806451612903,hypothesis_only,need_more_data
+159835,建信创新药ETF,医药与消费升级,theme,rank_score_below_70_proxy,193,-0.0021201726563360016,-0.0013995837770702517,0.005286372879490481,0.5573770491803278,sample_limited,candidate_for_simulation_review
+159835,建信创新药ETF,医药与消费升级,theme,rank_drop_top3_to_out_top10_proxy,2,-0.018990736403724895,-0.008057411483752941,-0.02478746150280431,0.5,hypothesis_only,need_more_data
+159835,建信创新药ETF,医药与消费升级,theme,short_swing_buy_to_watch_proxy,15,0.003057553193893174,0.0056868108731062,0.01998729602175903,0.5333333333333333,hypothesis_only,need_more_data
+159835,建信创新药ETF,医药与消费升级,theme,short_swing_buy_to_sell_proxy,1,0.030195381882770933,-0.04262877442273516,-0.003552397868561097,1.0,hypothesis_only,need_more_data
+159835,建信创新药ETF,医药与消费升级,theme,volume_and_rank_decay_proxy,14,0.012499626542755866,0.010739529701826204,0.05205571393302799,0.36363636363636365,hypothesis_only,need_more_data
+159835,建信创新药ETF,医药与消费升级,theme,type_stop_loss_proxy_4%-6%,144,-0.002360798718122725,-0.004583482809749975,0.0074083958522858035,0.5746268656716418,sample_limited,research_only_type_stop; do_not_online_without_backtest
+513120,港股创新药ETF,医药与消费升级,qdii,rank_score_decline_2d,89,0.018183607725982882,0.030956969601624102,0.05382226185693042,0.40963855421686746,sample_limited,research_only_not_online
+513120,港股创新药ETF,医药与消费升级,qdii,rank_score_decline_3d,48,0.03219823500080732,0.0525480284024571,0.08377182224737634,0.3181818181818182,sample_limited,research_only_not_online
+513120,港股创新药ETF,医药与消费升级,qdii,rank_score_below_70_proxy,196,0.0017272550169376859,0.003224596705151604,0.013583518837706312,0.5752688172043011,sample_limited,research_only_not_online
+513120,港股创新药ETF,医药与消费升级,qdii,rank_drop_top3_to_out_top10_proxy,1,-0.04127725856697817,-0.04439252336448596,-0.1269470404984424,1.0,hypothesis_only,need_more_data
+513120,港股创新药ETF,医药与消费升级,qdii,short_swing_buy_to_watch_proxy,14,0.001280520053333464,0.008883439587741728,0.010953762013863286,0.6428571428571429,hypothesis_only,need_more_data
+513120,港股创新药ETF,医药与消费升级,qdii,short_swing_buy_to_sell_proxy,2,0.040117801800406694,0.034581912432390616,0.08952068332996743,0.0,hypothesis_only,need_more_data
+513120,港股创新药ETF,医药与消费升级,qdii,volume_and_rank_decay_proxy,15,0.042632319336048934,0.0601104633812068,0.1242699917841573,0.26666666666666666,hypothesis_only,need_more_data
+513120,港股创新药ETF,医药与消费升级,qdii,type_stop_loss_proxy_price+premium+fx,135,0.005228894660040735,0.010327910934047085,0.03378223079076626,0.504,sample_limited,research_only_type_stop; do_not_online_without_backtest
+520550,港股红利低波ETF,防御、红利、质量,qdii,rank_score_decline_2d,86,-0.0006688677672671909,-0.00461468515971336,-0.0009542712046706668,0.5555555555555556,sample_limited,candidate_for_simulation_review
+520550,港股红利低波ETF,防御、红利、质量,qdii,rank_score_decline_3d,46,-0.0021006875459850098,-0.012837244242417521,-0.01101813288846932,0.6666666666666666,sample_limited,candidate_for_simulation_review
+520550,港股红利低波ETF,防御、红利、质量,qdii,rank_score_below_70_proxy,208,0.0016842062701505553,0.0040244358029022,0.009979458704090298,0.4393939393939394,evidence_supported,research_only_not_online
+520550,港股红利低波ETF,防御、红利、质量,qdii,rank_drop_top3_to_out_top10_proxy,1,-0.023828435266084025,-0.030182684670373217,-0.05480540111199361,1.0,hypothesis_only,need_more_data
+520550,港股红利低波ETF,防御、红利、质量,qdii,short_swing_buy_to_watch_proxy,10,-0.0011001602818742184,0.00368676794323588,0.020623026528254783,0.4,hypothesis_only,need_more_data
+520550,港股红利低波ETF,防御、红利、质量,qdii,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+520550,港股红利低波ETF,防御、红利、质量,qdii,volume_and_rank_decay_proxy,11,-0.014818091889474534,-0.01981356649887467,-0.01749634930762295,0.8888888888888888,hypothesis_only,need_more_data
+520550,港股红利低波ETF,防御、红利、质量,qdii,type_stop_loss_proxy_price+premium+fx,12,0.021091122561646542,0.027717678291168616,0.06322295548554,0.0,hypothesis_only,research_only_type_stop; do_not_online_without_backtest
+516020,化工ETF,周期、资源、商品,commodity_resource,rank_score_decline_2d,60,0.009013458329608892,0.013079230231470952,0.028554842360963267,0.3620689655172414,sample_limited,research_only_not_online
+516020,化工ETF,周期、资源、商品,commodity_resource,rank_score_decline_3d,24,0.00447136755519104,0.006306382535169855,0.03467562660836806,0.34782608695652173,hypothesis_only,need_more_data
+516020,化工ETF,周期、资源、商品,commodity_resource,rank_score_below_70_proxy,159,0.010135041017744172,0.016270826139863786,0.030099299868821525,0.2953020134228188,sample_limited,research_only_not_online
+516020,化工ETF,周期、资源、商品,commodity_resource,rank_drop_top3_to_out_top10_proxy,5,0.011399880991518053,0.018039739930768017,0.015503374284344385,0.4,hypothesis_only,need_more_data
+516020,化工ETF,周期、资源、商品,commodity_resource,short_swing_buy_to_watch_proxy,18,0.003774753157639526,0.009996944506806764,0.002684342408523462,0.5,hypothesis_only,need_more_data
+516020,化工ETF,周期、资源、商品,commodity_resource,short_swing_buy_to_sell_proxy,1,-0.026560424966799445,-0.005312084993359889,0.0863213811420982,1.0,hypothesis_only,need_more_data
+516020,化工ETF,周期、资源、商品,commodity_resource,volume_and_rank_decay_proxy,5,0.03246168295438399,0.045183023417579446,0.03240552335022726,0.0,hypothesis_only,need_more_data
+516020,化工ETF,周期、资源、商品,commodity_resource,type_stop_loss_proxy_5%-8%,82,0.007185431671855375,0.02283621951474611,0.06723136570732384,0.2222222222222222,sample_limited,research_only_type_stop; do_not_online_without_backtest
+159870,化工ETF,周期、资源、商品,commodity_resource,rank_score_decline_2d,69,0.005834334921425309,0.007874118127310044,0.02763132514092352,0.3880597014925373,sample_limited,research_only_not_online
+159870,化工ETF,周期、资源、商品,commodity_resource,rank_score_decline_3d,36,-0.0004546616837507764,-0.0005235385421842542,0.02628707855544605,0.4,hypothesis_only,need_more_data
+159870,化工ETF,周期、资源、商品,commodity_resource,rank_score_below_70_proxy,161,0.00994928268814748,0.016038725826514756,0.0297810682896108,0.2781456953642384,sample_limited,research_only_not_online
+159870,化工ETF,周期、资源、商品,commodity_resource,rank_drop_top3_to_out_top10_proxy,5,0.013687087135374499,0.02055627826115518,0.01796414100538781,0.4,hypothesis_only,need_more_data
+159870,化工ETF,周期、资源、商品,commodity_resource,short_swing_buy_to_watch_proxy,20,0.0011584288461371993,0.011053586803539022,0.01029887545101455,0.5,hypothesis_only,need_more_data
+159870,化工ETF,周期、资源、商品,commodity_resource,short_swing_buy_to_sell_proxy,1,-0.021186440677966156,-0.0014124293785310327,0.08757062146892669,1.0,hypothesis_only,need_more_data
+159870,化工ETF,周期、资源、商品,commodity_resource,volume_and_rank_decay_proxy,13,0.012623394352128704,0.028602676797357625,0.043803137028410516,0.15384615384615385,hypothesis_only,need_more_data
+159870,化工ETF,周期、资源、商品,commodity_resource,type_stop_loss_proxy_5%-8%,83,0.005388409240122866,0.01846945724559068,0.06726626104289114,0.2328767123287671,sample_limited,research_only_type_stop; do_not_online_without_backtest
+513330,恒生互联网ETF,跨境与港股,qdii,rank_score_decline_2d,67,0.0026223835575736906,0.002199094366360764,0.001494774455962344,0.5,sample_limited,research_only_not_online
+513330,恒生互联网ETF,跨境与港股,qdii,rank_score_decline_3d,29,0.008732111836638549,0.008895679617553852,0.004948072498446315,0.5,hypothesis_only,need_more_data
+513330,恒生互联网ETF,跨境与港股,qdii,rank_score_below_70_proxy,194,0.0014548588769472993,0.0007667708375419002,-0.0037496696771621056,0.4972972972972973,sample_limited,research_only_not_online
+513330,恒生互联网ETF,跨境与港股,qdii,rank_drop_top3_to_out_top10_proxy,4,-0.016425259712145257,-0.03144455692766521,-0.04835653782216137,0.75,hypothesis_only,need_more_data
+513330,恒生互联网ETF,跨境与港股,qdii,short_swing_buy_to_watch_proxy,21,-0.005627672585956589,-0.02123472469176544,-0.03002573795020663,0.75,hypothesis_only,need_more_data
+513330,恒生互联网ETF,跨境与港股,qdii,short_swing_buy_to_sell_proxy,1,-0.02066115702479343,0.018595041322314154,0.006198347107438051,0.0,hypothesis_only,need_more_data
+513330,恒生互联网ETF,跨境与港股,qdii,volume_and_rank_decay_proxy,5,0.031742082448690756,0.0056733591153260154,0.00796221878063924,0.25,hypothesis_only,need_more_data
+513330,恒生互联网ETF,跨境与港股,qdii,type_stop_loss_proxy_price+premium+fx,118,-0.008025622946035635,-0.015979276987476903,-0.025029412738253362,0.5871559633027523,sample_limited,research_only_type_stop; do_not_online_without_backtest
+513130,恒生科技ETF,跨境与港股,qdii,rank_score_decline_2d,73,0.004166230379016908,0.00692090651550076,0.006260262509478446,0.42028985507246375,sample_limited,research_only_not_online
+513130,恒生科技ETF,跨境与港股,qdii,rank_score_decline_3d,33,0.013393769563641389,0.01748297349056498,0.017156622379782938,0.3870967741935484,hypothesis_only,need_more_data
+513130,恒生科技ETF,跨境与港股,qdii,rank_score_below_70_proxy,186,0.0014114419818945308,-0.0003364716282205249,-0.008049832248043296,0.46111111111111114,sample_limited,candidate_for_simulation_review
+513130,恒生科技ETF,跨境与港股,qdii,rank_drop_top3_to_out_top10_proxy,2,-0.0023980792316926625,-0.013010324129651807,-0.0296057623049219,0.5,hypothesis_only,need_more_data
+513130,恒生科技ETF,跨境与港股,qdii,short_swing_buy_to_watch_proxy,22,-0.008924751243700565,-0.01125410840509023,-0.011368669236280387,0.5714285714285714,hypothesis_only,need_more_data
+513130,恒生科技ETF,跨境与港股,qdii,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+513130,恒生科技ETF,跨境与港股,qdii,volume_and_rank_decay_proxy,7,-0.002164308621295752,0.020834906203539137,0.024248735940085742,0.2,hypothesis_only,need_more_data
+513130,恒生科技ETF,跨境与港股,qdii,type_stop_loss_proxy_price+premium+fx,102,-0.0046776139139935065,-0.010141558165281412,-0.012721961209325472,0.55,sample_limited,research_only_type_stop; do_not_online_without_backtest
+513150,港股科技ETF,跨境与港股,qdii,rank_score_decline_2d,75,0.0027741652083484694,0.004580308480684703,0.006744589517725891,0.4647887323943662,sample_limited,research_only_not_online
+513150,港股科技ETF,跨境与港股,qdii,rank_score_decline_3d,31,0.009782343847903066,0.013239953655266205,0.021492932199448207,0.4482758620689655,hypothesis_only,need_more_data
+513150,港股科技ETF,跨境与港股,qdii,rank_score_below_70_proxy,185,0.00251861240794992,0.0027776882838941017,-0.000988998878240983,0.4745762711864407,sample_limited,research_only_not_online
+513150,港股科技ETF,跨境与港股,qdii,rank_drop_top3_to_out_top10_proxy,0,,,,,hypothesis_only,need_more_data
+513150,港股科技ETF,跨境与港股,qdii,short_swing_buy_to_watch_proxy,20,-0.007411268907712348,-0.012730068864366516,-0.01385392172311221,0.75,hypothesis_only,need_more_data
+513150,港股科技ETF,跨境与港股,qdii,short_swing_buy_to_sell_proxy,2,-0.04509878515813237,-0.09288087448324839,-0.10282342945547684,1.0,hypothesis_only,need_more_data
+513150,港股科技ETF,跨境与港股,qdii,volume_and_rank_decay_proxy,6,0.011716386254759922,0.029822336465828547,0.042561216264181266,0.16666666666666666,hypothesis_only,need_more_data
+513150,港股科技ETF,跨境与港股,qdii,type_stop_loss_proxy_price+premium+fx,104,-0.00590088456467593,-0.008699711654552156,-0.009339225896456032,0.594059405940594,sample_limited,research_only_type_stop; do_not_online_without_backtest
+513520,日经ETF,跨境与港股,qdii,rank_score_decline_2d,73,0.008428342784462757,0.02229040395629245,0.039901170349220125,0.37681159420289856,sample_limited,research_only_not_online
+513520,日经ETF,跨境与港股,qdii,rank_score_decline_3d,37,0.009625262821846177,0.023190893864783794,0.0316148927439315,0.42857142857142855,hypothesis_only,need_more_data
+513520,日经ETF,跨境与港股,qdii,rank_score_below_70_proxy,154,0.013635334157162253,0.027608386539657814,0.04567352032573798,0.25,sample_limited,research_only_not_online
+513520,日经ETF,跨境与港股,qdii,rank_drop_top3_to_out_top10_proxy,2,0.00940842464067887,0.06777957151080072,0.05348400167686307,0.0,hypothesis_only,need_more_data
+513520,日经ETF,跨境与港股,qdii,short_swing_buy_to_watch_proxy,22,0.010614137388404696,0.028176968628184793,0.045263729857001375,0.23809523809523808,hypothesis_only,need_more_data
+513520,日经ETF,跨境与港股,qdii,short_swing_buy_to_sell_proxy,1,0.013471502590673534,-0.06528497409326417,-0.059585492227979264,1.0,hypothesis_only,need_more_data
+513520,日经ETF,跨境与港股,qdii,volume_and_rank_decay_proxy,14,-0.00034243823531495055,0.012837660384545369,0.04590483109142221,0.5,hypothesis_only,need_more_data
+513520,日经ETF,跨境与港股,qdii,type_stop_loss_proxy_price+premium+fx,41,0.010861481242102854,0.016378676851798273,0.039645760268676986,0.475,sample_limited,research_only_type_stop; do_not_online_without_backtest
+513880,日经225ETF,跨境与港股,qdii,rank_score_decline_2d,75,0.007738894390580528,0.021868847069810345,0.028085451364226757,0.38571428571428573,sample_limited,research_only_not_online
+513880,日经225ETF,跨境与港股,qdii,rank_score_decline_3d,39,0.009112203300848054,0.021450590265286992,0.022284496231474646,0.4166666666666667,hypothesis_only,need_more_data
+513880,日经225ETF,跨境与港股,qdii,rank_score_below_70_proxy,156,0.01451478833404204,0.027423174626004077,0.04286247909095647,0.24675324675324675,sample_limited,research_only_not_online
+513880,日经225ETF,跨境与港股,qdii,rank_drop_top3_to_out_top10_proxy,0,,,,,hypothesis_only,need_more_data
+513880,日经225ETF,跨境与港股,qdii,short_swing_buy_to_watch_proxy,21,0.0067753836262371085,0.023379933298210993,0.048538725401055416,0.25,hypothesis_only,need_more_data
+513880,日经225ETF,跨境与港股,qdii,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+513880,日经225ETF,跨境与港股,qdii,volume_and_rank_decay_proxy,11,-0.014437276559658853,-0.0017481328592334653,0.013097476993036367,0.45454545454545453,hypothesis_only,need_more_data
+513880,日经225ETF,跨境与港股,qdii,type_stop_loss_proxy_price+premium+fx,47,0.005210169989059806,0.010198715456373216,0.029123530094852867,0.5217391304347826,sample_limited,research_only_type_stop; do_not_online_without_backtest
+513030,德国ETF,跨境与港股,qdii,rank_score_decline_2d,75,-0.0008554349688964871,0.0031380521109486835,0.008657864933847478,0.4507042253521127,sample_limited,research_only_not_online
+513030,德国ETF,跨境与港股,qdii,rank_score_decline_3d,36,0.002833043483109669,0.007569594464312396,0.010787807325820268,0.4117647058823529,hypothesis_only,need_more_data
+513030,德国ETF,跨境与港股,qdii,rank_score_below_70_proxy,191,0.0038438512098208305,0.006610609652777287,0.009457719909230491,0.42857142857142855,sample_limited,research_only_not_online
+513030,德国ETF,跨境与港股,qdii,rank_drop_top3_to_out_top10_proxy,2,-0.045892939259223886,-0.04021001976395794,-0.06127892759638548,0.5,hypothesis_only,need_more_data
+513030,德国ETF,跨境与港股,qdii,short_swing_buy_to_watch_proxy,12,0.000690402725218577,-0.004667113396388781,0.0013715721011887672,0.36363636363636365,hypothesis_only,need_more_data
+513030,德国ETF,跨境与港股,qdii,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+513030,德国ETF,跨境与港股,qdii,volume_and_rank_decay_proxy,17,0.0031101993565427546,0.008048256580744546,3.19754712356346e-05,0.4375,hypothesis_only,need_more_data
+513030,德国ETF,跨境与港股,qdii,type_stop_loss_proxy_price+premium+fx,41,0.003144477717284934,0.01832745675537663,0.04813380703145165,0.4146341463414634,sample_limited,research_only_type_stop; do_not_online_without_backtest
+511090,30年国债ETF,债券货币,bond_cash,rank_score_decline_2d,86,-0.001261309634059477,-0.0011313020138806183,-0.003517923075651186,0.5238095238095238,sample_limited,candidate_for_simulation_review
+511090,30年国债ETF,债券货币,bond_cash,rank_score_decline_3d,48,-0.0029301737454158513,-0.0014186172635764908,-0.0054153641885071905,0.5531914893617021,sample_limited,candidate_for_simulation_review
+511090,30年国债ETF,债券货币,bond_cash,rank_score_below_70_proxy,187,-0.0009743778498822178,-0.0017412813194281592,-0.001934572568127592,0.4946236559139785,sample_limited,candidate_for_simulation_review
+511090,30年国债ETF,债券货币,bond_cash,rank_drop_top3_to_out_top10_proxy,1,-0.003951532243519296,0.009452524225679992,-0.0004099099837675535,0.0,hypothesis_only,need_more_data
+511090,30年国债ETF,债券货币,bond_cash,short_swing_buy_to_watch_proxy,1,-0.005024715728339069,-0.008956392645643296,-0.006794786041731227,1.0,hypothesis_only,need_more_data
+511090,30年国债ETF,债券货币,bond_cash,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+511090,30年国债ETF,债券货币,bond_cash,volume_and_rank_decay_proxy,15,-0.0057048974659134576,-0.004714969842774256,-0.004523059020723386,0.6666666666666666,hypothesis_only,need_more_data
+511090,30年国债ETF,债券货币,bond_cash,type_stop_loss_proxy_low_vol_or_none,55,0.002994757445390627,0.0021007387398248286,-0.00016980427093551408,0.43636363636363634,sample_limited,research_only_type_stop; do_not_online_without_backtest
+511520,政金债ETF,债券货币,bond_cash,rank_score_decline_2d,86,-5.888797738784615e-05,0.00043115863479002735,0.0006915419719094047,0.43902439024390244,sample_limited,research_only_not_online
+511520,政金债ETF,债券货币,bond_cash,rank_score_decline_3d,53,-0.00046917050705936437,3.4554384806926295e-05,-0.00015021815648907694,0.46,sample_limited,research_only_not_online
+511520,政金债ETF,债券货币,bond_cash,rank_score_below_70_proxy,181,0.0002982780197642037,0.0006356412846307221,0.001469454769799786,0.4022346368715084,sample_limited,research_only_not_online
+511520,政金债ETF,债券货币,bond_cash,rank_drop_top3_to_out_top10_proxy,1,0.002001009055848657,-8.551320751504221e-06,0.004429584149271859,1.0,hypothesis_only,need_more_data
+511520,政金债ETF,债券货币,bond_cash,short_swing_buy_to_watch_proxy,0,,,,,hypothesis_only,need_more_data
+511520,政金债ETF,债券货币,bond_cash,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+511520,政金债ETF,债券货币,bond_cash,volume_and_rank_decay_proxy,23,-0.0012676137479289418,-0.0005105819493103726,-0.0009123470502212364,0.5454545454545454,hypothesis_only,need_more_data
+511520,政金债ETF,债券货币,bond_cash,type_stop_loss_proxy_low_vol_or_none,0,,,,,hypothesis_only,research_only_type_stop; do_not_online_without_backtest
+511380,可转债ETF,债券货币,bond_cash,rank_score_decline_2d,77,0.0032759554272746615,0.004720155650511935,0.012633141582520865,0.4166666666666667,sample_limited,research_only_not_online
+511380,可转债ETF,债券货币,bond_cash,rank_score_decline_3d,32,0.0035756286301053836,0.0007733403291604784,0.009316816178082662,0.4827586206896552,hypothesis_only,need_more_data
+511380,可转债ETF,债券货币,bond_cash,rank_score_below_70_proxy,172,0.003327217453865879,0.005947918020995573,0.013974472291141724,0.36419753086419754,sample_limited,research_only_not_online
+511380,可转债ETF,债券货币,bond_cash,rank_drop_top3_to_out_top10_proxy,2,-0.008355839304854895,0.005682929083435373,0.03249593277515883,0.5,hypothesis_only,need_more_data
+511380,可转债ETF,债券货币,bond_cash,short_swing_buy_to_watch_proxy,5,-0.0020238420711667037,0.0008009567711666721,-0.0037556822194716897,0.4,hypothesis_only,need_more_data
+511380,可转债ETF,债券货币,bond_cash,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+511380,可转债ETF,债券货币,bond_cash,volume_and_rank_decay_proxy,5,0.005068218004473962,0.0052986653252896365,0.021129747402058974,0.25,hypothesis_only,need_more_data
+511380,可转债ETF,债券货币,bond_cash,type_stop_loss_proxy_low_vol_or_none,104,0.0005218154343037833,0.0033689858853676933,0.015848918820293423,0.40425531914893614,sample_limited,research_only_type_stop; do_not_online_without_backtest
+511030,公司债ETF,债券货币,bond_cash,rank_score_decline_2d,67,0.0005556940246858667,0.0010418854359991528,0.0018931819213114137,0.23076923076923078,sample_limited,research_only_not_online
+511030,公司债ETF,债券货币,bond_cash,rank_score_decline_3d,30,0.0005709046810526678,0.0009940204143622665,0.0019279739504065125,0.20689655172413793,hypothesis_only,need_more_data
+511030,公司债ETF,债券货币,bond_cash,rank_score_below_70_proxy,172,0.0004738295253407514,0.0009656889029070594,0.0017326206682538494,0.2222222222222222,sample_limited,research_only_not_online
+511030,公司债ETF,债券货币,bond_cash,rank_drop_top3_to_out_top10_proxy,0,,,,,hypothesis_only,need_more_data
+511030,公司债ETF,债券货币,bond_cash,short_swing_buy_to_watch_proxy,0,,,,,hypothesis_only,need_more_data
+511030,公司债ETF,债券货币,bond_cash,short_swing_buy_to_sell_proxy,0,,,,,hypothesis_only,need_more_data
+511030,公司债ETF,债券货币,bond_cash,volume_and_rank_decay_proxy,9,0.0006203026726962552,0.001095461186487327,0.001898163285286309,0.2222222222222222,hypothesis_only,need_more_data
+511030,公司债ETF,债券货币,bond_cash,type_stop_loss_proxy_low_vol_or_none,0,,,,,hypothesis_only,research_only_type_stop; do_not_online_without_backtest

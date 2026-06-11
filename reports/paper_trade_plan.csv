@@ -1,0 +1,7 @@
+date,symbol,name,action,plan_status,price,quantity,amount,reason,source
+2026-06-10,515220,煤炭ETF,SELL,skipped_no_sell_signal,1.305,1100,0.0,sell rules not triggered,paper_trade_engine
+2026-06-10,512800,银行ETF,SELL,skipped_no_sell_signal,0.806,1100,0.0,sell rules not triggered,paper_trade_engine
+2026-06-10,515880,证券公司ETF,SELL,skipped_no_sell_signal,1.63,300,0.0,sell rules not triggered,paper_trade_engine
+2026-06-10,512800,银行ETF,BUY,skipped_rule_blocked,0.806,0,0.0,already held,paper_trade_engine
+2026-06-10,515220,煤炭ETF,BUY,skipped_rule_blocked,1.305,0,0.0,already held,paper_trade_engine
+2026-06-10,515880,证券公司ETF,BUY,skipped_rule_blocked,1.63,0,0.0,already held; data_health caution amount * 0.5,paper_trade_engine

@@ -4,17 +4,24 @@ from __future__ import annotations
 
 import argparse
 from datetime import date
+from pathlib import Path
+import sys
 
 import pandas as pd
 
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
 from config import BENCHMARK_CODE, DATA_DIR, REPORT_DIR, TRADES_FILE, WATCHLIST_FILE
+from buy_ranking import build_paper_buy_allocations, write_buy_ranking_report, write_first_paper_buy_plan
 from data_coverage import write_data_coverage_report
 from data_fetcher import fetch_watchlist_data
 from data_health import write_data_health_report
 from data_loader import load_price_data, read_trades_with_validation, read_watchlist
 from factor_analysis import write_factor_analysis_report
 from indicators import add_indicators, latest_on_or_before
-from paper_portfolio import update_paper_portfolio
+from paper_portfolio import apply_paper_buy_plan, update_paper_portfolio
 from portfolio import SimAccount
 from reporting import (
     build_cycle_decisions,
@@ -125,6 +132,31 @@ def main() -> None:
     model_dataset_path = save_model_dataset(run_date, watchlist, latest_rows, mid_signals, price_history, short_signals, cycle_rows)
     factor_analysis_path = write_factor_analysis_report(model_dataset_path)
     ranking_path = write_ranking_report(run_date, watchlist, latest_rows, mid_signals, short_signals, cycle_rows)
+    buy_ranking_path, buy_ranking_rows = write_buy_ranking_report(
+        run_date,
+        watchlist,
+        latest_rows,
+        price_history,
+        mid_signals,
+        short_signals,
+        cycle_rows,
+        health_summary,
+    )
+    _, _, paper_buy_allocations = build_paper_buy_allocations(
+        buy_ranking_rows,
+        paper_summary,
+        latest_rows.get(BENCHMARK_CODE),
+    )
+    paper_execution = apply_paper_buy_plan(run_date, paper_buy_allocations, latest_prices, watchlist)
+    paper_path, paper_summary = update_paper_portfolio(run_date, latest_prices, watchlist)
+    first_buy_plan_path = write_first_paper_buy_plan(
+        run_date,
+        buy_ranking_rows,
+        paper_summary,
+        latest_rows.get(BENCHMARK_CODE),
+        paper_execution,
+        paper_buy_allocations,
+    )
     short_swing_path = write_short_swing_report(run_date, short_signals, cycle_rows)
     brief_path = write_brief_report(run_date, mid_signals, short_signals, cycle_rows, missing_data, model_dataset_path, coverage_summary, health_summary, paper_summary)
     account_history = save_account_status(run_date, account, latest_prices)
@@ -138,6 +170,8 @@ def main() -> None:
     print(f"已生成每日信号报告：{daily_path}")
     print(f"已生成每日最简摘要：{brief_path}")
     print(f"已生成ETF横截面排名报告：{ranking_path}")
+    print(f"已生成BUY ETF排名报告：{buy_ranking_path}")
+    print(f"已生成第一次模拟买入计划：{first_buy_plan_path}")
     print(f"已生成因子有效性报告：{factor_analysis_path}")
     print(f"已生成短期策略报告：{short_swing_path}")
     print("已生成数据覆盖报告：reports/latest_data_coverage.md")
@@ -147,6 +181,9 @@ def main() -> None:
     print(f"已更新模型研究数据集：{model_dataset_path}")
     if weekly_path:
         print(f"已生成周复盘报告：{weekly_path}")
+    dashboard_path = _try_build_dashboard()
+    if dashboard_path:
+        print(f"已生成静态网页看板：{dashboard_path}")
     print("所有交易均为模拟盘记录，不含任何真实下单接口。")
 
 
@@ -189,6 +226,18 @@ def _fetch_date_range(start_date: str | None, end_date: str | None) -> tuple[str
     end = pd.to_datetime(end_date).strftime("%Y-%m-%d") if end_date else date.today().strftime("%Y-%m-%d")
     start = pd.to_datetime(start_date).strftime("%Y-%m-%d") if start_date else (pd.to_datetime(end) - pd.Timedelta(days=365)).strftime("%Y-%m-%d")
     return start, end
+
+
+def _try_build_dashboard() -> Path | None:
+    """主报告生成后同步刷新只读静态看板；失败不阻断交易学习报告。"""
+    try:
+        from dashboard.build_dashboard import HTML_FILE, main as build_dashboard
+
+        build_dashboard()
+        return HTML_FILE
+    except Exception as exc:
+        print(f"静态网页看板生成失败：{exc}")
+        return None
 
 
 if __name__ == "__main__":

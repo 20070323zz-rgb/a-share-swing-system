@@ -1,0 +1,156 @@
+original_code,original_name,resolved_jq_code,resolved_display_name,resolved_name,exchange,start_date,match_keyword,match_score,source,pool,group,strategy,priority,status,reason
+159338,国泰中证A500ETF,159338.XSHE,中证A500ETF国泰,ZZA500ETF,XSHE,2024-10-15,159338,100,jqdata_get_all_securities,trade_pool,新宽基与新风格,mid_trend,S,resolved,resolved by direct code
+159352,南方中证A500ETF,159352.XSHE,A500ETF南方,ZZA500ETFNF,XSHE,2024-10-15,159352,100,jqdata_get_all_securities,trade_pool,新宽基与新风格,mid_trend,S,resolved,resolved by direct code
+563360,华泰柏瑞中证A500ETF,563360.XSHG,,,XSHG,,563360,100,direct_six_digit_candidate,trade_pool,新宽基与新风格,mid_trend,S,resolved,resolved by direct code
+563800,广发中证A500ETF,563800.XSHG,,,XSHG,,563800,100,direct_six_digit_candidate,trade_pool,新宽基与新风格,mid_trend,A,resolved,resolved by direct code
+512050,华夏中证A500ETF,512050.XSHG,,,XSHG,,512050,100,direct_six_digit_candidate,trade_pool,新宽基与新风格,mid_trend,A,resolved,resolved by direct code
+560510,泰康中证A500ETF,560510.XSHG,中证A500ETF,ZZA500ETF,XSHG,2024-10-15,560510,100,jqdata_get_all_securities,observe_pool,新宽基与新风格,observe,A,resolved,resolved by direct code
+588220,科创100ETF基金,588220.XSHG,,,XSHG,,588220,100,direct_six_digit_candidate,trade_pool,新宽基与新风格,both,S,resolved,resolved by direct code
+588030,博时科创100ETF,588030.XSHG,,,XSHG,,588030,100,direct_six_digit_candidate,trade_pool,新宽基与新风格,both,A,resolved,resolved by direct code
+588190,银华科创100ETF,588190.XSHG,,,XSHG,,588190,100,direct_six_digit_candidate,observe_pool,新宽基与新风格,observe,A,resolved,resolved by direct code
+588120,国泰科创100ETF,588120.XSHG,科100ETF,K100ETF,XSHG,2023-09-15,588120,100,jqdata_get_all_securities,observe_pool,新宽基与新风格,observe,A,resolved,resolved by direct code
+588800,华夏科创100ETF,588800.XSHG,,,XSHG,,588800,100,direct_six_digit_candidate,observe_pool,新宽基与新风格,observe,B,resolved,resolved by direct code
+159593,中证A50ETF,159593.XSHE,中证A50ETF平安,ZZA50ZSETF,XSHE,2024-03-12,159593,100,jqdata_get_all_securities,trade_pool,新宽基与新风格,mid_trend,A,resolved,resolved by direct code
+PENDING_A50_01,中证A50ETF备选,159593.XSHE,中证A50ETF平安,ZZA50ZSETF,XSHE,2024-03-12,中证A50/A50,38,jqdata_get_all_securities,research_only,新宽基与新风格,observe,B,duplicate,another expansion candidate already resolved to this JQData ETF
+PENDING_A50_01,中证A50ETF备选,159595.XSHE,中证A50ETF大成,ZZA50ETFJJ,XSHE,2024-03-18,中证A50/A50,38,jqdata_get_all_securities,research_only,新宽基与新风格,observe,B,resolved,resolved by keyword match
+PENDING_A50_01,中证A50ETF备选,159390.XSHE,中证A50ETF国联,A50ZSETF,XSHE,2025-04-09,中证A50/A50,38,jqdata_get_all_securities,research_only,新宽基与新风格,observe,B,resolved,resolved by keyword match
+PENDING_CSI2000_01,中证2000ETF主流产品,159531.XSHE,中证2000ETF南方,ZZ2000ETF,XSHE,2023-09-18,中证2000/2000,40,jqdata_get_all_securities,observe_pool,新宽基与新风格,observe,A,resolved,resolved by keyword match
+PENDING_CSI2000_01,中证2000ETF主流产品,159532.XSHE,中证2000ETF易方达,ZZ2000ZSETF,XSHE,2023-09-21,中证2000/2000,40,jqdata_get_all_securities,observe_pool,新宽基与新风格,observe,A,resolved,resolved by keyword match
+PENDING_CSI2000_01,中证2000ETF主流产品,159536.XSHE,中证2000ETF汇添富,ZZ2000ETFTF,XSHE,2023-09-21,中证2000/2000,40,jqdata_get_all_securities,observe_pool,新宽基与新风格,observe,A,resolved,resolved by keyword match
+PENDING_KC200_01,科创200ETF主流产品,,,,,,,0,,research_only,新宽基与新风格,observe,B,unresolved,no confident keyword match in JQData ETF candidate list
+PENDING_BJ50_01,北证50ETF主流产品,,,,,,,0,,research_only,新宽基与新风格,observe,B,unresolved,no confident keyword match in JQData ETF candidate list
+562500,机器人ETF华夏,562500.XSHG,,,XSHG,,562500,100,direct_six_digit_candidate,trade_pool,科技与新质生产力,short_swing,S,resolved,resolved by direct code
+159770,机器人ETF,159770.XSHE,机器人ETF天弘,JQRETF,XSHE,2021-11-08,159770,100,jqdata_get_all_securities,observe_pool,科技与新质生产力,observe,A,resolved,resolved by direct code
+PENDING_ROBOT_50_01,机器人50ETF主流产品,159770.XSHE,机器人ETF天弘,JQRETF,XSHE,2021-11-08,机器人,19,jqdata_get_all_securities,observe_pool,科技与新质生产力,observe,A,duplicate,another expansion candidate already resolved to this JQData ETF
+PENDING_ROBOT_50_01,机器人50ETF主流产品,159551.XSHE,机器人ETF国泰,JQRCYETF,XSHE,2023-11-16,机器人,19,jqdata_get_all_securities,observe_pool,科技与新质生产力,observe,A,resolved,resolved by keyword match
+PENDING_ROBOT_50_01,机器人50ETF主流产品,159559.XSHE,机器人ETF景顺,JQRETFJJ,XSHE,2023-12-12,机器人,19,jqdata_get_all_securities,observe_pool,科技与新质生产力,observe,A,resolved,resolved by keyword match
+PENDING_SEMI_EQUIP_01,半导体设备ETF主流产品,159516.XSHE,半导体设备ETF国泰,BDTSBCLETF,XSHE,2023-07-27,半导体设备/设备,37,jqdata_get_all_securities,trade_pool,科技与新质生产力,short_swing,A,resolved,resolved by keyword match
+PENDING_SEMI_EQUIP_01,半导体设备ETF主流产品,159558.XSHE,半导体设备ETF易方达,BDTCLSBETF,XSHE,2024-06-18,半导体设备/设备,37,jqdata_get_all_securities,trade_pool,科技与新质生产力,short_swing,A,resolved,resolved by keyword match
+PENDING_SEMI_EQUIP_01,半导体设备ETF主流产品,159327.XSHE,半导体设备ETF万家,BDTSBETFJJ,XSHE,2024-08-05,半导体设备/设备,37,jqdata_get_all_securities,trade_pool,科技与新质生产力,short_swing,A,resolved,resolved by keyword match
+PENDING_AI_KCB_01,科创人工智能ETF主流产品,589520.XSHG,科创人工智能ETF华宝,AIKCB,XSHG,2025-03-13,科创人工智能/人工智能/AI,52,jqdata_get_all_securities,observe_pool,科技与新质生产力,observe,A,resolved,resolved by keyword match
+PENDING_AI_KCB_01,科创人工智能ETF主流产品,159819.XSHE,人工智能ETF易方达,AIZN,XSHE,2020-09-23,人工智能/AI,32,jqdata_get_all_securities,observe_pool,科技与新质生产力,observe,A,existing,resolved code is already in current watchlist
+PENDING_AI_KCB_01,科创人工智能ETF主流产品,159363.XSHE,创业板人工智能ETF华宝,CYBRGZNETFHB,XSHE,2024-12-16,人工智能,20,jqdata_get_all_securities,observe_pool,科技与新质生产力,observe,A,resolved,resolved by keyword match
+PENDING_COMPUTE_01,算力ETF主流产品,,,,,,,0,,trade_pool,科技与新质生产力,short_swing,A,unresolved,no confident keyword match in JQData ETF candidate list
+PENDING_DATA_CENTER_01,数据中心ETF主流产品,,,,,,,0,,observe_pool,科技与新质生产力,observe,A,unresolved,no confident keyword match in JQData ETF candidate list
+PENDING_TELECOM_EQUIP_01,通信设备ETF主流产品,,,,,,,0,,trade_pool,科技与新质生产力,short_swing,A,unresolved,no confident keyword match in JQData ETF candidate list
+PENDING_XINCHUANG_01,信创ETF主流产品,159538.XSHE,信创ETF富国,XCZSETF,XSHE,2023-09-22,信创,18,jqdata_get_all_securities,observe_pool,科技与新质生产力,observe,B,resolved,resolved by keyword match
+PENDING_XINCHUANG_01,信创ETF主流产品,159539.XSHE,信创ETF广发,XC50ETF,XSHE,2023-09-28,信创,18,jqdata_get_all_securities,observe_pool,科技与新质生产力,observe,B,resolved,resolved by keyword match
+PENDING_XINCHUANG_01,信创ETF主流产品,159540.XSHE,信创ETF易方达,XCETFZS,XSHE,2023-09-28,信创,18,jqdata_get_all_securities,observe_pool,科技与新质生产力,observe,B,resolved,resolved by keyword match
+PENDING_INFOSAFE_01,信息安全ETF主流产品,159613.XSHE,信息安全ETF嘉实,XXAQETF,XSHE,2022-01-27,信息安全,20,jqdata_get_all_securities,observe_pool,科技与新质生产力,observe,B,resolved,resolved by keyword match
+PENDING_INFOSAFE_01,信息安全ETF主流产品,562920.XSHG,信息安全,XXAQETF,XSHG,2023-06-12,信息安全,18,jqdata_get_all_securities,observe_pool,科技与新质生产力,observe,B,resolved,resolved by keyword match
+PENDING_MACHINE_TOOL_01,工业母机ETF主流产品,159667.XSHE,工业母机ETF国泰,GYMJETF,XSHE,2022-10-26,工业母机,20,jqdata_get_all_securities,observe_pool,科技与新质生产力,observe,A,resolved,resolved by keyword match
+PENDING_MACHINE_TOOL_01,工业母机ETF主流产品,159663.XSHE,机床ETF华夏,JCETF,XSHE,2022-10-26,机床,18,jqdata_get_all_securities,observe_pool,科技与新质生产力,observe,A,resolved,resolved by keyword match
+PENDING_HIGH_END_EQUIP_01,高端装备ETF主流产品,159638.XSHE,高端装备ETF嘉实,GDZBETF,XSHE,2022-08-12,高端装备/装备,36,jqdata_get_all_securities,observe_pool,科技与新质生产力,observe,A,resolved,resolved by keyword match
+PENDING_LOW_ALTITUDE_01,低空经济ETF主流产品,,,,,,,0,,research_only,科技与新质生产力,observe,B,unresolved,no confident keyword match in JQData ETF candidate list
+PENDING_SPACE_01,商业航天ETF主流产品,,,,,,,0,,research_only,科技与新质生产力,observe,B,unresolved,no confident keyword match in JQData ETF candidate list
+515120,广发创新药ETF,515120.XSHG,,,XSHG,,515120,100,direct_six_digit_candidate,trade_pool,医药与消费升级,both,S,resolved,resolved by direct code
+516080,易方达创新药ETF,516080.XSHG,,,XSHG,,516080,100,direct_six_digit_candidate,trade_pool,医药与消费升级,both,A,resolved,resolved by direct code
+159992,银华创新药ETF,159992.XSHE,创新药ETF银华,CXY,XSHE,2020-04-10,159992,100,jqdata_get_all_securities,trade_pool,医药与消费升级,both,A,resolved,resolved by direct code
+159858,南方创新药ETF,159858.XSHE,创新药ETF南方,CXYZ,XSHE,2021-03-25,159858,100,jqdata_get_all_securities,observe_pool,医药与消费升级,observe,B,resolved,resolved by direct code
+159835,建信创新药ETF,159835.XSHE,创新药ETF建信,CXYY,XSHE,2021-03-29,159835,100,jqdata_get_all_securities,observe_pool,医药与消费升级,observe,B,resolved,resolved by direct code
+513120,港股创新药ETF,513120.XSHG,,,XSHG,,513120,100,direct_six_digit_candidate,observe_pool,医药与消费升级,observe,A,resolved,resolved by direct code
+PENDING_HK_BIOTECH_01,恒生生物科技ETF主流产品,159615.XSHE,恒生生物科技ETF南方,SWKJETFGG,XSHE,2022-06-28,恒生生物科技/生物科技,40,jqdata_get_all_securities,observe_pool,医药与消费升级,observe,A,resolved,resolved by keyword match
+PENDING_HK_BIOTECH_01,恒生生物科技ETF主流产品,159105.XSHE,恒生生物科技ETF易方达,HSSWKJETFYFD,XSHE,2025-11-03,恒生生物科技/生物科技,40,jqdata_get_all_securities,observe_pool,医药与消费升级,observe,A,resolved,resolved by keyword match
+PENDING_HK_BIOTECH_01,恒生生物科技ETF主流产品,159130.XSHE,恒生生物科技ETF鹏华,HSSWKJETFPH,XSHE,2025-11-27,恒生生物科技/生物科技,40,jqdata_get_all_securities,observe_pool,医药与消费升级,observe,A,resolved,resolved by keyword match
+PENDING_MED_DEVICE_01,医疗器械ETF主流产品,159883.XSHE,医疗器械ETF永赢,YLQX,XSHE,2021-04-30,医疗器械/器械,36,jqdata_get_all_securities,trade_pool,医药与消费升级,both,A,resolved,resolved by keyword match
+PENDING_MED_DEVICE_01,医疗器械ETF主流产品,159898.XSHE,医疗器械ETF招商,QXETF,XSHE,2021-06-04,医疗器械/器械,36,jqdata_get_all_securities,trade_pool,医药与消费升级,both,A,resolved,resolved by keyword match
+PENDING_MED_DEVICE_01,医疗器械ETF主流产品,159797.XSHE,医疗器械ETF汇添富,YLQXETFJJ,XSHE,2022-05-16,医疗器械/器械,36,jqdata_get_all_securities,trade_pool,医药与消费升级,both,A,resolved,resolved by keyword match
+159209,红利质量ETF,159209.XSHE,红利质量ETF招商,ZZHLZLETF,XSHE,2025-03-25,159209,100,jqdata_get_all_securities,trade_pool,防御、红利、质量,mid_trend,S,resolved,resolved by direct code
+159119,800现金流ETF,159119.XSHE,800现金流ETF招商,800XJLETF,XSHE,2025-11-13,159119,100,jqdata_get_all_securities,trade_pool,防御、红利、质量,mid_trend,S,resolved,resolved by direct code
+562080,300现金流ETF,562080.XSHG,300现金流ETF,300XJLETF,XSHG,2025-04-15,562080,100,jqdata_get_all_securities,trade_pool,防御、红利、质量,mid_trend,A,resolved,resolved by direct code
+520550,港股红利低波ETF,520550.XSHG,,,XSHG,,520550,100,direct_six_digit_candidate,observe_pool,防御、红利、质量,observe,A,resolved,resolved by direct code
+PENDING_CENTRAL_DIV_01,央企红利ETF主流产品,159332.XSHE,央企红利ETF富国,YQHLETF,XSHE,2024-08-01,央企红利/央企/红利,52,jqdata_get_all_securities,trade_pool,防御、红利、质量,mid_trend,A,resolved,resolved by keyword match
+PENDING_CENTRAL_DIV_01,央企红利ETF主流产品,159333.XSHE,港股央企红利ETF万家,GGYQHLETF,XSHE,2024-09-03,央企红利/央企/红利,52,jqdata_get_all_securities,trade_pool,防御、红利、质量,mid_trend,A,resolved,resolved by keyword match
+PENDING_CENTRAL_DIV_01,央企红利ETF主流产品,159336.XSHE,央企红利ETF融通,YQHL50ETF,XSHE,2025-02-12,央企红利/央企/红利,52,jqdata_get_all_securities,trade_pool,防御、红利、质量,mid_trend,A,resolved,resolved by keyword match
+PENDING_QUALITY_LOWVOL_01,质量低波ETF主流产品,159549.XSHE,红利低波ETF天弘,HLDBDETF,XSHE,2023-12-11,低波,18,jqdata_get_all_securities,trade_pool,防御、红利、质量,mid_trend,A,resolved,resolved by keyword match
+PENDING_QUALITY_LOWVOL_01,质量低波ETF主流产品,159547.XSHE,红利低波ETF华夏,HLDB50ETF,XSHE,2024-02-06,低波,18,jqdata_get_all_securities,trade_pool,防御、红利、质量,mid_trend,A,resolved,resolved by keyword match
+PENDING_QUALITY_LOWVOL_01,质量低波ETF主流产品,159545.XSHE,恒生红利低波ETF易方达,HSHLDBETF,XSHE,2024-04-15,低波,18,jqdata_get_all_securities,trade_pool,防御、红利、质量,mid_trend,A,resolved,resolved by keyword match
+PENDING_UTILITY_01,公用事业ETF主流产品,159301.XSHE,公用事业ETF华夏,GYSYETF,XSHE,2024-07-22,公用事业/公用,36,jqdata_get_all_securities,observe_pool,防御、红利、质量,observe,A,resolved,resolved by keyword match
+PENDING_UTILITY_01,公用事业ETF主流产品,159159.XSHE,公用事业ETF国投瑞银,GYSYETFGTRY,XSHE,2026-02-12,公用事业/公用,36,jqdata_get_all_securities,observe_pool,防御、红利、质量,observe,A,resolved,resolved by keyword match
+PENDING_POWER_01,电力ETF主流产品,159611.XSHE,电力ETF广发,DLETF,XSHE,2022-01-07,电力,18,jqdata_get_all_securities,trade_pool,防御、红利、质量,mid_trend,A,resolved,resolved by keyword match
+PENDING_POWER_01,电力ETF主流产品,159625.XSHE,绿色电力ETF嘉实,LSDLETF,XSHE,2022-04-29,电力,18,jqdata_get_all_securities,trade_pool,防御、红利、质量,mid_trend,A,resolved,resolved by keyword match
+PENDING_POWER_01,电力ETF主流产品,561560.XSHG,电力ETF,DLETF,XSHG,2022-05-16,电力,18,jqdata_get_all_securities,trade_pool,防御、红利、质量,mid_trend,A,resolved,resolved by keyword match
+PENDING_A500_DIV_LOWVOL_01,A500红利低波ETF主流产品,159296.XSHE,A500红利低波ETF华宝,A500HLDBETF,XSHE,2025-09-04,A500红利低波/A500/红利低波,60,jqdata_get_all_securities,research_only,防御、红利、质量,observe,B,resolved,resolved by keyword match
+PENDING_A500_DIV_LOWVOL_01,A500红利低波ETF主流产品,159549.XSHE,红利低波ETF天弘,HLDBDETF,XSHE,2023-12-11,红利低波,20,jqdata_get_all_securities,research_only,防御、红利、质量,observe,B,duplicate,another expansion candidate already resolved to this JQData ETF
+PENDING_A500_DIV_LOWVOL_01,A500红利低波ETF主流产品,159547.XSHE,红利低波ETF华夏,HLDB50ETF,XSHE,2024-02-06,红利低波,20,jqdata_get_all_securities,research_only,防御、红利、质量,observe,B,duplicate,another expansion candidate already resolved to this JQData ETF
+PENDING_COPPER_01,铜ETF主流产品,,,,,,,0,,observe_pool,周期、资源、商品,observe,A,unresolved,no confident keyword match in JQData ETF candidate list
+PENDING_INDUSTRIAL_METAL_01,工业金属ETF主流产品,,,,,,,0,,observe_pool,周期、资源、商品,observe,A,unresolved,no confident keyword match in JQData ETF candidate list
+PENDING_OILGAS_01,油气ETF主流产品,159697.XSHE,石油ETF鹏华,YQETF,XSHE,2023-05-04,石油,18,jqdata_get_all_securities,observe_pool,周期、资源、商品,observe,A,resolved,resolved by keyword match
+PENDING_OILGAS_01,油气ETF主流产品,561360.XSHG,石油ETF,SYETF,XSHG,2023-10-31,石油,18,jqdata_get_all_securities,observe_pool,周期、资源、商品,observe,A,resolved,resolved by keyword match
+PENDING_OILGAS_01,油气ETF主流产品,159518.XSHE,标普油气ETF嘉实,BPYQETF,XSHE,2023-11-15,油气,18,jqdata_get_all_securities,observe_pool,周期、资源、商品,observe,A,resolved,resolved by keyword match
+516020,化工ETF,516020.XSHG,化工ETF,HGETF,XSHG,2021-03-08,516020,100,jqdata_get_all_securities,trade_pool,周期、资源、商品,short_swing,A,resolved,resolved by direct code
+159870,化工ETF,159870.XSHE,化工ETF鹏华,HGETF,XSHE,2021-03-03,159870,100,jqdata_get_all_securities,observe_pool,周期、资源、商品,observe,B,resolved,resolved by direct code
+PENDING_GOLD_STOCK_01,黄金股ETF主流产品,159562.XSHE,黄金股ETF华夏,HJGETF,XSHE,2024-01-22,黄金股,19,jqdata_get_all_securities,observe_pool,周期、资源、商品,observe,A,resolved,resolved by keyword match
+PENDING_GOLD_STOCK_01,黄金股ETF主流产品,159321.XSHE,黄金股ETF华安,HJGPETF,XSHE,2024-05-27,黄金股,19,jqdata_get_all_securities,observe_pool,周期、资源、商品,observe,A,resolved,resolved by keyword match
+PENDING_GOLD_STOCK_01,黄金股ETF主流产品,159315.XSHE,黄金股ETF工银,HJGETFJJ,XSHE,2024-06-14,黄金股,19,jqdata_get_all_securities,observe_pool,周期、资源、商品,observe,A,resolved,resolved by keyword match
+PENDING_STEEL_01,钢铁ETF主流产品,515210.XSHG,钢铁ETF,GTETF,XSHG,2020-03-02,钢铁,18,jqdata_get_all_securities,research_only,周期、资源、商品,observe,C,resolved,resolved by keyword match
+PENDING_BUILDING_MATERIAL_01,建材ETF主流产品,159745.XSHE,建材ETF国泰,JCETF,XSHE,2021-06-18,建材,18,jqdata_get_all_securities,research_only,周期、资源、商品,observe,C,resolved,resolved by keyword match
+PENDING_BUILDING_MATERIAL_01,建材ETF主流产品,516750.XSHG,建材ETF,JCETF,XSHG,2021-11-05,建材,18,jqdata_get_all_securities,research_only,周期、资源、商品,observe,C,resolved,resolved by keyword match
+PENDING_BUILDING_MATERIAL_01,建材ETF主流产品,159787.XSHE,建材ETF易方达,JCETFYFD,XSHE,2022-03-15,建材,18,jqdata_get_all_securities,research_only,周期、资源、商品,observe,C,resolved,resolved by keyword match
+PENDING_NEW_MATERIAL_01,新材料ETF主流产品,516360.XSHG,新材料ETF,XCLETF,XSHG,2021-05-13,新材料,19,jqdata_get_all_securities,observe_pool,周期、资源、商品,observe,A,resolved,resolved by keyword match
+PENDING_NEW_MATERIAL_01,新材料ETF主流产品,159703.XSHE,新材料ETF天弘,XCL,XSHE,2021-06-08,新材料,19,jqdata_get_all_securities,observe_pool,周期、资源、商品,observe,A,resolved,resolved by keyword match
+PENDING_NEW_MATERIAL_01,新材料ETF主流产品,159763.XSHE,新材料ETF建信,XCLETFJJ,XSHE,2021-09-13,新材料,19,jqdata_get_all_securities,observe_pool,周期、资源、商品,observe,A,resolved,resolved by keyword match
+513330,恒生互联网ETF,513330.XSHG,,,XSHG,,513330,100,direct_six_digit_candidate,observe_pool,跨境与港股,observe,A,resolved,resolved by direct code
+513130,恒生科技ETF,513130.XSHG,,,XSHG,,513130,100,direct_six_digit_candidate,observe_pool,跨境与港股,observe,B,resolved,resolved by direct code
+513150,港股科技ETF,513150.XSHG,,,XSHG,,513150,100,direct_six_digit_candidate,observe_pool,跨境与港股,observe,B,resolved,resolved by direct code
+513520,日经ETF,513520.XSHG,日经ETF,RJETF,XSHG,2019-06-25,513520,100,jqdata_get_all_securities,research_only,跨境与港股,observe,B,resolved,resolved by direct code
+513880,日经225ETF,513880.XSHG,,,XSHG,,513880,100,direct_six_digit_candidate,research_only,跨境与港股,observe,B,resolved,resolved by direct code
+513030,德国ETF,513030.XSHG,德国ETF,DG30,XSHG,2014-09-05,513030,100,jqdata_get_all_securities,research_only,跨境与港股,observe,C,resolved,resolved by direct code
+PENDING_INDIA_01,印度ETF主流产品,,,,,,,0,,research_only,跨境与港股,observe,C,unresolved,no confident keyword match in JQData ETF candidate list
+PENDING_EMERGING_01,新兴市场ETF主流产品,,,,,,,0,,research_only,跨境与港股,observe,C,unresolved,no confident keyword match in JQData ETF candidate list
+511090,30年国债ETF,511090.XSHG,,,XSHG,,511090,100,direct_six_digit_candidate,observe_pool,债券货币,observe,A,resolved,resolved by direct code
+511520,政金债ETF,511520.XSHG,政金债,ZJZQETF,XSHG,2022-10-25,511520,100,jqdata_get_all_securities,observe_pool,债券货币,observe,A,resolved,resolved by direct code
+511380,可转债ETF,511380.XSHG,转债ETF,ZZETF,XSHG,2020-04-07,511380,100,jqdata_get_all_securities,observe_pool,债券货币,observe,A,resolved,resolved by direct code
+511030,公司债ETF,511030.XSHG,,,XSHG,,511030,100,direct_six_digit_candidate,observe_pool,债券货币,observe,B,resolved,resolved by direct code
+PENDING_SHORT_BOND_01,短债ETF主流产品,511360.XSHG,短融ETF,ZZDRETF,XSHG,2020-09-25,短融,18,jqdata_get_all_securities,observe_pool,债券货币,observe,B,existing,resolved code is already in current watchlist
+PENDING_CREDIT_BOND_01,信用债ETF主流产品,159395.XSHE,信用债ETF大成,XYZETFDC,XSHE,2025-01-27,信用债,19,jqdata_get_all_securities,observe_pool,债券货币,observe,B,resolved,resolved by keyword match
+PENDING_CREDIT_BOND_01,信用债ETF主流产品,159396.XSHE,信用债ETF博时,XYZETFBS,XSHE,2025-02-06,信用债,19,jqdata_get_all_securities,observe_pool,债券货币,observe,B,resolved,resolved by keyword match
+PENDING_CREDIT_BOND_01,信用债ETF主流产品,159398.XSHE,信用债ETF天弘,XYZETFTH,XSHE,2025-02-06,信用债,19,jqdata_get_all_securities,observe_pool,债券货币,observe,B,resolved,resolved by keyword match
+PENDING_POLICY_BANK_02,政金债ETF备选,511520.XSHG,政金债,ZJZQETF,XSHG,2022-10-25,政金债,17,jqdata_get_all_securities,research_only,债券货币,observe,C,duplicate,another expansion candidate already resolved to this JQData ETF
+PENDING_CASH_01,现金管理ETF备选,159001.XSHE,货币ETF易方达,BZJ,XSHE,2014-10-20,货币,18,jqdata_get_all_securities,research_only,债券货币,observe,C,existing,resolved code is already in current watchlist
+PENDING_CASH_01,现金管理ETF备选,511600.XSHG,货币ETF,HBETF,XSHG,2016-09-27,货币,18,jqdata_get_all_securities,research_only,债券货币,observe,C,resolved,resolved by keyword match
+PENDING_CASH_01,现金管理ETF备选,511690.XSHG,交易货币ETF大成,JYHB,XSHG,2016-10-20,货币,18,jqdata_get_all_securities,research_only,债券货币,observe,C,resolved,resolved by keyword match
+PENDING_DIV_QUALITY_02,红利质量ETF备选,159758.XSHE,红利质量ETF华夏,HL50ETF,XSHE,2021-12-28,红利质量,20,jqdata_get_all_securities,research_only,防御、红利、质量,observe,B,resolved,resolved by keyword match
+PENDING_DIV_QUALITY_02,红利质量ETF备选,159209.XSHE,红利质量ETF招商,ZZHLZLETF,XSHE,2025-03-25,红利质量,20,jqdata_get_all_securities,research_only,防御、红利、质量,observe,B,duplicate,another expansion candidate already resolved to this JQData ETF
+PENDING_HK_HIGHDIV_02,港股高股息ETF备选,159302.XSHE,港股高股息ETF银华,GGGGXETF,XSHE,2024-09-02,港股高股息/高股息,38,jqdata_get_all_securities,research_only,防御、红利、质量,observe,B,resolved,resolved by keyword match
+PENDING_HK_HIGHDIV_02,港股高股息ETF备选,159726.XSHE,港股通高股息ETF华夏,HSHLETF,XSHE,2021-11-23,高股息,19,jqdata_get_all_securities,research_only,防御、红利、质量,observe,B,resolved,resolved by keyword match
+PENDING_HK_HIGHDIV_02,港股高股息ETF备选,159207.XSHE,高股息ETF广发,GGXETF,XSHE,2025-04-09,高股息,19,jqdata_get_all_securities,research_only,防御、红利、质量,observe,B,resolved,resolved by keyword match
+PENDING_CONSUME_UP_01,消费升级ETF主流产品,,,,,,,0,,observe_pool,医药与消费升级,observe,B,unresolved,no confident keyword match in JQData ETF candidate list
+PENDING_SILVER_ECONOMY_01,银发经济ETF主流产品,,,,,,,0,,research_only,医药与消费升级,observe,C,unresolved,no confident keyword match in JQData ETF candidate list
+PENDING_DIGITAL_ECON_01,数字经济ETF主流产品,159658.XSHE,数字经济ETF华安,SZJJETF,XSHE,2022-10-12,数字经济,20,jqdata_get_all_securities,observe_pool,科技与新质生产力,observe,B,resolved,resolved by keyword match
+PENDING_DIGITAL_ECON_01,数字经济ETF主流产品,159385.XSHE,数字经济ETF富国,SZJJETFFG,XSHE,2025-05-30,数字经济,20,jqdata_get_all_securities,observe_pool,科技与新质生产力,observe,B,resolved,resolved by keyword match
+PENDING_DIGITAL_ECON_01,数字经济ETF主流产品,159389.XSHE,数字经济ETF嘉实,SZJJETFJJ,XSHE,2025-05-30,数字经济,20,jqdata_get_all_securities,observe_pool,科技与新质生产力,observe,B,resolved,resolved by keyword match
+PENDING_ELECTRONICS_01,电子ETF主流产品,159997.XSHE,电子ETF天弘,DZETF,XSHE,2020-03-20,电子,18,jqdata_get_all_securities,observe_pool,科技与新质生产力,observe,A,resolved,resolved by keyword match
+PENDING_ELECTRONICS_01,电子ETF主流产品,515260.XSHG,电子ETF,DZETF,XSHG,2020-07-31,电子,18,jqdata_get_all_securities,observe_pool,科技与新质生产力,observe,A,resolved,resolved by keyword match
+PENDING_ELECTRONICS_01,电子ETF主流产品,159732.XSHE,消费电子ETF华夏,XFDZ,XSHE,2021-08-23,电子,18,jqdata_get_all_securities,observe_pool,科技与新质生产力,observe,A,resolved,resolved by keyword match
+PENDING_PHOTONICS_01,光通信ETF主流产品,,,,,,,0,,research_only,科技与新质生产力,observe,B,unresolved,no confident keyword match in JQData ETF candidate list
+PENDING_DRONE_01,无人机ETF主流产品,,,,,,,0,,research_only,科技与新质生产力,observe,C,unresolved,no confident keyword match in JQData ETF candidate list
+PENDING_AUTONOMOUS_01,智能汽车ETF主流产品,159888.XSHE,智能汽车ETF华夏,ZNC,XSHE,2021-05-21,智能汽车,20,jqdata_get_all_securities,observe_pool,科技与新质生产力,observe,B,resolved,resolved by keyword match
+PENDING_AUTONOMOUS_01,智能汽车ETF主流产品,159889.XSHE,智能汽车ETF国泰,ZNQCETF,XSHE,2021-09-09,智能汽车,20,jqdata_get_all_securities,observe_pool,科技与新质生产力,observe,B,resolved,resolved by keyword match
+PENDING_AUTONOMOUS_01,智能汽车ETF主流产品,159795.XSHE,智能汽车ETF汇添富,ZNCETFJJ,XSHE,2022-02-14,智能汽车,20,jqdata_get_all_securities,observe_pool,科技与新质生产力,observe,B,resolved,resolved by keyword match
+PENDING_LITHIUM_01,锂电材料ETF主流产品,159840.XSHE,锂电池ETF工银,LDC50,XSHE,2021-08-20,锂电池/锂电,35,jqdata_get_all_securities,observe_pool,周期、资源、商品,observe,B,resolved,resolved by keyword match
+PENDING_RARE_METAL_01,稀有金属ETF主流产品,159608.XSHE,稀有金属ETF广发,XYJSETF,XSHE,2021-12-23,稀有金属,20,jqdata_get_all_securities,observe_pool,周期、资源、商品,observe,B,resolved,resolved by keyword match
+PENDING_RARE_METAL_01,稀有金属ETF主流产品,159671.XSHE,稀有金属ETF工银,XYJSETFJJ,XSHE,2023-03-10,稀有金属,20,jqdata_get_all_securities,observe_pool,周期、资源、商品,observe,B,resolved,resolved by keyword match
+PENDING_RARE_METAL_01,稀有金属ETF主流产品,159053.XSHE,稀有金属ETF华夏,XYJSETFHX,XSHE,2026-06-09,稀有金属,20,jqdata_get_all_securities,observe_pool,周期、资源、商品,observe,B,resolved,resolved by keyword match
+PENDING_AGRI_SEED_01,种业ETF主流产品,,,,,,,0,,research_only,周期、资源、商品,observe,C,unresolved,no confident keyword match in JQData ETF candidate list
+PENDING_REIT_01,基建REITs ETF主流产品,,,,,,,0,,research_only,防御、红利、质量,observe,C,unresolved,no confident keyword match in JQData ETF candidate list
+PENDING_BANK_DIV_01,银行红利ETF主流产品,,,,,,,0,,observe_pool,防御、红利、质量,observe,B,unresolved,no confident keyword match in JQData ETF candidate list
+PENDING_INSURANCE_01,保险ETF主流产品,512070.XSHG,证券保险,FYETF,XSHG,2014-07-18,保险,16,jqdata_get_all_securities,observe_pool,金融地产,observe,B,existing,resolved code is already in current watchlist
+PENDING_INSURANCE_01,保险ETF主流产品,515630.XSHG,保险证券,ZBETF,XSHG,2020-04-03,保险,16,jqdata_get_all_securities,observe_pool,金融地产,observe,B,resolved,resolved by keyword match
+PENDING_BROKER_LEADER_01,证券龙头ETF主流产品,,,,,,,0,,observe_pool,金融地产,observe,B,unresolved,no confident keyword match in JQData ETF candidate list
+PENDING_DIV_LOWVOL_02,红利低波ETF备选,159549.XSHE,红利低波ETF天弘,HLDBDETF,XSHE,2023-12-11,红利低波,20,jqdata_get_all_securities,research_only,防御、红利、质量,observe,B,duplicate,another expansion candidate already resolved to this JQData ETF
+PENDING_DIV_LOWVOL_02,红利低波ETF备选,159547.XSHE,红利低波ETF华夏,HLDB50ETF,XSHE,2024-02-06,红利低波,20,jqdata_get_all_securities,research_only,防御、红利、质量,observe,B,duplicate,another expansion candidate already resolved to this JQData ETF
+PENDING_DIV_LOWVOL_02,红利低波ETF备选,159545.XSHE,恒生红利低波ETF易方达,HSHLDBETF,XSHE,2024-04-15,红利低波,20,jqdata_get_all_securities,research_only,防御、红利、质量,observe,B,duplicate,another expansion candidate already resolved to this JQData ETF
+PENDING_STATE_OWNED_01,国企ETF主流产品,510060.XSHG,央企ETF,YQETF,XSHG,2009-10-27,央企,18,jqdata_get_all_securities,observe_pool,防御、红利、质量,observe,B,resolved,resolved by keyword match
+PENDING_STATE_OWNED_01,国企ETF主流产品,510270.XSHG,国企ETF,GQETF,XSHG,2011-08-18,国企,18,jqdata_get_all_securities,observe_pool,防御、红利、质量,observe,B,resolved,resolved by keyword match
+PENDING_STATE_OWNED_01,国企ETF主流产品,159954.XSHE,恒生中国企业ETF南方,HGETF,XSHE,2018-03-15,国企,18,jqdata_get_all_securities,observe_pool,防御、红利、质量,observe,B,resolved,resolved by keyword match
+PENDING_ESG_01,ESG ETF主流产品,516720.XSHG,ESGETF,ESGETF,XSHG,2021-08-13,ESG,19,jqdata_get_all_securities,research_only,防御、红利、质量,observe,C,resolved,resolved by keyword match
+PENDING_ESG_01,ESG ETF主流产品,159717.XSHE,ESGETF鹏华,ESG300ETF,XSHE,2021-09-29,ESG,19,jqdata_get_all_securities,research_only,防御、红利、质量,observe,C,resolved,resolved by keyword match
+PENDING_ESG_01,ESG ETF主流产品,159791.XSHE,300ESGETF华夏,300ESGETF,XSHE,2022-03-08,ESG,19,jqdata_get_all_securities,research_only,防御、红利、质量,observe,C,resolved,resolved by keyword match
+PENDING_GREEN_POWER_01,绿电ETF主流产品,159625.XSHE,绿色电力ETF嘉实,LSDLETF,XSHE,2022-04-29,绿色电力,20,jqdata_get_all_securities,observe_pool,防御、红利、质量,observe,B,duplicate,another expansion candidate already resolved to this JQData ETF
+PENDING_GREEN_POWER_01,绿电ETF主流产品,159669.XSHE,绿色电力ETF国泰,LDETF,XSHE,2023-01-11,绿色电力,20,jqdata_get_all_securities,observe_pool,防御、红利、质量,observe,B,resolved,resolved by keyword match
+PENDING_GREEN_POWER_01,绿电ETF主流产品,562550.XSHG,绿电ETF,LDETF,XSHG,2023-03-27,绿电,18,jqdata_get_all_securities,observe_pool,防御、红利、质量,observe,B,resolved,resolved by keyword match
+PENDING_HK_CONSUME_01,港股消费ETF主流产品,159735.XSHE,港股消费ETF银华,GGXF,XSHE,2021-06-04,港股消费,20,jqdata_get_all_securities,research_only,跨境与港股,observe,C,resolved,resolved by keyword match
+PENDING_HK_CONSUME_01,港股消费ETF主流产品,159699.XSHE,恒生消费ETF广发,HSXFETF,XSHE,2023-08-23,恒生消费,20,jqdata_get_all_securities,research_only,跨境与港股,observe,C,resolved,resolved by keyword match
+PENDING_HK_CONSUME_01,港股消费ETF主流产品,159265.XSHE,港股消费ETF鹏华,GGXF50ETF,XSHE,2025-07-02,港股消费,20,jqdata_get_all_securities,research_only,跨境与港股,observe,C,resolved,resolved by keyword match
+PENDING_SEA_01,东南亚ETF主流产品,,,,,,,0,,research_only,跨境与港股,observe,C,unresolved,no confident keyword match in JQData ETF candidate list

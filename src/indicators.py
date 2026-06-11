@@ -18,6 +18,7 @@ def add_indicators(df: pd.DataFrame, benchmark_df: pd.DataFrame | None = None) -
     out["ret10"] = out["close"] / out["close"].shift(10) - 1
     out["ret20"] = out["close"] / out["close"].shift(RET_WINDOW) - 1
     out["ret5"] = out["close"] / out["close"].shift(5) - 1
+    out["rsi14"] = _rsi(out["close"], 14)
     out["volume_ma5"] = out["volume"].rolling(5).mean()
     out["volume_ma20"] = out["volume"].rolling(20).mean()
     out["volume_ratio"] = out["volume_ma5"] / out["volume_ma20"]
@@ -40,6 +41,14 @@ def add_indicators(df: pd.DataFrame, benchmark_df: pd.DataFrame | None = None) -
         out["relative_strength"] = pd.NA
 
     return out
+
+
+def _rsi(close: pd.Series, window: int = 14) -> pd.Series:
+    delta = close.diff()
+    gain = delta.clip(lower=0).rolling(window).mean()
+    loss = (-delta.clip(upper=0)).rolling(window).mean()
+    rs = gain / loss.replace(0, pd.NA)
+    return 100 - 100 / (1 + rs)
 
 
 def latest_on_or_before(df: pd.DataFrame, run_date: pd.Timestamp | None) -> pd.Series | None:

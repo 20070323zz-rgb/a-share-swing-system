@@ -1,15 +1,19 @@
 #!/bin/bash
 set -euo pipefail
 
-PROJECT_ROOT="/Users/dayin/Documents/量化学习/a-share-swing-system"
+PROJECT_ROOT="/Users/dayin/Code/a-share-swing-system"
 LAUNCHD_DIR="$PROJECT_ROOT/launchd"
 AGENTS_DIR="$HOME/Library/LaunchAgents"
 DOMAIN="gui/$(id -u)"
 
 LABELS=(
+  "com.dayin.a-share.catchup-check"
   "com.dayin.a-share.open-check"
+  "com.dayin.a-share.midday-check"
+  "com.dayin.a-share.afternoon-open-check"
   "com.dayin.a-share.daily-close"
   "com.dayin.a-share.weekly-review"
+  "com.dayin.a-share.monthly-model-review"
 )
 
 mkdir -p "$AGENTS_DIR"
@@ -52,11 +56,19 @@ done
 echo
 echo "View logs:"
 echo "tail -n 80 $PROJECT_ROOT/logs/open_check.log"
+echo "tail -n 80 $PROJECT_ROOT/logs/catchup_check.log"
+echo "tail -n 80 $PROJECT_ROOT/logs/midday_check.log"
+echo "tail -n 80 $PROJECT_ROOT/logs/afternoon_open_check.log"
 echo "tail -n 80 $PROJECT_ROOT/logs/daily_close.log"
 echo "tail -n 80 $PROJECT_ROOT/logs/weekly_review.log"
+echo "tail -n 80 $PROJECT_ROOT/logs/monthly_model_review.log"
 echo "tail -n 80 $PROJECT_ROOT/logs/launchd_open_check.err.log"
+echo "tail -n 80 $PROJECT_ROOT/logs/launchd_catchup_check.err.log"
+echo "tail -n 80 $PROJECT_ROOT/logs/launchd_midday_check.err.log"
+echo "tail -n 80 $PROJECT_ROOT/logs/launchd_afternoon_open_check.err.log"
 echo "tail -n 80 $PROJECT_ROOT/logs/launchd_daily_close.err.log"
 echo "tail -n 80 $PROJECT_ROOT/logs/launchd_weekly_review.err.log"
+echo "tail -n 80 $PROJECT_ROOT/logs/launchd_monthly_model_review.err.log"
 
 echo
 echo "These jobs only run local scripts for reports and simulated records. They do not connect to broker APIs or place real orders."

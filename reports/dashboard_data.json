@@ -1,0 +1,960 @@
+{
+  "generated_at": "2026-06-11 09:21:28",
+  "latest_data_date": "2026-06-10",
+  "console": {
+    "today_conclusion": "REVIEW_REQUIRED",
+    "decision_reason": "存在 data_health caution 或组合风险提醒，禁止加仓，继续观察。",
+    "system_status": "CAUTION",
+    "system_badge_class": "warn",
+    "risk_summary": "2 项需复核"
+  },
+  "paper_summary": {
+    "cash": 7124.3,
+    "market_value": 2811.1,
+    "total_equity": 10000.0,
+    "total_pnl": 0.0,
+    "realized_pnl": 0.0,
+    "unrealized_pnl": -64.6,
+    "position_count": 3,
+    "trade_count": 3,
+    "position_ratio": 0.28110999999999997,
+    "cash_ratio": 0.71243
+  },
+  "risk_alerts": [
+    {
+      "symbol": "515880",
+      "name": "证券公司ETF",
+      "reason": "DATA_HEALTH_CAUTION: 存在单日涨跌幅极端异常 abs(pct_change)>0.25：1 次，仅提示不删除",
+      "action": "禁止加仓，继续观察；若连续异常则触发复核或 RISK_REDUCE。",
+      "severity": "warn"
+    },
+    {
+      "symbol": "DATA",
+      "name": "staging",
+      "reason": "quarantine ETF 14",
+      "action": "不纳入交易池或模拟候选。",
+      "severity": "warn"
+    }
+  ],
+  "positions": [
+    {
+      "symbol": "515220",
+      "name": "煤炭ETF",
+      "strategy_source": "resonance",
+      "position_type": "core",
+      "entry_date": "2026-06-09",
+      "entry_price": "1.36",
+      "quantity": "1100",
+      "cost": "1496.0",
+      "stop_loss": 1.258,
+      "reason": "rank_score=93.244634; mid_trend=BUY; short_swing=BUY; source=buy_signal_ranking",
+      "current_price": 1.305,
+      "market_value": 1435.5,
+      "unrealized_pnl": -60.5,
+      "unrealized_return": "-0.04044117647058824",
+      "unrealized_pnl_pct": -0.04044117647058824,
+      "holding_days": "1",
+      "risk_alert": "",
+      "group": "周期资源",
+      "etf_type": "commodity_resource",
+      "holding_profile": "10-45",
+      "default_holding_min_days": 10,
+      "default_holding_max_days": 45,
+      "holding_cycle_status": "EARLY",
+      "exit_sensitivity": "medium_high",
+      "news_required": "medium_high",
+      "sentiment_filter_required": "1",
+      "sentiment_status": "framework_only",
+      "rank_score_trend": "unavailable",
+      "short_swing_weakening": "WEAKENING",
+      "position_ratio": 0.14355,
+      "stop_distance_pct": 0.03601532567049803,
+      "buy_signal": "BUY/BUY",
+      "current_signal": "BUY/WATCH",
+      "signal_status": "WEAKENING",
+      "risk_tag": "NORMAL",
+      "health_status": "正常",
+      "health_note": "",
+      "action_suggestion": "WATCH",
+      "buy_reason_short": "rank_score=93.2",
+      "research_note": "type=commodity_resource; profile=10-45 days; cycle=EARLY; short_swing weakening -> REVIEW candidate; sentiment is framework-only, not a BUY factor"
+    },
+    {
+      "symbol": "512800",
+      "name": "银行ETF",
+      "strategy_source": "resonance",
+      "position_type": "core",
+      "entry_date": "2026-06-09",
+      "entry_price": "0.792",
+      "quantity": "1100",
+      "cost": "871.2",
+      "stop_loss": 0.7326,
+      "reason": "rank_score=90.914761; mid_trend=BUY; short_swing=BUY; source=buy_signal_ranking",
+      "current_price": 0.806,
+      "market_value": 886.6,
+      "unrealized_pnl": 15.4,
+      "unrealized_return": "0.01767676767676765",
+      "unrealized_pnl_pct": 0.01767676767676765,
+      "holding_days": "1",
+      "risk_alert": "",
+      "group": "金融地产",
+      "etf_type": "sector",
+      "holding_profile": "10-30",
+      "default_holding_min_days": 10,
+      "default_holding_max_days": 30,
+      "holding_cycle_status": "EARLY",
+      "exit_sensitivity": "medium",
+      "news_required": "medium",
+      "sentiment_filter_required": "1",
+      "sentiment_status": "framework_only",
+      "rank_score_trend": "unavailable",
+      "short_swing_weakening": "NO",
+      "position_ratio": 0.08866,
+      "stop_distance_pct": 0.09106699751861044,
+      "buy_signal": "BUY/BUY",
+      "current_signal": "BUY/BUY",
+      "signal_status": "VALID",
+      "risk_tag": "NORMAL",
+      "health_status": "正常",
+      "health_note": "",
+      "action_suggestion": "HOLD",
+      "buy_reason_short": "rank_score=90.9",
+      "research_note": "type=sector; profile=10-30 days; cycle=EARLY; sentiment is framework-only, not a BUY factor"
+    },
+    {
+      "symbol": "515880",
+      "name": "证券公司ETF",
+      "strategy_source": "resonance",
+      "position_type": "core",
+      "entry_date": "2026-06-09",
+      "entry_price": "1.695",
+      "quantity": "300",
+      "cost": "508.5",
+      "stop_loss": 1.567875,
+      "reason": "rank_score=90.247897; mid_trend=BUY; short_swing=BUY; source=buy_signal_ranking",
+      "current_price": 1.63,
+      "market_value": 489.0,
+      "unrealized_pnl": -19.5,
+      "unrealized_return": "-0.03834808259587032",
+      "unrealized_pnl_pct": -0.03834808259587032,
+      "holding_days": "1",
+      "risk_alert": "",
+      "group": "金融地产",
+      "etf_type": "sector",
+      "holding_profile": "10-30",
+      "default_holding_min_days": 10,
+      "default_holding_max_days": 30,
+      "holding_cycle_status": "EARLY",
+      "exit_sensitivity": "medium",
+      "news_required": "medium",
+      "sentiment_filter_required": "1",
+      "sentiment_status": "framework_only",
+      "rank_score_trend": "unavailable",
+      "short_swing_weakening": "WEAKENING",
+      "position_ratio": 0.0489,
+      "stop_distance_pct": 0.03811349693251533,
+      "buy_signal": "BUY/BUY",
+      "current_signal": "BUY/WATCH",
+      "signal_status": "REVIEW",
+      "risk_tag": "DATA_HEALTH_CAUTION: 存在单日涨跌幅极端异常 abs(pct_change)>0.25：1 次，仅提示不删除",
+      "health_status": "提醒",
+      "health_note": "存在单日涨跌幅极端异常 abs(pct_change)>0.25：1 次，仅提示不删除",
+      "action_suggestion": "REVIEW",
+      "buy_reason_short": "rank_score=90.2",
+      "research_note": "type=sector; profile=10-30 days; cycle=EARLY; short_swing weakening -> REVIEW candidate; DATA_HEALTH_CAUTION: 存在单日涨跌幅极端异常 abs(pct_change)>0.25：1 次，仅提示不删除; sentiment is framework-only, not a BUY factor"
+    }
+  ],
+  "trades": [
+    {
+      "date": "2026-06-09",
+      "trade_date": "2026-06-09",
+      "symbol": "515220",
+      "name": "煤炭ETF",
+      "action": "BUY",
+      "strategy_source": "resonance",
+      "position_type": "core",
+      "price": "1.36",
+      "quantity": "1100",
+      "amount": "1496.0",
+      "realized_pnl": "0.0",
+      "fee": "0.0",
+      "execution_price_type": "close_price",
+      "order_type": "paper_buy",
+      "source": "buy_signal_ranking",
+      "reason": "rank_score=93.244634; mid_trend=BUY; short_swing=BUY; source=buy_signal_ranking",
+      "simulated_cash": "8504.0",
+      "position_value": "1496.0",
+      "total_equity": "10000.0",
+      "is_simulated": "1"
+    },
+    {
+      "date": "2026-06-09",
+      "trade_date": "2026-06-09",
+      "symbol": "512800",
+      "name": "银行ETF",
+      "action": "BUY",
+      "strategy_source": "resonance",
+      "position_type": "core",
+      "price": "0.792",
+      "quantity": "1100",
+      "amount": "871.2",
+      "realized_pnl": "0.0",
+      "fee": "0.0",
+      "execution_price_type": "close_price",
+      "order_type": "paper_buy",
+      "source": "buy_signal_ranking",
+      "reason": "rank_score=90.914761; mid_trend=BUY; short_swing=BUY; source=buy_signal_ranking",
+      "simulated_cash": "7632.8",
+      "position_value": "2367.2",
+      "total_equity": "10000.0",
+      "is_simulated": "1"
+    },
+    {
+      "date": "2026-06-09",
+      "trade_date": "2026-06-09",
+      "symbol": "515880",
+      "name": "证券公司ETF",
+      "action": "BUY",
+      "strategy_source": "resonance",
+      "position_type": "core",
+      "price": "1.695",
+      "quantity": "300",
+      "amount": "508.5",
+      "realized_pnl": "0.0",
+      "fee": "0.0",
+      "execution_price_type": "close_price",
+      "order_type": "paper_buy",
+      "source": "buy_signal_ranking",
+      "reason": "rank_score=90.247897; mid_trend=BUY; short_swing=BUY; source=buy_signal_ranking",
+      "simulated_cash": "7124.3",
+      "position_value": "2875.7",
+      "total_equity": "10000.0",
+      "is_simulated": "1"
+    }
+  ],
+  "buy_ranking": [
+    {
+      "rank": "1",
+      "symbol": "512800",
+      "name": "银行ETF",
+      "group": "金融地产",
+      "mid_trend_signal": "BUY",
+      "short_swing_signal": "BUY",
+      "rank_score": 94.261376,
+      "mid_trend_score": 27.575848,
+      "short_momentum_score": 21.880748,
+      "liquidity_score": 15.0,
+      "risk_score": 14.804781,
+      "resonance_score": 10.0,
+      "data_quality_score": 5.0,
+      "resonance_flag": "是",
+      "risk_note": "无",
+      "candidate_action": "candidate"
+    },
+    {
+      "rank": "2",
+      "symbol": "515220",
+      "name": "煤炭ETF",
+      "group": "周期资源",
+      "mid_trend_signal": "BUY",
+      "short_swing_signal": "WATCH",
+      "rank_score": 78.038547,
+      "mid_trend_score": 28.690554,
+      "short_momentum_score": 11.930078,
+      "liquidity_score": 15.0,
+      "risk_score": 12.417915,
+      "resonance_score": 5.0,
+      "data_quality_score": 5.0,
+      "resonance_flag": "否",
+      "risk_note": "无",
+      "candidate_action": "candidate"
+    },
+    {
+      "rank": "3",
+      "symbol": "515880",
+      "name": "证券公司ETF",
+      "group": "金融地产",
+      "mid_trend_signal": "BUY",
+      "short_swing_signal": "WATCH",
+      "rank_score": 74.900605,
+      "mid_trend_score": 28.230847,
+      "short_momentum_score": 11.667064,
+      "liquidity_score": 15.0,
+      "risk_score": 12.002694,
+      "resonance_score": 5.0,
+      "data_quality_score": 3.0,
+      "resonance_flag": "否",
+      "risk_note": "data_health 提醒，需人工复核",
+      "candidate_action": "candidate"
+    },
+    {
+      "rank": "4",
+      "symbol": "515000",
+      "name": "科技ETF",
+      "group": "科技成长",
+      "mid_trend_signal": "BUY",
+      "short_swing_signal": "WATCH",
+      "rank_score": 68.258585,
+      "mid_trend_score": 27.388453,
+      "short_momentum_score": 4.709933,
+      "liquidity_score": 13.727362,
+      "risk_score": 12.432838,
+      "resonance_score": 5.0,
+      "data_quality_score": 5.0,
+      "resonance_flag": "否",
+      "risk_note": "无",
+      "candidate_action": "candidate"
+    },
+    {
+      "rank": "5",
+      "symbol": "159940",
+      "name": "金融ETF",
+      "group": "金融地产",
+      "mid_trend_signal": "WATCH",
+      "short_swing_signal": "BUY",
+      "rank_score": 54.554607,
+      "mid_trend_score": 10.757409,
+      "short_momentum_score": 20.007937,
+      "liquidity_score": 0.199345,
+      "risk_score": 14.589916,
+      "resonance_score": 4.0,
+      "data_quality_score": 5.0,
+      "resonance_flag": "否",
+      "risk_note": "无",
+      "candidate_action": "candidate"
+    }
+  ],
+  "sell_review": [
+    {
+      "review_date": "2026-06-10",
+      "symbol": "515220",
+      "name": "煤炭ETF",
+      "etf_type": "commodity_resource",
+      "group": "周期资源",
+      "sell_sensitivity": "medium",
+      "holding_days": "1",
+      "protection_period": "yes",
+      "entry_price": "1.36",
+      "current_price": "1.305",
+      "stop_loss": "1.258",
+      "stop_distance_pct": "0.03601532567049803",
+      "unrealized_pnl_pct": "-0.04044117647058824",
+      "entry_rank_score": "93.244634",
+      "rank_score": "78.038547",
+      "rank_score_change": "-15.20608700000001",
+      "rank_score_change_pct": "-0.16307734126555753",
+      "rank_decline_days": "1",
+      "mid_trend_signal": "BUY",
+      "short_swing_signal": "WATCH",
+      "entry_mid_trend_signal": "BUY",
+      "entry_short_swing_signal": "BUY",
+      "data_health_status": "正常",
+      "data_health_note": "",
+      "sell_review_status": "REVIEW",
+      "action_note": "买入后 1-2 日保护期：不因单日评分下降直接卖出；人工复核，禁止加仓。",
+      "condition_flags": "rank_score_single_day_drop; rank_score_large_drop; rank_score_drop_pct_over_12; short_swing_buy_to_watch; floating_loss_over_3_5pct",
+      "safety_note": "review_only_no_trade"
+    },
+    {
+      "review_date": "2026-06-10",
+      "symbol": "512800",
+      "name": "银行ETF",
+      "etf_type": "sector",
+      "group": "金融地产",
+      "sell_sensitivity": "medium_low",
+      "holding_days": "1",
+      "protection_period": "yes",
+      "entry_price": "0.792",
+      "current_price": "0.806",
+      "stop_loss": "0.7326",
+      "stop_distance_pct": "0.09106699751861044",
+      "unrealized_pnl_pct": "0.01767676767676765",
+      "entry_rank_score": "90.914761",
+      "rank_score": "94.261376",
+      "rank_score_change": "3.346615",
+      "rank_score_change_pct": "0.03681046909423212",
+      "rank_decline_days": "0",
+      "mid_trend_signal": "BUY",
+      "short_swing_signal": "BUY",
+      "entry_mid_trend_signal": "BUY",
+      "entry_short_swing_signal": "BUY",
+      "data_health_status": "正常",
+      "data_health_note": "",
+      "sell_review_status": "HOLD",
+      "action_note": "保护期内未触发硬风控，继续持有。",
+      "condition_flags": "",
+      "safety_note": "review_only_no_trade"
+    },
+    {
+      "review_date": "2026-06-10",
+      "symbol": "515880",
+      "name": "证券公司ETF",
+      "etf_type": "high_beta",
+      "group": "金融地产",
+      "sell_sensitivity": "very_high",
+      "holding_days": "1",
+      "protection_period": "yes",
+      "entry_price": "1.695",
+      "current_price": "1.63",
+      "stop_loss": "1.567875",
+      "stop_distance_pct": "0.03811349693251533",
+      "unrealized_pnl_pct": "-0.03834808259587032",
+      "entry_rank_score": "90.247897",
+      "rank_score": "74.900605",
+      "rank_score_change": "-15.347291999999996",
+      "rank_score_change_pct": "-0.17005705961214804",
+      "rank_decline_days": "1",
+      "mid_trend_signal": "BUY",
+      "short_swing_signal": "WATCH",
+      "entry_mid_trend_signal": "BUY",
+      "entry_short_swing_signal": "BUY",
+      "data_health_status": "提醒",
+      "data_health_note": "存在单日涨跌幅极端异常 abs(pct_change)>0.25：1 次，仅提示不删除",
+      "sell_review_status": "REVIEW",
+      "action_note": "买入后 1-2 日保护期：不因单日评分下降直接卖出；人工复核，禁止加仓。",
+      "condition_flags": "rank_score_single_day_drop; rank_score_large_drop; rank_score_drop_pct_over_12; short_swing_buy_to_watch; data_health_caution; floating_loss_over_3_5pct; high_beta_large_rank_decay; 515880_caution_min_review",
+      "safety_note": "review_only_no_trade"
+    }
+  ],
+  "paper_trade_engine": {
+    "state": {
+      "date": "2026-06-10",
+      "mode": "rule_validation",
+      "auto_execute": true,
+      "real_trade_enabled": false,
+      "broker_api_enabled": false,
+      "status": "executed",
+      "executed": true,
+      "dry_run": false,
+      "force": true,
+      "buy_count": 0,
+      "sell_count": 0,
+      "skipped_duplicate": false,
+      "skip_reason": "",
+      "created_at": "2026-06-10 21:33:49",
+      "cash": 7124.3,
+      "position_count": 3,
+      "position_ratio": 0.2829377780461783
+    },
+    "plan_count": 6,
+    "executed_buy_count": 0,
+    "executed_sell_count": 0,
+    "skipped_count": 6,
+    "skip_reasons": [
+      "sell rules not triggered",
+      "sell rules not triggered",
+      "sell rules not triggered",
+      "already held",
+      "already held",
+      "already held; data_health caution amount * 0.5"
+    ],
+    "position_count": 3
+  },
+  "paper_trade_plan": [
+    {
+      "date": "2026-06-10",
+      "symbol": "515220",
+      "name": "煤炭ETF",
+      "action": "SELL",
+      "plan_status": "skipped_no_sell_signal",
+      "price": "1.305",
+      "quantity": "1100",
+      "amount": "0.0",
+      "reason": "sell rules not triggered",
+      "source": "paper_trade_engine"
+    },
+    {
+      "date": "2026-06-10",
+      "symbol": "512800",
+      "name": "银行ETF",
+      "action": "SELL",
+      "plan_status": "skipped_no_sell_signal",
+      "price": "0.806",
+      "quantity": "1100",
+      "amount": "0.0",
+      "reason": "sell rules not triggered",
+      "source": "paper_trade_engine"
+    },
+    {
+      "date": "2026-06-10",
+      "symbol": "515880",
+      "name": "证券公司ETF",
+      "action": "SELL",
+      "plan_status": "skipped_no_sell_signal",
+      "price": "1.63",
+      "quantity": "300",
+      "amount": "0.0",
+      "reason": "sell rules not triggered",
+      "source": "paper_trade_engine"
+    },
+    {
+      "date": "2026-06-10",
+      "symbol": "512800",
+      "name": "银行ETF",
+      "action": "BUY",
+      "plan_status": "skipped_rule_blocked",
+      "price": "0.806",
+      "quantity": "0",
+      "amount": "0.0",
+      "reason": "already held",
+      "source": "paper_trade_engine"
+    },
+    {
+      "date": "2026-06-10",
+      "symbol": "515220",
+      "name": "煤炭ETF",
+      "action": "BUY",
+      "plan_status": "skipped_rule_blocked",
+      "price": "1.305",
+      "quantity": "0",
+      "amount": "0.0",
+      "reason": "already held",
+      "source": "paper_trade_engine"
+    },
+    {
+      "date": "2026-06-10",
+      "symbol": "515880",
+      "name": "证券公司ETF",
+      "action": "BUY",
+      "plan_status": "skipped_rule_blocked",
+      "price": "1.63",
+      "quantity": "0",
+      "amount": "0.0",
+      "reason": "already held; data_health caution amount * 0.5",
+      "source": "paper_trade_engine"
+    }
+  ],
+  "exposure": {
+    "groups": [
+      {
+        "group": "周期资源",
+        "market_value": 1435.5,
+        "ratio": 0.5106541923090605
+      },
+      {
+        "group": "金融地产",
+        "market_value": 1375.6,
+        "ratio": 0.4893458076909395
+      }
+    ],
+    "dominant_group": "周期资源",
+    "dominant_ratio": 0.5106541923090605,
+    "concentration_note": "当前组合偏金融/周期；继续观察行业集中度。"
+  },
+  "classification_summary": {
+    "total": 114,
+    "type_counts": {
+      "sector": 22,
+      "commodity_resource": 21,
+      "broad_index": 17,
+      "theme": 16,
+      "qdii": 15,
+      "unknown": 11,
+      "bond_cash": 10,
+      "hot_theme": 2
+    },
+    "pool_counts": {
+      "trade_pool": 79,
+      "observe_pool": 32,
+      "research_only": 3
+    },
+    "held_types": {
+      "commodity_resource": 1,
+      "sector": 2
+    }
+  },
+  "health_summary": {
+    "检查标的总数": "78",
+    "正常": "72",
+    "提醒": "4",
+    "异常": "0",
+    "缺失": "2"
+  },
+  "failed_counts": {
+    "quarantine": 14,
+    "unresolved": 20
+  },
+  "automation_nodes": [
+    {
+      "node": "catchup_check",
+      "time_label": "login",
+      "title": "开机/登录补偿",
+      "status": "OK",
+      "conclusion": "见报告",
+      "generated_at": "2026-06-11 09:17:39",
+      "report_href": "../reports/catchup_scheduler_status.md"
+    },
+    {
+      "node": "open_check",
+      "time_label": "09:40",
+      "title": "开盘风险观察",
+      "status": "WAITING",
+      "conclusion": "observe_only",
+      "generated_at": "2026-06-10 12:36:38",
+      "report_href": "../reports/open_check.md"
+    },
+    {
+      "node": "midday_check",
+      "time_label": "12:40",
+      "title": "午盘模拟执行检查",
+      "status": "WAITING",
+      "conclusion": "review_before_afternoon",
+      "generated_at": "2026-06-10 12:40:04",
+      "report_href": "../reports/midday_check.md"
+    },
+    {
+      "node": "afternoon_open_check",
+      "time_label": "13:10",
+      "title": "下午开盘复核",
+      "status": "WAITING",
+      "conclusion": "manual_review_only",
+      "generated_at": "2026-06-10 13:10:01",
+      "report_href": "../reports/afternoon_open_check.md"
+    },
+    {
+      "node": "paper_trade_engine",
+      "time_label": "15:25",
+      "title": "模拟交易引擎",
+      "status": "WAITING",
+      "conclusion": "见报告",
+      "generated_at": "2026-06-10 21:33:49",
+      "report_href": "../reports/paper_trade_engine_report.md"
+    },
+    {
+      "node": "daily_close",
+      "time_label": "15:30",
+      "title": "收盘更新",
+      "status": "WAITING",
+      "conclusion": "见报告",
+      "generated_at": "2026-06-10 21:29:53",
+      "report_href": "../reports/latest_brief.md"
+    },
+    {
+      "node": "weekly_review",
+      "time_label": "Friday",
+      "title": "周度完整复盘",
+      "status": "OK",
+      "conclusion": "见报告",
+      "generated_at": "2026-06-10 12:36:55",
+      "report_href": "../reports/weekly_full_review.md"
+    },
+    {
+      "node": "monthly_model_review",
+      "time_label": "Monthly",
+      "title": "月度模型复盘",
+      "status": "OK",
+      "conclusion": "见报告",
+      "generated_at": "2026-06-10 12:36:56",
+      "report_href": "../reports/monthly_model_review.md"
+    }
+  ],
+  "review": {
+    "items": [
+      {
+        "name": "每日轻量滚动回测",
+        "status": "OK",
+        "updated_at": "2026-06-10 21:29:55",
+        "href": "../reports/daily_rolling_backtest.md"
+      },
+      {
+        "name": "周度完整复盘",
+        "status": "OK",
+        "updated_at": "2026-06-10 12:36:55",
+        "href": "../reports/weekly_full_review.md"
+      },
+      {
+        "name": "月度模型复盘",
+        "status": "OK",
+        "updated_at": "2026-06-10 12:36:56",
+        "href": "../reports/monthly_model_review.md"
+      },
+      {
+        "name": "因子分析",
+        "status": "OK",
+        "updated_at": "2026-06-10 21:29:53",
+        "href": "../reports/factor_analysis_report.md"
+      },
+      {
+        "name": "模型研究",
+        "status": "OK",
+        "updated_at": "2026-06-10 18:42:54",
+        "href": "../reports/model_research_report.md"
+      },
+      {
+        "name": "ETF 类型分层",
+        "status": "OK",
+        "updated_at": "2026-06-10 18:12:55",
+        "href": "../reports/etf_type_classification_report.md"
+      },
+      {
+        "name": "持有周期研究",
+        "status": "OK",
+        "updated_at": "2026-06-10 18:13:22",
+        "href": "../reports/holding_period_research_report.md"
+      },
+      {
+        "name": "退出规则研究",
+        "status": "OK",
+        "updated_at": "2026-06-10 18:13:23",
+        "href": "../reports/exit_rule_research_report.md"
+      },
+      {
+        "name": "新闻情绪框架",
+        "status": "OK",
+        "updated_at": "2026-06-10 18:13:00",
+        "href": "../reports/news_sentiment_framework.md"
+      },
+      {
+        "name": "新闻数据源计划",
+        "status": "OK",
+        "updated_at": "2026-06-10 18:13:00",
+        "href": "../reports/news_data_source_plan.md"
+      },
+      {
+        "name": "当前持仓适配",
+        "status": "OK",
+        "updated_at": "2026-06-10 18:13:00",
+        "href": "../reports/current_positions_strategy_fit_report.md"
+      },
+      {
+        "name": "下一阶段总报告",
+        "status": "OK",
+        "updated_at": "2026-06-10 18:13:00",
+        "href": "../reports/next_stage_strategy_optimization_report.md"
+      },
+      {
+        "name": "catchup 修复报告",
+        "status": "OK",
+        "updated_at": "2026-06-10 18:44:36",
+        "href": "../reports/launchd_catchup_bugfix_report.md"
+      },
+      {
+        "name": "日线更新诊断",
+        "status": "OK",
+        "updated_at": "2026-06-10 18:44:36",
+        "href": "../reports/daily_data_update_diagnosis_report.md"
+      },
+      {
+        "name": "卖出复核报告",
+        "status": "OK",
+        "updated_at": "2026-06-10 21:29:54",
+        "href": "../reports/sell_signal_review.md"
+      },
+      {
+        "name": "卖出复核设计",
+        "status": "OK",
+        "updated_at": "2026-06-10 21:29:54",
+        "href": "../reports/sell_signal_review_design_report.md"
+      },
+      {
+        "name": "模拟交易计划",
+        "status": "OK",
+        "updated_at": "2026-06-10 21:33:49",
+        "href": "../reports/paper_trade_plan.md"
+      },
+      {
+        "name": "模拟交易引擎报告",
+        "status": "OK",
+        "updated_at": "2026-06-10 21:33:49",
+        "href": "../reports/paper_trade_engine_report.md"
+      },
+      {
+        "name": "模拟交易引擎设计",
+        "status": "OK",
+        "updated_at": "2026-06-10 21:33:49",
+        "href": "../reports/paper_trade_engine_design_report.md"
+      }
+    ]
+  },
+  "dashboard_links": [
+    {
+      "name": "控制台快照",
+      "category": "data",
+      "path": "reports/dashboard_data.json",
+      "href": "../reports/dashboard_data.json",
+      "exists": true
+    },
+    {
+      "name": "每日最简摘要",
+      "category": "daily",
+      "path": "reports/latest_brief.md",
+      "href": "../reports/latest_brief.md",
+      "exists": true
+    },
+    {
+      "name": "模拟盘持仓",
+      "category": "paper",
+      "path": "reports/latest_paper_portfolio.md",
+      "href": "../reports/latest_paper_portfolio.md",
+      "exists": true
+    },
+    {
+      "name": "BUY Ranking",
+      "category": "signal",
+      "path": "reports/buy_signal_ranking.md",
+      "href": "../reports/buy_signal_ranking.md",
+      "exists": true
+    },
+    {
+      "name": "卖出复核",
+      "category": "risk",
+      "path": "reports/sell_signal_review.md",
+      "href": "../reports/sell_signal_review.md",
+      "exists": true
+    },
+    {
+      "name": "模拟交易计划",
+      "category": "paper",
+      "path": "reports/paper_trade_plan.md",
+      "href": "../reports/paper_trade_plan.md",
+      "exists": true
+    },
+    {
+      "name": "模拟交易引擎",
+      "category": "paper",
+      "path": "reports/paper_trade_engine_report.md",
+      "href": "../reports/paper_trade_engine_report.md",
+      "exists": true
+    },
+    {
+      "name": "数据覆盖",
+      "category": "data",
+      "path": "reports/latest_data_coverage.md",
+      "href": "../reports/latest_data_coverage.md",
+      "exists": true
+    },
+    {
+      "name": "数据健康",
+      "category": "data",
+      "path": "reports/latest_data_health.md",
+      "href": "../reports/latest_data_health.md",
+      "exists": true
+    },
+    {
+      "name": "每日滚动回测",
+      "category": "review",
+      "path": "reports/daily_rolling_backtest.md",
+      "href": "../reports/daily_rolling_backtest.md",
+      "exists": true
+    },
+    {
+      "name": "周度完整复盘",
+      "category": "review",
+      "path": "reports/weekly_full_review.md",
+      "href": "../reports/weekly_full_review.md",
+      "exists": true
+    },
+    {
+      "name": "月度模型复盘",
+      "category": "review",
+      "path": "reports/monthly_model_review.md",
+      "href": "../reports/monthly_model_review.md",
+      "exists": true
+    },
+    {
+      "name": "四节点同步",
+      "category": "automation",
+      "path": "reports/automation_four_node_sync_report.md",
+      "href": "../reports/automation_four_node_sync_report.md",
+      "exists": true
+    },
+    {
+      "name": "catchup 状态",
+      "category": "automation",
+      "path": "reports/catchup_scheduler_status.md",
+      "href": "../reports/catchup_scheduler_status.md",
+      "exists": true
+    },
+    {
+      "name": "因子分析",
+      "category": "research",
+      "path": "reports/factor_analysis_report.md",
+      "href": "../reports/factor_analysis_report.md",
+      "exists": true
+    },
+    {
+      "name": "模型研究",
+      "category": "research",
+      "path": "reports/model_research_report.md",
+      "href": "../reports/model_research_report.md",
+      "exists": true
+    },
+    {
+      "name": "策略新闻情绪研究",
+      "category": "research",
+      "path": "reports/etf_strategy_news_sentiment_research.md",
+      "href": "../reports/etf_strategy_news_sentiment_research.md",
+      "exists": true
+    },
+    {
+      "name": "看板升级设计说明",
+      "category": "dashboard",
+      "path": "reports/dashboard_redesign_research.md",
+      "href": "../reports/dashboard_redesign_research.md",
+      "exists": true
+    }
+  ],
+  "link_health": {
+    "total": 18,
+    "valid": 18,
+    "missing": 0,
+    "missing_items": []
+  },
+  "dashboard_sources": [
+    {
+      "type": "open-source",
+      "name": "Freqtrade / FreqUI",
+      "url": "https://github.com/freqtrade/frequi",
+      "lesson": "开源交易台把持仓、订单、策略状态和日志放在同一个操作视图；本看板借鉴其“执行状态可见”的思路。"
+    },
+    {
+      "type": "platform",
+      "name": "QuantConnect Backtest Results",
+      "url": "https://www.quantconnect.com/docs/v2/cloud-platform/backtesting/results",
+      "lesson": "专业量化平台强调回测、交易、持仓、统计指标的可追溯，本看板把 Review 与 Paper Engine 固化为一等模块。"
+    },
+    {
+      "type": "charting",
+      "name": "TradingView Watchlists / Alerts / Charts",
+      "url": "https://www.tradingview.com/features/",
+      "lesson": "观察列表、信号和图表需要并列呈现；本看板将 BUY Ranking、持仓和风险提示放到同一决策链。"
+    },
+    {
+      "type": "broker",
+      "name": "Interactive Brokers PortfolioAnalyst",
+      "url": "https://www.interactivebrokers.com/en/software/portfolioanalyst.php",
+      "lesson": "券商组合分析强调资产、表现、风险和归因，本看板增加系统健康、暴露和链接体检。"
+    },
+    {
+      "type": "risk",
+      "name": "BlackRock Aladdin",
+      "url": "https://www.blackrock.com/aladdin",
+      "lesson": "风险平台的核心是先看风险与运行状态，再看细节；本看板把风险条与系统健康放在前部。"
+    },
+    {
+      "type": "broker",
+      "name": "thinkorswim Platform",
+      "url": "https://www.schwab.com/trading/thinkorswim",
+      "lesson": "券商终端重视可扫读布局、监控列表和多模块工作区；本看板采用导航锚点和工作台分区。"
+    }
+  ],
+  "risk_limits": {
+    "mode": "rule_validation",
+    "auto_execute": true,
+    "real_trade_enabled": false,
+    "broker_api_enabled": false,
+    "market_state": "neutral",
+    "target_position_pct": 0.3,
+    "max_holdings": 3,
+    "max_single_position_pct": 0.2,
+    "single_etf_limit": 2000.0
+  },
+  "safety": {
+    "permission": "L2 local paper data/report dashboard",
+    "broker_api": false,
+    "real_order": false,
+    "real_account": false,
+    "credentials_saved": false,
+    "strategy_rule_change": false
+  }
+}

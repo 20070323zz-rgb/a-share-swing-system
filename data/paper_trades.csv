@@ -1,1 +1,4 @@
-date,symbol,name,action,strategy_source,position_type,price,quantity,amount,fee,reason,is_simulated
+date,trade_date,symbol,name,action,strategy_source,position_type,price,quantity,amount,realized_pnl,fee,execution_price_type,order_type,source,reason,simulated_cash,position_value,total_equity,is_simulated
+2026-06-09,2026-06-09,515220,煤炭ETF,BUY,resonance,core,1.36,1100,1496.0,0.0,0.0,close_price,paper_buy,buy_signal_ranking,rank_score=93.244634; mid_trend=BUY; short_swing=BUY; source=buy_signal_ranking,8504.0,1496.0,10000.0,1
+2026-06-09,2026-06-09,512800,银行ETF,BUY,resonance,core,0.792,1100,871.2,0.0,0.0,close_price,paper_buy,buy_signal_ranking,rank_score=90.914761; mid_trend=BUY; short_swing=BUY; source=buy_signal_ranking,7632.8,2367.2,10000.0,1
+2026-06-09,2026-06-09,515880,证券公司ETF,BUY,resonance,core,1.695,300,508.5,0.0,0.0,close_price,paper_buy,buy_signal_ranking,rank_score=90.247897; mid_trend=BUY; short_swing=BUY; source=buy_signal_ranking,7124.3,2875.7,10000.0,1

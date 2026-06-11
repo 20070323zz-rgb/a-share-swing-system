@@ -1,14 +1,18 @@
 #!/bin/bash
 set -euo pipefail
 
-PROJECT_ROOT="/Users/dayin/Documents/量化学习/a-share-swing-system"
+PROJECT_ROOT="/Users/dayin/Code/a-share-swing-system"
 AGENTS_DIR="$HOME/Library/LaunchAgents"
 DOMAIN="gui/$(id -u)"
 
 LABELS=(
+  "com.dayin.a-share.catchup-check"
   "com.dayin.a-share.open-check"
+  "com.dayin.a-share.midday-check"
+  "com.dayin.a-share.afternoon-open-check"
   "com.dayin.a-share.daily-close"
   "com.dayin.a-share.weekly-review"
+  "com.dayin.a-share.monthly-model-review"
 )
 
 echo "Uninstalling launchd jobs from $DOMAIN"

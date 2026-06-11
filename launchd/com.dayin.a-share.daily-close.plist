@@ -8,11 +8,11 @@
 
   <key>ProgramArguments</key>
   <array>
-    <string>/Users/dayin/Documents/量化学习/a-share-swing-system/scripts/run_daily_close.sh</string>
+    <string>/Users/dayin/Code/a-share-swing-system/scripts/run_daily_close.sh</string>
   </array>
 
   <key>WorkingDirectory</key>
-  <string>/Users/dayin/Documents/量化学习/a-share-swing-system</string>
+  <string>/Users/dayin/Code/a-share-swing-system</string>
 
   <key>StartCalendarInterval</key>
   <array>
@@ -24,9 +24,9 @@
   </array>
 
   <key>StandardOutPath</key>
-  <string>/Users/dayin/Documents/量化学习/a-share-swing-system/logs/launchd_daily_close.out.log</string>
+  <string>/Users/dayin/Code/a-share-swing-system/logs/launchd_daily_close.out.log</string>
 
   <key>StandardErrorPath</key>
-  <string>/Users/dayin/Documents/量化学习/a-share-swing-system/logs/launchd_daily_close.err.log</string>
+  <string>/Users/dayin/Code/a-share-swing-system/logs/launchd_daily_close.err.log</string>
 </dict>
 </plist>

@@ -1,1 +1,4 @@
-symbol,name,strategy_source,position_type,entry_date,entry_price,quantity,cost,stop_loss,reason,current_price,market_value,unrealized_pnl,unrealized_return,holding_days,risk_alert
+symbol,name,strategy_source,position_type,entry_date,entry_price,quantity,cost,stop_loss,reason,current_price,market_value,unrealized_pnl,unrealized_return,unrealized_pnl_pct,holding_days,risk_alert
+515220,煤炭ETF,resonance,core,2026-06-09,1.36,1100,1496.0,1.258,rank_score=93.244634; mid_trend=BUY; short_swing=BUY; source=buy_signal_ranking,1.305,1435.5,-60.5,-0.04044117647058824,-0.04044117647058824,1,
+512800,银行ETF,resonance,core,2026-06-09,0.792,1100,871.2,0.7326,rank_score=90.914761; mid_trend=BUY; short_swing=BUY; source=buy_signal_ranking,0.806,886.6,15.4,0.01767676767676765,0.01767676767676765,1,
+515880,证券公司ETF,resonance,core,2026-06-09,1.695,300,508.5,1.567875,rank_score=90.247897; mid_trend=BUY; short_swing=BUY; source=buy_signal_ranking,1.63,489.0,-19.5,-0.03834808259587032,-0.03834808259587032,1,

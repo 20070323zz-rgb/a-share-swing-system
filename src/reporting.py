@@ -294,6 +294,7 @@ def write_brief_report(
 
     lines += ["", "## 今日建议"]
     lines.append(f"- {_brief_advice(cycle_rows)}")
+    lines.append("- BUY ETF 排名请查看 reports/latest_buy_ranking.md；首次模拟买入计划请查看 reports/first_paper_buy_plan.md。")
     lines += [
         "",
         "## 安全边界",

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.dayin.a-share.catchup-check</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/dayin/Code/a-share-swing-system/scripts/run_catchup_check.sh</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/dayin/Code/a-share-swing-system</string>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>AUTOMATION_CATCHUP_REAL</key>
+    <string>1</string>
+  </dict>
+
+  <key>RunAtLoad</key>
+  <true/>
+
+  <key>StartInterval</key>
+  <integer>1800</integer>
+
+  <key>StandardOutPath</key>
+  <string>/Users/dayin/Code/a-share-swing-system/logs/launchd_catchup_check.out.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>/Users/dayin/Code/a-share-swing-system/logs/launchd_catchup_check.err.log</string>
+</dict>
+</plist>

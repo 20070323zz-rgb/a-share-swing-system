@@ -1,0 +1,15 @@
+filename,symbol,jq_symbol,failure_reason,quarantine_path,action
+159053.XSHE.csv,159053,159053.XSHE,bad OHLC rows: 241; volume negative or invalid rows: 241; money negative or invalid rows: 241,data/staging/jqdata_expanded_failed/159053.XSHE.csv,moved
+159105.XSHE.csv,159105,159105.XSHE,bad OHLC rows: 164; volume negative or invalid rows: 164; money negative or invalid rows: 164,data/staging/jqdata_expanded_failed/159105.XSHE.csv,moved
+159119.XSHE.csv,159119,159119.XSHE,bad OHLC rows: 172; volume negative or invalid rows: 172; money negative or invalid rows: 172,data/staging/jqdata_expanded_failed/159119.XSHE.csv,moved
+159130.XSHE.csv,159130,159130.XSHE,bad OHLC rows: 182; volume negative or invalid rows: 182; money negative or invalid rows: 182,data/staging/jqdata_expanded_failed/159130.XSHE.csv,moved
+159159.XSHE.csv,159159,159159.XSHE,bad OHLC rows: 235; volume negative or invalid rows: 235; money negative or invalid rows: 235,data/staging/jqdata_expanded_failed/159159.XSHE.csv,moved
+159207.XSHE.csv,159207,159207.XSHE,bad OHLC rows: 26; volume negative or invalid rows: 26; money negative or invalid rows: 26,data/staging/jqdata_expanded_failed/159207.XSHE.csv,moved
+159209.XSHE.csv,159209,159209.XSHE,bad OHLC rows: 16; volume negative or invalid rows: 16; money negative or invalid rows: 16,data/staging/jqdata_expanded_failed/159209.XSHE.csv,moved
+159265.XSHE.csv,159265,159265.XSHE,bad OHLC rows: 82; volume negative or invalid rows: 82; money negative or invalid rows: 82,data/staging/jqdata_expanded_failed/159265.XSHE.csv,moved
+159296.XSHE.csv,159296,159296.XSHE,bad OHLC rows: 128; volume negative or invalid rows: 128; money negative or invalid rows: 128,data/staging/jqdata_expanded_failed/159296.XSHE.csv,moved
+159385.XSHE.csv,159385,159385.XSHE,bad OHLC rows: 60; volume negative or invalid rows: 60; money negative or invalid rows: 60,data/staging/jqdata_expanded_failed/159385.XSHE.csv,moved
+159389.XSHE.csv,159389,159389.XSHE,bad OHLC rows: 60; volume negative or invalid rows: 60; money negative or invalid rows: 60,data/staging/jqdata_expanded_failed/159389.XSHE.csv,moved
+159390.XSHE.csv,159390,159390.XSHE,bad OHLC rows: 26; volume negative or invalid rows: 26; money negative or invalid rows: 26,data/staging/jqdata_expanded_failed/159390.XSHE.csv,moved
+562080.XSHG.csv,562080,562080.XSHG,bad OHLC rows: 30; volume negative or invalid rows: 30; money negative or invalid rows: 30,data/staging/jqdata_expanded_failed/562080.XSHG.csv,moved
+589520.XSHG.csv,589520,589520.XSHG,bad OHLC rows: 8; volume negative or invalid rows: 8; money negative or invalid rows: 8,data/staging/jqdata_expanded_failed/589520.XSHG.csv,moved
