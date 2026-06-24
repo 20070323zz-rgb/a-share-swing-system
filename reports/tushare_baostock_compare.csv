@@ -1,0 +1,6 @@
+symbol,date_overlap_count,close_diff_abs_mean,close_diff_abs_max,open_diff_pct_mean,high_diff_pct_mean,low_diff_pct_mean,close_diff_pct_mean,close_diff_pct_max,volume_diff_pct_mean,amount_diff_pct_mean,volume_unit_ratio_median,amount_unit_ratio_median,missing_in_tushare,missing_in_baostock,field_schema_match,quality_note
+159915,30,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.99,0.999,100.0,1000.0,0,0,True,OHLC basically consistent; volume likely differs by 100x; amount likely differs by 1000x
+510300,30,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.99,0.999,100.0,1000.0,0,0,True,OHLC basically consistent; volume likely differs by 100x; amount likely differs by 1000x
+512880,30,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.99,0.999,100.0,1000.0,0,0,True,OHLC basically consistent; volume likely differs by 100x; amount likely differs by 1000x
+515790,30,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.99,0.999,100.0,1000.0,0,0,True,OHLC basically consistent; volume likely differs by 100x; amount likely differs by 1000x
+518880,30,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.99,0.999,100.0,1000.0,0,0,True,OHLC basically consistent; volume likely differs by 100x; amount likely differs by 1000x

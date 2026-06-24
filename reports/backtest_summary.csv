@@ -1,0 +1,5 @@
+strategy,total_return,annualized_return,max_drawdown,sharpe,calmar,win_rate,avg_win,avg_loss,profit_factor,trade_count,turnover,avg_holding_days,best_trade,worst_trade,final_equity,cash_ratio_avg,exposure_avg,cost_total,slippage_total,commission_total
+original_ranking_baseline,0.061492,0.01432,-0.197083,0.179456,0.072658,0.381356,308.4324,-173.753,1.094252,236,47.309242,29.1186,1310.6068,-614.362,21195.4876,0.550865,0.449135,1454.9115,274.9115,1180.0
+adjusted_preview_baseline,0.107791,0.02469,-0.197083,0.262791,0.125277,0.398305,296.9897,-166.74,1.179074,236,47.270187,29.0932,1310.6068,-532.3369,22119.9737,0.552096,0.447904,1454.925,274.925,1180.0
+buy_and_hold_510300,0.16432,0.036937,-0.172616,0.401454,0.213986,0.0,0.0,0.0,0.0,1,0.59041,0.0,0.0,0.0,23276.4999,0.423481,0.576519,8.5001,3.5001,5.0
+cash_baseline,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0.0,0.0,0.0,0.0,20000.0,1.0,0.0,0.0,0.0,0.0

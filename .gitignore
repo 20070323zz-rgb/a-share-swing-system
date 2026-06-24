@@ -15,6 +15,12 @@ env/
 # IDE / local machine state
 .idea/
 .vscode/
+.env
+.env.*
+
+# JavaScript dependencies are restored from package lock files.
+app/frontend/node_modules/
+desktop/tauri/node_modules/
 
 # Runtime logs
 logs/

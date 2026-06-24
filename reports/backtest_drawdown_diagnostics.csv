@@ -1,0 +1,5 @@
+strategy,drawdown_start,drawdown_end,drawdown_trading_days,max_drawdown,start_equity,end_equity,trade_count_in_drawdown,avg_exposure_in_drawdown,holding_symbols_in_drawdown,worst_symbols_json,diagnosis
+adjusted_preview_baseline,2022-07-04,2024-09-18,539,-0.19708332099106518,20684.3399,16607.8015,104,0.4121580352504638,"159915,510300","{""159915"": -2052.3631, ""510300"": -1055.9953}",high trading activity during drawdown; portfolio exposed during adverse market; adjusted preview did not materially reduce common market beta
+buy_and_hold_510300,2022-07-04,2024-02-02,390,-0.1726163370459416,20855.4999,17255.4999,0,0.5633123846153846,,{},mark-to-market drawdown without closed trades
+cash_baseline,2022-04-08,2022-04-08,1,0.0,20000.0,20000.0,0,0.0,,{},cash has no drawdown
+original_ranking_baseline,2022-07-04,2024-09-18,539,-0.19708332099106518,20684.3399,16607.8015,104,0.4121580352504638,"159915,510300","{""159915"": -2052.3631, ""510300"": -1055.9953}",high trading activity during drawdown; portfolio exposed during adverse market

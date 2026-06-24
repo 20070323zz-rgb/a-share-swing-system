@@ -1,0 +1,29 @@
+{
+  "status": "active",
+  "model_name": "persistence_breakout_v2",
+  "research_only": true,
+  "execution_enabled": false,
+  "paper_trade_engine_enabled": false,
+  "real_trade_enabled": false,
+  "initial_cash_assumption": 20000.0,
+  "latest_signal_date": "2026-06-24",
+  "market_regime": "neutral",
+  "selected_count": 2,
+  "selected_symbols": [
+    "512400",
+    "159352"
+  ],
+  "overlap_with_original": 0,
+  "overlap_with_adjusted": 0,
+  "overlap_with_top10_diversified": 0,
+  "high_beta_count": 0,
+  "data_health_caution_count": 0,
+  "tracking_days": 2,
+  "ready_for_preview": false,
+  "ready_for_execution": false,
+  "summary": "persistence_breakout_v2 is active in shadow tracking only; it is not connected to paper_trade_engine.",
+  "signal_report_href": "../reports/persistence_breakout_shadow_signal.md",
+  "portfolio_report_href": "../reports/persistence_breakout_shadow_portfolio.md",
+  "comparison_report_href": "../reports/model_shadow_comparison.md",
+  "observation_rules_href": "../reports/persistence_breakout_shadow_observation_rules.md"
+}

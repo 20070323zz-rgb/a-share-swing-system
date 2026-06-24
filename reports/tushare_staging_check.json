@@ -1,0 +1,94 @@
+{
+  "generated_at": "2026-06-21 20:58:01",
+  "status": "completed",
+  "tushare_token_configured": true,
+  "token_visible_in_logs": false,
+  "env_file_exists": true,
+  "env_var_present": false,
+  "env_file_has_tushare_token_key": true,
+  "provider_ready": true,
+  "provider_message": "tushare package missing; HTTP API fallback will be used",
+  "next_action": "Run small-sample staging dry-run.",
+  "staging_csv": "data/staging/tushare/tushare_etf_daily_sample.csv",
+  "sample_symbols": [
+    "510300",
+    "159915",
+    "512880",
+    "518880",
+    "515790"
+  ],
+  "sample_symbols_tested": 5,
+  "sample_symbols_success": 5,
+  "sample_symbols_failed": 0,
+  "rows_written": 150,
+  "date_range": {
+    "start": "2026-05-08",
+    "end": "2026-06-18",
+    "local_trading_days": 30
+  },
+  "results": [
+    {
+      "symbol": "510300",
+      "name": "沪深300ETF",
+      "status": "success",
+      "rows": 30,
+      "start": "2026-05-08",
+      "end": "2026-06-18",
+      "failure_reason": "",
+      "error_type": ""
+    },
+    {
+      "symbol": "159915",
+      "name": "创业板ETF",
+      "status": "success",
+      "rows": 30,
+      "start": "2026-05-08",
+      "end": "2026-06-18",
+      "failure_reason": "",
+      "error_type": ""
+    },
+    {
+      "symbol": "512880",
+      "name": "证券ETF",
+      "status": "success",
+      "rows": 30,
+      "start": "2026-05-08",
+      "end": "2026-06-18",
+      "failure_reason": "",
+      "error_type": ""
+    },
+    {
+      "symbol": "518880",
+      "name": "黄金ETF",
+      "status": "success",
+      "rows": 30,
+      "start": "2026-05-08",
+      "end": "2026-06-18",
+      "failure_reason": "",
+      "error_type": ""
+    },
+    {
+      "symbol": "515790",
+      "name": "光伏ETF",
+      "status": "success",
+      "rows": 30,
+      "start": "2026-05-08",
+      "end": "2026-06-18",
+      "failure_reason": "",
+      "error_type": ""
+    }
+  ],
+  "field_schema_ok": true,
+  "available_date_estimated": true,
+  "recommended_next_step": "Tushare small sample looks good; next step can expand staging to 20-30 ETFs, still no formal overwrite.",
+  "safety": {
+    "broker_api": false,
+    "real_order": false,
+    "real_account": false,
+    "token_logged": false,
+    "formal_data_written": false,
+    "paper_trades_modified": false,
+    "paper_positions_modified": false,
+    "paper_trade_engine_modified": false
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "status": "completed",
+  "generated_at": "2026-06-18 20:28:15",
+  "research_only": true,
+  "execution_enabled": false,
+  "top3_not_strong_enough": true,
+  "model_enhancement_needed": true,
+  "data_freshness_constraint_considered": true,
+  "recommended_next_step": "Phase 4B-1: ranking_model_v2 historical backtest with Top10 candidate + risk/diversification filter",
+  "summary": "Current Phase 4A ranking is a simplified proxy with weak Top3 edge; improve signal layer before tuning exits or expanding pool.",
+  "best_factors_10d": [
+    {
+      "factor": "momentum_20d",
+      "rank_ic": 0.13878915363641625,
+      "spread": 0.016853619923851544,
+      "positive_ic_ratio": 0.6808510638297872
+    },
+    {
+      "factor": "relative_strength_vs_510300",
+      "rank_ic": 0.13878915363641625,
+      "spread": 0.016853619923851544,
+      "positive_ic_ratio": 0.6808510638297872
+    },
+    {
+      "factor": "trend_slope_20",
+      "rank_ic": 0.13321018304249835,
+      "spread": 0.016311346180483945,
+      "positive_ic_ratio": 0.6723404255319149
+    },
+    {
+      "factor": "ma_distance_20",
+      "rank_ic": 0.12556320333991658,
+      "spread": 0.012789368133225228,
+      "positive_ic_ratio": 0.676595744680851
+    },
+    {
+      "factor": "risk_adjusted_momentum",
+      "rank_ic": 0.1166202290997994,
+      "spread": 0.011252195780519201,
+      "positive_ic_ratio": 0.6553191489361702
+    }
+  ],
+  "noisy_factors_10d": [
+    {
+      "factor": "volume_ratio_20",
+      "rank_ic": 0.0071703628464520695,
+      "spread": 0.0011702934611050085,
+      "positive_ic_ratio": 0.5234042553191489
+    },
+    {
+      "factor": "amount_liquidity_20",
+      "rank_ic": 0.019289566274847115,
+      "spread": -0.0035966139130239896,
+      "positive_ic_ratio": 0.5531914893617021
+    },
+    {
+      "factor": "amount_liquidity_60",
+      "rank_ic": 0.021963405219136575,
+      "spread": -0.005354834959507687,
+      "positive_ic_ratio": 0.5446808510638298
+    },
+    {
+      "factor": "drawdown_60",
+      "rank_ic": 0.023275114753204217,
+      "spread": -0.000959965389545573,
+      "positive_ic_ratio": 0.5319148936170213
+    },
+    {
+      "factor": "drawdown_20",
+      "rank_ic": 0.029689882312649768,
+      "spread": 0.0022508729279688494,
+      "positive_ic_ratio": 0.5574468085106383
+    }
+  ],
+  "top3_avg_10d": 0.003785070971754943,
+  "top10_avg_10d": 0.0029216743824999106,
+  "daily_full_model_replay_needed": true,
+  "execution_reality": "Use confirmed close to build next-day plan; do not assume same-day close is available for formal signals."
+}

@@ -1,0 +1,519 @@
+{
+  "version": "exit_rule_candidate_library_v1",
+  "generated_at": "2026-06-18 16:01:13",
+  "status": "research_only",
+  "execution_enabled": false,
+  "backtest_required": true,
+  "type_summary": {
+    "bond_cash": {
+      "count": 12,
+      "avg_annualized_volatility": 0.024911,
+      "median_annualized_volatility": 0.009527,
+      "avg_max_drawdown": -0.021828,
+      "median_atr_14_pct": 0.000433,
+      "p75_atr_14_pct": 0.00126,
+      "p90_atr_14_pct": 0.003518
+    },
+    "broad_index": {
+      "count": 22,
+      "avg_annualized_volatility": 0.241303,
+      "median_annualized_volatility": 0.23623,
+      "avg_max_drawdown": -0.178552,
+      "median_atr_14_pct": 0.025366,
+      "p75_atr_14_pct": 0.04147,
+      "p90_atr_14_pct": 0.042664
+    },
+    "commodity_resource": {
+      "count": 20,
+      "avg_annualized_volatility": 0.304578,
+      "median_annualized_volatility": 0.293573,
+      "avg_max_drawdown": -0.233096,
+      "median_atr_14_pct": 0.030634,
+      "p75_atr_14_pct": 0.036742,
+      "p90_atr_14_pct": 0.041137
+    },
+    "defensive": {
+      "count": 5,
+      "avg_annualized_volatility": 0.168823,
+      "median_annualized_volatility": 0.152033,
+      "avg_max_drawdown": -0.131972,
+      "median_atr_14_pct": 0.015377,
+      "p75_atr_14_pct": 0.018001,
+      "p90_atr_14_pct": 0.019183
+    },
+    "high_beta": {
+      "count": 3,
+      "avg_annualized_volatility": 0.521364,
+      "median_annualized_volatility": 0.232008,
+      "avg_max_drawdown": -0.400741,
+      "median_atr_14_pct": 0.024205,
+      "p75_atr_14_pct": 0.039412,
+      "p90_atr_14_pct": 0.048536
+    },
+    "qdii": {
+      "count": 15,
+      "avg_annualized_volatility": 0.265654,
+      "median_annualized_volatility": 0.273426,
+      "avg_max_drawdown": -0.259501,
+      "median_atr_14_pct": 0.026112,
+      "p75_atr_14_pct": 0.034512,
+      "p90_atr_14_pct": 0.040503
+    },
+    "sector": {
+      "count": 15,
+      "avg_annualized_volatility": 0.18544,
+      "median_annualized_volatility": 0.186686,
+      "avg_max_drawdown": -0.244695,
+      "median_atr_14_pct": 0.020426,
+      "p75_atr_14_pct": 0.021664,
+      "p90_atr_14_pct": 0.024528
+    },
+    "theme": {
+      "count": 18,
+      "avg_annualized_volatility": 0.351732,
+      "median_annualized_volatility": 0.325379,
+      "avg_max_drawdown": -0.317686,
+      "median_atr_14_pct": 0.037752,
+      "p75_atr_14_pct": 0.051306,
+      "p90_atr_14_pct": 0.055498
+    },
+    "unknown": {
+      "count": 73,
+      "avg_annualized_volatility": 0.264464,
+      "median_annualized_volatility": 0.242439,
+      "avg_max_drawdown": -0.211677,
+      "median_atr_14_pct": 0.028309,
+      "p75_atr_14_pct": 0.038709,
+      "p90_atr_14_pct": 0.048637
+    }
+  },
+  "rule_families": [
+    {
+      "family": "fixed_stop_fixed_take_profit",
+      "label": "Fixed Stop / Fixed Take Profit",
+      "execution_enabled": false,
+      "parameters": {
+        "stop_loss_pct": [
+          -0.03,
+          -0.05,
+          -0.08,
+          -0.1
+        ],
+        "take_profit_pct": [
+          0.05,
+          0.08,
+          0.12,
+          0.15
+        ]
+      },
+      "fit_for_etf_rotation": "baseline only",
+      "risk": "固定百分比容易忽略 ETF 类型差异，可能过拟合，也可能过早止盈卖飞。",
+      "backtest_note": "作为 baseline，不建议直接作为最终规则。"
+    },
+    {
+      "family": "fixed_stop_trailing_take_profit",
+      "label": "Fixed Stop + Trailing Take Profit",
+      "execution_enabled": false,
+      "parameters": {
+        "profit_protection_start_pct": [
+          0.03,
+          0.05,
+          0.08
+        ],
+        "trailing_drawdown_pct": [
+          0.025,
+          0.03,
+          0.04,
+          0.05,
+          0.06
+        ]
+      },
+      "fit_for_etf_rotation": "good candidate for sector/theme ETF",
+      "risk": "趋势强时较适合保护利润，但震荡市容易被洗出。",
+      "backtest_note": "重点观察 profit giveback 和 whipsaw count。"
+    },
+    {
+      "family": "atr_stop_atr_trailing",
+      "label": "ATR Stop + ATR Trailing",
+      "execution_enabled": false,
+      "parameters": {
+        "atr_window": [
+          14,
+          20
+        ],
+        "initial_stop_atr_multiple": [
+          1.5,
+          2.0,
+          2.5,
+          3.0
+        ],
+        "trailing_stop_atr_multiple": [
+          1.5,
+          2.0,
+          2.5,
+          3.0
+        ]
+      },
+      "fit_for_etf_rotation": "strong candidate",
+      "risk": "ATR 参数太多，需防止按历史噪声调参。",
+      "backtest_note": "适合作为跨 ETF 类型的波动自适应退出规则。"
+    },
+    {
+      "family": "trend_breakdown_exit",
+      "label": "Trend Breakdown Exit",
+      "execution_enabled": false,
+      "parameters": {
+        "ma_break": [
+          "MA10",
+          "MA20",
+          "MA30"
+        ],
+        "confirm_days": [
+          1,
+          2,
+          3
+        ]
+      },
+      "fit_for_etf_rotation": "strong candidate",
+      "risk": "MA10 易噪声，MA30 可能退出滞后。",
+      "backtest_note": "适合与 ranking exit 组合，而不是单独使用。"
+    },
+    {
+      "family": "ranking_drop_exit",
+      "label": "Ranking Drop Exit",
+      "execution_enabled": false,
+      "parameters": {
+        "exit_if_rank_below": [
+          10,
+          15,
+          20,
+          30
+        ],
+        "score_drop_threshold": [
+          0.1,
+          0.2,
+          0.3
+        ],
+        "consecutive_days": [
+          1,
+          2,
+          3
+        ]
+      },
+      "fit_for_etf_rotation": "core candidate",
+      "risk": "如果排名日内/日间抖动大，1 日确认会过度换手。",
+      "backtest_note": "最符合横截面轮动逻辑，需重点测试换手和成本。"
+    },
+    {
+      "family": "time_stop_capital_efficiency_exit",
+      "label": "Time Stop / Capital Efficiency Exit",
+      "execution_enabled": false,
+      "parameters": {
+        "max_holding_days": [
+          10,
+          15,
+          20,
+          25,
+          30
+        ],
+        "min_return_required": [
+          0.0,
+          0.01,
+          0.02,
+          0.03
+        ]
+      },
+      "fit_for_etf_rotation": "secondary candidate",
+      "risk": "容易把慢趋势卖飞，尤其宽基和红利风格。",
+      "backtest_note": "适合检验资金效率，不应单独作为硬退出。"
+    },
+    {
+      "family": "market_state_exit",
+      "label": "Market State Exit",
+      "execution_enabled": false,
+      "parameters": {
+        "if_market_state": [
+          "risk_off",
+          "weak"
+        ],
+        "reduce_or_exit": [
+          "review_only"
+        ]
+      },
+      "fit_for_etf_rotation": "risk overlay only",
+      "risk": "市场状态误判会导致系统性踏空。",
+      "backtest_note": "第一版只做 review only 或分组统计，不直接强制清仓。"
+    },
+    {
+      "family": "portfolio_exposure_exit",
+      "label": "Portfolio Exposure Exit",
+      "execution_enabled": false,
+      "parameters": {
+        "if_same_group_overexposed": [
+          "review_only"
+        ],
+        "if_high_beta_overexposed": [
+          "review_only"
+        ],
+        "if_no_broad_based_anchor": [
+          "review_only"
+        ]
+      },
+      "fit_for_etf_rotation": "risk review only",
+      "risk": "组合暴露规则应先影响新买入和复核，不宜直接强制卖出。",
+      "backtest_note": "观察集中度、回撤贡献和错失收益。"
+    }
+  ],
+  "etf_type_parameter_framework": {
+    "broad_index": {
+      "role": "core beta / broad market exposure",
+      "stop_loss_search": [
+        "5%-8%",
+        "8%-12%",
+        "2.0-4.0x ATR"
+      ],
+      "take_profit_search": [
+        "8%-15%",
+        "ranking exit primary"
+      ],
+      "trailing_search": [
+        "profit start 5%-10%",
+        "trail 4%-8% or 2.5-5.0x ATR"
+      ],
+      "time_stop_search": [
+        "20-60 days",
+        "avoid too-short capital-efficiency exit"
+      ],
+      "note": "宽基更适合趋势/ranking 出口，止损不宜过紧。",
+      "sample_count": 22,
+      "median_annualized_volatility": 0.23623,
+      "median_atr_14_pct": 0.025366,
+      "avg_max_drawdown": -0.178552
+    },
+    "sector": {
+      "role": "industry beta / style rotation",
+      "stop_loss_search": [
+        "4%-6%",
+        "6%-10%",
+        "1.8-3.5x ATR"
+      ],
+      "take_profit_search": [
+        "6%-12%",
+        "trailing profit candidate"
+      ],
+      "trailing_search": [
+        "profit start 4%-8%",
+        "trail 3%-7% or 2.0-4.5x ATR"
+      ],
+      "time_stop_search": [
+        "10-30 days",
+        "combine with ranking drop"
+      ],
+      "note": "行业 ETF 对风格切换敏感，ranking 掉队和趋势破坏应重点测试。",
+      "sample_count": 15,
+      "median_annualized_volatility": 0.186686,
+      "median_atr_14_pct": 0.020426,
+      "avg_max_drawdown": -0.244695
+    },
+    "theme": {
+      "role": "theme/high momentum exposure",
+      "stop_loss_search": [
+        "4%-6%",
+        "6%-10%",
+        "1.5-3.5x ATR"
+      ],
+      "take_profit_search": [
+        "5%-12%",
+        "profit giveback control"
+      ],
+      "trailing_search": [
+        "profit start 3%-8%",
+        "trail 2.5%-6% or 2.0-4.0x ATR"
+      ],
+      "time_stop_search": [
+        "5-20 days",
+        "hotspot decay review"
+      ],
+      "note": "主题 ETF 容易拥挤和退潮，移动止盈与 ranking 连续掉队值得回测。",
+      "sample_count": 18,
+      "median_annualized_volatility": 0.325379,
+      "median_atr_14_pct": 0.037752,
+      "avg_max_drawdown": -0.317686
+    },
+    "high_beta": {
+      "role": "high beta sentiment sector",
+      "stop_loss_search": [
+        "4%-6%",
+        "6%-9%",
+        "1.5-3.0x ATR"
+      ],
+      "take_profit_search": [
+        "5%-12%",
+        "strict giveback tracking"
+      ],
+      "trailing_search": [
+        "profit start 3%-8%",
+        "trail 2.5%-6%"
+      ],
+      "time_stop_search": [
+        "5-20 days",
+        "short_swing weakening review"
+      ],
+      "note": "高 beta ETF 不适合宽止损无限持有，需更重视短周期衰减。",
+      "sample_count": 3,
+      "median_annualized_volatility": 0.232008,
+      "median_atr_14_pct": 0.024205,
+      "avg_max_drawdown": -0.400741
+    },
+    "commodity_resource": {
+      "role": "cyclical / resource exposure",
+      "stop_loss_search": [
+        "4%-8%",
+        "6%-10%",
+        "1.8-3.5x ATR"
+      ],
+      "take_profit_search": [
+        "6%-15%",
+        "trend/ranking confirmation"
+      ],
+      "trailing_search": [
+        "profit start 5%-10%",
+        "trail 4%-8%"
+      ],
+      "time_stop_search": [
+        "10-45 days",
+        "commodity cycle review"
+      ],
+      "note": "周期资源可能趋势延续，也可能政策/价格冲击反转，ATR 与趋势破坏应组合测试。",
+      "sample_count": 20,
+      "median_annualized_volatility": 0.293573,
+      "median_atr_14_pct": 0.030634,
+      "avg_max_drawdown": -0.233096
+    },
+    "defensive": {
+      "role": "defensive / dividend / low volatility",
+      "stop_loss_search": [
+        "4%-8%",
+        "2.0-4.0x ATR"
+      ],
+      "take_profit_search": [
+        "ranking exit primary",
+        "avoid aggressive fixed take-profit"
+      ],
+      "trailing_search": [
+        "profit start 6%-12%",
+        "trail 4%-8%"
+      ],
+      "time_stop_search": [
+        "20-60 days",
+        "allow slower trend"
+      ],
+      "note": "防御/红利 ETF 更偏慢趋势，过紧止盈可能降低防守价值。",
+      "sample_count": 5,
+      "median_annualized_volatility": 0.152033,
+      "median_atr_14_pct": 0.015377,
+      "avg_max_drawdown": -0.131972
+    },
+    "bond_cash": {
+      "role": "cash/bond sleeve",
+      "stop_loss_search": [
+        "0.5%-2.5%",
+        "duration/credit event review"
+      ],
+      "take_profit_search": [
+        "not primary"
+      ],
+      "trailing_search": [
+        "not primary"
+      ],
+      "time_stop_search": [
+        "30-90 days",
+        "liquidity/carry review"
+      ],
+      "note": "债券/货币 ETF 需单独规则，不套权益 ETF 止盈止损。",
+      "sample_count": 12,
+      "median_annualized_volatility": 0.009527,
+      "median_atr_14_pct": 0.000433,
+      "avg_max_drawdown": -0.021828
+    },
+    "qdii": {
+      "role": "cross-border exposure",
+      "stop_loss_search": [
+        "observe only"
+      ],
+      "take_profit_search": [
+        "observe only"
+      ],
+      "trailing_search": [
+        "observe only"
+      ],
+      "time_stop_search": [
+        "10-45 days after premium/fx checks"
+      ],
+      "note": "QDII 自动交易前必须补溢价、汇率、海外交易日和申赎状态。",
+      "sample_count": 15,
+      "median_annualized_volatility": 0.273426,
+      "median_atr_14_pct": 0.026112,
+      "avg_max_drawdown": -0.259501
+    },
+    "unknown": {
+      "role": "manual review",
+      "stop_loss_search": [
+        "do not auto trade"
+      ],
+      "take_profit_search": [
+        "do not auto trade"
+      ],
+      "trailing_search": [
+        "do not auto trade"
+      ],
+      "time_stop_search": [
+        "manual classification first"
+      ],
+      "note": "unknown 分类先不进入自动交易回测池。",
+      "sample_count": 73,
+      "median_annualized_volatility": 0.242439,
+      "median_atr_14_pct": 0.028309,
+      "avg_max_drawdown": -0.211677
+    }
+  },
+  "sources": [
+    {
+      "name": "Quantpedia sector momentum rotational system",
+      "url": "https://quantpedia.com/strategies/sector-momentum-rotational-system",
+      "note": "行业/ETF 动量轮动的 Top-N + 定期再平衡框架参考。"
+    },
+    {
+      "name": "State Street sector ETF momentum map",
+      "url": "https://www.ssga.com/dk/en_gb/intermediary/insights/sector-etf-momentum-map",
+      "note": "用相对强弱和动量观察行业 ETF 轮动。"
+    },
+    {
+      "name": "CME Group: ATR",
+      "url": "https://www.cmegroup.com/education/courses/technical-analysis/understanding-average-true-range-indicator.html",
+      "note": "ATR 是波动率/真实波幅工具，适合做跨品种波动自适应止损研究。"
+    },
+    {
+      "name": "Investopedia trailing stop",
+      "url": "https://www.investopedia.com/terms/t/trailingstop.asp",
+      "note": "移动止损/移动止盈的基础定义和风险提示。"
+    },
+    {
+      "name": "BlackRock/iShares ETF selection",
+      "url": "https://www.blackrock.com/sg/en/ishares/education/choosing-the-right-etf",
+      "note": "ETF 选择应考虑流动性、结构、表现和交易质量。"
+    },
+    {
+      "name": "SSE ETF FAQ",
+      "url": "https://www.sse.com.cn/assortment/fund/etf/question/",
+      "note": "A 股 ETF 交易单位和交易机制约束参考。"
+    }
+  ],
+  "safety": {
+    "broker_api": false,
+    "real_order": false,
+    "paper_trade_modified": false,
+    "paper_position_modified": false,
+    "execution_rule_changed": false
+  }
+}

@@ -1,0 +1,8 @@
+strategy,total_return,annualized_return,max_drawdown,calmar,sharpe,trade_count,cost_total,turnover,avg_holding_days,avg_exposure,win_rate,profit_factor,beat_510300,beat_v2_baseline,ready_for_shadow,ready_for_execution,overfit_risk,main_weakness
+original_baseline_v2,0.016422,0.015614,-0.096273,0.162181,0.21847,76,470.2645,14.418278,19.8421,,0.578947,1.111616,False,False,False,False,medium,does_not_beat_510300
+adjusted_preview_baseline_v2,0.050503,0.047979,-0.084157,0.570112,0.567417,76,470.4368,14.239484,19.8421,,0.605263,1.382367,False,False,False,False,medium,does_not_beat_510300
+top10_diversified_filter_v2,0.113055,0.107249,-0.048599,2.206831,1.345177,62,384.0121,11.229956,17.6452,,0.645161,2.149317,False,False,False,False,medium,does_not_beat_510300
+buy_and_hold_510300,0.199411,0.188809,-0.065803,2.869324,1.795617,1,8.5856,0.532607,0.0,,0.0,0.0,False,True,False,False,medium,does_not_beat_510300
+risk_off_defensive_v2,0.165378,0.156702,-0.040746,3.845791,1.95222,64,396.3989,11.347721,16.1562,0.359712,0.65625,3.116712,False,True,True,False,medium,does_not_beat_510300
+single_score_v2_baseline,0.140303,0.133016,-0.046112,2.884595,1.702487,68,421.0438,12.165363,15.8824,0.377443,0.617647,2.411389,False,True,True,False,medium,does_not_beat_510300
+persistence_breakout_v2,0.201897,0.191153,-0.034278,5.576636,2.589504,76,469.9564,13.07809,14.3684,0.370095,0.710526,4.947426,True,True,True,False,medium,research_only_not_executed

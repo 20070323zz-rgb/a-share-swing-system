@@ -1,0 +1,10 @@
+{
+  "generated_at": "2026-06-21 20:58:01",
+  "tushare_token_configured": true,
+  "token_visible_in_logs": false,
+  "env_file_exists": true,
+  "env_var_present": false,
+  "env_file_has_tushare_token_key": true,
+  "provider_ready": true,
+  "next_action": "Run small-sample staging dry-run."
+}

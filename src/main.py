@@ -21,7 +21,7 @@ from data_health import write_data_health_report
 from data_loader import load_price_data, read_trades_with_validation, read_watchlist
 from factor_analysis import write_factor_analysis_report
 from indicators import add_indicators, latest_on_or_before
-from paper_portfolio import apply_paper_buy_plan, update_paper_portfolio
+from paper_portfolio import update_paper_portfolio
 from portfolio import SimAccount
 from reporting import (
     build_cycle_decisions,
@@ -147,8 +147,13 @@ def main() -> None:
         paper_summary,
         latest_rows.get(BENCHMARK_CODE),
     )
-    paper_execution = apply_paper_buy_plan(run_date, paper_buy_allocations, latest_prices, watchlist)
-    paper_path, paper_summary = update_paper_portfolio(run_date, latest_prices, watchlist)
+    paper_execution = {
+        "executed": [],
+        "skipped": paper_buy_allocations,
+        "executed_count": 0,
+        "skipped_count": len(paper_buy_allocations),
+        "note": "main.py 只生成模拟买入计划；实际模拟买卖统一由 paper_trade_engine 执行，以保证佣金、滑点、交易单位和幂等规则一致。",
+    }
     first_buy_plan_path = write_first_paper_buy_plan(
         run_date,
         buy_ranking_rows,

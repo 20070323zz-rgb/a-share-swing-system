@@ -1,0 +1,632 @@
+{
+  "generated_at": "2026-06-24 00:54:08",
+  "scope": "L2 local engineering report only; no model/rule/trade changes",
+  "files_checked": [
+    {
+      "path": "reports/dashboard_data.json",
+      "status": "exists"
+    },
+    {
+      "path": "reports/latest_data_coverage.md",
+      "status": "exists"
+    },
+    {
+      "path": "reports/latest_data_health.md",
+      "status": "exists"
+    },
+    {
+      "path": "reports/data_download_report.md",
+      "status": "exists"
+    },
+    {
+      "path": "data/etf_daily/",
+      "status": "exists"
+    },
+    {
+      "path": "data/paper_trades.csv",
+      "status": "exists"
+    },
+    {
+      "path": "data/paper_positions.csv",
+      "status": "exists"
+    },
+    {
+      "path": "data/paper_equity_curve.csv",
+      "status": "exists"
+    },
+    {
+      "path": "data/paper_equity_curve_backfilled.csv",
+      "status": "exists"
+    },
+    {
+      "path": "reports/paper_performance_summary.json",
+      "status": "exists"
+    },
+    {
+      "path": "reports/paper_performance_summary.md",
+      "status": "exists"
+    },
+    {
+      "path": "reports/paper_trade_pnl.csv",
+      "status": "exists"
+    },
+    {
+      "path": "reports/paper_equity_curve.md",
+      "status": "exists"
+    },
+    {
+      "path": "reports/paper_equity_curve_backfilled.md",
+      "status": "exists"
+    },
+    {
+      "path": "reports/ranking_model_v2_backtest_report.md",
+      "status": "exists"
+    },
+    {
+      "path": "reports/ranking_model_v2_decision_report.md",
+      "status": "exists"
+    },
+    {
+      "path": "reports/v2_underperformance_attribution.md",
+      "status": "exists"
+    },
+    {
+      "path": "reports/alpha_factor_enhancement_research.md",
+      "status": "exists"
+    },
+    {
+      "path": "reports/phase4c_alpha_model_comparison.md",
+      "status": "exists"
+    },
+    {
+      "path": "reports/phase4c_alpha_model_decision.md",
+      "status": "exists"
+    },
+    {
+      "path": "data/persistence_breakout_shadow_tracking.csv",
+      "status": "exists"
+    },
+    {
+      "path": "data/missed_opportunity_tracking.csv",
+      "status": "exists"
+    },
+    {
+      "path": "reports/persistence_breakout_shadow_signal.csv",
+      "status": "exists"
+    },
+    {
+      "path": "reports/persistence_breakout_shadow_portfolio.csv",
+      "status": "exists"
+    },
+    {
+      "path": "reports/model_shadow_comparison.csv",
+      "status": "exists"
+    },
+    {
+      "path": "reports/shadow_observation_weekly.json",
+      "status": "exists"
+    },
+    {
+      "path": "reports/shadow_observation_weekly.md",
+      "status": "exists"
+    },
+    {
+      "path": "reports/missed_opportunity_tracker.md",
+      "status": "exists"
+    },
+    {
+      "path": "reports/risk_on_empty_signal_analysis.md",
+      "status": "exists"
+    }
+  ],
+  "etf_data": {
+    "etf_file_count": 183,
+    "latest_data_date": "2026-06-23",
+    "earliest_data_date": "2022-01-04",
+    "latest_date_distribution": {
+      "2026-06-23": 183
+    },
+    "short_history_count": 183,
+    "stale_etf_count": 0,
+    "coverage_worst_20": [
+      {
+        "section": "etf_daily",
+        "symbol": "510180",
+        "name": "上证180ETF",
+        "start_date": "2026-01-05",
+        "end_date": "2026-06-23",
+        "row_count": 111,
+        "coverage_status": "short_history_after_2022|latest",
+        "data_quality": "short_history",
+        "comment": "起始晚于 2022-01-01，历史较短"
+      },
+      {
+        "section": "etf_daily",
+        "symbol": "510500",
+        "name": "中证500ETF",
+        "start_date": "2026-01-05",
+        "end_date": "2026-06-23",
+        "row_count": 111,
+        "coverage_status": "short_history_after_2022|latest",
+        "data_quality": "short_history",
+        "comment": "起始晚于 2022-01-01，历史较短"
+      },
+      {
+        "section": "etf_daily",
+        "symbol": "510880",
+        "name": "红利ETF",
+        "start_date": "2026-01-05",
+        "end_date": "2026-06-23",
+        "row_count": 111,
+        "coverage_status": "short_history_after_2022|latest",
+        "data_quality": "short_history",
+        "comment": "起始晚于 2022-01-01，历史较短"
+      },
+      {
+        "section": "etf_daily",
+        "symbol": "512100",
+        "name": "中证1000ETF",
+        "start_date": "2026-01-05",
+        "end_date": "2026-06-23",
+        "row_count": 111,
+        "coverage_status": "short_history_after_2022|latest",
+        "data_quality": "short_history",
+        "comment": "起始晚于 2022-01-01，历史较短"
+      },
+      {
+        "section": "etf_daily",
+        "symbol": "515880",
+        "name": "证券公司ETF",
+        "start_date": "2026-01-05",
+        "end_date": "2026-06-23",
+        "row_count": 111,
+        "coverage_status": "short_history_after_2022|latest",
+        "data_quality": "short_history",
+        "comment": "起始晚于 2022-01-01，历史较短"
+      },
+      {
+        "section": "etf_daily",
+        "symbol": "510050",
+        "name": "上证50ETF",
+        "start_date": "2025-03-03",
+        "end_date": "2026-06-23",
+        "row_count": 318,
+        "coverage_status": "short_history_after_2022|latest",
+        "data_quality": "ok",
+        "comment": "起始晚于 2022-01-01，历史较短"
+      },
+      {
+        "section": "etf_daily",
+        "symbol": "510060",
+        "name": "510060",
+        "start_date": "2025-03-03",
+        "end_date": "2026-06-23",
+        "row_count": 318,
+        "coverage_status": "short_history_after_2022|latest",
+        "data_quality": "ok",
+        "comment": "起始晚于 2022-01-01，历史较短"
+      },
+      {
+        "section": "etf_daily",
+        "symbol": "510230",
+        "name": "金融ETF",
+        "start_date": "2025-03-03",
+        "end_date": "2026-06-23",
+        "row_count": 318,
+        "coverage_status": "short_history_after_2022|latest",
+        "data_quality": "ok",
+        "comment": "起始晚于 2022-01-01，历史较短"
+      },
+      {
+        "section": "etf_daily",
+        "symbol": "510270",
+        "name": "510270",
+        "start_date": "2025-03-03",
+        "end_date": "2026-06-23",
+        "row_count": 318,
+        "coverage_status": "short_history_after_2022|latest",
+        "data_quality": "ok",
+        "comment": "起始晚于 2022-01-01，历史较短"
+      },
+      {
+        "section": "etf_daily",
+        "symbol": "510410",
+        "name": "资源ETF",
+        "start_date": "2025-03-03",
+        "end_date": "2026-06-23",
+        "row_count": 318,
+        "coverage_status": "short_history_after_2022|latest",
+        "data_quality": "ok",
+        "comment": "起始晚于 2022-01-01，历史较短"
+      },
+      {
+        "section": "etf_daily",
+        "symbol": "511010",
+        "name": "国债ETF",
+        "start_date": "2025-03-03",
+        "end_date": "2026-06-23",
+        "row_count": 318,
+        "coverage_status": "short_history_after_2022|latest",
+        "data_quality": "ok",
+        "comment": "起始晚于 2022-01-01，历史较短"
+      },
+      {
+        "section": "etf_daily",
+        "symbol": "511030",
+        "name": "公司债ETF",
+        "start_date": "2025-03-03",
+        "end_date": "2026-06-23",
+        "row_count": 318,
+        "coverage_status": "short_history_after_2022|latest",
+        "data_quality": "ok",
+        "comment": "起始晚于 2022-01-01，历史较短"
+      },
+      {
+        "section": "etf_daily",
+        "symbol": "511090",
+        "name": "30年国债ETF",
+        "start_date": "2025-03-03",
+        "end_date": "2026-06-23",
+        "row_count": 318,
+        "coverage_status": "short_history_after_2022|latest",
+        "data_quality": "ok",
+        "comment": "起始晚于 2022-01-01，历史较短"
+      },
+      {
+        "section": "etf_daily",
+        "symbol": "511260",
+        "name": "十年国债ETF",
+        "start_date": "2025-03-03",
+        "end_date": "2026-06-23",
+        "row_count": 318,
+        "coverage_status": "short_history_after_2022|latest",
+        "data_quality": "ok",
+        "comment": "起始晚于 2022-01-01，历史较短"
+      },
+      {
+        "section": "etf_daily",
+        "symbol": "511360",
+        "name": "短融ETF",
+        "start_date": "2025-03-03",
+        "end_date": "2026-06-23",
+        "row_count": 318,
+        "coverage_status": "short_history_after_2022|latest",
+        "data_quality": "ok",
+        "comment": "起始晚于 2022-01-01，历史较短"
+      },
+      {
+        "section": "etf_daily",
+        "symbol": "511380",
+        "name": "可转债ETF",
+        "start_date": "2025-03-03",
+        "end_date": "2026-06-23",
+        "row_count": 318,
+        "coverage_status": "short_history_after_2022|latest",
+        "data_quality": "ok",
+        "comment": "起始晚于 2022-01-01，历史较短"
+      },
+      {
+        "section": "etf_daily",
+        "symbol": "511520",
+        "name": "政金债ETF",
+        "start_date": "2025-03-03",
+        "end_date": "2026-06-23",
+        "row_count": 318,
+        "coverage_status": "short_history_after_2022|latest",
+        "data_quality": "ok",
+        "comment": "起始晚于 2022-01-01，历史较短"
+      },
+      {
+        "section": "etf_daily",
+        "symbol": "511600",
+        "name": "511600",
+        "start_date": "2025-03-03",
+        "end_date": "2026-06-23",
+        "row_count": 318,
+        "coverage_status": "short_history_after_2022|latest",
+        "data_quality": "ok",
+        "comment": "起始晚于 2022-01-01，历史较短"
+      },
+      {
+        "section": "etf_daily",
+        "symbol": "511690",
+        "name": "511690",
+        "start_date": "2025-03-03",
+        "end_date": "2026-06-23",
+        "row_count": 318,
+        "coverage_status": "short_history_after_2022|latest",
+        "data_quality": "ok",
+        "comment": "起始晚于 2022-01-01，历史较短"
+      },
+      {
+        "section": "etf_daily",
+        "symbol": "511880",
+        "name": "银华日利ETF",
+        "start_date": "2025-03-03",
+        "end_date": "2026-06-23",
+        "row_count": 318,
+        "coverage_status": "short_history_after_2022|latest",
+        "data_quality": "ok",
+        "comment": "起始晚于 2022-01-01，历史较短"
+      }
+    ],
+    "stale_etfs": [],
+    "supports_backtest": true,
+    "supports_ranking_factor_research": true,
+    "supports_shadow_observation": true,
+    "supports_formal_daily_paper_update": true
+  },
+  "data_layers": {
+    "historical_backtest_trading_days": 256,
+    "historical_backtest_range": {
+      "start": "2025-05-30",
+      "end": "2026-06-18"
+    },
+    "real_paper_trade_start": "2026-06-09",
+    "paper_trade_count": 7,
+    "paper_position_count": 3,
+    "raw_equity_curve_rows": 9,
+    "backfilled_equity_curve_rows": 15,
+    "backfilled_is_estimated": true,
+    "shadow_tracking_rows": 1,
+    "missed_opportunity_tracking_rows": 20,
+    "forward_return_matured_samples": {
+      "1d": 10,
+      "3d": 0,
+      "5d": 0,
+      "10d": 0,
+      "20d": 0
+    },
+    "pending_forward_rows": 11,
+    "real_time_validation_sample_count": 2
+  },
+  "paper_portfolio_maturity": {
+    "initial_cash": 10000.0,
+    "research_initial_cash_main": 20000.0,
+    "current_total_equity": 10080.05,
+    "current_cash": 7076.25,
+    "current_position_value": 3003.8,
+    "total_pnl_amount": 80.05,
+    "total_return_pct": 0.008004999999999927,
+    "realized_pnl": -73.59,
+    "unrealized_pnl": 143.3,
+    "current_positions": 3,
+    "trade_count": 7,
+    "closed_trade_count": 2,
+    "open_position_count": 3,
+    "raw_equity_rows": 9,
+    "backfilled_equity_rows": 15,
+    "max_drawdown": -0.010299999999999976,
+    "latest_data_date_in_performance": "2026-06-22"
+  },
+  "shadow_observation_maturity": {
+    "signal_days": 1,
+    "selected_days": 1,
+    "empty_signal_days": 1,
+    "risk_on_empty_days": 1,
+    "missed_opportunity_candidate_count": 10,
+    "pending_forward_return_count": 11,
+    "matured_forward_return": {
+      "1d": 10,
+      "3d": 0,
+      "5d": 0,
+      "10d": 0,
+      "20d": 0
+    },
+    "missed_opportunity_rate": 0.0,
+    "filter_effective_rate": 0.0,
+    "evidence_level": "insufficient",
+    "ready_to_relax_filters": false,
+    "ready_for_preview": false,
+    "ready_for_execution": false
+  },
+  "model_stages": [
+    {
+      "section": "model_stage",
+      "symbol": "original_ranking_baseline",
+      "name": "历史回测基线",
+      "start_date": "2025-05-30",
+      "end_date": "2026-06-18",
+      "row_count": 76,
+      "coverage_status": "research_only",
+      "data_quality": "historical_backtest_only",
+      "comment": "",
+      "model_name": "original_ranking_baseline",
+      "stage": "历史回测基线",
+      "status": "research_only",
+      "backtest_return": 0.016422,
+      "max_drawdown": -0.096273,
+      "trade_count": 76,
+      "beat_510300": false,
+      "ready_for_shadow": false,
+      "ready_for_preview": false,
+      "ready_for_execution": false,
+      "evidence_level": "historical_backtest_only",
+      "main_issue": "未跑赢 510300，且只是历史回测",
+      "next_required_data": "继续作为对照基线"
+    },
+    {
+      "section": "model_stage",
+      "symbol": "adjusted_preview_baseline",
+      "name": "历史回测/预览基线",
+      "start_date": "2025-05-30",
+      "end_date": "2026-06-18",
+      "row_count": 76,
+      "coverage_status": "research_only",
+      "data_quality": "historical_backtest_only",
+      "comment": "",
+      "model_name": "adjusted_preview_baseline",
+      "stage": "历史回测/预览基线",
+      "status": "research_only",
+      "backtest_return": 0.050503,
+      "max_drawdown": -0.084157,
+      "trade_count": 76,
+      "beat_510300": false,
+      "ready_for_shadow": false,
+      "ready_for_preview": false,
+      "ready_for_execution": false,
+      "evidence_level": "historical_backtest_only",
+      "main_issue": "收益改善但未证明可实盘化",
+      "next_required_data": "shadow forward 样本和真实观察日"
+    },
+    {
+      "section": "model_stage",
+      "symbol": "top10_diversified_filter_v2",
+      "name": "低回撤候选",
+      "start_date": "2025-05-30",
+      "end_date": "2026-06-18",
+      "row_count": 62,
+      "coverage_status": "shadow_candidate_only",
+      "data_quality": "historical_backtest_only",
+      "comment": "",
+      "model_name": "top10_diversified_filter_v2",
+      "stage": "低回撤候选",
+      "status": "shadow_candidate_only",
+      "backtest_return": 0.113055,
+      "max_drawdown": -0.048599,
+      "trade_count": 62,
+      "beat_510300": false,
+      "ready_for_shadow": true,
+      "ready_for_preview": false,
+      "ready_for_execution": false,
+      "evidence_level": "historical_backtest_only",
+      "main_issue": "低回撤但未跑赢 510300",
+      "next_required_data": "60 个交易日 shadow tracking；成熟 10d/20d forward return"
+    },
+    {
+      "section": "model_stage",
+      "symbol": "persistence_breakout_v2",
+      "name": "Phase 4C alpha 候选",
+      "start_date": "",
+      "end_date": "",
+      "row_count": 0,
+      "coverage_status": "shadow_tracking",
+      "data_quality": "insufficient",
+      "comment": "",
+      "model_name": "persistence_breakout_v2",
+      "stage": "Phase 4C alpha 候选",
+      "status": "shadow_tracking",
+      "backtest_return": 0.201897,
+      "max_drawdown": -0.034278,
+      "trade_count": "",
+      "beat_510300": true,
+      "ready_for_shadow": true,
+      "ready_for_preview": false,
+      "ready_for_execution": false,
+      "evidence_level": "insufficient",
+      "main_issue": "历史研究较强，但真实 shadow 样本刚开始",
+      "next_required_data": "连续 60 个交易日 shadow；相对 510300 正超额"
+    },
+    {
+      "section": "model_stage",
+      "symbol": "missed_opportunity_tracker",
+      "name": "过滤器有效性观察",
+      "start_date": "",
+      "end_date": "",
+      "row_count": 20,
+      "coverage_status": "active_research",
+      "data_quality": "insufficient",
+      "comment": "",
+      "model_name": "missed_opportunity_tracker",
+      "stage": "过滤器有效性观察",
+      "status": "active_research",
+      "backtest_return": "",
+      "max_drawdown": "",
+      "trade_count": 20,
+      "beat_510300": "",
+      "ready_for_shadow": true,
+      "ready_for_preview": false,
+      "ready_for_execution": false,
+      "evidence_level": "insufficient",
+      "main_issue": "forward return 大多未成熟",
+      "next_required_data": "至少 20 个成熟 10d 样本"
+    },
+    {
+      "section": "model_stage",
+      "symbol": "shadow_observation_weekly",
+      "name": "周度影子观察",
+      "start_date": "",
+      "end_date": "",
+      "row_count": 0,
+      "coverage_status": "active_research",
+      "data_quality": "insufficient",
+      "comment": "",
+      "model_name": "shadow_observation_weekly",
+      "stage": "周度影子观察",
+      "status": "active_research",
+      "backtest_return": "",
+      "max_drawdown": "",
+      "trade_count": 0,
+      "beat_510300": "",
+      "ready_for_shadow": true,
+      "ready_for_preview": false,
+      "ready_for_execution": false,
+      "evidence_level": "insufficient",
+      "main_issue": "证据不足",
+      "next_required_data": "真实交易日和 forward return 成熟样本"
+    },
+    {
+      "section": "model_stage",
+      "symbol": "paper_portfolio_monitoring",
+      "name": "模拟仓监控",
+      "start_date": "",
+      "end_date": "",
+      "row_count": 7,
+      "coverage_status": "live_paper_observation",
+      "data_quality": "live_sample_too_small",
+      "comment": "",
+      "model_name": "paper_portfolio_monitoring",
+      "stage": "模拟仓监控",
+      "status": "live_paper_observation",
+      "backtest_return": "",
+      "max_drawdown": "",
+      "trade_count": 7,
+      "beat_510300": "",
+      "ready_for_shadow": "",
+      "ready_for_preview": "",
+      "ready_for_execution": false,
+      "evidence_level": "live_sample_too_small",
+      "main_issue": "样本太少，只能验证执行链路",
+      "next_required_data": "10-20 个完整交易闭环"
+    }
+  ],
+  "maturity_gates": {
+    "minimum_observation_gate": {
+      "real_trading_days_required": 20,
+      "matured_10d_forward_required": 20,
+      "paper_trade_records_required": 10,
+      "current_real_trading_days": 9,
+      "current_matured_10d_forward": 0,
+      "current_paper_trade_records": 7,
+      "missing_real_trading_days": 11,
+      "missing_matured_10d_forward": 20,
+      "missing_paper_trade_records": 3
+    },
+    "preliminary_judgment_gate": {
+      "real_trading_days_required_range": "40-60",
+      "matured_10d_forward_required_range": "30-50",
+      "matured_20d_forward_required": 20,
+      "closed_trade_cycles_required_range": "10-20",
+      "current_closed_trade_cycles": 2,
+      "missing_to_40_days": 31,
+      "missing_to_60_days": 51,
+      "missing_matured_20d_forward": 20,
+      "missing_closed_trade_cycles_to_10": 8
+    }
+  },
+  "conclusion": {
+    "current_model_stage": "Shadow observation period; formal model locked and unchanged",
+    "can_change_formal_model": false,
+    "can_enter_preview": false,
+    "can_connect_paper_trade_engine": false,
+    "main_reason": "历史数据足够做研究和回测，但真实观察、paper trade 闭环和 forward return 成熟样本明显不足。"
+  },
+  "safety": {
+    "broker_api": false,
+    "real_trade": false,
+    "real_account_read": false,
+    "paper_trades_modified": false,
+    "paper_positions_modified": false,
+    "paper_trade_engine_modified": false
+  }
+}

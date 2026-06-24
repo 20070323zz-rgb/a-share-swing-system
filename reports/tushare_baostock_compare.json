@@ -1,0 +1,18 @@
+{
+  "generated_at": "2026-06-21 21:00:03",
+  "status": "completed",
+  "baostock_compare_ready": true,
+  "symbols_compared": 5,
+  "close_consistent_count": 5,
+  "volume_amount_unit_check": "review_required",
+  "recommended_daily_source": "baostock",
+  "candidate_daily_source": "tushare",
+  "formal_source_switched": false,
+  "summary": "Tushare sample comparison completed; keep BaoStock as formal daily source until larger staging proves stable.",
+  "safety": {
+    "formal_data_written": false,
+    "paper_engine_changed": false,
+    "broker_api": false,
+    "real_order": false
+  }
+}

@@ -1,0 +1,10 @@
+#!/bin/bash
+PROJECT_ROOT="/Users/dayin/Code/a-share-swing-system"
+unset __PYVENV_LAUNCHER__
+unset PYTHONHOME
+export PATH="/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+cd "$PROJECT_ROOT" || exit 1
+if /usr/bin/arch -arm64 /usr/bin/true >/dev/null 2>&1; then
+  exec /usr/bin/arch -arm64 /bin/bash "$PROJECT_ROOT/scripts/run_app.sh"
+fi
+exec /bin/bash "$PROJECT_ROOT/scripts/run_app.sh"

@@ -1,0 +1,16 @@
+{
+  "status": "completed",
+  "research_only": true,
+  "execution_enabled": false,
+  "best_candidate": "persistence_breakout_v2",
+  "candidate_type": "strong_shadow",
+  "best_total_return": 0.201897,
+  "best_max_drawdown": -0.034278,
+  "beat_510300": true,
+  "beat_v2_baseline": true,
+  "ready_for_shadow": true,
+  "ready_for_execution": false,
+  "overfit_guardrails_passed": true,
+  "summary": "Phase 4C alpha research completed. Candidate remains research/shadow only; execution integration is disabled.",
+  "next_step": "Run shadow tracking for the best candidate only if user approves; do not alter paper_trade_engine."
+}

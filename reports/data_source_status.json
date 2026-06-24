@@ -1,0 +1,37 @@
+{
+  "generated_at": "2026-06-24 15:44:47",
+  "source_priority": [
+    "baostock",
+    "jqdata",
+    "tushare"
+  ],
+  "requested_source": "auto",
+  "primary_source": "baostock",
+  "fallback_source": "jqdata",
+  "actual_source_used": "baostock",
+  "fallback_triggered": false,
+  "jqdata_status": "SKIPPED",
+  "jqdata_message": "",
+  "baostock_status": "STALE_NO_NEW_ROWS",
+  "baostock_message": "No new rows were appended and local data is still stale versus requested end 2026-06-24.",
+  "latest_data_date": "2026-06-23",
+  "new_rows": 0,
+  "failed_count": 0,
+  "failed_symbols": [],
+  "pending_count": 25,
+  "pending_symbols": [],
+  "updated_symbols": [],
+  "skipped_symbols": [],
+  "unresolved_symbols": [],
+  "validate_only": false,
+  "exit_code": 2,
+  "safety": {
+    "broker_api": false,
+    "real_order": false,
+    "real_account": false,
+    "credentials_logged": false,
+    "credentials_saved_to_code": false,
+    "staging_first": true,
+    "local_existing_rows_priority": true
+  }
+}

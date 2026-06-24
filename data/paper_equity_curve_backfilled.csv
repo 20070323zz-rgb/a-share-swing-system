@@ -1,0 +1,16 @@
+date,cash,position_value,total_equity,daily_pnl,daily_return,cumulative_pnl,cumulative_return,drawdown,source,quality_flag,note
+2026-06-08,10000.0,0.0,10000.0,0.0,0.0,0.0,0.0,0.0,backfilled_from_trades_and_close,estimated_good,backfilled_from_paper_trades_and_local_close
+2026-06-09,7124.3,2875.7,10000.0,0.0,0.0,0.0,0.0,0.0,backfilled_from_trades_and_close,estimated_good,backfilled_from_paper_trades_and_local_close | trades=BUY:512800:1100;BUY:515220:1100;BUY:515880:300
+2026-06-10,7124.3,2811.1,9935.4,-64.6,-0.006460000000000036,-64.6,-0.006460000000000036,-0.006460000000000021,backfilled_from_trades_and_close,estimated_good,backfilled_from_paper_trades_and_local_close
+2026-06-11,7124.3,2804.1,9928.4,-7.0,-0.0007045514020572901,-71.6,-0.007160000000000036,-0.007160000000000055,backfilled_from_trades_and_close,estimated_good,backfilled_from_paper_trades_and_local_close
+2026-06-12,7124.3,2820.4,9944.7,16.3,0.0016417549655532888,-55.3,-0.0055300000000001095,-0.005530000000000146,backfilled_from_trades_and_close,estimated_good,backfilled_from_paper_trades_and_local_close
+2026-06-13,7124.3,2820.4,9944.7,0.0,0.0,-55.3,-0.0055300000000001095,-0.005530000000000146,backfilled_from_trades_and_close,estimated_carry_forward,"backfilled_from_paper_trades_and_local_close | carry_forward_price=512800,515220,515880"
+2026-06-14,7124.3,2820.4,9944.7,0.0,0.0,-55.3,-0.0055300000000001095,-0.005530000000000146,backfilled_from_trades_and_close,estimated_carry_forward,"backfilled_from_paper_trades_and_local_close | carry_forward_price=512800,515220,515880"
+2026-06-15,7124.3,2772.7,9897.0,-47.7,-0.004796524782044598,-103.0,-0.0103,-0.010299999999999976,backfilled_from_trades_and_close,estimated_good,backfilled_from_paper_trades_and_local_close
+2026-06-16,7076.25,2827.9,9904.15,7.15,0.000722441143780907,-95.85,-0.009585000000000036,-0.009585000000000066,backfilled_from_trades_and_close,estimated_good,backfilled_from_paper_trades_and_local_close | trades=BUY:515000:1000;SELL:515220:1100
+2026-06-17,7076.25,2893.9,9970.15,66.0,0.0066638732248602865,-29.85,-0.0029850000000000362,-0.0029850000000000154,backfilled_from_trades_and_close,estimated_good,backfilled_from_paper_trades_and_local_close
+2026-06-18,7076.25,2941.2,10017.45,47.3,0.004744161321544738,17.45,0.001744999999999891,0.0,backfilled_from_trades_and_close,estimated_good,backfilled_from_paper_trades_and_local_close
+2026-06-19,7076.25,2941.2,10017.45,0.0,0.0,17.45,0.001744999999999891,0.0,backfilled_from_trades_and_close,estimated_carry_forward,"backfilled_from_paper_trades_and_local_close | carry_forward_price=512800,515000,515880"
+2026-06-20,7076.25,2941.2,10017.45,0.0,0.0,17.45,0.001744999999999891,0.0,backfilled_from_trades_and_close,estimated_carry_forward,"backfilled_from_paper_trades_and_local_close | carry_forward_price=512800,515000,515880"
+2026-06-21,7076.25,2941.2,10017.45,0.0,0.0,17.45,0.001744999999999891,0.0,backfilled_from_trades_and_close,estimated_carry_forward,"backfilled_from_paper_trades_and_local_close | carry_forward_price=512800,515000,515880"
+2026-06-22,7076.25,3003.8,10080.05,62.6,0.0062490953286515405,80.05,0.008004999999999927,0.0,backfilled_from_trades_and_close,estimated_good,backfilled_from_paper_trades_and_local_close

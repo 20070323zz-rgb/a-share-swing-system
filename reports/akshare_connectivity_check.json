@@ -1,0 +1,91 @@
+{
+  "generated_at": "2026-06-21 20:13:30",
+  "akshare_status": "partially_usable",
+  "akshare_version": "1.18.64",
+  "python_executable": "system/default",
+  "proxy_env_present": [],
+  "tests": [
+    {
+      "status": "success",
+      "rows": 8797,
+      "columns": [
+        "trade_date"
+      ],
+      "error_type": "",
+      "error": "",
+      "name": "trade_calendar_light",
+      "elapsed_seconds": 0.837
+    },
+    {
+      "status": "failed",
+      "rows": 0,
+      "columns": [],
+      "error_type": "ProxyError",
+      "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&beg=20260601&end=20260618&secid=1.510300 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+      "trace_tail": [
+        "    return ak.fund_etf_hist_em(symbol=\"510300\", period=\"daily\", start_date=\"20260601\", end_date=\"20260618\", adjust=\"\")",
+        "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "requests.exceptions.ProxyError: HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&beg=20260601&end=20260618&secid=1.510300 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))"
+      ],
+      "name": "etf_history_small_range",
+      "elapsed_seconds": 0.526
+    },
+    {
+      "status": "success",
+      "rows": 14,
+      "columns": [
+        "日期",
+        "股票代码",
+        "开盘",
+        "收盘",
+        "最高",
+        "最低",
+        "成交量",
+        "成交额",
+        "振幅",
+        "涨跌幅",
+        "涨跌额",
+        "换手率"
+      ],
+      "error_type": "",
+      "error": "",
+      "name": "a_share_history_small_range",
+      "elapsed_seconds": 0.486
+    },
+    {
+      "status": "success",
+      "rows": 1514,
+      "columns": [
+        "代码",
+        "名称",
+        "最新价",
+        "IOPV实时估值",
+        "基金折价率",
+        "涨跌额",
+        "涨跌幅",
+        "成交量",
+        "成交额",
+        "开盘价",
+        "最高价",
+        "最低价"
+      ],
+      "error_type": "",
+      "error": "",
+      "name": "etf_spot_latest",
+      "elapsed_seconds": 17.014
+    }
+  ],
+  "likely_causes": [
+    "proxy configuration may be interfering with Eastmoney/Sina endpoints.",
+    "remote endpoints may close connections or rate-limit requests from the current network."
+  ],
+  "recommended_role": "Use AKShare only as an optional fallback and intelligence-data probe with retry/backoff and local cache; do not use it as primary daily ETF update source.",
+  "safety": {
+    "broker_api": false,
+    "real_order": false,
+    "real_account": false,
+    "credentials_logged": false,
+    "formal_data_written": false,
+    "low_frequency_probe_only": true
+  }
+}

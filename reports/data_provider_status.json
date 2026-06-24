@@ -1,0 +1,66 @@
+{
+  "generated_at": "2026-06-21 21:00:03",
+  "baostock_status": {
+    "configured": false,
+    "usable": false,
+    "message": "baostock import failed",
+    "last_error": true
+  },
+  "tushare_status": {
+    "configured": true,
+    "usable": true,
+    "message": "tushare package missing; HTTP API fallback will be used",
+    "last_error": true
+  },
+  "akshare_status": {
+    "configured": true,
+    "usable": true,
+    "message": "akshare import ok; run akshare_connectivity_check for endpoint health",
+    "last_error": false,
+    "connectivity": "partially_usable"
+  },
+  "jqdata_status": {
+    "configured": false,
+    "usable": false,
+    "message": "jqdatasdk import ok; credential values are never printed",
+    "last_error": false
+  },
+  "local_cache_status": {
+    "configured": true,
+    "usable": true,
+    "message": "local cache dir: /Users/dayin/Code/a-share-swing-system/data/etf_daily",
+    "last_error": false,
+    "etf_file_count": 183
+  },
+  "daily_source_priority": [
+    "baostock",
+    "tushare_if_configured",
+    "akshare_fallback"
+  ],
+  "history_source_priority": [
+    "jqdata",
+    "baostock",
+    "tushare_if_configured"
+  ],
+  "special_data_priority": [
+    "akshare",
+    "tushare",
+    "manual"
+  ],
+  "daily_source_priority_candidate": [
+    "tushare_if_configured",
+    "baostock",
+    "akshare_fallback"
+  ],
+  "formal_source_switched": false,
+  "recommended_daily_source": "baostock",
+  "candidate_daily_source": "tushare",
+  "summary": "Provider status is diagnostics-only; formal daily source remains BaoStock in Phase 4C-1.",
+  "safety": {
+    "broker_api": false,
+    "real_order": false,
+    "token_logged": false,
+    "formal_data_written": false,
+    "execution_layer_changed": false
+  }
+}

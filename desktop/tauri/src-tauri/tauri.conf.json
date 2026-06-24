@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "A Share ETF Control Room",
+  "version": "0.1.0",
+  "identifier": "com.dayin.a-share-etf-control-room",
+  "build": {
+    "frontendDist": "../",
+    "devUrl": "http://127.0.0.1:8000"
+  },
+  "app": {
+    "security": {
+      "csp": null
+    },
+    "windows": []
+  },
+  "bundle": {
+    "active": true,
+    "targets": "app",
+    "icon": []
+  }
+}

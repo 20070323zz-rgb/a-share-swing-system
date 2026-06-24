@@ -1,6 +1,6 @@
 # 四节点自动化同步报告
 
-- 检查时间：2026-06-10 21:29:56
+- 检查时间：2026-06-24 23:04:56
 - dry-run：no
 - 正式 ETF 日线文件数量：183
 - 权限等级：L2 联网数据权限；本轮未读取账号、未接券商、未真实下单。
@@ -28,16 +28,16 @@
 ## 报告同步状态
 | report | exists | updated_at |
 | --- | --- | --- |
-| open_check.md | True | 2026-06-10 12:36:38 |
-| midday_check.md | True | 2026-06-10 12:40:04 |
-| afternoon_open_check.md | True | 2026-06-10 13:10:01 |
-| daily_rolling_backtest.md | True | 2026-06-10 21:29:55 |
-| weekly_full_review.md | True | 2026-06-10 12:36:55 |
+| open_check.md | True | 2026-06-24 09:54:32 |
+| midday_check.md | True | 2026-06-24 12:55:23 |
+| afternoon_open_check.md | True | 2026-06-24 13:13:59 |
+| daily_rolling_backtest.md | True | 2026-06-24 23:04:56 |
+| weekly_full_review.md | True | 2026-06-12 15:48:29 |
 | monthly_model_review.md | True | 2026-06-10 12:36:56 |
-| latest_brief.md | True | 2026-06-10 21:29:53 |
-| latest_paper_portfolio.md | True | 2026-06-10 21:29:55 |
-| buy_signal_ranking.md | True | 2026-06-10 21:29:53 |
-| dashboard_data.json | True | 2026-06-10 21:29:53 |
+| latest_brief.md | True | 2026-06-24 23:04:50 |
+| latest_paper_portfolio.md | True | 2026-06-24 23:04:52 |
+| buy_signal_ranking.md | True | 2026-06-24 23:04:50 |
+| dashboard_data.json | True | 2026-06-24 23:04:50 |
 
 ## 诊断结论
 - 当前 launchd 调用项目内 scripts/run_*.sh 脚本。

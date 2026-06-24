@@ -1,0 +1,681 @@
+{
+  "generated_at": "2026-06-21 21:17:07",
+  "research_only": true,
+  "v2_metrics": {
+    "strategy": "top10_diversified_filter_v2",
+    "initial_cash": 20000.0,
+    "total_return": 0.113055,
+    "annualized_return": 0.107249,
+    "max_drawdown": -0.048599,
+    "sharpe": 1.345177,
+    "calmar": 2.206831,
+    "win_rate": 0.645161,
+    "avg_win": 211.4215,
+    "avg_loss": -178.8488,
+    "profit_factor": 2.149317,
+    "trade_count": 62,
+    "turnover": 11.229956,
+    "avg_holding_days": 17.6452,
+    "final_equity": 22261.0929,
+    "cash_ratio_avg": 0.616147,
+    "exposure_avg": 0.383853,
+    "cost_total": 384.0121,
+    "commission_total": 310.0,
+    "slippage_total": 74.0121,
+    "min_commission_trigger_count": 62,
+    "avg_trade_value": 3979.1675,
+    "backtest_start_date": "2025-05-30",
+    "backtest_end_date": "2026-06-18"
+  },
+  "benchmark_510300_metrics": {
+    "strategy": "buy_and_hold_510300",
+    "initial_cash": 20000.0,
+    "total_return": 0.199411,
+    "annualized_return": 0.188809,
+    "max_drawdown": -0.065803,
+    "sharpe": 1.795617,
+    "calmar": 2.869324,
+    "win_rate": 0.0,
+    "avg_win": 0.0,
+    "avg_loss": 0.0,
+    "profit_factor": 0.0,
+    "trade_count": 1,
+    "turnover": 0.532607,
+    "avg_holding_days": 0.0,
+    "final_equity": 23988.2144,
+    "cash_ratio_avg": 0.361459,
+    "exposure_avg": 0.638541,
+    "cost_total": 8.5856,
+    "commission_total": 5.0,
+    "slippage_total": 3.5856,
+    "min_commission_trigger_count": 1,
+    "avg_trade_value": 11952.0,
+    "backtest_start_date": "2025-05-30",
+    "backtest_end_date": "2026-06-18"
+  },
+  "yearly_attribution": [
+    {
+      "year": 2025,
+      "v2_return": 0.08693306,
+      "benchmark_return": 0.14277072000000013,
+      "excess_return": -0.05583766000000012,
+      "v2_max_drawdown": -0.04816375526770478
+    },
+    {
+      "year": 2026,
+      "v2_return": 0.009469854275079959,
+      "benchmark_return": 0.019031262519002334,
+      "excess_return": -0.009561408243922376,
+      "v2_max_drawdown": -0.04859851034039231
+    }
+  ],
+  "monthly_attribution_top_lags": [
+    {
+      "month": "2025-08",
+      "v2_return": 0.02686973459442843,
+      "benchmark_return": 0.07175364214894797,
+      "excess_return": -0.04488390755451954,
+      "benchmark_fast_up": true
+    },
+    {
+      "month": "2026-04",
+      "v2_return": -0.0012723100717603186,
+      "benchmark_return": 0.041156252266254745,
+      "excess_return": -0.04242856233801506,
+      "benchmark_fast_up": true
+    },
+    {
+      "month": "2026-05",
+      "v2_return": -0.018691164116731218,
+      "benchmark_return": 0.0047295271270135775,
+      "excess_return": -0.023420691243744796,
+      "benchmark_fast_up": false
+    },
+    {
+      "month": "2025-09",
+      "v2_return": -0.005250996527221052,
+      "benchmark_return": 0.017843589376469238,
+      "excess_return": -0.02309458590369029,
+      "benchmark_fast_up": false
+    },
+    {
+      "month": "2026-06",
+      "v2_return": 0.0,
+      "benchmark_return": 0.01571748205395518,
+      "excess_return": -0.01571748205395518,
+      "benchmark_fast_up": false
+    },
+    {
+      "month": "2025-10",
+      "v2_return": -0.017168655877869865,
+      "benchmark_return": -0.008327183939304872,
+      "excess_return": -0.008841471938564993,
+      "benchmark_fast_up": false
+    },
+    {
+      "month": "2025-12",
+      "v2_return": 0.0047350709566436056,
+      "benchmark_return": 0.009326885723180522,
+      "excess_return": -0.004591814766536917,
+      "benchmark_fast_up": false
+    },
+    {
+      "month": "2025-05",
+      "v2_return": 0.0,
+      "benchmark_return": 0.0,
+      "excess_return": 0.0,
+      "benchmark_fast_up": false
+    },
+    {
+      "month": "2025-07",
+      "v2_return": 0.028349235106148507,
+      "benchmark_return": 0.026186560900140154,
+      "excess_return": 0.0021626742060083526,
+      "benchmark_fast_up": false
+    },
+    {
+      "month": "2025-11",
+      "v2_return": -0.009960942377174598,
+      "benchmark_return": -0.017896298500192365,
+      "excess_return": 0.007935356123017767,
+      "benchmark_fast_up": false
+    },
+    {
+      "month": "2026-02",
+      "v2_return": 0.026068732690074148,
+      "benchmark_return": 0.017575144639925266,
+      "excess_return": 0.008493588050148881,
+      "benchmark_fast_up": false
+    },
+    {
+      "month": "2026-03",
+      "v2_return": -0.017406320914446383,
+      "benchmark_return": -0.03806205134874119,
+      "excess_return": 0.020655730434294806,
+      "benchmark_fast_up": false
+    }
+  ],
+  "exposure_attribution": {
+    "avg_exposure": 0.3838526809338521,
+    "median_exposure": 0.518616,
+    "low_exposure_days_lt_40pct": 102,
+    "cash_or_empty_days_lt_10pct": 53,
+    "target_total_position": 0.6,
+    "interpretation": "v2 is structurally capped around 60% gross exposure, so it may lag 510300 in fast beta rallies."
+  },
+  "style_attribution": {
+    "type_exposure_share": {
+      "sector": 0.5541749529349699,
+      "commodity_resource": 0.23968947337269958,
+      "theme": 0.1060891086161626,
+      "broad_index": 0.07033938744854779,
+      "high_beta": 0.029707077627620024
+    },
+    "group_exposure_share": {
+      "消费医药": 0.20712237543324952,
+      "防御风格": 0.19394094377258778,
+      "金融地产": 0.18281871135675265,
+      "周期资源": 0.14400681032433763,
+      "新能源制造": 0.09568266304836198,
+      "宽基": 0.07033938744854779,
+      "科技与新质生产力": 0.0669491847160615,
+      "医药与消费升级": 0.0391399239001011
+    },
+    "high_beta_share": 0.13579618624378262,
+    "defensive_share": 0.0,
+    "interpretation": "High-beta exposure is limited by top10 diversified filters; this protects drawdown but can cap upside in risk-on regimes."
+  },
+  "filter_attribution": {
+    "by_filter_reason": [
+      {
+        "filter_reason": "high_beta_exposure",
+        "count": 2,
+        "avg_forward_20d_return": 0.13748998429415693,
+        "max_forward_20d_return": 0.13967861557478356
+      },
+      {
+        "filter_reason": "liquidity_trading_constraint",
+        "count": 56,
+        "avg_forward_20d_return": 0.02162651200067629,
+        "max_forward_20d_return": 0.14785373608903019
+      },
+      {
+        "filter_reason": "not_selected_lower_priority",
+        "count": 169,
+        "avg_forward_20d_return": 0.016830262407307155,
+        "max_forward_20d_return": 0.24453551912568305
+      },
+      {
+        "filter_reason": "already_held",
+        "count": 161,
+        "avg_forward_20d_return": 0.016004491866947704,
+        "max_forward_20d_return": 0.15384615384615374
+      },
+      {
+        "filter_reason": "group_concentration",
+        "count": 13,
+        "avg_forward_20d_return": 0.00829958437609223,
+        "max_forward_20d_return": 0.1408977556109725
+      },
+      {
+        "filter_reason": "trend_confirmation",
+        "count": 1809,
+        "avg_forward_20d_return": 0.004622554368200137,
+        "max_forward_20d_return": 0.3361027190332324
+      },
+      {
+        "filter_reason": "cooldown",
+        "count": 15,
+        "avg_forward_20d_return": -0.03849168641876045,
+        "max_forward_20d_return": -0.008152173913043459
+      }
+    ],
+    "top_missed_upside": [
+      {
+        "filter_reason": "trend_confirmation",
+        "symbol": "588000",
+        "name": "科创50ETF",
+        "date": "2026-04-03",
+        "rank": 3,
+        "forward_20d_return": 0.3361027190332324
+      },
+      {
+        "filter_reason": "trend_confirmation",
+        "symbol": "588000",
+        "name": "科创50ETF",
+        "date": "2026-04-02",
+        "rank": 2,
+        "forward_20d_return": 0.3112781954887218
+      },
+      {
+        "filter_reason": "trend_confirmation",
+        "symbol": "588000",
+        "name": "科创50ETF",
+        "date": "2026-04-07",
+        "rank": 8,
+        "forward_20d_return": 0.28688524590163933
+      },
+      {
+        "filter_reason": "trend_confirmation",
+        "symbol": "588000",
+        "name": "科创50ETF",
+        "date": "2026-04-09",
+        "rank": 10,
+        "forward_20d_return": 0.28339222614840986
+      },
+      {
+        "filter_reason": "trend_confirmation",
+        "symbol": "588000",
+        "name": "科创50ETF",
+        "date": "2026-04-08",
+        "rank": 10,
+        "forward_20d_return": 0.27087719298245605
+      },
+      {
+        "filter_reason": "not_selected_lower_priority",
+        "symbol": "515790",
+        "name": "光伏ETF",
+        "date": "2025-08-08",
+        "rank": 4,
+        "forward_20d_return": 0.24453551912568305
+      },
+      {
+        "filter_reason": "trend_confirmation",
+        "symbol": "159770",
+        "name": "机器人ETF",
+        "date": "2026-04-07",
+        "rank": 4,
+        "forward_20d_return": 0.23485653560042508
+      },
+      {
+        "filter_reason": "trend_confirmation",
+        "symbol": "562500",
+        "name": "机器人ETF华夏",
+        "date": "2026-04-07",
+        "rank": 3,
+        "forward_20d_return": 0.23432343234323438
+      },
+      {
+        "filter_reason": "not_selected_lower_priority",
+        "symbol": "588000",
+        "name": "科创50ETF",
+        "date": "2025-07-28",
+        "rank": 10,
+        "forward_20d_return": 0.22162162162162158
+      },
+      {
+        "filter_reason": "not_selected_lower_priority",
+        "symbol": "515790",
+        "name": "光伏ETF",
+        "date": "2025-08-11",
+        "rank": 10,
+        "forward_20d_return": 0.21895861148197593
+      },
+      {
+        "filter_reason": "trend_confirmation",
+        "symbol": "588000",
+        "name": "科创50ETF",
+        "date": "2026-04-01",
+        "rank": 7,
+        "forward_20d_return": 0.20818115412709992
+      },
+      {
+        "filter_reason": "trend_confirmation",
+        "symbol": "159770",
+        "name": "机器人ETF",
+        "date": "2026-04-03",
+        "rank": 5,
+        "forward_20d_return": 0.20338983050847448
+      },
+      {
+        "filter_reason": "trend_confirmation",
+        "symbol": "562500",
+        "name": "机器人ETF华夏",
+        "date": "2026-04-03",
+        "rank": 9,
+        "forward_20d_return": 0.20285087719298245
+      },
+      {
+        "filter_reason": "trend_confirmation",
+        "symbol": "512400",
+        "name": "有色ETF",
+        "date": "2026-03-23",
+        "rank": 3,
+        "forward_20d_return": 0.19583104772353277
+      },
+      {
+        "filter_reason": "trend_confirmation",
+        "symbol": "159770",
+        "name": "机器人ETF",
+        "date": "2026-04-10",
+        "rank": 9,
+        "forward_20d_return": 0.19402985074626877
+      }
+    ],
+    "interpretation": "Positive forward returns among filtered symbols indicate that some filters may be too defensive in risk-on phases."
+  },
+  "trade_attribution": {
+    "trade_count": 101,
+    "sell_count": 31,
+    "buy_count": 31,
+    "total_cost": 384.0121,
+    "sell_reason_summary": [
+      {
+        "reason": "max_holding_days_20",
+        "count": 18,
+        "pnl": -593.0498,
+        "avg_holding_days": 21.0
+      },
+      {
+        "reason": "rank_below_30_confirmed_2d",
+        "count": 13,
+        "pnl": 2854.1425,
+        "avg_holding_days": 13.0
+      }
+    ],
+    "interpretation": "Reduced turnover helped drawdown and cost, but max holding/cooldown/rank exits may also miss long trend continuation."
+  },
+  "symbol_contribution": {
+    "top_positive": [
+      {
+        "symbol": 588000,
+        "name": "科创50ETF",
+        "pnl": 626.0427,
+        "trades": 2,
+        "avg_holding_days": 14.5
+      },
+      {
+        "symbol": 159770,
+        "name": "机器人ETF",
+        "pnl": 531.4608,
+        "trades": 1,
+        "avg_holding_days": 14.0
+      },
+      {
+        "symbol": 515790,
+        "name": "光伏ETF",
+        "pnl": 367.534,
+        "trades": 1,
+        "avg_holding_days": 15.0
+      },
+      {
+        "symbol": 512200,
+        "name": "房地产ETF",
+        "pnl": 342.7913,
+        "trades": 2,
+        "avg_holding_days": 21.0
+      },
+      {
+        "symbol": 515220,
+        "name": "煤炭ETF",
+        "pnl": 316.8325,
+        "trades": 1,
+        "avg_holding_days": 20.0
+      },
+      {
+        "symbol": 512880,
+        "name": "证券ETF",
+        "pnl": 261.3513,
+        "trades": 1,
+        "avg_holding_days": 16.0
+      },
+      {
+        "symbol": 562500,
+        "name": "机器人ETF华夏",
+        "pnl": 213.1325,
+        "trades": 1,
+        "avg_holding_days": 21.0
+      },
+      {
+        "symbol": 512660,
+        "name": "军工ETF",
+        "pnl": 201.4578,
+        "trades": 2,
+        "avg_holding_days": 19.0
+      },
+      {
+        "symbol": 512400,
+        "name": "有色ETF",
+        "pnl": 156.4111,
+        "trades": 2,
+        "avg_holding_days": 12.5
+      },
+      {
+        "symbol": 159930,
+        "name": "能源ETF",
+        "pnl": 155.00969999999998,
+        "trades": 2,
+        "avg_holding_days": 16.5
+      }
+    ],
+    "top_negative": [
+      {
+        "symbol": 512170,
+        "name": "医疗ETF",
+        "pnl": -356.07079999999996,
+        "trades": 2,
+        "avg_holding_days": 21.0
+      },
+      {
+        "symbol": 159905,
+        "name": "深红利ETF",
+        "pnl": -354.1616,
+        "trades": 2,
+        "avg_holding_days": 19.0
+      },
+      {
+        "symbol": 512010,
+        "name": "医药ETF",
+        "pnl": -178.82379999999998,
+        "trades": 2,
+        "avg_holding_days": 15.0
+      },
+      {
+        "symbol": 510230,
+        "name": "金融ETF",
+        "pnl": -147.89759999999998,
+        "trades": 2,
+        "avg_holding_days": 21.0
+      },
+      {
+        "symbol": 512890,
+        "name": "红利低波ETF",
+        "pnl": -131.1245,
+        "trades": 1,
+        "avg_holding_days": 21.0
+      },
+      {
+        "symbol": 159915,
+        "name": "创业板ETF",
+        "pnl": 34.4452,
+        "trades": 1,
+        "avg_holding_days": 9.0
+      },
+      {
+        "symbol": 515120,
+        "name": "广发创新药ETF",
+        "pnl": 37.1257,
+        "trades": 1,
+        "avg_holding_days": 21.0
+      },
+      {
+        "symbol": 512690,
+        "name": "酒ETF",
+        "pnl": 42.004099999999994,
+        "trades": 2,
+        "avg_holding_days": 21.0
+      },
+      {
+        "symbol": 515080,
+        "name": "中证红利ETF",
+        "pnl": 143.5723,
+        "trades": 3,
+        "avg_holding_days": 16.333333333333332
+      },
+      {
+        "symbol": 159930,
+        "name": "能源ETF",
+        "pnl": 155.00969999999998,
+        "trades": 2,
+        "avg_holding_days": 16.5
+      }
+    ]
+  },
+  "conclusion": {
+    "main_causes": [
+      "Structural exposure cap around 60% makes v2 lag beta buy-and-hold during fast rallies.",
+      "Top10 diversification and high-beta limits reduce drawdown but filter out some upside.",
+      "Trend confirmation avoids weak setups but can buy late or skip early breakouts."
+    ],
+    "alpha_strength": "improved versus original/adjusted, but not strong enough to beat 510300 buy-and-hold.",
+    "over_defensive": true,
+    "exposure_insufficient": true,
+    "filtered_upside_issue": true,
+    "fast_up_lag_months": 2,
+    "next_research_direction": "test regime-aware relaxed filters and simple alpha enhancements; keep execution disabled."
+  },
+  "sections": [
+    {
+      "section": "yearly",
+      "year": 2025,
+      "v2_return": 0.08693306,
+      "benchmark_return": 0.14277072000000013,
+      "excess_return": -0.05583766000000012,
+      "v2_max_drawdown": -0.04816375526770478
+    },
+    {
+      "section": "yearly",
+      "year": 2026,
+      "v2_return": 0.009469854275079959,
+      "benchmark_return": 0.019031262519002334,
+      "excess_return": -0.009561408243922376,
+      "v2_max_drawdown": -0.04859851034039231
+    },
+    {
+      "section": "monthly_lag",
+      "month": "2025-08",
+      "v2_return": 0.02686973459442843,
+      "benchmark_return": 0.07175364214894797,
+      "excess_return": -0.04488390755451954,
+      "benchmark_fast_up": true
+    },
+    {
+      "section": "monthly_lag",
+      "month": "2026-04",
+      "v2_return": -0.0012723100717603186,
+      "benchmark_return": 0.041156252266254745,
+      "excess_return": -0.04242856233801506,
+      "benchmark_fast_up": true
+    },
+    {
+      "section": "monthly_lag",
+      "month": "2026-05",
+      "v2_return": -0.018691164116731218,
+      "benchmark_return": 0.0047295271270135775,
+      "excess_return": -0.023420691243744796,
+      "benchmark_fast_up": false
+    },
+    {
+      "section": "monthly_lag",
+      "month": "2025-09",
+      "v2_return": -0.005250996527221052,
+      "benchmark_return": 0.017843589376469238,
+      "excess_return": -0.02309458590369029,
+      "benchmark_fast_up": false
+    },
+    {
+      "section": "monthly_lag",
+      "month": "2026-06",
+      "v2_return": 0.0,
+      "benchmark_return": 0.01571748205395518,
+      "excess_return": -0.01571748205395518,
+      "benchmark_fast_up": false
+    },
+    {
+      "section": "monthly_lag",
+      "month": "2025-10",
+      "v2_return": -0.017168655877869865,
+      "benchmark_return": -0.008327183939304872,
+      "excess_return": -0.008841471938564993,
+      "benchmark_fast_up": false
+    },
+    {
+      "section": "monthly_lag",
+      "month": "2025-12",
+      "v2_return": 0.0047350709566436056,
+      "benchmark_return": 0.009326885723180522,
+      "excess_return": -0.004591814766536917,
+      "benchmark_fast_up": false
+    },
+    {
+      "section": "monthly_lag",
+      "month": "2025-05",
+      "v2_return": 0.0,
+      "benchmark_return": 0.0,
+      "excess_return": 0.0,
+      "benchmark_fast_up": false
+    },
+    {
+      "section": "monthly_lag",
+      "month": "2025-07",
+      "v2_return": 0.028349235106148507,
+      "benchmark_return": 0.026186560900140154,
+      "excess_return": 0.0021626742060083526,
+      "benchmark_fast_up": false
+    },
+    {
+      "section": "monthly_lag",
+      "month": "2025-11",
+      "v2_return": -0.009960942377174598,
+      "benchmark_return": -0.017896298500192365,
+      "excess_return": 0.007935356123017767,
+      "benchmark_fast_up": false
+    },
+    {
+      "section": "monthly_lag",
+      "month": "2026-02",
+      "v2_return": 0.026068732690074148,
+      "benchmark_return": 0.017575144639925266,
+      "excess_return": 0.008493588050148881,
+      "benchmark_fast_up": false
+    },
+    {
+      "section": "monthly_lag",
+      "month": "2026-03",
+      "v2_return": -0.017406320914446383,
+      "benchmark_return": -0.03806205134874119,
+      "excess_return": 0.020655730434294806,
+      "benchmark_fast_up": false
+    },
+    {
+      "section": "exposure",
+      "avg_exposure": 0.3838526809338521,
+      "median_exposure": 0.518616,
+      "low_exposure_days_lt_40pct": 102,
+      "cash_or_empty_days_lt_10pct": 53,
+      "target_total_position": 0.6,
+      "interpretation": "v2 is structurally capped around 60% gross exposure, so it may lag 510300 in fast beta rallies."
+    },
+    {
+      "section": "style",
+      "high_beta_share": 0.13579618624378262,
+      "defensive_share": 0.0
+    },
+    {
+      "section": "trade",
+      "trade_count": 101,
+      "sell_count": 31,
+      "buy_count": 31,
+      "total_cost": 384.0121,
+      "interpretation": "Reduced turnover helped drawdown and cost, but max holding/cooldown/rank exits may also miss long trend continuation."
+    }
+  ],
+  "safety": {
+    "broker_api": false,
+    "real_order": false,
+    "paper_trades_modified": false,
+    "paper_positions_modified": false,
+    "paper_trade_engine_changed": false,
+    "execution_enabled": false
+  }
+}

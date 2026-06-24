@@ -1,0 +1,23 @@
+{
+  "status": "active",
+  "research_only": true,
+  "execution_enabled": false,
+  "model_name": "persistence_breakout_v2",
+  "tracking_days": 4,
+  "candidate_count": 39,
+  "missed_opportunity_count": 0,
+  "missed_opportunity_rate": 0.0,
+  "filter_effective_rate": 0.0,
+  "risk_on_empty_signal_count": 0,
+  "top_missed_filter_reason": "trend_not_confirmed",
+  "forward_return_10d_pending_count": 39,
+  "ready_to_relax_filters": false,
+  "ready_for_preview": false,
+  "ready_for_execution": false,
+  "summary": "Missed opportunity tracking is active, but results are labels only and do not change persistence_breakout_v2 rules.",
+  "tracker_report_href": "../reports/missed_opportunity_tracker.md",
+  "by_reason_report_href": "../reports/missed_opportunity_by_filter_reason.md",
+  "risk_on_report_href": "../reports/risk_on_empty_signal_analysis.md",
+  "selected_vs_filtered_href": "../reports/selected_vs_filtered_forward_return.md",
+  "observation_rules_href": "../reports/missed_opportunity_observation_rules.md"
+}

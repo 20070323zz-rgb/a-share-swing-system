@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>CFBundleName</key>
+  <string>量化研究控制台</string>
+  <key>CFBundleDisplayName</key>
+  <string>量化研究控制台</string>
+  <key>CFBundleIdentifier</key>
+  <string>local.dayin.a-share-swing-system</string>
+  <key>CFBundleVersion</key>
+  <string>0.1.0-local</string>
+  <key>CFBundleShortVersionString</key>
+  <string>0.1.0-local</string>
+  <key>CFBundleExecutable</key>
+  <string>launch</string>
+  <key>LSArchitecturePriority</key>
+  <array>
+    <string>arm64</string>
+    <string>x86_64</string>
+  </array>
+  <key>CFBundlePackageType</key>
+  <string>APPL</string>
+  <key>LSMinimumSystemVersion</key>
+  <string>10.15</string>
+  <key>NSHighResolutionCapable</key>
+  <true/>
+  <key>CFBundleIconFile</key>
+  <string>app_icon</string>
+</dict>
+</plist>

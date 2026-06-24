@@ -1,0 +1,105 @@
+{
+  "checked_at": "2026-06-23 23:44:13",
+  "overall_status": "OK",
+  "port_status": "project_app",
+  "gatekeeper_status": "clear",
+  "recommendation": "可以双击 dist/量化研究控制台.app 或打开 http://127.0.0.1:8000。",
+  "items": [
+    {
+      "status": "OK",
+      "key": "app_bundle",
+      "label": ".app 包装器",
+      "detail": "/Users/dayin/Code/a-share-swing-system/dist/量化研究控制台.app"
+    },
+    {
+      "status": "OK",
+      "key": "app_executable",
+      "label": ".app 启动文件",
+      "detail": "可执行：/Users/dayin/Code/a-share-swing-system/dist/量化研究控制台.app/Contents/MacOS/launch"
+    },
+    {
+      "status": "OK",
+      "key": "info_plist",
+      "label": "Info.plist",
+      "detail": "/Users/dayin/Code/a-share-swing-system/dist/量化研究控制台.app/Contents/Info.plist"
+    },
+    {
+      "status": "OK",
+      "key": "icon_icns",
+      "label": "App 图标资源",
+      "detail": "/Users/dayin/Code/a-share-swing-system/dist/量化研究控制台.app/Contents/Resources/app_icon.icns"
+    },
+    {
+      "status": "OK",
+      "key": "run_app",
+      "label": "run_app.sh",
+      "detail": "可执行：/Users/dayin/Code/a-share-swing-system/scripts/run_app.sh"
+    },
+    {
+      "status": "OK",
+      "key": "command_launcher",
+      "label": "中文 .command 启动器",
+      "detail": "可执行：/Users/dayin/Code/a-share-swing-system/打开量化研究控制台.command"
+    },
+    {
+      "status": "OK",
+      "key": "legacy_launcher",
+      "label": "英文 .command 启动器",
+      "detail": "可执行：/Users/dayin/Code/a-share-swing-system/A-Share Swing App.command"
+    },
+    {
+      "status": "OK",
+      "key": "venv_dir",
+      "label": ".venv 虚拟环境",
+      "detail": "/Users/dayin/Code/a-share-swing-system/.venv"
+    },
+    {
+      "status": "OK",
+      "key": "venv_python",
+      "label": ".venv Python",
+      "detail": "可执行：/Users/dayin/Code/a-share-swing-system/.venv/bin/python"
+    },
+    {
+      "status": "OK",
+      "key": "frontend_dist",
+      "label": "前端构建产物",
+      "detail": "/Users/dayin/Code/a-share-swing-system/app/frontend/dist/index.html"
+    },
+    {
+      "status": "OK",
+      "key": "python_deps",
+      "label": "FastAPI / Uvicorn",
+      "detail": "依赖可导入"
+    },
+    {
+      "status": "OK",
+      "key": "backend_import",
+      "label": "App 后端导入",
+      "detail": "app.backend.main 可导入"
+    },
+    {
+      "status": "OK",
+      "key": "log_writable",
+      "label": "日志文件",
+      "detail": "可写：/Users/dayin/Code/a-share-swing-system/logs/app_server.log"
+    },
+    {
+      "status": "OK",
+      "key": "port_8000",
+      "label": "8000 端口",
+      "detail": "本项目 App 已在运行：http://127.0.0.1:8000"
+    },
+    {
+      "status": "OK",
+      "key": "gatekeeper",
+      "label": "macOS Gatekeeper",
+      "detail": "未发现明显拦截信息"
+    }
+  ],
+  "safety": {
+    "broker_api": false,
+    "real_trade": false,
+    "real_account": false,
+    "token_printed": false
+  }
+}

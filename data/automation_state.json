@@ -23,5 +23,212 @@
       "source": "catchup",
       "note": "missed_after_close"
     }
+  },
+  "2026-06-11": {
+    "open_check": {
+      "status": "success",
+      "last_run": "2026-06-11 09:40:06",
+      "source": "launchd"
+    },
+    "midday_check": {
+      "status": "success",
+      "last_run": "2026-06-11 12:40:01",
+      "source": "launchd"
+    },
+    "afternoon_open_check": {
+      "status": "success",
+      "last_run": "2026-06-11 13:10:05",
+      "source": "launchd"
+    },
+    "daily_close": {
+      "status": "success",
+      "last_run": "2026-06-11 15:34:39",
+      "source": "launchd"
+    }
+  },
+  "2026-06-12": {
+    "open_check": {
+      "status": "success",
+      "last_run": "2026-06-12 09:47:30",
+      "source": "launchd"
+    },
+    "midday_check": {
+      "status": "success",
+      "last_run": "2026-06-12 12:43:18",
+      "source": "launchd"
+    },
+    "afternoon_open_check": {
+      "status": "success",
+      "last_run": "2026-06-12 13:10:05",
+      "source": "launchd"
+    },
+    "weekly_review": {
+      "status": "success",
+      "last_run": "2026-06-12 15:48:29",
+      "source": "launchd"
+    },
+    "daily_close": {
+      "status": "success",
+      "last_run": "2026-06-12 16:04:40",
+      "source": "launchd"
+    }
+  },
+  "2026-06-15": {
+    "daily_close": {
+      "status": "success",
+      "last_run": "2026-06-15 19:46:22",
+      "source": "launchd"
+    },
+    "open_check": {
+      "status": "success",
+      "last_run": "2026-06-15 09:40:06",
+      "source": "launchd"
+    },
+    "midday_check": {
+      "status": "success",
+      "last_run": "2026-06-15 12:40:01",
+      "source": "launchd"
+    },
+    "afternoon_open_check": {
+      "status": "success",
+      "last_run": "2026-06-15 13:10:02",
+      "source": "launchd"
+    }
+  },
+  "2026-06-16": {
+    "open_check": {
+      "status": "success",
+      "last_run": "2026-06-16 09:40:06",
+      "source": "launchd"
+    },
+    "daily_close": {
+      "status": "success",
+      "last_run": "2026-06-16 15:39:41",
+      "source": "launchd",
+      "error": "success with warning"
+    },
+    "midday_check": {
+      "status": "success",
+      "last_run": "2026-06-16 12:40:05",
+      "source": "launchd"
+    },
+    "afternoon_open_check": {
+      "status": "success",
+      "last_run": "2026-06-16 13:10:01",
+      "source": "launchd"
+    }
+  },
+  "2026-06-17": {
+    "daily_close": {
+      "status": "success",
+      "last_run": "2026-06-17 22:56:00",
+      "source": "launchd"
+    },
+    "open_check": {
+      "status": "success",
+      "last_run": "2026-06-17 09:40:05",
+      "source": "launchd"
+    },
+    "midday_check": {
+      "status": "success",
+      "last_run": "2026-06-17 12:40:06",
+      "source": "launchd"
+    },
+    "afternoon_open_check": {
+      "status": "success",
+      "last_run": "2026-06-17 13:10:04",
+      "source": "launchd"
+    }
+  },
+  "2026-06-18": {
+    "open_check": {
+      "status": "success",
+      "last_run": "2026-06-18 09:54:28",
+      "source": "launchd"
+    },
+    "midday_check": {
+      "status": "success",
+      "last_run": "2026-06-18 12:40:32",
+      "source": "launchd"
+    },
+    "afternoon_open_check": {
+      "status": "success",
+      "last_run": "2026-06-18 13:15:59",
+      "source": "launchd"
+    },
+    "daily_close": {
+      "status": "success",
+      "last_run": "2026-06-18 15:32:17",
+      "source": "catchup",
+      "error": "success with warning"
+    }
+  },
+  "2026-06-22": {
+    "open_check": {
+      "status": "success",
+      "last_run": "2026-06-22 10:29:19",
+      "source": "catchup"
+    },
+    "midday_check": {
+      "status": "success",
+      "last_run": "2026-06-22 12:40:04",
+      "source": "launchd"
+    },
+    "afternoon_open_check": {
+      "status": "success",
+      "last_run": "2026-06-22 13:17:53",
+      "source": "launchd"
+    },
+    "daily_close": {
+      "status": "success",
+      "last_run": "2026-06-22 15:39:39",
+      "source": "launchd",
+      "error": "success with warning"
+    }
+  },
+  "2026-06-23": {
+    "open_check": {
+      "status": "success",
+      "last_run": "2026-06-23 09:42:31",
+      "source": "launchd"
+    },
+    "midday_check": {
+      "status": "success",
+      "last_run": "2026-06-23 12:46:00",
+      "source": "launchd"
+    },
+    "afternoon_open_check": {
+      "status": "success",
+      "last_run": "2026-06-23 13:18:22",
+      "source": "launchd"
+    },
+    "daily_close": {
+      "status": "success",
+      "last_run": "2026-06-23 16:03:33",
+      "source": "launchd",
+      "error": "success with warning"
+    }
+  },
+  "2026-06-24": {
+    "open_check": {
+      "status": "success",
+      "last_run": "2026-06-24 09:54:32",
+      "source": "launchd"
+    },
+    "midday_check": {
+      "status": "success",
+      "last_run": "2026-06-24 12:55:24",
+      "source": "launchd"
+    },
+    "afternoon_open_check": {
+      "status": "success",
+      "last_run": "2026-06-24 13:14:00",
+      "source": "launchd"
+    },
+    "daily_close": {
+      "status": "success",
+      "last_run": "2026-06-24 23:04:57",
+      "source": "launchd"
+    }
   }
 }

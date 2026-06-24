@@ -1,0 +1,82 @@
+{
+  "status": "CAUTION",
+  "generated_at": "2026-06-19 00:51:42",
+  "rows": [
+    {
+      "strategy": "adjusted_preview_baseline",
+      "start_date": "2022-04-07",
+      "end_date": "2026-06-18",
+      "trading_days": 1018,
+      "first_trade_date": "2022-04-08",
+      "reported_total_return": 0.107791,
+      "return_from_initial_cash": 0.10599868499999987,
+      "return_delta": 0.0017923150000001276,
+      "cost_total": 1454.925,
+      "commission_plus_slippage": 1454.925,
+      "cost_delta": 0.0,
+      "trade_count_reported": 236,
+      "buy_sell_rows": 236,
+      "round_trip_sells": 118
+    },
+    {
+      "strategy": "buy_and_hold_510300",
+      "start_date": "2022-04-08",
+      "end_date": "2026-06-18",
+      "trading_days": 1017,
+      "first_trade_date": "2022-04-08",
+      "reported_total_return": 0.16432,
+      "return_from_initial_cash": 0.16382499499999992,
+      "return_delta": 0.0004950050000000761,
+      "cost_total": 8.5001,
+      "commission_plus_slippage": 8.5001,
+      "cost_delta": 0.0,
+      "trade_count_reported": 1,
+      "buy_sell_rows": 1,
+      "round_trip_sells": 0
+    },
+    {
+      "strategy": "cash_baseline",
+      "start_date": "2022-04-08",
+      "end_date": "2026-06-18",
+      "trading_days": 1017,
+      "first_trade_date": "",
+      "reported_total_return": 0.0,
+      "return_from_initial_cash": 0.0,
+      "return_delta": 0.0,
+      "cost_total": 0.0,
+      "commission_plus_slippage": 0.0,
+      "cost_delta": 0.0,
+      "trade_count_reported": 0,
+      "buy_sell_rows": 0,
+      "round_trip_sells": 0
+    },
+    {
+      "strategy": "original_ranking_baseline",
+      "start_date": "2022-04-07",
+      "end_date": "2026-06-18",
+      "trading_days": 1018,
+      "first_trade_date": "2022-04-08",
+      "reported_total_return": 0.061492,
+      "return_from_initial_cash": 0.05977438000000013,
+      "return_delta": 0.0017176199999998712,
+      "cost_total": 1454.9115,
+      "commission_plus_slippage": 1454.9115,
+      "cost_delta": 0.0,
+      "trade_count_reported": 236,
+      "buy_sell_rows": 236,
+      "round_trip_sells": 118
+    }
+  ],
+  "issues": [
+    "adjusted_preview_baseline: total_return uses first equity rather than initial cash; delta=0.1792%",
+    "adjusted_preview_baseline: equity curve starts before first trade (2022-04-07 vs 2022-04-08)",
+    "original_ranking_baseline: total_return uses first equity rather than initial cash; delta=0.1718%",
+    "original_ranking_baseline: equity curve starts before first trade (2022-04-07 vs 2022-04-08)",
+    "strategies do not share identical equity date ranges/trading day counts"
+  ],
+  "execution_price_assumptions": [
+    "next_close"
+  ],
+  "trade_count_definition": "single-side BUY/SELL rows; round trips are SELL rows",
+  "max_drawdown_basis": "daily equity curve"
+}

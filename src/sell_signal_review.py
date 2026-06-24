@@ -17,7 +17,8 @@ from config import DATA_DIR, REPORT_DIR, PROJECT_ROOT
 
 POSITIONS_FILE = DATA_DIR / "paper_positions.csv"
 TRADES_FILE = DATA_DIR / "paper_trades.csv"
-CLASSIFICATION_FILE = DATA_DIR / "etf_type_classification.csv"
+CLASSIFICATION_FILE = DATA_DIR / "etf_classification.csv"
+LEGACY_CLASSIFICATION_FILE = DATA_DIR / "etf_type_classification.csv"
 BUY_RANKING_FILE = REPORT_DIR / "buy_signal_ranking.md"
 SHORT_SWING_FILE = REPORT_DIR / "latest_short_swing.md"
 RANKING_FILE = REPORT_DIR / "ranking_report.md"
@@ -34,7 +35,7 @@ def main() -> None:
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
     positions = _read_csv(POSITIONS_FILE)
     trades = _read_csv(TRADES_FILE)
-    classification = _read_csv(CLASSIFICATION_FILE)
+    classification = _read_classification()
     buy_rank = _read_buy_ranking()
     short_signals = _read_short_signals()
     mid_signals = _read_mid_signals()
@@ -90,7 +91,7 @@ def _review_position(
     stop_distance_pct = (current_price - stop_loss) / current_price if current_price and stop_loss else float("nan")
     unrealized_pnl_pct = _float(item.get("unrealized_pnl_pct"), _float(item.get("unrealized_return")))
     in_protection = holding_days <= PROTECTION_DAYS
-    max_holding_days = int(_float(class_row.get("default_holding_max_days")))
+    max_holding_days = int(_float(class_row.get("max_holding_days"), _float(class_row.get("default_holding_max_days"))))
 
     flags = _condition_flags(
         symbol=symbol,
@@ -114,12 +115,31 @@ def _review_position(
         in_protection=in_protection,
     )
     status, action_note = _decide_status(flags, in_protection)
+    type_review = _type_review_fields(
+        symbol=symbol,
+        name=name,
+        etf_type=etf_type,
+        group=str(class_row.get("group", "")),
+        holding_days=holding_days,
+        max_holding_days=max_holding_days,
+        stop_loss_pct=_float(class_row.get("stop_loss_pct"), fallback=_default_stop_loss_pct(etf_type)),
+        stop_distance_pct=stop_distance_pct,
+        health_status=health_status,
+        health_note=health_note,
+        flags=flags,
+    )
 
     return {
         "review_date": _latest_review_date(),
         "symbol": symbol,
         "name": name,
         "etf_type": etf_type,
+        "risk_profile": class_row.get("risk_profile", ""),
+        "holding_profile": class_row.get("holding_profile", ""),
+        "max_holding_days": max_holding_days,
+        "stop_loss_pct": class_row.get("stop_loss_pct", ""),
+        "auto_buy_allowed": class_row.get("auto_buy_allowed", ""),
+        "classification_reason": class_row.get("classification_reason", ""),
         "group": class_row.get("group", ""),
         "sell_sensitivity": sensitivity,
         "holding_days": holding_days,
@@ -142,8 +162,94 @@ def _review_position(
         "data_health_note": health_note,
         "sell_review_status": status,
         "action_note": action_note,
+        **type_review,
         "condition_flags": "; ".join(flags),
         "safety_note": "review_only_no_trade",
+    }
+
+
+def _type_review_fields(
+    symbol: str,
+    name: str,
+    etf_type: str,
+    group: str,
+    holding_days: int,
+    max_holding_days: int,
+    stop_loss_pct: float,
+    stop_distance_pct: float,
+    health_status: str,
+    health_note: str,
+    flags: list[str],
+) -> dict:
+    max_days = max(int(max_holding_days or _default_max_holding_days(etf_type)), 1)
+    progress = holding_days / max_days if max_days else 0.0
+    distance_status = "unknown"
+    if pd.notna(stop_distance_pct):
+        if stop_distance_pct <= 0:
+            distance_status = "stop_touched_or_broken"
+        elif stop_distance_pct < 0.02:
+            distance_status = "near_stop_within_2pct"
+        elif stop_distance_pct < 0.05:
+            distance_status = "watch_within_5pct"
+        else:
+            distance_status = "comfortable"
+
+    risk_level = {
+        "broad_index": "low",
+        "sector": "medium",
+        "commodity_resource": "medium_high",
+        "theme": "high",
+        "hot_theme": "high",
+        "high_beta": "very_high",
+        "bond_cash": "low",
+        "qdii": "special_review",
+    }.get(etf_type, "medium")
+
+    severity = "normal"
+    notes: list[str] = []
+    if etf_type == "high_beta":
+        notes.append("high_beta 对情绪和成交额敏感，评分转弱时优先人工复核。")
+        if distance_status in {"stop_touched_or_broken", "near_stop_within_2pct"} or progress >= 0.8 or health_status == "提醒":
+            severity = "elevated"
+        if health_status == "提醒":
+            notes.append("高 beta + data_health caution 叠加，禁止加仓并保持 REVIEW。")
+    elif etf_type == "commodity_resource":
+        notes.append("周期/资源 ETF 对商品价格、政策和供需预期敏感，波动升高时需要更快复核。")
+        if distance_status in {"stop_touched_or_broken", "near_stop_within_2pct"} or "short_swing_buy_to_watch" in flags:
+            severity = "elevated"
+    elif etf_type == "sector":
+        notes.append("行业 ETF 按中等敏感度复核，重点看同 group 暴露和 short_swing 是否转弱。")
+        if progress >= 0.8 or group in {"金融地产", "周期资源"} and "short_swing_buy_to_watch" in flags:
+            severity = "elevated"
+    elif etf_type == "broad_index":
+        notes.append("宽基可作为组合稳定器，除趋势破坏或止损外不轻易提高复核等级。")
+    elif etf_type == "qdii":
+        notes.append("QDII 需要额外检查溢价、汇率和海外交易日，当前不适合自动买入。")
+        severity = "elevated"
+    elif etf_type == "bond_cash":
+        notes.append("债券/货币 ETF 低波动属性，需单独检查利率和流动性风险。")
+    else:
+        notes.append("ETF 类型证据不足，保持人工复核提示。")
+
+    if distance_status == "stop_touched_or_broken":
+        severity = "elevated"
+        notes.append("价格已触及或低于研究性止损价，仅作为复核提示，不自动卖出。")
+    elif distance_status == "near_stop_within_2pct":
+        notes.append("距离研究性止损小于 2%，次日需重点观察。")
+    if progress >= 0.8:
+        notes.append("持仓天数已超过类型化最大持有期的 80%，进入持有期复核区。")
+    if health_status == "异常":
+        severity = "elevated"
+        notes.append("data_health 异常，需人工优先复核。")
+
+    return {
+        "etf_type_review_note": " ".join(notes),
+        "type_risk_level": risk_level,
+        "type_stop_loss_pct": stop_loss_pct,
+        "type_max_holding_days": max_days,
+        "type_holding_day_progress": progress,
+        "type_distance_to_stop_status": distance_status,
+        "type_review_severity": severity,
     }
 
 
@@ -279,24 +385,27 @@ def _write_review_report(df: pd.DataFrame) -> None:
         "- 研究性止损只用于复核提示，不是正式交易规则。",
         "",
         "## 当前持仓复核",
-        "| ETF | 名称 | 类型 | 持仓天数 | 保护期 | rank_score | rank变化 | 连续下降天数 | mid | short | 止损价 | 距离止损 | data_health | 状态 | 动作说明 |",
-        "| --- | --- | --- | ---: | --- | ---: | ---: | ---: | --- | --- | ---: | ---: | --- | --- | --- |",
+        "| ETF | 名称 | 类型 | type_risk | type_max_days | type_stop_loss | 持仓进度 | 距离止损状态 | type_severity | rank_score | rank变化 | mid | short | data_health | 状态 | 类型化说明 | 动作说明 |",
+        "| --- | --- | --- | --- | ---: | ---: | ---: | --- | --- | ---: | ---: | --- | --- | --- | --- | --- | --- |",
     ]
     for _, row in df.iterrows():
         lines.append(
-            f"| {row['symbol']} | {row['name']} | {row['etf_type']} | {int(row['holding_days'])} | {row['protection_period']} | "
-            f"{_fmt(row['rank_score'])} | {_fmt(row['rank_score_change'])} | {int(row['rank_decline_days'])} | "
-            f"{row['mid_trend_signal']} | {row['short_swing_signal']} | {_fmt(row['stop_loss'])} | {_pct(row['stop_distance_pct'])} | "
-            f"{row['data_health_status']} {row['data_health_note']} | {row['sell_review_status']} | {row['action_note']} |"
+            f"| {row['symbol']} | {row['name']} | {row['etf_type']} | {row.get('type_risk_level','')} | "
+            f"{_fmt(row.get('type_max_holding_days',''))} | {_pct(row.get('type_stop_loss_pct',''))} | {_pct(row.get('type_holding_day_progress',''))} | "
+            f"{row.get('type_distance_to_stop_status','')} | {row.get('type_review_severity','')} | "
+            f"{_fmt(row['rank_score'])} | {_fmt(row['rank_score_change'])} | "
+            f"{row['mid_trend_signal']} | {row['short_swing_signal']} | "
+            f"{row['data_health_status']} {row['data_health_note']} | {row['sell_review_status']} | "
+            f"{str(row.get('etf_type_review_note','')).replace('|', '/')} | {row['action_note']} |"
         )
     lines += [
         "",
         "## 触发条件明细",
-        "| ETF | condition_flags | safety_note |",
-        "| --- | --- | --- |",
+        "| ETF | type_review_severity | condition_flags | safety_note |",
+        "| --- | --- | --- | --- |",
     ]
     for _, row in df.iterrows():
-        lines.append(f"| {row['symbol']} | {row['condition_flags']} | {row['safety_note']} |")
+        lines.append(f"| {row['symbol']} | {row.get('type_review_severity','')} | {row['condition_flags']} | {row['safety_note']} |")
     lines += [
         "",
         "## 安全边界",
@@ -443,10 +552,12 @@ def _read_markdown_table(path: Path, section_title: str) -> list[dict]:
 
 
 def _classification_for(symbol: str, name: str, classification: pd.DataFrame) -> dict:
-    if not classification.empty and "code" in classification.columns:
-        matched = classification[classification["code"].astype(str) == symbol]
-        if not matched.empty:
-            return matched.iloc[0].to_dict()
+    if not classification.empty:
+        for col in ["symbol", "code"]:
+            if col in classification.columns:
+                matched = classification[classification[col].astype(str) == symbol]
+                if not matched.empty:
+                    return matched.iloc[0].to_dict()
     etf_type = _infer_type(name)
     profile = {
         "broad_index": (60, "low"),
@@ -457,7 +568,7 @@ def _classification_for(symbol: str, name: str, classification: pd.DataFrame) ->
         "bond_cash": (90, "low"),
         "qdii": (45, "medium"),
     }.get(etf_type, (30, "medium"))
-    return {"code": symbol, "name": name, "group": "", "etf_type": etf_type, "default_holding_max_days": profile[0], "exit_sensitivity": profile[1]}
+    return {"code": symbol, "symbol": symbol, "name": name, "group": "", "etf_type": etf_type, "max_holding_days": profile[0], "default_holding_max_days": profile[0], "exit_sensitivity": profile[1]}
 
 
 def _infer_type(name: str) -> str:
@@ -500,7 +611,14 @@ def _sell_sensitivity(symbol: str, name: str, etf_type: str) -> str:
 
 def _default_stop_loss(entry_price: float, class_row: dict) -> float:
     etf_type = str(class_row.get("etf_type", "sector"))
-    pct = {
+    pct = _float(class_row.get("stop_loss_pct"), fallback=float("nan"))
+    if pd.isna(pct):
+        pct = _default_stop_loss_pct(etf_type)
+    return entry_price * (1 - pct) if entry_price else 0.0
+
+
+def _default_stop_loss_pct(etf_type: str) -> float:
+    return {
         "broad_index": 0.08,
         "sector": 0.06,
         "commodity_resource": 0.06,
@@ -510,7 +628,19 @@ def _default_stop_loss(entry_price: float, class_row: dict) -> float:
         "bond_cash": 0.02,
         "qdii": 0.07,
     }.get(etf_type, 0.06)
-    return entry_price * (1 - pct) if entry_price else 0.0
+
+
+def _default_max_holding_days(etf_type: str) -> int:
+    return {
+        "broad_index": 60,
+        "sector": 30,
+        "commodity_resource": 45,
+        "theme": 20,
+        "hot_theme": 20,
+        "high_beta": 20,
+        "bond_cash": 90,
+        "qdii": 45,
+    }.get(etf_type, 30)
 
 
 def _latest_close(symbol: str) -> float:
@@ -552,7 +682,18 @@ def _latest_review_date() -> str:
 def _read_csv(path: Path) -> pd.DataFrame:
     if not path.exists() or path.stat().st_size == 0:
         return pd.DataFrame()
-    return pd.read_csv(path, dtype=str).fillna("")
+    return pd.read_csv(path, dtype=str, keep_default_na=False).fillna("")
+
+
+def _read_classification() -> pd.DataFrame:
+    df = _read_csv(CLASSIFICATION_FILE)
+    if df.empty:
+        df = _read_csv(LEGACY_CLASSIFICATION_FILE)
+    if not df.empty and "symbol" not in df.columns and "code" in df.columns:
+        df["symbol"] = df["code"]
+    if not df.empty and "code" not in df.columns and "symbol" in df.columns:
+        df["code"] = df["symbol"]
+    return df
 
 
 def _float(value: object, fallback: float = 0.0) -> float:

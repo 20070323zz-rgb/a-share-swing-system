@@ -23,6 +23,8 @@ DASHBOARD_DIR = PROJECT_ROOT / "dashboard"
 HTML_FILE = DASHBOARD_DIR / "index.html"
 SNAPSHOT_FILE = REPORT_DIR / "dashboard_data.json"
 SRC_DIR = PROJECT_ROOT / "src"
+APP_VERSION_FILE = PROJECT_ROOT / "APP_VERSION"
+APP_VERSION = APP_VERSION_FILE.read_text(encoding="utf-8").strip() if APP_VERSION_FILE.exists() else "0.1.0-local"
 if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 
@@ -30,23 +32,37 @@ try:
     from config import (  # type: ignore
         BROKER_API_ENABLED,
         PAPER_AUTO_EXECUTE,
+        PAPER_COMMISSION_RATE,
         PAPER_DEFAULT_MARKET_STATE,
         PAPER_INITIAL_CASH,
+        PAPER_EXECUTION_PRICE_TYPE,
         PAPER_MAX_HOLDINGS,
         PAPER_MAX_SINGLE_POSITION_PCT,
+        PAPER_MIN_COMMISSION,
         PAPER_MODE,
+        PAPER_SLIPPAGE_RATE,
+        PAPER_STAMP_TAX_RATE,
         PAPER_TARGET_POSITION_NEUTRAL,
+        PAPER_TRANSFER_FEE_RATE,
+        PAPER_USE_MARKET_STATE_POSITION,
         REAL_TRADE_ENABLED,
     )
 except Exception:
     BROKER_API_ENABLED = False
     PAPER_AUTO_EXECUTE = False
+    PAPER_COMMISSION_RATE = 0.00012
     PAPER_DEFAULT_MARKET_STATE = "neutral"
     PAPER_INITIAL_CASH = 10_000.0
+    PAPER_EXECUTION_PRICE_TYPE = "close_price_with_slippage"
     PAPER_MAX_HOLDINGS = 3
     PAPER_MAX_SINGLE_POSITION_PCT = 0.20
+    PAPER_MIN_COMMISSION = 5.0
     PAPER_MODE = "rule_validation"
+    PAPER_SLIPPAGE_RATE = 0.0003
+    PAPER_STAMP_TAX_RATE = 0.0
     PAPER_TARGET_POSITION_NEUTRAL = 0.30
+    PAPER_TRANSFER_FEE_RATE = 0.0
+    PAPER_USE_MARKET_STATE_POSITION = False
     REAL_TRADE_ENABLED = False
 
 INITIAL_CASH = float(PAPER_INITIAL_CASH)
@@ -71,46 +87,167 @@ def build_snapshot() -> dict:
     trades = _read_csv(DATA_DIR / "paper_trades.csv")
     watchlist = _read_csv(PROJECT_ROOT / "watchlist.csv")
     candidates = _read_csv(DATA_DIR / "etf_pool_expansion_candidates.csv")
-    classification = _read_csv(DATA_DIR / "etf_type_classification.csv")
+    classification = _read_classification_csv()
     ranking_rows = _read_buy_ranking()
     sell_review_rows = _read_csv(REPORT_DIR / "sell_signal_review.csv").to_dict(orient="records")
     paper_trade_plan_rows = _read_csv(PAPER_TRADE_PLAN_FILE).to_dict(orient="records")
+    strategy_preview = _strategy_enhancement_preview_snapshot()
+    preview_tracking = _strategy_preview_tracking_snapshot()
+    type_aware_review = _type_aware_review_snapshot(sell_review_rows)
+    market_state = _market_state_snapshot()
+    portfolio_exposure = _portfolio_exposure_snapshot()
+    model_research = _model_research_snapshot()
+    research_quality = _research_quality_snapshot()
+    universe_quality = _universe_quality_review_snapshot()
+    phase4c_data = _phase4c_data_snapshot()
+    phase4c_tushare_staging = _phase4c_tushare_staging_snapshot()
+    phase4c_alpha = _phase4c_alpha_snapshot()
+    persistence_breakout_shadow = _persistence_breakout_shadow_snapshot()
+    missed_opportunity_tracking = _missed_opportunity_tracking_snapshot()
+    shadow_observation_weekly = _shadow_observation_weekly_snapshot()
+    exit_rule_research = _exit_rule_research_snapshot()
+    backtest_phase4a = _backtest_phase4a_snapshot()
+    backtest_diagnostics = _backtest_diagnostics_snapshot()
+    ranking_signal_research = _ranking_signal_research_snapshot()
+    ranking_model_v2_backtest = _ranking_model_v2_backtest_snapshot()
+    paper_performance = _paper_performance_snapshot()
+    paper_equity_backfill = _paper_equity_backfill_snapshot(paper_performance)
+    app_shortcut = _app_shortcut_snapshot()
+    trade_review = _trade_review_snapshot()
+    execution_layer_integration = _execution_layer_integration_snapshot(paper_trade_plan_rows, market_state, portfolio_exposure, research_quality)
     health_rows, health_summary = _read_health_report()
     latest_data_date = _latest_data_date()
-    engine_state = _latest_engine_state(_read_json(ENGINE_STATE_FILE), latest_data_date)
+    data_update_status = _data_update_status_snapshot()
+    data_sources = _data_sources_snapshot(data_update_status)
+    engine_state = _latest_engine_state(_read_json(ENGINE_STATE_FILE), latest_data_date, pd.Timestamp.now().strftime("%Y-%m-%d"))
 
     meta = _build_meta_map(watchlist, candidates, classification)
-    enriched_positions = _enrich_positions(positions, meta, ranking_rows, health_rows)
+    enriched_positions = _enrich_positions(positions, meta, ranking_rows, health_rows, sell_review_rows)
     summary = _paper_summary(enriched_positions, trades)
     paper_trade_engine = _paper_trade_engine_snapshot(engine_state, paper_trade_plan_rows, summary)
     exposure = _group_exposure(enriched_positions)
     classification_summary = _classification_summary(classification, enriched_positions)
     failed_counts = _failed_counts()
-    automation_nodes = _automation_nodes()
+    automation_nodes = _automation_nodes(data_update_status)
     risk_alerts = _risk_alerts(enriched_positions, failed_counts)
-    console = _console_status(summary, risk_alerts, automation_nodes, health_summary)
+    console = _console_status(summary, risk_alerts, automation_nodes, health_summary, data_update_status)
     review = _review_snapshot()
     dashboard_links = _dashboard_links()
     link_health = _link_health(dashboard_links)
     dashboard_sources = _dashboard_sources()
 
+    app_task_status = _read_json(REPORT_DIR / "app_task_status.json") or {"running": False, "latest_task": None, "history": []}
+    execution_safety = _execution_safety_snapshot()
+    app_control_room = {
+        "system_status": console.get("system_status", "NORMAL"),
+        "today_conclusion": console.get("today_conclusion", "HOLD_PLAN"),
+        "today_summary": console.get("decision_reason", ""),
+        "key_warnings": risk_alerts,
+        "key_actions": [
+            "先确认日线数据是否更新到最新交易日",
+            "复核 sell_review 中的 REVIEW/CAUTION 持仓",
+            "adjusted preview 只作研究展示，不进入执行层",
+        ],
+        "automation_health": "OK" if all(node.get("status") in {"OK", "WAITING"} for node in automation_nodes) else "CAUTION",
+        "paper_only": True,
+    }
+    app_control_center = _app_control_center_snapshot(
+        ranking_model_v2_backtest,
+        phase4c_tushare_staging,
+        phase4c_alpha,
+        persistence_breakout_shadow,
+        missed_opportunity_tracking,
+        shadow_observation_weekly,
+        data_sources,
+    )
+
     return {
+        "app_ready_snapshot_version": "phase4c_3_shadow_observation_weekly_v1",
+        "local_app_version": f"v{APP_VERSION}",
         "generated_at": pd.Timestamp.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "app_control_center": app_control_center,
+        "dynamic_app": {
+            "enabled": True,
+            "tech_stack": "FastAPI + React/Vite",
+            "local_url": "http://127.0.0.1:8000",
+            "lan_supported": True,
+            "public_deploy_supported": False,
+            "task_buttons_enabled": True,
+            "real_trade_buttons_enabled": False,
+        },
+        "app_launch": {
+            "pycharm_required": False,
+            "terminal_launch_supported": True,
+            "double_click_launch_supported": True,
+            "app_bundle_supported": app_shortcut.get("status") == "active",
+            "app_bundle": app_shortcut.get("app_bundle"),
+            "launcher_file": "打开量化研究控制台.command",
+            "legacy_launcher_file": "A-Share Swing App.command",
+            "local_url": "http://127.0.0.1:8000",
+            "lan_supported": True,
+        },
+        "app_shortcut": app_shortcut,
+        "desktop_app": {
+            "enabled": True,
+            "tech_stack": "Tauri + FastAPI + React/Vite",
+            "web_app_url": "http://127.0.0.1:8000",
+            "auto_start_backend_supported": True,
+            "real_trade_buttons_enabled": False,
+            "broker_api_enabled": False,
+            "paper_only": True,
+        },
+        "app_task_status": app_task_status,
+        "app_control_room": app_control_room,
         "latest_data_date": latest_data_date,
+        "data_update_status": data_update_status,
+        "data_sources": data_sources,
         "console": console,
+        "market_state": market_state,
         "paper_summary": summary,
+        "paper_performance": paper_performance.get("summary", {}),
+        "paper_equity_curve": paper_performance.get("equity_curve", []),
+        "paper_equity_backfill": paper_equity_backfill,
+        "paper_trade_pnl": paper_performance.get("trade_pnl", []),
+        "trade_review": trade_review.get("summary", {}),
+        "trade_review_details": trade_review.get("details", []),
+        "trade_review_open_positions": trade_review.get("open_positions", []),
         "risk_alerts": risk_alerts,
         "positions": enriched_positions,
         "trades": trades.to_dict(orient="records"),
         "buy_ranking": ranking_rows,
         "sell_review": sell_review_rows,
+        "strategy_enhancement_preview": strategy_preview,
+        "strategy_preview_tracking": preview_tracking,
+        "forward_return_comparison": preview_tracking.get("forward_return_comparison", {}),
+        "shadow_model": preview_tracking.get("shadow_model", {}),
+        "type_aware_review": type_aware_review,
         "paper_trade_engine": paper_trade_engine,
         "paper_trade_plan": paper_trade_plan_rows,
+        "positions_enhanced": enriched_positions,
+        "trading_costs": _trading_costs_snapshot(trades, paper_trade_plan_rows, paper_trade_engine),
         "exposure": exposure,
+        "portfolio_exposure": portfolio_exposure,
         "classification_summary": classification_summary,
+        "etf_classification": classification.to_dict(orient="records"),
+        "model_research": model_research,
+        "research_quality_review": research_quality,
+        "universe_quality_review": universe_quality,
+        "phase4c_data": phase4c_data,
+        "phase4c_tushare_staging": phase4c_tushare_staging,
+        "phase4c_alpha": phase4c_alpha,
+        "persistence_breakout_shadow": persistence_breakout_shadow,
+        "missed_opportunity_tracking": missed_opportunity_tracking,
+        "shadow_observation_weekly": shadow_observation_weekly,
+        "exit_rule_research": exit_rule_research,
+        "backtest_phase4a": backtest_phase4a,
+        "backtest_diagnostics": backtest_diagnostics,
+        "ranking_signal_research": ranking_signal_research,
+        "ranking_model_v2_backtest": ranking_model_v2_backtest,
+        "execution_layer_integration": execution_layer_integration,
         "health_summary": health_summary,
         "failed_counts": failed_counts,
         "automation_nodes": automation_nodes,
+        "automation_status": automation_nodes,
         "review": review,
         "dashboard_links": dashboard_links,
         "link_health": link_health,
@@ -125,6 +262,21 @@ def build_snapshot() -> dict:
             "max_holdings": PAPER_MAX_HOLDINGS,
             "max_single_position_pct": PAPER_MAX_SINGLE_POSITION_PCT,
             "single_etf_limit": SINGLE_ETF_LIMIT,
+            "commission_rate": PAPER_COMMISSION_RATE,
+            "min_commission": PAPER_MIN_COMMISSION,
+            "stamp_tax_rate": PAPER_STAMP_TAX_RATE,
+            "transfer_fee_rate": PAPER_TRANSFER_FEE_RATE,
+            "slippage_rate": PAPER_SLIPPAGE_RATE,
+            "execution_price_type": PAPER_EXECUTION_PRICE_TYPE,
+            "use_market_state_position": PAPER_USE_MARKET_STATE_POSITION,
+        },
+        "execution_safety": execution_safety,
+        "system_safety": {
+            "real_trade_enabled": bool(REAL_TRADE_ENABLED),
+            "broker_api_enabled": bool(BROKER_API_ENABLED),
+            "paper_only": True,
+            "real_order_buttons": False,
+            "credentials_saved": False,
         },
         "safety": {
             "permission": "L2 local paper data/report dashboard",
@@ -149,12 +301,12 @@ def render_html(data: dict) -> str:
   <title>A 股 ETF 模拟盘控制台</title>
   <style>
     :root {{
-      --bg: #f4f6f9;
-      --panel: #ffffff;
-      --ink: #172033;
-      --muted: #667085;
-      --line: #d8dee8;
-      --blue: #1455d9;
+      --bg: #f4f5f7;
+      --panel: rgba(255,255,255,.78);
+      --ink: #1d1d1f;
+      --muted: #6e6e73;
+      --line: rgba(60,60,67,.14);
+      --blue: #0a84ff;
       --blue-soft: #eef4ff;
       --profit-red: #d92d20;
       --loss-green: #079455;
@@ -168,19 +320,21 @@ def render_html(data: dict) -> str:
     * {{ box-sizing: border-box; }}
     body {{
       margin: 0;
-      background: var(--bg);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(10,132,255,.10), transparent 28%),
+        linear-gradient(180deg, #fbfbfd 0%, var(--bg) 48%, #eef1f6 100%);
       color: var(--ink);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.5;
       font-variant-numeric: tabular-nums;
     }}
     header {{
-      background: rgba(255,255,255,.94);
+      background: rgba(255,255,255,.76);
       border-bottom: 1px solid var(--line);
       position: sticky;
       top: 0;
       z-index: 10;
-      backdrop-filter: blur(14px);
+      backdrop-filter: blur(22px) saturate(1.18);
     }}
     .topbar {{
       max-width: 1500px;
@@ -224,8 +378,9 @@ def render_html(data: dict) -> str:
     .panel {{
       background: var(--panel);
       border: 1px solid var(--line);
-      border-radius: 14px;
-      box-shadow: 0 10px 28px rgba(16,24,40,.06);
+      border-radius: 18px;
+      box-shadow: 0 18px 46px rgba(0,0,0,.08);
+      backdrop-filter: blur(18px) saturate(1.12);
       padding: 16px;
     }}
     .decision {{
@@ -335,15 +490,16 @@ def render_html(data: dict) -> str:
     }}
     .quick-nav a:hover {{ color: #1455d9; border-color: #9db8ff; }}
     .control-shell {{
-      background: #111827;
-      color: #f8fafc;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.08);
-      box-shadow: 0 22px 60px rgba(15,23,42,.22);
+      background: rgba(255,255,255,.74);
+      color: #1d1d1f;
+      border-radius: 26px;
+      border: 1px solid rgba(60,60,67,.14);
+      box-shadow: 0 24px 70px rgba(0,0,0,.09);
+      backdrop-filter: blur(24px) saturate(1.18);
       padding: 20px;
       margin-bottom: 18px;
     }}
-    .control-shell .muted, .control-shell .metric-sub {{ color: #a8b3c7; }}
+    .control-shell .muted, .control-shell .metric-sub {{ color: #6e6e73; }}
     .hero-grid {{ display: grid; grid-template-columns: 1.15fr .85fr; gap: 16px; align-items: stretch; }}
     .brief-card {{
       border: 1px solid rgba(255,255,255,.12);
@@ -451,6 +607,7 @@ def render_html(data: dict) -> str:
         {_status_badge(console.get("system_status"), console.get("system_badge_class", "ok"))}
         <span class="badge">数据日 {escape(str(data.get("latest_data_date", "N/A")))}</span>
         <span class="badge">生成 {escape(str(data.get("generated_at", "N/A")))}</span>
+        <span class="badge blue">v{escape(str(APP_VERSION))}</span>
         <span class="badge warn">L2 只读边界</span>
       </div>
     </div>
@@ -459,11 +616,21 @@ def render_html(data: dict) -> str:
     <div class="quick-nav-inner">
       <a href="#overview">Overview</a>
       <a href="#paper-trade-engine">Paper Engine</a>
+      <a href="#paper-performance">Performance</a>
+      <a href="#trade-review">Trade Review</a>
       <a href="#portfolio">Portfolio</a>
       <a href="#sell-review">Sell Review</a>
       <a href="#ranking">BUY Ranking</a>
+      <a href="#strategy-preview">B1 Preview</a>
+      <a href="#preview-tracking">B2 Tracking</a>
+      <a href="#type-aware-review">Type Review</a>
+      <a href="#phase2c">Phase 2C</a>
       <a href="#risk">Risk</a>
       <a href="#automation">Automation</a>
+      <a href="#quality-review">Quality Review</a>
+      <a href="#phase4c-data">Data Sources</a>
+      <a href="#phase4c-tushare">Tushare</a>
+      <a href="#phase4c-alpha">Alpha</a>
       <a href="#review">Review</a>
       <a href="#links">Links</a>
     </div>
@@ -507,6 +674,26 @@ def render_html(data: dict) -> str:
       </div>
     </section>
 
+    <section id="paper-performance">
+      <div class="section-head">
+        <div>
+          <h2>模拟仓绩效中心 Paper Performance</h2>
+          <div class="hint">总盈亏、历史权益曲线、交易盈亏和成本统计。只读派生报告，不修改模拟交易和持仓。</div>
+        </div>
+      </div>
+      {_paper_performance_panel(data.get("paper_performance", {}), data.get("paper_equity_curve", []), data.get("paper_trade_pnl", []))}
+    </section>
+
+    <section id="trade-review">
+      <div class="section-head">
+        <div>
+          <h2>交易复盘中心 Trade Review</h2>
+          <div class="hint">逐笔复盘为什么赚亏、MFE/MAE、卖出时机、成本影响和样本不足提醒。只读派生分析，不进入执行层。</div>
+        </div>
+      </div>
+      {_trade_review_panel(data.get("trade_review", {}), data.get("trade_review_details", []), data.get("trade_review_open_positions", []))}
+    </section>
+
     <section id="portfolio">
       <div class="section-head">
         <div>
@@ -535,6 +722,46 @@ def render_html(data: dict) -> str:
         </div>
       </div>
       {_ranking_table(data.get("buy_ranking", []))}
+    </section>
+
+    <section id="strategy-preview">
+      <div class="section-head">
+        <div>
+          <h2>Strategy Enhancement Preview</h2>
+          <div class="hint">B1 预览层：展示组合平衡、ETF 类型、数据健康对 BUY ranking 的理论影响，不进入真实模拟买卖。</div>
+        </div>
+      </div>
+      {_strategy_preview_panel(data.get("strategy_enhancement_preview", {}))}
+    </section>
+
+    <section id="preview-tracking">
+      <div class="section-head">
+        <div>
+          <h2>Original vs Adjusted Tracking</h2>
+          <div class="hint">B2 影子跟踪账本：记录 original ranking 与 adjusted preview ranking 的差异，并等待未来 1/3/5/10 日收益回填。</div>
+        </div>
+      </div>
+      {_preview_tracking_panel(data.get("strategy_preview_tracking", {}))}
+    </section>
+
+    <section id="type-aware-review">
+      <div class="section-head">
+        <div>
+          <h2>Type-aware Review</h2>
+          <div class="hint">类型化持仓复核：止损、最大持有期、风险等级和 review note 仅作提示，不自动 SELL。</div>
+        </div>
+      </div>
+      {_type_aware_review_panel(data.get("type_aware_review", {}), data.get("execution_safety", {}))}
+    </section>
+
+    <section id="phase2c">
+      <div class="section-head">
+        <div>
+          <h2>执行层轻量接入 Execution Layer Integration</h2>
+          <div class="hint">Phase 2C 只把研究结论接入解释字段和看板，不改变自动买卖结果。</div>
+        </div>
+      </div>
+      {_phase2c_panel(data.get("execution_layer_integration", {}))}
     </section>
 
     <section id="risk">
@@ -567,12 +794,35 @@ def render_html(data: dict) -> str:
       <div class="section-head">
         <div>
           <h2>策略研究层 Research Layer</h2>
-          <div class="hint">只读展示 ETF 类型、建议持有周期、退出敏感度和新闻情绪占位，不改变交易规则。</div>
+          <div class="hint">只读展示市场状态、ETF 类型、组合暴露、持有周期、退出规则和参数扫描，不改变交易规则。</div>
         </div>
       </div>
       <div class="grid two">
-        <div class="panel">{_research_layer_panel(data)}</div>
+        <div class="panel">{_market_state_panel(data.get("market_state", {}))}</div>
         <div class="panel">{_classification_panel(data.get("classification_summary", {}))}</div>
+        <div class="panel">{_portfolio_exposure_panel(data.get("portfolio_exposure", {}))}</div>
+        <div class="panel">{_model_research_panel(data.get("model_research", {}))}</div>
+      </div>
+      <div class="panel" style="margin-top:14px;">
+        {_research_layer_panel(data)}
+      </div>
+      <div class="panel" style="margin-top:14px;">
+        {_universe_quality_panel(data.get("universe_quality_review", {}))}
+      </div>
+      <div class="panel" style="margin-top:14px;">
+        {_exit_rule_research_panel(data.get("exit_rule_research", {}))}
+      </div>
+      <div class="panel" style="margin-top:14px;">
+        {_backtest_phase4a_panel(data.get("backtest_phase4a", {}))}
+      </div>
+      <div class="panel" style="margin-top:14px;">
+        {_backtest_diagnostics_panel(data.get("backtest_diagnostics", {}))}
+      </div>
+      <div class="panel" style="margin-top:14px;">
+        {_ranking_signal_research_panel(data.get("ranking_signal_research", {}))}
+      </div>
+      <div class="panel" style="margin-top:14px;">
+        {_ranking_model_v2_backtest_panel(data.get("ranking_model_v2_backtest", {}))}
       </div>
     </section>
 
@@ -584,6 +834,76 @@ def render_html(data: dict) -> str:
         </div>
       </div>
       {_automation_timeline(data.get("automation_nodes", []))}
+    </section>
+
+    <section id="quality-review">
+      <div class="section-head">
+        <div>
+          <h2>研究质量审查 Research Quality Review</h2>
+          <div class="hint">审查 phase2 研究是否足够可靠，以及哪些结论可以进入执行层候选。</div>
+        </div>
+      </div>
+      {_research_quality_panel(data.get("research_quality_review", {}))}
+    </section>
+
+    <section id="phase4c-data">
+      <div class="section-head">
+        <div>
+          <h2>数据源架构审计 Data Sources</h2>
+          <div class="hint">Phase 4C 只做数据源审计、AKShare 诊断和无未来函数规则，不接执行层。</div>
+        </div>
+      </div>
+      {_phase4c_data_panel(data.get("phase4c_data", {}))}
+    </section>
+
+    <section id="phase4c-tushare">
+      <div class="section-head">
+        <div>
+          <h2>Tushare Staging Dry-run</h2>
+          <div class="hint">Phase 4C-1 小样本验证：只写 staging，不覆盖正式数据，不切换主源。</div>
+        </div>
+      </div>
+      {_phase4c_tushare_panel(data.get("phase4c_tushare_staging", {}))}
+    </section>
+
+    <section id="phase4c-alpha">
+      <div class="section-head">
+        <div>
+          <h2>Phase 4C Alpha 模型研究</h2>
+          <div class="hint">v2 收益拖累归因、regime-aware、ETF type-aware 和 alpha 增强；只研究，不接执行层。</div>
+        </div>
+      </div>
+      {_phase4c_alpha_panel(data.get("phase4c_alpha", {}))}
+    </section>
+
+    <section id="persistence-breakout-shadow">
+      <div class="section-head">
+        <div>
+          <h2>Persistence Breakout Shadow</h2>
+          <div class="hint">Phase 4C-2：persistence_breakout_v2 只进入 shadow tracking，不接 paper_trade_engine。</div>
+        </div>
+      </div>
+      {_persistence_breakout_shadow_panel(data.get("persistence_breakout_shadow", {}))}
+    </section>
+
+    <section id="missed-opportunity">
+      <div class="section-head">
+        <div>
+          <h2>Missed Opportunity Tracking</h2>
+          <div class="hint">Phase 4C-2b：追踪高分但被过滤候选的事后表现，只作 diagnostics，不放宽规则。</div>
+        </div>
+      </div>
+      {_missed_opportunity_tracking_panel(data.get("missed_opportunity_tracking", {}))}
+    </section>
+
+    <section id="shadow-observation-weekly">
+      <div class="section-head">
+        <div>
+          <h2>Shadow Observation Weekly</h2>
+          <div class="hint">Phase 4C-3：每周观察 shadow 模型、空仓、过滤原因和 forward return 成熟度。</div>
+        </div>
+      </div>
+      {_shadow_observation_weekly_panel(data.get("shadow_observation_weekly", {}))}
     </section>
 
     <section id="review">
@@ -660,6 +980,9 @@ def _executive_cockpit(data: dict) -> str:
     engine = data.get("paper_trade_engine", {}).get("state", {})
     link_health = data.get("link_health", {})
     risk_alerts = data.get("risk_alerts", [])
+    market_state = data.get("market_state", {})
+    data_update = data.get("data_update_status", {})
+    data_sources = data.get("data_sources", {})
     top_buy = data.get("buy_ranking", [{}])[0] if data.get("buy_ranking") else {}
     sell_review = data.get("sell_review", [])
     review_flags = sum(1 for row in sell_review if str(row.get("sell_review_status", "")).upper() in {"REVIEW", "REDUCE", "SELL"})
@@ -673,10 +996,11 @@ def _executive_cockpit(data: dict) -> str:
             <div class="decision-chip">系统状态：{escape(str(console.get("system_status", "N/A")))} · L2 本地模拟盘 · 无真实交易</div>
             <div class="market-tape">
               {_tape("最新数据日", data.get("latest_data_date"))}
+              {_tape("实际数据源", f"{data_sources.get('actual_source_used','N/A')} / fallback={data_sources.get('fallback_triggered','N/A')}")}
+              {_tape("日线更新", f"{data_update.get('severity','N/A')} / {data_update.get('status','N/A')}")}
+              {_tape("市场状态", f"{market_state.get('market_state','N/A')} / {_score(market_state.get('market_score'))}")}
               {_tape("模拟交易引擎", engine.get("status", "WAITING"))}
               {_tape("Top BUY", f"{top_buy.get('symbol','N/A')} / {_score(top_buy.get('rank_score'))}")}
-              {_tape("卖出复核", f"{review_flags} 项需复核")}
-              {_tape("链接状态", f"{link_health.get('valid', 0)}/{link_health.get('total', 0)} OK")}
             </div>
           </div>
           <div class="kpi-rack">
@@ -726,8 +1050,12 @@ def _paper_engine_panel(engine: dict, limits: dict) -> str:
     state = engine.get("state", {})
     status = state.get("status", "WAITING")
     rows = [
+        _mini_stat("运行日", str(state.get("run_date", state.get("date", "N/A"))), "自动化执行日期"),
+        _mini_stat("价格数据日", str(state.get("price_data_date", "N/A")), "close proxy 来源"),
         _mini_stat("执行状态", str(status), f"dry_run={state.get('dry_run', 'N/A')}"),
         _mini_stat("买入/卖出", f"{state.get('buy_count', 0)} / {state.get('sell_count', 0)}", "本地模拟数量"),
+        _mini_stat("今日交易成本", _money(state.get("today_trade_cost")), f"佣金 {_money(state.get('today_commission'))}"),
+        _mini_stat("滑点成本", _money(state.get("today_slippage_cost")), str(state.get("execution_price_type", PAPER_EXECUTION_PRICE_TYPE))),
         _mini_stat("重复跳过", str(state.get("skipped_duplicate", False)), str(state.get("skip_reason", "")) or "无"),
         _mini_stat("持仓数", str(state.get("position_count", engine.get("position_count", 0))), f"上限 {limits.get('max_holdings', PAPER_MAX_HOLDINGS)}"),
     ]
@@ -739,7 +1067,7 @@ def _paper_engine_panel(engine: dict, limits: dict) -> str:
         + "</div>"
         + '<div class="risk-banner" style="margin-top:14px;">'
         + f'<div class="risk-title">模式：{escape(str(limits.get("mode", PAPER_MODE)))}</div>'
-        + f'<div>auto_execute={escape(str(limits.get("auto_execute", PAPER_AUTO_EXECUTE)))}；{escape(disabled)}；单只上限 {_pct(limits.get("max_single_position_pct", PAPER_MAX_SINGLE_POSITION_PCT))}；目标仓位 {_pct(limits.get("target_position_pct", PAPER_TARGET_POSITION_NEUTRAL))}。</div>'
+        + f'<div>auto_execute={escape(str(limits.get("auto_execute", PAPER_AUTO_EXECUTE)))}；{escape(disabled)}；佣金率 {escape(str(limits.get("commission_rate", PAPER_COMMISSION_RATE)))}；最低佣金 {_money(limits.get("min_commission", PAPER_MIN_COMMISSION))}；滑点率 {escape(str(limits.get("slippage_rate", PAPER_SLIPPAGE_RATE)))}；ETF 模拟暂不计印花税。</div>'
         + "</div>"
     )
 
@@ -752,17 +1080,20 @@ def _paper_trade_plan_table(rows: list[dict]) -> str:
         status = str(row.get("plan_status", "N/A"))
         body.append(
             "<tr>"
-            f"<td>{escape(str(row.get('date','')))}</td>"
+            f"<td>{escape(str(row.get('run_date') or row.get('date','')))}<div class=\"muted\">price data {escape(str(row.get('price_data_date','N/A')))}</div></td>"
             f"<td><b>{escape(str(row.get('symbol','')))}</b><div class=\"muted\">{escape(str(row.get('name','')))}</div></td>"
             f"<td>{escape(str(row.get('action','')))}</td>"
             f"<td>{_tag(status, _tag_class(status))}</td>"
-            f"<td class=\"num\">{_number(row.get('price'))}</td>"
+            f"<td class=\"num\">{_number(row.get('raw_close', row.get('price')))}</td>"
+            f"<td class=\"num\">{_number(row.get('execution_price', row.get('price')))}</td>"
             f"<td class=\"num\">{_number(row.get('quantity'))}</td>"
-            f"<td class=\"num\">{_money(row.get('amount'))}</td>"
+            f"<td class=\"num\">{_money(row.get('gross_amount', row.get('amount')))}</td>"
+            f"<td class=\"num\">{_money(row.get('commission'))}</td>"
+            f"<td class=\"num\">{_money(row.get('net_cash_change'))}</td>"
             f"<td><div class=\"reason\">{escape(str(row.get('reason','')))[:180]}</div></td>"
             "</tr>"
         )
-    return _table(["日期", "ETF", "动作", "状态", "价格", "数量", "金额", "原因"], body)
+    return _table(["运行日 / 数据日", "ETF", "动作", "状态", "raw_close", "execution_price", "数量", "成交额", "佣金", "净现金变化", "原因"], body)
 
 
 def _portfolio_table(rows: list[dict]) -> str:
@@ -781,17 +1112,17 @@ def _portfolio_table(rows: list[dict]) -> str:
             f"<td>{escape(str(row.get('name','')))}<div class=\"muted\">{escape(str(row.get('buy_reason_short','')))}</div></td>"
             f"<td>{escape(str(row.get('group','N/A')))}</td>"
             f"<td>{escape(str(row.get('etf_type','N/A')))}<div class=\"muted\">{escape(str(row.get('holding_profile','N/A')))} 天</div></td>"
-            f"<td>{escape(str(row.get('holding_cycle_status','N/A')))}<div class=\"muted\">持仓 {escape(str(row.get('holding_days','N/A')))} / {escape(str(row.get('holding_profile','N/A')))} 天</div></td>"
+            f"<td>{escape(str(row.get('holding_cycle_status','N/A')))}<div class=\"muted\">持仓 {escape(str(row.get('holding_days','N/A')))} / max {escape(str(row.get('max_holding_days','N/A')))} 天；保护期 {escape(str(row.get('protection_period','no')))}</div></td>"
             f"<td class=\"num\">{_money(row.get('market_value'))}</td>"
             f"<td class=\"num\">{_pct(row.get('position_ratio'))}</td>"
-            f"<td class=\"num\">{_number(row.get('entry_price'))}</td>"
+            f"<td class=\"num\">{_number(row.get('avg_cost', row.get('entry_price')))}<div class=\"muted\">佣金 {_money(row.get('commission_paid'))}</div></td>"
             f"<td class=\"num\">{_number(row.get('current_price'))}</td>"
             f"<td class=\"num {pnl_cls}\">{_money(row.get('unrealized_pnl'))}</td>"
             f"<td class=\"num {pnl_cls}\">{_pct(row.get('unrealized_pnl_pct'))}</td>"
             f"<td>{escape(str(row.get('buy_signal','N/A')))}</td>"
             f"<td>{escape(str(row.get('current_signal','N/A')))}</td>"
             f"<td>{_tag(row.get('short_swing_weakening'), _tag_class(row.get('short_swing_weakening')))}<div class=\"muted\">rank trend: {escape(str(row.get('rank_score_trend','N/A')))}</div></td>"
-            f"<td>{_tag(row.get('signal_status'), status_cls)}</td>"
+            f"<td>{_tag(row.get('signal_status'), status_cls)}<div class=\"muted\">sell: {escape(str(row.get('sell_review_status','N/A')))} / health: {escape(str(row.get('data_health_status','N/A')))}</div></td>"
             f"<td class=\"num\">{_number(row.get('stop_loss'))}</td>"
             f"<td class=\"num\">{_pct(row.get('stop_distance_pct'))}</td>"
             f"<td>{_tag(row.get('risk_tag'), risk_cls)}</td>"
@@ -801,6 +1132,157 @@ def _portfolio_table(rows: list[dict]) -> str:
         )
     headers = ["ETF", "名称", "group", "ETF 类型", "持仓周期", "仓位金额", "仓位比例", "成本价", "最新价", "浮盈亏", "浮盈亏率", "买入信号", "当前信号", "短周期/排名", "信号状态", "止损价", "距离止损", "风险标签", "情绪占位", "动作建议"]
     return _table(headers, body)
+
+
+def _paper_performance_panel(summary: dict, daily_rows: list[dict], trade_rows: list[dict]) -> str:
+    if not summary or summary.get("status") in {"missing", "error"}:
+        return '<div class="panel">暂无模拟仓绩效派生数据。运行 <code>python3 src/paper_performance.py</code> 后会生成。</div>'
+    cards = [
+        _metric("当前总资产", _money(summary.get("current_total_equity")), f"初始本金 {_money(summary.get('initial_cash'))}"),
+        _metric("总盈亏", _signed_money(summary.get("total_pnl_amount")), f"总收益率 {_pct(summary.get('total_return_pct'))}"),
+        _metric("现金 / 持仓", f"{_money(summary.get('current_cash'))} / {_money(summary.get('current_position_value'))}", "正式模拟仓口径"),
+        _metric("已实现 / 未实现", f"{_signed_money(summary.get('realized_pnl'))} / {_signed_money(summary.get('unrealized_pnl'))}", "FIFO + 本地 close 估算"),
+        _metric("最大回撤", _pct(summary.get("max_drawdown")), f"最高权益 {_money(summary.get('max_equity'))}"),
+        _metric("交易 / 胜率", f"{summary.get('trade_count', 0)} / {_pct(summary.get('win_rate'))}", f"买 {summary.get('buy_count', 0)} 卖 {summary.get('sell_count', 0)}"),
+        _metric("成本合计", _money(summary.get("total_cost")), f"佣金 {_money(summary.get('commission_total'))} · 滑点估算 {_money(summary.get('slippage_total'))}"),
+        _metric("更新时间", str(summary.get("last_updated", "N/A")), f"数据日 {summary.get('latest_data_date', 'N/A')}"),
+    ]
+    return (
+        '<div class="grid four">'
+        + "".join(cards)
+        + "</div>"
+        + '<div class="grid two" style="margin-top:14px;">'
+        + _paper_equity_curve_card(daily_rows)
+        + _paper_trade_pnl_card(trade_rows)
+        + "</div>"
+        + '<div class="risk-banner" style="margin-top:14px;border-left-color:var(--blue);background:var(--blue-soft);border-color:#bed5ff;">'
+        + '<div class="risk-title" style="color:var(--blue);">模拟仓绩效口径</div>'
+        + "<div>这是 Paper Portfolio 派生统计，不是实盘账户；券商接口未连接，真实交易禁用。正式模拟仓使用实际交易流水初始权益，20000 只作为研究/回测主基准，不混入本账户绩效。</div>"
+        + '<div class="links" style="margin-top:8px;"><a href="../reports/paper_performance_summary.md">绩效摘要</a><a href="../reports/paper_equity_curve.md">权益曲线</a><a href="../reports/paper_trade_pnl.md">交易盈亏</a><a href="../reports/paper_portfolio_metrics_audit.md">指标审计</a></div>'
+        + "</div>"
+    )
+
+
+def _paper_equity_curve_card(rows: list[dict]) -> str:
+    if not rows:
+        return '<div class="chart-card"><h3>历史权益曲线</h3><div class="muted">暂无足够数据。</div></div>'
+    points = rows[-80:]
+    values = [_float(row.get("total_equity")) for row in points]
+    if not values or max(values) == min(values):
+        return '<div class="chart-card"><h3>历史权益曲线</h3><div class="muted">权益数据不足以绘制曲线。</div></div>'
+    min_v, max_v = min(values), max(values)
+    width, height = 320, 130
+    coords = []
+    for idx, value in enumerate(values):
+        x = 12 + idx * (width - 24) / max(len(values) - 1, 1)
+        y = 12 + (max_v - value) / (max_v - min_v) * (height - 24)
+        coords.append(f"{x:.2f},{y:.2f}")
+    last = points[-1]
+    return f"""<div class="chart-card">
+      <h3>历史权益曲线</h3>
+      <svg viewBox="0 0 {width} {height}" role="img" aria-label="paper equity curve">
+        <rect x="0" y="0" width="{width}" height="{height}" rx="12" fill="#fbfcfe"/>
+        <polyline points="{' '.join(coords)}" fill="none" stroke="#1455d9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="12" y1="{height - 12}" x2="{width - 12}" y2="{height - 12}" stroke="#d8dee8"/>
+      </svg>
+      <div class="muted">最近 {len(points)} 个交易日 · 最新 {escape(str(last.get('date', 'N/A')))} · 总资产 {_money(last.get('total_equity'))} · 回撤 {_pct(last.get('drawdown'))}</div>
+    </div>"""
+
+
+def _paper_trade_pnl_card(rows: list[dict]) -> str:
+    if not rows:
+        return '<div class="chart-card"><h3>交易盈亏</h3><div class="muted">暂无交易盈亏配对数据。</div></div>'
+    body = []
+    for row in rows[-8:]:
+        pnl = _float(row.get("net_pnl"))
+        cls = "profit" if pnl > 0 else "loss" if pnl < 0 else "neutral"
+        body.append(
+            "<tr>"
+            f"<td>{escape(str(row.get('symbol','')))}<div class=\"muted\">{escape(str(row.get('name','')))}</div></td>"
+            f"<td>{escape(str(row.get('status','')))}</td>"
+            f"<td>{escape(str(row.get('buy_date','')))}<div class=\"muted\">{escape(str(row.get('sell_date','未平仓')))}</div></td>"
+            f"<td class=\"num\">{_number(row.get('quantity'))}</td>"
+            f"<td class=\"num {cls}\">{_signed_money(row.get('net_pnl'))}</td>"
+            f"<td class=\"num\">{_pct(row.get('return_pct'))}</td>"
+            "</tr>"
+        )
+    return '<div class="chart-card"><h3>交易盈亏</h3>' + _table(["ETF", "状态", "买入 / 卖出", "数量", "净盈亏", "收益率"], body) + "</div>"
+
+
+def _trade_review_panel(summary: dict, details: list[dict], open_positions: list[dict]) -> str:
+    if not summary or summary.get("status") in {"missing", "error"}:
+        return '<div class="panel">暂无交易复盘数据。运行 <code>python3 src/trade_review.py</code> 后会生成。</div>'
+    cards = [
+        _metric("交易总数", str(summary.get("trade_count", 0)), f"复盘单元 {summary.get('review_trade_count', 0)}"),
+        _metric("已平仓 / 未平仓", f"{summary.get('closed_trade_count', 0)} / {summary.get('open_position_count', 0)}", "交易闭环仍少"),
+        _metric("最大单笔盈利", _signed_money(summary.get("largest_net_profit")), "含未平仓浮盈"),
+        _metric("最大单笔亏损", _signed_money(summary.get("largest_net_loss")), "已平仓/未平仓合计"),
+        _metric("最大浮盈 MFE", _pct(summary.get("largest_mfe_pct")), "日线 high 估算"),
+        _metric("最大浮亏 MAE", _pct(summary.get("largest_mae_pct")), "日线 low 估算"),
+        _metric("成本影响", _money(summary.get("cost_impact_total")), "模拟交易成本"),
+        _metric("更新时间", str(summary.get("last_updated", "N/A")), "trade_review"),
+    ]
+    return (
+        '<div class="grid four">'
+        + "".join(cards)
+        + "</div>"
+        + '<div class="risk-banner" style="margin-top:14px;">'
+        + f'<div class="risk-title">主要问题：{escape(str(summary.get("main_issue", "N/A")))}</div>'
+        + f'<div>正面信号：{escape(str(summary.get("positive_signal", "N/A")))}</div>'
+        + f'<div>样本提醒：{escape(str(summary.get("sample_warning", "样本较少，不能判断策略稳定盈利。")))}</div>'
+        + "</div>"
+        + '<div class="grid two" style="margin-top:14px;">'
+        + _trade_review_closed_card(details)
+        + _trade_review_open_card(open_positions)
+        + "</div>"
+        + '<div class="links" style="margin-top:12px;"><a href="../reports/trade_review_summary.md">复盘摘要</a><a href="../reports/trade_review_details.md">逐笔明细</a><a href="../reports/trade_review_open_positions.md">未平仓复盘</a><a href="../reports/trade_review_lessons.md">经验总结</a><a href="../reports/trade_review_audit.md">数据审计</a></div>'
+    )
+
+
+def _trade_review_closed_card(rows: list[dict]) -> str:
+    closed = [row for row in rows if str(row.get("status", "")).lower() == "closed"]
+    if not closed:
+        return '<div class="chart-card"><h3>已平仓交易复盘</h3><div class="muted">暂无足够已平仓样本。</div></div>'
+    body = []
+    for row in closed[-8:]:
+        pnl = _float(row.get("net_pnl"))
+        cls = "profit" if pnl > 0 else "loss" if pnl < 0 else "neutral"
+        body.append(
+            "<tr>"
+            f"<td>{escape(str(row.get('symbol','')))}<div class=\"muted\">{escape(str(row.get('name','')))}</div></td>"
+            f"<td>{escape(str(row.get('buy_date','')))}<div class=\"muted\">{escape(str(row.get('sell_date','')))}</div></td>"
+            f"<td class=\"num\">{escape(str(row.get('holding_days','')))}</td>"
+            f"<td class=\"num {cls}\">{_signed_money(row.get('net_pnl'))}</td>"
+            f"<td class=\"num\">{_pct(row.get('return_pct'))}</td>"
+            f"<td class=\"num\">{_money(row.get('max_favorable_excursion'))}</td>"
+            f"<td class=\"num\">{_money(row.get('max_adverse_excursion'))}</td>"
+            f"<td>{escape(str(row.get('sell_timing_assessment','')))}<div class=\"muted\">{escape(str(row.get('review_tag','')))[:120]}</div></td>"
+            "</tr>"
+        )
+    return '<div class="chart-card"><h3>已平仓交易复盘</h3>' + _table(["ETF", "买入 / 卖出", "天数", "净盈亏", "收益率", "MFE", "MAE", "卖出评估 / 标签"], body) + "</div>"
+
+
+def _trade_review_open_card(rows: list[dict]) -> str:
+    if not rows:
+        return '<div class="chart-card"><h3>未平仓持仓复盘</h3><div class="muted">当前无未平仓持仓。</div></div>'
+    body = []
+    for row in rows[-8:]:
+        pnl = _float(row.get("unrealized_pnl"))
+        cls = "profit" if pnl > 0 else "loss" if pnl < 0 else "neutral"
+        body.append(
+            "<tr>"
+            f"<td>{escape(str(row.get('symbol','')))}<div class=\"muted\">{escape(str(row.get('name','')))}</div></td>"
+            f"<td>{escape(str(row.get('entry_date','')))}</td>"
+            f"<td class=\"num\">{_number(row.get('latest_price'))}</td>"
+            f"<td class=\"num {cls}\">{_signed_money(row.get('unrealized_pnl'))}</td>"
+            f"<td class=\"num\">{_pct(row.get('unrealized_return_pct'))}</td>"
+            f"<td class=\"num\">{_money(row.get('max_favorable_excursion'))}</td>"
+            f"<td class=\"num\">{_money(row.get('max_adverse_excursion'))}</td>"
+            f"<td class=\"num\">{_pct(row.get('current_drawdown_from_best'))}</td>"
+            f"<td><div class=\"reason\">{escape(str(row.get('review_comment','')))[:160]}</div></td>"
+            "</tr>"
+        )
+    return '<div class="chart-card"><h3>未平仓持仓复盘</h3>' + _table(["ETF", "买入日", "最新价", "浮盈亏", "收益率", "MFE", "MAE", "高点回撤", "复盘结论"], body) + "</div>"
 
 
 def _ranking_table(rows: list[dict]) -> str:
@@ -859,6 +1341,241 @@ def _sell_review_table(rows: list[dict]) -> str:
     return '<div class="panel">' + _table(headers, body) + '<div class="muted" style="margin-top:10px;">只生成候选复核，不提供真实交易按钮，不写 paper_trades。</div></div>'
 
 
+def _strategy_preview_panel(data: dict) -> str:
+    if not data or not data.get("rows"):
+        return '<div class="panel">暂无 B1 策略增强预览。运行 <code>python3 src/strategy_enhancement_preview.py</code> 后刷新。</div>'
+    rows = data.get("rows", [])
+    original = data.get("original_top3", [])
+    adjusted = data.get("adjusted_top3", [])
+    safety = data.get("execution_safety", {})
+    cards = [
+        _mini_stat("Top 3 是否变化", "是" if data.get("top3_changed") else "否", "preview only"),
+        _mini_stat("market_state", str(data.get("market_state", "N/A")), f"score {_score(data.get('market_score'))}"),
+        _mini_stat("组合暴露", str(data.get("portfolio_exposure_status", "N/A")), "不硬阻断"),
+        _mini_stat("执行开关", str(safety.get("adjusted_rank_score_execution_enabled", False)), "adjusted 不执行"),
+    ]
+    original_rows = _preview_top_rows(original, "original_rank", "original_rank_score")
+    adjusted_rows = _preview_top_rows(adjusted, "adjusted_rank_preview", "adjusted_rank_score_preview")
+    delta_rows = []
+    for row in sorted(rows, key=lambda item: abs(_float(item.get("score_delta"))), reverse=True)[:8]:
+        delta = _float(row.get("score_delta"))
+        delta_cls = "ok" if delta > 0 else "danger" if delta < 0 else "blue"
+        delta_rows.append(
+            "<tr>"
+            f"<td><b>{escape(str(row.get('symbol','')))}</b><div class=\"muted\">{escape(str(row.get('name','')))}</div></td>"
+            f"<td>{escape(str(row.get('etf_type','N/A')))}<div class=\"muted\">{escape(str(row.get('group','N/A')))}</div></td>"
+            f"<td class=\"num\">{_score(row.get('original_rank_score'))}</td>"
+            f"<td class=\"num\">{_score(row.get('adjusted_rank_score_preview'))}</td>"
+            f"<td>{_tag(_score(row.get('score_delta')), delta_cls)}</td>"
+            f"<td><div class=\"reason\">{escape(str(row.get('enhancement_reason','')))[:180]}</div></td>"
+            f"<td>{_tag(row.get('execution_status'), 'blue')}</td>"
+            "</tr>"
+        )
+    hit_summary = [
+        _mini_stat("宽基 bonus", str(len(data.get("broad_index_bonus_hits", []))), "缺宽基 +3"),
+        _mini_stat("防御 bonus", str(len(data.get("defensive_bonus_hits", []))), "非 strong +1.5"),
+        _mini_stat("high_beta 降权", str(len(data.get("high_beta_penalty_hits", []))), "-2"),
+        _mini_stat("data_health 降权", str(len(data.get("data_health_penalty_hits", []))), "-3 / -999"),
+    ]
+    return (
+        '<div class="grid two">'
+        + '<div class="panel"><h3>B1 Preview Summary</h3><div class="grid four">'
+        + "".join(cards)
+        + "</div></div>"
+        + '<div class="panel"><h3>Hit Summary</h3><div class="grid four">'
+        + "".join(hit_summary)
+        + "</div></div>"
+        + '<div class="panel"><h3>Original Top 3</h3>'
+        + _table(["rank", "ETF", "score", "原因"], original_rows)
+        + "</div>"
+        + '<div class="panel"><h3>Adjusted Preview Top 3</h3>'
+        + _table(["rank", "ETF", "score", "原因"], adjusted_rows)
+        + "</div>"
+        + '<div class="panel" style="grid-column:1/-1;"><h3>Score Delta 最大项</h3>'
+        + _table(["ETF", "类型/group", "original", "adjusted", "delta", "原因", "执行状态"], delta_rows)
+        + '<div class="muted" style="margin-top:10px;">adjusted_rank_score_preview_enabled=true；adjusted_rank_score_execution_enabled=false；本模块不改变 paper_trade_engine。</div>'
+        + '<div class="links" style="margin-top:12px;"><a href="../reports/strategy_enhancement_preview.md">预览报告</a><a href="../reports/b1_strategy_enhancement_preview_report.md">B1 报告</a></div>'
+        + "</div></div>"
+    )
+
+
+def _preview_top_rows(rows: list[dict], rank_key: str, score_key: str) -> list[str]:
+    out = []
+    for row in rows[:3]:
+        out.append(
+            "<tr>"
+            f"<td class=\"num\">{escape(str(row.get(rank_key, '')))}</td>"
+            f"<td><b>{escape(str(row.get('symbol','')))}</b><div class=\"muted\">{escape(str(row.get('name','')))}</div></td>"
+            f"<td class=\"num\">{_score(row.get(score_key))}</td>"
+            f"<td><div class=\"reason\">{escape(str(row.get('enhancement_reason','original ranking')))[:160]}</div></td>"
+            "</tr>"
+        )
+    return out
+
+
+def _preview_tracking_panel(data: dict) -> str:
+    if not data or not data.get("rows"):
+        return '<div class="panel">暂无 B2 影子跟踪账本。运行 <code>python3 src/strategy_preview_tracking.py</code> 后刷新。</div>'
+    summary = data.get("summary", {})
+    comparison = data.get("forward_return_comparison", {})
+    safety = data.get("execution_safety", {})
+    cards = [
+        _mini_stat("样本数", str(summary.get("sample_count", 0)), f"completed {summary.get('completed_count', 0)}"),
+        _mini_stat("pending", str(summary.get("pending_count", 0)), f"partial {summary.get('partial_count', 0)}"),
+        _mini_stat("only original / adjusted", f"{summary.get('only_original_count', 0)} / {summary.get('only_adjusted_count', 0)}", "Top 3 差异"),
+        _mini_stat("Top 3 变化", "是" if summary.get("top3_changed") else "否", "今日 snapshot"),
+    ]
+    original_rows = _tracking_top_rows(summary.get("original_top3", []), "original_rank", "original_rank_score")
+    adjusted_rows = _tracking_top_rows(summary.get("adjusted_top3", []), "adjusted_rank_preview", "adjusted_rank_score_preview")
+    return_rows = []
+    for group_name, row in comparison.get("returns", {}).items():
+        return_rows.append(
+            "<tr>"
+            f"<td>{escape(str(group_name))}</td>"
+            f"<td class=\"num\">{escape(str(row.get('sample_count', 0)))}</td>"
+            f"<td class=\"num\">{_pct(row.get('forward_1d_mean'))}<div class=\"muted\">n={escape(str(row.get('forward_1d_n', 0)))}</div></td>"
+            f"<td class=\"num\">{_pct(row.get('forward_3d_mean'))}<div class=\"muted\">n={escape(str(row.get('forward_3d_n', 0)))}</div></td>"
+            f"<td class=\"num\">{_pct(row.get('forward_5d_mean'))}<div class=\"muted\">n={escape(str(row.get('forward_5d_n', 0)))}</div></td>"
+            f"<td class=\"num\">{_pct(row.get('forward_10d_mean'))}<div class=\"muted\">n={escape(str(row.get('forward_10d_n', 0)))}</div></td>"
+            "</tr>"
+        )
+    penalty = data.get("penalty_bonus_review", {})
+    penalty_cards = [
+        _mini_stat("high_beta penalty", _pct(penalty.get("high_beta_penalty", {}).get("forward_1d_mean")), f"n={penalty.get('high_beta_penalty', {}).get('forward_1d_n', 0)}"),
+        _mini_stat("data_health penalty", _pct(penalty.get("data_health_penalty", {}).get("forward_1d_mean")), f"n={penalty.get('data_health_penalty', {}).get('forward_1d_n', 0)}"),
+        _mini_stat("concentration penalty", _pct(penalty.get("concentration_penalty", {}).get("forward_1d_mean")), f"n={penalty.get('concentration_penalty', {}).get('forward_1d_n', 0)}"),
+        _mini_stat("bonus hits", str(data.get("bonus_hit_count", 0)), "broad/defensive"),
+    ]
+    return (
+        '<div class="grid two">'
+        + '<div class="panel"><h3>Tracking Summary</h3><div class="grid four">'
+        + "".join(cards)
+        + f'</div><div class="risk-banner" style="margin-top:14px;"><div class="risk-title">结论</div><div>{escape(str(summary.get("conclusion", "当前样本不足，不能证明 adjusted preview 优于 original ranking。")))}</div></div></div>'
+        + '<div class="panel"><h3>Execution Safety</h3><div class="grid four">'
+        + _mini_stat("preview enabled", str(safety.get("adjusted_rank_score_preview_enabled", True)), "只展示")
+        + _mini_stat("adjusted execution", str(safety.get("adjusted_rank_score_execution_enabled", False)), "必须 false")
+        + _mini_stat("shadow enabled", str(safety.get("shadow_model_enabled", True)), "research only")
+        + _mini_stat("shadow execution", str(safety.get("shadow_model_execution_enabled", False)), "必须 false")
+        + "</div></div>"
+        + '<div class="panel"><h3>Original Top 3</h3>'
+        + _table(["rank", "ETF", "score", "status"], original_rows)
+        + "</div>"
+        + '<div class="panel"><h3>Adjusted Preview Top 3</h3>'
+        + _table(["rank", "ETF", "score", "status"], adjusted_rows)
+        + "</div>"
+        + '<div class="panel" style="grid-column:1/-1;"><h3>Forward Return Comparison</h3>'
+        + _table(["group", "sample", "1d mean", "3d mean", "5d mean", "10d mean"], return_rows)
+        + '<div class="muted" style="margin-top:10px;">forward returns 只在未来交易日数据已存在后回填；pending 不是失败。</div></div>'
+        + '<div class="panel" style="grid-column:1/-1;"><h3>Penalty / Bonus Review</h3><div class="grid four">'
+        + "".join(penalty_cards)
+        + '</div><div class="links" style="margin-top:12px;"><a href="../reports/strategy_preview_tracking_report.md">跟踪报告</a><a href="../reports/strategy_preview_shadow_portfolio.md">影子组合</a><a href="../reports/b2_strategy_preview_tracking_report.md">B2 报告</a></div></div>'
+        + "</div>"
+    )
+
+
+def _tracking_top_rows(rows: list[dict], rank_key: str, score_key: str) -> list[str]:
+    out = []
+    for row in rows[:3]:
+        status = str(row.get("forward_returns_status", "pending"))
+        out.append(
+            "<tr>"
+            f"<td class=\"num\">{escape(str(row.get(rank_key, '')))}</td>"
+            f"<td><b>{escape(str(row.get('symbol','')))}</b><div class=\"muted\">{escape(str(row.get('name','')))}</div></td>"
+            f"<td class=\"num\">{_score(row.get(score_key))}</td>"
+            f"<td>{_tag(status, 'blue' if status == 'pending' else 'ok' if status == 'completed' else 'warn')}</td>"
+            "</tr>"
+        )
+    return out
+
+
+def _type_aware_review_panel(data: dict, safety: dict) -> str:
+    rows = data.get("rows", []) if data else []
+    if not rows:
+        return '<div class="panel">暂无类型化复核结果。运行 sell_signal_review 后刷新。</div>'
+    cards = [
+        _mini_stat("持仓数", str(data.get("position_count", len(rows))), "paper positions"),
+        _mini_stat("elevated", str(data.get("elevated_count", 0)), "类型化高关注"),
+        _mini_stat("只提示不交易", "true", "不自动 SELL"),
+        _mini_stat("真实交易", str(safety.get("real_trade_enabled", False)), "broker_api=false"),
+    ]
+    body = []
+    for row in rows:
+        severity = str(row.get("type_review_severity", "N/A"))
+        body.append(
+            "<tr>"
+            f"<td><b>{escape(str(row.get('symbol','')))}</b><div class=\"muted\">{escape(str(row.get('name','')))}</div></td>"
+            f"<td>{escape(str(row.get('etf_type','N/A')))}<div class=\"muted\">{escape(str(row.get('type_risk_level','N/A')))}</div></td>"
+            f"<td class=\"num\">{escape(str(row.get('type_max_holding_days','N/A')))}</td>"
+            f"<td class=\"num\">{_pct(row.get('type_holding_day_progress'))}</td>"
+            f"<td>{escape(str(row.get('type_distance_to_stop_status','N/A')))}</td>"
+            f"<td>{_tag(severity, 'warn' if severity == 'elevated' else 'ok')}</td>"
+            f"<td>{_tag(row.get('sell_review_status'), _sell_status_class(row.get('sell_review_status')))}</td>"
+            f"<td><div class=\"reason\">{escape(str(row.get('etf_type_review_note','')))[:220]}</div></td>"
+            "</tr>"
+        )
+    return (
+        '<div class="panel"><div class="grid four">'
+        + "".join(cards)
+        + "</div>"
+        + _table(["ETF", "类型/风险", "type_max_days", "持仓进度", "距离止损状态", "type_severity", "sell_review", "类型化说明"], body)
+        + '<div class="muted" style="margin-top:10px;">类型化 REVIEW 不改变 SELL 判定，不写 paper_trades，不修改 paper_positions。</div></div>'
+    )
+
+
+def _phase2c_panel(data: dict) -> str:
+    if not data:
+        return '<div class="panel">暂无 Phase 2C 轻量接入数据。运行 paper_trade_engine dry-run 后刷新。</div>'
+    market = data.get("market_state_vs_position", {})
+    type_risk = data.get("etf_type_risk", [])
+    balance = data.get("portfolio_balance", {})
+    confidence = data.get("research_confidence", {})
+    integrated = data.get("integrated", [])
+    display_only = data.get("display_only", [])
+    not_integrated = data.get("not_integrated", [])
+    rows = [
+        _mini_stat("market_state", str(market.get("market_state", "N/A")), f"score {_score(market.get('market_score'))}"),
+        _mini_stat("建议仓位", str(market.get("suggested_position_pct", "N/A")), f"当前 {_pct(market.get('current_position_pct'))}"),
+        _mini_stat("仓位匹配", str(market.get("position_alignment", "N/A")), f"use_market_state={data.get('use_market_state_position', False)}"),
+        _mini_stat("组合状态", str(balance.get("portfolio_exposure_status", "N/A")), f"提示 {len(balance.get('warnings', []))}"),
+    ]
+    type_rows = []
+    for row in type_risk:
+        type_rows.append(
+            "<tr>"
+            f"<td>{escape(str(row.get('symbol','')))}</td>"
+            f"<td>{escape(str(row.get('name','')))}</td>"
+            f"<td>{escape(str(row.get('etf_type','')))}</td>"
+            f"<td>{escape(str(row.get('risk_profile','')))}</td>"
+            f"<td class=\"num\">{escape(str(row.get('max_holding_days','')))}</td>"
+            f"<td class=\"num\">{_pct(row.get('stop_loss_pct'))}</td>"
+            f"<td class=\"num\">{_pct(row.get('distance_to_stop_pct'))}</td>"
+            f"<td>{_tag(row.get('holding_period_status'), _tag_class(row.get('holding_period_status')))}</td>"
+            "</tr>"
+        )
+    balance_items = balance.get("suggestions", []) + balance.get("warnings", [])
+    balance_html = "<ul>" + "".join(f"<li>{escape(str(item))}</li>" for item in balance_items[:6]) + "</ul>" if balance_items else '<div class="muted">暂无组合平衡提示。</div>'
+    confidence_text = ", ".join(f"{k}: {v}" for k, v in confidence.items()) or "N/A"
+    return (
+        '<div class="grid two">'
+        + '<div class="panel"><h3>Market State vs Position</h3><div class="grid four">'
+        + "".join(rows)
+        + "</div></div>"
+        + '<div class="panel"><h3>Research Confidence</h3>'
+        + f'<div class="muted">{escape(confidence_text)}</div>'
+        + _recommendation_list("已轻量接入", integrated, "ok")
+        + _recommendation_list("只展示不执行", display_only, "warn")
+        + _recommendation_list("仍未接入", not_integrated, "danger")
+        + "</div>"
+        + '<div class="panel"><h3>ETF Type Risk</h3>'
+        + (_table(["ETF", "名称", "类型", "risk_profile", "max_days", "stop_loss_pct", "距离止损", "持有期状态"], type_rows) if type_rows else '<div class="muted">暂无持仓类型风险。</div>')
+        + "</div>"
+        + '<div class="panel"><h3>Portfolio Balance Suggestions</h3>'
+        + balance_html
+        + '<div class="links" style="margin-top:12px;"><a href="../reports/phase2c_execution_layer_light_integration_report.md">Phase 2C 报告</a><a href="../reports/paper_trade_plan.md">交易计划</a></div>'
+        + "</div></div>"
+    )
+
+
 def _risk_exposure_panel(data: dict) -> str:
     summary = data.get("paper_summary", {})
     failed = data.get("failed_counts", {})
@@ -896,9 +1613,17 @@ def _system_health_panel(data: dict) -> str:
     failed = data.get("failed_counts", {})
     links = data.get("link_health", {})
     nodes = data.get("automation_nodes", [])
+    data_update = data.get("data_update_status", {})
+    data_sources = data.get("data_sources", {})
     node_errors = sum(1 for node in nodes if str(node.get("status", "")).upper() in {"ERROR", "FAILED"})
     node_waiting = sum(1 for node in nodes if str(node.get("status", "")).upper() == "WAITING")
     cells = [
+        _mini_stat("日线更新", str(data_update.get("severity", "N/A")), str(data_update.get("status", "unknown"))),
+        _mini_stat("实际数据源", str(data_sources.get("actual_source_used", "N/A")), f"primary {data_sources.get('primary_source', 'jqdata')}"),
+        _mini_stat("JQData", str(data_sources.get("jqdata_status", "N/A")), f"fallback {data_sources.get('fallback_triggered', False)}"),
+        _mini_stat("BaoStock", str(data_sources.get("baostock_status", "N/A")), str(data_sources.get("fallback_source", "baostock"))),
+        _mini_stat("最新数据日", str(data_update.get("latest_local_date", data.get("latest_data_date", "N/A"))), f"请求至 {data_update.get('requested_end', 'N/A')}"),
+        _mini_stat("新增行数", str(data_update.get("added_rows", "N/A")), f"calls {data_update.get('estimated_api_calls', 'N/A')}"),
         _mini_stat("数据健康", str(health.get("异常", "0")), "异常 ETF"),
         _mini_stat("数据提醒", str(health.get("提醒", "0")), "caution ETF"),
         _mini_stat("隔离数据", str(failed.get("quarantine", 0)), "不入池"),
@@ -915,7 +1640,7 @@ def _system_health_panel(data: dict) -> str:
         + "</div>"
         + '<div class="risk-banner" style="margin-top:14px;">'
         + '<div class="risk-title">稳定性策略</div>'
-        + "<div>看板为单文件静态 HTML，不依赖 Streamlit 或本地服务；每日报告生成后自动刷新 dashboard_data.json 和 index.html。</div>"
+        + f"<div>看板为单文件静态 HTML，不依赖 Streamlit 或本地服务；每日报告生成后自动刷新 dashboard_data.json 和 index.html。数据更新诊断：{escape(str(data_update.get('reason', '暂无状态')))}</div>"
         + "</div>"
     )
 
@@ -932,6 +1657,136 @@ def _link_health_panel(health: dict) -> str:
     else:
         detail = "<div class=\"muted\">核心内置链接均能定位到本地文件。</div>"
     return "<h3>内置链接可用性</h3>" + '<div class="grid two">' + "".join(rows) + "</div>" + detail
+
+
+def _market_state_panel(market: dict) -> str:
+    components = market.get("components", [])
+    range_text = f"{_pct(market.get('suggested_total_position_min'))} - {_pct(market.get('suggested_total_position_max'))}"
+    rows = [
+        _mini_stat("market_state", str(market.get("market_state", "N/A")), "研究代理"),
+        _mini_stat("market_score", _score(market.get("market_score")), f"trend {_score(market.get('trend_score'))}"),
+        _mini_stat("建议仓位区间", range_text, "不自动改仓"),
+        _mini_stat("BUY / 风险", f"{market.get('buy_count', 'N/A')} / {market.get('risk_alert_count', 'N/A')}", "排名与健康代理"),
+    ]
+    body = []
+    for row in components[:6]:
+        body.append(
+            "<tr>"
+            f"<td>{escape(str(row.get('symbol','')))}</td>"
+            f"<td>{escape(str(row.get('name','')))}</td>"
+            f"<td class=\"num\">{_score(row.get('market_score'))}</td>"
+            f"<td class=\"num\">{_pct(row.get('ret20'))}</td>"
+            f"<td class=\"num\">{_pct(row.get('drawdown60'))}</td>"
+            "</tr>"
+        )
+    table = _table(["symbol", "name", "score", "ret20", "dd60"], body) if body else '<div class="muted">暂无市场状态组件。</div>'
+    return (
+        "<h3>市场状态</h3>"
+        + '<div class="grid four">'
+        + "".join(rows)
+        + "</div>"
+        + "<div style=\"margin-top:12px;\">"
+        + table
+        + "</div>"
+        + '<div class="links" style="margin-top:12px;"><a href="../reports/market_state_report.md">市场状态报告</a></div>'
+    )
+
+
+def _portfolio_exposure_panel(exposure: dict) -> str:
+    summary = exposure.get("summary", {})
+    warnings = exposure.get("warnings", [])
+    buckets = exposure.get("buckets", [])
+    rows = [
+        _mini_stat("overall_status", str(summary.get("overall_status", "N/A")), "组合暴露"),
+        _mini_stat("持仓市值", _money(summary.get("market_value")), f"仓位 {_pct(summary.get('position_ratio'))}"),
+        _mini_stat("风险提示", str(len(warnings)), "集中度/数据健康"),
+        _mini_stat("暴露桶", str(len(buckets)), "group/type/profile"),
+    ]
+    warning_html = "<ul>" + "".join(f"<li>{escape(str(item))}</li>" for item in warnings[:5]) + "</ul>" if warnings else '<div class="muted">暂无组合暴露风险提示。</div>'
+    top = []
+    for row in buckets[:8]:
+        top.append(
+            "<tr>"
+            f"<td>{escape(str(row.get('dimension','')))}</td>"
+            f"<td>{escape(str(row.get('bucket','')))}</td>"
+            f"<td class=\"num\">{_money(row.get('market_value'))}</td>"
+            f"<td class=\"num\">{_pct(row.get('portfolio_weight'))}</td>"
+            "</tr>"
+        )
+    table = _table(["维度", "桶", "市值", "占持仓"], top) if top else '<div class="muted">暂无暴露汇总。</div>'
+    return (
+        "<h3>组合暴露研究</h3>"
+        + '<div class="grid four">'
+        + "".join(rows)
+        + "</div>"
+        + warning_html
+        + table
+        + '<div class="links" style="margin-top:12px;"><a href="../reports/portfolio_exposure_report.md">组合暴露报告</a></div>'
+    )
+
+
+def _model_research_panel(model: dict) -> str:
+    holding = model.get("holding_period", {})
+    exit_rule = model.get("exit_rule", {})
+    sweep = model.get("parameter_sweep", {})
+    rows = [
+        _mini_stat("持有周期行数", str(holding.get("row_count", 0)), str(holding.get("best_note", "N/A"))),
+        _mini_stat("退出规则行数", str(exit_rule.get("row_count", 0)), str(exit_rule.get("best_note", "N/A"))),
+        _mini_stat("参数扫描行数", str(sweep.get("row_count", 0)), str(sweep.get("best_note", "N/A"))),
+        _mini_stat("研究版本", "phase2", "research_only"),
+    ]
+    links = (
+        '<div class="links" style="margin-top:12px;">'
+        '<a href="../reports/holding_period_research_report.md">持有周期</a>'
+        '<a href="../reports/exit_rule_research_report.md">退出规则</a>'
+        '<a href="../reports/parameter_sweep_report.md">参数扫描</a>'
+        "</div>"
+    )
+    return "<h3>模型研究摘要</h3>" + '<div class="grid four">' + "".join(rows) + "</div>" + links
+
+
+def _research_quality_panel(review: dict) -> str:
+    if not review:
+        return '<div class="panel">暂无模型研究质量审查。运行 <code>python3 src/model_research_quality_review.py</code> 后刷新。</div>'
+    hp = review.get("holding_period", {})
+    er = review.get("exit_rule", {})
+    ps = review.get("parameter_sweep", {})
+    ms = review.get("market_state", {})
+    cls = review.get("etf_classification", {})
+    exp = review.get("portfolio_exposure", {})
+    rec = review.get("integration_recommendations", {})
+    cards = [
+        _mini_stat("holding_period", str(hp.get("quality", "N/A")), f"rows {hp.get('row_count', 0)}"),
+        _mini_stat("exit_rule", str(er.get("quality", "N/A")), f"rows {er.get('row_count', 0)}"),
+        _mini_stat("parameter_sweep", str(ps.get("quality", "N/A")), f"rows {ps.get('row_count', 0)}"),
+        _mini_stat("market_state", str(ms.get("quality", "N/A")), f"{ms.get('market_state', 'N/A')} / {_score(ms.get('market_score'))}"),
+        _mini_stat("ETF 分类", str(cls.get("quality", "N/A")), f"unknown {cls.get('unknown_count', 'N/A')}/{cls.get('row_count', 'N/A')}"),
+        _mini_stat("组合暴露", str(exp.get("quality", "N/A")), str(exp.get("overall_status", "N/A"))),
+    ]
+    immediate = rec.get("immediate", [])
+    observe = rec.get("observe", [])
+    not_recommended = rec.get("not_recommended", [])
+    return (
+        '<div class="grid two">'
+        + '<div class="panel"><h3>可信度矩阵</h3><div class="grid three">'
+        + "".join(cards)
+        + "</div></div>"
+        + '<div class="panel"><h3>执行层接入建议</h3>'
+        + _recommendation_list("可以立即接入", immediate, "ok")
+        + _recommendation_list("需要观察后接入", observe, "warn")
+        + _recommendation_list("暂不建议接入", not_recommended, "danger")
+        + '<div class="links" style="margin-top:12px;"><a href="../reports/model_research_quality_review.md">质量审查报告</a><a href="../reports/execution_layer_integration_plan.md">执行层接入计划</a></div>'
+        + "</div></div>"
+    )
+
+
+def _recommendation_list(title: str, items: list, cls: str) -> str:
+    if not items:
+        return f'<div class="muted">{escape(title)}：暂无</div>'
+    html = f'<div style="margin-top:10px;">{_tag(title, cls)}</div><ul>'
+    html += "".join(f"<li>{escape(str(item))}</li>" for item in items[:6])
+    html += "</ul>"
+    return html
 
 
 def _research_layer_panel(data: dict) -> str:
@@ -960,6 +1815,235 @@ def _research_layer_panel(data: dict) -> str:
     )
 
 
+def _universe_quality_panel(review: dict) -> str:
+    if not review:
+        return "<h3>ETF 池质量审查</h3><div class=\"muted\">暂无 universe quality review 数据。</div>"
+    ready_cls = "ok" if review.get("backtest_ready") else "warn"
+    stats = [
+        _mini_stat("ETF 总数", str(review.get("total_etf", 0)), f"最新 {review.get('latest_data_date', 'N/A')}"),
+        _mini_stat("建议 trade", str(review.get("recommended_trade_pool", 0)), "第一版回测候选"),
+        _mini_stat("建议 observe", str(review.get("recommended_observe_pool", 0)), "观察/研究，不自动交易"),
+        _mini_stat("建议 exclude", str(review.get("recommended_exclude_pool", 0)), "低流动性或分类风险"),
+        _mini_stat("低流动性", str(review.get("low_liquidity_count", 0)), "含 low / ultra_low"),
+        _mini_stat("unknown 分类", str(review.get("unknown_classification_count", 0)), "回测前优先补分类"),
+        _mini_stat("QDII", str(review.get("qdii_count", 0)), "暂不自动交易"),
+        _mini_stat("短历史", str(review.get("short_history_count", 0)), "< 120 交易日"),
+    ]
+    issues = review.get("top_issues", [])
+    issue_html = "".join(f"<li>{escape(str(item))}</li>" for item in issues[:6]) or "<li>暂无主要问题</li>"
+    return (
+        "<h3>ETF 池质量审查与回测准备度</h3>"
+        + f"<div style=\"margin-bottom:10px;\">{_tag('BACKTEST_READY' if review.get('backtest_ready') else 'REVIEW_REQUIRED', ready_cls)}</div>"
+        + '<div class="grid four">'
+        + "".join(stats)
+        + "</div>"
+        + f"<div class=\"muted\" style=\"margin-top:12px;\">{escape(str(review.get('readiness_summary', '')))}</div>"
+        + f"<ul>{issue_html}</ul>"
+        + '<div class="links" style="margin-top:12px;">'
+        + f'<a href="{escape(str(review.get("report_href", "../reports/universe_quality_review.md")))}">池质量报告</a>'
+        + f'<a href="{escape(str(review.get("strategy_research_report_href", "../reports/etf_rotation_strategy_research.md")))}">轮动策略调研</a>'
+        + f'<a href="{escape(str(review.get("readiness_report_href", "../reports/backtest_readiness_report.md")))}">回测准备报告</a>'
+        + "</div>"
+    )
+
+
+def _phase4c_data_panel(review: dict) -> str:
+    if not review:
+        return "<h3>Phase 4C 数据源审计</h3><div class=\"muted\">暂无 Phase 4C 数据源审计结果。</div>"
+    stats = [
+        _mini_stat("状态", str(review.get("status", "N/A")), "research only"),
+        _mini_stat("AKShare", str(review.get("akshare_status", "not_checked")), "connectivity"),
+        _mini_stat("Provider 设计", "READY" if review.get("data_provider_design_ready") else "MISSING", "staged ingestion"),
+        _mini_stat("情报计划", "READY" if review.get("intelligence_data_plan_ready") else "MISSING", "news/special data"),
+        _mini_stat("无未来函数", "READY" if review.get("no_lookahead_rules_ready") else "MISSING", "available_date required"),
+        _mini_stat("执行接入", "NO", "paper engine unchanged"),
+    ]
+    return (
+        "<h3>Phase 4C 数据源架构审计</h3>"
+        + '<div class="grid three">'
+        + "".join(stats)
+        + "</div>"
+        + f"<div class=\"muted\" style=\"margin-top:12px;\">{escape(str(review.get('summary', '')))}</div>"
+        + "<div class=\"risk-banner\" style=\"margin-top:12px;\">"
+        + "<div class=\"risk-title\">下一步</div>"
+        + f"<div>{escape(str(review.get('recommended_next_step', 'N/A')))}</div>"
+        + "</div>"
+        + '<div class="links" style="margin-top:12px;">'
+        + f'<a href="{escape(str(review.get("report_href", "../reports/data_source_architecture_audit.md")))}">架构审计</a>'
+        + f'<a href="{escape(str(review.get("akshare_report_href", "../reports/akshare_connectivity_check.md")))}">AKShare 诊断</a>'
+        + f'<a href="{escape(str(review.get("provider_design_href", "../reports/data_provider_design.md")))}">Provider 设计</a>'
+        + f'<a href="{escape(str(review.get("intelligence_plan_href", "../reports/intelligence_data_source_plan.md")))}">情报数据规划</a>'
+        + f'<a href="{escape(str(review.get("no_lookahead_href", "../reports/no_lookahead_data_rules.md")))}">无未来函数规则</a>'
+        + "</div>"
+    )
+
+
+def _phase4c_tushare_panel(review: dict) -> str:
+    if not review:
+        return "<h3>Tushare staging</h3><div class=\"muted\">暂无 Tushare staging 结果。</div>"
+    stats = [
+        _mini_stat("状态", str(review.get("status", "N/A")), "research/staging only"),
+        _mini_stat("凭据配置", "YES" if review.get("tushare_token_configured") else "NO", "密钥不展示"),
+        _mini_stat("Staging 成功", "YES" if review.get("tushare_staging_success") else "NO", "sample dry-run"),
+        _mini_stat("测试样本", str(review.get("sample_symbols_tested", 0)), f"成功 {review.get('sample_symbols_success', 0)} / 失败 {review.get('sample_symbols_failed', 0)}"),
+        _mini_stat("BaoStock 对比", "READY" if review.get("baostock_compare_ready") else "NO", "formal data untouched"),
+        _mini_stat("正式切换", "NO" if not review.get("formal_source_switched") else "YES", "no formal overwrite"),
+        _mini_stat("推荐主源", str(review.get("recommended_daily_source", "baostock")), "current formal"),
+        _mini_stat("候选源", str(review.get("candidate_daily_source") or "none"), "future only"),
+    ]
+    return (
+        "<h3>Phase 4C-1 Tushare staging dry-run</h3>"
+        + '<div class="grid four">'
+        + "".join(stats)
+        + "</div>"
+        + f"<div class=\"muted\" style=\"margin-top:12px;\">{escape(str(review.get('summary', '')))}</div>"
+        + "<div class=\"risk-banner\" style=\"margin-top:12px;\">"
+        + "<div class=\"risk-title\">边界</div>"
+        + "<div>research-only / staging-only / no formal overwrite；不接 BUY ranking、paper_trade_engine 或正式回测。</div>"
+        + "</div>"
+        + '<div class="links" style="margin-top:12px;">'
+        + f'<a href="{escape(str(review.get("staging_report_href", "../reports/tushare_staging_check.md")))}">Staging 报告</a>'
+        + f'<a href="{escape(str(review.get("config_report_href", "../reports/tushare_config_check.md")))}">配置检查</a>'
+        + f'<a href="{escape(str(review.get("compare_report_href", "../reports/tushare_baostock_compare.md")))}">BaoStock 对比</a>'
+        + f'<a href="{escape(str(review.get("provider_status_href", "../reports/data_provider_status.md")))}">Provider 状态</a>'
+        + f'<a href="{escape(str(review.get("no_lookahead_href", "../reports/tushare_no_lookahead_check.md")))}">No-lookahead</a>'
+        + "</div>"
+    )
+
+
+def _phase4c_alpha_panel(review: dict) -> str:
+    if not review:
+        return "<h3>Phase 4C Alpha</h3><div class=\"muted\">暂无 alpha 模型研究结果。</div>"
+    stats = [
+        _mini_stat("状态", str(review.get("status", "N/A")), "research only"),
+        _mini_stat("最佳候选", str(review.get("best_candidate") or "N/A"), str(review.get("candidate_type") or "")),
+        _mini_stat("收益", _pct(review.get("best_total_return")), "best total return"),
+        _mini_stat("最大回撤", _pct(review.get("best_max_drawdown")), "best drawdown"),
+        _mini_stat("跑赢 510300", "YES" if review.get("beat_510300") else "NO", "benchmark"),
+        _mini_stat("跑赢 v2", "YES" if review.get("beat_v2_baseline") else "NO", "top10 diversified"),
+        _mini_stat("Shadow", "YES" if review.get("ready_for_shadow") else "NO", "research candidate"),
+        _mini_stat("执行接入", "NO", "paper engine unchanged"),
+    ]
+    return (
+        "<h3>Phase 4C Alpha / Regime-aware 研究</h3>"
+        + '<div class="grid four">'
+        + "".join(stats)
+        + "</div>"
+        + f"<div class=\"muted\" style=\"margin-top:12px;\">{escape(str(review.get('summary', '')))}</div>"
+        + "<div class=\"risk-banner\" style=\"margin-top:12px;\">"
+        + "<div class=\"risk-title\">过拟合与边界</div>"
+        + f"<div>overfit_guardrails_passed={review.get('overfit_guardrails_passed')}; ready_for_execution=false；所有结果仅用于 research/shadow 判断。</div>"
+        + "</div>"
+        + '<div class="links" style="margin-top:12px;">'
+        + f'<a href="{escape(str(review.get("attribution_href", "../reports/v2_underperformance_attribution.md")))}">v2 归因</a>'
+        + f'<a href="{escape(str(review.get("regime_href", "../reports/regime_aware_model_research.md")))}">Regime-aware</a>'
+        + f'<a href="{escape(str(review.get("type_href", "../reports/etf_type_aware_model_research.md")))}">Type-aware</a>'
+        + f'<a href="{escape(str(review.get("alpha_href", "../reports/alpha_factor_enhancement_research.md")))}">Alpha 增强</a>'
+        + f'<a href="{escape(str(review.get("comparison_href", "../reports/phase4c_alpha_model_comparison.md")))}">综合对比</a>'
+        + f'<a href="{escape(str(review.get("decision_href", "../reports/phase4c_alpha_model_decision.md")))}">决策报告</a>'
+        + "</div>"
+    )
+
+
+def _persistence_breakout_shadow_panel(review: dict) -> str:
+    if not review:
+        return "<h3>Persistence Breakout Shadow</h3><div class=\"muted\">暂无 persistence_breakout_v2 shadow 结果。</div>"
+    selected_symbols = review.get("selected_symbols") or []
+    if isinstance(selected_symbols, str):
+        selected_symbols = [selected_symbols]
+    stats = [
+        _mini_stat("状态", str(review.get("status", "N/A")), "shadow tracking only"),
+        _mini_stat("模型", str(review.get("model_name", "persistence_breakout_v2")), "research-only"),
+        _mini_stat("主资金假设", str(int(float(review.get("initial_cash_assumption", 20000)))), "不代表真实投入"),
+        _mini_stat("Selected", str(review.get("selected_count", 0)), "max 3"),
+        _mini_stat("Original 重合", str(review.get("overlap_with_original", 0)), "top3 overlap"),
+        _mini_stat("Adjusted 重合", str(review.get("overlap_with_adjusted", 0)), "top3 overlap"),
+        _mini_stat("V2 重合", str(review.get("overlap_with_top10_diversified", 0)), "top10 diversified"),
+        _mini_stat("执行接入", "NO", "ready_for_execution=false"),
+    ]
+    return (
+        "<h3>persistence_breakout_v2 Shadow Tracking</h3>"
+        + '<div class="grid four">'
+        + "".join(stats)
+        + "</div>"
+        + f"<div class=\"muted\" style=\"margin-top:12px;\">{escape(str(review.get('summary', '')))}</div>"
+        + f"<div class=\"warning-line\">Selected symbols: {escape(', '.join(map(str, selected_symbols)) or 'N/A')}</div>"
+        + "<div class=\"risk-banner\" style=\"margin-top:12px;\">"
+        + "<div class=\"risk-title\">研究边界</div>"
+        + "<div>execution_enabled=false；paper_trade_engine_enabled=false；real_trade_enabled=false；只写 shadow CSV/报告。</div>"
+        + "</div>"
+        + '<div class="links" style="margin-top:12px;">'
+        + f'<a href="{escape(str(review.get("signal_report_href", "../reports/persistence_breakout_shadow_signal.md")))}">Shadow 信号</a>'
+        + f'<a href="{escape(str(review.get("portfolio_report_href", "../reports/persistence_breakout_shadow_portfolio.md")))}">Shadow 组合</a>'
+        + f'<a href="{escape(str(review.get("comparison_report_href", "../reports/model_shadow_comparison.md")))}">模型对比</a>'
+        + f'<a href="{escape(str(review.get("observation_rules_href", "../reports/persistence_breakout_shadow_observation_rules.md")))}">观察规则</a>'
+        + "</div>"
+    )
+
+
+def _missed_opportunity_tracking_panel(review: dict) -> str:
+    if not review:
+        return "<h3>Missed Opportunity Tracking</h3><div class=\"muted\">暂无 missed opportunity tracking 结果。</div>"
+    stats = [
+        _mini_stat("状态", str(review.get("status", "N/A")), "diagnostics only"),
+        _mini_stat("候选数", str(review.get("candidate_count", 0)), "filtered high-score"),
+        _mini_stat("跟踪日", str(review.get("tracking_days", 0)), "unique signal days"),
+        _mini_stat("Missed", str(review.get("missed_opportunity_count", 0)), f"rate {review.get('missed_opportunity_rate', 0)}"),
+        _mini_stat("Filter effective", str(review.get("filter_effective_rate", 0)), "10d label"),
+        _mini_stat("Risk-on 空仓", str(review.get("risk_on_empty_signal_count", 0)), "selected_count=0"),
+        _mini_stat("主要原因", str(review.get("top_missed_filter_reason") or "pending"), "by filter reason"),
+        _mini_stat("执行接入", "NO", "ready_for_execution=false"),
+    ]
+    return (
+        "<h3>Missed Opportunity Diagnostics</h3>"
+        + '<div class="grid four">'
+        + "".join(stats)
+        + "</div>"
+        + f"<div class=\"muted\" style=\"margin-top:12px;\">{escape(str(review.get('summary', '')))}</div>"
+        + "<div class=\"risk-banner\" style=\"margin-top:12px;\">"
+        + "<div class=\"risk-title\">观察结论</div>"
+        + f"<div>ready_to_relax_filters={str(review.get('ready_to_relax_filters', False)).lower()}；ready_for_preview=false；ready_for_execution=false。forward return 只作为事后 label，不进入当日模型。</div>"
+        + "</div>"
+        + '<div class="links" style="margin-top:12px;">'
+        + f'<a href="{escape(str(review.get("tracker_report_href", "../reports/missed_opportunity_tracker.md")))}">Tracker 报告</a>'
+        + f'<a href="{escape(str(review.get("by_reason_report_href", "../reports/missed_opportunity_by_filter_reason.md")))}">过滤原因归因</a>'
+        + f'<a href="{escape(str(review.get("risk_on_report_href", "../reports/risk_on_empty_signal_analysis.md")))}">Risk-on 空仓</a>'
+        + f'<a href="{escape(str(review.get("selected_vs_filtered_href", "../reports/selected_vs_filtered_forward_return.md")))}">Selected vs Filtered</a>'
+        + f'<a href="{escape(str(review.get("observation_rules_href", "../reports/missed_opportunity_observation_rules.md")))}">观察规则</a>'
+        + "</div>"
+    )
+
+
+def _shadow_observation_weekly_panel(review: dict) -> str:
+    if not review:
+        return "<h3>Shadow Observation Weekly</h3><div class=\"muted\">暂无 weekly shadow observation。</div>"
+    stats = [
+        _mini_stat("状态", str(review.get("status", "N/A")), "weekly observation"),
+        _mini_stat("证据等级", str(review.get("evidence_level") or "insufficient"), "forward labels"),
+        _mini_stat("空仓日", str(review.get("persistence_empty_signal_days", 0)), "persistence breakout"),
+        _mini_stat("Risk-on 空仓", str(review.get("risk_on_empty_days", 0)), "risk_on selected=0"),
+        _mini_stat("Missed 候选", str(review.get("missed_opportunity_candidate_count", 0)), "filtered top candidates"),
+        _mini_stat("成熟样本", str(review.get("matured_forward_return_count", 0)), "10d matured"),
+        _mini_stat("放宽过滤", "NO", "ready_to_relax_filters=false"),
+        _mini_stat("执行接入", "NO", "ready_for_execution=false"),
+    ]
+    return (
+        "<h3>Shadow Observation Weekly Review</h3>"
+        + '<div class="grid four">'
+        + "".join(stats)
+        + "</div>"
+        + f"<div class=\"muted\" style=\"margin-top:12px;\">{escape(str(review.get('summary', '')))}</div>"
+        + "<div class=\"risk-banner\" style=\"margin-top:12px;\">"
+        + "<div class=\"risk-title\">每周结论</div>"
+        + f"<div>recommended_action={escape(str(review.get('recommended_action', 'continue_observation')))}；ready_for_preview=false；ready_for_execution=false。</div>"
+        + "</div>"
+        + '<div class="links" style="margin-top:12px;">'
+        + f'<a href="{escape(str(review.get("report_href", "../reports/shadow_observation_weekly.md")))}">Weekly 报告</a>'
+        + f'<a href="{escape(str(review.get("csv_href", "../reports/shadow_observation_weekly.csv")))}">Weekly CSV</a>'
+        + "</div>"
+    )
+
+
 def _classification_panel(summary: dict) -> str:
     type_counts = summary.get("type_counts", {})
     pool_counts = summary.get("pool_counts", {})
@@ -973,9 +2057,10 @@ def _classification_panel(summary: dict) -> str:
         + "".join(items)
         + f"<div class=\"muted\" style=\"margin-top:12px;\">pool 分布：{escape(pool_text)}</div>"
         + "<div class=\"links\" style=\"margin-top:12px;\">"
-        + '<a href="../reports/etf_type_classification_report.md">类型报告</a>'
+        + '<a href="../reports/etf_classification_report.md">类型报告</a>'
         + '<a href="../reports/holding_period_research_report.md">持有周期研究</a>'
         + '<a href="../reports/exit_rule_research_report.md">退出规则研究</a>'
+        + '<a href="../reports/parameter_sweep_report.md">参数扫描</a>'
         + '<a href="../reports/news_sentiment_framework.md">情绪框架</a>'
         + "</div>"
     )
@@ -1244,18 +2329,21 @@ def _read_buy_ranking() -> list[dict]:
     return result
 
 
-def _enrich_positions(positions: pd.DataFrame, meta: dict[str, dict], ranking: list[dict], health: dict[str, dict]) -> list[dict]:
+def _enrich_positions(positions: pd.DataFrame, meta: dict[str, dict], ranking: list[dict], health: dict[str, dict], sell_review: list[dict] | None = None) -> list[dict]:
     ranking_map = {str(row.get("symbol")): row for row in ranking}
+    review_map = {str(row.get("symbol")): row for row in (sell_review or [])}
     result = []
     for item in positions.to_dict(orient="records"):
         symbol = str(item.get("symbol", "")).strip()
         rank = ranking_map.get(symbol, {})
         meta_row = meta.get(symbol, {})
         health_row = health.get(symbol, {})
-        current_price = _float(item.get("current_price"), _float(item.get("entry_price")))
-        stop_loss = _float(item.get("stop_loss"))
+        review_row = review_map.get(symbol, {})
+        current_price = _float(item.get("last_price"), _float(item.get("current_price"), _float(item.get("entry_price"))))
+        stop_loss = _float(item.get("stop_loss_price"), _float(item.get("stop_loss")))
         market_value = _float(item.get("market_value"), current_price * _float(item.get("quantity")))
-        pnl = _float(item.get("unrealized_pnl"), market_value - _float(item.get("cost")))
+        total_cost = _float(item.get("total_cost"), _float(item.get("cost")))
+        pnl = _float(item.get("unrealized_pnl"), market_value - total_cost)
         stop_distance = (current_price - stop_loss) / current_price if current_price and stop_loss else None
         mid = rank.get("mid_trend_signal", _parse_reason_signal(item.get("reason"), "mid_trend") or "N/A")
         short = rank.get("short_swing_signal", _parse_reason_signal(item.get("reason"), "short_swing") or "N/A")
@@ -1294,6 +2382,13 @@ def _enrich_positions(positions: pd.DataFrame, meta: dict[str, dict], ranking: l
                 "position_ratio": market_value / INITIAL_CASH,
                 "stop_loss": stop_loss,
                 "stop_distance_pct": stop_distance,
+                "avg_cost": _float(item.get("avg_cost"), _float(item.get("entry_price"))),
+                "total_cost": total_cost,
+                "commission_paid": _float(item.get("commission_paid")),
+                "max_holding_days": item.get("max_holding_days", ""),
+                "sell_review_status": review_row.get("sell_review_status") or item.get("sell_review_status", "N/A"),
+                "data_health_status": review_row.get("data_health_status") or item.get("data_health_status", health_status or "N/A"),
+                "protection_period": review_row.get("protection_period") or item.get("protection_period", "no"),
                 "buy_signal": _buy_signal_from_reason(item.get("reason"), mid, short),
                 "current_signal": f"{mid}/{short}",
                 "signal_status": signal_status,
@@ -1378,6 +2473,86 @@ def _paper_summary(positions: list[dict], trades: pd.DataFrame) -> dict:
     }
 
 
+def _paper_performance_snapshot() -> dict:
+    summary = _read_json(REPORT_DIR / "paper_performance_summary.json")
+    if not summary:
+        summary = {"status": "missing", "reason": "paper_performance_summary.json not generated"}
+    daily = _read_csv(DATA_DIR / "paper_equity_curve.csv")
+    if daily.empty:
+        daily = _read_csv(REPORT_DIR / "paper_performance_daily.csv")
+    original_rows = len(daily)
+    backfilled = _read_csv(DATA_DIR / "paper_equity_curve_backfilled.csv")
+    uses_backfilled = not backfilled.empty and len(backfilled) >= len(daily)
+    if uses_backfilled:
+        daily = backfilled
+    trade_pnl = _read_csv(REPORT_DIR / "paper_trade_pnl.csv")
+    return {
+        "summary": summary,
+        "equity_curve": daily.to_dict(orient="records"),
+        "equity_curve_source": "backfilled_estimated" if uses_backfilled else "original",
+        "original_equity_curve_rows": original_rows,
+        "backfilled_equity_curve_rows": len(backfilled),
+        "trade_pnl": trade_pnl.to_dict(orient="records"),
+    }
+
+
+def _paper_equity_backfill_snapshot(paper_performance: dict) -> dict:
+    original = _read_csv(DATA_DIR / "paper_equity_curve.csv")
+    backfilled = _read_csv(DATA_DIR / "paper_equity_curve_backfilled.csv")
+    quality = {}
+    if not backfilled.empty and "quality_flag" in backfilled.columns:
+        quality = {str(k): int(v) for k, v in backfilled["quality_flag"].value_counts().to_dict().items()}
+    uses_backfilled = bool(not backfilled.empty and len(backfilled) >= len(original))
+    summary = paper_performance.get("summary", {}) if isinstance(paper_performance, dict) else {}
+    return {
+        "status": "active" if not backfilled.empty else "missing",
+        "backfilled_records": int(len(backfilled)),
+        "original_records": int(len(original)),
+        "start_date": str(backfilled["date"].iloc[0]) if not backfilled.empty and "date" in backfilled.columns else "",
+        "end_date": str(backfilled["date"].iloc[-1]) if not backfilled.empty and "date" in backfilled.columns else "",
+        "initial_cash": float(summary.get("initial_cash") or PAPER_INITIAL_CASH),
+        "quality": quality,
+        "estimated": True,
+        "app_uses_backfilled_curve": uses_backfilled,
+        "display_note": "历史回填数据（估算）：由交易流水和 ETF 历史收盘价重建。" if uses_backfilled else "使用原始权益曲线。",
+        "last_updated": pd.Timestamp.now().strftime("%Y-%m-%d %H:%M:%S") if not backfilled.empty else "",
+    }
+
+
+def _app_shortcut_snapshot() -> dict:
+    app_bundle = PROJECT_ROOT / "dist" / "量化研究控制台.app"
+    command_launcher = PROJECT_ROOT / "打开量化研究控制台.command"
+    legacy_launcher = PROJECT_ROOT / "A-Share Swing App.command"
+    svg = PROJECT_ROOT / "assets" / "app_icon.svg"
+    png = PROJECT_ROOT / "assets" / "app_icon.png"
+    return {
+        "status": "active" if app_bundle.exists() else "fallback_command",
+        "app_bundle": "dist/量化研究控制台.app" if app_bundle.exists() else "unavailable",
+        "command_launcher": "打开量化研究控制台.command",
+        "legacy_launcher": "A-Share Swing App.command",
+        "command_launcher_exists": command_launcher.exists(),
+        "legacy_launcher_exists": legacy_launcher.exists(),
+        "app_icon_svg": "assets/app_icon.svg" if svg.exists() else "unavailable",
+        "app_icon_png": "assets/app_icon.png" if png.exists() else "unavailable",
+        "log_path": "logs/app_server.log",
+        "version": f"v{APP_VERSION}",
+        "safe_note": "本地启动包装器；不包含账号密码；不接券商；不真实交易。",
+    }
+
+
+def _trade_review_snapshot() -> dict:
+    summary = _read_json(REPORT_DIR / "trade_review_summary.json")
+    if not summary:
+        summary = {"status": "missing", "reason": "trade_review_summary.json not generated"}
+    details = _read_csv(REPORT_DIR / "trade_review_details.csv")
+    open_positions = _read_csv(REPORT_DIR / "trade_review_open_positions.csv")
+    return {
+        "summary": summary,
+        "details": details.to_dict(orient="records"),
+        "open_positions": open_positions.to_dict(orient="records"),
+    }
+
+
 def _group_exposure(positions: list[dict]) -> dict:
     total = sum(_float(row.get("market_value")) for row in positions)
     groups = {}
@@ -1407,13 +2582,20 @@ def _risk_alerts(positions: list[dict], failed_counts: dict) -> list[dict]:
     return alerts
 
 
-def _console_status(summary: dict, alerts: list[dict], nodes: list[dict], health_summary: dict) -> dict:
+def _console_status(summary: dict, alerts: list[dict], nodes: list[dict], health_summary: dict, data_update_status: dict) -> dict:
     severe = any(item.get("severity") == "danger" for item in alerts)
     waiting_data = health_summary.get("缺失") not in ("", "0", 0, None)
+    data_update_severity = str(data_update_status.get("severity", "")).upper()
     midday = next((node for node in nodes if node.get("node") == "midday_check"), {})
-    if severe:
+    if data_update_severity == "ERROR":
+        conclusion = "DATA_UPDATE_ERROR"
+        reason = str(data_update_status.get("reason", "ETF 日线更新失败或未完成，需要复核数据源。"))
+    elif severe:
         conclusion = "RISK_REDUCE"
         reason = "存在止损或严重风险触发，需要人工复核减仓。"
+    elif data_update_severity == "CAUTION":
+        conclusion = "DATA_UPDATE_CAUTION"
+        reason = str(data_update_status.get("reason", "ETF 日线更新存在延迟或无新增，信号依赖本地缓存数据。"))
     elif alerts:
         conclusion = "REVIEW_REQUIRED"
         reason = "存在 data_health caution 或组合风险提醒，禁止加仓，继续观察。"
@@ -1429,17 +2611,18 @@ def _console_status(summary: dict, alerts: list[dict], nodes: list[dict], health
     else:
         conclusion = "WATCH_ONLY"
         reason = "当前无持仓或无合格动作。"
-    status = "ERROR" if severe else "CAUTION" if alerts or waiting_data else "NORMAL"
+    status = "ERROR" if severe or data_update_severity == "ERROR" else "CAUTION" if alerts or waiting_data or data_update_severity == "CAUTION" else "NORMAL"
     return {
         "today_conclusion": conclusion,
         "decision_reason": reason,
         "system_status": status,
         "system_badge_class": "danger" if status == "ERROR" else "warn" if status == "CAUTION" else "ok",
         "risk_summary": f"{len(alerts)} 项需复核" if alerts else "无风险触发",
+        "data_update_status": data_update_status.get("status", "unknown"),
     }
 
 
-def _automation_nodes() -> list[dict]:
+def _automation_nodes(data_update_status: dict | None = None) -> list[dict]:
     now = pd.Timestamp.now()
     specs = [
         ("catchup_check", "login", "开机/登录补偿", "reports/catchup_scheduler_status.md", ""),
@@ -1447,6 +2630,7 @@ def _automation_nodes() -> list[dict]:
         ("midday_check", "12:40", "午盘模拟执行检查", "reports/midday_check.md", "midday_check.json"),
         ("afternoon_open_check", "13:10", "下午开盘复核", "reports/afternoon_open_check.md", "afternoon_open_check.json"),
         ("paper_trade_engine", "15:25", "模拟交易引擎", "reports/paper_trade_engine_report.md", ""),
+        ("data_update", "15:30", "ETF 日线更新", "reports/data_download_report.md", "data_update_status.json"),
         ("daily_close", "15:30", "收盘更新", "reports/latest_brief.md", ""),
         ("weekly_review", "Friday", "周度完整复盘", "reports/weekly_full_review.md", ""),
         ("monthly_model_review", "Monthly", "月度模型复盘", "reports/monthly_model_review.md", ""),
@@ -1462,18 +2646,45 @@ def _automation_nodes() -> list[dict]:
             status = "WAITING"
         if payload.get("alerts"):
             status = "CAUTION"
+        if node == "data_update" and payload:
+            status = _data_update_badge_status(payload)
+        if node == "daily_close" and data_update_status:
+            update_status = _data_update_badge_status(data_update_status)
+            if update_status in {"CAUTION", "ERROR"} and status == "OK":
+                status = "CAUTION"
         rows.append(
             {
                 "node": node,
                 "time_label": time_label,
                 "title": title,
                 "status": status,
-                "conclusion": payload.get("conclusion", "见报告" if exists else "等待生成"),
+                "conclusion": _automation_conclusion(node, payload, data_update_status, exists),
                 "generated_at": payload.get("generated_at", _mtime(report_path)),
                 "report_href": "../" + report,
             }
         )
     return rows
+
+
+def _automation_conclusion(node: str, payload: dict, data_update_status: dict | None, exists: bool) -> str:
+    if node == "data_update" and payload:
+        return f"{payload.get('status', 'unknown')}：{payload.get('reason', '')}"
+    if node == "daily_close" and data_update_status:
+        update_status = _data_update_badge_status(data_update_status)
+        if update_status in {"CAUTION", "ERROR"}:
+            return "报告已生成，但 ETF 日线更新未完全成功；请查看数据更新诊断。"
+    return payload.get("conclusion", "见报告" if exists else "等待生成")
+
+
+def _data_update_badge_status(payload: dict) -> str:
+    severity = str(payload.get("severity", "")).upper()
+    if severity == "ERROR":
+        return "ERROR"
+    if severity == "CAUTION":
+        return "CAUTION"
+    if severity == "INFO":
+        return "WAITING" if str(payload.get("status", "")).lower() == "dry_run" else "OK"
+    return "OK" if payload else "WAITING"
 
 
 def _review_snapshot() -> dict:
@@ -1483,6 +2694,12 @@ def _review_snapshot() -> dict:
         ("月度模型复盘", REPORT_DIR / "monthly_model_review.md", "../reports/monthly_model_review.md"),
         ("因子分析", REPORT_DIR / "factor_analysis_report.md", "../reports/factor_analysis_report.md"),
         ("模型研究", REPORT_DIR / "model_research_report.md", "../reports/model_research_report.md"),
+        ("市场状态研究", REPORT_DIR / "market_state_report.md", "../reports/market_state_report.md"),
+        ("组合暴露研究", REPORT_DIR / "portfolio_exposure_report.md", "../reports/portfolio_exposure_report.md"),
+        ("参数扫描研究", REPORT_DIR / "parameter_sweep_report.md", "../reports/parameter_sweep_report.md"),
+        ("模型研究质量审查", REPORT_DIR / "model_research_quality_review.md", "../reports/model_research_quality_review.md"),
+        ("执行层接入计划", REPORT_DIR / "execution_layer_integration_plan.md", "../reports/execution_layer_integration_plan.md"),
+        ("ETF 分类研究", REPORT_DIR / "etf_classification_report.md", "../reports/etf_classification_report.md"),
         ("ETF 类型分层", REPORT_DIR / "etf_type_classification_report.md", "../reports/etf_type_classification_report.md"),
         ("持有周期研究", REPORT_DIR / "holding_period_research_report.md", "../reports/holding_period_research_report.md"),
         ("退出规则研究", REPORT_DIR / "exit_rule_research_report.md", "../reports/exit_rule_research_report.md"),
@@ -1497,6 +2714,7 @@ def _review_snapshot() -> dict:
         ("模拟交易计划", REPORT_DIR / "paper_trade_plan.md", "../reports/paper_trade_plan.md"),
         ("模拟交易引擎报告", REPORT_DIR / "paper_trade_engine_report.md", "../reports/paper_trade_engine_report.md"),
         ("模拟交易引擎设计", REPORT_DIR / "paper_trade_engine_design_report.md", "../reports/paper_trade_engine_design_report.md"),
+        ("Phase 2C 轻量接入", REPORT_DIR / "phase2c_execution_layer_light_integration_report.md", "../reports/phase2c_execution_layer_light_integration_report.md"),
     ]
     return {"items": [{"name": name, "status": "OK" if path.exists() else "WAITING", "updated_at": _mtime(path), "href": href} for name, path, href in specs]}
 
@@ -1575,15 +2793,295 @@ def _failed_counts() -> dict:
     return {"quarantine": quarantine, "unresolved": unresolved}
 
 
+def _data_update_status_snapshot() -> dict:
+    payload = _read_json(REPORT_DIR / "data_update_status.json")
+    if payload:
+        return payload
+    return {
+        "generated_at": "",
+        "source": "baostock",
+        "mode": "unknown",
+        "requested_end": "unknown",
+        "latest_local_date": _latest_data_date(),
+        "severity": "CAUTION",
+        "status": "missing_status_file",
+        "reason": "reports/data_update_status.json 尚未生成；无法确认本轮日线更新是否真正完成。",
+        "added_rows": 0,
+        "estimated_api_calls": "N/A",
+        "status_counts": {},
+        "recommendation": "Run scripts/update_etf_data.py or daily_close to generate a machine-readable update status.",
+    }
+
+
+def _data_sources_snapshot(data_update_status: dict | None = None) -> dict:
+    payload = _read_json(REPORT_DIR / "data_source_status.json")
+    if payload:
+        return payload
+    data_update_status = data_update_status or {}
+    return data_update_status.get("data_sources") or {
+        "primary_source": "jqdata",
+        "fallback_source": "baostock",
+        "actual_source_used": data_update_status.get("actual_source_used", data_update_status.get("source_used", data_update_status.get("source", "unknown"))),
+        "jqdata_status": data_update_status.get("jqdata_status", "UNKNOWN"),
+        "baostock_status": data_update_status.get("baostock_status", "UNKNOWN"),
+        "fallback_triggered": bool(data_update_status.get("fallback_triggered", False)),
+        "source_priority": ["jqdata", "baostock", "tushare"],
+        "latest_data_date": data_update_status.get("latest_data_date", data_update_status.get("latest_local_date", _latest_data_date())),
+        "new_rows": data_update_status.get("new_rows", data_update_status.get("added_rows", 0)),
+        "failed_symbols": data_update_status.get("failed_symbols", []),
+        "unresolved_symbols": data_update_status.get("unresolved_symbols", []),
+    }
+
+
+def _strategy_enhancement_preview_snapshot() -> dict:
+    df = _read_csv(REPORT_DIR / "strategy_enhancement_preview.csv")
+    if df.empty:
+        return {
+            "enabled": True,
+            "execution_enabled": False,
+            "rows": [],
+            "original_top3": [],
+            "adjusted_top3": [],
+            "top3_changed": False,
+            "execution_safety": _execution_safety_snapshot(),
+        }
+    rows = df.to_dict(orient="records")
+    original = sorted(rows, key=lambda item: _float(item.get("original_rank") or 999))[:3]
+    adjusted = sorted(rows, key=lambda item: _float(item.get("adjusted_rank_preview") or 999))[:3]
+    top3_changed = [row.get("symbol") for row in original] != [row.get("symbol") for row in adjusted]
+    return {
+        "enabled": True,
+        "execution_enabled": False,
+        "generated_at": _mtime(REPORT_DIR / "strategy_enhancement_preview.csv"),
+        "rows": rows,
+        "original_top3": original,
+        "adjusted_top3": adjusted,
+        "top3_changed": top3_changed,
+        "score_delta_largest": max(rows, key=lambda item: abs(_float(item.get("score_delta")))) if rows else {},
+        "broad_index_bonus_hits": [row for row in rows if _float(row.get("broad_index_balance_bonus")) > 0],
+        "defensive_bonus_hits": [row for row in rows if _float(row.get("defensive_balance_bonus")) > 0],
+        "same_group_penalty_hits": [row for row in rows if _float(row.get("same_group_concentration_penalty")) < 0],
+        "high_beta_penalty_hits": [row for row in rows if _float(row.get("high_beta_penalty")) < 0],
+        "data_health_penalty_hits": [row for row in rows if _float(row.get("data_health_penalty")) < 0],
+        "execution_safety": _execution_safety_snapshot(),
+        "report_href": "../reports/strategy_enhancement_preview.md",
+    }
+
+
+def _type_aware_review_snapshot(rows: list[dict]) -> dict:
+    elevated = [row for row in rows if str(row.get("type_review_severity", "")).lower() == "elevated"]
+    return {
+        "enabled": True,
+        "execution_enabled": False,
+        "position_count": len(rows),
+        "elevated_count": len(elevated),
+        "rows": rows,
+        "status_counts": _value_counts(rows, "type_review_severity"),
+        "note": "Type-aware review is display-only and does not trigger automatic SELL.",
+    }
+
+
+def _strategy_preview_tracking_snapshot() -> dict:
+    df = _read_csv(REPORT_DIR / "strategy_preview_tracking.csv")
+    shadow_df = _read_csv(REPORT_DIR / "strategy_preview_shadow_portfolio.csv")
+    if df.empty:
+        safety = _execution_safety_snapshot()
+        return {
+            "enabled": True,
+            "rows": [],
+            "summary": {
+                "sample_count": 0,
+                "completed_count": 0,
+                "partial_count": 0,
+                "pending_count": 0,
+                "missing_count": 0,
+                "top3_changed": False,
+                "conclusion": "当前样本不足，不能证明 adjusted preview 优于 original ranking。",
+            },
+            "forward_return_comparison": {"returns": {}},
+            "penalty_bonus_review": {},
+            "shadow_model": {
+                "enabled": True,
+                "execution_enabled": False,
+                "paper_trade_engine_enabled": False,
+                "real_trade_enabled": False,
+                "initial_cash_assumption": 20000,
+                "max_holdings": 3,
+                "single_position_target": 0.20,
+                "total_target_position": 0.60,
+                "min_trade_value": 3000,
+                "description": "research only",
+                "rows": [],
+            },
+            "execution_safety": safety,
+        }
+    rows = df.to_dict(orient="records")
+    latest_date = max(str(row.get("snapshot_date", "")) for row in rows)
+    latest = [row for row in rows if str(row.get("snapshot_date", "")) == latest_date]
+    original_top3 = sorted([row for row in latest if row.get("in_original_top3") == "yes"], key=lambda row: _float(row.get("original_rank")))
+    adjusted_top3 = sorted([row for row in latest if row.get("in_adjusted_top3") == "yes"], key=lambda row: _float(row.get("adjusted_rank_preview")))
+    returns = {
+        "original_top3": _dashboard_avg_returns(rows, lambda row: row.get("in_original_top3") == "yes"),
+        "adjusted_top3": _dashboard_avg_returns(rows, lambda row: row.get("in_adjusted_top3") == "yes"),
+        "only_original_top3": _dashboard_avg_returns(rows, lambda row: row.get("only_in_original_top3") == "yes"),
+        "only_adjusted_top3": _dashboard_avg_returns(rows, lambda row: row.get("only_in_adjusted_top3") == "yes"),
+        "high_beta_penalty": _dashboard_avg_returns(rows, lambda row: "high_beta" in str(row.get("penalty_reason", ""))),
+        "data_health_penalty": _dashboard_avg_returns(rows, lambda row: "data_health" in str(row.get("penalty_reason", ""))),
+        "concentration_penalty": _dashboard_avg_returns(rows, lambda row: "same_group" in str(row.get("penalty_reason", "")) or "concentration" in str(row.get("penalty_reason", ""))),
+        "broad_index_bonus": _dashboard_avg_returns(rows, lambda row: "broad_index" in str(row.get("bonus_reason", ""))),
+        "defensive_bonus": _dashboard_avg_returns(rows, lambda row: "defensive" in str(row.get("bonus_reason", ""))),
+    }
+    completed = sum(1 for row in rows if row.get("forward_returns_status") == "completed")
+    top3_changed = [row.get("symbol") for row in original_top3] != [row.get("symbol") for row in adjusted_top3]
+    conclusion = "当前样本不足，不能证明 adjusted preview 优于 original ranking。" if completed < 30 else "样本已开始积累，仍需周/月度复盘判断。"
+    safety = _execution_safety_snapshot()
+    safety["shadow_model_enabled"] = True
+    safety["shadow_model_execution_enabled"] = False
+    return {
+        "enabled": True,
+        "generated_at": _mtime(REPORT_DIR / "strategy_preview_tracking.csv"),
+        "rows": rows,
+        "summary": {
+            "latest_snapshot_date": latest_date,
+            "sample_count": len(rows),
+            "completed_count": completed,
+            "partial_count": sum(1 for row in rows if row.get("forward_returns_status") == "partial"),
+            "pending_count": sum(1 for row in rows if row.get("forward_returns_status") == "pending"),
+            "missing_count": sum(1 for row in rows if row.get("forward_returns_status") == "missing_data"),
+            "original_top3": original_top3,
+            "adjusted_top3": adjusted_top3,
+            "top3_changed": top3_changed,
+            "only_original_count": sum(1 for row in latest if row.get("only_in_original_top3") == "yes"),
+            "only_adjusted_count": sum(1 for row in latest if row.get("only_in_adjusted_top3") == "yes"),
+            "sample_sufficient": completed >= 30,
+            "conclusion": conclusion,
+        },
+        "forward_return_comparison": {"returns": returns, "sample_sufficient": completed >= 30, "conclusion": conclusion},
+        "penalty_bonus_review": {
+            "high_beta_penalty": returns["high_beta_penalty"],
+            "data_health_penalty": returns["data_health_penalty"],
+            "concentration_penalty": returns["concentration_penalty"],
+            "broad_index_bonus": returns["broad_index_bonus"],
+            "defensive_bonus": returns["defensive_bonus"],
+        },
+        "bonus_hit_count": sum(1 for row in rows if str(row.get("bonus_reason", "")).strip()),
+        "shadow_model": {
+            "enabled": True,
+            "execution_enabled": False,
+            "paper_trade_engine_enabled": False,
+            "real_trade_enabled": False,
+            "initial_cash_assumption": 20000,
+            "max_holdings": 3,
+            "single_position_target": 0.20,
+            "total_target_position": 0.60,
+            "min_trade_value": 3000,
+            "description": "research only",
+            "rows": shadow_df.to_dict(orient="records") if not shadow_df.empty else [],
+            "report_href": "../reports/strategy_preview_shadow_portfolio.md",
+        },
+        "execution_safety": safety,
+        "report_href": "../reports/strategy_preview_tracking_report.md",
+    }
+
+
+def _dashboard_avg_returns(rows: list[dict], selector) -> dict:
+    selected = [row for row in rows if selector(row)]
+    out = {"sample_count": len(selected)}
+    for window in [1, 3, 5, 10]:
+        values = [_float(row.get(f"forward_{window}d_return"), fallback=float("nan")) for row in selected]
+        values = [value for value in values if pd.notna(value)]
+        out[f"forward_{window}d_mean"] = sum(values) / len(values) if values else ""
+        out[f"forward_{window}d_n"] = len(values)
+    return out
+
+
+def _execution_safety_snapshot() -> dict:
+    return {
+        "paper_only": True,
+        "adjusted_rank_score_preview_enabled": True,
+        "adjusted_rank_score_execution_enabled": False,
+        "paper_use_market_state_position": PAPER_USE_MARKET_STATE_POSITION,
+        "shadow_model_enabled": True,
+        "shadow_model_execution_enabled": False,
+        "real_trade_enabled": False,
+        "broker_api_enabled": False,
+        "real_account_read_enabled": False,
+        "real_order_buttons_enabled": False,
+        "arbitrary_command_enabled": False,
+        "task_whitelist_only": True,
+        "app_launch_status": _read_json(PROJECT_ROOT / "logs" / "app_launch_status.json"),
+        "app_launch_diagnostics": _read_json(REPORT_DIR / "app_launch_diagnostics.json"),
+    }
+
+
+def _value_counts(rows: list[dict], field: str) -> dict:
+    counts: dict[str, int] = {}
+    for row in rows:
+        key = str(row.get(field, "N/A") or "N/A")
+        counts[key] = counts.get(key, 0) + 1
+    return counts
+
+
 def _dashboard_links() -> list[dict]:
     specs = [
         ("控制台快照", "data", REPORT_DIR / "dashboard_data.json", "../reports/dashboard_data.json"),
+        ("日线更新状态", "data", REPORT_DIR / "data_update_status.json", "../reports/data_update_status.json"),
+        ("日线更新诊断", "data", REPORT_DIR / "data_update_diagnosis_report.md", "../reports/data_update_diagnosis_report.md"),
+        ("日线更新修复报告", "data", REPORT_DIR / "data_update_automation_fix_report.md", "../reports/data_update_automation_fix_report.md"),
+        ("数据下载明细", "data", REPORT_DIR / "data_download_report.md", "../reports/data_download_report.md"),
+        ("数据源架构审计", "data", REPORT_DIR / "data_source_architecture_audit.md", "../reports/data_source_architecture_audit.md"),
+        ("AKShare 可用性诊断", "data", REPORT_DIR / "akshare_connectivity_check.md", "../reports/akshare_connectivity_check.md"),
+        ("Provider 分层设计", "data", REPORT_DIR / "data_provider_design.md", "../reports/data_provider_design.md"),
+        ("情报数据规划", "data", REPORT_DIR / "intelligence_data_source_plan.md", "../reports/intelligence_data_source_plan.md"),
+        ("无未来函数数据规则", "data", REPORT_DIR / "no_lookahead_data_rules.md", "../reports/no_lookahead_data_rules.md"),
+        ("Phase 4C 下一步", "data", REPORT_DIR / "phase4c_data_next_step.md", "../reports/phase4c_data_next_step.md"),
+        ("Tushare 配置检查", "data", REPORT_DIR / "tushare_config_check.md", "../reports/tushare_config_check.md"),
+        ("Tushare staging dry-run", "data", REPORT_DIR / "tushare_staging_check.md", "../reports/tushare_staging_check.md"),
+        ("Tushare/BaoStock 对比", "data", REPORT_DIR / "tushare_baostock_compare.md", "../reports/tushare_baostock_compare.md"),
+        ("Provider 状态总览", "data", REPORT_DIR / "data_provider_status.md", "../reports/data_provider_status.md"),
+        ("Tushare no-lookahead", "data", REPORT_DIR / "tushare_no_lookahead_check.md", "../reports/tushare_no_lookahead_check.md"),
+        ("v2 收益拖累归因", "research", REPORT_DIR / "v2_underperformance_attribution.md", "../reports/v2_underperformance_attribution.md"),
+        ("模型防过拟合护栏", "research", REPORT_DIR / "model_overfit_guardrails.md", "../reports/model_overfit_guardrails.md"),
+        ("Regime-aware 研究", "research", REPORT_DIR / "regime_aware_model_research.md", "../reports/regime_aware_model_research.md"),
+        ("ETF type-aware 研究", "research", REPORT_DIR / "etf_type_aware_model_research.md", "../reports/etf_type_aware_model_research.md"),
+        ("Alpha 因子增强", "research", REPORT_DIR / "alpha_factor_enhancement_research.md", "../reports/alpha_factor_enhancement_research.md"),
+        ("Phase 4C Alpha 综合对比", "research", REPORT_DIR / "phase4c_alpha_model_comparison.md", "../reports/phase4c_alpha_model_comparison.md"),
+        ("Phase 4C Alpha 决策", "research", REPORT_DIR / "phase4c_alpha_model_decision.md", "../reports/phase4c_alpha_model_decision.md"),
+        ("Persistence Breakout 信号", "research", REPORT_DIR / "persistence_breakout_shadow_signal.md", "../reports/persistence_breakout_shadow_signal.md"),
+        ("Persistence Breakout 组合", "research", REPORT_DIR / "persistence_breakout_shadow_portfolio.md", "../reports/persistence_breakout_shadow_portfolio.md"),
+        ("Shadow 模型对比", "research", REPORT_DIR / "model_shadow_comparison.md", "../reports/model_shadow_comparison.md"),
+        ("Persistence Breakout 观察规则", "research", REPORT_DIR / "persistence_breakout_shadow_observation_rules.md", "../reports/persistence_breakout_shadow_observation_rules.md"),
+        ("Missed Opportunity Tracker", "research", REPORT_DIR / "missed_opportunity_tracker.md", "../reports/missed_opportunity_tracker.md"),
+        ("Missed Opportunity 过滤归因", "research", REPORT_DIR / "missed_opportunity_by_filter_reason.md", "../reports/missed_opportunity_by_filter_reason.md"),
+        ("Risk-on 空仓分析", "research", REPORT_DIR / "risk_on_empty_signal_analysis.md", "../reports/risk_on_empty_signal_analysis.md"),
+        ("Selected vs Filtered", "research", REPORT_DIR / "selected_vs_filtered_forward_return.md", "../reports/selected_vs_filtered_forward_return.md"),
+        ("Missed Opportunity 观察规则", "research", REPORT_DIR / "missed_opportunity_observation_rules.md", "../reports/missed_opportunity_observation_rules.md"),
+        ("Shadow 每周观察", "research", REPORT_DIR / "shadow_observation_weekly.md", "../reports/shadow_observation_weekly.md"),
         ("每日最简摘要", "daily", REPORT_DIR / "latest_brief.md", "../reports/latest_brief.md"),
         ("模拟盘持仓", "paper", REPORT_DIR / "latest_paper_portfolio.md", "../reports/latest_paper_portfolio.md"),
         ("BUY Ranking", "signal", REPORT_DIR / "buy_signal_ranking.md", "../reports/buy_signal_ranking.md"),
         ("卖出复核", "risk", REPORT_DIR / "sell_signal_review.md", "../reports/sell_signal_review.md"),
         ("模拟交易计划", "paper", REPORT_DIR / "paper_trade_plan.md", "../reports/paper_trade_plan.md"),
         ("模拟交易引擎", "paper", REPORT_DIR / "paper_trade_engine_report.md", "../reports/paper_trade_engine_report.md"),
+        ("B1 策略增强预览", "research", REPORT_DIR / "strategy_enhancement_preview.md", "../reports/strategy_enhancement_preview.md"),
+        ("B1 执行层渐进优化", "research", REPORT_DIR / "b1_strategy_enhancement_preview_report.md", "../reports/b1_strategy_enhancement_preview_report.md"),
+        ("B2 预览跟踪账本", "research", REPORT_DIR / "strategy_preview_tracking_report.md", "../reports/strategy_preview_tracking_report.md"),
+        ("B2 影子组合", "research", REPORT_DIR / "strategy_preview_shadow_portfolio.md", "../reports/strategy_preview_shadow_portfolio.md"),
+        ("B2 跟踪总结", "research", REPORT_DIR / "b2_strategy_preview_tracking_report.md", "../reports/b2_strategy_preview_tracking_report.md"),
+        ("Phase 2C 轻量接入", "research", REPORT_DIR / "phase2c_execution_layer_light_integration_report.md", "../reports/phase2c_execution_layer_light_integration_report.md"),
+        ("市场状态研究", "research", REPORT_DIR / "market_state_report.md", "../reports/market_state_report.md"),
+        ("ETF 分类研究", "research", REPORT_DIR / "etf_classification_report.md", "../reports/etf_classification_report.md"),
+        ("组合暴露研究", "research", REPORT_DIR / "portfolio_exposure_report.md", "../reports/portfolio_exposure_report.md"),
+        ("持有周期研究", "research", REPORT_DIR / "holding_period_research_report.md", "../reports/holding_period_research_report.md"),
+        ("退出规则研究", "research", REPORT_DIR / "exit_rule_research_report.md", "../reports/exit_rule_research_report.md"),
+        ("参数扫描研究", "research", REPORT_DIR / "parameter_sweep_report.md", "../reports/parameter_sweep_report.md"),
+        ("模型研究质量审查", "research", REPORT_DIR / "model_research_quality_review.md", "../reports/model_research_quality_review.md"),
+        ("执行层接入计划", "research", REPORT_DIR / "execution_layer_integration_plan.md", "../reports/execution_layer_integration_plan.md"),
+        ("ETF 轮动成熟框架参考", "research", REPORT_DIR / "etf_rotation_mature_model_reference.md", "../reports/etf_rotation_mature_model_reference.md"),
+        ("Ranking v2 执行口径", "research", REPORT_DIR / "ranking_model_v2_execution_assumption.md", "../reports/ranking_model_v2_execution_assumption.md"),
+        ("Ranking v2 历史回测", "research", REPORT_DIR / "ranking_model_v2_backtest_report.md", "../reports/ranking_model_v2_backtest_report.md"),
+        ("Ranking v2 决策报告", "research", REPORT_DIR / "ranking_model_v2_decision_report.md", "../reports/ranking_model_v2_decision_report.md"),
+        ("Top10 过滤分析", "research", REPORT_DIR / "top10_candidate_filter_analysis.md", "../reports/top10_candidate_filter_analysis.md"),
         ("数据覆盖", "data", REPORT_DIR / "latest_data_coverage.md", "../reports/latest_data_coverage.md"),
         ("数据健康", "data", REPORT_DIR / "latest_data_health.md", "../reports/latest_data_health.md"),
         ("每日滚动回测", "review", REPORT_DIR / "daily_rolling_backtest.md", "../reports/daily_rolling_backtest.md"),
@@ -1645,11 +3143,15 @@ def _dashboard_sources() -> list[dict]:
     ]
 
 
-def _latest_engine_state(state: dict, latest_data_date: str) -> dict:
+def _latest_engine_state(state: dict, latest_data_date: str, run_date: str) -> dict:
     if not isinstance(state, dict) or not state:
         return {}
+    if run_date in state and isinstance(state.get(run_date), dict):
+        payload = state[run_date]
+        return {"run_date": run_date, **payload}
     if latest_data_date in state and isinstance(state.get(latest_data_date), dict):
-        return state[latest_data_date]
+        payload = state[latest_data_date]
+        return {"run_date": payload.get("run_date", latest_data_date), **payload}
     latest_key = sorted(state.keys())[-1]
     payload = state.get(latest_key, {})
     if isinstance(payload, dict):
@@ -1669,6 +3171,26 @@ def _paper_trade_engine_snapshot(state: dict, plan_rows: list[dict], summary: di
         "skipped_count": len(skipped),
         "skip_reasons": [row.get("reason", "") for row in skipped[:8]],
         "position_count": summary.get("position_count", 0),
+    }
+
+
+def _trading_costs_snapshot(trades: pd.DataFrame, plan_rows: list[dict], engine: dict) -> dict:
+    today = str(engine.get("state", {}).get("run_date") or pd.Timestamp.now().strftime("%Y-%m-%d"))
+    trade_records = trades.to_dict(orient="records") if not trades.empty else []
+    today_trades = [row for row in trade_records if str(row.get("date", row.get("trade_date", "")))[:10] == today]
+    today_plan = [row for row in plan_rows if str(row.get("run_date", row.get("date", "")))[:10] == today]
+    return {
+        "commission_rate": PAPER_COMMISSION_RATE,
+        "min_commission": PAPER_MIN_COMMISSION,
+        "stamp_tax_rate": PAPER_STAMP_TAX_RATE,
+        "transfer_fee_rate": PAPER_TRANSFER_FEE_RATE,
+        "slippage_rate": PAPER_SLIPPAGE_RATE,
+        "execution_price_type": PAPER_EXECUTION_PRICE_TYPE,
+        "etf_stamp_tax_note": "ETF 模拟暂不计印花税",
+        "today_commission": sum(_float(row.get("commission", row.get("fee"))) for row in today_trades),
+        "today_plan_commission": sum(_float(row.get("commission")) for row in today_plan),
+        "today_trade_cost": _float(engine.get("state", {}).get("today_trade_cost")),
+        "today_slippage_cost": _float(engine.get("state", {}).get("today_slippage_cost")),
     }
 
 
@@ -1781,10 +3303,970 @@ def _time_is_future_today(label: str, now: pd.Timestamp) -> bool:
     return target > now
 
 
+def _read_classification_csv() -> pd.DataFrame:
+    primary = DATA_DIR / "etf_classification.csv"
+    legacy = DATA_DIR / "etf_type_classification.csv"
+    df = _read_csv(primary)
+    if df.empty:
+        df = _read_csv(legacy)
+    if not df.empty and "symbol" not in df.columns and "code" in df.columns:
+        df["symbol"] = df["code"]
+    if not df.empty and "code" not in df.columns and "symbol" in df.columns:
+        df["code"] = df["symbol"]
+    return df
+
+
+def _market_state_snapshot() -> dict:
+    df = _read_csv(REPORT_DIR / "market_state.csv")
+    if df.empty or "row_type" not in df.columns:
+        return {"market_state": "N/A", "market_score": "N/A", "components": []}
+    summary = df[df["row_type"] == "summary"].head(1)
+    payload = summary.iloc[0].to_dict() if not summary.empty else {}
+    components = df[df["row_type"] == "component"].head(12).to_dict(orient="records")
+    payload["components"] = components
+    payload["report_href"] = "../reports/market_state_report.md"
+    return payload
+
+
+def _portfolio_exposure_snapshot() -> dict:
+    df = _read_csv(REPORT_DIR / "portfolio_exposure.csv")
+    if df.empty or "row_type" not in df.columns:
+        return {"summary": {}, "positions": [], "buckets": [], "warnings": []}
+    summary_df = df[df["row_type"] == "summary"].head(1)
+    summary = summary_df.iloc[0].to_dict() if not summary_df.empty else {}
+    warnings = []
+    raw = summary.get("warnings_json", "")
+    if raw:
+        try:
+            warnings = json.loads(raw)
+        except Exception:
+            warnings = [str(raw)]
+    return {
+        "summary": summary,
+        "positions": df[df["row_type"] == "position"].to_dict(orient="records"),
+        "buckets": df[df["row_type"].isin(["group", "etf_type", "risk_profile"])].to_dict(orient="records"),
+        "warnings": warnings,
+        "report_href": "../reports/portfolio_exposure_report.md",
+    }
+
+
+def _model_research_snapshot() -> dict:
+    return {
+        "holding_period": _research_csv_summary(REPORT_DIR / "holding_period_research.csv", "return_drawdown_ratio", descending=True),
+        "exit_rule": _research_csv_summary(REPORT_DIR / "exit_rule_research.csv", "avg_forward_return_10d", descending=False),
+        "parameter_sweep": _research_csv_summary(REPORT_DIR / "parameter_sweep.csv", "sharpe_proxy", descending=True),
+    }
+
+
+def _universe_quality_review_snapshot() -> dict:
+    df = _read_csv(REPORT_DIR / "universe_quality_review.csv")
+    if df.empty:
+        return {
+            "total_etf": 0,
+            "recommended_trade_pool": 0,
+            "recommended_observe_pool": 0,
+            "recommended_exclude_pool": 0,
+            "low_liquidity_count": 0,
+            "short_history_count": 0,
+            "qdii_count": 0,
+            "unknown_classification_count": 0,
+            "backtest_ready": False,
+            "readiness_summary": "universe_quality_review.csv 尚未生成。",
+            "report_href": "../reports/universe_quality_review.md",
+            "readiness_report_href": "../reports/backtest_readiness_report.md",
+        }
+
+    recommended = df.get("recommended_pool", pd.Series(dtype=str)).fillna("unknown").astype(str)
+    liquidity = df.get("liquidity_status", pd.Series(dtype=str)).fillna("unknown").astype(str)
+    length = df.get("data_length_status", pd.Series(dtype=str)).fillna("unknown").astype(str)
+    classification = df.get("classification_status", pd.Series(dtype=str)).fillna("unknown").astype(str)
+    latest_ok = df.get("is_latest_to_unified_date", pd.Series([False] * len(df))).map(_boolish)
+
+    recommended_trade_pool = int((recommended == "trade_pool").sum())
+    recommended_observe_pool = int((recommended == "observe_pool").sum())
+    recommended_exclude_pool = int((recommended == "exclude_pool").sum())
+    not_latest_count = int((~latest_ok).sum())
+    low_liquidity_count = int(liquidity.isin(["low", "ultra_low", "unknown"]).sum())
+    short_history_count = int((length == "short_history").sum())
+    qdii_count = int(df.get("qdii_flag", pd.Series([False] * len(df))).map(_boolish).sum())
+    unknown_classification_count = int((classification != "classified").sum())
+    backtest_ready = recommended_trade_pool >= 30 and not_latest_count == 0
+
+    latest_date = ""
+    if "latest_data_date" in df.columns and not df["latest_data_date"].dropna().empty:
+        latest_date = str(df["latest_data_date"].dropna().astype(str).max())
+
+    top_issues = [
+        f"unknown classification: {unknown_classification_count}",
+        f"low/ultra-low liquidity: {low_liquidity_count}",
+        f"QDII observe-only: {qdii_count}",
+        f"short history: {short_history_count}",
+    ]
+    readiness_summary = (
+        f"{len(df)} 只 ETF 中建议交易池 {recommended_trade_pool} 只、观察池 {recommended_observe_pool} 只、"
+        f"剔除池 {recommended_exclude_pool} 只；最新数据日 {latest_date or 'N/A'}。"
+        f"{'可以进入第一版回测，但应使用筛选后的 trade_pool。' if backtest_ready else '暂不建议直接进入第一版回测。'}"
+    )
+    return {
+        "total_etf": int(len(df)),
+        "recommended_trade_pool": recommended_trade_pool,
+        "recommended_observe_pool": recommended_observe_pool,
+        "recommended_exclude_pool": recommended_exclude_pool,
+        "low_liquidity_count": low_liquidity_count,
+        "short_history_count": short_history_count,
+        "qdii_count": qdii_count,
+        "unknown_classification_count": unknown_classification_count,
+        "not_latest_count": not_latest_count,
+        "latest_data_date": latest_date,
+        "backtest_ready": bool(backtest_ready),
+        "readiness_summary": readiness_summary,
+        "top_issues": top_issues,
+        "report_href": "../reports/universe_quality_review.md",
+        "strategy_research_report_href": "../reports/etf_rotation_strategy_research.md",
+        "readiness_report_href": "../reports/backtest_readiness_report.md",
+    }
+
+
+def _phase4c_data_snapshot() -> dict:
+    payload = _read_json(REPORT_DIR / "phase4c_data_summary.json")
+    if isinstance(payload, dict) and payload:
+        return payload
+    akshare = _read_json(REPORT_DIR / "akshare_connectivity_check.json")
+    status = akshare.get("akshare_status", "not_checked") if isinstance(akshare, dict) else "not_checked"
+    return {
+        "status": "pending",
+        "research_only": True,
+        "akshare_status": status,
+        "data_provider_design_ready": (REPORT_DIR / "data_provider_design.md").exists(),
+        "intelligence_data_plan_ready": (REPORT_DIR / "intelligence_data_source_plan.md").exists(),
+        "no_lookahead_rules_ready": (REPORT_DIR / "no_lookahead_data_rules.md").exists(),
+        "recommended_next_step": "Run src/data_source_architecture_audit.py and src/akshare_connectivity_check.py.",
+        "summary": "Phase 4C data-source audit has not been fully generated yet.",
+        "report_href": "../reports/data_source_architecture_audit.md",
+        "provider_design_href": "../reports/data_provider_design.md",
+        "akshare_report_href": "../reports/akshare_connectivity_check.md",
+        "intelligence_plan_href": "../reports/intelligence_data_source_plan.md",
+        "no_lookahead_href": "../reports/no_lookahead_data_rules.md",
+        "next_step_href": "../reports/phase4c_data_next_step.md",
+    }
+
+
+def _phase4c_tushare_staging_snapshot() -> dict:
+    staging = _read_json(REPORT_DIR / "tushare_staging_check.json")
+    compare = _read_json(REPORT_DIR / "tushare_baostock_compare.json")
+    provider = _read_json(REPORT_DIR / "data_provider_status.json")
+    config = _read_json(REPORT_DIR / "tushare_config_check.json")
+    token_configured = bool(staging.get("tushare_token_configured", config.get("tushare_token_configured", False)))
+    success = int(staging.get("sample_symbols_success", 0) or 0)
+    tested = int(staging.get("sample_symbols_tested", 0) or 0)
+    failed = int(staging.get("sample_symbols_failed", 0) or 0)
+    compare_ready = bool(compare.get("baostock_compare_ready", False))
+    candidate = compare.get("candidate_daily_source") or provider.get("candidate_daily_source", "")
+    recommended = compare.get("recommended_daily_source") or provider.get("recommended_daily_source", "baostock")
+    status = "completed" if staging or compare or provider else "pending"
+    return {
+        "status": status,
+        "research_only": True,
+        "tushare_token_configured": token_configured,
+        "tushare_staging_success": bool(success > 0),
+        "sample_symbols_tested": tested,
+        "sample_symbols_success": success,
+        "sample_symbols_failed": failed,
+        "baostock_compare_ready": compare_ready,
+        "recommended_daily_source": recommended,
+        "candidate_daily_source": candidate,
+        "formal_source_switched": False,
+        "summary": staging.get("recommended_next_step") or compare.get("summary") or "Tushare staging dry-run has not been executed.",
+        "sample_symbols": staging.get("sample_symbols", []),
+        "rows_written": staging.get("rows_written", 0),
+        "close_consistent_count": compare.get("close_consistent_count", 0),
+        "staging_report_href": "../reports/tushare_staging_check.md",
+        "config_report_href": "../reports/tushare_config_check.md",
+        "compare_report_href": "../reports/tushare_baostock_compare.md",
+        "provider_status_href": "../reports/data_provider_status.md",
+        "no_lookahead_href": "../reports/tushare_no_lookahead_check.md",
+    }
+
+
+def _phase4c_alpha_snapshot() -> dict:
+    decision = _read_json(REPORT_DIR / "phase4c_alpha_summary.json")
+    if isinstance(decision, dict) and decision:
+        return {
+            **decision,
+            "attribution_href": "../reports/v2_underperformance_attribution.md",
+            "guardrails_href": "../reports/model_overfit_guardrails.md",
+            "regime_href": "../reports/regime_aware_model_research.md",
+            "type_href": "../reports/etf_type_aware_model_research.md",
+            "alpha_href": "../reports/alpha_factor_enhancement_research.md",
+            "comparison_href": "../reports/phase4c_alpha_model_comparison.md",
+            "decision_href": "../reports/phase4c_alpha_model_decision.md",
+        }
+    return {
+        "status": "pending",
+        "research_only": True,
+        "execution_enabled": False,
+        "best_candidate": "",
+        "candidate_type": "",
+        "best_total_return": 0,
+        "best_max_drawdown": 0,
+        "beat_510300": False,
+        "beat_v2_baseline": False,
+        "ready_for_shadow": False,
+        "ready_for_execution": False,
+        "overfit_guardrails_passed": False,
+        "summary": "Phase 4C alpha model research has not been generated.",
+        "attribution_href": "../reports/v2_underperformance_attribution.md",
+        "regime_href": "../reports/regime_aware_model_research.md",
+        "type_href": "../reports/etf_type_aware_model_research.md",
+        "alpha_href": "../reports/alpha_factor_enhancement_research.md",
+        "comparison_href": "../reports/phase4c_alpha_model_comparison.md",
+        "decision_href": "../reports/phase4c_alpha_model_decision.md",
+    }
+
+
+def _persistence_breakout_shadow_snapshot() -> dict:
+    payload = _read_json(REPORT_DIR / "persistence_breakout_shadow_summary.json")
+    default = {
+        "status": "pending",
+        "model_name": "persistence_breakout_v2",
+        "research_only": True,
+        "execution_enabled": False,
+        "paper_trade_engine_enabled": False,
+        "real_trade_enabled": False,
+        "initial_cash_assumption": 20000,
+        "selected_count": 0,
+        "selected_symbols": [],
+        "overlap_with_original": 0,
+        "overlap_with_adjusted": 0,
+        "overlap_with_top10_diversified": 0,
+        "high_beta_count": 0,
+        "data_health_caution_count": 0,
+        "tracking_days": 0,
+        "ready_for_preview": False,
+        "ready_for_execution": False,
+        "summary": "persistence_breakout_v2 shadow tracking has not been generated.",
+        "signal_report_href": "../reports/persistence_breakout_shadow_signal.md",
+        "portfolio_report_href": "../reports/persistence_breakout_shadow_portfolio.md",
+        "comparison_report_href": "../reports/model_shadow_comparison.md",
+        "observation_rules_href": "../reports/persistence_breakout_shadow_observation_rules.md",
+    }
+    if isinstance(payload, dict) and payload:
+        default.update(payload)
+        default["research_only"] = True
+        default["execution_enabled"] = False
+        default["paper_trade_engine_enabled"] = False
+        default["real_trade_enabled"] = False
+        default["ready_for_preview"] = False
+        default["ready_for_execution"] = False
+        default["generated_at"] = _mtime(REPORT_DIR / "persistence_breakout_shadow_summary.json")
+    return default
+
+
+def _missed_opportunity_tracking_snapshot() -> dict:
+    payload = _read_json(REPORT_DIR / "missed_opportunity_tracker.json")
+    default = {
+        "status": "pending",
+        "research_only": True,
+        "execution_enabled": False,
+        "model_name": "persistence_breakout_v2",
+        "tracking_days": 0,
+        "candidate_count": 0,
+        "missed_opportunity_count": 0,
+        "missed_opportunity_rate": 0,
+        "filter_effective_rate": 0,
+        "risk_on_empty_signal_count": 0,
+        "top_missed_filter_reason": "",
+        "ready_to_relax_filters": False,
+        "ready_for_preview": False,
+        "ready_for_execution": False,
+        "summary": "missed opportunity tracking has not been generated.",
+        "tracker_report_href": "../reports/missed_opportunity_tracker.md",
+        "by_reason_report_href": "../reports/missed_opportunity_by_filter_reason.md",
+        "risk_on_report_href": "../reports/risk_on_empty_signal_analysis.md",
+        "selected_vs_filtered_href": "../reports/selected_vs_filtered_forward_return.md",
+        "observation_rules_href": "../reports/missed_opportunity_observation_rules.md",
+    }
+    if isinstance(payload, dict) and payload:
+        default.update(payload)
+        default["research_only"] = True
+        default["execution_enabled"] = False
+        default["ready_to_relax_filters"] = False
+        default["ready_for_preview"] = False
+        default["ready_for_execution"] = False
+        default["generated_at"] = _mtime(REPORT_DIR / "missed_opportunity_tracker.json")
+    return default
+
+
+def _shadow_observation_weekly_snapshot() -> dict:
+    payload = _read_json(REPORT_DIR / "shadow_observation_weekly.json")
+    default = {
+        "status": "pending",
+        "research_only": True,
+        "execution_enabled": False,
+        "evidence_level": "",
+        "persistence_empty_signal_days": 0,
+        "risk_on_empty_days": 0,
+        "missed_opportunity_candidate_count": 0,
+        "matured_forward_return_count": 0,
+        "missed_opportunity_rate": 0,
+        "filter_effective_rate": 0,
+        "ready_to_relax_filters": False,
+        "ready_for_preview": False,
+        "ready_for_execution": False,
+        "recommended_action": "",
+        "summary": "shadow observation weekly has not been generated.",
+        "report_href": "../reports/shadow_observation_weekly.md",
+        "csv_href": "../reports/shadow_observation_weekly.csv",
+    }
+    if isinstance(payload, dict) and payload:
+        default.update(payload)
+        default["research_only"] = True
+        default["execution_enabled"] = False
+        default["ready_to_relax_filters"] = False
+        default["ready_for_preview"] = False
+        default["ready_for_execution"] = False
+        default["generated_at"] = _mtime(REPORT_DIR / "shadow_observation_weekly.json")
+    return default
+
+
+def _app_control_center_snapshot(
+    ranking_v2: dict,
+    tushare: dict,
+    phase4c_alpha: dict,
+    persistence_shadow: dict,
+    missed: dict,
+    weekly: dict,
+    data_sources: dict,
+) -> dict:
+    shadow_models = [
+        name
+        for name, active in {
+            "top10_diversified_filter_v2": bool(ranking_v2.get("candidate_ready_for_shadow_tracking") or ranking_v2.get("status") == "completed"),
+            "persistence_breakout_v2": bool(persistence_shadow.get("status") == "active"),
+        }.items()
+        if active
+    ]
+    evidence_level = weekly.get("evidence_level") or "insufficient"
+    recommended = weekly.get("recommended_action") or "continue_observation"
+    if recommended == "continue_observation":
+        action = "Continue observation; do not relax filters; do not enter preview."
+    else:
+        action = str(recommended)
+    return {
+        "current_phase": "Shadow Observation Period",
+        "formal_model_changed": False,
+        "official_model_status": "LOCKED / unchanged",
+        "shadow_to_execution": "disabled",
+        "execution_enabled": False,
+        "real_trade_enabled": False,
+        "broker_api_connected": False,
+        "paper_trade_engine_changed": False,
+        "shadow_writes_paper_trades": False,
+        "shadow_writes_paper_positions": False,
+        "default_research_initial_cash": ranking_v2.get("initial_cash_main", 20000),
+        "shadow_model_count": len(shadow_models),
+        "shadow_models": shadow_models,
+        "evidence_level": evidence_level,
+        "ready_for_execution": False,
+        "ready_for_preview": False,
+        "ready_to_relax_filters": False,
+        "formal_source_switched": bool(tushare.get("formal_source_switched", False)),
+        "formal_daily_source": data_sources.get("primary_source") or tushare.get("recommended_daily_source") or "baostock",
+        "candidate_daily_source": tushare.get("candidate_daily_source") or "tushare",
+        "recommended_action": action,
+        "last_updated": pd.Timestamp.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "live_evidence_summary": weekly.get("summary", ""),
+        "missed_opportunity_candidate_count": missed.get("candidate_count", 0),
+        "matured_forward_return_count": weekly.get("matured_forward_return_count", 0),
+        "persistence_selected_count": persistence_shadow.get("selected_count", 0),
+        "persistence_latest_signal_date": persistence_shadow.get("latest_signal_date", ""),
+        "phase4c_best_candidate": phase4c_alpha.get("best_candidate", ""),
+        "safety_badges": [
+            "研究专用（Research Only）",
+            "影子观察（Shadow Only）",
+            "执行禁用（Execution Disabled）",
+            "未接券商接口（No Broker API）",
+            "不真实交易（No Real Trade）",
+        ],
+    }
+
+
+def _exit_rule_research_snapshot() -> dict:
+    payload = _read_json(REPORT_DIR / "exit_rule_candidates.json")
+    families = payload.get("rule_families", []) if isinstance(payload, dict) else []
+    type_framework = payload.get("etf_type_parameter_framework", {}) if isinstance(payload, dict) else {}
+    status = payload.get("status", "missing") if isinstance(payload, dict) else "missing"
+    return {
+        "status": status,
+        "execution_enabled": bool(payload.get("execution_enabled", False)) if isinstance(payload, dict) else False,
+        "rule_families_count": int(len(families)),
+        "etf_type_aware": bool(type_framework),
+        "volatility_profile_ready": (REPORT_DIR / "etf_volatility_profile.csv").exists(),
+        "backtest_required": bool(payload.get("backtest_required", True)) if isinstance(payload, dict) else True,
+        "summary": (
+            f"退出规则候选库包含 {len(families)} 个规则族；当前为 research_only，"
+            "未接入 paper_trade_engine，正式使用前必须回测。"
+            if families
+            else "exit_rule_candidates.json 尚未生成。"
+        ),
+        "rule_families": [row.get("family", "") for row in families],
+        "report_href": "../reports/etf_rotation_exit_rule_research.md",
+        "volatility_report_href": "../reports/etf_volatility_profile.md",
+        "candidate_report_href": "../reports/exit_rule_candidates.md",
+        "by_type_report_href": "../reports/exit_rule_by_etf_type.md",
+        "backtest_design_report_href": "../reports/exit_rule_backtest_design.md",
+    }
+
+
+def _exit_rule_research_panel(review: dict) -> str:
+    if not review:
+        return "<h3>退出规则研究</h3><div class=\"muted\">暂无 exit rule research 数据。</div>"
+    stats = [
+        _mini_stat("状态", str(review.get("status", "N/A")), "research only"),
+        _mini_stat("规则族", str(review.get("rule_families_count", 0)), "候选参数库"),
+        _mini_stat("类型分层", "YES" if review.get("etf_type_aware") else "NO", "ETF type-aware"),
+        _mini_stat("波动画像", "READY" if review.get("volatility_profile_ready") else "MISSING", "volatility profile"),
+        _mini_stat("执行接入", "NO" if not review.get("execution_enabled") else "YES", "paper_trade_engine unchanged"),
+        _mini_stat("回测要求", "YES" if review.get("backtest_required") else "NO", "must validate first"),
+    ]
+    families = review.get("rule_families", [])
+    family_html = "".join(f"<li>{escape(str(item))}</li>" for item in families) or "<li>暂无规则族</li>"
+    return (
+        "<h3>退出规则研究与参数框架</h3>"
+        + '<div class="grid three">'
+        + "".join(stats)
+        + "</div>"
+        + f"<div class=\"muted\" style=\"margin-top:12px;\">{escape(str(review.get('summary', '')))}</div>"
+        + f"<ul>{family_html}</ul>"
+        + '<div class="links" style="margin-top:12px;">'
+        + f'<a href="{escape(str(review.get("report_href", "../reports/etf_rotation_exit_rule_research.md")))}">退出规则调研</a>'
+        + f'<a href="{escape(str(review.get("volatility_report_href", "../reports/etf_volatility_profile.md")))}">波动画像</a>'
+        + f'<a href="{escape(str(review.get("candidate_report_href", "../reports/exit_rule_candidates.md")))}">候选参数库</a>'
+        + f'<a href="{escape(str(review.get("by_type_report_href", "../reports/exit_rule_by_etf_type.md")))}">类型分层参数</a>'
+        + f'<a href="{escape(str(review.get("backtest_design_report_href", "../reports/exit_rule_backtest_design.md")))}">回测设计</a>'
+        + "</div>"
+    )
+
+
+def _backtest_phase4a_snapshot() -> dict:
+    payload = _read_json(REPORT_DIR / "backtest_metrics.json")
+    summary = _read_csv(REPORT_DIR / "backtest_summary.csv")
+    if not isinstance(payload, dict) or not payload:
+        return {
+            "status": "missing",
+            "research_only": True,
+            "execution_enabled": False,
+            "trade_pool_count": 0,
+            "strategies_compared": [],
+            "best_strategy": "",
+            "best_strategy_total_return": 0,
+            "best_strategy_max_drawdown": 0,
+            "baseline_510300_return": 0,
+            "summary": "Phase 4A backtest has not been generated.",
+        }
+    strategies = payload.get("strategies", {})
+    if not summary.empty and "total_return" in summary.columns:
+        temp = summary.copy()
+        temp["total_return_num"] = pd.to_numeric(temp["total_return"], errors="coerce")
+        best_row = temp.sort_values("total_return_num", ascending=False).head(1).to_dict(orient="records")
+        best = best_row[0] if best_row else {}
+    else:
+        best_name, best_metrics = max(strategies.items(), key=lambda item: _float(item[1].get("total_return")), default=("", {}))
+        best = {"strategy": best_name, **best_metrics}
+    baseline = strategies.get("buy_and_hold_510300", {})
+    best_strategy = str(best.get("strategy", ""))
+    best_return = _float(best.get("total_return"))
+    best_dd = _float(best.get("max_drawdown"))
+    baseline_return = _float(baseline.get("total_return"))
+    return {
+        "status": "completed",
+        "research_only": True,
+        "execution_enabled": False,
+        "trade_pool_count": int(payload.get("trade_pool_count", 0)),
+        "strategies_compared": list(strategies.keys()),
+        "best_strategy": best_strategy,
+        "best_strategy_total_return": best_return,
+        "best_strategy_max_drawdown": best_dd,
+        "baseline_510300_return": baseline_return,
+        "summary": (
+            f"Phase 4A-1 compared {len(strategies)} strategies on {payload.get('trade_pool_count', 0)} ETFs; "
+            f"best total return: {best_strategy} ({best_return:.2%}); 510300 baseline: {baseline_return:.2%}."
+        ),
+        "metrics": strategies,
+        "report_href": "../reports/backtest_phase4a_report.md",
+        "summary_csv_href": "../reports/backtest_summary.csv",
+        "equity_curve_href": "../reports/backtest_equity_curve.csv",
+    }
+
+
+def _backtest_phase4a_panel(review: dict) -> str:
+    if not review:
+        return "<h3>Phase 4A-1 回测</h3><div class=\"muted\">暂无回测数据。</div>"
+    stats = [
+        _mini_stat("状态", str(review.get("status", "N/A")), "research only"),
+        _mini_stat("交易池", str(review.get("trade_pool_count", 0)), "filtered trade_pool"),
+        _mini_stat("策略数", str(len(review.get("strategies_compared", []))), "strategy comparison"),
+        _mini_stat("最佳策略", str(review.get("best_strategy", "N/A")), _pct(review.get("best_strategy_total_return"))),
+        _mini_stat("最大回撤", _pct(review.get("best_strategy_max_drawdown")), "best strategy drawdown"),
+        _mini_stat("510300", _pct(review.get("baseline_510300_return")), "buy-and-hold baseline"),
+    ]
+    rows = []
+    for name, metrics in (review.get("metrics", {}) or {}).items():
+        rows.append(
+            "<tr>"
+            f"<td>{escape(str(name))}</td>"
+            f"<td>{_pct(metrics.get('total_return'))}</td>"
+            f"<td>{_pct(metrics.get('max_drawdown'))}</td>"
+            f"<td>{escape(str(metrics.get('trade_count', 0)))}</td>"
+            f"<td>{escape(str(metrics.get('cost_total', 0)))}</td>"
+            "</tr>"
+        )
+    table = _table(["策略", "总收益", "最大回撤", "交易数", "成本"], rows) if rows else "<div class=\"muted\">暂无策略明细。</div>"
+    return (
+        "<h3>Phase 4A-1 基础 ETF 轮动回测</h3>"
+        + '<div class="grid three">'
+        + "".join(stats)
+        + "</div>"
+        + f"<div class=\"muted\" style=\"margin-top:12px;\">{escape(str(review.get('summary', '')))}</div>"
+        + table
+        + '<div class="links" style="margin-top:12px;">'
+        + f'<a href="{escape(str(review.get("report_href", "../reports/backtest_phase4a_report.md")))}">回测报告</a>'
+        + f'<a href="{escape(str(review.get("summary_csv_href", "../reports/backtest_summary.csv")))}">summary CSV</a>'
+        + f'<a href="{escape(str(review.get("equity_curve_href", "../reports/backtest_equity_curve.csv")))}">equity curve</a>'
+        + "</div>"
+    )
+
+
+def _backtest_diagnostics_snapshot() -> dict:
+    payload = _read_json(REPORT_DIR / "backtest_diagnostics_summary.json")
+    if not isinstance(payload, dict) or not payload:
+        return {
+            "status": "missing",
+            "research_only": True,
+            "execution_enabled": False,
+            "capital_sensitivity_ready": False,
+            "cost_is_major_issue": False,
+            "turnover_is_major_issue": False,
+            "ranking_effectiveness_summary": "",
+            "expand_pool_now": False,
+            "main_failure_reasons": [],
+            "next_recommended_actions": [],
+        }
+    return {
+        "status": payload.get("status", "completed"),
+        "research_only": True,
+        "execution_enabled": False,
+        "capital_sensitivity_ready": bool(payload.get("capital_sensitivity_ready", False)),
+        "cost_is_major_issue": bool(payload.get("cost_is_major_issue", False)),
+        "turnover_is_major_issue": bool(payload.get("turnover_is_major_issue", False)),
+        "ranking_effectiveness_summary": payload.get("ranking_effectiveness_summary", ""),
+        "expand_pool_now": bool(payload.get("expand_pool_now", False)),
+        "main_failure_reasons": payload.get("main_failure_reasons", []),
+        "next_recommended_actions": payload.get("next_recommended_actions", []),
+        "required_before_expansion": payload.get("required_before_expansion", []),
+        "capital_10k_original_return": payload.get("capital_10k_original_return", 0),
+        "capital_100k_original_return": payload.get("capital_100k_original_return", 0),
+        "report_href": "../reports/backtest_expand_pool_decision.md",
+        "consistency_href": "../reports/backtest_consistency_check.md",
+        "capital_href": "../reports/backtest_capital_sensitivity.md",
+        "cost_href": "../reports/backtest_cost_diagnostics.md",
+        "ranking_href": "../reports/backtest_ranking_effectiveness.md",
+    }
+
+
+def _backtest_diagnostics_panel(review: dict) -> str:
+    if not review:
+        return "<h3>Phase 4A-1.5 归因诊断</h3><div class=\"muted\">暂无诊断数据。</div>"
+    stats = [
+        _mini_stat("状态", str(review.get("status", "N/A")), "research only"),
+        _mini_stat("扩池", "NO" if not review.get("expand_pool_now") else "YES", "expand_pool_now"),
+        _mini_stat("成本问题", "YES" if review.get("cost_is_major_issue") else "NO", "cost drag"),
+        _mini_stat("换手问题", "YES" if review.get("turnover_is_major_issue") else "NO", "turnover"),
+        _mini_stat("10k original", _pct(review.get("capital_10k_original_return")), "capital sensitivity"),
+        _mini_stat("100k original", _pct(review.get("capital_100k_original_return")), "capital sensitivity"),
+    ]
+    reasons = "".join(f"<li>{escape(str(item))}</li>" for item in review.get("main_failure_reasons", [])) or "<li>暂无主要问题</li>"
+    actions = "".join(f"<li>{escape(str(item))}</li>" for item in review.get("next_recommended_actions", [])) or "<li>暂无建议</li>"
+    return (
+        "<h3>Phase 4A-1.5 基础回测归因诊断</h3>"
+        + '<div class="grid three">'
+        + "".join(stats)
+        + "</div>"
+        + f"<div class=\"muted\" style=\"margin-top:12px;\">{escape(str(review.get('ranking_effectiveness_summary', '')))}</div>"
+        + "<h3 style=\"margin-top:14px;\">主要失败原因</h3><ul>"
+        + reasons
+        + "</ul><h3>下一步建议</h3><ul>"
+        + actions
+        + "</ul>"
+        + '<div class="links" style="margin-top:12px;">'
+        + f'<a href="{escape(str(review.get("consistency_href", "../reports/backtest_consistency_check.md")))}">一致性检查</a>'
+        + f'<a href="{escape(str(review.get("capital_href", "../reports/backtest_capital_sensitivity.md")))}">本金敏感性</a>'
+        + f'<a href="{escape(str(review.get("cost_href", "../reports/backtest_cost_diagnostics.md")))}">成本诊断</a>'
+        + f'<a href="{escape(str(review.get("ranking_href", "../reports/backtest_ranking_effectiveness.md")))}">ranking 诊断</a>'
+        + f'<a href="{escape(str(review.get("report_href", "../reports/backtest_expand_pool_decision.md")))}">扩池判断</a>'
+        + "</div>"
+    )
+
+
+def _ranking_signal_research_snapshot() -> dict:
+    payload = _read_json(REPORT_DIR / "ranking_signal_research_summary.json")
+    if not isinstance(payload, dict) or not payload:
+        return {
+            "status": "missing",
+            "research_only": True,
+            "execution_enabled": False,
+            "top3_not_strong_enough": True,
+            "model_enhancement_needed": True,
+            "data_freshness_constraint_considered": False,
+            "recommended_next_step": "Run python3 src/ranking_factor_diagnostics.py",
+            "summary": "Phase 4B ranking signal research has not been generated.",
+            "best_factors_10d": [],
+            "noisy_factors_10d": [],
+            "top3_avg_10d": 0,
+            "top10_avg_10d": 0,
+            "daily_full_model_replay_needed": True,
+            "execution_reality": "",
+        }
+    return {
+        "status": payload.get("status", "completed"),
+        "research_only": True,
+        "execution_enabled": False,
+        "top3_not_strong_enough": bool(payload.get("top3_not_strong_enough", True)),
+        "model_enhancement_needed": bool(payload.get("model_enhancement_needed", True)),
+        "data_freshness_constraint_considered": bool(payload.get("data_freshness_constraint_considered", True)),
+        "recommended_next_step": payload.get("recommended_next_step", ""),
+        "summary": payload.get("summary", ""),
+        "best_factors_10d": payload.get("best_factors_10d", []),
+        "noisy_factors_10d": payload.get("noisy_factors_10d", []),
+        "top3_avg_10d": payload.get("top3_avg_10d", 0),
+        "top10_avg_10d": payload.get("top10_avg_10d", 0),
+        "daily_full_model_replay_needed": bool(payload.get("daily_full_model_replay_needed", True)),
+        "execution_reality": payload.get("execution_reality", ""),
+        "logic_audit_href": "../reports/ranking_logic_audit.md",
+        "factor_diagnostics_href": "../reports/ranking_factor_diagnostics.md",
+        "topn_diagnostics_href": "../reports/topn_selection_diagnostics.md",
+        "freshness_href": "../reports/data_freshness_execution_reality.md",
+        "timing_href": "../reports/backtest_execution_timing_sensitivity.md",
+        "model_v2_href": "../reports/ranking_model_v2_design.md",
+        "decision_href": "../reports/model_enhancement_decision_report.md",
+    }
+
+
+def _ranking_signal_research_panel(review: dict) -> str:
+    if not review:
+        return "<h3>Phase 4B Ranking 信号研究</h3><div class=\"muted\">暂无 ranking signal research 数据。</div>"
+    best_factors = review.get("best_factors_10d", []) or []
+    noisy_factors = review.get("noisy_factors_10d", []) or []
+    best_rows = "".join(
+        "<tr>"
+        f"<td>{escape(str(row.get('factor', '')))}</td>"
+        f"<td class=\"num\">{_score(row.get('rank_ic'))}</td>"
+        f"<td class=\"num\">{_pct(row.get('spread'))}</td>"
+        f"<td class=\"num\">{_pct(row.get('positive_ic_ratio'))}</td>"
+        "</tr>"
+        for row in best_factors[:5]
+    ) or '<tr><td colspan="4" class="muted">暂无</td></tr>'
+    noisy_rows = "".join(
+        "<tr>"
+        f"<td>{escape(str(row.get('factor', '')))}</td>"
+        f"<td class=\"num\">{_score(row.get('rank_ic'))}</td>"
+        f"<td class=\"num\">{_pct(row.get('spread'))}</td>"
+        f"<td class=\"num\">{_pct(row.get('positive_ic_ratio'))}</td>"
+        "</tr>"
+        for row in noisy_factors[:5]
+    ) or '<tr><td colspan="4" class="muted">暂无</td></tr>'
+    stats = [
+        _mini_stat("状态", str(review.get("status", "N/A")), "research only"),
+        _mini_stat("Top3 强度", "WEAK" if review.get("top3_not_strong_enough") else "OK", "vs Top10 candidate"),
+        _mini_stat("模型增强", "YES" if review.get("model_enhancement_needed") else "NO", "before execution change"),
+        _mini_stat("数据时点", "CONSIDERED" if review.get("data_freshness_constraint_considered") else "MISSING", "confirmed close only"),
+        _mini_stat("Top3 10d", _pct(review.get("top3_avg_10d")), "forward proxy"),
+        _mini_stat("Top10 10d", _pct(review.get("top10_avg_10d")), "candidate pool proxy"),
+    ]
+    return (
+        "<h3>Phase 4B Ranking Signal Enhancement Research</h3>"
+        + '<div class="grid three">'
+        + "".join(stats)
+        + "</div>"
+        + f"<div class=\"risk-banner\" style=\"margin-top:14px;\"><div class=\"risk-title\">研究结论</div><div>{escape(str(review.get('summary', '')))}</div>"
+        + f"<div class=\"muted\">下一步：{escape(str(review.get('recommended_next_step', '')))}</div>"
+        + f"<div class=\"muted\">执行约束：{escape(str(review.get('execution_reality', '')))}</div></div>"
+        + '<div class="grid two" style="margin-top:14px;">'
+        + '<div><h3>10 日较强候选因子</h3>'
+        + _table(["factor", "rank_ic", "spread", "positive_ic_ratio"], [best_rows])
+        + "</div>"
+        + '<div><h3>10 日噪音/弱因子</h3>'
+        + _table(["factor", "rank_ic", "spread", "positive_ic_ratio"], [noisy_rows])
+        + "</div></div>"
+        + '<div class="links" style="margin-top:12px;">'
+        + f'<a href="{escape(str(review.get("logic_audit_href", "../reports/ranking_logic_audit.md")))}">逻辑审计</a>'
+        + f'<a href="{escape(str(review.get("factor_diagnostics_href", "../reports/ranking_factor_diagnostics.md")))}">因子诊断</a>'
+        + f'<a href="{escape(str(review.get("topn_diagnostics_href", "../reports/topn_selection_diagnostics.md")))}">TopN 诊断</a>'
+        + f'<a href="{escape(str(review.get("freshness_href", "../reports/data_freshness_execution_reality.md")))}">数据时点</a>'
+        + f'<a href="{escape(str(review.get("model_v2_href", "../reports/ranking_model_v2_design.md")))}">V2 设计</a>'
+        + f'<a href="{escape(str(review.get("decision_href", "../reports/model_enhancement_decision_report.md")))}">决策报告</a>'
+        + "</div>"
+    )
+
+
+def _ranking_model_v2_backtest_snapshot() -> dict:
+    payload = _read_json(REPORT_DIR / "ranking_model_v2_metrics.json")
+    if not isinstance(payload, dict) or not payload:
+        return {
+            "status": "missing",
+            "research_only": True,
+            "execution_enabled": False,
+            "initial_cash_main": 20000,
+            "mature_model_reference_ready": (REPORT_DIR / "etf_rotation_mature_model_reference.md").exists(),
+            "candidates_tested": [],
+            "best_candidate": "",
+            "best_candidate_total_return": 0,
+            "best_candidate_max_drawdown": 0,
+            "beat_510300": False,
+            "top10_diversified_effective": False,
+            "candidate_ready_for_shadow_tracking": False,
+            "candidate_ready_for_execution": False,
+            "expand_pool_now": False,
+            "summary": "Phase 4B-1 ranking_model_v2 backtest has not been generated.",
+            "report_href": "../reports/ranking_model_v2_backtest_report.md",
+            "decision_href": "../reports/ranking_model_v2_decision_report.md",
+        }
+    decision = payload.get("decision", {}) if isinstance(payload.get("decision"), dict) else {}
+    strategies = payload.get("strategies", {}) if isinstance(payload.get("strategies"), dict) else {}
+    best = decision.get("best_candidate", "")
+    benchmark = strategies.get("buy_and_hold_510300", {}) if isinstance(strategies.get("buy_and_hold_510300"), dict) else {}
+    original = strategies.get("original_baseline_v2", {}) if isinstance(strategies.get("original_baseline_v2"), dict) else {}
+    return {
+        "status": payload.get("status", "completed"),
+        "research_only": True,
+        "execution_enabled": False,
+        "initial_cash_main": payload.get("initial_cash_main", 20000),
+        "initial_cash_comparison": 10000,
+        "mature_model_reference_ready": (REPORT_DIR / "etf_rotation_mature_model_reference.md").exists(),
+        "candidates_tested": payload.get("candidates_tested", []),
+        "trade_pool_count": payload.get("trade_pool_count", 0),
+        "backtest_start_date": payload.get("backtest_start_date", ""),
+        "backtest_end_date": payload.get("backtest_end_date", ""),
+        "total_trading_days": payload.get("total_trading_days", 0),
+        "execution_price_assumption": payload.get("execution_price_assumption", ""),
+        "best_candidate": best,
+        "best_candidate_total_return": _float(decision.get("best_candidate_total_return")),
+        "best_candidate_max_drawdown": _float(decision.get("best_candidate_max_drawdown")),
+        "best_candidate_calmar": _float(decision.get("best_candidate_calmar")),
+        "best_candidate_trade_count": decision.get("best_candidate_trade_count", 0),
+        "beat_510300": bool(decision.get("beat_510300", False)),
+        "beat_original": bool(decision.get("beat_original", False)),
+        "reduce_drawdown_vs_original": bool(decision.get("reduce_drawdown_vs_original", False)),
+        "top10_diversified_effective": bool(decision.get("top10_diversified_effective", False)),
+        "candidate_ready_for_shadow_tracking": bool(decision.get("candidate_ready_for_shadow_tracking", False)),
+        "candidate_ready_for_execution": False,
+        "expand_pool_now": False,
+        "strategy_quality_label": decision.get("strategy_quality_label", payload.get("strategy_quality_label", "low_drawdown_candidate_not_alpha_proven")),
+        "benchmark_510300_return": _float(benchmark.get("total_return")),
+        "benchmark_510300_max_drawdown": _float(benchmark.get("max_drawdown")),
+        "original_return": _float(original.get("total_return")),
+        "original_max_drawdown": _float(original.get("max_drawdown")),
+        "summary": decision.get(
+            "strategy_quality_summary",
+            payload.get(
+                "summary",
+                "v2 improves drawdown and turnover, but return does not beat 510300; keep in shadow tracking only.",
+            ),
+        ),
+        "next_step": decision.get("next_step", ""),
+        "report_href": payload.get("report_href", "../reports/ranking_model_v2_backtest_report.md"),
+        "decision_href": payload.get("decision_href", "../reports/ranking_model_v2_decision_report.md"),
+        "summary_csv_href": payload.get("summary_csv_href", "../reports/ranking_model_v2_summary.csv"),
+        "top10_analysis_href": payload.get("top10_analysis_href", "../reports/top10_candidate_filter_analysis.md"),
+        "reference_href": "../reports/etf_rotation_mature_model_reference.md",
+        "execution_assumption_href": "../reports/ranking_model_v2_execution_assumption.md",
+        "strategies": strategies,
+    }
+
+
+def _ranking_model_v2_backtest_panel(review: dict) -> str:
+    if not review:
+        return "<h3>Phase 4B-1 Ranking Model v2 回测</h3><div class=\"muted\">暂无 ranking_model_v2 回测数据。</div>"
+    stats = [
+        _mini_stat("状态", str(review.get("status", "N/A")), "research only"),
+        _mini_stat("交易池", str(review.get("trade_pool_count", 0)), "backtest_trade_pool"),
+        _mini_stat("主资金", _money(review.get("initial_cash_main", 20000)), "research/backtest basis"),
+        _mini_stat("区间", f"{review.get('backtest_start_date', 'N/A')} → {review.get('backtest_end_date', 'N/A')}", str(review.get("execution_price_assumption", ""))),
+        _mini_stat("最佳候选", str(review.get("best_candidate", "N/A")), _pct(review.get("best_candidate_total_return"))),
+        _mini_stat("最大回撤", _pct(review.get("best_candidate_max_drawdown")), f"Calmar {_number(review.get('best_candidate_calmar'))}"),
+        _mini_stat("510300", _pct(review.get("benchmark_510300_return")), "buy-and-hold baseline"),
+        _mini_stat("Top10 Filter", "有效" if review.get("top10_diversified_effective") else "待验证", "diversified candidate"),
+        _mini_stat("Shadow", "YES" if review.get("candidate_ready_for_shadow_tracking") else "NO", "execution=false"),
+        _mini_stat("扩池", "NO" if not review.get("expand_pool_now") else "YES", "Phase 4B-1 不扩池"),
+    ]
+    rows = []
+    for name, metrics in (review.get("strategies", {}) or {}).items():
+        rows.append(
+            "<tr>"
+            f"<td>{escape(str(name))}</td>"
+            f"<td>{_pct(metrics.get('total_return'))}</td>"
+            f"<td>{_pct(metrics.get('max_drawdown'))}</td>"
+            f"<td>{_number(metrics.get('calmar'))}</td>"
+            f"<td>{escape(str(metrics.get('trade_count', 0)))}</td>"
+            f"<td>{_number(metrics.get('turnover'))}</td>"
+            "</tr>"
+        )
+    table = _table(["策略", "收益", "最大回撤", "Calmar", "交易数", "换手"], rows) if rows else "<div class=\"muted\">暂无策略明细。</div>"
+    return (
+        "<h3>Phase 4B-1 Benchmark-Informed Ranking Model v2</h3>"
+        + '<div class="grid three">'
+        + "".join(stats)
+        + "</div>"
+        + f"<div class=\"risk-banner\" style=\"margin-top:14px;\"><div class=\"risk-title\">研究结论</div><div>{escape(str(review.get('summary', '')))}</div>"
+        + f"<div class=\"muted\">质量标签：{escape(str(review.get('strategy_quality_label', 'low_drawdown_candidate_not_alpha_proven')))}</div>"
+        + "<div class=\"muted\">收益率仍不够理想，未跑赢 510300；只允许 shadow tracking，不允许接入执行层。</div>"
+        + f"<div class=\"muted\">下一步：{escape(str(review.get('next_step', '')))}</div>"
+        + "<div class=\"muted\">当前只允许进入 shadow tracking 候选，不接入 paper_trade_engine。</div></div>"
+        + table
+        + '<div class="links" style="margin-top:12px;">'
+        + f'<a href="{escape(str(review.get("reference_href", "../reports/etf_rotation_mature_model_reference.md")))}">成熟框架参考</a>'
+        + f'<a href="{escape(str(review.get("execution_assumption_href", "../reports/ranking_model_v2_execution_assumption.md")))}">执行口径</a>'
+        + f'<a href="{escape(str(review.get("report_href", "../reports/ranking_model_v2_backtest_report.md")))}">回测报告</a>'
+        + f'<a href="{escape(str(review.get("decision_href", "../reports/ranking_model_v2_decision_report.md")))}">决策报告</a>'
+        + f'<a href="{escape(str(review.get("summary_csv_href", "../reports/ranking_model_v2_summary.csv")))}">summary CSV</a>'
+        + f'<a href="{escape(str(review.get("top10_analysis_href", "../reports/top10_candidate_filter_analysis.md")))}">Top10 过滤分析</a>'
+        + "</div>"
+    )
+
+
+def _boolish(value: object) -> bool:
+    if isinstance(value, bool):
+        return value
+    text = str(value or "").strip().lower()
+    if text in {"1", "true", "yes", "y", "ok"}:
+        return True
+    if text in {"0", "false", "no", "n", "", "none", "nan"}:
+        return False
+    return bool(value)
+
+
+def _research_quality_snapshot() -> dict:
+    payload = _read_json(REPORT_DIR / "model_research_quality_review.json")
+    return payload if isinstance(payload, dict) else {}
+
+
+def _execution_layer_integration_snapshot(plan_rows: list[dict], market_state: dict, portfolio_exposure: dict, research_quality: dict) -> dict:
+    positions = _read_csv(DATA_DIR / "paper_positions.csv")
+    classification = _read_classification_csv()
+    class_map = classification.set_index(classification["symbol"].astype(str)).to_dict(orient="index") if not classification.empty and "symbol" in classification.columns else {}
+    summary = portfolio_exposure.get("summary", {})
+    warnings = portfolio_exposure.get("warnings", [])
+    current_position_pct = _float(summary.get("position_ratio"), _float(market_state.get("position_ratio")))
+    low = _float(market_state.get("suggested_total_position_min"), float("nan"))
+    high = _float(market_state.get("suggested_total_position_max"), float("nan"))
+    if pd.isna(low) or pd.isna(high):
+        suggested = "N/A"
+        alignment = "unknown"
+    else:
+        suggested = f"{low:.0%}-{high:.0%}"
+        alignment = "below_suggested_range" if current_position_pct < low else "above_suggested_range" if current_position_pct > high else "aligned"
+
+    type_rows = []
+    for row in positions.to_dict(orient="records"):
+        symbol = str(row.get("symbol", ""))
+        meta = class_map.get(symbol, {})
+        holding_days = _int(row.get("holding_days"), 0)
+        max_days = _int(meta.get("max_holding_days", row.get("max_holding_days", 0)), 0)
+        status = "OVER_PROFILE" if max_days and holding_days > max_days else "IN_PROFILE" if max_days else "N/A"
+        type_rows.append(
+            {
+                "symbol": symbol,
+                "name": row.get("name", meta.get("name", symbol)),
+                "etf_type": meta.get("etf_type", row.get("etf_type", "")),
+                "risk_profile": meta.get("risk_profile", row.get("risk_profile", "")),
+                "holding_profile": meta.get("holding_profile", row.get("holding_profile", "")),
+                "holding_days": holding_days,
+                "max_holding_days": max_days,
+                "stop_loss_pct": meta.get("stop_loss_pct", row.get("stop_loss_pct", "")),
+                "distance_to_stop_pct": row.get("distance_to_stop_pct", ""),
+                "classification_reason": meta.get("classification_reason", row.get("classification_reason", "")),
+                "holding_period_status": status,
+                "display_only": True,
+            }
+        )
+
+    plan_suggestions = []
+    for row in plan_rows:
+        for key in ["portfolio_balance_suggestion", "concentration_warning", "buy_candidate_context"]:
+            value = str(row.get(key, "")).strip()
+            if value and value not in plan_suggestions:
+                plan_suggestions.append(value)
+
+    confidence = {
+        "holding_period": research_quality.get("holding_period", {}).get("quality", "MEDIUM"),
+        "exit_rule": research_quality.get("exit_rule", {}).get("quality", "LOW_MEDIUM"),
+        "parameter_sweep": research_quality.get("parameter_sweep", {}).get("quality", "LOW_MEDIUM"),
+        "market_state": research_quality.get("market_state", {}).get("quality", "MEDIUM"),
+        "etf_type": "light_integration_allowed",
+        "portfolio_exposure": "prompt_only_allowed",
+    }
+    return {
+        "version": "phase2c_execution_layer_light_integration_v1",
+        "integrated": [
+            "etf_type -> plan/explanation/dashboard",
+            "max_holding_days -> review/display only",
+            "stop_loss_pct -> review/display only",
+            "market_state -> plan/dashboard display",
+            "portfolio_exposure -> balance/concentration prompt",
+        ],
+        "display_only": [
+            "market_state suggested position does not change amount",
+            "portfolio_exposure does not block buys or force sells",
+            "max_holding_days does not trigger automatic sell by itself in this phase",
+        ],
+        "not_integrated": [
+            "dynamic max_holdings",
+            "market_state target-position execution",
+            "portfolio_exposure hard block",
+            "news sentiment BUY",
+        ],
+        "use_market_state_position": PAPER_USE_MARKET_STATE_POSITION,
+        "market_state_vs_position": {
+            "market_state": market_state.get("market_state", "N/A"),
+            "market_score": market_state.get("market_score", ""),
+            "suggested_position_pct": suggested,
+            "current_position_pct": current_position_pct,
+            "position_alignment": alignment,
+        },
+        "etf_type_risk": type_rows,
+        "portfolio_balance": {
+            "portfolio_exposure_status": summary.get("overall_status", "N/A"),
+            "warnings": warnings,
+            "suggestions": plan_suggestions,
+        },
+        "research_confidence": confidence,
+        "paper_trade_plan_fields_present": sorted({key for row in plan_rows for key in row.keys()}),
+    }
+
+
+def _research_csv_summary(path: Path, score_col: str, descending: bool) -> dict:
+    df = _read_csv(path)
+    if df.empty:
+        return {"row_count": 0, "best_rows": [], "best_note": "WAITING"}
+    df_work = df.copy()
+    if score_col in df_work.columns:
+        df_work["_score"] = pd.to_numeric(df_work[score_col], errors="coerce")
+        df_work = df_work.dropna(subset=["_score"]).sort_values("_score", ascending=not descending)
+    best_rows = df_work.head(5).drop(columns=["_score"], errors="ignore").to_dict(orient="records")
+    best_note = "research_only"
+    if best_rows:
+        first = best_rows[0]
+        if "symbol" in first:
+            best_note = f"{first.get('symbol')} / {first.get(score_col, 'N/A')}"
+        elif "max_holdings" in first:
+            best_note = f"holdings={first.get('max_holdings')} / {first.get(score_col, 'N/A')}"
+    return {"row_count": int(len(df)), "best_rows": best_rows, "best_note": best_note}
+
+
 def _read_csv(path: Path) -> pd.DataFrame:
     if not path.exists() or path.stat().st_size == 0:
         return pd.DataFrame()
-    return pd.read_csv(path, dtype=str).fillna("")
+    return pd.read_csv(path, dtype=str, keep_default_na=False).fillna("")
 
 
 def _read_json(path: Path | None) -> dict:
@@ -1828,6 +4310,12 @@ def _int(value: object, fallback: int = 0) -> int:
 
 def _money(value: object) -> str:
     return f"{_float(value):,.2f}"
+
+
+def _signed_money(value: object) -> str:
+    numeric = _float(value)
+    sign = "+" if numeric > 0 else ""
+    return f"{sign}{numeric:,.2f}"
 
 
 def _number(value: object) -> str:

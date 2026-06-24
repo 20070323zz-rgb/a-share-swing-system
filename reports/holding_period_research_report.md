@@ -3,176 +3,248 @@
 本报告是离线研究，不修改交易规则、不修改仓位、不写模拟买卖。
 
 ## 样本说明
-- 分类 ETF 数量：114
-- 研究结果行数：1962
-- proxy_buy_signal：close > ma20 > ma60 且 20 日收益为正。
-- short_swing_weakening：前一日 5 日收益为正，当日 5 日收益转弱。
-- proxy_rank_decline_3d：价格动量代理分连续 3 日下降。
-- 所有 future return 只用于离线研究，严禁参与当天信号。
+- 分类 ETF 数量：185
+- 研究结果行数：5138
+- 研究窗口：[3, 5, 10, 20, 30, 45, 60]
+- proxy_buy：close > ma20 > ma60 且 ret20 > 0。
+- future_return 只用于离线评估，不参与当天信号。
 
 ## 按类型和窗口汇总
-| etf_type | signal_type | window | avg_return | win_rate | max_forward_drawdown | return/drawdown | signal_count | evidence |
-| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| bond_cash | proxy_buy | 3 | 0.01% | 54.19% | -4.97% | 0.14 | 1252 | evidence_supported |
-| bond_cash | proxy_buy | 5 | 0.02% | 55.18% | -4.97% | 0.18 | 1238 | evidence_supported |
-| bond_cash | proxy_buy | 10 | 0.04% | 57.27% | -4.97% | 0.34 | 1203 | evidence_supported |
-| bond_cash | proxy_buy | 20 | 0.06% | 54.97% | -7.88% | 0.60 | 1138 | evidence_supported |
-| bond_cash | proxy_buy | 30 | 0.06% | 50.08% | -8.33% | 0.86 | 1079 | evidence_supported |
-| bond_cash | proxy_buy | 60 | 0.25% | 61.94% | -9.05% | 1.63 | 942 | evidence_supported |
-| bond_cash | proxy_rank_decline_3d | 3 | -0.01% | 62.85% | -4.51% | 0.83 | 313 | evidence_supported |
-| bond_cash | proxy_rank_decline_3d | 5 | 0.04% | 70.83% | -4.51% | 1.23 | 313 | evidence_supported |
-| bond_cash | proxy_rank_decline_3d | 10 | 0.04% | 64.66% | -4.67% | 1.96 | 307 | evidence_supported |
-| bond_cash | proxy_rank_decline_3d | 20 | 0.11% | 68.03% | -6.58% | 3.64 | 298 | evidence_supported |
-| bond_cash | proxy_rank_decline_3d | 30 | 0.17% | 68.86% | -7.04% | 5.11 | 292 | evidence_supported |
-| bond_cash | proxy_rank_decline_3d | 60 | 0.45% | 67.72% | -7.04% | 9.93 | 267 | evidence_supported |
-| bond_cash | short_swing_weakening | 3 | -0.01% | 61.16% | -2.83% | 0.26 | 288 | evidence_supported |
-| bond_cash | short_swing_weakening | 5 | 0.02% | 59.61% | -3.25% | 0.37 | 286 | evidence_supported |
-| bond_cash | short_swing_weakening | 10 | 0.04% | 64.47% | -4.98% | 0.67 | 283 | evidence_supported |
-| bond_cash | short_swing_weakening | 20 | 0.10% | 64.55% | -6.95% | 1.23 | 275 | evidence_supported |
-| bond_cash | short_swing_weakening | 30 | 0.24% | 66.93% | -7.40% | 1.79 | 263 | evidence_supported |
-| bond_cash | short_swing_weakening | 60 | 0.57% | 73.43% | -7.40% | 3.47 | 237 | evidence_supported |
-| broad_index | proxy_buy | 3 | 0.20% | 55.38% | -23.08% | 0.08 | 2114 | evidence_supported |
-| broad_index | proxy_buy | 5 | 0.34% | 53.28% | -23.64% | 0.13 | 2100 | evidence_supported |
-| broad_index | proxy_buy | 10 | 0.76% | 49.81% | -25.50% | 0.19 | 2059 | evidence_supported |
-| broad_index | proxy_buy | 20 | 1.73% | 54.63% | -25.50% | 0.37 | 1916 | evidence_supported |
-| broad_index | proxy_buy | 30 | 4.75% | 64.99% | -25.50% | 0.45 | 1803 | evidence_supported |
-| broad_index | proxy_buy | 60 | 8.22% | 78.64% | -25.50% | 0.77 | 1766 | evidence_supported |
-| broad_index | proxy_rank_decline_3d | 3 | 0.52% | 63.79% | -9.68% | 0.18 | 592 | evidence_supported |
-| broad_index | proxy_rank_decline_3d | 5 | 1.01% | 67.55% | -9.68% | 0.31 | 588 | evidence_supported |
-| broad_index | proxy_rank_decline_3d | 10 | 1.12% | 61.01% | -15.96% | 0.29 | 580 | evidence_supported |
-| broad_index | proxy_rank_decline_3d | 20 | 2.87% | 66.82% | -15.96% | 0.56 | 518 | evidence_supported |
-| broad_index | proxy_rank_decline_3d | 30 | 3.85% | 71.50% | -16.37% | 0.71 | 509 | evidence_supported |
-| broad_index | proxy_rank_decline_3d | 60 | 7.88% | 87.57% | -27.59% | 1.10 | 483 | evidence_supported |
-| broad_index | short_swing_weakening | 3 | 0.17% | 53.03% | -8.35% | 0.09 | 565 | evidence_supported |
-| broad_index | short_swing_weakening | 5 | 0.36% | 54.74% | -12.24% | 0.08 | 562 | evidence_supported |
-| broad_index | short_swing_weakening | 10 | 0.51% | 53.28% | -16.97% | 0.07 | 540 | evidence_supported |
-| broad_index | short_swing_weakening | 20 | 1.74% | 54.25% | -19.73% | 0.16 | 521 | evidence_supported |
-| broad_index | short_swing_weakening | 30 | 2.72% | 58.03% | -20.38% | 0.24 | 508 | evidence_supported |
-| broad_index | short_swing_weakening | 60 | 6.90% | 76.41% | -25.46% | 0.57 | 460 | evidence_supported |
-| commodity_resource | proxy_buy | 3 | 0.61% | 56.73% | -18.88% | 0.06 | 2609 | evidence_supported |
-| commodity_resource | proxy_buy | 5 | 0.91% | 59.58% | -18.88% | 0.08 | 2605 | evidence_supported |
-| commodity_resource | proxy_buy | 10 | 1.88% | 62.69% | -53.82% | 0.14 | 2596 | evidence_supported |
-| commodity_resource | proxy_buy | 20 | 3.96% | 67.10% | -55.08% | 0.22 | 2567 | evidence_supported |
-| commodity_resource | proxy_buy | 30 | 6.38% | 66.93% | -27.02% | 0.40 | 2487 | evidence_supported |
-| commodity_resource | proxy_buy | 60 | 11.68% | 77.73% | -58.35% | 0.70 | 2394 | evidence_supported |
-| commodity_resource | proxy_rank_decline_3d | 3 | 0.28% | 52.53% | -15.70% | 0.11 | 663 | evidence_supported |
-| commodity_resource | proxy_rank_decline_3d | 5 | 0.69% | 57.00% | -50.03% | 0.14 | 651 | evidence_supported |
-| commodity_resource | proxy_rank_decline_3d | 10 | 0.94% | 61.21% | -52.80% | 0.16 | 637 | evidence_supported |
-| commodity_resource | proxy_rank_decline_3d | 20 | 3.38% | 70.29% | -55.08% | 0.22 | 573 | evidence_supported |
-| commodity_resource | proxy_rank_decline_3d | 30 | 5.39% | 76.06% | -21.63% | 0.51 | 545 | evidence_supported |
-| commodity_resource | proxy_rank_decline_3d | 60 | 12.48% | 86.11% | -21.63% | 1.11 | 475 | evidence_supported |
-| commodity_resource | short_swing_weakening | 3 | 0.37% | 54.55% | -11.26% | 0.07 | 637 | evidence_supported |
-| commodity_resource | short_swing_weakening | 5 | 0.57% | 56.96% | -12.00% | 0.07 | 634 | evidence_supported |
-| commodity_resource | short_swing_weakening | 10 | 1.28% | 62.67% | -52.24% | 0.11 | 622 | evidence_supported |
-| commodity_resource | short_swing_weakening | 20 | 2.56% | 63.30% | -48.60% | 0.17 | 602 | evidence_supported |
-| commodity_resource | short_swing_weakening | 30 | 4.32% | 63.52% | -51.88% | 0.28 | 583 | evidence_supported |
-| commodity_resource | short_swing_weakening | 60 | 12.67% | 83.64% | -56.29% | 0.77 | 516 | evidence_supported |
-| hot_theme | proxy_buy | 3 | 0.42% | 59.50% | -9.26% | 0.04 | 163 | sample_limited |
-| hot_theme | proxy_buy | 5 | 0.59% | 63.81% | -9.37% | 0.06 | 163 | sample_limited |
-| hot_theme | proxy_buy | 10 | 1.01% | 59.11% | -12.14% | 0.08 | 159 | sample_limited |
-| hot_theme | proxy_buy | 20 | 2.67% | 55.40% | -12.14% | 0.22 | 139 | sample_limited |
-| hot_theme | proxy_buy | 30 | 1.34% | 46.62% | -15.02% | 0.09 | 133 | sample_limited |
-| hot_theme | proxy_buy | 60 | -2.30% | 30.08% | -19.69% | 0.12 | 133 | sample_limited |
-| hot_theme | proxy_rank_decline_3d | 3 | -0.21% | 52.44% | -16.61% | 0.01 | 82 | sample_limited |
-| hot_theme | proxy_rank_decline_3d | 5 | 0.36% | 53.63% | -16.61% | 0.02 | 82 | sample_limited |
-| hot_theme | proxy_rank_decline_3d | 10 | 1.11% | 54.09% | -17.97% | 0.06 | 74 | sample_limited |
-| hot_theme | proxy_rank_decline_3d | 20 | 1.55% | 51.32% | -20.65% | 0.08 | 74 | sample_limited |
-| hot_theme | proxy_rank_decline_3d | 30 | 3.73% | 58.11% | -20.65% | 0.18 | 74 | sample_limited |
-| hot_theme | proxy_rank_decline_3d | 60 | 7.26% | 75.74% | -20.65% | 0.35 | 66 | sample_limited |
-| hot_theme | short_swing_weakening | 3 | -0.09% | 41.66% | -6.27% | 0.02 | 60 | sample_limited |
-| hot_theme | short_swing_weakening | 5 | 0.11% | 46.61% | -9.23% | 0.02 | 60 | sample_limited |
-| hot_theme | short_swing_weakening | 10 | 0.84% | 48.21% | -15.68% | 0.05 | 58 | sample_limited |
-| hot_theme | short_swing_weakening | 20 | 0.88% | 46.55% | -20.65% | 0.04 | 58 | sample_limited |
-| hot_theme | short_swing_weakening | 30 | 1.91% | 50.00% | -20.65% | 0.09 | 54 | sample_limited |
-| hot_theme | short_swing_weakening | 60 | 4.08% | 58.26% | -20.65% | 0.20 | 48 | sample_limited |
-| qdii | proxy_buy | 3 | 0.22% | 53.33% | -10.31% | 0.06 | 1375 | evidence_supported |
-| qdii | proxy_buy | 5 | 0.46% | 53.38% | -11.05% | 0.09 | 1363 | evidence_supported |
-| qdii | proxy_buy | 10 | 1.06% | 57.38% | -12.23% | 0.16 | 1331 | evidence_supported |
-| qdii | proxy_buy | 20 | 2.25% | 64.46% | -21.26% | 0.23 | 1285 | evidence_supported |
-| qdii | proxy_buy | 30 | 2.89% | 65.64% | -23.21% | 0.25 | 1241 | evidence_supported |
-| qdii | proxy_buy | 60 | 3.35% | 59.07% | -25.95% | 0.25 | 1238 | evidence_supported |
-| qdii | proxy_rank_decline_3d | 3 | 0.73% | 58.70% | -9.54% | 0.15 | 540 | evidence_supported |
-| qdii | proxy_rank_decline_3d | 5 | 1.12% | 59.49% | -10.80% | 0.18 | 530 | evidence_supported |
-| qdii | proxy_rank_decline_3d | 10 | 1.60% | 58.25% | -14.01% | 0.19 | 528 | evidence_supported |
-| qdii | proxy_rank_decline_3d | 20 | 2.42% | 59.70% | -19.72% | 0.21 | 481 | evidence_supported |
-| qdii | proxy_rank_decline_3d | 30 | 2.56% | 59.87% | -20.12% | 0.22 | 477 | evidence_supported |
-| qdii | proxy_rank_decline_3d | 60 | 4.63% | 58.15% | -23.89% | 0.35 | 443 | evidence_supported |
-| qdii | short_swing_weakening | 3 | 0.15% | 49.16% | -16.90% | 0.05 | 459 | evidence_supported |
-| qdii | short_swing_weakening | 5 | 0.19% | 52.87% | -16.90% | 0.07 | 459 | evidence_supported |
-| qdii | short_swing_weakening | 10 | 0.42% | 51.37% | -16.90% | 0.09 | 456 | evidence_supported |
-| qdii | short_swing_weakening | 20 | 1.12% | 58.14% | -19.72% | 0.13 | 442 | evidence_supported |
-| qdii | short_swing_weakening | 30 | 1.39% | 59.21% | -23.21% | 0.16 | 436 | evidence_supported |
-| qdii | short_swing_weakening | 60 | 3.04% | 57.80% | -24.31% | 0.35 | 377 | evidence_supported |
-| sector | proxy_buy | 3 | 0.31% | 54.83% | -7.14% | 0.08 | 1313 | evidence_supported |
-| sector | proxy_buy | 5 | 0.47% | 55.70% | -7.98% | 0.11 | 1311 | evidence_supported |
-| sector | proxy_buy | 10 | 0.72% | 54.79% | -12.02% | 0.16 | 1306 | evidence_supported |
-| sector | proxy_buy | 20 | 1.21% | 50.00% | -15.65% | 0.31 | 1286 | evidence_supported |
-| sector | proxy_buy | 30 | 0.25% | 47.43% | -21.15% | 0.17 | 1269 | evidence_supported |
-| sector | proxy_buy | 60 | -1.41% | 39.83% | -27.00% | 0.16 | 1242 | evidence_supported |
-| sector | proxy_rank_decline_3d | 3 | -0.03% | 44.31% | -11.46% | 0.17 | 707 | evidence_supported |
-| sector | proxy_rank_decline_3d | 5 | 0.07% | 43.78% | -11.46% | 0.20 | 685 | evidence_supported |
-| sector | proxy_rank_decline_3d | 10 | 0.24% | 48.34% | -11.88% | 0.24 | 675 | evidence_supported |
-| sector | proxy_rank_decline_3d | 20 | 0.59% | 48.65% | -14.05% | 0.26 | 630 | evidence_supported |
-| sector | proxy_rank_decline_3d | 30 | 0.56% | 52.60% | -18.01% | 0.25 | 613 | evidence_supported |
-| sector | proxy_rank_decline_3d | 60 | 2.55% | 51.58% | -24.22% | 0.94 | 552 | evidence_supported |
-| sector | short_swing_weakening | 3 | -0.38% | 46.50% | -65.73% | 0.08 | 631 | evidence_supported |
-| sector | short_swing_weakening | 5 | -0.43% | 47.32% | -67.59% | 0.06 | 628 | evidence_supported |
-| sector | short_swing_weakening | 10 | -0.52% | 45.74% | -67.85% | 0.08 | 622 | evidence_supported |
-| sector | short_swing_weakening | 20 | -1.22% | 42.47% | -67.85% | 0.12 | 611 | evidence_supported |
-| sector | short_swing_weakening | 30 | -1.15% | 42.12% | -67.85% | 0.14 | 585 | evidence_supported |
-| sector | short_swing_weakening | 60 | -0.70% | 45.06% | -67.85% | 0.17 | 487 | evidence_supported |
-| theme | proxy_buy | 3 | 0.72% | 57.57% | -66.73% | 0.07 | 1499 | evidence_supported |
-| theme | proxy_buy | 5 | 1.22% | 60.81% | -66.73% | 0.11 | 1489 | evidence_supported |
-| theme | proxy_buy | 10 | 2.54% | 62.52% | -67.18% | 0.21 | 1472 | evidence_supported |
-| theme | proxy_buy | 20 | 4.50% | 63.82% | -67.18% | 0.30 | 1416 | evidence_supported |
-| theme | proxy_buy | 30 | 6.31% | 63.94% | -64.70% | 0.37 | 1361 | evidence_supported |
-| theme | proxy_buy | 60 | 8.07% | 60.91% | -60.38% | 0.39 | 1327 | evidence_supported |
-| theme | proxy_rank_decline_3d | 3 | 0.76% | 64.96% | -18.65% | 0.13 | 540 | evidence_supported |
-| theme | proxy_rank_decline_3d | 5 | 1.27% | 60.43% | -49.01% | 0.25 | 527 | evidence_supported |
-| theme | proxy_rank_decline_3d | 10 | 1.15% | 58.90% | -52.84% | 0.18 | 510 | evidence_supported |
-| theme | proxy_rank_decline_3d | 20 | 2.52% | 61.70% | -56.05% | 0.25 | 478 | evidence_supported |
-| theme | proxy_rank_decline_3d | 30 | 4.26% | 63.37% | -57.65% | 0.34 | 474 | evidence_supported |
-| theme | proxy_rank_decline_3d | 60 | 11.15% | 68.76% | -59.03% | 0.60 | 445 | evidence_supported |
-| theme | short_swing_weakening | 3 | 0.33% | 51.40% | -10.42% | 0.05 | 491 | evidence_supported |
-| theme | short_swing_weakening | 5 | 0.48% | 50.69% | -10.42% | 0.08 | 488 | evidence_supported |
-| theme | short_swing_weakening | 10 | 0.94% | 51.43% | -62.72% | 0.13 | 478 | evidence_supported |
-| theme | short_swing_weakening | 20 | 2.00% | 50.90% | -63.22% | 0.12 | 465 | evidence_supported |
-| theme | short_swing_weakening | 30 | 3.61% | 56.20% | -57.65% | 0.21 | 451 | evidence_supported |
-| theme | short_swing_weakening | 60 | 10.63% | 63.81% | -58.83% | 0.52 | 388 | evidence_supported |
-| unknown | proxy_buy | 3 | 0.92% | 62.17% | -10.66% | 0.11 | 891 | evidence_supported |
-| unknown | proxy_buy | 5 | 1.39% | 68.51% | -10.66% | 0.16 | 884 | evidence_supported |
-| unknown | proxy_buy | 10 | 2.54% | 66.04% | -11.23% | 0.23 | 869 | evidence_supported |
-| unknown | proxy_buy | 20 | 4.69% | 66.68% | -15.36% | 0.37 | 809 | evidence_supported |
-| unknown | proxy_buy | 30 | 6.50% | 60.65% | -20.46% | 0.51 | 754 | evidence_supported |
-| unknown | proxy_buy | 60 | 11.64% | 74.69% | -23.19% | 0.76 | 752 | evidence_supported |
-| unknown | proxy_rank_decline_3d | 3 | 1.00% | 68.22% | -11.26% | 0.21 | 289 | evidence_supported |
-| unknown | proxy_rank_decline_3d | 5 | 1.84% | 73.20% | -11.26% | 0.34 | 289 | evidence_supported |
-| unknown | proxy_rank_decline_3d | 10 | 1.26% | 60.39% | -13.11% | 0.10 | 286 | evidence_supported |
-| unknown | proxy_rank_decline_3d | 20 | 2.40% | 66.41% | -20.80% | 0.15 | 272 | evidence_supported |
-| unknown | proxy_rank_decline_3d | 30 | 4.17% | 62.06% | -20.80% | 0.26 | 267 | evidence_supported |
-| unknown | proxy_rank_decline_3d | 60 | 11.45% | 85.82% | -30.76% | 0.70 | 256 | evidence_supported |
-| unknown | short_swing_weakening | 3 | 0.23% | 56.22% | -13.29% | 0.02 | 257 | evidence_supported |
-| unknown | short_swing_weakening | 5 | 0.55% | 50.15% | -13.29% | 0.04 | 257 | evidence_supported |
-| unknown | short_swing_weakening | 10 | 0.95% | 48.15% | -14.24% | 0.07 | 246 | evidence_supported |
-| unknown | short_swing_weakening | 20 | 2.95% | 58.27% | -20.28% | 0.18 | 236 | evidence_supported |
-| unknown | short_swing_weakening | 30 | 5.52% | 55.64% | -22.99% | 0.34 | 230 | evidence_supported |
-| unknown | short_swing_weakening | 60 | 13.67% | 84.15% | -32.52% | 0.83 | 207 | evidence_supported |
+| etf_type | signal_type | window | sample_count | avg_return | median_return | win_rate | max_forward_drawdown | avg_volatility | evidence | preferred_match |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- | --- |
+| bond_cash | all_days | 3 | 3708 | 0.02% | 0.03% | 57.85% | -4.97% | 0.13% | evidence_supported | no |
+| bond_cash | all_days | 5 | 3684 | 0.03% | 0.04% | 59.31% | -4.97% | 0.13% | evidence_supported | no |
+| bond_cash | all_days | 10 | 3624 | 0.07% | 0.11% | 61.07% | -5.73% | 0.13% | evidence_supported | no |
+| bond_cash | all_days | 20 | 3504 | 0.16% | 0.18% | 62.93% | -7.88% | 0.13% | evidence_supported | no |
+| bond_cash | all_days | 30 | 3384 | 0.24% | 0.26% | 63.86% | -8.33% | 0.13% | evidence_supported | yes |
+| bond_cash | all_days | 45 | 3204 | 0.35% | 0.38% | 66.92% | -9.05% | 0.13% | evidence_supported | yes |
+| bond_cash | all_days | 60 | 3024 | 0.45% | 0.44% | 65.97% | -9.05% | 0.13% | evidence_supported | yes |
+| bond_cash | momentum_positive | 3 | 2177 | 0.03% | 0.04% | 52.36% | -4.97% | 0.12% | evidence_supported | no |
+| bond_cash | momentum_positive | 5 | 2162 | 0.04% | 0.05% | 54.55% | -4.97% | 0.12% | evidence_supported | no |
+| bond_cash | momentum_positive | 10 | 2117 | 0.06% | 0.10% | 55.37% | -5.36% | 0.12% | evidence_supported | no |
+| bond_cash | momentum_positive | 20 | 2037 | 0.08% | 0.11% | 54.88% | -7.88% | 0.12% | evidence_supported | no |
+| bond_cash | momentum_positive | 30 | 1941 | 0.11% | 0.14% | 54.04% | -8.33% | 0.12% | evidence_supported | yes |
+| bond_cash | momentum_positive | 45 | 1818 | 0.24% | 0.35% | 57.88% | -9.05% | 0.12% | evidence_supported | yes |
+| bond_cash | momentum_positive | 60 | 1717 | 0.35% | 0.38% | 58.66% | -9.05% | 0.12% | evidence_supported | yes |
+| bond_cash | proxy_buy | 3 | 1318 | 0.01% | 0.03% | 48.08% | -4.97% | 0.10% | evidence_supported | no |
+| bond_cash | proxy_buy | 5 | 1307 | -0.01% | 0.04% | 49.14% | -4.97% | 0.10% | evidence_supported | no |
+| bond_cash | proxy_buy | 10 | 1271 | 0.01% | 0.07% | 48.42% | -4.97% | 0.10% | evidence_supported | no |
+| bond_cash | proxy_buy | 20 | 1204 | 0.02% | 0.07% | 48.55% | -7.88% | 0.10% | evidence_supported | no |
+| bond_cash | proxy_buy | 30 | 1138 | 0.04% | 0.05% | 43.75% | -8.33% | 0.10% | evidence_supported | yes |
+| bond_cash | proxy_buy | 45 | 1066 | 0.06% | 0.07% | 46.75% | -9.05% | 0.10% | evidence_supported | yes |
+| bond_cash | proxy_buy | 60 | 991 | 0.19% | 0.22% | 52.70% | -9.05% | 0.10% | evidence_supported | yes |
+| bond_cash | short_swing_weakening | 3 | 400 | -0.01% | -0.01% | 59.55% | -2.83% | 0.13% | evidence_supported | no |
+| bond_cash | short_swing_weakening | 5 | 395 | 0.01% | -0.01% | 58.19% | -3.25% | 0.13% | evidence_supported | no |
+| bond_cash | short_swing_weakening | 10 | 389 | 0.03% | 0.06% | 63.63% | -4.98% | 0.13% | evidence_supported | no |
+| bond_cash | short_swing_weakening | 20 | 379 | 0.06% | 0.12% | 63.17% | -6.95% | 0.13% | evidence_supported | no |
+| bond_cash | short_swing_weakening | 30 | 368 | 0.19% | 0.25% | 64.90% | -7.40% | 0.13% | evidence_supported | yes |
+| bond_cash | short_swing_weakening | 45 | 346 | 0.39% | 0.61% | 68.24% | -7.40% | 0.13% | evidence_supported | yes |
+| bond_cash | short_swing_weakening | 60 | 327 | 0.45% | 0.61% | 69.90% | -7.40% | 0.13% | evidence_supported | yes |
+| broad_index | all_days | 3 | 7701 | 0.33% | 0.36% | 57.03% | -23.08% | 1.41% | evidence_supported | no |
+| broad_index | all_days | 5 | 7657 | 0.54% | 0.52% | 57.34% | -23.64% | 1.41% | evidence_supported | no |
+| broad_index | all_days | 10 | 7547 | 1.10% | 0.84% | 57.44% | -25.50% | 1.41% | evidence_supported | no |
+| broad_index | all_days | 20 | 7327 | 2.45% | 1.83% | 60.41% | -25.50% | 1.41% | evidence_supported | yes |
+| broad_index | all_days | 30 | 7107 | 4.07% | 2.94% | 63.26% | -25.50% | 1.41% | evidence_supported | yes |
+| broad_index | all_days | 45 | 6777 | 6.07% | 5.31% | 69.75% | -25.50% | 1.41% | evidence_supported | yes |
+| broad_index | all_days | 60 | 6447 | 7.93% | 6.66% | 73.93% | -29.57% | 1.41% | evidence_supported | yes |
+| broad_index | momentum_positive | 3 | 4262 | 0.44% | 0.44% | 59.38% | -23.08% | 1.35% | evidence_supported | no |
+| broad_index | momentum_positive | 5 | 4254 | 0.70% | 0.75% | 58.33% | -23.64% | 1.35% | evidence_supported | no |
+| broad_index | momentum_positive | 10 | 4178 | 1.57% | 1.25% | 58.88% | -25.50% | 1.35% | evidence_supported | no |
+| broad_index | momentum_positive | 20 | 3966 | 2.95% | 2.64% | 62.55% | -25.50% | 1.35% | evidence_supported | yes |
+| broad_index | momentum_positive | 30 | 3746 | 4.05% | 3.58% | 62.53% | -25.50% | 1.35% | evidence_supported | yes |
+| broad_index | momentum_positive | 45 | 3493 | 6.17% | 4.59% | 67.49% | -25.50% | 1.35% | evidence_supported | yes |
+| broad_index | momentum_positive | 60 | 3478 | 8.44% | 6.06% | 74.70% | -25.50% | 1.35% | evidence_supported | yes |
+| broad_index | proxy_buy | 3 | 2744 | 0.39% | 0.43% | 57.26% | -23.08% | 1.34% | evidence_supported | no |
+| broad_index | proxy_buy | 5 | 2738 | 0.59% | 0.71% | 57.07% | -23.64% | 1.34% | evidence_supported | no |
+| broad_index | proxy_buy | 10 | 2711 | 1.12% | 0.97% | 53.18% | -25.50% | 1.34% | evidence_supported | no |
+| broad_index | proxy_buy | 20 | 2540 | 2.35% | 2.22% | 57.19% | -25.50% | 1.34% | evidence_supported | yes |
+| broad_index | proxy_buy | 30 | 2340 | 5.41% | 4.40% | 64.66% | -25.50% | 1.37% | evidence_supported | yes |
+| broad_index | proxy_buy | 45 | 2292 | 7.20% | 4.43% | 65.94% | -25.50% | 1.37% | evidence_supported | yes |
+| broad_index | proxy_buy | 60 | 2286 | 9.41% | 5.17% | 78.73% | -25.50% | 1.37% | evidence_supported | yes |
+| broad_index | short_swing_weakening | 3 | 721 | 0.18% | 0.11% | 53.79% | -13.29% | 1.41% | evidence_supported | no |
+| broad_index | short_swing_weakening | 5 | 721 | 0.39% | 0.27% | 53.51% | -13.29% | 1.41% | evidence_supported | no |
+| broad_index | short_swing_weakening | 10 | 707 | 0.48% | -0.08% | 50.63% | -16.97% | 1.41% | evidence_supported | no |
+| broad_index | short_swing_weakening | 20 | 668 | 1.95% | 0.50% | 54.06% | -19.73% | 1.41% | evidence_supported | yes |
+| broad_index | short_swing_weakening | 30 | 651 | 3.48% | 1.81% | 57.16% | -20.38% | 1.41% | evidence_supported | yes |
+| broad_index | short_swing_weakening | 45 | 637 | 6.37% | 5.70% | 69.81% | -23.90% | 1.41% | evidence_supported | yes |
+| broad_index | short_swing_weakening | 60 | 588 | 8.77% | 7.09% | 77.86% | -25.46% | 1.41% | evidence_supported | yes |
+| commodity_resource | all_days | 3 | 6489 | 0.35% | 0.41% | 54.99% | -51.01% | 1.76% | evidence_supported | no |
+| commodity_resource | all_days | 5 | 6447 | 0.58% | 0.70% | 57.48% | -52.09% | 1.76% | evidence_supported | no |
+| commodity_resource | all_days | 10 | 6342 | 1.21% | 1.25% | 60.34% | -53.82% | 1.76% | evidence_supported | yes |
+| commodity_resource | all_days | 20 | 6132 | 2.69% | 2.86% | 64.16% | -56.48% | 1.76% | evidence_supported | yes |
+| commodity_resource | all_days | 30 | 5922 | 4.68% | 4.13% | 66.24% | -53.99% | 1.76% | evidence_supported | yes |
+| commodity_resource | all_days | 45 | 5607 | 7.82% | 6.80% | 71.11% | -49.67% | 1.76% | evidence_supported | yes |
+| commodity_resource | all_days | 60 | 5292 | 11.08% | 9.80% | 78.76% | -58.35% | 1.76% | evidence_supported | no |
+| commodity_resource | momentum_positive | 3 | 3926 | 0.46% | 0.45% | 55.38% | -49.85% | 1.69% | evidence_supported | no |
+| commodity_resource | momentum_positive | 5 | 3921 | 0.73% | 0.82% | 57.79% | -51.03% | 1.69% | evidence_supported | no |
+| commodity_resource | momentum_positive | 10 | 3907 | 1.64% | 1.46% | 61.04% | -53.82% | 1.69% | evidence_supported | yes |
+| commodity_resource | momentum_positive | 20 | 3844 | 3.15% | 3.11% | 63.16% | -56.48% | 1.69% | evidence_supported | yes |
+| commodity_resource | momentum_positive | 30 | 3670 | 5.47% | 5.20% | 66.48% | -53.99% | 1.69% | evidence_supported | yes |
+| commodity_resource | momentum_positive | 45 | 3508 | 9.08% | 7.65% | 72.88% | -29.75% | 1.69% | evidence_supported | yes |
+| commodity_resource | momentum_positive | 60 | 3438 | 11.76% | 9.82% | 79.60% | -58.35% | 1.69% | evidence_supported | no |
+| commodity_resource | proxy_buy | 3 | 2612 | 0.60% | 0.54% | 56.66% | -18.88% | 1.72% | evidence_supported | no |
+| commodity_resource | proxy_buy | 5 | 2610 | 0.90% | 1.04% | 59.46% | -18.88% | 1.72% | evidence_supported | no |
+| commodity_resource | proxy_buy | 10 | 2603 | 1.85% | 1.89% | 62.51% | -53.82% | 1.72% | evidence_supported | yes |
+| commodity_resource | proxy_buy | 20 | 2583 | 3.81% | 4.16% | 66.76% | -55.72% | 1.72% | evidence_supported | yes |
+| commodity_resource | proxy_buy | 30 | 2504 | 6.26% | 6.52% | 66.53% | -27.02% | 1.72% | evidence_supported | yes |
+| commodity_resource | proxy_buy | 45 | 2459 | 9.11% | 7.62% | 68.38% | -29.75% | 1.72% | evidence_supported | yes |
+| commodity_resource | proxy_buy | 60 | 2433 | 11.29% | 8.82% | 76.40% | -58.35% | 1.72% | evidence_supported | no |
+| commodity_resource | short_swing_weakening | 3 | 642 | 0.36% | 0.33% | 54.61% | -11.26% | 1.84% | evidence_supported | no |
+| commodity_resource | short_swing_weakening | 5 | 639 | 0.53% | 0.64% | 56.40% | -12.00% | 1.84% | evidence_supported | no |
+| commodity_resource | short_swing_weakening | 10 | 633 | 1.17% | 1.34% | 61.89% | -52.24% | 1.84% | evidence_supported | yes |
+| commodity_resource | short_swing_weakening | 20 | 610 | 2.26% | 2.42% | 62.39% | -54.20% | 1.84% | evidence_supported | yes |
+| commodity_resource | short_swing_weakening | 30 | 592 | 4.14% | 3.43% | 62.60% | -51.88% | 1.84% | evidence_supported | yes |
+| commodity_resource | short_swing_weakening | 45 | 553 | 8.24% | 7.58% | 70.78% | -49.64% | 1.84% | evidence_supported | yes |
+| commodity_resource | short_swing_weakening | 60 | 522 | 12.44% | 11.54% | 82.78% | -56.29% | 1.84% | evidence_supported | no |
+| high_beta | all_days | 3 | 720 | -0.21% | 0.34% | 52.62% | -67.87% | 2.81% | evidence_supported | no |
+| high_beta | all_days | 5 | 714 | -0.35% | 0.45% | 53.47% | -68.91% | 2.81% | evidence_supported | yes |
+| high_beta | all_days | 10 | 699 | -0.78% | 0.84% | 56.69% | -68.91% | 2.81% | evidence_supported | yes |
+| high_beta | all_days | 20 | 669 | -1.94% | 1.85% | 53.70% | -68.91% | 2.81% | evidence_supported | yes |
+| high_beta | all_days | 30 | 639 | -0.62% | 5.78% | 55.47% | -68.91% | 2.81% | evidence_supported | no |
+| high_beta | all_days | 45 | 594 | 1.25% | 9.15% | 53.00% | -68.91% | 2.81% | evidence_supported | no |
+| high_beta | all_days | 60 | 549 | -0.21% | 12.58% | 52.04% | -68.91% | 2.81% | evidence_supported | no |
+| high_beta | momentum_positive | 3 | 330 | 0.36% | 0.56% | 56.02% | -67.56% | 1.84% | evidence_supported | no |
+| high_beta | momentum_positive | 5 | 328 | 0.94% | 1.22% | 61.05% | -67.82% | 1.84% | evidence_supported | yes |
+| high_beta | momentum_positive | 10 | 323 | 2.33% | 2.39% | 63.56% | -67.82% | 1.84% | evidence_supported | yes |
+| high_beta | momentum_positive | 20 | 313 | 5.65% | 6.18% | 66.77% | -67.82% | 1.84% | evidence_supported | yes |
+| high_beta | momentum_positive | 30 | 287 | 9.17% | 9.97% | 69.28% | -67.82% | 1.84% | evidence_supported | no |
+| high_beta | momentum_positive | 45 | 261 | 13.26% | 15.64% | 71.41% | -67.82% | 1.84% | evidence_supported | no |
+| high_beta | momentum_positive | 60 | 255 | 11.11% | 18.10% | 68.47% | -67.82% | 1.84% | evidence_supported | no |
+| high_beta | proxy_buy | 3 | 167 | 0.85% | 0.68% | 58.16% | -6.70% | 1.88% | sample_limited | no |
+| high_beta | proxy_buy | 5 | 165 | 1.44% | 1.72% | 64.70% | -6.74% | 1.88% | sample_limited | yes |
+| high_beta | proxy_buy | 10 | 160 | 2.99% | 3.29% | 72.32% | -7.95% | 1.88% | sample_limited | yes |
+| high_beta | proxy_buy | 20 | 150 | 5.76% | 6.40% | 77.16% | -10.82% | 1.88% | sample_limited | yes |
+| high_beta | proxy_buy | 30 | 142 | 2.84% | 2.25% | 58.33% | -11.18% | 1.37% | sample_limited | no |
+| high_beta | proxy_buy | 45 | 142 | 2.58% | 2.01% | 61.19% | -17.38% | 1.37% | sample_limited | no |
+| high_beta | proxy_buy | 60 | 142 | 1.06% | 3.19% | 65.75% | -22.94% | 1.37% | sample_limited | no |
+| high_beta | short_swing_weakening | 3 | 73 | -1.54% | 0.68% | 56.84% | -65.73% | 2.77% | sample_limited | no |
+| high_beta | short_swing_weakening | 5 | 73 | -1.49% | 0.31% | 48.32% | -67.59% | 2.77% | sample_limited | yes |
+| high_beta | short_swing_weakening | 10 | 70 | -1.06% | 0.85% | 61.15% | -67.85% | 2.77% | sample_limited | yes |
+| high_beta | short_swing_weakening | 20 | 69 | -4.61% | 0.74% | 51.22% | -67.85% | 2.77% | sample_limited | yes |
+| high_beta | short_swing_weakening | 30 | 67 | -2.96% | 4.62% | 48.65% | -67.85% | 2.77% | sample_limited | no |
+| high_beta | short_swing_weakening | 45 | 60 | 0.52% | 8.35% | 50.51% | -67.85% | 2.77% | sample_limited | no |
+| high_beta | short_swing_weakening | 60 | 56 | -1.93% | -3.19% | 46.37% | -67.85% | 2.77% | sample_limited | no |
+| qdii | all_days | 3 | 4635 | 0.10% | 0.05% | 51.11% | -18.71% | 1.54% | evidence_supported | no |
+| qdii | all_days | 5 | 4605 | 0.15% | 0.15% | 52.68% | -19.96% | 1.54% | evidence_supported | no |
+| qdii | all_days | 10 | 4530 | 0.38% | 0.16% | 53.20% | -19.96% | 1.54% | evidence_supported | yes |
+| qdii | all_days | 20 | 4380 | 0.77% | 0.59% | 55.25% | -24.07% | 1.54% | evidence_supported | yes |
+| qdii | all_days | 30 | 4230 | 1.52% | 1.50% | 58.51% | -24.07% | 1.54% | evidence_supported | yes |
+| qdii | all_days | 45 | 4005 | 2.54% | 1.30% | 58.25% | -25.95% | 1.54% | evidence_supported | yes |
+| qdii | all_days | 60 | 3780 | 3.16% | 0.86% | 57.43% | -26.48% | 1.54% | evidence_supported | no |
+| qdii | momentum_positive | 3 | 2406 | 0.11% | 0.10% | 51.61% | -18.71% | 1.45% | evidence_supported | no |
+| qdii | momentum_positive | 5 | 2397 | 0.23% | 0.16% | 52.68% | -19.96% | 1.45% | evidence_supported | no |
+| qdii | momentum_positive | 10 | 2362 | 0.76% | 0.41% | 56.32% | -19.96% | 1.45% | evidence_supported | yes |
+| qdii | momentum_positive | 20 | 2304 | 1.30% | 1.20% | 59.62% | -21.31% | 1.45% | evidence_supported | yes |
+| qdii | momentum_positive | 30 | 2182 | 1.78% | 2.01% | 61.17% | -23.21% | 1.45% | evidence_supported | yes |
+| qdii | momentum_positive | 45 | 2032 | 2.98% | 3.84% | 61.64% | -25.95% | 1.45% | evidence_supported | yes |
+| qdii | momentum_positive | 60 | 2018 | 4.01% | 3.45% | 61.63% | -26.48% | 1.45% | evidence_supported | no |
+| qdii | proxy_buy | 3 | 1387 | 0.21% | 0.32% | 53.09% | -10.31% | 1.36% | evidence_supported | no |
+| qdii | proxy_buy | 5 | 1380 | 0.41% | 0.25% | 52.88% | -11.05% | 1.36% | evidence_supported | no |
+| qdii | proxy_buy | 10 | 1349 | 1.03% | 0.98% | 57.13% | -12.23% | 1.36% | evidence_supported | yes |
+| qdii | proxy_buy | 20 | 1303 | 2.23% | 2.67% | 64.47% | -21.26% | 1.36% | evidence_supported | yes |
+| qdii | proxy_buy | 30 | 1249 | 2.92% | 3.70% | 65.77% | -23.21% | 1.36% | evidence_supported | yes |
+| qdii | proxy_buy | 45 | 1238 | 3.58% | 4.99% | 62.15% | -25.95% | 1.36% | evidence_supported | yes |
+| qdii | proxy_buy | 60 | 1238 | 3.35% | 2.89% | 59.07% | -25.95% | 1.36% | evidence_supported | no |
+| qdii | short_swing_weakening | 3 | 471 | 0.10% | -0.09% | 48.26% | -16.90% | 1.47% | evidence_supported | no |
+| qdii | short_swing_weakening | 5 | 464 | 0.16% | 0.05% | 52.31% | -16.90% | 1.47% | evidence_supported | no |
+| qdii | short_swing_weakening | 10 | 458 | 0.41% | -0.11% | 51.23% | -16.90% | 1.47% | evidence_supported | yes |
+| qdii | short_swing_weakening | 20 | 453 | 0.99% | 1.15% | 57.46% | -19.72% | 1.47% | evidence_supported | yes |
+| qdii | short_swing_weakening | 30 | 437 | 1.38% | 1.33% | 59.07% | -23.21% | 1.47% | evidence_supported | yes |
+| qdii | short_swing_weakening | 45 | 415 | 2.32% | 0.13% | 54.89% | -24.31% | 1.47% | evidence_supported | yes |
+| qdii | short_swing_weakening | 60 | 386 | 2.92% | 0.48% | 57.26% | -24.31% | 1.47% | evidence_supported | no |
+| sector | all_days | 3 | 5664 | -0.05% | -0.01% | 48.64% | -12.74% | 1.05% | evidence_supported | no |
+| sector | all_days | 5 | 5626 | -0.09% | -0.02% | 48.42% | -13.17% | 1.05% | evidence_supported | no |
+| sector | all_days | 10 | 5531 | -0.17% | -0.15% | 47.67% | -14.52% | 1.05% | evidence_supported | yes |
+| sector | all_days | 20 | 5341 | -0.33% | -0.48% | 45.16% | -17.50% | 1.05% | evidence_supported | yes |
+| sector | all_days | 30 | 5151 | -0.24% | -0.66% | 45.26% | -21.15% | 1.05% | evidence_supported | yes |
+| sector | all_days | 45 | 4866 | -0.16% | -0.69% | 46.25% | -21.15% | 1.05% | evidence_supported | no |
+| sector | all_days | 60 | 4581 | -0.16% | -1.39% | 44.67% | -27.00% | 1.05% | evidence_supported | no |
+| sector | momentum_positive | 3 | 2390 | -0.03% | -0.03% | 48.74% | -12.74% | 1.01% | evidence_supported | no |
+| sector | momentum_positive | 5 | 2386 | -0.02% | -0.04% | 48.84% | -13.11% | 1.01% | evidence_supported | no |
+| sector | momentum_positive | 10 | 2384 | -0.10% | -0.16% | 46.74% | -13.11% | 1.01% | evidence_supported | yes |
+| sector | momentum_positive | 20 | 2373 | -0.23% | -0.58% | 44.73% | -17.50% | 1.01% | evidence_supported | yes |
+| sector | momentum_positive | 30 | 2295 | -0.20% | -0.77% | 44.64% | -21.15% | 1.01% | evidence_supported | yes |
+| sector | momentum_positive | 45 | 2181 | -0.39% | -0.92% | 44.63% | -21.15% | 1.01% | evidence_supported | no |
+| sector | momentum_positive | 60 | 2129 | -0.60% | -1.50% | 41.97% | -27.00% | 1.01% | evidence_supported | no |
+| sector | proxy_buy | 3 | 1149 | 0.20% | 0.23% | 54.11% | -7.14% | 0.98% | evidence_supported | no |
+| sector | proxy_buy | 5 | 1149 | 0.25% | 0.24% | 53.69% | -7.98% | 0.98% | evidence_supported | no |
+| sector | proxy_buy | 10 | 1149 | 0.32% | 0.18% | 51.50% | -12.02% | 0.98% | evidence_supported | yes |
+| sector | proxy_buy | 20 | 1142 | 0.24% | -0.37% | 45.61% | -15.65% | 0.98% | evidence_supported | yes |
+| sector | proxy_buy | 30 | 1134 | -0.06% | -0.17% | 44.85% | -21.15% | 0.98% | evidence_supported | yes |
+| sector | proxy_buy | 45 | 1118 | -0.75% | -1.10% | 41.10% | -21.15% | 0.99% | evidence_supported | no |
+| sector | proxy_buy | 60 | 1106 | -1.70% | -2.57% | 36.78% | -27.00% | 0.99% | evidence_supported | no |
+| sector | short_swing_weakening | 3 | 567 | -0.19% | -0.20% | 44.92% | -11.46% | 1.07% | evidence_supported | no |
+| sector | short_swing_weakening | 5 | 563 | -0.26% | -0.12% | 47.40% | -11.46% | 1.07% | evidence_supported | no |
+| sector | short_swing_weakening | 10 | 554 | -0.45% | -0.46% | 43.13% | -13.35% | 1.07% | evidence_supported | yes |
+| sector | short_swing_weakening | 20 | 550 | -0.80% | -1.36% | 40.52% | -14.36% | 1.07% | evidence_supported | yes |
+| sector | short_swing_weakening | 30 | 528 | -0.77% | -1.19% | 40.86% | -19.71% | 1.07% | evidence_supported | yes |
+| sector | short_swing_weakening | 45 | 480 | -0.35% | -1.02% | 43.64% | -19.71% | 1.07% | evidence_supported | no |
+| sector | short_swing_weakening | 60 | 443 | -0.17% | -1.49% | 44.35% | -25.79% | 1.07% | evidence_supported | no |
+| theme | all_days | 3 | 5562 | 0.28% | 0.20% | 51.78% | -66.73% | 2.00% | evidence_supported | no |
+| theme | all_days | 5 | 5526 | 0.45% | 0.36% | 52.39% | -66.73% | 2.00% | evidence_supported | yes |
+| theme | all_days | 10 | 5436 | 0.97% | 0.77% | 53.70% | -67.18% | 2.00% | evidence_supported | yes |
+| theme | all_days | 20 | 5256 | 2.30% | 1.53% | 54.74% | -67.18% | 2.00% | evidence_supported | yes |
+| theme | all_days | 30 | 5076 | 4.03% | 2.58% | 57.27% | -64.70% | 2.00% | evidence_supported | no |
+| theme | all_days | 45 | 4806 | 6.37% | 4.25% | 59.49% | -60.38% | 2.00% | evidence_supported | no |
+| theme | all_days | 60 | 4536 | 8.49% | 5.71% | 62.65% | -60.38% | 2.00% | evidence_supported | no |
+| theme | momentum_positive | 3 | 2864 | 0.64% | 0.52% | 55.55% | -66.73% | 1.92% | evidence_supported | no |
+| theme | momentum_positive | 5 | 2856 | 1.10% | 1.09% | 58.65% | -66.73% | 1.92% | evidence_supported | yes |
+| theme | momentum_positive | 10 | 2815 | 2.33% | 1.99% | 60.57% | -67.18% | 1.92% | evidence_supported | yes |
+| theme | momentum_positive | 20 | 2729 | 4.08% | 3.82% | 60.74% | -67.18% | 1.92% | evidence_supported | yes |
+| theme | momentum_positive | 30 | 2610 | 5.07% | 4.81% | 60.55% | -64.70% | 1.92% | evidence_supported | no |
+| theme | momentum_positive | 45 | 2405 | 7.08% | 4.17% | 59.36% | -60.38% | 1.92% | evidence_supported | no |
+| theme | momentum_positive | 60 | 2369 | 9.52% | 5.06% | 63.65% | -60.38% | 1.92% | evidence_supported | no |
+| theme | proxy_buy | 3 | 1668 | 0.66% | 0.73% | 57.55% | -66.73% | 1.92% | evidence_supported | no |
+| theme | proxy_buy | 5 | 1664 | 1.10% | 1.36% | 60.73% | -66.73% | 1.92% | evidence_supported | yes |
+| theme | proxy_buy | 10 | 1650 | 2.27% | 2.25% | 61.48% | -67.18% | 1.92% | evidence_supported | yes |
+| theme | proxy_buy | 20 | 1579 | 4.16% | 4.62% | 62.47% | -67.18% | 1.92% | evidence_supported | yes |
+| theme | proxy_buy | 30 | 1504 | 5.68% | 4.74% | 62.07% | -64.70% | 1.92% | evidence_supported | no |
+| theme | proxy_buy | 45 | 1467 | 6.12% | 0.83% | 54.01% | -60.38% | 1.92% | evidence_supported | no |
+| theme | proxy_buy | 60 | 1463 | 6.83% | 1.95% | 57.37% | -60.38% | 1.92% | evidence_supported | no |
+| theme | short_swing_weakening | 3 | 551 | 0.28% | 0.03% | 50.32% | -10.42% | 2.01% | evidence_supported | no |
+| theme | short_swing_weakening | 5 | 551 | 0.38% | -0.18% | 49.89% | -10.42% | 2.01% | evidence_supported | yes |
+| theme | short_swing_weakening | 10 | 546 | 0.79% | 0.03% | 49.89% | -62.72% | 2.01% | evidence_supported | yes |
+| theme | short_swing_weakening | 20 | 533 | 1.65% | 0.11% | 49.75% | -63.22% | 2.01% | evidence_supported | yes |
+| theme | short_swing_weakening | 30 | 510 | 3.45% | 1.78% | 55.76% | -57.65% | 2.01% | evidence_supported | no |
+| theme | short_swing_weakening | 45 | 485 | 6.71% | 3.64% | 57.06% | -58.83% | 2.01% | evidence_supported | no |
+| theme | short_swing_weakening | 60 | 453 | 9.62% | 6.13% | 62.47% | -58.83% | 2.01% | evidence_supported | no |
+| unknown | all_days | 3 | 23319 | 0.27% | 0.29% | 54.88% | -67.80% | 1.49% | evidence_supported | no |
+| unknown | all_days | 5 | 23173 | 0.44% | 0.42% | 55.46% | -67.41% | 1.49% | evidence_supported | no |
+| unknown | all_days | 10 | 22808 | 0.94% | 0.83% | 57.21% | -67.25% | 1.49% | evidence_supported | no |
+| unknown | all_days | 20 | 22078 | 2.07% | 1.71% | 59.62% | -66.02% | 1.49% | evidence_supported | no |
+| unknown | all_days | 30 | 21348 | 3.47% | 2.58% | 63.08% | -60.67% | 1.49% | evidence_supported | no |
+| unknown | all_days | 45 | 20253 | 5.45% | 4.49% | 69.19% | -57.09% | 1.49% | evidence_supported | no |
+| unknown | all_days | 60 | 19158 | 7.35% | 6.14% | 73.74% | -60.05% | 1.49% | evidence_supported | no |
+| unknown | momentum_positive | 3 | 13040 | 0.35% | 0.36% | 55.94% | -67.80% | 1.45% | evidence_supported | no |
+| unknown | momentum_positive | 5 | 13010 | 0.59% | 0.59% | 56.63% | -67.41% | 1.45% | evidence_supported | no |
+| unknown | momentum_positive | 10 | 12869 | 1.36% | 1.17% | 58.76% | -67.25% | 1.45% | evidence_supported | no |
+| unknown | momentum_positive | 20 | 12464 | 2.53% | 2.10% | 60.37% | -66.02% | 1.45% | evidence_supported | no |
+| unknown | momentum_positive | 30 | 11887 | 3.63% | 3.03% | 62.79% | -60.67% | 1.45% | evidence_supported | no |
+| unknown | momentum_positive | 45 | 11313 | 5.36% | 4.19% | 67.14% | -57.09% | 1.45% | evidence_supported | no |
+| unknown | momentum_positive | 60 | 11094 | 7.20% | 5.52% | 71.83% | -60.05% | 1.45% | evidence_supported | no |
+| unknown | proxy_buy | 3 | 8154 | 0.39% | 0.41% | 55.93% | -67.80% | 1.46% | evidence_supported | no |
+| unknown | proxy_buy | 5 | 8133 | 0.61% | 0.66% | 56.72% | -67.41% | 1.46% | evidence_supported | no |
+| unknown | proxy_buy | 10 | 8048 | 1.23% | 1.00% | 57.44% | -67.25% | 1.46% | evidence_supported | no |
+| unknown | proxy_buy | 20 | 7728 | 2.54% | 2.43% | 59.46% | -66.02% | 1.46% | evidence_supported | no |
+| unknown | proxy_buy | 30 | 7359 | 3.71% | 3.23% | 59.94% | -60.67% | 1.46% | evidence_supported | no |
+| unknown | proxy_buy | 45 | 7230 | 4.73% | 3.48% | 61.52% | -57.09% | 1.46% | evidence_supported | no |
+| unknown | proxy_buy | 60 | 7090 | 5.97% | 4.31% | 66.72% | -60.05% | 1.46% | evidence_supported | no |
+| unknown | short_swing_weakening | 3 | 2235 | 0.15% | 0.09% | 51.92% | -17.34% | 1.51% | evidence_supported | no |
+| unknown | short_swing_weakening | 5 | 2222 | 0.32% | 0.25% | 53.58% | -67.14% | 1.51% | evidence_supported | no |
+| unknown | short_swing_weakening | 10 | 2190 | 0.74% | 0.82% | 55.75% | -66.08% | 1.51% | evidence_supported | no |
+| unknown | short_swing_weakening | 20 | 2118 | 1.74% | 1.02% | 57.50% | -53.37% | 1.51% | evidence_supported | no |
+| unknown | short_swing_weakening | 30 | 2051 | 2.94% | 1.79% | 59.92% | -59.85% | 1.51% | evidence_supported | no |
+| unknown | short_swing_weakening | 45 | 1945 | 5.60% | 4.40% | 69.40% | -53.37% | 1.51% | evidence_supported | no |
+| unknown | short_swing_weakening | 60 | 1835 | 7.88% | 7.00% | 74.94% | -58.82% | 1.51% | evidence_supported | no |
 
-## 重点判断
-- 宽基是否适合 20-60 天：当前最佳窗口约 60 日，avg_return=22.42%，signal_count=114，证据等级=sample_limited。
-- 行业是否更适合 10-30 天：当前最佳窗口约 20 日，avg_return=16.98%，signal_count=5，证据等级=hypothesis_only。
-- 主题是否更适合 5-20 天：当前最佳窗口约 60 日，avg_return=19.59%，signal_count=106，证据等级=sample_limited。
-- 强事件主题是否应 3-10 天：当前最佳窗口约 20 日，avg_return=2.71%，signal_count=69，证据等级=sample_limited。
+## 当前研究假设
+- broad_index：20-60 天仍是合理初始假设，需要继续看样本。
+- sector：10-30 天更贴合行业轮动，但不能单日降分就卖。
+- theme/high_beta：5-20 天更敏感，应优先做 REVIEW/REDUCE 候选研究。
+- commodity_resource：10-45 天，需结合商品价格和政策事件解释。
+- bond_cash：30-90 天，重点是稳定性和流动性。
+- qdii：10-45 天，需要额外溢价、汇率和海外交易日检查。
 
-## 当前持仓研究周期
-| code | name | etf_type | holding_profile | conclusion |
-| --- | --- | --- | --- | --- |
-| 512800 | 银行ETF | sector | 10-30 | 行业ETF关键词 |
-| 515880 | 证券公司ETF | sector | 10-30 | 行业ETF关键词 |
-| 515220 | 煤炭ETF | commodity_resource | 10-45 | 商品/周期资源关键词 |
-
-## 结论边界
-- evidence_supported：样本数量相对较多，可进入下一阶段模拟观察。
-- sample_limited：样本有限，只能作为提示。
-- hypothesis_only：样本不足或缺失，需要继续积累。
-- 本报告不直接改变 mid_trend / short_swing / BUY ranking。
+## 安全边界
+- 不改变 mid_trend / short_swing / BUY ranking。
+- 不修改 paper_positions.csv 或 paper_trades.csv。

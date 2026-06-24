@@ -1,0 +1,32 @@
+{
+  "generated_at": "2026-06-19 00:53:15",
+  "status": "completed",
+  "research_only": true,
+  "execution_enabled": false,
+  "capital_sensitivity_ready": true,
+  "cost_is_major_issue": true,
+  "turnover_is_major_issue": true,
+  "ranking_effectiveness_summary": "Top1-3 vs mid-rank average 10d return edge: 0.3574%",
+  "expand_pool_now": false,
+  "main_failure_reasons": [
+    "first fix backtest consistency/timing issues",
+    "cost drag is too high at 10k capital",
+    "13 symbols have meaningful negative contribution"
+  ],
+  "capital_10k_original_return": 0.01003,
+  "capital_100k_original_return": 0.070609,
+  "next_recommended_actions": [
+    "fix/confirm Phase 4A timing and return calculation before judging strategy edge",
+    "test lower turnover rules: minimum holding days, cooldown, wider ranking exit threshold",
+    "separate cost model by capital size and minimum trade amount",
+    "review negative-contribution symbols before expanding trade_pool",
+    "validate ranking effectiveness before adding complex exit rules"
+  ],
+  "required_before_expansion": [
+    "resolve unknown classifications",
+    "keep QDII observe-only until premium/fx/calendar checks exist",
+    "keep low-liquidity ETFs excluded",
+    "prove ranking edge on filtered 39 ETF pool",
+    "reduce turnover/cost drag"
+  ]
+}

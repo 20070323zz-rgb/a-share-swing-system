@@ -1,0 +1,17 @@
+execution_mode,horizon,avg_forward_return_proxy,volatility_proxy,positive_ratio,realism,note
+signal_confirmed_after_close_next_open,1,-0.0005069740639251841,0.016413659667447036,0.436308926780341,acceptable,next open execution after confirmed close
+signal_confirmed_after_close_next_open,3,0.0003351766853623536,0.02978080532264305,0.48244734202607825,acceptable,next open execution after confirmed close
+signal_confirmed_after_close_next_open,5,0.0012202210149161864,0.038887582392110764,0.49648946840521563,acceptable,next open execution after confirmed close
+signal_confirmed_after_close_next_open,10,0.0027850709717549423,0.052648084785281185,0.45536609829488467,acceptable,next open execution after confirmed close
+signal_confirmed_after_close_next_close,1,0.0004930259360748165,0.016413659667447036,0.46038114343029085,optimistic,next close execution after confirmed close
+signal_confirmed_after_close_next_close,3,0.0013351766853623543,0.02978080532264305,0.5055165496489469,optimistic,next close execution after confirmed close
+signal_confirmed_after_close_next_close,5,0.0022202210149161864,0.038887582392110764,0.5105315947843531,optimistic,next close execution after confirmed close
+signal_confirmed_after_close_next_close,10,0.003785070971754943,0.052648084785281185,0.4663991975927783,optimistic,next close execution after confirmed close
+previous_confirmed_close_pre_open_plan,1,-0.0015069740639251847,0.016413659667447036,0.4102306920762287,preferred,use previous confirmed close to plan next open
+previous_confirmed_close_pre_open_plan,3,-0.0006648233146376467,0.02978080532264305,0.46439317953861586,preferred,use previous confirmed close to plan next open
+previous_confirmed_close_pre_open_plan,5,0.00022022101491618584,0.038887582392110764,0.47843530591775324,preferred,use previous confirmed close to plan next open
+previous_confirmed_close_pre_open_plan,10,0.0017850709717549416,0.052648084785281185,0.4463390170511535,preferred,use previous confirmed close to plan next open
+next_close_current_v1,1,0.0004930259360748165,0.016413659667447036,0.46038114343029085,optimistic,Phase 4A-1 next_close assumption
+next_close_current_v1,3,0.0013351766853623543,0.02978080532264305,0.5055165496489469,optimistic,Phase 4A-1 next_close assumption
+next_close_current_v1,5,0.0022202210149161864,0.038887582392110764,0.5105315947843531,optimistic,Phase 4A-1 next_close assumption
+next_close_current_v1,10,0.003785070971754943,0.052648084785281185,0.4663991975927783,optimistic,Phase 4A-1 next_close assumption

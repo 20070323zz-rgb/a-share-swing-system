@@ -1,0 +1,37 @@
+{
+  "generated_at": "2026-06-24 23:01:30",
+  "source": "baostock",
+  "mode": "formal update",
+  "requested_start": "2026-06-24",
+  "requested_end": "2026-06-24",
+  "latest_local_date": "2026-06-24",
+  "stale_vs_requested": false,
+  "severity": "OK",
+  "status": "updated",
+  "reason": "Update appended 183 rows; existing local rows kept priority on duplicate dates.",
+  "exit_code": 0,
+  "universe_size": 183,
+  "processed_symbols": 183,
+  "estimated_api_calls": 183,
+  "actual_api_calls": 183,
+  "status_counts": {
+    "success_appended": 183
+  },
+  "added_rows": 183,
+  "failed_count": 0,
+  "failed_ratio": 0.0,
+  "pending_count": 0,
+  "pending_ratio": 0.0,
+  "up_to_date_count": 0,
+  "no_new_count": 0,
+  "dry_run_planned_count": 0,
+  "baostock_api_calls": 183,
+  "safety": {
+    "broker_api": false,
+    "real_order": false,
+    "real_account": false,
+    "credentials_saved": false,
+    "local_existing_rows_priority": true
+  },
+  "recommendation": "Daily update status is acceptable under current local-data rules."
+}

@@ -1,0 +1,31 @@
+{
+  "generated_at": "2026-06-23 23:44:00",
+  "status": "fixed",
+  "root_cause": "macOS LaunchServices started the .app shell process as x86_64 while the project virtualenv contains arm64 native wheels; pydantic_core failed with incompatible architecture.",
+  "changed_files": [
+    "scripts/run_app.sh",
+    "scripts/create_app_shortcut.sh",
+    "dist/量化研究控制台.app",
+    "~/Desktop/量化研究控制台.app"
+  ],
+  "project_app_open_ok": true,
+  "desktop_app_open_ok": true,
+  "browser_auto_open_ok": true,
+  "port_8000_status": "listening",
+  "fallback_command_available": true,
+  "service_url": "http://127.0.0.1:8000",
+  "safety": {
+    "broker_api": false,
+    "real_trade": false,
+    "real_account_read": false,
+    "paper_trades_modified_by_this_fix": false,
+    "paper_positions_modified_by_this_fix": false,
+    "paper_trade_engine_modified": false,
+    "token_or_password_exposed": false
+  },
+  "current_hashes": {
+    "data/paper_trades.csv": "3f0e777e5f7e441d2ab9349cf5ed8f58194f07b96dabc866fa5ed8187e072e31",
+    "data/paper_positions.csv": "998ad526c0218669b7e2b2eb64f7ad3952cd89be904f4b535fb3e2792217118f",
+    "src/paper_trade_engine.py": "b51f30fc60777d6cb53ccf8bacc460d05082e55fa5b94f2d35a8bc7abddb9d2d"
+  }
+}

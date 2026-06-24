@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import re
 
 import pandas as pd
 
@@ -95,6 +96,83 @@ def read_watchlist(path: Path) -> pd.DataFrame:
     df.loc[~df["preferred_strategy"].isin(["mid_trend", "short_swing", "both", "observe"]), "preferred_strategy"] = "both"
     df["note"] = df["note"].fillna("").astype(str)
     return df[WATCHLIST_COLUMNS].copy()
+
+
+def read_formal_data_universe(watchlist_path: Path, etf_daily_dir: Path, candidate_path: Path | None = None) -> pd.DataFrame:
+    """读取报告使用的数据宇宙：watchlist + 正式 data/etf_daily 文件。
+
+    这个函数只服务覆盖/健康报告，不改变交易池，不把新增 ETF 自动放入 trade_pool。
+    """
+    watchlist = read_watchlist(watchlist_path)
+    rows: dict[str, dict] = {}
+    for _, row in watchlist.iterrows():
+        code = str(row.get("code", "")).strip()
+        if code:
+            rows[code] = row.to_dict()
+
+    candidate_meta = _read_candidate_metadata(candidate_path)
+    for path in sorted(Path(etf_daily_dir).glob("*.csv")):
+        code = _code_from_formal_price_file(path)
+        if not code:
+            continue
+        if code in rows:
+            continue
+        meta = candidate_meta.get(code, {})
+        rows[code] = {
+            "code": code,
+            "name": meta.get("name", code),
+            "type": "ETF",
+            "source": meta.get("source", "data_etf_daily"),
+            "enabled": True,
+            "benchmark_code": meta.get("benchmark_code", "510300"),
+            "group": meta.get("group", "expanded_formal_data"),
+            "role": meta.get("role", "research_only"),
+            "preferred_strategy": meta.get("preferred_strategy", "observe"),
+            "note": meta.get("note", "正式数据目录自动纳入覆盖/健康检查，不代表进入交易池。"),
+        }
+
+    universe = pd.DataFrame(rows.values())
+    for col in WATCHLIST_COLUMNS:
+        if col not in universe.columns:
+            universe[col] = ""
+    universe["code"] = universe["code"].astype(str).str.strip()
+    universe["type"] = universe["type"].fillna("ETF").apply(normalize_security_type)
+    universe["role"] = universe["role"].fillna("research_only").astype(str).str.lower().str.strip()
+    universe.loc[~universe["role"].isin(["trade_pool", "observe_pool", "research_only", "data_update"]), "role"] = "research_only"
+    return universe[WATCHLIST_COLUMNS].sort_values("code").drop_duplicates("code", keep="first").reset_index(drop=True)
+
+
+def _read_candidate_metadata(candidate_path: Path | None) -> dict[str, dict]:
+    if candidate_path is None or not Path(candidate_path).exists():
+        return {}
+    try:
+        df = pd.read_csv(candidate_path, dtype=str).fillna("")
+    except Exception:
+        return {}
+    if "code" not in df.columns:
+        return {}
+    if "status" in df.columns:
+        df = df[df["status"].isin(["imported", "staging_only", "candidate", ""])]
+    meta: dict[str, dict] = {}
+    for _, row in df.iterrows():
+        code = str(row.get("code", "")).strip()
+        if not re.fullmatch(r"\d{6}", code):
+            continue
+        pool = str(row.get("pool", "research_only")).strip() or "research_only"
+        meta[code] = {
+            "name": str(row.get("name", code)).strip() or code,
+            "source": str(row.get("source", "etf_pool_expansion_candidates")).strip() or "etf_pool_expansion_candidates",
+            "group": str(row.get("group", "expanded")).strip() or "expanded",
+            "role": pool,
+            "preferred_strategy": str(row.get("strategy", "observe")).strip() or "observe",
+            "note": str(row.get("reason", "扩池候选正式数据")).strip(),
+        }
+    return meta
+
+
+def _code_from_formal_price_file(path: Path) -> str:
+    match = re.fullmatch(r"(?:sh|sz)_(\d{6})\.csv", path.name)
+    return match.group(1) if match else ""
 
 
 def is_enabled_value(value: object) -> bool:

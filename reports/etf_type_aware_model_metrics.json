@@ -1,0 +1,300 @@
+{
+  "generated_at": "2026-06-21 21:17:49",
+  "research_only": true,
+  "strategies": [
+    {
+      "strategy": "single_score_v2_baseline",
+      "initial_cash": 20000.0,
+      "total_return": 0.140303,
+      "annualized_return": 0.133016,
+      "max_drawdown": -0.046112,
+      "sharpe": 1.702487,
+      "calmar": 2.884595,
+      "win_rate": 0.617647,
+      "avg_win": 228.2955,
+      "avg_loss": -152.9347,
+      "profit_factor": 2.411389,
+      "trade_count": 68,
+      "turnover": 12.165363,
+      "avg_holding_days": 15.8824,
+      "final_equity": 22806.0541,
+      "cash_ratio_avg": 0.622557,
+      "exposure_avg": 0.377443,
+      "cost_total": 421.0438,
+      "commission_total": 340.0,
+      "slippage_total": 81.0438,
+      "min_commission_trigger_count": 68,
+      "avg_trade_value": 3972.7601,
+      "backtest_start_date": "2025-05-30",
+      "backtest_end_date": "2026-06-18",
+      "avg_exposure": 0.377443,
+      "risk_on_return": 0.16981164768470758,
+      "neutral_return": 0.02367349135019925,
+      "risk_off_return": -0.04776803463421353,
+      "beat_510300": false,
+      "beat_v2_baseline": false,
+      "ready_for_execution": false,
+      "ready_for_shadow": false,
+      "overfit_risk": "medium"
+    },
+    {
+      "strategy": "type_weighted_score_v2",
+      "initial_cash": 20000.0,
+      "total_return": 0.086734,
+      "annualized_return": 0.082329,
+      "max_drawdown": -0.083863,
+      "sharpe": 1.01884,
+      "calmar": 0.981716,
+      "win_rate": 0.558824,
+      "avg_win": 260.5475,
+      "avg_loss": -214.3814,
+      "profit_factor": 1.539438,
+      "trade_count": 68,
+      "turnover": 12.221035,
+      "avg_holding_days": 16.5882,
+      "final_equity": 21734.6821,
+      "cash_ratio_avg": 0.607787,
+      "exposure_avg": 0.392213,
+      "cost_total": 420.7592,
+      "commission_total": 340.0,
+      "slippage_total": 80.7592,
+      "min_commission_trigger_count": 68,
+      "avg_trade_value": 3958.7931,
+      "backtest_start_date": "2025-05-30",
+      "backtest_end_date": "2026-06-18",
+      "avg_exposure": 0.392213,
+      "risk_on_return": 0.12182393257556834,
+      "neutral_return": 0.005134121112768675,
+      "risk_off_return": -0.036227389864533666,
+      "beat_510300": false,
+      "beat_v2_baseline": false,
+      "ready_for_execution": false,
+      "ready_for_shadow": false,
+      "overfit_risk": "medium"
+    },
+    {
+      "strategy": "type_regime_combined_v2",
+      "initial_cash": 20000.0,
+      "total_return": 0.069543,
+      "annualized_return": 0.066038,
+      "max_drawdown": -0.103729,
+      "sharpe": 0.755807,
+      "calmar": 0.636637,
+      "win_rate": 0.586207,
+      "avg_win": 285.4052,
+      "avg_loss": -288.4187,
+      "profit_factor": 1.401865,
+      "trade_count": 58,
+      "turnover": 10.145287,
+      "avg_holding_days": 19.3103,
+      "final_equity": 21390.8641,
+      "cash_ratio_avg": 0.618089,
+      "exposure_avg": 0.381911,
+      "cost_total": 357.7356,
+      "commission_total": 290.0,
+      "slippage_total": 67.7356,
+      "min_commission_trigger_count": 58,
+      "avg_trade_value": 3892.8655,
+      "backtest_start_date": "2025-05-30",
+      "backtest_end_date": "2026-06-18",
+      "avg_exposure": 0.381911,
+      "risk_on_return": 0.09757228451188116,
+      "neutral_return": -0.014655099283258477,
+      "risk_off_return": -0.011044095684726973,
+      "beat_510300": false,
+      "beat_v2_baseline": false,
+      "ready_for_execution": false,
+      "ready_for_shadow": false,
+      "overfit_risk": "medium"
+    }
+  ],
+  "best_candidate": {
+    "strategy": "single_score_v2_baseline",
+    "initial_cash": 20000.0,
+    "total_return": 0.140303,
+    "annualized_return": 0.133016,
+    "max_drawdown": -0.046112,
+    "sharpe": 1.702487,
+    "calmar": 2.884595,
+    "win_rate": 0.617647,
+    "profit_factor": 2.411389,
+    "trade_count": 68,
+    "turnover": 12.165363,
+    "avg_holding_days": 15.8824,
+    "exposure_avg": 0.377443,
+    "avg_exposure": 0.377443,
+    "cost_total": 421.0438,
+    "risk_on_return": 0.16981164768470758,
+    "neutral_return": 0.02367349135019925,
+    "risk_off_return": -0.04776803463421353
+  },
+  "type_contribution": {
+    "by_strategy_type": [
+      {
+        "strategy": "single_score_v2_baseline",
+        "etf_type": "broad_index",
+        "pnl": 355.3001,
+        "trades": 4,
+        "avg_holding_days": 14.25
+      },
+      {
+        "strategy": "single_score_v2_baseline",
+        "etf_type": "commodity_resource",
+        "pnl": 2011.2495,
+        "trades": 14,
+        "avg_holding_days": 14.285714285714286
+      },
+      {
+        "strategy": "single_score_v2_baseline",
+        "etf_type": "high_beta",
+        "pnl": 261.3513,
+        "trades": 1,
+        "avg_holding_days": 16.0
+      },
+      {
+        "strategy": "single_score_v2_baseline",
+        "etf_type": "sector",
+        "pnl": -353.30769999999995,
+        "trades": 14,
+        "avg_holding_days": 18.071428571428573
+      },
+      {
+        "strategy": "single_score_v2_baseline",
+        "etf_type": "theme",
+        "pnl": 531.4608,
+        "trades": 1,
+        "avg_holding_days": 14.0
+      },
+      {
+        "strategy": "type_regime_combined_v2",
+        "etf_type": "bond_cash",
+        "pnl": 53.7793,
+        "trades": 1,
+        "avg_holding_days": 23.0
+      },
+      {
+        "strategy": "type_regime_combined_v2",
+        "etf_type": "commodity_resource",
+        "pnl": 1607.0911,
+        "trades": 14,
+        "avg_holding_days": 16.071428571428573
+      },
+      {
+        "strategy": "type_regime_combined_v2",
+        "etf_type": "high_beta",
+        "pnl": 317.95419999999996,
+        "trades": 2,
+        "avg_holding_days": 23.5
+      },
+      {
+        "strategy": "type_regime_combined_v2",
+        "etf_type": "sector",
+        "pnl": -226.94310000000002,
+        "trades": 3,
+        "avg_holding_days": 25.666666666666668
+      },
+      {
+        "strategy": "type_regime_combined_v2",
+        "etf_type": "theme",
+        "pnl": -361.0174000000002,
+        "trades": 9,
+        "avg_holding_days": 20.88888888888889
+      },
+      {
+        "strategy": "type_weighted_score_v2",
+        "etf_type": "commodity_resource",
+        "pnl": 1735.6956,
+        "trades": 16,
+        "avg_holding_days": 14.625
+      },
+      {
+        "strategy": "type_weighted_score_v2",
+        "etf_type": "high_beta",
+        "pnl": 29.740899999999982,
+        "trades": 2,
+        "avg_holding_days": 18.5
+      },
+      {
+        "strategy": "type_weighted_score_v2",
+        "etf_type": "sector",
+        "pnl": -712.1562999999999,
+        "trades": 11,
+        "avg_holding_days": 19.727272727272727
+      },
+      {
+        "strategy": "type_weighted_score_v2",
+        "etf_type": "theme",
+        "pnl": 681.402,
+        "trades": 5,
+        "avg_holding_days": 15.2
+      }
+    ]
+  },
+  "yearly": [
+    {
+      "year": 2025,
+      "strategy": "single_score_v2_baseline",
+      "initial_cash": 20000.0,
+      "return": 0.094315,
+      "max_drawdown": -0.034405,
+      "trade_count": 47,
+      "win_rate": 0.590909,
+      "turnover": 8.691648
+    },
+    {
+      "year": 2026,
+      "strategy": "single_score_v2_baseline",
+      "initial_cash": 20000.0,
+      "return": 0.025845,
+      "max_drawdown": -0.046112,
+      "trade_count": 21,
+      "win_rate": 0.666667,
+      "turnover": 3.592018
+    },
+    {
+      "year": 2025,
+      "strategy": "type_weighted_score_v2",
+      "initial_cash": 20000.0,
+      "return": 0.101943,
+      "max_drawdown": -0.048304,
+      "trade_count": 47,
+      "win_rate": 0.636364,
+      "turnover": 8.633785
+    },
+    {
+      "year": 2026,
+      "strategy": "type_weighted_score_v2",
+      "initial_cash": 20000.0,
+      "return": -0.023198,
+      "max_drawdown": -0.083863,
+      "trade_count": 21,
+      "win_rate": 0.416667,
+      "turnover": 3.655905
+    },
+    {
+      "year": 2025,
+      "strategy": "type_regime_combined_v2",
+      "initial_cash": 20000.0,
+      "return": 0.116609,
+      "max_drawdown": -0.058711,
+      "trade_count": 39,
+      "win_rate": 0.722222,
+      "turnover": 7.001391
+    },
+    {
+      "year": 2026,
+      "strategy": "type_regime_combined_v2",
+      "initial_cash": 20000.0,
+      "return": -0.051234,
+      "max_drawdown": -0.103729,
+      "trade_count": 19,
+      "win_rate": 0.363636,
+      "turnover": 3.202206
+    }
+  ],
+  "safety": {
+    "execution_enabled": false,
+    "broker_api": false,
+    "real_order": false
+  }
+}

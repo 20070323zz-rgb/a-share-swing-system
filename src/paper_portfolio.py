@@ -6,33 +6,56 @@
 
 from __future__ import annotations
 
+import os
 from pathlib import Path
 
 import pandas as pd
 
-from config import DATA_DIR, ETF_STOP_LOSS, INITIAL_CASH, LATEST_PAPER_PORTFOLIO_FILE, PAPER_POSITIONS_FILE, PAPER_TRADES_FILE, WATCHLIST_FILE
+from config import DATA_DIR, ETF_STOP_LOSS, INITIAL_CASH, LATEST_PAPER_PORTFOLIO_FILE, PAPER_EXECUTION_PRICE_TYPE, PAPER_POSITIONS_FILE, PAPER_TRADES_FILE, REPORT_DIR, WATCHLIST_FILE
 from data_loader import load_price_data, read_watchlist
+
+
+CLASSIFICATION_FILE = DATA_DIR / "etf_classification.csv"
+LEGACY_CLASSIFICATION_FILE = DATA_DIR / "etf_type_classification.csv"
 
 
 POSITION_RECORD_COLUMNS = [
     "symbol",
     "name",
+    "quantity",
+    "avg_cost",
+    "raw_cost",
+    "total_cost",
+    "commission_paid",
+    "entry_date",
+    "last_price",
+    "etf_type",
+    "risk_profile",
+    "holding_profile",
+    "group",
+    "max_holding_days",
+    "stop_loss_pct",
+    "classification_reason",
+    "stop_loss_price",
+    "sell_review_status",
+    "data_health_status",
+    "protection_period",
+    "updated_at",
     "strategy_source",
     "position_type",
-    "entry_date",
     "entry_price",
-    "quantity",
     "cost",
     "stop_loss",
     "reason",
 ]
 POSITION_CALC_COLUMNS = [
-    "current_price",
     "market_value",
     "unrealized_pnl",
-    "unrealized_return",
     "unrealized_pnl_pct",
     "holding_days",
+    "distance_to_stop_pct",
+    "current_price",
+    "unrealized_return",
     "risk_alert",
 ]
 POSITION_COLUMNS = POSITION_RECORD_COLUMNS + POSITION_CALC_COLUMNS
@@ -42,17 +65,31 @@ TRADE_COLUMNS = [
     "symbol",
     "name",
     "action",
+    "price",
+    "raw_close",
+    "execution_price",
+    "execution_price_type",
+    "quantity",
+    "gross_amount",
+    "commission",
+    "stamp_tax",
+    "transfer_fee",
+    "net_cash_change",
+    "slippage_rate",
+    "reason",
+    "source",
+    "created_at",
+    "holding_days",
+    "realized_pnl",
+    "realized_pnl_pct",
+    "cash_after_trade",
+    "position_value_after_trade",
+    "total_equity_after_trade",
     "strategy_source",
     "position_type",
-    "price",
-    "quantity",
     "amount",
-    "realized_pnl",
     "fee",
-    "execution_price_type",
     "order_type",
-    "source",
-    "reason",
     "simulated_cash",
     "position_value",
     "total_equity",
@@ -70,7 +107,8 @@ def update_paper_portfolio(
     positions = _read_positions()
     trades = _read_trades()
     enriched = _enrich_positions(positions, run_date, latest_prices, watchlist)
-    enriched.to_csv(PAPER_POSITIONS_FILE, index=False)
+    if os.environ.get("PAPER_PORTFOLIO_READONLY", "0") != "1":
+        enriched.to_csv(PAPER_POSITIONS_FILE, index=False)
     summary = _portfolio_summary(enriched, trades)
     _write_report(run_date, enriched, trades, summary)
     return LATEST_PAPER_PORTFOLIO_FILE, summary
@@ -174,7 +212,7 @@ def _ensure_templates() -> None:
 def _read_positions() -> pd.DataFrame:
     if not PAPER_POSITIONS_FILE.exists() or PAPER_POSITIONS_FILE.stat().st_size == 0:
         return pd.DataFrame(columns=POSITION_COLUMNS)
-    df = pd.read_csv(PAPER_POSITIONS_FILE, dtype={"symbol": str})
+    df = pd.read_csv(PAPER_POSITIONS_FILE, dtype={"symbol": str}, keep_default_na=False).fillna("")
     for col in POSITION_COLUMNS:
         if col not in df.columns:
             df[col] = ""
@@ -184,7 +222,7 @@ def _read_positions() -> pd.DataFrame:
 def _read_trades() -> pd.DataFrame:
     if not PAPER_TRADES_FILE.exists() or PAPER_TRADES_FILE.stat().st_size == 0:
         return pd.DataFrame(columns=TRADE_COLUMNS)
-    df = pd.read_csv(PAPER_TRADES_FILE, dtype={"symbol": str})
+    df = pd.read_csv(PAPER_TRADES_FILE, dtype={"symbol": str}, keep_default_na=False).fillna("")
     for col in TRADE_COLUMNS:
         if col not in df.columns:
             df[col] = ""
@@ -195,9 +233,36 @@ def _read_trades() -> pd.DataFrame:
     df["trade_date"] = df["date"].dt.strftime("%Y-%m-%d")
     df["symbol"] = df["symbol"].fillna("").astype(str).str.strip()
     df["action"] = df["action"].fillna("").astype(str).str.upper().str.strip()
-    for col in ["price", "quantity", "amount", "realized_pnl", "fee"]:
+    for col in [
+        "price",
+        "raw_close",
+        "execution_price",
+        "quantity",
+        "gross_amount",
+        "commission",
+        "stamp_tax",
+        "transfer_fee",
+        "net_cash_change",
+        "slippage_rate",
+        "amount",
+        "realized_pnl",
+        "realized_pnl_pct",
+        "fee",
+    ]:
         df[col] = pd.to_numeric(df[col], errors="coerce").fillna(0.0)
-    for col in ["simulated_cash", "position_value", "total_equity"]:
+    df["raw_close"] = df["raw_close"].where(df["raw_close"] > 0, df["price"])
+    df["execution_price"] = df["execution_price"].where(df["execution_price"] > 0, df["price"])
+    df["gross_amount"] = df["gross_amount"].where(df["gross_amount"] > 0, df["amount"])
+    df["commission"] = df["commission"].where(df["commission"] > 0, df["fee"])
+    df["amount"] = df["amount"].where(df["amount"] > 0, df["gross_amount"])
+    df["fee"] = df["fee"].where(df["fee"] > 0, df["commission"] + df["stamp_tax"] + df["transfer_fee"])
+    buy_mask = df["action"].eq("BUY")
+    sell_mask = df["action"].eq("SELL")
+    missing_net = df["net_cash_change"].eq(0) & df["gross_amount"].gt(0)
+    df.loc[buy_mask & missing_net, "net_cash_change"] = -(df.loc[buy_mask & missing_net, "gross_amount"] + df.loc[buy_mask & missing_net, "fee"])
+    df.loc[sell_mask & missing_net, "net_cash_change"] = df.loc[sell_mask & missing_net, "gross_amount"] - df.loc[sell_mask & missing_net, "fee"]
+    df["execution_price_type"] = df["execution_price_type"].where(df["execution_price_type"].astype(str).str.strip() != "", PAPER_EXECUTION_PRICE_TYPE)
+    for col in ["simulated_cash", "position_value", "total_equity", "cash_after_trade", "position_value_after_trade", "total_equity_after_trade"]:
         df[col] = pd.to_numeric(df[col], errors="coerce")
     return df.dropna(subset=["date"]).copy()
 
@@ -229,6 +294,8 @@ def _enrich_positions(
         return pd.DataFrame(columns=POSITION_COLUMNS)
     df = positions.copy()
     meta_map = watchlist.set_index(watchlist["code"].astype(str)).to_dict(orient="index") if not watchlist.empty else {}
+    classification_map = _read_classification_map()
+    sell_review = _read_sell_review_map()
     df["symbol"] = df["symbol"].astype(str).str.strip()
     df["name"] = df.apply(lambda row: row["name"] if str(row["name"]).strip() else meta_map.get(str(row["symbol"]), {}).get("name", row["symbol"]), axis=1)
     df["strategy_source"] = df["strategy_source"].fillna("").astype(str).str.strip()
@@ -236,19 +303,45 @@ def _enrich_positions(
     df["position_type"] = df["position_type"].fillna("").astype(str).str.strip()
     df.loc[~df["position_type"].isin(["core", "trial"]), "position_type"] = "core"
     df["entry_date"] = pd.to_datetime(df["entry_date"], errors="coerce").dt.strftime("%Y-%m-%d")
-    for col in ["entry_price", "quantity", "cost", "stop_loss"]:
+    for col in ["entry_price", "quantity", "cost", "stop_loss", "avg_cost", "raw_cost", "total_cost", "commission_paid", "last_price", "stop_loss_price", "max_holding_days"]:
         df[col] = pd.to_numeric(df[col], errors="coerce")
-    df["cost"] = df["cost"].fillna(df["entry_price"] * df["quantity"]).fillna(0.0)
-    df["current_price"] = df["symbol"].map(latest_prices).fillna(df["entry_price"]).fillna(0.0)
+    df["avg_cost"] = df["avg_cost"].fillna(df["entry_price"])
+    df["raw_cost"] = df["raw_cost"].fillna(df["cost"]).fillna(df["avg_cost"] * df["quantity"]).fillna(0.0)
+    df["total_cost"] = df["total_cost"].fillna(df["cost"]).fillna(df["raw_cost"] + df["commission_paid"].fillna(0.0)).fillna(0.0)
+    df["commission_paid"] = df["commission_paid"].fillna(0.0)
+    df["cost"] = df["cost"].fillna(df["total_cost"]).fillna(0.0)
+    df["entry_price"] = df["entry_price"].fillna(df["avg_cost"]).fillna(0.0)
+    df["stop_loss_price"] = df["stop_loss_price"].fillna(df["stop_loss"]).fillna(df["entry_price"] * (1 - ETF_STOP_LOSS))
+    df["stop_loss"] = df["stop_loss"].fillna(df["stop_loss_price"])
+    df["last_price"] = df["symbol"].map(latest_prices).fillna(df["last_price"]).fillna(df["entry_price"]).fillna(0.0)
+    df["current_price"] = df["last_price"]
     df["market_value"] = df["current_price"] * df["quantity"].fillna(0.0)
-    df["unrealized_pnl"] = df["market_value"] - df["cost"]
-    df["unrealized_return"] = df["unrealized_pnl"] / df["cost"].where(df["cost"] != 0)
+    df["unrealized_pnl"] = df["market_value"] - df["total_cost"]
+    df["unrealized_return"] = df["unrealized_pnl"] / df["total_cost"].where(df["total_cost"] != 0)
     df["unrealized_pnl_pct"] = df["unrealized_return"]
     run_ts = pd.to_datetime(run_date)
     entry_ts = pd.to_datetime(df["entry_date"], errors="coerce")
     df["holding_days"] = (run_ts - entry_ts).dt.days
+    df["distance_to_stop_pct"] = (df["current_price"] - df["stop_loss_price"]) / df["current_price"].where(df["current_price"] != 0)
+    df["protection_period"] = df["holding_days"].apply(lambda x: "yes" if pd.notna(x) and x <= 2 else "no")
+    df["updated_at"] = pd.Timestamp.now().strftime("%Y-%m-%d %H:%M:%S")
+    df["data_health_status"] = df["data_health_status"].where(~df["data_health_status"].apply(_is_blank), "N/A")
+    df["sell_review_status"] = df["sell_review_status"].where(~df["sell_review_status"].apply(_is_blank), "N/A")
+    if sell_review:
+        df["sell_review_status"] = df.apply(lambda row: sell_review.get(str(row["symbol"]), {}).get("sell_review_status", row["sell_review_status"]), axis=1)
+        df["data_health_status"] = df.apply(lambda row: sell_review.get(str(row["symbol"]), {}).get("data_health_status", row["data_health_status"]), axis=1)
+        df["protection_period"] = df.apply(lambda row: sell_review.get(str(row["symbol"]), {}).get("protection_period", row["protection_period"]), axis=1)
+    df["etf_type"] = df.apply(lambda row: classification_map.get(str(row["symbol"]), {}).get("etf_type", row.get("etf_type")) if _is_blank(row.get("etf_type")) or str(row.get("etf_type")) == "N/A" else row.get("etf_type"), axis=1)
+    df["risk_profile"] = df.apply(lambda row: classification_map.get(str(row["symbol"]), {}).get("risk_profile", row.get("risk_profile", "")), axis=1)
+    df["holding_profile"] = df.apply(lambda row: classification_map.get(str(row["symbol"]), {}).get("holding_profile", row.get("holding_profile", "")), axis=1)
+    df["classification_reason"] = df.apply(lambda row: classification_map.get(str(row["symbol"]), {}).get("classification_reason", row.get("classification_reason", "")), axis=1)
+    df["group"] = df.apply(lambda row: classification_map.get(str(row["symbol"]), {}).get("group", row.get("group", "N/A")) if _is_blank(row.get("group")) or str(row.get("group")) == "N/A" else row.get("group"), axis=1)
+    df["stop_loss_pct"] = df.apply(lambda row: _safe_float(classification_map.get(str(row["symbol"]), {}).get("stop_loss_pct", row.get("stop_loss_pct", "")), float("nan")), axis=1)
+    df["max_holding_days"] = df.apply(lambda row: _safe_float(classification_map.get(str(row["symbol"]), {}).get("max_holding_days", row.get("max_holding_days", "")), 30), axis=1)
+    df["etf_type"] = df["etf_type"].where(~df["etf_type"].apply(_is_blank), "N/A")
+    df["group"] = df["group"].where(~df["group"].apply(_is_blank), "N/A")
     df["risk_alert"] = df.apply(_position_risk_alert, axis=1)
-    for col in ["entry_price", "quantity", "cost", "stop_loss", "current_price", "market_value", "unrealized_pnl", "unrealized_return", "unrealized_pnl_pct", "holding_days"]:
+    for col in ["entry_price", "quantity", "cost", "stop_loss", "avg_cost", "raw_cost", "total_cost", "commission_paid", "last_price", "stop_loss_price", "current_price", "market_value", "unrealized_pnl", "unrealized_return", "unrealized_pnl_pct", "holding_days", "distance_to_stop_pct", "max_holding_days", "stop_loss_pct"]:
         df[col] = df[col].fillna("")
     return df[POSITION_COLUMNS].copy()
 
@@ -266,7 +359,7 @@ def _position_risk_alert(row: pd.Series) -> str:
 
 def _portfolio_summary(positions: pd.DataFrame, trades: pd.DataFrame) -> dict:
     market_value = _numeric_sum(positions, "market_value")
-    cost = _numeric_sum(positions, "cost")
+    cost = _numeric_sum(positions, "total_cost") or _numeric_sum(positions, "cost")
     realized_pnl = _realized_pnl_from_trades(trades)
     cash = _cash_from_trades(trades, fallback=INITIAL_CASH - cost)
     total_assets = cash + market_value
@@ -289,6 +382,7 @@ def _portfolio_summary(positions: pd.DataFrame, trades: pd.DataFrame) -> dict:
 
 
 def _write_report(run_date: str, positions: pd.DataFrame, trades: pd.DataFrame, summary: dict) -> None:
+    sell_review = _read_sell_review_map()
     lines = [
         f"# 模拟盘持仓报告 {run_date}",
         "",
@@ -312,14 +406,17 @@ def _write_report(run_date: str, positions: pd.DataFrame, trades: pd.DataFrame, 
     if positions.empty:
         lines.append("- 当前无模拟持仓。")
     else:
-        lines.append("| symbol | name | strategy_source | position_type | entry_date | entry_price | quantity | cost | current_price | market_value | unrealized_pnl | unrealized_return | holding_days | stop_loss | risk_alert |")
-        lines.append("| --- | --- | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |")
+        lines.append("| symbol | name | etf_type | type_risk | type_max_days | type_severity | type_review_note | strategy_source | entry_date | entry_price | quantity | cost | current_price | market_value | unrealized_pnl | unrealized_return | holding_days | stop_loss | distance_to_stop | risk_alert |")
+        lines.append("| --- | --- | --- | --- | ---: | --- | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |")
         for row in positions.itertuples():
+            review = sell_review.get(str(row.symbol), {})
             lines.append(
-                f"| {row.symbol} | {row.name} | {row.strategy_source} | {row.position_type} | {row.entry_date} | "
+                f"| {row.symbol} | {row.name} | {getattr(row, 'etf_type', '')} | {review.get('type_risk_level', getattr(row, 'risk_profile', ''))} | "
+                f"{_fmt(review.get('type_max_holding_days', getattr(row, 'max_holding_days', '')))} | {review.get('type_review_severity', '')} | "
+                f"{str(review.get('etf_type_review_note', '')).replace('|', '/')[:180]} | {row.strategy_source} | {row.entry_date} | "
                 f"{_fmt(row.entry_price)} | {_fmt(row.quantity)} | {_fmt(row.cost)} | {_fmt(row.current_price)} | "
                 f"{_fmt(row.market_value)} | {_fmt(row.unrealized_pnl)} | {_fmt(row.unrealized_return)} | "
-                f"{_fmt(row.holding_days)} | {_fmt(row.stop_loss)} | {str(row.risk_alert).replace('|', '/')} |"
+                f"{_fmt(row.holding_days)} | {_fmt(row.stop_loss)} | {_pct_fmt(getattr(row, 'distance_to_stop_pct', ''))} | {str(row.risk_alert).replace('|', '/')} |"
             )
     lines += [
         "",
@@ -356,18 +453,64 @@ def _numeric_sum(df: pd.DataFrame, col: str) -> float:
     return float(pd.to_numeric(df[col], errors="coerce").fillna(0.0).sum())
 
 
+def _safe_float(value: object, fallback: float = 0.0) -> float:
+    try:
+        numeric = float(value)
+    except (TypeError, ValueError):
+        return fallback
+    if pd.isna(numeric):
+        return fallback
+    return numeric
+
+
+def _read_sell_review_map() -> dict[str, dict]:
+    path = REPORT_DIR / "sell_signal_review.csv"
+    if not path.exists() or path.stat().st_size == 0:
+        return {}
+    try:
+        df = pd.read_csv(path, dtype=str, keep_default_na=False).fillna("")
+    except Exception:
+        return {}
+    if "symbol" not in df.columns:
+        return {}
+    return df.set_index(df["symbol"].astype(str)).to_dict(orient="index")
+
+
+def _read_classification_map() -> dict[str, dict]:
+    path = CLASSIFICATION_FILE if CLASSIFICATION_FILE.exists() else LEGACY_CLASSIFICATION_FILE
+    if not path.exists() or path.stat().st_size == 0:
+        return {}
+    try:
+        df = pd.read_csv(path, dtype=str, keep_default_na=False).fillna("")
+    except Exception:
+        return {}
+    if "symbol" not in df.columns and "code" in df.columns:
+        df["symbol"] = df["code"]
+    if "symbol" not in df.columns:
+        return {}
+    return df.set_index(df["symbol"].astype(str)).to_dict(orient="index")
+
+
+def _is_blank(value: object) -> bool:
+    text = str(value).strip().lower()
+    return text in {"", "nan", "none", "nat"}
+
+
 def _cash_from_trades(trades: pd.DataFrame, fallback: float) -> float:
     if trades.empty:
         return round(float(fallback), 2)
     cash = INITIAL_CASH
     for row in trades.sort_values("date").itertuples():
         action = str(row.action).upper()
-        amount = float(row.amount)
-        fee = float(row.fee)
-        if action == "BUY":
-            cash -= amount + fee
-        elif action == "SELL":
-            cash += amount - fee
+        net = _safe_float(getattr(row, "net_cash_change", 0.0))
+        if net == 0.0:
+            amount = float(row.amount)
+            fee = float(row.fee)
+            if action == "BUY":
+                net = -(amount + fee)
+            elif action == "SELL":
+                net = amount - fee
+        cash += net
     return round(cash, 2)
 
 
@@ -503,9 +646,11 @@ def _realized_pnl_from_trades(trades: pd.DataFrame) -> float:
     for row in trades.sort_values("date").itertuples():
         symbol = str(row.symbol)
         action = str(row.action).upper()
-        price = float(row.price)
+        price = _safe_float(getattr(row, "execution_price", 0.0)) or float(row.price)
         quantity = float(row.quantity)
-        fee = float(row.fee)
+        fee = _safe_float(getattr(row, "commission", 0.0)) + _safe_float(getattr(row, "stamp_tax", 0.0)) + _safe_float(getattr(row, "transfer_fee", 0.0))
+        if fee <= 0:
+            fee = float(row.fee)
         if not symbol or price <= 0 or quantity <= 0:
             continue
         state = inventory.setdefault(symbol, {"quantity": 0.0, "cost": 0.0})
@@ -532,6 +677,16 @@ def _fmt(value: object) -> str:
     if pd.isna(numeric):
         return ""
     return f"{numeric:.6f}".rstrip("0").rstrip(".")
+
+
+def _pct_fmt(value: object) -> str:
+    try:
+        numeric = float(value)
+    except (TypeError, ValueError):
+        return ""
+    if pd.isna(numeric):
+        return ""
+    return f"{numeric:.2%}"
 
 
 def _latest_prices_from_local(watchlist: pd.DataFrame) -> tuple[str, dict[str, float]]:

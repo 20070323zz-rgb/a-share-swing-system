@@ -1,0 +1,83 @@
+{
+  "version": "ranking_model_v2_candidates_phase4b",
+  "generated_at": "2026-06-18 20:28:15",
+  "status": "research_only",
+  "execution_enabled": false,
+  "candidates": [
+    {
+      "id": "A",
+      "name": "Momentum + Trend Confirmation",
+      "factors": [
+        "risk_adjusted_momentum",
+        "trend_slope_20",
+        "trend_slope_60",
+        "ma_distance_20",
+        "ma_distance_60"
+      ],
+      "market_fit": "risk-on and steady trend markets",
+      "overfit_risk": "MA and momentum windows can be over-tuned",
+      "expected_improvement": "reduce false Top3 from short-term bounce-only momentum",
+      "backtest_priority": "high"
+    },
+    {
+      "id": "B",
+      "name": "Relative Strength Rotation",
+      "factors": [
+        "relative_strength_vs_510300",
+        "relative_strength_vs_group",
+        "momentum_20d",
+        "momentum_60d"
+      ],
+      "market_fit": "cross-sectional rotation markets",
+      "overfit_risk": "group definitions and benchmark choice may dominate",
+      "expected_improvement": "separate broad market beta from ETF-specific strength",
+      "backtest_priority": "high"
+    },
+    {
+      "id": "C",
+      "name": "Low Turnover Stable Ranking",
+      "factors": [
+        "momentum_20d",
+        "momentum_60d",
+        "trend_confirm",
+        "ranking_persistence",
+        "turnover_penalty",
+        "cooldown_penalty"
+      ],
+      "market_fit": "range and noisy markets",
+      "overfit_risk": "persistence thresholds can overfit turnover",
+      "expected_improvement": "reduce minimum-commission drag and whipsaw",
+      "backtest_priority": "high"
+    },
+    {
+      "id": "D",
+      "name": "Risk-Aware Adjusted Ranking",
+      "factors": [
+        "base_score",
+        "volatility_penalty",
+        "drawdown_penalty",
+        "high_beta_penalty",
+        "group_concentration_penalty",
+        "data_health_penalty",
+        "liquidity_filter"
+      ],
+      "market_fit": "neutral/risk-control regimes",
+      "overfit_risk": "too many penalties can suppress alpha",
+      "expected_improvement": "improve drawdown and exposure profile",
+      "backtest_priority": "medium"
+    },
+    {
+      "id": "E",
+      "name": "Market-State Conditional Ranking",
+      "factors": [
+        "risk_on growth/high_beta",
+        "neutral balanced",
+        "risk_off broad_based/defensive/cash preference"
+      ],
+      "market_fit": "regime-switching markets",
+      "overfit_risk": "market_state misclassification can cause missed upside",
+      "expected_improvement": "reduce common beta drawdown and style mismatch",
+      "backtest_priority": "medium"
+    }
+  ]
+}

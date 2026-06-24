@@ -1,0 +1,543 @@
+{
+  "version": "phase2b_model_quality_review_v1",
+  "generated_at": "2026-06-15 14:36:55",
+  "holding_period": {
+    "quality": "MEDIUM",
+    "future_function_risk": "offline_forward_returns_only",
+    "forward_return_check": "close.shift(-window) is correct for offline evaluation; must never enter same-day signal generation",
+    "type_layering": true,
+    "has_insufficient_sample_flag": true,
+    "row_count": 5138,
+    "by_type": [
+      {
+        "etf_type": "bond_cash",
+        "total_sample_count": 49000,
+        "proxy_buy_sample_count": 8295,
+        "evidence_supported_rows": 116,
+        "sample_limited_rows": 134,
+        "hypothesis_rows": 86,
+        "best_window_days": 60,
+        "best_signal_type": "proxy_buy",
+        "best_avg_return": 0.0037455237456544,
+        "best_return_drawdown_ratio": 9.339838012164275,
+        "execution_ready": true
+      },
+      {
+        "etf_type": "broad_index",
+        "total_sample_count": 100284,
+        "proxy_buy_sample_count": 17651,
+        "evidence_supported_rows": 165,
+        "sample_limited_rows": 275,
+        "hypothesis_rows": 176,
+        "best_window_days": 60,
+        "best_signal_type": "proxy_buy",
+        "best_avg_return": 0.2237746987915361,
+        "best_return_drawdown_ratio": 1.7271930634880692,
+        "execution_ready": true
+      },
+      {
+        "etf_type": "commodity_resource",
+        "total_sample_count": 90440,
+        "proxy_buy_sample_count": 17804,
+        "evidence_supported_rows": 165,
+        "sample_limited_rows": 276,
+        "hypothesis_rows": 147,
+        "best_window_days": 45,
+        "best_signal_type": "proxy_buy",
+        "best_avg_return": 0.1511959040733169,
+        "best_return_drawdown_ratio": 1.2231420970389386,
+        "execution_ready": true
+      },
+      {
+        "etf_type": "high_beta",
+        "total_sample_count": 8217,
+        "proxy_buy_sample_count": 1068,
+        "evidence_supported_rows": 14,
+        "sample_limited_rows": 38,
+        "hypothesis_rows": 32,
+        "best_window_days": 20,
+        "best_signal_type": "proxy_buy",
+        "best_avg_return": 0.0308383057753445,
+        "best_return_drawdown_ratio": 0.3182701481547013,
+        "execution_ready": true
+      },
+      {
+        "etf_type": "qdii",
+        "total_sample_count": 58094,
+        "proxy_buy_sample_count": 9144,
+        "evidence_supported_rows": 111,
+        "sample_limited_rows": 204,
+        "hypothesis_rows": 105,
+        "best_window_days": 45,
+        "best_signal_type": "proxy_buy",
+        "best_avg_return": 0.1123335357940025,
+        "best_return_drawdown_ratio": 0.6470411661734543,
+        "execution_ready": true
+      },
+      {
+        "etf_type": "sector",
+        "total_sample_count": 64530,
+        "proxy_buy_sample_count": 7947,
+        "evidence_supported_rows": 126,
+        "sample_limited_rows": 225,
+        "hypothesis_rows": 181,
+        "best_window_days": 30,
+        "best_signal_type": "proxy_buy",
+        "best_avg_return": 0.0259651941009145,
+        "best_return_drawdown_ratio": 0.3016544608782711,
+        "execution_ready": true
+      },
+      {
+        "etf_type": "theme",
+        "total_sample_count": 69470,
+        "proxy_buy_sample_count": 10995,
+        "evidence_supported_rows": 130,
+        "sample_limited_rows": 248,
+        "hypothesis_rows": 126,
+        "best_window_days": 20,
+        "best_signal_type": "proxy_buy",
+        "best_avg_return": 0.0798173349173419,
+        "best_return_drawdown_ratio": 0.5597855755536247,
+        "execution_ready": true
+      },
+      {
+        "etf_type": "unknown",
+        "total_sample_count": 306152,
+        "proxy_buy_sample_count": 53742,
+        "evidence_supported_rows": 570,
+        "sample_limited_rows": 970,
+        "hypothesis_rows": 518,
+        "best_window_days": 60,
+        "best_signal_type": "proxy_buy",
+        "best_avg_return": 0.2711670162494455,
+        "best_return_drawdown_ratio": 1.8318838431073656,
+        "execution_ready": true
+      }
+    ],
+    "execution_ready_types": [
+      "bond_cash",
+      "broad_index",
+      "commodity_resource",
+      "high_beta",
+      "qdii",
+      "sector",
+      "theme",
+      "unknown"
+    ],
+    "recommendation": "可将 etf_type 对应 max_holding_days 作为研究性配置候选，但建议先以 dashboard/复核提示展示，不直接强制卖出。",
+    "uncertainty": "新增 ETF 历史较短，proxy_buy 信号不是正式 BUY ranking 历史，样本存在截面扩容后的幸存者偏差。"
+  },
+  "exit_rule": {
+    "quality": "LOW_MEDIUM",
+    "future_function_risk": "offline_forward_returns_only",
+    "reproducible": true,
+    "costs_slippage_included": false,
+    "type_layering": "etf_type and type_stop_loss_proxy are included",
+    "row_count": 1466,
+    "rule_summary": [
+      {
+        "rule": "short_swing_buy_to_sell_proxy",
+        "event_count": 272,
+        "avg_forward_return_10d": -0.015162572413721633,
+        "avg_forward_return_20d": -0.005075756733399567,
+        "max_drawdown_after_exit": -0.4859862506610259,
+        "false_exit_count": 61.0,
+        "late_exit_count": 107.0
+      },
+      {
+        "rule": "rank_score_decline_2d_proxy",
+        "event_count": 13865,
+        "avg_forward_return_10d": 0.007467935542544801,
+        "avg_forward_return_20d": 0.016488937764831214,
+        "max_drawdown_after_exit": -0.6784698071451154,
+        "false_exit_count": 3574.0,
+        "late_exit_count": 2641.0
+      },
+      {
+        "rule": "rank_score_decline_3d_proxy",
+        "event_count": 6508,
+        "avg_forward_return_10d": 0.00782903488439899,
+        "avg_forward_return_20d": 0.01813526398501818,
+        "max_drawdown_after_exit": -0.5604638321369408,
+        "false_exit_count": 1670.0,
+        "late_exit_count": 1134.0
+      },
+      {
+        "rule": "rank_score_below_70_proxy",
+        "event_count": 34142,
+        "avg_forward_return_10d": 0.00784366425504892,
+        "avg_forward_return_20d": 0.019301227924145455,
+        "max_drawdown_after_exit": -0.5672451193058567,
+        "false_exit_count": 8063.0,
+        "late_exit_count": 5500.0
+      },
+      {
+        "rule": "short_swing_buy_to_watch_proxy",
+        "event_count": 2704,
+        "avg_forward_return_10d": 0.01014069755366265,
+        "avg_forward_return_20d": 0.026209079847953152,
+        "max_drawdown_after_exit": -0.6781645569620254,
+        "false_exit_count": 871.0,
+        "late_exit_count": 579.0
+      },
+      {
+        "rule": "volume_heat_decay_proxy",
+        "event_count": 4526,
+        "avg_forward_return_10d": 0.01033854331633832,
+        "avg_forward_return_20d": 0.018512678590657295,
+        "max_drawdown_after_exit": -0.5504103165298945,
+        "false_exit_count": 1184.0,
+        "late_exit_count": 756.0
+      },
+      {
+        "rule": "type_stop_loss_proxy",
+        "event_count": 10844,
+        "avg_forward_return_10d": 0.014660858585023964,
+        "avg_forward_return_20d": 0.03293216995049178,
+        "max_drawdown_after_exit": -0.5607101947308133,
+        "false_exit_count": 3323.0,
+        "late_exit_count": 2305.0
+      },
+      {
+        "rule": "top_decile_drop_proxy",
+        "event_count": 2229,
+        "avg_forward_return_10d": 0.016694602972520917,
+        "avg_forward_return_20d": 0.029032562337631167,
+        "max_drawdown_after_exit": -0.5648015303682449,
+        "false_exit_count": 680.0,
+        "late_exit_count": 294.0
+      },
+      {
+        "rule": "all_rules",
+        "event_count": 0,
+        "avg_forward_return_10d": null,
+        "avg_forward_return_20d": null,
+        "max_drawdown_after_exit": null,
+        "false_exit_count": 0.0,
+        "late_exit_count": 0.0
+      }
+    ],
+    "most_robust_rules": [
+      {
+        "rule": "short_swing_buy_to_sell_proxy",
+        "event_count": 272,
+        "avg_forward_return_10d": -0.015162572413721633,
+        "avg_forward_return_20d": -0.005075756733399567,
+        "max_drawdown_after_exit": -0.4859862506610259,
+        "false_exit_count": 61.0,
+        "late_exit_count": 107.0
+      }
+    ],
+    "watch_rules": [],
+    "not_recommended_rules": [
+      {
+        "rule": "rank_score_decline_2d_proxy",
+        "event_count": 13865,
+        "avg_forward_return_10d": 0.007467935542544801,
+        "avg_forward_return_20d": 0.016488937764831214,
+        "max_drawdown_after_exit": -0.6784698071451154,
+        "false_exit_count": 3574.0,
+        "late_exit_count": 2641.0
+      },
+      {
+        "rule": "rank_score_decline_3d_proxy",
+        "event_count": 6508,
+        "avg_forward_return_10d": 0.00782903488439899,
+        "avg_forward_return_20d": 0.01813526398501818,
+        "max_drawdown_after_exit": -0.5604638321369408,
+        "false_exit_count": 1670.0,
+        "late_exit_count": 1134.0
+      },
+      {
+        "rule": "rank_score_below_70_proxy",
+        "event_count": 34142,
+        "avg_forward_return_10d": 0.00784366425504892,
+        "avg_forward_return_20d": 0.019301227924145455,
+        "max_drawdown_after_exit": -0.5672451193058567,
+        "false_exit_count": 8063.0,
+        "late_exit_count": 5500.0
+      },
+      {
+        "rule": "short_swing_buy_to_watch_proxy",
+        "event_count": 2704,
+        "avg_forward_return_10d": 0.01014069755366265,
+        "avg_forward_return_20d": 0.026209079847953152,
+        "max_drawdown_after_exit": -0.6781645569620254,
+        "false_exit_count": 871.0,
+        "late_exit_count": 579.0
+      },
+      {
+        "rule": "volume_heat_decay_proxy",
+        "event_count": 4526,
+        "avg_forward_return_10d": 0.01033854331633832,
+        "avg_forward_return_20d": 0.018512678590657295,
+        "max_drawdown_after_exit": -0.5504103165298945,
+        "false_exit_count": 1184.0,
+        "late_exit_count": 756.0
+      },
+      {
+        "rule": "type_stop_loss_proxy",
+        "event_count": 10844,
+        "avg_forward_return_10d": 0.014660858585023964,
+        "avg_forward_return_20d": 0.03293216995049178,
+        "max_drawdown_after_exit": -0.5607101947308133,
+        "false_exit_count": 3323.0,
+        "late_exit_count": 2305.0
+      },
+      {
+        "rule": "top_decile_drop_proxy",
+        "event_count": 2229,
+        "avg_forward_return_10d": 0.016694602972520917,
+        "avg_forward_return_20d": 0.029032562337631167,
+        "max_drawdown_after_exit": -0.5648015303682449,
+        "false_exit_count": 680.0,
+        "late_exit_count": 294.0
+      },
+      {
+        "rule": "all_rules",
+        "event_count": 0,
+        "avg_forward_return_10d": null,
+        "avg_forward_return_20d": null,
+        "max_drawdown_after_exit": null,
+        "false_exit_count": 0.0,
+        "late_exit_count": 0.0
+      }
+    ],
+    "reduce_2d_sell_supported": false,
+    "short_swing_sell_supported": "insufficient as direct SELL; usable as REVIEW/SELL candidate filter only",
+    "rank_decline_supported": "rank_score_decline_3d_proxy is more stable than 2d, but still proxy-only",
+    "stop_loss_assessment": "type_stop_loss_proxy is useful for hard-risk research, but thresholds need cost-aware replay before execution",
+    "recommendation": "暂不建议修改 paper_trade_engine；可先把 short_swing SELL、类型化止损、连续降分作为 sell_signal_review 的复核输入。"
+  },
+  "parameter_sweep": {
+    "quality": "LOW_MEDIUM",
+    "comparable_max_holdings": "partially; same proxy universe but no costs, lot size, cash, position caps, or execution constraints",
+    "lot_size_included": false,
+    "costs_slippage_included": false,
+    "position_caps_included": false,
+    "row_count": 48,
+    "by_max_holdings": [
+      {
+        "max_holdings": 1,
+        "configs": 12,
+        "sample_days": 260,
+        "best_sharpe": 1.4090866670490754,
+        "median_sharpe": -0.3185113199136313,
+        "best_max_drawdown": -0.2661757822838468,
+        "median_turnover": 0.3243243243243243
+      },
+      {
+        "max_holdings": 3,
+        "configs": 12,
+        "sample_days": 260,
+        "best_sharpe": 1.1818609268191012,
+        "median_sharpe": 0.40509337428814113,
+        "best_max_drawdown": -0.2504313026195168,
+        "median_turnover": 0.3642857142857142
+      },
+      {
+        "max_holdings": 5,
+        "configs": 12,
+        "sample_days": 260,
+        "best_sharpe": 1.5239347445635063,
+        "median_sharpe": 0.7467115328438918,
+        "best_max_drawdown": -0.2251205943585282,
+        "median_turnover": 0.33825151682294535
+      },
+      {
+        "max_holdings": 8,
+        "configs": 12,
+        "sample_days": 260,
+        "best_sharpe": 1.431003418713113,
+        "median_sharpe": 1.1537336080553742,
+        "best_max_drawdown": -0.1820462914748711,
+        "median_turnover": 0.2984810127667271
+      }
+    ],
+    "best_config": {
+      "momentum_window": "10",
+      "volatility_window": "20",
+      "max_holdings": 5,
+      "sample_days": 260,
+      "annual_return": 0.509232251913526,
+      "annual_volatility": 0.3341562056578629,
+      "max_drawdown": -0.249522591242537,
+      "sharpe_proxy": 1.5239347445635063,
+      "turnover_proxy": 0.425874854446283,
+      "evidence_level": "sample_limited",
+      "suggestion": "candidate_for_deeper_backtest",
+      "insufficient_reason": ""
+    },
+    "keep_max_holdings_3": true,
+    "future_5_conditions": [
+      "加入 100 份交易单位、佣金、滑点、现金约束后仍优于 3 只",
+      "expanded ETF 数据覆盖超过至少 12 个月",
+      "同 group 集中度和流动性约束通过",
+      "dashboard/weekly review 连续观察稳定"
+    ],
+    "market_state_dynamic_holdings": "不建议现在自动切换；可先在报告中展示建议持仓数量。",
+    "recommendation": "第一阶段继续最多 3 只；5 只只作为后续成本约束回测候选。"
+  },
+  "market_state": {
+    "quality": "MEDIUM",
+    "market_state": "market_neutral",
+    "market_score": 51.72,
+    "component_count": 10,
+    "score_dispersion": 10.670477652538958,
+    "single_indicator_dependency": false,
+    "consistent_with_broad_trend": "mostly; 510300/510050 are healthier than small/mid broad proxies",
+    "consistent_with_buy_count": "buy_count=6, risk_alert_count=4",
+    "explains_portfolio_risk": "market_neutral explains why 28% position is within neutral range, but does not solve no-broad-index exposure",
+    "position_range": [
+      "0.2",
+      "0.4"
+    ],
+    "execution_integration": "display_only_first",
+    "suggested_config": "PAPER_USE_MARKET_STATE_POSITION = False",
+    "recommendation": "先只展示和用于人工复核；若接入目标仓位，必须新增默认关闭配置开关。"
+  },
+  "etf_classification": {
+    "quality": "MEDIUM",
+    "row_count": 185,
+    "unknown_count": 75,
+    "unknown_ratio": 0.40540540540540543,
+    "type_counts": {
+      "unknown": 75,
+      "broad_index": 22,
+      "commodity_resource": 21,
+      "sector": 19,
+      "theme": 18,
+      "qdii": 15,
+      "bond_cash": 12,
+      "high_beta": 3
+    },
+    "current_positions": [
+      {
+        "symbol": "512800",
+        "name": "银行ETF",
+        "etf_type": "sector",
+        "risk_profile": "sector_beta",
+        "holding_profile": "10-30",
+        "exit_sensitivity": "medium"
+      },
+      {
+        "symbol": "515220",
+        "name": "煤炭ETF",
+        "etf_type": "commodity_resource",
+        "risk_profile": "commodity_cycle",
+        "holding_profile": "10-45",
+        "exit_sensitivity": "medium_high"
+      },
+      {
+        "symbol": "515880",
+        "name": "证券公司ETF",
+        "etf_type": "high_beta",
+        "risk_profile": "high_beta",
+        "holding_profile": "5-20",
+        "exit_sensitivity": "high"
+      }
+    ],
+    "current_positions_reasonable": true,
+    "recommend_etf_type_for_stop_and_holding": true,
+    "recommendation": "etf_type 适合先接入止损线和最大持有期的配置层，但执行层默认仍应人工/复核优先。"
+  },
+  "portfolio_exposure": {
+    "quality": "MEDIUM",
+    "overall_status": "CAUTION",
+    "warnings": [
+      "组合暂无宽基 ETF，波动可能更依赖行业/主题轮动。",
+      "515880 data_health=提醒，需保留复核标签。"
+    ],
+    "missing_broad_index": true,
+    "financial_or_high_beta_exposure_high": true,
+    "recommend_buy_downgrade": "display/review first; do not force trade yet",
+    "recommend_portfolio_balance_bonus": "candidate after more paper observations",
+    "recommend_same_group_limit": "watchlist-level candidate; do not force immediate execution",
+    "recommendation": "适合作为买入降权和组合平衡提示，不建议直接阻断 paper_trade_engine。"
+  },
+  "source_code_audit": {
+    "holding_period": {
+      "exists": true,
+      "uses_future_shift": true,
+      "writes_paper_trades": false,
+      "writes_paper_positions": true,
+      "broker_api_reference": false,
+      "assessment": "uses future returns only for offline research; acceptable if not imported by execution layer"
+    },
+    "exit_rule": {
+      "exists": true,
+      "uses_future_shift": true,
+      "writes_paper_trades": false,
+      "writes_paper_positions": false,
+      "broker_api_reference": false,
+      "assessment": "uses future returns only for offline research; acceptable if not imported by execution layer"
+    },
+    "parameter_sweep": {
+      "exists": true,
+      "uses_future_shift": true,
+      "writes_paper_trades": false,
+      "writes_paper_positions": false,
+      "broker_api_reference": false,
+      "assessment": "uses future returns only for offline research; acceptable if not imported by execution layer"
+    },
+    "market_state": {
+      "exists": true,
+      "uses_future_shift": false,
+      "writes_paper_trades": false,
+      "writes_paper_positions": true,
+      "broker_api_reference": true,
+      "assessment": "no direct execution-layer mutation found"
+    },
+    "etf_classifier": {
+      "exists": true,
+      "uses_future_shift": false,
+      "writes_paper_trades": false,
+      "writes_paper_positions": true,
+      "broker_api_reference": true,
+      "assessment": "no direct execution-layer mutation found"
+    },
+    "portfolio_exposure": {
+      "exists": true,
+      "uses_future_shift": false,
+      "writes_paper_trades": false,
+      "writes_paper_positions": true,
+      "broker_api_reference": true,
+      "assessment": "no direct execution-layer mutation found"
+    }
+  },
+  "integration_recommendations": {
+    "immediate": [
+      "etf_type -> dashboard/sell_review 中展示研究性止损线与 max_holding_days",
+      "etf_type -> paper_trade_engine 配置层候选：默认不强制，先生成 plan/review 字段",
+      "dashboard 展示 market_state 建议仓位区间",
+      "portfolio_exposure 展示组合集中度、缺少宽基、data_health caution，不强制交易"
+    ],
+    "observe": [
+      "market_state -> 目标仓位：新增 PAPER_USE_MARKET_STATE_POSITION = False，默认关闭",
+      "portfolio_balance_bonus：只在 BUY ranking 分数接近时作为小权重辅助",
+      "high_beta 自动降权：需要模拟样本验证后再接入",
+      "同 group 重复买入限制：先做提示，再做软限制"
+    ],
+    "not_recommended": [
+      "新闻情绪直接作为 BUY 主因子",
+      "复杂机器学习模型替代 mid_trend / short_swing",
+      "动态 max_holdings 自动切换",
+      "未经成本回测的部分减仓/连续 2 日直接卖出",
+      "market_state 自动修改真实或模拟持仓"
+    ],
+    "config_candidates": [
+      "PAPER_USE_MARKET_STATE_POSITION = False",
+      "PAPER_USE_ETF_TYPE_RISK_PROFILE = False",
+      "PAPER_USE_PORTFOLIO_BALANCE_BONUS = False",
+      "PAPER_LIMIT_SAME_GROUP_BUYS = False"
+    ]
+  },
+  "safety_boundary": {
+    "broker_api": false,
+    "real_order": false,
+    "real_account": false,
+    "paper_trades_modified": false,
+    "paper_positions_modified": false,
+    "strategy_rules_changed": false
+  }
+}

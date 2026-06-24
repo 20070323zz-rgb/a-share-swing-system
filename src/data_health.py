@@ -9,8 +9,8 @@ from pathlib import Path
 
 import pandas as pd
 
-from config import DATA_DIR, DATA_HEALTH_REPORT_FILE, LATEST_DATA_HEALTH_FILE, WATCHLIST_FILE
-from data_loader import COLUMN_MAP, REQUIRED_PRICE_COLUMNS, find_price_file, read_watchlist
+from config import DATA_DIR, DATA_HEALTH_REPORT_FILE, ETF_DAILY_DIR, LATEST_DATA_HEALTH_FILE, PROJECT_ROOT, WATCHLIST_FILE
+from data_loader import COLUMN_MAP, REQUIRED_PRICE_COLUMNS, find_price_file, read_formal_data_universe
 
 
 STALE_DAYS_STRICT = 10
@@ -21,7 +21,7 @@ RELAXED_GROUPS = {"QDII观察", "债券货币观察", "个股观察"}
 def write_data_health_report(watchlist: pd.DataFrame | None = None) -> tuple[Path, dict]:
     """生成数据健康报告，并返回摘要供 latest_brief 使用。"""
     if watchlist is None:
-        watchlist = read_watchlist(WATCHLIST_FILE)
+        watchlist = read_formal_data_universe(WATCHLIST_FILE, ETF_DAILY_DIR, PROJECT_ROOT / "data" / "etf_pool_expansion_candidates.csv")
     rows = build_health_rows(watchlist)
     df = pd.DataFrame(rows)
     summary = summarize_health(df)

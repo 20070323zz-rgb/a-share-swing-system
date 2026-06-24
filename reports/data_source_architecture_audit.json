@@ -1,0 +1,466 @@
+{
+  "generated_at": "2026-06-21 20:14:02",
+  "phase": "Phase 4C-Data",
+  "research_only": true,
+  "universe": {
+    "etf_daily_file_count": 183,
+    "backtest_trade_pool_rows": 39,
+    "watchlist_rows": 78,
+    "expansion_candidate_rows": 94,
+    "latest_data_date": "2026-06-18"
+  },
+  "source_status": {
+    "generated_at": "2026-06-18 20:43:03",
+    "source_priority": [
+      "baostock",
+      "jqdata",
+      "tushare"
+    ],
+    "requested_source": "auto",
+    "primary_source": "baostock",
+    "fallback_source": "jqdata",
+    "actual_source_used": "baostock",
+    "fallback_triggered": false,
+    "jqdata_status": "SKIPPED",
+    "jqdata_message": "",
+    "baostock_status": "UPDATED",
+    "baostock_message": "Update appended 183 rows; existing local rows kept priority on duplicate dates.",
+    "latest_data_date": "2026-06-18",
+    "new_rows": 183,
+    "failed_count": 0,
+    "failed_symbols": [],
+    "pending_count": 0,
+    "pending_symbols": [],
+    "updated_symbols": [],
+    "skipped_symbols": [],
+    "unresolved_symbols": [],
+    "validate_only": false,
+    "exit_code": 0,
+    "safety": {
+      "broker_api": false,
+      "real_order": false,
+      "real_account": false,
+      "credentials_logged": false,
+      "credentials_saved_to_code": false,
+      "staging_first": true,
+      "local_existing_rows_priority": true
+    }
+  },
+  "update_status": {
+    "generated_at": "2026-06-18 20:43:03",
+    "source": "baostock",
+    "mode": "formal update",
+    "requested_start": "2026-05-28",
+    "requested_end": "2026-06-18",
+    "latest_local_date": "2026-06-18",
+    "stale_vs_requested": false,
+    "severity": "OK",
+    "status": "updated",
+    "reason": "Update appended 183 rows; existing local rows kept priority on duplicate dates.",
+    "exit_code": 0,
+    "universe_size": 183,
+    "processed_symbols": 183,
+    "estimated_api_calls": 183,
+    "actual_api_calls": 183,
+    "status_counts": {
+      "success_appended": 183
+    },
+    "added_rows": 183,
+    "failed_count": 0,
+    "failed_ratio": 0.0,
+    "pending_count": 0,
+    "pending_ratio": 0.0,
+    "up_to_date_count": 0,
+    "no_new_count": 0,
+    "dry_run_planned_count": 0,
+    "baostock_api_calls": 183,
+    "safety": {
+      "broker_api": false,
+      "real_order": false,
+      "real_account": false,
+      "credentials_saved": false,
+      "local_existing_rows_priority": true
+    },
+    "recommendation": "Daily update status is acceptable under current local-data rules.",
+    "stdout_tail": "login success!\nlogout success!\nlogin success!\nlogout success!\nlogin success!\nlogout success!\nlogin success!\nlogout success!\nETF 数据更新完成：新增/部分新增 183 个，已最新 0 个，数据源未更新/无新增 0 个，真正失败/不可用 0 个。\n状态统计：{'success_appended': 183}\n更新健康：OK / updated - Update appended 183 rows; existing local rows kept priority on duplicate dates.\n已生成下载报告：/Users/dayin/Code/a-share-swing-system/reports/data_download_report.md\n",
+    "stderr_tail": "",
+    "raw_source_exit_code": 0,
+    "latest_data_date": "2026-06-18",
+    "new_rows": 183,
+    "failed_symbols": [],
+    "pending_symbols": [],
+    "jqdata_pending_symbols": [],
+    "jqdata_pending_count": 0,
+    "updated_symbols": [],
+    "skipped_symbols": [],
+    "source_used": "baostock",
+    "actual_source_used": "baostock",
+    "fallback_triggered": false,
+    "jqdata_status": "SKIPPED",
+    "baostock_status": "UPDATED",
+    "unresolved_symbols": [],
+    "data_sources": {
+      "generated_at": "2026-06-18 20:43:03",
+      "source_priority": [
+        "baostock",
+        "jqdata",
+        "tushare"
+      ],
+      "requested_source": "auto",
+      "primary_source": "baostock",
+      "fallback_source": "jqdata",
+      "actual_source_used": "baostock",
+      "fallback_triggered": false,
+      "jqdata_status": "SKIPPED",
+      "jqdata_message": "",
+      "baostock_status": "UPDATED",
+      "baostock_message": "Update appended 183 rows; existing local rows kept priority on duplicate dates.",
+      "latest_data_date": "2026-06-18",
+      "new_rows": 183,
+      "failed_count": 0,
+      "failed_symbols": [],
+      "pending_count": 0,
+      "pending_symbols": [],
+      "updated_symbols": [],
+      "skipped_symbols": [],
+      "unresolved_symbols": [],
+      "validate_only": false,
+      "exit_code": 0,
+      "safety": {
+        "broker_api": false,
+        "real_order": false,
+        "real_account": false,
+        "credentials_logged": false,
+        "credentials_saved_to_code": false,
+        "staging_first": true,
+        "local_existing_rows_priority": true
+      }
+    }
+  },
+  "akshare_connectivity": {
+    "generated_at": "2026-06-21 20:13:30",
+    "akshare_status": "partially_usable",
+    "akshare_version": "1.18.64",
+    "python_executable": "system/default",
+    "proxy_env_present": [],
+    "tests": [
+      {
+        "status": "success",
+        "rows": 8797,
+        "columns": [
+          "trade_date"
+        ],
+        "error_type": "",
+        "error": "",
+        "name": "trade_calendar_light",
+        "elapsed_seconds": 0.837
+      },
+      {
+        "status": "failed",
+        "rows": 0,
+        "columns": [],
+        "error_type": "ProxyError",
+        "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&beg=20260601&end=20260618&secid=1.510300 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+        "trace_tail": [
+          "    return ak.fund_etf_hist_em(symbol=\"510300\", period=\"daily\", start_date=\"20260601\", end_date=\"20260618\", adjust=\"\")",
+          "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+          "requests.exceptions.ProxyError: HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&beg=20260601&end=20260618&secid=1.510300 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))"
+        ],
+        "name": "etf_history_small_range",
+        "elapsed_seconds": 0.526
+      },
+      {
+        "status": "success",
+        "rows": 14,
+        "columns": [
+          "日期",
+          "股票代码",
+          "开盘",
+          "收盘",
+          "最高",
+          "最低",
+          "成交量",
+          "成交额",
+          "振幅",
+          "涨跌幅",
+          "涨跌额",
+          "换手率"
+        ],
+        "error_type": "",
+        "error": "",
+        "name": "a_share_history_small_range",
+        "elapsed_seconds": 0.486
+      },
+      {
+        "status": "success",
+        "rows": 1514,
+        "columns": [
+          "代码",
+          "名称",
+          "最新价",
+          "IOPV实时估值",
+          "基金折价率",
+          "涨跌额",
+          "涨跌幅",
+          "成交量",
+          "成交额",
+          "开盘价",
+          "最高价",
+          "最低价"
+        ],
+        "error_type": "",
+        "error": "",
+        "name": "etf_spot_latest",
+        "elapsed_seconds": 17.014
+      }
+    ],
+    "likely_causes": [
+      "proxy configuration may be interfering with Eastmoney/Sina endpoints.",
+      "remote endpoints may close connections or rate-limit requests from the current network."
+    ],
+    "recommended_role": "Use AKShare only as an optional fallback and intelligence-data probe with retry/backoff and local cache; do not use it as primary daily ETF update source.",
+    "safety": {
+      "broker_api": false,
+      "real_order": false,
+      "real_account": false,
+      "credentials_logged": false,
+      "formal_data_written": false,
+      "low_frequency_probe_only": true
+    }
+  },
+  "files": {
+    "config": {
+      "path": "src/config.py",
+      "exists": true,
+      "size_bytes": 4150,
+      "mentions_baostock": false,
+      "mentions_jqdata": false,
+      "mentions_tushare": false,
+      "mentions_akshare": false,
+      "mentions_staging": false,
+      "mentions_available_date": false,
+      "line_count": 120
+    },
+    "update_etf_data": {
+      "path": "scripts/update_etf_data.py",
+      "exists": true,
+      "size_bytes": 59279,
+      "mentions_baostock": true,
+      "mentions_jqdata": true,
+      "mentions_tushare": true,
+      "mentions_akshare": false,
+      "mentions_staging": true,
+      "mentions_available_date": false,
+      "line_count": 1273
+    },
+    "data_health": {
+      "path": "src/data_health.py",
+      "exists": true,
+      "size_bytes": 8677,
+      "mentions_baostock": false,
+      "mentions_jqdata": false,
+      "mentions_tushare": false,
+      "mentions_akshare": false,
+      "mentions_staging": false,
+      "mentions_available_date": false,
+      "line_count": 221
+    },
+    "data_coverage": {
+      "path": "src/data_coverage.py",
+      "exists": true,
+      "size_bytes": 8768,
+      "mentions_baostock": false,
+      "mentions_jqdata": false,
+      "mentions_tushare": false,
+      "mentions_akshare": false,
+      "mentions_staging": false,
+      "mentions_available_date": false,
+      "line_count": 214
+    },
+    "features": {
+      "path": "src/features.py",
+      "exists": true,
+      "size_bytes": 3408,
+      "mentions_baostock": false,
+      "mentions_jqdata": false,
+      "mentions_tushare": false,
+      "mentions_akshare": false,
+      "mentions_staging": false,
+      "mentions_available_date": false,
+      "line_count": 76
+    },
+    "ranking_model_v2_backtest": {
+      "path": "src/ranking_model_v2_backtest.py",
+      "exists": true,
+      "size_bytes": 63888,
+      "mentions_baostock": true,
+      "mentions_jqdata": true,
+      "mentions_tushare": true,
+      "mentions_akshare": false,
+      "mentions_staging": false,
+      "mentions_available_date": false,
+      "line_count": 1373
+    },
+    "strategy_preview_tracking": {
+      "path": "src/strategy_preview_tracking.py",
+      "exists": true,
+      "size_bytes": 30621,
+      "mentions_baostock": false,
+      "mentions_jqdata": false,
+      "mentions_tushare": false,
+      "mentions_akshare": false,
+      "mentions_staging": false,
+      "mentions_available_date": false,
+      "line_count": 687
+    },
+    "watchlist_root": {
+      "path": "watchlist.csv",
+      "exists": true,
+      "size_bytes": 6650,
+      "mentions_baostock": false,
+      "mentions_jqdata": false,
+      "mentions_tushare": false,
+      "mentions_akshare": false,
+      "mentions_staging": false,
+      "mentions_available_date": false,
+      "line_count": 79
+    },
+    "watchlist_data": {
+      "path": "data/watchlist.csv",
+      "exists": false,
+      "size_bytes": 0,
+      "mentions_baostock": false,
+      "mentions_jqdata": false,
+      "mentions_tushare": false,
+      "mentions_akshare": false,
+      "mentions_staging": false,
+      "mentions_available_date": false,
+      "line_count": 0
+    },
+    "backtest_trade_pool": {
+      "path": "data/backtest_trade_pool.csv",
+      "exists": true,
+      "size_bytes": 4945,
+      "mentions_baostock": false,
+      "mentions_jqdata": false,
+      "mentions_tushare": false,
+      "mentions_akshare": false,
+      "mentions_staging": false,
+      "mentions_available_date": false,
+      "line_count": 40
+    },
+    "data_source_status_json": {
+      "path": "reports/data_source_status.json",
+      "exists": true,
+      "size_bytes": 972,
+      "mentions_baostock": true,
+      "mentions_jqdata": true,
+      "mentions_tushare": true,
+      "mentions_akshare": false,
+      "mentions_staging": true,
+      "mentions_available_date": false,
+      "line_count": 37
+    },
+    "data_update_status_json": {
+      "path": "reports/data_update_status.json",
+      "exists": true,
+      "size_bytes": 3083,
+      "mentions_baostock": true,
+      "mentions_jqdata": true,
+      "mentions_tushare": true,
+      "mentions_akshare": false,
+      "mentions_staging": true,
+      "mentions_available_date": false,
+      "line_count": 91
+    },
+    "latest_data_health": {
+      "path": "reports/latest_data_health.md",
+      "exists": true,
+      "size_bytes": 10482,
+      "mentions_baostock": false,
+      "mentions_jqdata": false,
+      "mentions_tushare": false,
+      "mentions_akshare": false,
+      "mentions_staging": false,
+      "mentions_available_date": false,
+      "line_count": 93
+    },
+    "latest_data_coverage": {
+      "path": "reports/latest_data_coverage.md",
+      "exists": true,
+      "size_bytes": 12345,
+      "mentions_baostock": false,
+      "mentions_jqdata": false,
+      "mentions_tushare": false,
+      "mentions_akshare": false,
+      "mentions_staging": false,
+      "mentions_available_date": false,
+      "line_count": 99
+    }
+  },
+  "architecture_findings": [
+    {
+      "area": "daily_update",
+      "finding": "scripts/update_etf_data.py is still the operational daily-update entry. It supports source selection and delegates non-BaoStock sources to src/data_sources/source_router.py.",
+      "risk": "source priority and provider health are not yet managed by a formal provider abstraction.",
+      "recommendation": "Keep current path stable, then introduce provider layer in staged dry-run mode."
+    },
+    {
+      "area": "source_router",
+      "finding": "src/data_sources/source_router.py records machine-readable source status and fallback decisions.",
+      "risk": "Tushare is currently not implemented as a working daily source, and JQData may be unavailable for daily updates.",
+      "recommendation": "Use Tushare only after explicit token/config tests; treat JQData as historical/staging unless daily access is proven."
+    },
+    {
+      "area": "formal_data",
+      "finding": "data_health/data_coverage read local CSVs only and are suitable downstream validators.",
+      "risk": "source metadata columns are not consistently present in existing formal CSVs.",
+      "recommendation": "Add source/fetch_time/available_date in future staging files; do not retroactively rewrite trusted old rows unless audited."
+    },
+    {
+      "area": "research_model",
+      "finding": "features and v2 backtest use local confirmed daily bars and do not require provider credentials.",
+      "risk": "new intelligence data could introduce look-ahead if available_date is not tracked.",
+      "recommendation": "Any non-price data must include publish_time, fetch_time, available_date, and confirmed_after_close flags."
+    }
+  ],
+  "recommended_priorities": {
+    "daily_source_priority": [
+      "tushare_if_configured",
+      "baostock",
+      "akshare_fallback"
+    ],
+    "history_source_priority": [
+      "jqdata",
+      "baostock",
+      "tushare_if_configured",
+      "akshare_fallback"
+    ],
+    "special_data_priority": [
+      "akshare",
+      "tushare",
+      "manual"
+    ]
+  },
+  "target_schema": [
+    "date",
+    "open",
+    "high",
+    "low",
+    "close",
+    "volume",
+    "amount",
+    "source",
+    "fetch_time",
+    "available_date"
+  ],
+  "safety": {
+    "broker_api": false,
+    "real_order": false,
+    "real_account": false,
+    "paper_trades_modified": false,
+    "paper_positions_modified": false,
+    "paper_trade_engine_modified": false,
+    "execution_integration": false
+  }
+}

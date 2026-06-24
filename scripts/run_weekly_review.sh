@@ -27,6 +27,13 @@ log_start() {
     echo "python path: $PYTHON_BIN"
     echo "running command: $PYTHON_BIN src/main.py --weekly"
     echo "running command: $PYTHON_BIN src/automation_nodes.py --node weekly_full_review"
+    echo "running command: $PYTHON_BIN src/holding_period_research.py"
+    echo "running command: $PYTHON_BIN src/exit_rule_research.py"
+    echo "running command: $PYTHON_BIN src/parameter_sweep.py"
+    echo "running command: $PYTHON_BIN src/persistence_breakout_shadow.py"
+    echo "running command: $PYTHON_BIN src/missed_opportunity_tracker.py"
+    echo "running command: $PYTHON_BIN src/shadow_observation_weekly.py"
+    echo "running command: $PYTHON_BIN src/trade_review.py"
   } >> "$LOG_FILE" 2>&1
 }
 
@@ -57,10 +64,67 @@ cd "$PROJECT_ROOT" || exit 1
 
 log_start
 STATUS=0
+PERSISTENCE_SHADOW_STATUS=0
+MISSED_OPPORTUNITY_STATUS=0
+SHADOW_OBSERVATION_STATUS=0
+TRADE_REVIEW_STATUS=0
 COMMAND="$PYTHON_BIN src/main.py --weekly"
 "$PYTHON_BIN" src/main.py --weekly >> "$LOG_FILE" 2>&1 || STATUS=$?
 if [ "$STATUS" -eq 0 ]; then
   "$PYTHON_BIN" src/automation_nodes.py --node weekly_full_review >> "$LOG_FILE" 2>&1 || STATUS=$?
+fi
+if [ "$STATUS" -eq 0 ]; then
+  "$PYTHON_BIN" src/holding_period_research.py >> "$LOG_FILE" 2>&1 || STATUS=$?
+fi
+if [ "$STATUS" -eq 0 ]; then
+  "$PYTHON_BIN" src/exit_rule_research.py >> "$LOG_FILE" 2>&1 || STATUS=$?
+fi
+if [ "$STATUS" -eq 0 ]; then
+  "$PYTHON_BIN" src/parameter_sweep.py >> "$LOG_FILE" 2>&1 || STATUS=$?
+fi
+if [ "$STATUS" -eq 0 ]; then
+  "$PYTHON_BIN" src/persistence_breakout_shadow.py >> "$LOG_FILE" 2>&1 || PERSISTENCE_SHADOW_STATUS=$?
+  if [ "$PERSISTENCE_SHADOW_STATUS" -ne 0 ]; then
+    {
+      echo "[$(timestamp)] $TASK_NAME warning"
+      echo "warning command: $PYTHON_BIN src/persistence_breakout_shadow.py"
+      echo "exit code: $PERSISTENCE_SHADOW_STATUS"
+      echo "message: persistence breakout shadow failed; continuing weekly review without changing paper trades"
+    } >> "$LOG_FILE" 2>&1
+  fi
+fi
+if [ "$STATUS" -eq 0 ]; then
+  "$PYTHON_BIN" src/missed_opportunity_tracker.py >> "$LOG_FILE" 2>&1 || MISSED_OPPORTUNITY_STATUS=$?
+  if [ "$MISSED_OPPORTUNITY_STATUS" -ne 0 ]; then
+    {
+      echo "[$(timestamp)] $TASK_NAME warning"
+      echo "warning command: $PYTHON_BIN src/missed_opportunity_tracker.py"
+      echo "exit code: $MISSED_OPPORTUNITY_STATUS"
+      echo "message: missed opportunity tracker failed; continuing weekly review without changing paper trades"
+    } >> "$LOG_FILE" 2>&1
+  fi
+fi
+if [ "$STATUS" -eq 0 ]; then
+  "$PYTHON_BIN" src/shadow_observation_weekly.py >> "$LOG_FILE" 2>&1 || SHADOW_OBSERVATION_STATUS=$?
+  if [ "$SHADOW_OBSERVATION_STATUS" -ne 0 ]; then
+    {
+      echo "[$(timestamp)] $TASK_NAME warning"
+      echo "warning command: $PYTHON_BIN src/shadow_observation_weekly.py"
+      echo "exit code: $SHADOW_OBSERVATION_STATUS"
+      echo "message: shadow observation weekly failed; continuing weekly review without changing paper trades"
+    } >> "$LOG_FILE" 2>&1
+  fi
+fi
+if [ "$STATUS" -eq 0 ]; then
+  "$PYTHON_BIN" src/trade_review.py >> "$LOG_FILE" 2>&1 || TRADE_REVIEW_STATUS=$?
+  if [ "$TRADE_REVIEW_STATUS" -ne 0 ]; then
+    {
+      echo "[$(timestamp)] $TASK_NAME warning"
+      echo "warning command: $PYTHON_BIN src/trade_review.py"
+      echo "exit code: $TRADE_REVIEW_STATUS"
+      echo "message: trade review failed; continuing weekly review without changing paper trades"
+    } >> "$LOG_FILE" 2>&1
+  fi
 fi
 if [ "$STATUS" -eq 0 ]; then
   "$PYTHON_BIN" src/automation_nodes.py --node sync_report >> "$LOG_FILE" 2>&1 || STATUS=$?

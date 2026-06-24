@@ -1,0 +1,9 @@
+strategy,exit_reason,round_trips,net_pnl,avg_holding_days
+adjusted_preview_baseline,max_holding_days_20,80,2111.7194,31.575
+adjusted_preview_baseline,rank_below_top_20,30,-2571.637,22.0
+adjusted_preview_baseline,max_holding_days_30,5,2973.1913,48.2
+adjusted_preview_baseline,backtest_end_liquidation,3,-393.29990000000004,2.0
+original_ranking_baseline,max_holding_days_20,77,455.7222999999999,31.675324675324674
+original_ranking_baseline,rank_below_top_20,31,-4051.0991,20.903225806451612
+original_ranking_baseline,max_holding_days_30,7,5184.1644,49.0
+original_ranking_baseline,backtest_end_liquidation,2,-380.9946,3.0

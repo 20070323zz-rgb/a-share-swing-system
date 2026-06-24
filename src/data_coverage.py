@@ -9,8 +9,8 @@ from pathlib import Path
 
 import pandas as pd
 
-from config import DATA_COVERAGE_REPORT_FILE, DATA_DIR, LATEST_DATA_COVERAGE_FILE, WATCHLIST_FILE
-from data_loader import COLUMN_MAP, REQUIRED_PRICE_COLUMNS, find_price_file, read_watchlist
+from config import DATA_COVERAGE_REPORT_FILE, DATA_DIR, ETF_DAILY_DIR, LATEST_DATA_COVERAGE_FILE, PROJECT_ROOT, WATCHLIST_FILE
+from data_loader import COLUMN_MAP, REQUIRED_PRICE_COLUMNS, find_price_file, read_formal_data_universe
 
 
 STALE_DAYS = 10
@@ -19,7 +19,7 @@ STALE_DAYS = 10
 def write_data_coverage_report(watchlist: pd.DataFrame | None = None) -> tuple[Path, dict]:
     """生成数据覆盖报告，并返回摘要供 latest_brief 使用。"""
     if watchlist is None:
-        watchlist = read_watchlist(WATCHLIST_FILE)
+        watchlist = read_formal_data_universe(WATCHLIST_FILE, ETF_DAILY_DIR, PROJECT_ROOT / "data" / "etf_pool_expansion_candidates.csv")
     rows = build_coverage_rows(watchlist)
     df = pd.DataFrame(rows)
     summary = summarize_coverage(df)
@@ -106,12 +106,17 @@ def summarize_coverage(df: pd.DataFrame) -> dict:
             "observe_pool_valid": 0,
             "observe_pool_missing": 0,
             "observe_pool_rate": 0.0,
+            "research_only_total": 0,
+            "research_only_valid": 0,
+            "research_only_missing": 0,
+            "research_only_rate": 0.0,
             "stock_observe_total": 0,
             "stock_observe_missing": 0,
         }
     valid = df["valid_data"].astype(bool)
     trade = df["pool"].astype(str) == "trade_pool"
     observe = df["pool"].astype(str) == "observe_pool"
+    research = df["pool"].astype(str) == "research_only"
     etf = df["type"].astype(str).str.upper() == "ETF"
     stock_observe = observe & (df["type"].astype(str).str.upper() == "STOCK")
     return {
@@ -129,6 +134,10 @@ def summarize_coverage(df: pd.DataFrame) -> dict:
         "observe_pool_valid": int((observe & valid).sum()),
         "observe_pool_missing": int((observe & ~valid).sum()),
         "observe_pool_rate": _rate((observe & valid).sum(), observe.sum()),
+        "research_only_total": int(research.sum()),
+        "research_only_valid": int((research & valid).sum()),
+        "research_only_missing": int((research & ~valid).sum()),
+        "research_only_rate": _rate((research & valid).sum(), research.sum()),
         "stock_observe_total": int(stock_observe.sum()),
         "stock_observe_missing": int((stock_observe & ~valid).sum()),
     }
@@ -150,7 +159,9 @@ def _build_report_lines(df: pd.DataFrame, summary: dict) -> list[str]:
         f"- 数据过期数量：{summary['stale']}",
         f"- trade_pool 覆盖率：{summary['trade_pool_valid']}/{summary['trade_pool_total']} = {summary['trade_pool_rate']:.2%}",
         f"- observe_pool 覆盖率：{summary['observe_pool_valid']}/{summary['observe_pool_total']} = {summary['observe_pool_rate']:.2%}",
+        f"- research_only 覆盖率：{summary.get('research_only_valid', 0)}/{summary.get('research_only_total', 0)} = {summary.get('research_only_rate', 0):.2%}",
         f"- observe_pool 总缺失数量：{summary.get('observe_pool_missing', 0)}",
+        f"- research_only 总缺失数量：{summary.get('research_only_missing', 0)}",
         "",
         "## 明细",
         "| 代码 | 名称 | 类型 | pool | group | 文件 | 行数 | 起始日期 | 结束日期 | 必要字段 | 是否有效 | 是否过期 | 说明 |",
