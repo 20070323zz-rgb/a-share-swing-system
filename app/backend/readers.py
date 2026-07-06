@@ -181,6 +181,12 @@ def status_snapshot() -> dict[str, Any]:
     summary = data.get("paper_summary", {}) if isinstance(data, dict) else {}
     market_state = data.get("market_state", {}) if isinstance(data, dict) else {}
     exposure = data.get("portfolio_exposure", {}) if isinstance(data, dict) else {}
+    review_summary = data.get("review_summary", {}) if isinstance(data, dict) else {}
+    profit_summary = data.get("profit_protection_summary", {}) if isinstance(data, dict) else {}
+    high_beta_summary = data.get("high_beta_risk_summary", {}) if isinstance(data, dict) else {}
+    broad_base_summary = data.get("broad_base_balance_summary", {}) if isinstance(data, dict) else {}
+    chatgpt_weekly_packet = data.get("chatgpt_weekly_packet", {}) if isinstance(data, dict) else {}
+    chatgpt_weekly_packet_summary = data.get("chatgpt_weekly_packet_summary", {}) if isinstance(data, dict) else {}
     engine = data.get("paper_trade_engine", {}) if isinstance(data, dict) else {}
     automation = data.get("automation_status", data.get("automation_nodes", [])) if isinstance(data, dict) else []
     system = system_status_snapshot(data, update, sources)
@@ -207,6 +213,28 @@ def status_snapshot() -> dict[str, Any]:
         "paper_trade_engine_status": engine.get("state", {}).get("status") if isinstance(engine.get("state"), dict) else engine.get("status", "unknown"),
         "market_state": market_state.get("market_state", "unknown") if isinstance(market_state, dict) else "unknown",
         "portfolio_exposure": exposure.get("summary", exposure) if isinstance(exposure, dict) else exposure,
+        "review_summary": review_summary,
+        "reduce_candidate_count": review_summary.get("reduce_candidate_count", 0) if isinstance(review_summary, dict) else 0,
+        "review_2_count": review_summary.get("review_2_count", 0) if isinstance(review_summary, dict) else 0,
+        "profit_protection_summary": profit_summary,
+        "profit_watch_count": profit_summary.get("profit_watch_count", 0) if isinstance(profit_summary, dict) else 0,
+        "profit_protection_review_count": profit_summary.get("profit_protection_review_count", 0) if isinstance(profit_summary, dict) else 0,
+        "profit_lock_candidate_count": profit_summary.get("profit_lock_candidate_count", 0) if isinstance(profit_summary, dict) else 0,
+        "high_beta_risk_summary": high_beta_summary,
+        "high_beta_position_count": high_beta_summary.get("high_beta_position_count", 0) if isinstance(high_beta_summary, dict) else 0,
+        "high_beta_weight_of_equity": high_beta_summary.get("high_beta_weight_of_equity", 0) if isinstance(high_beta_summary, dict) else 0,
+        "high_beta_weight_of_holdings": high_beta_summary.get("high_beta_weight_of_holdings", 0) if isinstance(high_beta_summary, dict) else 0,
+        "high_beta_exposure_state": high_beta_summary.get("high_beta_exposure_state", "HB_NORMAL") if isinstance(high_beta_summary, dict) else "HB_NORMAL",
+        "finance_real_estate_weight": high_beta_summary.get("finance_real_estate_weight_of_equity", 0) if isinstance(high_beta_summary, dict) else 0,
+        "broad_base_balance_summary": broad_base_summary,
+        "broad_base_weight": broad_base_summary.get("broad_base_weight", data.get("broad_base_weight", 0)) if isinstance(broad_base_summary, dict) else 0,
+        "theme_weight": broad_base_summary.get("theme_weight", data.get("theme_weight", 0)) if isinstance(broad_base_summary, dict) else 0,
+        "tech_growth_weight": broad_base_summary.get("tech_growth_weight", data.get("tech_growth_weight", 0)) if isinstance(broad_base_summary, dict) else 0,
+        "broad_base_balance_state": broad_base_summary.get("broad_base_balance_state", "UNKNOWN") if isinstance(broad_base_summary, dict) else "UNKNOWN",
+        "balance_candidate_count": broad_base_summary.get("balance_candidate_count", data.get("balance_candidate_count", 0)) if isinstance(broad_base_summary, dict) else 0,
+        "top_balance_candidates": data.get("top_balance_candidates", []) if isinstance(data, dict) else [],
+        "chatgpt_weekly_packet": chatgpt_weekly_packet,
+        "chatgpt_weekly_packet_summary": chatgpt_weekly_packet_summary or chatgpt_weekly_packet.get("summary", {}),
         "total_equity": summary.get("total_equity", summary.get("equity", 0)),
         "cash": summary.get("cash", 0),
         "position_value": summary.get("position_value", summary.get("market_value", 0)),
@@ -229,6 +257,14 @@ def portfolio_snapshot() -> dict[str, Any]:
     trade_review = data.get("trade_review", {}) if isinstance(data, dict) else {}
     trade_review_details = data.get("trade_review_details", []) if isinstance(data, dict) else []
     trade_review_open_positions = data.get("trade_review_open_positions", []) if isinstance(data, dict) else []
+    position_review_state = data.get("position_review_state", []) if isinstance(data, dict) else []
+    review_summary = data.get("review_summary", {}) if isinstance(data, dict) else {}
+    profit_protection_preview = data.get("profit_protection_preview", []) if isinstance(data, dict) else []
+    profit_protection_summary = data.get("profit_protection_summary", {}) if isinstance(data, dict) else {}
+    high_beta_risk_watch = data.get("high_beta_risk_watch", []) if isinstance(data, dict) else []
+    high_beta_risk_summary = data.get("high_beta_risk_summary", {}) if isinstance(data, dict) else {}
+    broad_base_balance_preview = data.get("broad_base_balance_preview", {}) if isinstance(data, dict) else {}
+    broad_base_balance_summary = data.get("broad_base_balance_summary", {}) if isinstance(data, dict) else {}
     if not performance:
         performance = read_json(REPORT_DIR / "paper_performance_summary.json", {})
     backfilled_curve = read_csv_rows(DATA_DIR / "paper_equity_curve_backfilled.csv")
@@ -269,6 +305,14 @@ def portfolio_snapshot() -> dict[str, Any]:
         "trade_review": trade_review,
         "trade_review_details": trade_review_details,
         "trade_review_open_positions": trade_review_open_positions,
+        "position_review_state": position_review_state,
+        "review_summary": review_summary,
+        "profit_protection_preview": profit_protection_preview,
+        "profit_protection_summary": profit_protection_summary,
+        "high_beta_risk_watch": high_beta_risk_watch,
+        "high_beta_risk_summary": high_beta_risk_summary,
+        "broad_base_balance_preview": broad_base_balance_preview,
+        "broad_base_balance_summary": broad_base_balance_summary,
         "real_trade_enabled": False,
         "broker_api_enabled": False,
     }
@@ -369,6 +413,9 @@ def research_snapshot() -> dict[str, Any]:
         "system_safety": data.get("system_safety", {}) if isinstance(data, dict) else {},
         "execution_safety": data.get("execution_safety", {}) if isinstance(data, dict) else {},
         "strategy_preview_tracking": tracking,
+        "broad_base_balance_preview": data.get("broad_base_balance_preview", {}) if isinstance(data, dict) else {},
+        "broad_base_balance_summary": data.get("broad_base_balance_summary", {}) if isinstance(data, dict) else {},
+        "top_balance_candidates": data.get("top_balance_candidates", []) if isinstance(data, dict) else [],
         "sample_count": len(rows),
         "forward_return_status_counts": status_counts,
         "original_vs_adjusted": data.get("forward_return_comparison", {}),
@@ -385,6 +432,8 @@ def research_snapshot() -> dict[str, Any]:
         "persistence_breakout_shadow": data.get("persistence_breakout_shadow", {}) if isinstance(data, dict) else {},
         "missed_opportunity_tracking": data.get("missed_opportunity_tracking", {}) if isinstance(data, dict) else {},
         "shadow_observation_weekly": data.get("shadow_observation_weekly", {}) if isinstance(data, dict) else {},
+        "chatgpt_weekly_packet": data.get("chatgpt_weekly_packet", {}) if isinstance(data, dict) else {},
+        "chatgpt_weekly_packet_summary": data.get("chatgpt_weekly_packet_summary", {}) if isinstance(data, dict) else {},
         "exit_rule_research": data.get("exit_rule_research", {}) if isinstance(data, dict) else {},
         "backtest_phase4a": data.get("backtest_phase4a", {}) if isinstance(data, dict) else {},
         "backtest_diagnostics": data.get("backtest_diagnostics", {}) if isinstance(data, dict) else {},

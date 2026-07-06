@@ -12,7 +12,7 @@ export default function Sparkline({ rows = [], valueKey = "total_equity", label 
     return <div className="empty-note">暂无足够数据绘制{label}。</div>;
   }
   const width = 480;
-  const height = 150;
+  const height = 170;
   const min = Math.min(...points);
   const max = Math.max(...points);
   const path = points.map((value, index) => {
@@ -22,6 +22,8 @@ export default function Sparkline({ rows = [], valueKey = "total_equity", label 
   }).join(" ");
   return (
     <svg className="sparkline" viewBox={`0 0 ${width} ${height}`} role="img" aria-label={label}>
+      <path className="sparkline-grid" d={`M 14 14 L ${width - 14} 14`} />
+      <path className="sparkline-grid" d={`M 14 ${Math.round(height / 2)} L ${width - 14} ${Math.round(height / 2)}`} />
       <path className="sparkline-grid" d={`M 14 ${height - 14} L ${width - 14} ${height - 14}`} />
       <path className="sparkline-line" d={path} />
     </svg>

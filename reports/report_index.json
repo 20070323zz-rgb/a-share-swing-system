@@ -1,0 +1,1749 @@
+{
+  "generated_at": "2026-06-29 22:17:56",
+  "reports_root_file_count": 320,
+  "archive_file_count": 35,
+  "rows": [
+    {
+      "path": "reports/account_status.csv",
+      "suffix": ".csv",
+      "size_bytes": 939
+    },
+    {
+      "path": "reports/afternoon_open_check.json",
+      "suffix": ".json",
+      "size_bytes": 1544
+    },
+    {
+      "path": "reports/afternoon_open_check.md",
+      "suffix": ".md",
+      "size_bytes": 1347
+    },
+    {
+      "path": "reports/akshare_connectivity_check.json",
+      "suffix": ".json",
+      "size_bytes": 3327
+    },
+    {
+      "path": "reports/akshare_connectivity_check.md",
+      "suffix": ".md",
+      "size_bytes": 1288
+    },
+    {
+      "path": "reports/alpha_factor_enhancement_metrics.json",
+      "suffix": ".json",
+      "size_bytes": 7346
+    },
+    {
+      "path": "reports/alpha_factor_enhancement_research.md",
+      "suffix": ".md",
+      "size_bytes": 772
+    },
+    {
+      "path": "reports/alpha_factor_enhancement_summary.csv",
+      "suffix": ".csv",
+      "size_bytes": 1755
+    },
+    {
+      "path": "reports/app_backfill_button_fix_report.md",
+      "suffix": ".md",
+      "size_bytes": 2997
+    },
+    {
+      "path": "reports/app_data_backfill_button_audit.md",
+      "suffix": ".md",
+      "size_bytes": 2112
+    },
+    {
+      "path": "reports/app_independent_launch_fix_report.md",
+      "suffix": ".md",
+      "size_bytes": 2466
+    },
+    {
+      "path": "reports/app_launch_diagnostics.json",
+      "suffix": ".json",
+      "size_bytes": 3086
+    },
+    {
+      "path": "reports/app_launch_diagnostics.md",
+      "suffix": ".md",
+      "size_bytes": 2073
+    },
+    {
+      "path": "reports/app_launch_fix_report.json",
+      "suffix": ".json",
+      "size_bytes": 1242
+    },
+    {
+      "path": "reports/app_launch_fix_report.md",
+      "suffix": ".md",
+      "size_bytes": 4411
+    },
+    {
+      "path": "reports/app_local_release_phase1_report.md",
+      "suffix": ".md",
+      "size_bytes": 2768
+    },
+    {
+      "path": "reports/app_task_status.json",
+      "suffix": ".json",
+      "size_bytes": 19937
+    },
+    {
+      "path": "reports/archive_candidate_list.csv",
+      "suffix": ".csv",
+      "size_bytes": 60028
+    },
+    {
+      "path": "reports/archive_candidate_list.json",
+      "suffix": ".json",
+      "size_bytes": 147544
+    },
+    {
+      "path": "reports/archive_candidate_list.md",
+      "suffix": ".md",
+      "size_bytes": 31733
+    },
+    {
+      "path": "reports/archive_manifest_after.json",
+      "suffix": ".json",
+      "size_bytes": 15652
+    },
+    {
+      "path": "reports/archive_manifest_after.md",
+      "suffix": ".md",
+      "size_bytes": 5397
+    },
+    {
+      "path": "reports/archive_manifest_before.json",
+      "suffix": ".json",
+      "size_bytes": 383
+    },
+    {
+      "path": "reports/archive_manifest_before.md",
+      "suffix": ".md",
+      "size_bytes": 461
+    },
+    {
+      "path": "reports/automation_four_node_sync_report.md",
+      "suffix": ".md",
+      "size_bytes": 3200
+    },
+    {
+      "path": "reports/b1_strategy_enhancement_preview_report.md",
+      "suffix": ".md",
+      "size_bytes": 2735
+    },
+    {
+      "path": "reports/b2_strategy_preview_tracking_report.md",
+      "suffix": ".md",
+      "size_bytes": 1786
+    },
+    {
+      "path": "reports/backtest_capital_sensitivity.csv",
+      "suffix": ".csv",
+      "size_bytes": 3059
+    },
+    {
+      "path": "reports/backtest_capital_sensitivity.md",
+      "suffix": ".md",
+      "size_bytes": 4964
+    },
+    {
+      "path": "reports/backtest_consistency_check.json",
+      "suffix": ".json",
+      "size_bytes": 2792
+    },
+    {
+      "path": "reports/backtest_consistency_check.md",
+      "suffix": ".md",
+      "size_bytes": 1752
+    },
+    {
+      "path": "reports/backtest_cost_diagnostics.csv",
+      "suffix": ".csv",
+      "size_bytes": 18716
+    },
+    {
+      "path": "reports/backtest_cost_diagnostics.md",
+      "suffix": ".md",
+      "size_bytes": 24467
+    },
+    {
+      "path": "reports/backtest_diagnostics_summary.json",
+      "suffix": ".json",
+      "size_bytes": 1311
+    },
+    {
+      "path": "reports/backtest_drawdown_diagnostics.csv",
+      "suffix": ".csv",
+      "size_bytes": 1041
+    },
+    {
+      "path": "reports/backtest_drawdown_diagnostics.md",
+      "suffix": ".md",
+      "size_bytes": 1480
+    },
+    {
+      "path": "reports/backtest_equity_curve.csv",
+      "suffix": ".csv",
+      "size_bytes": 311059
+    },
+    {
+      "path": "reports/backtest_execution_timing_sensitivity.csv",
+      "suffix": ".csv",
+      "size_bytes": 2517
+    },
+    {
+      "path": "reports/backtest_execution_timing_sensitivity.md",
+      "suffix": ".md",
+      "size_bytes": 2619
+    },
+    {
+      "path": "reports/backtest_exit_reason_summary.csv",
+      "suffix": ".csv",
+      "size_bytes": 619
+    },
+    {
+      "path": "reports/backtest_expand_pool_decision.md",
+      "suffix": ".md",
+      "size_bytes": 935
+    },
+    {
+      "path": "reports/backtest_metrics.json",
+      "suffix": ".json",
+      "size_bytes": 3051
+    },
+    {
+      "path": "reports/backtest_phase4a_report.md",
+      "suffix": ".md",
+      "size_bytes": 5350
+    },
+    {
+      "path": "reports/backtest_positions.csv",
+      "suffix": ".csv",
+      "size_bytes": 378510
+    },
+    {
+      "path": "reports/backtest_ranking_effectiveness.csv",
+      "suffix": ".csv",
+      "size_bytes": 4192
+    },
+    {
+      "path": "reports/backtest_ranking_effectiveness.md",
+      "suffix": ".md",
+      "size_bytes": 3451
+    },
+    {
+      "path": "reports/backtest_readiness_report.md",
+      "suffix": ".md",
+      "size_bytes": 24008
+    },
+    {
+      "path": "reports/backtest_result.csv",
+      "suffix": ".csv",
+      "size_bytes": 2464
+    },
+    {
+      "path": "reports/backtest_summary.csv",
+      "suffix": ".csv",
+      "size_bytes": 902
+    },
+    {
+      "path": "reports/backtest_summary.md",
+      "suffix": ".md",
+      "size_bytes": 3089
+    },
+    {
+      "path": "reports/backtest_symbol_contribution.csv",
+      "suffix": ".csv",
+      "size_bytes": 6877
+    },
+    {
+      "path": "reports/backtest_symbol_contribution.md",
+      "suffix": ".md",
+      "size_bytes": 11878
+    },
+    {
+      "path": "reports/backtest_trade_distribution.csv",
+      "suffix": ".csv",
+      "size_bytes": 622
+    },
+    {
+      "path": "reports/backtest_trade_distribution.md",
+      "suffix": ".md",
+      "size_bytes": 1013
+    },
+    {
+      "path": "reports/backtest_trade_pool_report.md",
+      "suffix": ".md",
+      "size_bytes": 3521
+    },
+    {
+      "path": "reports/backtest_trades.csv",
+      "suffix": ".csv",
+      "size_bytes": 63612
+    },
+    {
+      "path": "reports/backtest_turnover_by_month.csv",
+      "suffix": ".csv",
+      "size_bytes": 5038
+    },
+    {
+      "path": "reports/backtest_turnover_diagnostics.md",
+      "suffix": ".md",
+      "size_bytes": 7083
+    },
+    {
+      "path": "reports/backtest_yearly_summary.csv",
+      "suffix": ".csv",
+      "size_bytes": 1230
+    },
+    {
+      "path": "reports/baostock_app_backfill_fix_report.md",
+      "suffix": ".md",
+      "size_bytes": 2405
+    },
+    {
+      "path": "reports/baostock_daily_source_optimization_report.md",
+      "suffix": ".md",
+      "size_bytes": 2026
+    },
+    {
+      "path": "reports/baostock_diagnosis.md",
+      "suffix": ".md",
+      "size_bytes": 2632
+    },
+    {
+      "path": "reports/broad_base_balance_preview.csv",
+      "suffix": ".csv",
+      "size_bytes": 4289
+    },
+    {
+      "path": "reports/broad_base_balance_preview.json",
+      "suffix": ".json",
+      "size_bytes": 25155
+    },
+    {
+      "path": "reports/broad_base_balance_preview.md",
+      "suffix": ".md",
+      "size_bytes": 5547
+    },
+    {
+      "path": "reports/buy_ranking_report.md",
+      "suffix": ".md",
+      "size_bytes": 3992
+    },
+    {
+      "path": "reports/buy_signal_ranking.md",
+      "suffix": ".md",
+      "size_bytes": 3992
+    },
+    {
+      "path": "reports/catchup_scheduler_status.md",
+      "suffix": ".md",
+      "size_bytes": 800
+    },
+    {
+      "path": "reports/chatgpt_weekly_analysis_packet_latest.json",
+      "suffix": ".json",
+      "size_bytes": 64077
+    },
+    {
+      "path": "reports/chatgpt_weekly_analysis_packet_latest.md",
+      "suffix": ".md",
+      "size_bytes": 8993
+    },
+    {
+      "path": "reports/codex_daily_research_prompt.md",
+      "suffix": ".md",
+      "size_bytes": 61845
+    },
+    {
+      "path": "reports/codex_weekly_research_prompt.md",
+      "suffix": ".md",
+      "size_bytes": 38560
+    },
+    {
+      "path": "reports/current_positions_strategy_fit_report.md",
+      "suffix": ".md",
+      "size_bytes": 1871
+    },
+    {
+      "path": "reports/daily_data_update_diagnosis_report.md",
+      "suffix": ".md",
+      "size_bytes": 5647
+    },
+    {
+      "path": "reports/daily_rolling_backtest.csv",
+      "suffix": ".csv",
+      "size_bytes": 2071
+    },
+    {
+      "path": "reports/daily_rolling_backtest.md",
+      "suffix": ".md",
+      "size_bytes": 1592
+    },
+    {
+      "path": "reports/dashboard_app_future_plan.md",
+      "suffix": ".md",
+      "size_bytes": 1159
+    },
+    {
+      "path": "reports/dashboard_data.json",
+      "suffix": ".json",
+      "size_bytes": 688358
+    },
+    {
+      "path": "reports/dashboard_redesign_research.md",
+      "suffix": ".md",
+      "size_bytes": 2666
+    },
+    {
+      "path": "reports/data_coverage_report.md",
+      "suffix": ".md",
+      "size_bytes": 12345
+    },
+    {
+      "path": "reports/data_download_report.md",
+      "suffix": ".md",
+      "size_bytes": 72561
+    },
+    {
+      "path": "reports/data_freshness_execution_reality.md",
+      "suffix": ".md",
+      "size_bytes": 1231
+    },
+    {
+      "path": "reports/data_health_report.md",
+      "suffix": ".md",
+      "size_bytes": 10482
+    },
+    {
+      "path": "reports/data_provider_design.md",
+      "suffix": ".md",
+      "size_bytes": 2142
+    },
+    {
+      "path": "reports/data_provider_status.json",
+      "suffix": ".json",
+      "size_bytes": 1692
+    },
+    {
+      "path": "reports/data_provider_status.md",
+      "suffix": ".md",
+      "size_bytes": 1099
+    },
+    {
+      "path": "reports/data_quality_report.md",
+      "suffix": ".md",
+      "size_bytes": 172
+    },
+    {
+      "path": "reports/data_source_architecture_audit.json",
+      "suffix": ".json",
+      "size_bytes": 15590
+    },
+    {
+      "path": "reports/data_source_architecture_audit.md",
+      "suffix": ".md",
+      "size_bytes": 3227
+    },
+    {
+      "path": "reports/data_source_proposal.md",
+      "suffix": ".md",
+      "size_bytes": 3350
+    },
+    {
+      "path": "reports/data_source_status.json",
+      "suffix": ".json",
+      "size_bytes": 1019
+    },
+    {
+      "path": "reports/data_source_status_report.md",
+      "suffix": ".md",
+      "size_bytes": 588
+    },
+    {
+      "path": "reports/data_update_app_task_fix_report.md",
+      "suffix": ".md",
+      "size_bytes": 2222
+    },
+    {
+      "path": "reports/data_update_automation_fix_report.md",
+      "suffix": ".md",
+      "size_bytes": 3209
+    },
+    {
+      "path": "reports/data_update_diagnosis_report.md",
+      "suffix": ".md",
+      "size_bytes": 9988
+    },
+    {
+      "path": "reports/data_update_log.md",
+      "suffix": ".md",
+      "size_bytes": 700
+    },
+    {
+      "path": "reports/data_update_probe_fast.json",
+      "suffix": ".json",
+      "size_bytes": 1007
+    },
+    {
+      "path": "reports/data_update_status.baostock_fallback.json",
+      "suffix": ".json",
+      "size_bytes": 1199
+    },
+    {
+      "path": "reports/data_update_status.datasource_refresh.json",
+      "suffix": ".json",
+      "size_bytes": 2696
+    },
+    {
+      "path": "reports/data_update_status.dryrun.json",
+      "suffix": ".json",
+      "size_bytes": 2696
+    },
+    {
+      "path": "reports/data_update_status.json",
+      "suffix": ".json",
+      "size_bytes": 3395
+    },
+    {
+      "path": "reports/etf_classification_report.md",
+      "suffix": ".md",
+      "size_bytes": 1919
+    },
+    {
+      "path": "reports/etf_expansion_cleanup_report.md",
+      "suffix": ".md",
+      "size_bytes": 6352
+    },
+    {
+      "path": "reports/etf_expansion_import_report.md",
+      "suffix": ".md",
+      "size_bytes": 29946
+    },
+    {
+      "path": "reports/etf_expansion_import_results.csv",
+      "suffix": ".csv",
+      "size_bytes": 40565
+    },
+    {
+      "path": "reports/etf_expansion_pipeline_report.md",
+      "suffix": ".md",
+      "size_bytes": 9643
+    },
+    {
+      "path": "reports/etf_expansion_quarantine_list.csv",
+      "suffix": ".csv",
+      "size_bytes": 2655
+    },
+    {
+      "path": "reports/etf_expansion_staging_validation_report.md",
+      "suffix": ".md",
+      "size_bytes": 603
+    },
+    {
+      "path": "reports/etf_pool_expansion_plan.md",
+      "suffix": ".md",
+      "size_bytes": 20016
+    },
+    {
+      "path": "reports/etf_pool_research_matrix.csv",
+      "suffix": ".csv",
+      "size_bytes": 11625
+    },
+    {
+      "path": "reports/etf_pool_research_report.md",
+      "suffix": ".md",
+      "size_bytes": 27639
+    },
+    {
+      "path": "reports/etf_rotation_exit_rule_research.md",
+      "suffix": ".md",
+      "size_bytes": 3574
+    },
+    {
+      "path": "reports/etf_rotation_mature_model_reference.md",
+      "suffix": ".md",
+      "size_bytes": 3931
+    },
+    {
+      "path": "reports/etf_rotation_strategy_research.md",
+      "suffix": ".md",
+      "size_bytes": 3432
+    },
+    {
+      "path": "reports/etf_strategy_news_sentiment_research.md",
+      "suffix": ".md",
+      "size_bytes": 33055
+    },
+    {
+      "path": "reports/etf_type_aware_model_metrics.json",
+      "suffix": ".json",
+      "size_bytes": 8403
+    },
+    {
+      "path": "reports/etf_type_aware_model_research.md",
+      "suffix": ".md",
+      "size_bytes": 1933
+    },
+    {
+      "path": "reports/etf_type_aware_model_summary.csv",
+      "suffix": ".csv",
+      "size_bytes": 1439
+    },
+    {
+      "path": "reports/etf_type_classification_report.md",
+      "suffix": ".md",
+      "size_bytes": 1919
+    },
+    {
+      "path": "reports/etf_volatility_profile.csv",
+      "suffix": ".csv",
+      "size_bytes": 34645
+    },
+    {
+      "path": "reports/etf_volatility_profile.md",
+      "suffix": ".md",
+      "size_bytes": 5998
+    },
+    {
+      "path": "reports/execution_layer_integration_plan.md",
+      "suffix": ".md",
+      "size_bytes": 1883
+    },
+    {
+      "path": "reports/exit_rule_backtest_design.md",
+      "suffix": ".md",
+      "size_bytes": 2143
+    },
+    {
+      "path": "reports/exit_rule_by_etf_type.md",
+      "suffix": ".md",
+      "size_bytes": 2698
+    },
+    {
+      "path": "reports/exit_rule_candidates.json",
+      "suffix": ".json",
+      "size_bytes": 14997
+    },
+    {
+      "path": "reports/exit_rule_candidates.md",
+      "suffix": ".md",
+      "size_bytes": 3393
+    },
+    {
+      "path": "reports/exit_rule_research.csv",
+      "suffix": ".csv",
+      "size_bytes": 382628
+    },
+    {
+      "path": "reports/exit_rule_research_report.md",
+      "suffix": ".md",
+      "size_bytes": 11110
+    },
+    {
+      "path": "reports/exit_rule_research_results.csv",
+      "suffix": ".csv",
+      "size_bytes": 382628
+    },
+    {
+      "path": "reports/factor_analysis_report.md",
+      "suffix": ".md",
+      "size_bytes": 2125
+    },
+    {
+      "path": "reports/file_classification_plan.csv",
+      "suffix": ".csv",
+      "size_bytes": 192884
+    },
+    {
+      "path": "reports/file_classification_plan.json",
+      "suffix": ".json",
+      "size_bytes": 409415
+    },
+    {
+      "path": "reports/file_classification_plan.md",
+      "suffix": ".md",
+      "size_bytes": 9842
+    },
+    {
+      "path": "reports/first_paper_buy_plan.md",
+      "suffix": ".md",
+      "size_bytes": 4310
+    },
+    {
+      "path": "reports/first_paper_trade_review.md",
+      "suffix": ".md",
+      "size_bytes": 4286
+    },
+    {
+      "path": "reports/high_beta_risk_watch.csv",
+      "suffix": ".csv",
+      "size_bytes": 1219
+    },
+    {
+      "path": "reports/high_beta_risk_watch.json",
+      "suffix": ".json",
+      "size_bytes": 3297
+    },
+    {
+      "path": "reports/high_beta_risk_watch.md",
+      "suffix": ".md",
+      "size_bytes": 2361
+    },
+    {
+      "path": "reports/holding_period_research.csv",
+      "suffix": ".csv",
+      "size_bytes": 1246828
+    },
+    {
+      "path": "reports/holding_period_research_report.md",
+      "suffix": ".md",
+      "size_bytes": 26133
+    },
+    {
+      "path": "reports/holding_period_research_results.csv",
+      "suffix": ".csv",
+      "size_bytes": 1246828
+    },
+    {
+      "path": "reports/industry_etf_diagnosis.md",
+      "suffix": ".md",
+      "size_bytes": 5323
+    },
+    {
+      "path": "reports/intelligence_data_source_plan.md",
+      "suffix": ".md",
+      "size_bytes": 1585
+    },
+    {
+      "path": "reports/jqdata_connection_diagnosis.md",
+      "suffix": ".md",
+      "size_bytes": 2816
+    },
+    {
+      "path": "reports/jqdata_import_report.md",
+      "suffix": ".md",
+      "size_bytes": 29946
+    },
+    {
+      "path": "reports/jqdata_local_compare_report.md",
+      "suffix": ".md",
+      "size_bytes": 1247
+    },
+    {
+      "path": "reports/jqdata_primary_daily_source_report.md",
+      "suffix": ".md",
+      "size_bytes": 2185
+    },
+    {
+      "path": "reports/jqdata_test_report.md",
+      "suffix": ".md",
+      "size_bytes": 18058
+    },
+    {
+      "path": "reports/jqdata_unit_diagnosis_report.md",
+      "suffix": ".md",
+      "size_bytes": 14567
+    },
+    {
+      "path": "reports/latest_brief.md",
+      "suffix": ".md",
+      "size_bytes": 5870
+    },
+    {
+      "path": "reports/latest_buy_ranking.md",
+      "suffix": ".md",
+      "size_bytes": 3992
+    },
+    {
+      "path": "reports/latest_daily.md",
+      "suffix": ".md",
+      "size_bytes": 73118
+    },
+    {
+      "path": "reports/latest_data_coverage.md",
+      "suffix": ".md",
+      "size_bytes": 12345
+    },
+    {
+      "path": "reports/latest_data_health.md",
+      "suffix": ".md",
+      "size_bytes": 10482
+    },
+    {
+      "path": "reports/latest_factor_analysis.md",
+      "suffix": ".md",
+      "size_bytes": 2125
+    },
+    {
+      "path": "reports/latest_model_research.md",
+      "suffix": ".md",
+      "size_bytes": 334
+    },
+    {
+      "path": "reports/latest_paper_portfolio.md",
+      "suffix": ".md",
+      "size_bytes": 3986
+    },
+    {
+      "path": "reports/latest_ranking.md",
+      "suffix": ".md",
+      "size_bytes": 35977
+    },
+    {
+      "path": "reports/latest_short_swing.md",
+      "suffix": ".md",
+      "size_bytes": 20629
+    },
+    {
+      "path": "reports/latest_weekly.md",
+      "suffix": ".md",
+      "size_bytes": 3007
+    },
+    {
+      "path": "reports/launchd_catchup_bugfix_report.md",
+      "suffix": ".md",
+      "size_bytes": 2709
+    },
+    {
+      "path": "reports/launchd_catchup_upgrade_report.md",
+      "suffix": ".md",
+      "size_bytes": 3452
+    },
+    {
+      "path": "reports/launchd_install_test_report.md",
+      "suffix": ".md",
+      "size_bytes": 8086
+    },
+    {
+      "path": "reports/local_validation.md",
+      "suffix": ".md",
+      "size_bytes": 1905
+    },
+    {
+      "path": "reports/manual_download_report.md",
+      "suffix": ".md",
+      "size_bytes": 4482
+    },
+    {
+      "path": "reports/manual_download_validation_report.md",
+      "suffix": ".md",
+      "size_bytes": 13430
+    },
+    {
+      "path": "reports/manual_failed_diagnosis_report.md",
+      "suffix": ".md",
+      "size_bytes": 10019
+    },
+    {
+      "path": "reports/manual_import_report.md",
+      "suffix": ".md",
+      "size_bytes": 15439
+    },
+    {
+      "path": "reports/market_state.csv",
+      "suffix": ".csv",
+      "size_bytes": 2231
+    },
+    {
+      "path": "reports/market_state_report.md",
+      "suffix": ".md",
+      "size_bytes": 1646
+    },
+    {
+      "path": "reports/midday_check.json",
+      "suffix": ".json",
+      "size_bytes": 1547
+    },
+    {
+      "path": "reports/midday_check.md",
+      "suffix": ".md",
+      "size_bytes": 1358
+    },
+    {
+      "path": "reports/missed_opportunity_by_filter_reason.csv",
+      "suffix": ".csv",
+      "size_bytes": 296
+    },
+    {
+      "path": "reports/missed_opportunity_by_filter_reason.md",
+      "suffix": ".md",
+      "size_bytes": 993
+    },
+    {
+      "path": "reports/missed_opportunity_observation_rules.md",
+      "suffix": ".md",
+      "size_bytes": 746
+    },
+    {
+      "path": "reports/missed_opportunity_tracker.csv",
+      "suffix": ".csv",
+      "size_bytes": 3213
+    },
+    {
+      "path": "reports/missed_opportunity_tracker.json",
+      "suffix": ".json",
+      "size_bytes": 1014
+    },
+    {
+      "path": "reports/missed_opportunity_tracker.md",
+      "suffix": ".md",
+      "size_bytes": 41068
+    },
+    {
+      "path": "reports/model_data_maturity_analysis.json",
+      "suffix": ".json",
+      "size_bytes": 19538
+    },
+    {
+      "path": "reports/model_data_maturity_analysis.md",
+      "suffix": ".md",
+      "size_bytes": 12610
+    },
+    {
+      "path": "reports/model_data_maturity_tables.csv",
+      "suffix": ".csv",
+      "size_bytes": 25152
+    },
+    {
+      "path": "reports/model_dataset.csv",
+      "suffix": ".csv",
+      "size_bytes": 419923
+    },
+    {
+      "path": "reports/model_enhancement_decision_report.md",
+      "suffix": ".md",
+      "size_bytes": 1318
+    },
+    {
+      "path": "reports/model_overfit_guardrails.md",
+      "suffix": ".md",
+      "size_bytes": 823
+    },
+    {
+      "path": "reports/model_research_quality_review.json",
+      "suffix": ".json",
+      "size_bytes": 19834
+    },
+    {
+      "path": "reports/model_research_quality_review.md",
+      "suffix": ".md",
+      "size_bytes": 5366
+    },
+    {
+      "path": "reports/model_research_report.md",
+      "suffix": ".md",
+      "size_bytes": 334
+    },
+    {
+      "path": "reports/model_shadow_comparison.csv",
+      "suffix": ".csv",
+      "size_bytes": 652
+    },
+    {
+      "path": "reports/model_shadow_comparison.md",
+      "suffix": ".md",
+      "size_bytes": 2896
+    },
+    {
+      "path": "reports/monthly_model_review.md",
+      "suffix": ".md",
+      "size_bytes": 1280
+    },
+    {
+      "path": "reports/news_data_source_plan.md",
+      "suffix": ".md",
+      "size_bytes": 1520
+    },
+    {
+      "path": "reports/news_sentiment_framework.md",
+      "suffix": ".md",
+      "size_bytes": 1328
+    },
+    {
+      "path": "reports/next_stage_strategy_optimization_report.md",
+      "suffix": ".md",
+      "size_bytes": 3520
+    },
+    {
+      "path": "reports/no_lookahead_data_rules.md",
+      "suffix": ".md",
+      "size_bytes": 1563
+    },
+    {
+      "path": "reports/open_check.json",
+      "suffix": ".json",
+      "size_bytes": 1528
+    },
+    {
+      "path": "reports/open_check.md",
+      "suffix": ".md",
+      "size_bytes": 1326
+    },
+    {
+      "path": "reports/paper_equity_curve.md",
+      "suffix": ".md",
+      "size_bytes": 2159
+    },
+    {
+      "path": "reports/paper_equity_curve_backfill_audit.md",
+      "suffix": ".md",
+      "size_bytes": 1414
+    },
+    {
+      "path": "reports/paper_equity_curve_backfilled.md",
+      "suffix": ".md",
+      "size_bytes": 2191
+    },
+    {
+      "path": "reports/paper_equity_curve_gap_explanation.md",
+      "suffix": ".md",
+      "size_bytes": 1124
+    },
+    {
+      "path": "reports/paper_performance_daily.csv",
+      "suffix": ".csv",
+      "size_bytes": 2176
+    },
+    {
+      "path": "reports/paper_performance_summary.json",
+      "suffix": ".json",
+      "size_bytes": 1436
+    },
+    {
+      "path": "reports/paper_performance_summary.md",
+      "suffix": ".md",
+      "size_bytes": 2017
+    },
+    {
+      "path": "reports/paper_portfolio_metrics_audit.md",
+      "suffix": ".md",
+      "size_bytes": 1949
+    },
+    {
+      "path": "reports/paper_trade_engine_design_report.md",
+      "suffix": ".md",
+      "size_bytes": 852
+    },
+    {
+      "path": "reports/paper_trade_engine_report.md",
+      "suffix": ".md",
+      "size_bytes": 2101
+    },
+    {
+      "path": "reports/paper_trade_plan.csv",
+      "suffix": ".csv",
+      "size_bytes": 6323
+    },
+    {
+      "path": "reports/paper_trade_plan.md",
+      "suffix": ".md",
+      "size_bytes": 4365
+    },
+    {
+      "path": "reports/paper_trade_pnl.csv",
+      "suffix": ".csv",
+      "size_bytes": 901
+    },
+    {
+      "path": "reports/paper_trade_pnl.md",
+      "suffix": ".md",
+      "size_bytes": 893
+    },
+    {
+      "path": "reports/parameter_sweep.csv",
+      "suffix": ".csv",
+      "size_bytes": 7544
+    },
+    {
+      "path": "reports/parameter_sweep_report.md",
+      "suffix": ".md",
+      "size_bytes": 2272
+    },
+    {
+      "path": "reports/path_dependency_audit.json",
+      "suffix": ".json",
+      "size_bytes": 251108
+    },
+    {
+      "path": "reports/path_dependency_audit.md",
+      "suffix": ".md",
+      "size_bytes": 3965
+    },
+    {
+      "path": "reports/persistence_breakout_shadow_observation_rules.md",
+      "suffix": ".md",
+      "size_bytes": 857
+    },
+    {
+      "path": "reports/persistence_breakout_shadow_portfolio.csv",
+      "suffix": ".csv",
+      "size_bytes": 469
+    },
+    {
+      "path": "reports/persistence_breakout_shadow_portfolio.md",
+      "suffix": ".md",
+      "size_bytes": 1499
+    },
+    {
+      "path": "reports/persistence_breakout_shadow_signal.csv",
+      "suffix": ".csv",
+      "size_bytes": 5136
+    },
+    {
+      "path": "reports/persistence_breakout_shadow_signal.md",
+      "suffix": ".md",
+      "size_bytes": 13415
+    },
+    {
+      "path": "reports/persistence_breakout_shadow_summary.json",
+      "suffix": ".json",
+      "size_bytes": 1040
+    },
+    {
+      "path": "reports/phase1_paper_trading_closure_report.md",
+      "suffix": ".md",
+      "size_bytes": 1957
+    },
+    {
+      "path": "reports/phase2c_execution_layer_light_integration_report.md",
+      "suffix": ".md",
+      "size_bytes": 1753
+    },
+    {
+      "path": "reports/phase4c_alpha_model_comparison.csv",
+      "suffix": ".csv",
+      "size_bytes": 1443
+    },
+    {
+      "path": "reports/phase4c_alpha_model_comparison.md",
+      "suffix": ".md",
+      "size_bytes": 1150
+    },
+    {
+      "path": "reports/phase4c_alpha_model_decision.md",
+      "suffix": ".md",
+      "size_bytes": 437
+    },
+    {
+      "path": "reports/phase4c_alpha_summary.json",
+      "suffix": ".json",
+      "size_bytes": 624
+    },
+    {
+      "path": "reports/phase4c_data_next_step.md",
+      "suffix": ".md",
+      "size_bytes": 1028
+    },
+    {
+      "path": "reports/phase4c_data_summary.json",
+      "suffix": ".json",
+      "size_bytes": 936
+    },
+    {
+      "path": "reports/portfolio_exposure.csv",
+      "suffix": ".csv",
+      "size_bytes": 2210
+    },
+    {
+      "path": "reports/portfolio_exposure.json",
+      "suffix": ".json",
+      "size_bytes": 9786
+    },
+    {
+      "path": "reports/portfolio_exposure.md",
+      "suffix": ".md",
+      "size_bytes": 1841
+    },
+    {
+      "path": "reports/portfolio_exposure_report.md",
+      "suffix": ".md",
+      "size_bytes": 1841
+    },
+    {
+      "path": "reports/position_review_state.csv",
+      "suffix": ".csv",
+      "size_bytes": 2005
+    },
+    {
+      "path": "reports/position_review_state.json",
+      "suffix": ".json",
+      "size_bytes": 4940
+    },
+    {
+      "path": "reports/position_review_state.md",
+      "suffix": ".md",
+      "size_bytes": 2542
+    },
+    {
+      "path": "reports/post_expansion_automation_sync_report.md",
+      "suffix": ".md",
+      "size_bytes": 5667
+    },
+    {
+      "path": "reports/profit_protection_preview.csv",
+      "suffix": ".csv",
+      "size_bytes": 1874
+    },
+    {
+      "path": "reports/profit_protection_preview.json",
+      "suffix": ".json",
+      "size_bytes": 5218
+    },
+    {
+      "path": "reports/profit_protection_preview.md",
+      "suffix": ".md",
+      "size_bytes": 2732
+    },
+    {
+      "path": "reports/project_cleanup_roadmap.md",
+      "suffix": ".md",
+      "size_bytes": 1139
+    },
+    {
+      "path": "reports/project_structure_audit.json",
+      "suffix": ".json",
+      "size_bytes": 5961
+    },
+    {
+      "path": "reports/project_structure_audit.md",
+      "suffix": ".md",
+      "size_bytes": 23449
+    },
+    {
+      "path": "reports/qmt_test_report.md",
+      "suffix": ".md",
+      "size_bytes": 963
+    },
+    {
+      "path": "reports/ranking_factor_diagnostics.csv",
+      "suffix": ".csv",
+      "size_bytes": 180220
+    },
+    {
+      "path": "reports/ranking_factor_diagnostics.md",
+      "suffix": ".md",
+      "size_bytes": 5789
+    },
+    {
+      "path": "reports/ranking_logic_audit.json",
+      "suffix": ".json",
+      "size_bytes": 1746
+    },
+    {
+      "path": "reports/ranking_logic_audit.md",
+      "suffix": ".md",
+      "size_bytes": 1229
+    },
+    {
+      "path": "reports/ranking_model_v2_backtest_report.md",
+      "suffix": ".md",
+      "size_bytes": 12353
+    },
+    {
+      "path": "reports/ranking_model_v2_candidates.json",
+      "suffix": ".json",
+      "size_bytes": 2635
+    },
+    {
+      "path": "reports/ranking_model_v2_decision_report.md",
+      "suffix": ".md",
+      "size_bytes": 3166
+    },
+    {
+      "path": "reports/ranking_model_v2_design.md",
+      "suffix": ".md",
+      "size_bytes": 2144
+    },
+    {
+      "path": "reports/ranking_model_v2_equity_curve.csv",
+      "suffix": ".csv",
+      "size_bytes": 389453
+    },
+    {
+      "path": "reports/ranking_model_v2_execution_assumption.md",
+      "suffix": ".md",
+      "size_bytes": 1398
+    },
+    {
+      "path": "reports/ranking_model_v2_metrics.json",
+      "suffix": ".json",
+      "size_bytes": 24097
+    },
+    {
+      "path": "reports/ranking_model_v2_positions.csv",
+      "suffix": ".csv",
+      "size_bytes": 634689
+    },
+    {
+      "path": "reports/ranking_model_v2_summary.csv",
+      "suffix": ".csv",
+      "size_bytes": 3486
+    },
+    {
+      "path": "reports/ranking_model_v2_trades.csv",
+      "suffix": ".csv",
+      "size_bytes": 1062258
+    },
+    {
+      "path": "reports/ranking_model_v2_yearly_summary.csv",
+      "suffix": ".csv",
+      "size_bytes": 2485
+    },
+    {
+      "path": "reports/ranking_report.md",
+      "suffix": ".md",
+      "size_bytes": 35977
+    },
+    {
+      "path": "reports/ranking_signal_research_summary.json",
+      "suffix": ".json",
+      "size_bytes": 2552
+    },
+    {
+      "path": "reports/recommended_project_layout.md",
+      "suffix": ".md",
+      "size_bytes": 1335
+    },
+    {
+      "path": "reports/regime_aware_model_metrics.json",
+      "suffix": ".json",
+      "size_bytes": 7338
+    },
+    {
+      "path": "reports/regime_aware_model_research.md",
+      "suffix": ".md",
+      "size_bytes": 1155
+    },
+    {
+      "path": "reports/regime_aware_model_summary.csv",
+      "suffix": ".csv",
+      "size_bytes": 1747
+    },
+    {
+      "path": "reports/report_index.json",
+      "suffix": ".json",
+      "size_bytes": 76564
+    },
+    {
+      "path": "reports/report_index.md",
+      "suffix": ".md",
+      "size_bytes": 14114
+    },
+    {
+      "path": "reports/review_state_audit.json",
+      "suffix": ".json",
+      "size_bytes": 5416
+    },
+    {
+      "path": "reports/review_state_audit.md",
+      "suffix": ".md",
+      "size_bytes": 1523
+    },
+    {
+      "path": "reports/risk_on_empty_signal_analysis.csv",
+      "suffix": ".csv",
+      "size_bytes": 177
+    },
+    {
+      "path": "reports/risk_on_empty_signal_analysis.md",
+      "suffix": ".md",
+      "size_bytes": 153
+    },
+    {
+      "path": "reports/risk_report.md",
+      "suffix": ".md",
+      "size_bytes": 943
+    },
+    {
+      "path": "reports/selected_vs_filtered_forward_return.csv",
+      "suffix": ".csv",
+      "size_bytes": 411
+    },
+    {
+      "path": "reports/selected_vs_filtered_forward_return.md",
+      "suffix": ".md",
+      "size_bytes": 1602
+    },
+    {
+      "path": "reports/sell_signal_review.csv",
+      "suffix": ".csv",
+      "size_bytes": 2290
+    },
+    {
+      "path": "reports/sell_signal_review.md",
+      "suffix": ".md",
+      "size_bytes": 2256
+    },
+    {
+      "path": "reports/sell_signal_review_design_report.md",
+      "suffix": ".md",
+      "size_bytes": 2830
+    },
+    {
+      "path": "reports/sell_signal_review_history.csv",
+      "suffix": ".csv",
+      "size_bytes": 20565
+    },
+    {
+      "path": "reports/shadow_observation_weekly.csv",
+      "suffix": ".csv",
+      "size_bytes": 1196
+    },
+    {
+      "path": "reports/shadow_observation_weekly.json",
+      "suffix": ".json",
+      "size_bytes": 728
+    },
+    {
+      "path": "reports/shadow_observation_weekly.md",
+      "suffix": ".md",
+      "size_bytes": 8368
+    },
+    {
+      "path": "reports/signals.csv",
+      "suffix": ".csv",
+      "size_bytes": 330986
+    },
+    {
+      "path": "reports/strategy_compare_report.md",
+      "suffix": ".md",
+      "size_bytes": 1758
+    },
+    {
+      "path": "reports/strategy_enhancement_preview.csv",
+      "suffix": ".csv",
+      "size_bytes": 3316
+    },
+    {
+      "path": "reports/strategy_enhancement_preview.md",
+      "suffix": ".md",
+      "size_bytes": 5380
+    },
+    {
+      "path": "reports/strategy_preview_shadow_portfolio.csv",
+      "suffix": ".csv",
+      "size_bytes": 3769
+    },
+    {
+      "path": "reports/strategy_preview_shadow_portfolio.md",
+      "suffix": ".md",
+      "size_bytes": 2272
+    },
+    {
+      "path": "reports/strategy_preview_tracking.csv",
+      "suffix": ".csv",
+      "size_bytes": 23674
+    },
+    {
+      "path": "reports/strategy_preview_tracking_report.md",
+      "suffix": ".md",
+      "size_bytes": 2505
+    },
+    {
+      "path": "reports/top10_candidate_filter_analysis.csv",
+      "suffix": ".csv",
+      "size_bytes": 334247
+    },
+    {
+      "path": "reports/top10_candidate_filter_analysis.md",
+      "suffix": ".md",
+      "size_bytes": 1512
+    },
+    {
+      "path": "reports/topn_selection_diagnostics.csv",
+      "suffix": ".csv",
+      "size_bytes": 4347
+    },
+    {
+      "path": "reports/topn_selection_diagnostics.md",
+      "suffix": ".md",
+      "size_bytes": 1095
+    },
+    {
+      "path": "reports/trade_execution_realism_report.md",
+      "suffix": ".md",
+      "size_bytes": 1106
+    },
+    {
+      "path": "reports/trade_review_audit.md",
+      "suffix": ".md",
+      "size_bytes": 2343
+    },
+    {
+      "path": "reports/trade_review_details.csv",
+      "suffix": ".csv",
+      "size_bytes": 4411
+    },
+    {
+      "path": "reports/trade_review_details.md",
+      "suffix": ".md",
+      "size_bytes": 1081
+    },
+    {
+      "path": "reports/trade_review_lessons.md",
+      "suffix": ".md",
+      "size_bytes": 1211
+    },
+    {
+      "path": "reports/trade_review_open_positions.csv",
+      "suffix": ".csv",
+      "size_bytes": 1456
+    },
+    {
+      "path": "reports/trade_review_open_positions.md",
+      "suffix": ".md",
+      "size_bytes": 1011
+    },
+    {
+      "path": "reports/trade_review_summary.json",
+      "suffix": ".json",
+      "size_bytes": 1866
+    },
+    {
+      "path": "reports/trade_review_summary.md",
+      "suffix": ".md",
+      "size_bytes": 1164
+    },
+    {
+      "path": "reports/tushare_baostock_compare.csv",
+      "suffix": ".csv",
+      "size_bytes": 1123
+    },
+    {
+      "path": "reports/tushare_baostock_compare.json",
+      "suffix": ".json",
+      "size_bytes": 586
+    },
+    {
+      "path": "reports/tushare_baostock_compare.md",
+      "suffix": ".md",
+      "size_bytes": 1815
+    },
+    {
+      "path": "reports/tushare_config_check.json",
+      "suffix": ".json",
+      "size_bytes": 290
+    },
+    {
+      "path": "reports/tushare_config_check.md",
+      "suffix": ".md",
+      "size_bytes": 415
+    },
+    {
+      "path": "reports/tushare_no_lookahead_check.md",
+      "suffix": ".md",
+      "size_bytes": 623
+    },
+    {
+      "path": "reports/tushare_staging_check.json",
+      "suffix": ".json",
+      "size_bytes": 2365
+    },
+    {
+      "path": "reports/tushare_staging_check.md",
+      "suffix": ".md",
+      "size_bytes": 1270
+    },
+    {
+      "path": "reports/universe_quality_review.csv",
+      "suffix": ".csv",
+      "size_bytes": 55951
+    },
+    {
+      "path": "reports/universe_quality_review.md",
+      "suffix": ".md",
+      "size_bytes": 16628
+    },
+    {
+      "path": "reports/v2_underperformance_attribution.csv",
+      "suffix": ".csv",
+      "size_bytes": 2058
+    },
+    {
+      "path": "reports/v2_underperformance_attribution.json",
+      "suffix": ".json",
+      "size_bytes": 19440
+    },
+    {
+      "path": "reports/v2_underperformance_attribution.md",
+      "suffix": ".md",
+      "size_bytes": 2290
+    },
+    {
+      "path": "reports/valuation_consistency_audit.json",
+      "suffix": ".json",
+      "size_bytes": 2051
+    },
+    {
+      "path": "reports/valuation_consistency_audit.md",
+      "suffix": ".md",
+      "size_bytes": 1463
+    },
+    {
+      "path": "reports/valuation_consistency_check.md",
+      "suffix": ".md",
+      "size_bytes": 258
+    },
+    {
+      "path": "reports/watchlist_health_report.md",
+      "suffix": ".md",
+      "size_bytes": 1067
+    },
+    {
+      "path": "reports/weekly_full_backtest_results.csv",
+      "suffix": ".csv",
+      "size_bytes": 2862
+    },
+    {
+      "path": "reports/weekly_full_review.md",
+      "suffix": ".md",
+      "size_bytes": 3091
+    }
+  ],
+  "archive_rows": [
+    {
+      "path": "reports/archive/chatgpt_packets/chatgpt_analysis_packet_2026-06-27.md",
+      "size_bytes": 10825
+    },
+    {
+      "path": "reports/archive/chatgpt_packets/chatgpt_report_summary_2026-06-27.md",
+      "size_bytes": 5126
+    },
+    {
+      "path": "reports/archive/chatgpt_packets/chatgpt_weekly_analysis_packet_2026-06-26.json",
+      "size_bytes": 64077
+    },
+    {
+      "path": "reports/archive/chatgpt_packets/chatgpt_weekly_analysis_packet_2026-06-26.md",
+      "size_bytes": 8993
+    },
+    {
+      "path": "reports/archive/chatgpt_packets/chatgpt_weekly_report_summary_2026-06-27.md",
+      "size_bytes": 5692
+    },
+    {
+      "path": "reports/archive/daily/daily_signal_2026-06-01.md",
+      "size_bytes": 1443
+    },
+    {
+      "path": "reports/archive/daily/daily_signal_2026-06-02.md",
+      "size_bytes": 43410
+    },
+    {
+      "path": "reports/archive/daily/daily_signal_2026-06-03.md",
+      "size_bytes": 73080
+    },
+    {
+      "path": "reports/archive/daily/daily_signal_2026-06-09.md",
+      "size_bytes": 73439
+    },
+    {
+      "path": "reports/archive/daily/daily_signal_2026-06-10.md",
+      "size_bytes": 72991
+    },
+    {
+      "path": "reports/archive/daily/daily_signal_2026-06-11.md",
+      "size_bytes": 73003
+    },
+    {
+      "path": "reports/archive/daily/daily_signal_2026-06-12.md",
+      "size_bytes": 71976
+    },
+    {
+      "path": "reports/archive/daily/daily_signal_2026-06-15.md",
+      "size_bytes": 72717
+    },
+    {
+      "path": "reports/archive/daily/daily_signal_2026-06-16.md",
+      "size_bytes": 72632
+    },
+    {
+      "path": "reports/archive/daily/daily_signal_2026-06-17.md",
+      "size_bytes": 72866
+    },
+    {
+      "path": "reports/archive/daily/daily_signal_2026-06-18.md",
+      "size_bytes": 72170
+    },
+    {
+      "path": "reports/archive/daily/daily_signal_2026-06-22.md",
+      "size_bytes": 73029
+    },
+    {
+      "path": "reports/archive/daily/daily_signal_2026-06-23.md",
+      "size_bytes": 72150
+    },
+    {
+      "path": "reports/archive/daily/daily_signal_2026-06-24.md",
+      "size_bytes": 72829
+    },
+    {
+      "path": "reports/archive/daily/daily_signal_2026-06-25.md",
+      "size_bytes": 72839
+    },
+    {
+      "path": "reports/archive/daily/daily_signal_2026-06-26.md",
+      "size_bytes": 73118
+    },
+    {
+      "path": "reports/archive/legacy_misc/app_backfill_button_fix_20260624.md",
+      "size_bytes": 1851
+    },
+    {
+      "path": "reports/archive/research_phases/app_polish_phase1_launch_stability_report.md",
+      "size_bytes": 5943
+    },
+    {
+      "path": "reports/archive/research_phases/app_release_phase2_shortcut_equity_backfill_report.md",
+      "size_bytes": 4949
+    },
+    {
+      "path": "reports/archive/research_phases/phase3a_fastapi_react_app_report.md",
+      "size_bytes": 2611
+    },
+    {
+      "path": "reports/archive/research_phases/phase3b_app_control_room_upgrade_report.md",
+      "size_bytes": 4615
+    },
+    {
+      "path": "reports/archive/research_phases/phase3c_desktop_app_mvp_report.md",
+      "size_bytes": 2195
+    },
+    {
+      "path": "reports/archive/weekly/weekly_review_2026-06-01.md",
+      "size_bytes": 807
+    },
+    {
+      "path": "reports/archive/weekly/weekly_review_2026-06-02.md",
+      "size_bytes": 2579
+    },
+    {
+      "path": "reports/archive/weekly/weekly_review_2026-06-03.md",
+      "size_bytes": 2720
+    },
+    {
+      "path": "reports/archive/weekly/weekly_review_2026-06-09.md",
+      "size_bytes": 2461
+    },
+    {
+      "path": "reports/archive/weekly/weekly_review_2026-06-11.md",
+      "size_bytes": 2351
+    },
+    {
+      "path": "reports/archive/weekly/weekly_review_2026-06-12.md",
+      "size_bytes": 2246
+    },
+    {
+      "path": "reports/archive/weekly/weekly_review_2026-06-25.md",
+      "size_bytes": 2946
+    },
+    {
+      "path": "reports/archive/weekly/weekly_review_2026-06-26.md",
+      "size_bytes": 3007
+    }
+  ]
+}

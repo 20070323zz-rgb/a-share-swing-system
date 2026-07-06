@@ -8,10 +8,13 @@ import pandas as pd
 
 from config import DATA_DIR, REPORT_DIR
 from etf_classifier import CLASSIFICATION_FILE, main as build_classification
+from valuation import load_latest_position_valuation
 
 
 CSV_FILE = REPORT_DIR / "portfolio_exposure.csv"
 REPORT_FILE = REPORT_DIR / "portfolio_exposure_report.md"
+REPORT_ALIAS_FILE = REPORT_DIR / "portfolio_exposure.md"
+JSON_FILE = REPORT_DIR / "portfolio_exposure.json"
 POSITIONS_FILE = DATA_DIR / "paper_positions.csv"
 INITIAL_CASH = 10000.0
 
@@ -20,12 +23,17 @@ def main() -> None:
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
     if not CLASSIFICATION_FILE.exists():
         build_classification()
-    positions = _read_positions()
+    valuation = load_latest_position_valuation()
+    positions = valuation["positions"]
+    valuation_summary = valuation["summary"]
     classification = _read_classification()
     rows = build_exposure_rows(positions, classification)
     df = pd.DataFrame(rows)
     df.to_csv(CSV_FILE, index=False)
-    REPORT_FILE.write_text(render_report(df), encoding="utf-8")
+    report_text = render_report(df, valuation_summary)
+    REPORT_FILE.write_text(report_text, encoding="utf-8")
+    REPORT_ALIAS_FILE.write_text(report_text, encoding="utf-8")
+    JSON_FILE.write_text(json.dumps(_json_payload(df, valuation_summary), ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"portfolio_exposure rows: {len(df)}")
     print(f"written: {CSV_FILE}")
     print(f"written: {REPORT_FILE}")
@@ -54,6 +62,11 @@ def build_exposure_rows(positions: pd.DataFrame, classification: pd.DataFrame) -
             "portfolio_weight": round(market_value / total_market_value, 6) if total_market_value else 0.0,
             "unrealized_pnl": round(_float(pos.get("unrealized_pnl")), 2),
             "unrealized_pnl_pct": round(_float(pos.get("unrealized_pnl_pct", pos.get("unrealized_return"))), 6),
+            "latest_close": round(_float(pos.get("latest_close", pos.get("current_price"))), 6),
+            "as_of_date": pos.get("as_of_date", ""),
+            "price_status": pos.get("price_status", ""),
+            "valuation_source": pos.get("valuation_source", ""),
+            "market_value_diff_vs_position_file": round(_float(pos.get("market_value_diff_vs_position_file")), 2),
             "data_health_status": pos.get("data_health_status", ""),
             "sell_review_status": pos.get("sell_review_status", ""),
             "exposure_note": _position_note(symbol, item, pos),
@@ -68,7 +81,7 @@ def build_exposure_rows(positions: pd.DataFrame, classification: pd.DataFrame) -
     return rows
 
 
-def render_report(df: pd.DataFrame) -> str:
+def render_report(df: pd.DataFrame, valuation_summary: dict | None = None) -> str:
     summary = df[df["row_type"] == "summary"].head(1)
     if summary.empty:
         status = "unknown"
@@ -90,6 +103,9 @@ def render_report(df: pd.DataFrame) -> str:
         f"- overall_status：{status}",
         f"- 当前持仓市值：{total_value:.2f}",
         f"- 当前仓位：{position_ratio:.2%}",
+        f"- 估值日期：{(valuation_summary or {}).get('as_of_date', '') or 'N/A'}",
+        f"- 估值口径：{(valuation_summary or {}).get('valuation_source', 'paper_positions + etf_daily latest close')}",
+        f"- 价格警告数量：{(valuation_summary or {}).get('price_warning_count', 0)}",
         f"- 风险提示数量：{len(warnings)}",
     ]
     if warnings:
@@ -98,18 +114,18 @@ def render_report(df: pd.DataFrame) -> str:
     lines += [
         "",
         "## 持仓暴露",
-        "| symbol | name | group | etf_type | risk_profile | market_value | position_ratio | portfolio_weight | data_health | sell_review | note |",
-        "| --- | --- | --- | --- | --- | ---: | ---: | ---: | --- | --- | --- |",
+        "| symbol | name | group | etf_type | latest_close | as_of_date | market_value | position_ratio | portfolio_weight | data_health | sell_review | price_status | note |",
+        "| --- | --- | --- | --- | ---: | --- | ---: | ---: | ---: | --- | --- | --- | --- |",
     ]
     positions = df[df["row_type"] == "position"].copy()
     if positions.empty:
-        lines.append("|  | 当前无持仓 |  |  |  |  |  |  |  |  |  |")
+        lines.append("|  | 当前无持仓 |  |  |  |  |  |  |  |  |  |  |  |")
     else:
         for _, row in positions.iterrows():
             lines.append(
-                f"| {row['symbol']} | {row['name']} | {row['group']} | {row['etf_type']} | {row['risk_profile']} | "
+                f"| {row['symbol']} | {row['name']} | {row['group']} | {row['etf_type']} | {float(row['latest_close']):.4f} | {row['as_of_date']} | "
                 f"{float(row['market_value']):.2f} | {float(row['position_ratio']):.2%} | {float(row['portfolio_weight']):.2%} | "
-                f"{row['data_health_status']} | {row['sell_review_status']} | {row['exposure_note']} |"
+                f"{row['data_health_status']} | {row['sell_review_status']} | {row['price_status']} | {row['exposure_note']} |"
             )
     lines += [
         "",
@@ -148,6 +164,11 @@ def _summary_row(details: list[dict], market_value: float, position_ratio: float
         "portfolio_weight": 1.0 if market_value else 0.0,
         "unrealized_pnl": round(sum(_float(row.get("unrealized_pnl")) for row in details), 2),
         "unrealized_pnl_pct": "",
+        "latest_close": "",
+        "as_of_date": "",
+        "price_status": "",
+        "valuation_source": "paper_positions + etf_daily latest close",
+        "market_value_diff_vs_position_file": round(sum(_float(row.get("market_value_diff_vs_position_file")) for row in details), 2),
         "data_health_status": "",
         "sell_review_status": "",
         "overall_status": overall_status,
@@ -179,6 +200,11 @@ def _group_rows(details: list[dict], field: str, total: float) -> list[dict]:
                 "portfolio_weight": round(value / total, 6) if total else 0.0,
                 "unrealized_pnl": "",
                 "unrealized_pnl_pct": "",
+                "latest_close": "",
+                "as_of_date": "",
+                "price_status": "",
+                "valuation_source": "paper_positions + etf_daily latest close",
+                "market_value_diff_vs_position_file": "",
                 "data_health_status": "",
                 "sell_review_status": "",
                 "overall_status": "",
@@ -263,6 +289,33 @@ def _float(value: object) -> float:
     if pd.isna(numeric):
         return 0.0
     return numeric
+
+
+def _json_payload(df: pd.DataFrame, valuation_summary: dict) -> dict:
+    clean_df = df.where(pd.notna(df), "")
+    summary_df = df[df["row_type"] == "summary"].head(1)
+    summary = summary_df.iloc[0].to_dict() if not summary_df.empty else {}
+    warnings = []
+    raw = summary.get("warnings_json", "")
+    if raw:
+        try:
+            warnings = json.loads(raw)
+        except Exception:
+            warnings = [str(raw)]
+    return {
+        "summary": {key: ("" if pd.isna(value) else value) for key, value in summary.items()},
+        "positions": clean_df[clean_df["row_type"] == "position"].to_dict(orient="records"),
+        "buckets": clean_df[clean_df["row_type"].isin(["group", "etf_type", "risk_profile"])].to_dict(orient="records"),
+        "warnings": warnings,
+        "valuation": valuation_summary,
+        "safety": {
+            "broker_api": False,
+            "real_order": False,
+            "real_account": False,
+            "paper_trades_modified": False,
+            "paper_positions_modified": False,
+        },
+    }
 
 
 if __name__ == "__main__":

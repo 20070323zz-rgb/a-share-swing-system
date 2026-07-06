@@ -1,45 +1,45 @@
-# Strategy Preview Tracking Report 2026-06-24 23:04:54
+# Strategy Preview Tracking Report 2026-07-04 00:00:55
 
 本报告追踪 original BUY ranking 与 adjusted preview ranking 的后续表现，只作研究，不影响 paper_trade_engine。
 
 ## 摘要
-- latest_snapshot_date：2026-06-24
-- tracking rows：48
-- inserted / updated：0 / 10
-- forward filled cells：0
-- completed / partial / pending / missing：0 / 38 / 10 / 0
-- Top 3 是否变化：否
+- latest_snapshot_date：2026-07-03
+- tracking rows：94
+- inserted / updated：11 / 0
+- forward filled cells：46
+- completed / partial / pending / missing：26 / 57 / 11 / 0
+- Top 3 是否变化：是
 - 样本是否足够：否
 - 结论：当前样本不足，不能证明 adjusted preview 优于 original ranking。
 
 ## 今日 Original Top 3
-1. 512880 证券ETF：rank=1，score=91.8274
-2. 159819 人工智能ETF：rank=2，score=88.4364
-3. 515070 AIETF：rank=3，score=88.3806
+1. 512010 医药ETF：rank=1，score=95.1375
+2. 512880 证券ETF：rank=2，score=94.493
+3. 159929 医药ETF：rank=3，score=79.4343
 
 ## 今日 Adjusted Preview Top 3
-1. 512880 证券ETF：rank=1，score=87.8274
-2. 159819 人工智能ETF：rank=2，score=86.4364
-3. 515070 AIETF：rank=3，score=86.3806
+1. 512010 医药ETF：rank=1，score=95.1375
+2. 512880 证券ETF：rank=2，score=90.493
+3. 588000 科创50ETF：rank=3，score=79.6456
 
 ## Forward Return Comparison
 | group | sample | 1d mean | 1d n | 3d mean | 3d n | 5d mean | 5d n | 10d mean | 10d n |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| original_top3 | 21 | 0.39% | 18 | 3.15% | 12 | 3.98% | 6 | N/A | 0 |
-| adjusted_top3 | 21 | -0.42% | 18 | 1.04% | 12 | 0.94% | 6 | N/A | 0 |
-| only_original_top3 | 4 | 3.85% | 4 | 5.81% | 4 | 5.94% | 2 | N/A | 0 |
-| only_adjusted_top3 | 4 | 0.20% | 4 | -0.52% | 4 | -3.18% | 2 | N/A | 0 |
-| high_beta_penalty | 16 | 0.26% | 14 | 2.97% | 10 | 3.37% | 6 | N/A | 0 |
-| data_health_penalty | 9 | 2.39% | 7 | 7.08% | 5 | 6.27% | 4 | N/A | 0 |
-| concentration_penalty | 31 | 0.29% | 25 | 2.37% | 19 | 2.48% | 13 | N/A | 0 |
-| broad_index_bonus | 6 | -0.60% | 4 | -0.05% | 2 | N/A | 0 | N/A | 0 |
+| original_top3 | 36 | 0.12% | 33 | 1.00% | 30 | 0.75% | 27 | 3.14% | 12 |
+| adjusted_top3 | 36 | -0.55% | 33 | -0.11% | 30 | -0.77% | 27 | 0.37% | 12 |
+| only_original_top3 | 7 | 3.68% | 6 | 4.67% | 6 | 3.81% | 5 | 1.34% | 4 |
+| only_adjusted_top3 | 7 | -0.01% | 6 | -0.86% | 6 | -4.39% | 5 | -6.98% | 4 |
+| high_beta_penalty | 26 | 0.06% | 25 | 0.85% | 23 | 1.97% | 20 | 2.98% | 10 |
+| data_health_penalty | 16 | -0.09% | 15 | -0.50% | 15 | -0.66% | 13 | 1.76% | 5 |
+| concentration_penalty | 58 | -0.40% | 54 | 0.53% | 48 | 0.55% | 42 | 1.94% | 19 |
+| broad_index_bonus | 13 | -0.65% | 11 | 0.60% | 10 | -1.24% | 9 | -0.10% | 2 |
 | defensive_bonus | 0 | N/A | 0 | N/A | 0 | N/A | 0 | N/A | 0 |
 
 ## Penalty / Bonus Review
-- high_beta penalty ETF 后续表现：sample=16, 1d=0.26%, 3d=2.97%, 5d=3.37%, 10d=N/A
-- data_health penalty ETF 后续表现：sample=9, 1d=2.39%, 3d=7.08%, 5d=6.27%, 10d=N/A
-- concentration penalty ETF 后续表现：sample=31, 1d=0.29%, 3d=2.37%, 5d=2.48%, 10d=N/A
-- broad_index bonus ETF 后续表现：sample=6, 1d=-0.60%, 3d=-0.05%, 5d=N/A, 10d=N/A
+- high_beta penalty ETF 后续表现：sample=26, 1d=0.06%, 3d=0.85%, 5d=1.97%, 10d=2.98%
+- data_health penalty ETF 后续表现：sample=16, 1d=-0.09%, 3d=-0.50%, 5d=-0.66%, 10d=1.76%
+- concentration penalty ETF 后续表现：sample=58, 1d=-0.40%, 3d=0.53%, 5d=0.55%, 10d=1.94%
+- broad_index bonus ETF 后续表现：sample=13, 1d=-0.65%, 3d=0.60%, 5d=-1.24%, 10d=-0.10%
 - defensive bonus ETF 后续表现：sample=0, 1d=N/A, 3d=N/A, 5d=N/A, 10d=N/A
 
 ## 安全边界

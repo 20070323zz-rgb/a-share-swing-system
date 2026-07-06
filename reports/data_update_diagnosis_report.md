@@ -1,24 +1,24 @@
-# 自动化数据更新诊断报告 2026-06-24 23:04:48
+# 自动化数据更新诊断报告 2026-07-04 00:02:45
 
 本报告用于解释 daily_close 数据更新是否真正完成。它只检查本地行情更新状态，不接券商 API，不下单，不读取账号密码。
 
 ## 结论
-- severity：INFO
-- status：dry_run
-- reason：dry-run only; planned 0 BaoStock queries, no local CSV was written.
-- recommendation：Dry-run only. Run without --dry-run after reviewing estimated calls.
+- severity：OK
+- status：up_to_date
+- reason：No new rows were needed; local files already cover the requested range or source returned no older backfill.
+- recommendation：Daily update status is acceptable under current local-data rules.
 
 ## 关键数字
 - source：baostock
-- mode：dry-run
-- requested_end：2026-06-24
-- latest_local_date：2026-06-24
+- mode：formal update
+- requested_end：2026-07-03
+- latest_local_date：2026-07-03
 - universe_size：183
 - estimated_api_calls：0
 - added_rows：0
 - failed_count：0
 - pending_count：0
-- status_counts：{'already_up_to_date': 183}
+- status_counts：{'up_to_date': 183}
 
 ## 失败或不可用样例
 - 无。

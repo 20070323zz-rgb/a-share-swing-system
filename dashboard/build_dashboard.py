@@ -29,6 +29,11 @@ if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 
 try:
+    from valuation import load_latest_position_valuation  # type: ignore
+except Exception:
+    load_latest_position_valuation = None  # type: ignore
+
+try:
     from config import (  # type: ignore
         BROKER_API_ENABLED,
         PAPER_AUTO_EXECUTE,
@@ -83,15 +88,21 @@ def main() -> None:
 
 
 def build_snapshot() -> dict:
-    positions = _read_csv(DATA_DIR / "paper_positions.csv")
+    positions = _valuation_positions_snapshot()
+    if positions.empty:
+        positions = _read_csv(DATA_DIR / "paper_positions.csv")
     trades = _read_csv(DATA_DIR / "paper_trades.csv")
     watchlist = _read_csv(PROJECT_ROOT / "watchlist.csv")
     candidates = _read_csv(DATA_DIR / "etf_pool_expansion_candidates.csv")
     classification = _read_classification_csv()
     ranking_rows = _read_buy_ranking()
     sell_review_rows = _read_csv(REPORT_DIR / "sell_signal_review.csv").to_dict(orient="records")
+    position_review_state = _position_review_state_snapshot()
+    profit_protection_preview = _profit_protection_preview_snapshot()
+    high_beta_risk_watch = _high_beta_risk_watch_snapshot()
     paper_trade_plan_rows = _read_csv(PAPER_TRADE_PLAN_FILE).to_dict(orient="records")
     strategy_preview = _strategy_enhancement_preview_snapshot()
+    broad_base_balance_preview = _broad_base_balance_preview_snapshot()
     preview_tracking = _strategy_preview_tracking_snapshot()
     type_aware_review = _type_aware_review_snapshot(sell_review_rows)
     market_state = _market_state_snapshot()
@@ -105,6 +116,7 @@ def build_snapshot() -> dict:
     persistence_breakout_shadow = _persistence_breakout_shadow_snapshot()
     missed_opportunity_tracking = _missed_opportunity_tracking_snapshot()
     shadow_observation_weekly = _shadow_observation_weekly_snapshot()
+    chatgpt_weekly_packet = _chatgpt_weekly_packet_snapshot()
     exit_rule_research = _exit_rule_research_snapshot()
     backtest_phase4a = _backtest_phase4a_snapshot()
     backtest_diagnostics = _backtest_diagnostics_snapshot()
@@ -122,8 +134,17 @@ def build_snapshot() -> dict:
     engine_state = _latest_engine_state(_read_json(ENGINE_STATE_FILE), latest_data_date, pd.Timestamp.now().strftime("%Y-%m-%d"))
 
     meta = _build_meta_map(watchlist, candidates, classification)
-    enriched_positions = _enrich_positions(positions, meta, ranking_rows, health_rows, sell_review_rows)
-    summary = _paper_summary(enriched_positions, trades)
+    enriched_positions = _enrich_positions(
+        positions,
+        meta,
+        ranking_rows,
+        health_rows,
+        sell_review_rows,
+        position_review_state.get("rows", []),
+        profit_protection_preview.get("rows", []),
+        high_beta_risk_watch.get("rows", []),
+    )
+    summary = _merge_performance_summary(_paper_summary(enriched_positions, trades), paper_performance.get("summary", {}), portfolio_exposure)
     paper_trade_engine = _paper_trade_engine_snapshot(engine_state, paper_trade_plan_rows, summary)
     exposure = _group_exposure(enriched_positions)
     classification_summary = _classification_summary(classification, enriched_positions)
@@ -162,7 +183,7 @@ def build_snapshot() -> dict:
     )
 
     return {
-        "app_ready_snapshot_version": "phase4c_3_shadow_observation_weekly_v1",
+        "app_ready_snapshot_version": "step6_chatgpt_weekly_packet_v1",
         "local_app_version": f"v{APP_VERSION}",
         "generated_at": pd.Timestamp.now().strftime("%Y-%m-%d %H:%M:%S"),
         "app_control_center": app_control_center,
@@ -204,6 +225,25 @@ def build_snapshot() -> dict:
         "console": console,
         "market_state": market_state,
         "paper_summary": summary,
+        "valuation_consistency": _valuation_consistency_snapshot(),
+        "position_review_state": position_review_state.get("rows", []),
+        "review_summary": position_review_state.get("summary", {}),
+        "reduce_candidate_count": position_review_state.get("summary", {}).get("reduce_candidate_count", 0),
+        "review_2_count": position_review_state.get("summary", {}).get("review_2_count", 0),
+        "high_beta_watch_count": position_review_state.get("summary", {}).get("high_beta_watch_count", 0),
+        "profit_protection_watch_count": position_review_state.get("summary", {}).get("profit_protection_watch_count", 0),
+        "profit_protection_preview": profit_protection_preview.get("rows", []),
+        "profit_protection_summary": profit_protection_preview.get("summary", {}),
+        "profit_watch_count": profit_protection_preview.get("summary", {}).get("profit_watch_count", 0),
+        "profit_protection_review_count": profit_protection_preview.get("summary", {}).get("profit_protection_review_count", 0),
+        "profit_lock_candidate_count": profit_protection_preview.get("summary", {}).get("profit_lock_candidate_count", 0),
+        "high_beta_risk_watch": high_beta_risk_watch.get("rows", []),
+        "high_beta_risk_summary": high_beta_risk_watch.get("summary", {}),
+        "high_beta_position_count": high_beta_risk_watch.get("summary", {}).get("high_beta_position_count", 0),
+        "high_beta_weight_of_equity": high_beta_risk_watch.get("summary", {}).get("high_beta_weight_of_equity", 0),
+        "high_beta_weight_of_holdings": high_beta_risk_watch.get("summary", {}).get("high_beta_weight_of_holdings", 0),
+        "high_beta_exposure_state": high_beta_risk_watch.get("summary", {}).get("high_beta_exposure_state", "HB_NORMAL"),
+        "finance_real_estate_weight": high_beta_risk_watch.get("summary", {}).get("finance_real_estate_weight_of_equity", 0),
         "paper_performance": paper_performance.get("summary", {}),
         "paper_equity_curve": paper_performance.get("equity_curve", []),
         "paper_equity_backfill": paper_equity_backfill,
@@ -217,6 +257,13 @@ def build_snapshot() -> dict:
         "buy_ranking": ranking_rows,
         "sell_review": sell_review_rows,
         "strategy_enhancement_preview": strategy_preview,
+        "broad_base_balance_preview": broad_base_balance_preview,
+        "broad_base_balance_summary": broad_base_balance_preview.get("summary", {}),
+        "broad_base_weight": broad_base_balance_preview.get("summary", {}).get("broad_base_weight", 0),
+        "theme_weight": broad_base_balance_preview.get("summary", {}).get("theme_weight", 0),
+        "tech_growth_weight": broad_base_balance_preview.get("summary", {}).get("tech_growth_weight", 0),
+        "balance_candidate_count": broad_base_balance_preview.get("summary", {}).get("balance_candidate_count", 0),
+        "top_balance_candidates": broad_base_balance_preview.get("top_balance_candidates", []),
         "strategy_preview_tracking": preview_tracking,
         "forward_return_comparison": preview_tracking.get("forward_return_comparison", {}),
         "shadow_model": preview_tracking.get("shadow_model", {}),
@@ -238,6 +285,8 @@ def build_snapshot() -> dict:
         "persistence_breakout_shadow": persistence_breakout_shadow,
         "missed_opportunity_tracking": missed_opportunity_tracking,
         "shadow_observation_weekly": shadow_observation_weekly,
+        "chatgpt_weekly_packet": chatgpt_weekly_packet,
+        "chatgpt_weekly_packet_summary": chatgpt_weekly_packet.get("summary", {}),
         "exit_rule_research": exit_rule_research,
         "backtest_phase4a": backtest_phase4a,
         "backtest_diagnostics": backtest_diagnostics,
@@ -704,6 +753,36 @@ def render_html(data: dict) -> str:
       {_portfolio_table(data.get("positions", []))}
     </section>
 
+    <section id="position-review-state">
+      <div class="section-head">
+        <div>
+          <h2>持仓观察分层 Position Review State</h2>
+          <div class="hint">REVIEW_1 / REVIEW_2 / REDUCE_CANDIDATE 均为模拟仓观察状态，不会自动交易。</div>
+        </div>
+      </div>
+      {_position_review_state_panel(data.get("position_review_state", []), data.get("review_summary", {}))}
+    </section>
+
+    <section id="profit-protection-preview">
+      <div class="section-head">
+        <div>
+          <h2>浮盈保护 Preview Profit Protection</h2>
+          <div class="hint">只观察未实现盈利是否回吐，不自动止盈、不自动减仓。</div>
+        </div>
+      </div>
+      {_profit_protection_panel(data.get("profit_protection_preview", []), data.get("profit_protection_summary", {}))}
+    </section>
+
+    <section id="high-beta-risk-watch">
+      <div class="section-head">
+        <div>
+          <h2>高波动风险观察 High Beta Risk</h2>
+          <div class="hint">重点观察证券/券商等高 beta 持仓的波动、回撤和金融地产暴露；只提示，不自动交易。</div>
+        </div>
+      </div>
+      {_high_beta_risk_panel(data.get("high_beta_risk_watch", []), data.get("high_beta_risk_summary", {}))}
+    </section>
+
     <section id="sell-review">
       <div class="section-head">
         <div>
@@ -732,6 +811,16 @@ def render_html(data: dict) -> str:
         </div>
       </div>
       {_strategy_preview_panel(data.get("strategy_enhancement_preview", {}))}
+    </section>
+
+    <section id="broad-base-balance-preview">
+      <div class="section-head">
+        <div>
+          <h2>宽基平衡观察 Broad-base Balance Preview</h2>
+          <div class="hint">从 BUY ranking / adjusted preview 中筛选宽基候选，观察是否能降低行业主题集中度；只预览，不自动买入。</div>
+        </div>
+      </div>
+      {_broad_base_balance_panel(data.get("broad_base_balance_preview", {}))}
     </section>
 
     <section id="preview-tracking">
@@ -906,6 +995,16 @@ def render_html(data: dict) -> str:
       {_shadow_observation_weekly_panel(data.get("shadow_observation_weekly", {}))}
     </section>
 
+    <section id="chatgpt-weekly-packet">
+      <div class="section-head">
+        <div>
+          <h2>ChatGPT / Main 周报分析包</h2>
+          <div class="hint">固定格式 Markdown + JSON，用于复制给 ChatGPT / Main 分析；不是交易指令，不接执行层。</div>
+        </div>
+      </div>
+      {_chatgpt_weekly_packet_panel(data.get("chatgpt_weekly_packet", {}))}
+    </section>
+
     <section id="review">
       <div class="section-head">
         <div>
@@ -999,6 +1098,7 @@ def _executive_cockpit(data: dict) -> str:
               {_tape("实际数据源", f"{data_sources.get('actual_source_used','N/A')} / fallback={data_sources.get('fallback_triggered','N/A')}")}
               {_tape("日线更新", f"{data_update.get('severity','N/A')} / {data_update.get('status','N/A')}")}
               {_tape("市场状态", f"{market_state.get('market_state','N/A')} / {_score(market_state.get('market_score'))}")}
+              {_tape("估值日期", f"{summary.get('valuation_as_of_date','N/A')} / price warnings={summary.get('valuation_price_warning_count', 0)}")}
               {_tape("模拟交易引擎", engine.get("status", "WAITING"))}
               {_tape("Top BUY", f"{top_buy.get('symbol','N/A')} / {_score(top_buy.get('rank_score'))}")}
             </div>
@@ -1123,6 +1223,7 @@ def _portfolio_table(rows: list[dict]) -> str:
             f"<td>{escape(str(row.get('current_signal','N/A')))}</td>"
             f"<td>{_tag(row.get('short_swing_weakening'), _tag_class(row.get('short_swing_weakening')))}<div class=\"muted\">rank trend: {escape(str(row.get('rank_score_trend','N/A')))}</div></td>"
             f"<td>{_tag(row.get('signal_status'), status_cls)}<div class=\"muted\">sell: {escape(str(row.get('sell_review_status','N/A')))} / health: {escape(str(row.get('data_health_status','N/A')))}</div></td>"
+            f"<td>{_tag(row.get('high_beta_risk_state') or 'N/A', _high_beta_state_class(row.get('high_beta_risk_state')))}<div class=\"muted\">10日波动 {_pct(row.get('high_beta_recent_volatility_10d'))} · 回撤 {_pct(row.get('high_beta_recent_drawdown_10d'))}</div></td>"
             f"<td class=\"num\">{_number(row.get('stop_loss'))}</td>"
             f"<td class=\"num\">{_pct(row.get('stop_distance_pct'))}</td>"
             f"<td>{_tag(row.get('risk_tag'), risk_cls)}</td>"
@@ -1130,7 +1231,7 @@ def _portfolio_table(rows: list[dict]) -> str:
             f"<td>{_tag(row.get('action_suggestion'), action_cls)}<div class=\"reason\">{escape(str(row.get('research_note','') or row.get('reason','')))[:150]}</div></td>"
             "</tr>"
         )
-    headers = ["ETF", "名称", "group", "ETF 类型", "持仓周期", "仓位金额", "仓位比例", "成本价", "最新价", "浮盈亏", "浮盈亏率", "买入信号", "当前信号", "短周期/排名", "信号状态", "止损价", "距离止损", "风险标签", "情绪占位", "动作建议"]
+    headers = ["ETF", "名称", "group", "ETF 类型", "持仓周期", "仓位金额", "仓位比例", "成本价", "最新价", "浮盈亏", "浮盈亏率", "买入信号", "当前信号", "短周期/排名", "信号状态", "高波动风险", "止损价", "距离止损", "风险标签", "情绪占位", "动作建议"]
     return _table(headers, body)
 
 
@@ -1145,6 +1246,7 @@ def _paper_performance_panel(summary: dict, daily_rows: list[dict], trade_rows: 
         _metric("最大回撤", _pct(summary.get("max_drawdown")), f"最高权益 {_money(summary.get('max_equity'))}"),
         _metric("交易 / 胜率", f"{summary.get('trade_count', 0)} / {_pct(summary.get('win_rate'))}", f"买 {summary.get('buy_count', 0)} 卖 {summary.get('sell_count', 0)}"),
         _metric("成本合计", _money(summary.get("total_cost")), f"佣金 {_money(summary.get('commission_total'))} · 滑点估算 {_money(summary.get('slippage_total'))}"),
+        _metric("估值口径", str(summary.get("valuation_as_of_date", "N/A")), f"价格警告 {summary.get('valuation_price_warning_count', 0)} · 本地最新 close"),
         _metric("更新时间", str(summary.get("last_updated", "N/A")), f"数据日 {summary.get('latest_data_date', 'N/A')}"),
     ]
     return (
@@ -1341,6 +1443,121 @@ def _sell_review_table(rows: list[dict]) -> str:
     return '<div class="panel">' + _table(headers, body) + '<div class="muted" style="margin-top:10px;">只生成候选复核，不提供真实交易按钮，不写 paper_trades。</div></div>'
 
 
+def _position_review_state_panel(rows: list[dict], summary: dict) -> str:
+    if not rows:
+        return '<div class="panel">暂无持仓观察分层结果。运行 <code>python3 src/position_review_state.py</code> 后刷新。</div>'
+    cards = [
+        _mini_stat("REDUCE_CANDIDATE", str(summary.get("reduce_candidate_count", 0)), "观察状态，不自动减仓"),
+        _mini_stat("REVIEW_2", str(summary.get("review_2_count", 0)), "重点复核"),
+        _mini_stat("high_beta 观察", str(summary.get("high_beta_watch_count", 0)), "高波动标签"),
+        _mini_stat("浮盈保护", str(summary.get("profit_protection_watch_count", 0)), "只提示不止盈"),
+    ]
+    body = []
+    for row in rows:
+        state = str(row.get("review_state", "N/A"))
+        state_label = f"{state} / {row.get('review_state_cn', '')}"
+        body.append(
+            "<tr>"
+            f"<td><b>{escape(str(row.get('symbol','')))}</b><div class=\"muted\">{escape(str(row.get('name','')))}</div></td>"
+            f"<td>{_tag(state_label, _review_state_class(state))}<div class=\"muted\">level {escape(str(row.get('review_level','N/A')))}</div></td>"
+            f"<td>{escape(str(row.get('mid_trend','N/A')))} / {escape(str(row.get('short_swing','N/A')))}</td>"
+            f"<td class=\"num\">{_score(row.get('rank'))}<div class=\"muted\">变化 {_score(row.get('rank_change'))} · {escape(str(row.get('rank_decay_days','0')))} 天</div></td>"
+            f"<td class=\"num\">{_signed_money(row.get('unrealized_pnl'))}<div class=\"muted\">{_pct(row.get('unrealized_pnl_pct'))}</div></td>"
+            f"<td>{escape(str(row.get('group','N/A')))}<div class=\"muted\">{escape(str(row.get('type','N/A')))} · high_beta={escape(str(row.get('high_beta_flag', False)))}</div></td>"
+            f"<td>{escape(str(row.get('review_reasons','')))[:260]}</td>"
+            f"<td>{escape(str(row.get('recommended_review_action','')))[:180]}<div class=\"muted\">execution_allowed={escape(str(row.get('execution_allowed', False))).lower()}</div></td>"
+            "</tr>"
+        )
+    return (
+        '<div class="panel"><div class="risk-banner" style="margin-bottom:14px;"><div class="risk-title">观察状态，不会自动交易</div>'
+        '<div>REDUCE_CANDIDATE 不是减仓指令；REVIEW_2 不是卖出指令；所有动作都需要人工复核。</div></div>'
+        '<div class="grid four">'
+        + "".join(cards)
+        + "</div>"
+        + _table(["ETF", "观察状态", "mid/short", "rank", "浮盈亏", "分组/类型", "复核原因", "观察动作"], body)
+        + '<div class="links" style="margin-top:12px;"><a href="../reports/position_review_state.md">持仓观察分层报告</a><a href="../reports/review_state_audit.md">REVIEW 审计报告</a></div>'
+        + "</div>"
+    )
+
+
+def _profit_protection_panel(rows: list[dict], summary: dict) -> str:
+    if not rows:
+        return '<div class="panel">暂无浮盈保护 Preview。运行 <code>python3 src/profit_protection_preview.py</code> 后刷新。</div>'
+    cards = [
+        _mini_stat("PROFIT_WATCH", str(summary.get("profit_watch_count", 0)), "浮盈观察"),
+        _mini_stat("PROTECTION_REVIEW", str(summary.get("profit_protection_review_count", 0)), "保护复核"),
+        _mini_stat("LOCK_CANDIDATE", str(summary.get("profit_lock_candidate_count", 0)), "不是卖出信号"),
+        _mini_stat("峰值回撤合计", _money(summary.get("total_drawdown_from_profit_peak", 0)), "只读估算"),
+    ]
+    body = []
+    for row in rows:
+        state = str(row.get("profit_protection_state", "N/A"))
+        label = f"{state} / {row.get('profit_protection_state_cn', '')}"
+        body.append(
+            "<tr>"
+            f"<td><b>{escape(str(row.get('symbol','')))}</b><div class=\"muted\">{escape(str(row.get('name','')))}</div></td>"
+            f"<td>{_tag(label, _profit_state_class(state))}<div class=\"muted\">level {escape(str(row.get('profit_protection_level','N/A')))}</div></td>"
+            f"<td class=\"num\">{_signed_money(row.get('current_unrealized_pnl'))}<div class=\"muted\">{_pct(row.get('current_unrealized_pnl_pct'))}</div></td>"
+            f"<td class=\"num\">{_signed_money(row.get('peak_unrealized_pnl'))}<div class=\"muted\">{escape(str(row.get('peak_date','N/A')))}</div></td>"
+            f"<td class=\"num\">{_signed_money(row.get('drawdown_from_profit_peak'))}<div class=\"muted\">{_pct(row.get('drawdown_from_profit_peak_pct'))}</div></td>"
+            f"<td>{escape(str(row.get('mid_trend','N/A')))} / {escape(str(row.get('short_swing','N/A')))}<div class=\"muted\">rank decline {escape(str(row.get('rank_decay_days','0')))} 天</div></td>"
+            f"<td>{escape(str(row.get('profit_protection_reasons','')))[:260]}</td>"
+            f"<td>{escape(str(row.get('recommended_review_action','')))[:180]}<div class=\"muted\">execution_allowed={escape(str(row.get('execution_allowed', False))).lower()}</div></td>"
+            "</tr>"
+        )
+    return (
+        '<div class="panel"><div class="risk-banner" style="margin-bottom:14px;"><div class="risk-title">浮盈保护为研究观察指标，不会自动交易</div>'
+        '<div>PROFIT_LOCK_CANDIDATE 不是卖出信号；本模块不会自动止盈、自动减仓或写交易记录。</div></div>'
+        '<div class="grid four">'
+        + "".join(cards)
+        + "</div>"
+        + _table(["ETF", "浮盈状态", "当前浮盈", "峰值浮盈", "峰值回撤", "mid/short", "原因", "观察动作"], body)
+        + '<div class="links" style="margin-top:12px;"><a href="../reports/profit_protection_preview.md">浮盈保护 Preview 报告</a></div>'
+        + "</div>"
+    )
+
+
+def _high_beta_risk_panel(rows: list[dict], summary: dict) -> str:
+    if not rows:
+        return '<div class="panel">暂无高波动持仓观察结果。运行 <code>python3 src/high_beta_risk_watch.py</code> 后刷新。</div>'
+    state = str(summary.get("high_beta_exposure_state", "HB_NORMAL"))
+    cards = [
+        _mini_stat("高波动持仓", str(summary.get("high_beta_position_count", 0)), "只观察不交易"),
+        _mini_stat("高波动/总权益", _pct(summary.get("high_beta_weight_of_equity", 0)), state),
+        _mini_stat("高波动/持仓", _pct(summary.get("high_beta_weight_of_holdings", 0)), "组合内占比"),
+        _mini_stat("金融地产/持仓", _pct(summary.get("finance_real_estate_weight_of_holdings", 0)), "集中度观察"),
+    ]
+    body = []
+    for row in rows:
+        risk_state = str(row.get("high_beta_risk_state", "N/A"))
+        label = f"{risk_state} / {row.get('high_beta_risk_level', '')}"
+        body.append(
+            "<tr>"
+            f"<td><b>{escape(str(row.get('symbol','')))}</b><div class=\"muted\">{escape(str(row.get('name','')))}</div></td>"
+            f"<td>{escape(str(row.get('group','N/A')))}<div class=\"muted\">{escape(str(row.get('type','N/A')))}</div></td>"
+            f"<td>{_tag(label, _high_beta_state_class(risk_state))}<div class=\"muted\">execution_allowed={escape(str(row.get('execution_allowed', False))).lower()}</div></td>"
+            f"<td class=\"num\">{_money(row.get('market_value'))}<div class=\"muted\">权益 {_pct(row.get('position_weight_of_equity'))} · 持仓 {_pct(row.get('position_weight_of_holdings'))}</div></td>"
+            f"<td class=\"num\">{_pct(row.get('recent_return_5d'))}<div class=\"muted\">10日 {_pct(row.get('recent_return_10d'))}</div></td>"
+            f"<td class=\"num\">{_pct(row.get('recent_volatility_10d'))}<div class=\"muted\">回撤 {_pct(row.get('recent_drawdown_10d'))}</div></td>"
+            f"<td>{escape(str(row.get('mid_trend','N/A')))} / {escape(str(row.get('short_swing','N/A')))}<div class=\"muted\">rank {escape(str(row.get('rank','N/A')))} · decay {escape(str(row.get('rank_decay_days','0')))} 天</div></td>"
+            f"<td>{escape(str(row.get('high_beta_risk_reasons','')))[:260]}</td>"
+            f"<td>{escape(str(row.get('recommended_review_action','')))[:180]}</td>"
+            "</tr>"
+        )
+    reasons = summary.get("high_beta_exposure_reasons", "")
+    return (
+        '<div class="panel"><div class="risk-banner" style="margin-bottom:14px;"><div class="risk-title">高波动观察不会触发自动交易</div>'
+        f'<div>{escape(str(reasons or "当前无高波动暴露异常。"))}</div>'
+        '<div>512880 证券类 ETF 对市场情绪敏感；若金融地产组暴露偏高，需观察组合集中度。</div></div>'
+        '<div class="grid four">'
+        + "".join(cards)
+        + "</div>"
+        + _table(["ETF", "分组/类型", "高波动状态", "市值/权重", "5/10日收益", "10日波动/回撤", "mid/short", "原因", "观察动作"], body)
+        + '<div class="links" style="margin-top:12px;"><a href="../reports/high_beta_risk_watch.md">高波动风险观察报告</a></div>'
+        + "</div>"
+    )
+
+
 def _strategy_preview_panel(data: dict) -> str:
     if not data or not data.get("rows"):
         return '<div class="panel">暂无 B1 策略增强预览。运行 <code>python3 src/strategy_enhancement_preview.py</code> 后刷新。</div>'
@@ -1396,6 +1613,50 @@ def _strategy_preview_panel(data: dict) -> str:
         + '<div class="muted" style="margin-top:10px;">adjusted_rank_score_preview_enabled=true；adjusted_rank_score_execution_enabled=false；本模块不改变 paper_trade_engine。</div>'
         + '<div class="links" style="margin-top:12px;"><a href="../reports/strategy_enhancement_preview.md">预览报告</a><a href="../reports/b1_strategy_enhancement_preview_report.md">B1 报告</a></div>'
         + "</div></div>"
+    )
+
+
+def _broad_base_balance_panel(data: dict) -> str:
+    if not data or not data.get("rows"):
+        return '<div class="panel">暂无宽基平衡 preview。运行 <code>python3 src/broad_base_balance_preview.py</code> 后刷新。</div>'
+    summary = data.get("summary", {})
+    rows = data.get("rows", [])
+    cards = [
+        _mini_stat("宽基占比", _pct(summary.get("broad_base_weight", 0)), str(summary.get("broad_base_balance_state", "N/A"))),
+        _mini_stat("行业/主题占比", _pct(summary.get("theme_weight", 0)), str(summary.get("theme_concentration_state", "N/A"))),
+        _mini_stat("金融地产", _pct(summary.get("finance_real_estate_weight", 0)), "持仓内权重"),
+        _mini_stat("科技成长", _pct(summary.get("tech_growth_weight", 0)), "持仓内权重"),
+        _mini_stat("high_beta", _pct(summary.get("high_beta_weight", 0)), "观察风险"),
+        _mini_stat("候选数", str(summary.get("balance_candidate_count", 0)), "preview only"),
+        _mini_stat("假设金额", _money(data.get("preview_add_amount", summary.get("preview_add_amount", 500))), "不写交易"),
+        _mini_stat("执行开关", str(summary.get("execution_allowed", False)), "必须为 false"),
+    ]
+    body = []
+    for row in rows[:10]:
+        state_cls = "ok" if row.get("mid_trend") == "BUY" and row.get("short_swing") == "BUY" else "warn"
+        body.append(
+            "<tr>"
+            f"<td class=\"num\">{escape(str(row.get('balance_candidate_rank','')))}</td>"
+            f"<td><b>{escape(str(row.get('symbol','')))}</b><div class=\"muted\">{escape(str(row.get('name','')))}</div></td>"
+            f"<td>{escape(str(row.get('type','')))}<div class=\"muted\">{escape(str(row.get('group','')))}</div></td>"
+            f"<td>{_tag(str(row.get('mid_trend','N/A')) + '/' + str(row.get('short_swing','N/A')), state_cls)}</td>"
+            f"<td class=\"num\">{_score(row.get('raw_score'))}<div class=\"muted\">rank {escape(str(row.get('raw_rank','N/A')))}</div></td>"
+            f"<td class=\"num\">{_score(row.get('adjusted_score'))}<div class=\"muted\">rank {escape(str(row.get('adjusted_rank','N/A')))}</div></td>"
+            f"<td class=\"num\">{_score(row.get('balance_improvement_score'))}</td>"
+            f"<td class=\"num\">{_pct(row.get('new_broad_base_weight'))}<div class=\"muted\">集中度改善 {_pct(row.get('concentration_change'))}</div></td>"
+            f"<td>{escape(str(row.get('candidate_reason','')))[:240]}</td>"
+            f"<td>{_tag('preview_only_not_executed', 'blue')}<div class=\"muted\">execution_allowed={escape(str(row.get('execution_allowed', False))).lower()}</div></td>"
+            "</tr>"
+        )
+    return (
+        '<div class="panel"><div class="risk-banner" style="margin-bottom:14px;"><div class="risk-title">宽基平衡只做观察，不自动买入</div>'
+        f'<div>{escape(str(summary.get("summary_text", "当前暂无宽基平衡摘要。")))}</div></div>'
+        '<div class="grid four">'
+        + "".join(cards)
+        + "</div>"
+        + _table(["rank", "ETF", "类型/group", "mid/short", "raw", "adjusted", "balance_score", "假设加入后宽基", "原因", "状态"], body)
+        + '<div class="links" style="margin-top:12px;"><a href="../reports/broad_base_balance_preview.md">宽基平衡观察报告</a><a href="../reports/broad_base_balance_preview.csv">候选 CSV</a></div>'
+        + "</div>"
     )
 
 
@@ -2044,6 +2305,45 @@ def _shadow_observation_weekly_panel(review: dict) -> str:
     )
 
 
+def _chatgpt_weekly_packet_panel(packet: dict) -> str:
+    if not packet:
+        return "<h3>ChatGPT / Main 周报分析包</h3><div class=\"muted\">暂无周报分析包。运行 <code>python3 src/chatgpt_weekly_packet.py</code> 后刷新。</div>"
+    summary = packet.get("summary", {}) if isinstance(packet.get("summary"), dict) else {}
+    safety = packet.get("safety_boundary", {}) if isinstance(packet.get("safety_boundary"), dict) else {}
+    missing = packet.get("missing_sources", []) if isinstance(packet.get("missing_sources"), list) else []
+    conclusions = summary.get("core_conclusions") or packet.get("core_conclusions") or []
+    if not isinstance(conclusions, list):
+        conclusions = [str(conclusions)]
+    stats = [
+        _mini_stat("报告日期", str(packet.get("as_of_date") or summary.get("as_of_date") or "N/A"), "as_of_date"),
+        _mini_stat("生成时间", str(packet.get("generated_at") or summary.get("generated_at") or "N/A"), "generated_at"),
+        _mini_stat("缺失来源", str(len(missing)), "missing recorded"),
+        _mini_stat("执行接入", "NO", "execution_allowed=false"),
+    ]
+    conclusion_html = "".join(f"<li>{escape(str(item))}</li>" for item in conclusions[:8])
+    if not conclusion_html:
+        conclusion_html = "<li>暂无核心结论，请重新生成周报分析包。</li>"
+    missing_text = "、".join(escape(str(item)) for item in missing[:6]) if missing else "无"
+    return (
+        "<h3>标准周报分析包</h3>"
+        + '<div class="grid four">'
+        + "".join(stats)
+        + "</div>"
+        + "<div class=\"risk-banner\" style=\"margin-top:12px;\">"
+        + "<div class=\"risk-title\">使用边界</div>"
+        + f"<div>不是交易指令；execution_allowed={str(safety.get('execution_allowed', False)).lower()}；real_trade_enabled={str(safety.get('real_trade_enabled', False)).lower()}；adjusted preview / shadow / profit protection / high_beta / broad base balance 均为观察层。</div>"
+        + "</div>"
+        + "<ul class=\"mini-list\" style=\"margin-top:12px;\">"
+        + conclusion_html
+        + "</ul>"
+        + f"<div class=\"muted\" style=\"margin-top:12px;\">缺失但不致命的数据源：{missing_text}</div>"
+        + '<div class="links" style="margin-top:12px;">'
+        + f'<a href="{escape(str(packet.get("markdown_href", "../reports/chatgpt_weekly_analysis_packet_latest.md")))}">Markdown 分析包</a>'
+        + f'<a href="{escape(str(packet.get("json_href", "../reports/chatgpt_weekly_analysis_packet_latest.json")))}">JSON 分析包</a>'
+        + "</div>"
+    )
+
+
 def _classification_panel(summary: dict) -> str:
     type_counts = summary.get("type_counts", {})
     pool_counts = summary.get("pool_counts", {})
@@ -2302,6 +2602,47 @@ def _sell_status_class(value: object) -> str:
     return _tag_class(value)
 
 
+def _review_state_class(value: object) -> str:
+    text = str(value or "").upper()
+    if text in {"SELL", "REDUCE"}:
+        return "danger"
+    if text == "REDUCE_CANDIDATE":
+        return "warn"
+    if text in {"REVIEW_2", "REVIEW"}:
+        return "warn"
+    if text == "REVIEW_1":
+        return "blue"
+    if text == "HOLD":
+        return "ok"
+    return _tag_class(value)
+
+
+def _profit_state_class(value: object) -> str:
+    text = str(value or "").upper()
+    if text == "PROFIT_LOCK_CANDIDATE":
+        return "warn"
+    if text == "PROFIT_PROTECTION_REVIEW":
+        return "warn"
+    if text == "PROFIT_WATCH":
+        return "blue"
+    if text == "NO_PROFIT":
+        return "ok"
+    return _tag_class(value)
+
+
+def _high_beta_state_class(value: object) -> str:
+    text = str(value or "").upper()
+    if text == "HB_ELEVATED":
+        return "danger"
+    if text == "HB_CAUTION":
+        return "warn"
+    if text == "HB_WATCH":
+        return "warn"
+    if text == "HB_NORMAL":
+        return "ok"
+    return _tag_class(value)
+
+
 def _read_buy_ranking() -> list[dict]:
     rows = _read_markdown_table(REPORT_DIR / "buy_signal_ranking.md", "Top BUY Ranking")
     result = []
@@ -2329,9 +2670,21 @@ def _read_buy_ranking() -> list[dict]:
     return result
 
 
-def _enrich_positions(positions: pd.DataFrame, meta: dict[str, dict], ranking: list[dict], health: dict[str, dict], sell_review: list[dict] | None = None) -> list[dict]:
+def _enrich_positions(
+    positions: pd.DataFrame,
+    meta: dict[str, dict],
+    ranking: list[dict],
+    health: dict[str, dict],
+    sell_review: list[dict] | None = None,
+    position_review: list[dict] | None = None,
+    profit_protection: list[dict] | None = None,
+    high_beta_risk: list[dict] | None = None,
+) -> list[dict]:
     ranking_map = {str(row.get("symbol")): row for row in ranking}
     review_map = {str(row.get("symbol")): row for row in (sell_review or [])}
+    layer_map = {str(row.get("symbol")): row for row in (position_review or [])}
+    profit_map = {str(row.get("symbol")): row for row in (profit_protection or [])}
+    high_beta_map = {str(row.get("symbol")): row for row in (high_beta_risk or [])}
     result = []
     for item in positions.to_dict(orient="records"):
         symbol = str(item.get("symbol", "")).strip()
@@ -2339,6 +2692,9 @@ def _enrich_positions(positions: pd.DataFrame, meta: dict[str, dict], ranking: l
         meta_row = meta.get(symbol, {})
         health_row = health.get(symbol, {})
         review_row = review_map.get(symbol, {})
+        layer_row = layer_map.get(symbol, {})
+        profit_row = profit_map.get(symbol, {})
+        high_beta_row = high_beta_map.get(symbol, {})
         current_price = _float(item.get("last_price"), _float(item.get("current_price"), _float(item.get("entry_price"))))
         stop_loss = _float(item.get("stop_loss_price"), _float(item.get("stop_loss")))
         market_value = _float(item.get("market_value"), current_price * _float(item.get("quantity")))
@@ -2387,6 +2743,32 @@ def _enrich_positions(positions: pd.DataFrame, meta: dict[str, dict], ranking: l
                 "commission_paid": _float(item.get("commission_paid")),
                 "max_holding_days": item.get("max_holding_days", ""),
                 "sell_review_status": review_row.get("sell_review_status") or item.get("sell_review_status", "N/A"),
+                "review_state": layer_row.get("review_state") or review_row.get("sell_review_status") or item.get("sell_review_status", "N/A"),
+                "review_state_cn": layer_row.get("review_state_cn", ""),
+                "review_level": layer_row.get("review_level", ""),
+                "is_reduce_candidate": layer_row.get("is_reduce_candidate", False),
+                "review_reasons": layer_row.get("review_reasons", ""),
+                "recommended_review_action": layer_row.get("recommended_review_action", ""),
+                "execution_allowed": layer_row.get("execution_allowed", False),
+                "profit_protection_state": profit_row.get("profit_protection_state", ""),
+                "profit_protection_state_cn": profit_row.get("profit_protection_state_cn", ""),
+                "profit_protection_level": profit_row.get("profit_protection_level", ""),
+                "profit_protection_reasons": profit_row.get("profit_protection_reasons", ""),
+                "profit_recommended_review_action": profit_row.get("recommended_review_action", ""),
+                "peak_unrealized_pnl": profit_row.get("peak_unrealized_pnl", ""),
+                "peak_unrealized_pnl_pct": profit_row.get("peak_unrealized_pnl_pct", ""),
+                "peak_profit_date": profit_row.get("peak_date", ""),
+                "drawdown_from_profit_peak": profit_row.get("drawdown_from_profit_peak", ""),
+                "drawdown_from_profit_peak_pct": profit_row.get("drawdown_from_profit_peak_pct", ""),
+                "high_beta_risk_state": high_beta_row.get("high_beta_risk_state", ""),
+                "high_beta_risk_level": high_beta_row.get("high_beta_risk_level", ""),
+                "high_beta_risk_reasons": high_beta_row.get("high_beta_risk_reasons", ""),
+                "high_beta_recommended_review_action": high_beta_row.get("recommended_review_action", ""),
+                "high_beta_execution_allowed": high_beta_row.get("execution_allowed", False),
+                "high_beta_recent_return_5d": high_beta_row.get("recent_return_5d", ""),
+                "high_beta_recent_return_10d": high_beta_row.get("recent_return_10d", ""),
+                "high_beta_recent_volatility_10d": high_beta_row.get("recent_volatility_10d", ""),
+                "high_beta_recent_drawdown_10d": high_beta_row.get("recent_drawdown_10d", ""),
                 "data_health_status": review_row.get("data_health_status") or item.get("data_health_status", health_status or "N/A"),
                 "protection_period": review_row.get("protection_period") or item.get("protection_period", "no"),
                 "buy_signal": _buy_signal_from_reason(item.get("reason"), mid, short),
@@ -2473,6 +2855,39 @@ def _paper_summary(positions: list[dict], trades: pd.DataFrame) -> dict:
     }
 
 
+def _merge_performance_summary(summary: dict, performance: dict, exposure: dict) -> dict:
+    if not isinstance(performance, dict) or not performance:
+        return summary
+    merged = dict(summary)
+    cash = _float(performance.get("current_cash"), merged.get("cash", 0.0))
+    market_value = _float(performance.get("current_position_value"), merged.get("market_value", 0.0))
+    total_equity = _float(performance.get("current_total_equity"), cash + market_value)
+    initial_cash = _float(performance.get("initial_cash"), INITIAL_CASH)
+    merged.update(
+        {
+            "cash": round(cash, 2),
+            "current_cash": round(cash, 2),
+            "market_value": round(market_value, 2),
+            "position_value": round(market_value, 2),
+            "current_position_value": round(market_value, 2),
+            "total_equity": round(total_equity, 2),
+            "current_total_equity": round(total_equity, 2),
+            "total_pnl": round(_float(performance.get("total_pnl_amount"), total_equity - initial_cash), 2),
+            "realized_pnl": round(_float(performance.get("realized_pnl")), 2),
+            "unrealized_pnl": round(_float(performance.get("unrealized_pnl"), merged.get("unrealized_pnl", 0.0)), 2),
+            "position_ratio": market_value / initial_cash if initial_cash else 0.0,
+            "cash_ratio": cash / total_equity if total_equity else 0.0,
+            "valuation_as_of_date": performance.get("valuation_as_of_date") or performance.get("latest_data_date"),
+            "valuation_source": performance.get("valuation_source", "paper_positions + etf_daily latest close"),
+            "valuation_price_warning_count": performance.get("valuation_price_warning_count", 0),
+        }
+    )
+    exposure_summary = exposure.get("summary", {}) if isinstance(exposure, dict) else {}
+    if exposure_summary:
+        merged["portfolio_exposure_market_value"] = _float(exposure_summary.get("market_value"))
+    return merged
+
+
 def _paper_performance_snapshot() -> dict:
     summary = _read_json(REPORT_DIR / "paper_performance_summary.json")
     if not summary:
@@ -2493,6 +2908,37 @@ def _paper_performance_snapshot() -> dict:
         "original_equity_curve_rows": original_rows,
         "backfilled_equity_curve_rows": len(backfilled),
         "trade_pnl": trade_pnl.to_dict(orient="records"),
+    }
+
+
+def _valuation_positions_snapshot() -> pd.DataFrame:
+    if load_latest_position_valuation is None:
+        return pd.DataFrame()
+    try:
+        valuation = load_latest_position_valuation()
+        positions = valuation.get("positions", pd.DataFrame())
+    except Exception:
+        return pd.DataFrame()
+    return positions if isinstance(positions, pd.DataFrame) else pd.DataFrame()
+
+
+def _valuation_consistency_snapshot() -> dict:
+    payload = _read_json(REPORT_DIR / "valuation_consistency_audit.json")
+    if payload:
+        return payload
+    if load_latest_position_valuation is None:
+        return {"status": "missing", "reason": "valuation module unavailable"}
+    try:
+        valuation = load_latest_position_valuation()
+        summary = valuation.get("summary", {})
+    except Exception as exc:
+        return {"status": "error", "reason": str(exc)}
+    return {
+        "status": summary.get("status", "unknown"),
+        "official_valuation_basis": summary.get("valuation_source", "paper_positions + etf_daily latest close"),
+        "unified_latest_close_market_value": summary.get("total_market_value", 0.0),
+        "as_of_date": summary.get("as_of_date", ""),
+        "price_warning_count": summary.get("price_warning_count", 0),
     }
 
 
@@ -3025,6 +3471,15 @@ def _value_counts(rows: list[dict], field: str) -> dict:
 def _dashboard_links() -> list[dict]:
     specs = [
         ("控制台快照", "data", REPORT_DIR / "dashboard_data.json", "../reports/dashboard_data.json"),
+        ("项目结构审计", "audit", REPORT_DIR / "project_structure_audit.md", "../reports/project_structure_audit.md"),
+        ("路径依赖审计", "audit", REPORT_DIR / "path_dependency_audit.md", "../reports/path_dependency_audit.md"),
+        ("文件分类计划", "audit", REPORT_DIR / "file_classification_plan.md", "../reports/file_classification_plan.md"),
+        ("推荐目录结构", "audit", REPORT_DIR / "recommended_project_layout.md", "../reports/recommended_project_layout.md"),
+        ("项目整理路线", "audit", REPORT_DIR / "project_cleanup_roadmap.md", "../reports/project_cleanup_roadmap.md"),
+        ("报告索引", "audit", REPORT_DIR / "report_index.md", "../reports/report_index.md"),
+        ("归档候选清单", "audit", REPORT_DIR / "archive_candidate_list.md", "../reports/archive_candidate_list.md"),
+        ("归档前 Manifest", "audit", REPORT_DIR / "archive_manifest_before.md", "../reports/archive_manifest_before.md"),
+        ("归档后 Manifest", "audit", REPORT_DIR / "archive_manifest_after.md", "../reports/archive_manifest_after.md"),
         ("日线更新状态", "data", REPORT_DIR / "data_update_status.json", "../reports/data_update_status.json"),
         ("日线更新诊断", "data", REPORT_DIR / "data_update_diagnosis_report.md", "../reports/data_update_diagnosis_report.md"),
         ("日线更新修复报告", "data", REPORT_DIR / "data_update_automation_fix_report.md", "../reports/data_update_automation_fix_report.md"),
@@ -3057,6 +3512,7 @@ def _dashboard_links() -> list[dict]:
         ("Selected vs Filtered", "research", REPORT_DIR / "selected_vs_filtered_forward_return.md", "../reports/selected_vs_filtered_forward_return.md"),
         ("Missed Opportunity 观察规则", "research", REPORT_DIR / "missed_opportunity_observation_rules.md", "../reports/missed_opportunity_observation_rules.md"),
         ("Shadow 每周观察", "research", REPORT_DIR / "shadow_observation_weekly.md", "../reports/shadow_observation_weekly.md"),
+        ("ChatGPT/Main 周报分析包", "research", REPORT_DIR / "chatgpt_weekly_analysis_packet_latest.md", "../reports/chatgpt_weekly_analysis_packet_latest.md"),
         ("每日最简摘要", "daily", REPORT_DIR / "latest_brief.md", "../reports/latest_brief.md"),
         ("模拟盘持仓", "paper", REPORT_DIR / "latest_paper_portfolio.md", "../reports/latest_paper_portfolio.md"),
         ("BUY Ranking", "signal", REPORT_DIR / "buy_signal_ranking.md", "../reports/buy_signal_ranking.md"),
@@ -3064,6 +3520,7 @@ def _dashboard_links() -> list[dict]:
         ("模拟交易计划", "paper", REPORT_DIR / "paper_trade_plan.md", "../reports/paper_trade_plan.md"),
         ("模拟交易引擎", "paper", REPORT_DIR / "paper_trade_engine_report.md", "../reports/paper_trade_engine_report.md"),
         ("B1 策略增强预览", "research", REPORT_DIR / "strategy_enhancement_preview.md", "../reports/strategy_enhancement_preview.md"),
+        ("宽基平衡观察", "research", REPORT_DIR / "broad_base_balance_preview.md", "../reports/broad_base_balance_preview.md"),
         ("B1 执行层渐进优化", "research", REPORT_DIR / "b1_strategy_enhancement_preview_report.md", "../reports/b1_strategy_enhancement_preview_report.md"),
         ("B2 预览跟踪账本", "research", REPORT_DIR / "strategy_preview_tracking_report.md", "../reports/strategy_preview_tracking_report.md"),
         ("B2 影子组合", "research", REPORT_DIR / "strategy_preview_shadow_portfolio.md", "../reports/strategy_preview_shadow_portfolio.md"),
@@ -3329,6 +3786,10 @@ def _market_state_snapshot() -> dict:
 
 
 def _portfolio_exposure_snapshot() -> dict:
+    payload = _read_json(REPORT_DIR / "portfolio_exposure.json")
+    if isinstance(payload, dict) and payload:
+        payload.setdefault("report_href", "../reports/portfolio_exposure_report.md")
+        return payload
     df = _read_csv(REPORT_DIR / "portfolio_exposure.csv")
     if df.empty or "row_type" not in df.columns:
         return {"summary": {}, "positions": [], "buckets": [], "warnings": []}
@@ -3347,6 +3808,182 @@ def _portfolio_exposure_snapshot() -> dict:
         "buckets": df[df["row_type"].isin(["group", "etf_type", "risk_profile"])].to_dict(orient="records"),
         "warnings": warnings,
         "report_href": "../reports/portfolio_exposure_report.md",
+    }
+
+
+def _position_review_state_snapshot() -> dict:
+    payload = _read_json(REPORT_DIR / "position_review_state.json")
+    if isinstance(payload, dict) and payload:
+        payload.setdefault("report_href", "../reports/position_review_state.md")
+        payload.setdefault("audit_href", "../reports/review_state_audit.md")
+        return payload
+    df = _read_csv(REPORT_DIR / "position_review_state.csv")
+    if df.empty:
+        return {
+            "summary": {
+                "position_count": 0,
+                "reduce_candidate_count": 0,
+                "review_2_count": 0,
+                "high_beta_watch_count": 0,
+                "profit_protection_watch_count": 0,
+                "execution_allowed": False,
+                "safety_note": "以下为模拟仓观察状态，不会自动交易。",
+            },
+            "rows": [],
+            "report_href": "../reports/position_review_state.md",
+            "audit_href": "../reports/review_state_audit.md",
+        }
+    rows = df.to_dict(orient="records")
+    counts = df.get("review_state", pd.Series(dtype=str)).value_counts().to_dict()
+    state_series = df.get("review_state", pd.Series([""] * len(df))).astype(str)
+    high_beta_series = df.get("high_beta_flag", pd.Series([""] * len(df))).astype(str)
+    pnl_series = pd.to_numeric(df.get("unrealized_pnl_pct", pd.Series([0.0] * len(df))), errors="coerce").fillna(0)
+    return {
+        "summary": {
+            "position_count": int(len(df)),
+            "state_counts": counts,
+            "reduce_candidate_count": int((state_series == "REDUCE_CANDIDATE").sum()),
+            "review_2_count": int((state_series == "REVIEW_2").sum()),
+            "high_beta_watch_count": int(high_beta_series.str.lower().isin(["true", "1", "yes"]).sum()),
+            "profit_protection_watch_count": int(pnl_series.gt(0.08).sum()),
+            "execution_allowed": False,
+            "safety_note": "以下为模拟仓观察状态，不会自动交易。",
+        },
+        "rows": rows,
+        "report_href": "../reports/position_review_state.md",
+        "audit_href": "../reports/review_state_audit.md",
+    }
+
+
+def _profit_protection_preview_snapshot() -> dict:
+    payload = _read_json(REPORT_DIR / "profit_protection_preview.json")
+    if isinstance(payload, dict) and payload:
+        payload.setdefault("report_href", "../reports/profit_protection_preview.md")
+        return payload
+    df = _read_csv(REPORT_DIR / "profit_protection_preview.csv")
+    if df.empty:
+        return {
+            "summary": {
+                "position_count": 0,
+                "profit_watch_count": 0,
+                "profit_protection_review_count": 0,
+                "profit_lock_candidate_count": 0,
+                "execution_allowed": False,
+                "safety_note": "浮盈保护为研究观察指标，不会自动交易。",
+            },
+            "rows": [],
+            "report_href": "../reports/profit_protection_preview.md",
+        }
+    state_series = df.get("profit_protection_state", pd.Series([""] * len(df))).astype(str)
+    return {
+        "summary": {
+            "position_count": int(len(df)),
+            "state_counts": state_series.value_counts().to_dict(),
+            "profit_watch_count": int((state_series == "PROFIT_WATCH").sum()),
+            "profit_protection_review_count": int((state_series == "PROFIT_PROTECTION_REVIEW").sum()),
+            "profit_lock_candidate_count": int((state_series == "PROFIT_LOCK_CANDIDATE").sum()),
+            "total_current_unrealized_pnl": float(pd.to_numeric(df.get("current_unrealized_pnl", pd.Series([0.0] * len(df))), errors="coerce").fillna(0).sum()),
+            "total_drawdown_from_profit_peak": float(pd.to_numeric(df.get("drawdown_from_profit_peak", pd.Series([0.0] * len(df))), errors="coerce").fillna(0).sum()),
+            "execution_allowed": False,
+            "safety_note": "浮盈保护为研究观察指标，不会自动交易。",
+        },
+        "rows": df.to_dict(orient="records"),
+        "report_href": "../reports/profit_protection_preview.md",
+    }
+
+
+def _high_beta_risk_watch_snapshot() -> dict:
+    payload = _read_json(REPORT_DIR / "high_beta_risk_watch.json")
+    if isinstance(payload, dict) and payload:
+        payload.setdefault("report_href", "../reports/high_beta_risk_watch.md")
+        return payload
+    df = _read_csv(REPORT_DIR / "high_beta_risk_watch.csv")
+    if df.empty:
+        return {
+            "summary": {
+                "high_beta_position_count": 0,
+                "high_beta_market_value": 0,
+                "high_beta_weight_of_equity": 0,
+                "high_beta_weight_of_holdings": 0,
+                "finance_real_estate_market_value": 0,
+                "finance_real_estate_weight_of_equity": 0,
+                "finance_real_estate_weight_of_holdings": 0,
+                "max_single_high_beta_weight": 0,
+                "high_beta_exposure_state": "HB_NORMAL",
+                "high_beta_exposure_reasons": "暂无高波动持仓观察数据。",
+                "execution_allowed": False,
+                "safety_note": "高波动风险观察只提示，不自动交易。",
+            },
+            "rows": [],
+            "report_href": "../reports/high_beta_risk_watch.md",
+        }
+    state_series = df.get("high_beta_risk_state", pd.Series([""] * len(df))).astype(str)
+    return {
+        "summary": {
+            "high_beta_position_count": int(len(df)),
+            "state_counts": state_series.value_counts().to_dict(),
+            "high_beta_market_value": float(pd.to_numeric(df.get("market_value", pd.Series([0.0] * len(df))), errors="coerce").fillna(0).sum()),
+            "high_beta_weight_of_equity": float(pd.to_numeric(df.get("position_weight_of_equity", pd.Series([0.0] * len(df))), errors="coerce").fillna(0).sum()),
+            "high_beta_weight_of_holdings": float(pd.to_numeric(df.get("position_weight_of_holdings", pd.Series([0.0] * len(df))), errors="coerce").fillna(0).sum()),
+            "finance_real_estate_market_value": 0,
+            "finance_real_estate_weight_of_equity": 0,
+            "finance_real_estate_weight_of_holdings": 0,
+            "max_single_high_beta_weight": float(pd.to_numeric(df.get("position_weight_of_equity", pd.Series([0.0] * len(df))), errors="coerce").fillna(0).max()),
+            "high_beta_exposure_state": "HB_WATCH" if not df.empty else "HB_NORMAL",
+            "high_beta_exposure_reasons": "CSV fallback: 高波动持仓存在，需观察。",
+            "execution_allowed": False,
+            "safety_note": "高波动风险观察只提示，不自动交易。",
+        },
+        "rows": df.to_dict(orient="records"),
+        "report_href": "../reports/high_beta_risk_watch.md",
+    }
+
+
+def _broad_base_balance_preview_snapshot() -> dict:
+    payload = _read_json(REPORT_DIR / "broad_base_balance_preview.json")
+    if isinstance(payload, dict) and payload:
+        payload.setdefault("report_href", "../reports/broad_base_balance_preview.md")
+        return payload
+    df = _read_csv(REPORT_DIR / "broad_base_balance_preview.csv")
+    if df.empty:
+        return {
+            "summary": {
+                "broad_base_weight": 0,
+                "theme_weight": 0,
+                "finance_real_estate_weight": 0,
+                "tech_growth_weight": 0,
+                "high_beta_weight": 0,
+                "broad_base_balance_state": "UNKNOWN",
+                "theme_concentration_state": "UNKNOWN",
+                "balance_candidate_count": 0,
+                "execution_allowed": False,
+                "summary_text": "broad_base_balance_preview 尚未生成。",
+            },
+            "rows": [],
+            "top_balance_candidates": [],
+            "report_href": "../reports/broad_base_balance_preview.md",
+            "observation_only": True,
+            "execution_allowed": False,
+        }
+    rows = df.to_dict(orient="records")
+    return {
+        "summary": {
+            "broad_base_weight": 0,
+            "theme_weight": 0,
+            "finance_real_estate_weight": 0,
+            "tech_growth_weight": 0,
+            "high_beta_weight": 0,
+            "broad_base_balance_state": "BROAD_BASE_MISSING",
+            "theme_concentration_state": "THEME_CONCENTRATED",
+            "balance_candidate_count": int(len(df)),
+            "execution_allowed": False,
+            "summary_text": "CSV fallback: 当前有宽基平衡候选，但缺少 JSON 摘要。",
+        },
+        "rows": rows,
+        "top_balance_candidates": rows[:5],
+        "report_href": "../reports/broad_base_balance_preview.md",
+        "observation_only": True,
+        "execution_allowed": False,
     }
 
 
@@ -3626,6 +4263,57 @@ def _shadow_observation_weekly_snapshot() -> dict:
         default["ready_for_preview"] = False
         default["ready_for_execution"] = False
         default["generated_at"] = _mtime(REPORT_DIR / "shadow_observation_weekly.json")
+    return default
+
+
+def _chatgpt_weekly_packet_snapshot() -> dict:
+    path = REPORT_DIR / "chatgpt_weekly_analysis_packet_latest.json"
+    payload = _read_json(path)
+    default = {
+        "status": "missing",
+        "as_of_date": "",
+        "generated_at": "",
+        "summary": {
+            "as_of_date": "",
+            "generated_at": "",
+            "core_conclusions": ["周报分析包尚未生成。"],
+            "execution_allowed": False,
+            "real_trade_enabled": False,
+        },
+        "markdown_path": "reports/chatgpt_weekly_analysis_packet_latest.md",
+        "json_path": "reports/chatgpt_weekly_analysis_packet_latest.json",
+        "markdown_href": "../reports/chatgpt_weekly_analysis_packet_latest.md",
+        "json_href": "../reports/chatgpt_weekly_analysis_packet_latest.json",
+        "missing_sources": [],
+        "safety_boundary": {
+            "execution_allowed": False,
+            "real_trade_enabled": False,
+            "broker_api_enabled": False,
+            "paper_trade_engine_changed": False,
+        },
+    }
+    if isinstance(payload, dict) and payload:
+        default.update(payload)
+        summary = default.get("summary", {})
+        if not isinstance(summary, dict):
+            summary = {}
+        core = summary.get("core_conclusions") or default.get("core_conclusions") or []
+        if not isinstance(core, list):
+            core = [str(core)]
+        summary.update(
+            {
+                "as_of_date": default.get("as_of_date", ""),
+                "generated_at": default.get("generated_at", ""),
+                "core_conclusions": core[:8],
+                "execution_allowed": False,
+                "real_trade_enabled": False,
+            }
+        )
+        default["summary"] = summary
+        default["status"] = "ready"
+        default["markdown_href"] = "../reports/chatgpt_weekly_analysis_packet_latest.md"
+        default["json_href"] = "../reports/chatgpt_weekly_analysis_packet_latest.json"
+        default["generated_at"] = default.get("generated_at") or _mtime(path)
     return default
 
 

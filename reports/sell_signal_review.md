@@ -1,4 +1,4 @@
-# 卖出复核报告 2026-06-24 23:04:51
+# 卖出复核报告 2026-07-04 00:03:54
 
 本报告只做模拟盘持仓复核，不自动卖出、不自动减仓、不写入 paper_trades.csv、不修改 paper_positions.csv。
 
@@ -11,15 +11,15 @@
 ## 当前持仓复核
 | ETF | 名称 | 类型 | type_risk | type_max_days | type_stop_loss | 持仓进度 | 距离止损状态 | type_severity | rank_score | rank变化 | mid | short | data_health | 状态 | 类型化说明 | 动作说明 |
 | --- | --- | --- | --- | ---: | ---: | ---: | --- | --- | ---: | ---: | --- | --- | --- | --- | --- | --- |
-| 512800 | 银行ETF | sector | medium | 30 | 6.00% | 46.67% | comfortable | elevated | N/A | N/A | BUY | WATCH | 正常  | REVIEW | 行业 ETF 按中等敏感度复核，重点看同 group 暴露和 short_swing 是否转弱。 | 触发人工复核条件；不自动卖出，dashboard 标黄。 |
-| 515000 | 科技ETF | unknown | medium | 30 | 0.00% | 23.33% | comfortable | normal | 80.3898 | -11.381 | BUY | WATCH | 正常  | REVIEW | ETF 类型证据不足，保持人工复核提示。 | 触发人工复核条件；不自动卖出，dashboard 标黄。 |
-| 512880 | 证券ETF | high_beta | very_high | 20 | 5.00% | 0.00% | watch_within_5pct | normal | 91.8274 | 0.5205 | BUY | BUY | 正常  | HOLD | high_beta 对情绪和成交额敏感，评分转弱时优先人工复核。 | 保护期内未触发硬风控，继续持有。 |
+| 512800 | 银行ETF | sector | medium | 30 | 6.00% | 80.00% | near_stop_within_2pct | elevated | N/A | N/A | BUY | WATCH | 正常  | REVIEW | 行业 ETF 按中等敏感度复核，重点看同 group 暴露和 short_swing 是否转弱。 距离研究性止损小于 2%，次日需重点观察。 持仓天数已超过类型化最大持有期的 80%，进入持有期复核区。 | 触发人工复核条件；不自动卖出，dashboard 标黄。 |
+| 515000 | 科技ETF | unknown | medium | 30 | 0.00% | 56.67% | comfortable | normal | 70.4155 | -21.3553 | BUY | WATCH | 正常  | REVIEW | ETF 类型证据不足，保持人工复核提示。 | 触发人工复核条件；不自动卖出，dashboard 标黄。 |
+| 512880 | 证券ETF | high_beta | very_high | 20 | 5.00% | 50.00% | comfortable | normal | 94.493 | 3.186 | BUY | BUY | 正常  | HOLD | high_beta 对情绪和成交额敏感，评分转弱时优先人工复核。 | mid_trend / short_swing 和风控未触发退出条件，继续持有。 |
 
 ## 触发条件明细
 | ETF | type_review_severity | condition_flags | safety_note |
 | --- | --- | --- | --- |
-| 512800 | elevated | short_swing_buy_to_watch; rank_decline_2d | review_only_no_trade |
-| 515000 | normal | rank_score_single_day_drop; rank_score_drop_pct_over_12; short_swing_buy_to_watch; rank_decline_2d | review_only_no_trade |
+| 512800 | elevated | short_swing_buy_to_watch; floating_loss_over_3_5pct; rank_decline_2d | review_only_no_trade |
+| 515000 | normal | rank_score_single_day_drop; rank_score_large_drop; rank_score_drop_pct_over_12; short_swing_buy_to_watch | review_only_no_trade |
 | 512880 | normal |  | review_only_no_trade |
 
 ## 安全边界

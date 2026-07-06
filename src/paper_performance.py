@@ -14,6 +14,7 @@ from typing import Any
 import pandas as pd
 
 from config import DATA_DIR, ETF_DAILY_DIR, PAPER_INITIAL_CASH, PAPER_POSITIONS_FILE, PAPER_TRADES_FILE, REPORT_DIR
+from valuation import load_latest_position_valuation
 
 
 EQUITY_CURVE_FILE = DATA_DIR / "paper_equity_curve.csv"
@@ -47,11 +48,14 @@ def main() -> None:
 
     trades = _read_trades()
     positions = _read_positions()
+    valuation = load_latest_position_valuation()
+    valuation_positions = valuation["positions"]
+    valuation_summary = valuation["summary"]
     initial_cash = _infer_initial_cash(trades)
-    latest_date = _latest_market_date(positions, trades)
-    latest_prices = _latest_prices(positions)
+    latest_date = str(valuation_summary.get("as_of_date") or _latest_market_date(positions, trades))
+    latest_prices = _latest_prices(valuation_positions if not valuation_positions.empty else positions)
 
-    trade_pnl = _build_trade_pnl(trades, positions, latest_prices, latest_date)
+    trade_pnl = _build_trade_pnl(trades, valuation_positions if not valuation_positions.empty else positions, latest_prices, latest_date)
     daily = _build_equity_curve(trades, initial_cash)
     if not daily.empty:
         daily.to_csv(DAILY_CSV_FILE, index=False)
@@ -61,7 +65,7 @@ def main() -> None:
         pd.DataFrame(columns=_daily_columns()).to_csv(EQUITY_CURVE_FILE, index=False)
 
     trade_pnl.to_csv(TRADE_PNL_CSV_FILE, index=False)
-    summary = _build_summary(trades, positions, daily, trade_pnl, initial_cash, latest_date)
+    summary = _build_summary(trades, valuation_positions if not valuation_positions.empty else positions, daily, trade_pnl, initial_cash, latest_date, valuation_summary)
 
     SUMMARY_JSON_FILE.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
     _write_summary_md(summary, daily, trade_pnl)
@@ -359,18 +363,19 @@ def _build_summary(
     trade_pnl: pd.DataFrame,
     initial_cash: float,
     latest_date: str,
+    valuation_summary: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     current_cash = _latest_trade_value(trades, ["simulated_cash", "cash_after_trade"], initial_cash)
     current_position_value = _sum_numeric(positions, "market_value")
     current_total_equity = current_cash + current_position_value
     if not daily.empty:
         current_cash = float(daily["cash"].iloc[-1])
-        current_position_value = float(daily["position_value"].iloc[-1])
-        current_total_equity = float(daily["total_equity"].iloc[-1])
+        current_position_value = float(valuation_summary.get("total_market_value", daily["position_value"].iloc[-1])) if valuation_summary else float(daily["position_value"].iloc[-1])
+        current_total_equity = current_cash + current_position_value
     realized = _sum_numeric(trades[trades["action"].eq("SELL")] if not trades.empty else trades, "realized_pnl")
     if realized == 0 and not trade_pnl.empty:
         realized = float(pd.to_numeric(trade_pnl.loc[trade_pnl["status"].eq("closed"), "net_pnl"], errors="coerce").fillna(0.0).sum())
-    unrealized = _sum_numeric(positions, "unrealized_pnl")
+    unrealized = float(valuation_summary.get("total_unrealized_pnl", _sum_numeric(positions, "unrealized_pnl"))) if valuation_summary else _sum_numeric(positions, "unrealized_pnl")
     total_cost = sum(_trade_cost(row) for row in trades.to_dict(orient="records")) if not trades.empty else 0.0
     commission = _sum_numeric(trades, "commission") + _sum_numeric(trades, "fee")
     if not trades.empty and "fee" in trades.columns and "commission" in trades.columns:
@@ -414,6 +419,9 @@ def _build_summary(
         "trade_pnl_rows": int(len(trade_pnl)),
         "last_updated": pd.Timestamp.now().strftime("%Y-%m-%d %H:%M:%S"),
         "latest_data_date": latest_date,
+        "valuation_source": (valuation_summary or {}).get("valuation_source", "paper_positions + etf_daily latest close"),
+        "valuation_as_of_date": (valuation_summary or {}).get("as_of_date", latest_date),
+        "valuation_price_warning_count": int((valuation_summary or {}).get("price_warning_count", 0)),
         "estimated_fields": [
             "paper_equity_curve uses local close prices and simulated trades",
             "open trade PnL is unrealized and mark-to-market",

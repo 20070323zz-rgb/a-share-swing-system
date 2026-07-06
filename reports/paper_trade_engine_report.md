@@ -1,13 +1,13 @@
 # paper_trade_engine 执行报告
 
-- 生成时间：2026-06-24 23:04:51
+- 生成时间：2026-07-04 00:00:52
 - 本轮是模拟盘自动交易，不是真实交易。
 - launchd/catchup 只负责触发；paper_trade_engine 负责模拟盘规则判断和本地 CSV 写入。
 - Codex 只负责开发、修复和优化，不作为每日交易执行器。
-- 运行日期 run_date：2026-06-24
-- 价格数据日期 price_data_date：2026-06-24
-- 当前状态：dry_run
-- dry_run：True
+- 运行日期 run_date：2026-07-04
+- 价格数据日期 price_data_date：2026-07-03
+- 当前状态：executed
+- dry_run：False
 - 买入数量：0
 - 卖出数量：0
 - 今日佣金：0.00
@@ -17,7 +17,7 @@
 - paper_trades 同日同 symbol/action/source 重复数：0
 - 执行后现金：7058.11
 - 执行后持仓数：3
-- 执行后仓位：29.84%
+- 执行后仓位：29.44%
 - PAPER_USE_MARKET_STATE_POSITION：False
 
 ## Phase 2C 轻量接入

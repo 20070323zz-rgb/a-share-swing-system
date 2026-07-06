@@ -6,16 +6,16 @@
   "open_position_count": 3,
   "winning_trade_count": 1,
   "losing_trade_count": 1,
-  "largest_net_profit": 125.57,
+  "largest_net_profit": 119.57,
   "largest_net_loss": -117.62,
-  "largest_unrealized_pnl": 125.57,
-  "largest_mfe_pct": 0.132665365625787,
+  "largest_unrealized_pnl": 119.57,
+  "largest_mfe_pct": 0.22904744953307454,
   "largest_mae_pct": -0.10735294117647065,
   "max_unrealized_trade": {
     "symbol": "515000",
     "name": "科技ETF",
-    "net_pnl": 125.57,
-    "return_pct": 0.08803095840665143,
+    "net_pnl": 119.57,
+    "return_pct": 0.08382465315507948,
     "review_tag": "持仓中;盈利交易;浮盈未兑现;回撤较小;跑赢510300"
   },
   "max_adverse_trade": {
@@ -37,7 +37,7 @@
     "关注 515880 data_health caution 对持仓风险的影响"
   ],
   "sample_warning": "样本较少，不能判断策略稳定盈利。",
-  "last_updated": "2026-06-24 23:04:55",
+  "last_updated": "2026-07-04 00:02:01",
   "safety": {
     "broker_api": false,
     "real_order": false,

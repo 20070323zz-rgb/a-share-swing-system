@@ -1,0 +1,282 @@
+# File Classification Plan
+
+生成时间：2026-06-29 16:08:04
+
+## 分类统计
+
+- APP_CODE: 38
+- CORE_CODE: 56
+- DASHBOARD_CODE: 3
+- DATA_CORE: 186
+- DATA_DERIVED: 260
+- DIST_ASSETS: 27
+- DOCS: 18
+- LOGS: 43
+- REPORT_ARCHIVE: 29
+- REPORT_CURRENT: 319
+- RESEARCH_CODE: 31
+- SCRIPTS_MAINTENANCE: 21
+- SCRIPTS_RUNTIME: 11
+- TEMP_OR_LEGACY: 3
+- UNKNOWN_NEEDS_REVIEW: 19
+
+## 移动安全等级
+
+- DO_NOT_MOVE: 103
+- LOCKED: 197
+- MOVE_ONLY_WITH_CODE_UPDATE: 305
+- SAFE_TO_ARCHIVE: 382
+- UNKNOWN_NEEDS_REVIEW: 77
+
+## LOCKED / DO_NOT_MOVE 样例
+
+- watchlist.csv
+- 打开量化研究控制台.command
+- A-Share Swing App.command
+- app/README.md
+- desktop/README.md
+- dashboard/index.html
+- dashboard/README.md
+- dashboard/build_dashboard.py
+- dashboard/app.py
+- dashboard/open_dashboard.command
+- scripts/run_open_check.sh
+- scripts/run_codex_weekly_research.sh
+- scripts/run_midday_check.sh
+- scripts/run_codex_daily_research.sh
+- scripts/run_etf_expansion_data_pipeline.py
+- scripts/run_catchup_check.sh
+- scripts/run_afternoon_open_check.sh
+- scripts/run_app.sh
+- scripts/uninstall_launchd_jobs.sh
+- scripts/run_daily_close.sh
+- scripts/run_desktop_app.sh
+- scripts/run_monthly_model_review.sh
+- scripts/run_weekly_review.sh
+- scripts/install_launchd_jobs.sh
+- data/paper_positions.csv
+- data/paper_trades.csv
+- assets/app_icon.png
+- assets/app_icon.svg
+- reports/high_beta_risk_watch.json
+- reports/latest_paper_portfolio.md
+- reports/position_review_state.json
+- reports/broad_base_balance_preview.md
+- reports/portfolio_exposure.md
+- reports/latest_daily.md
+- reports/position_review_state.md
+- reports/profit_protection_preview.json
+- reports/latest_short_swing.md
+- reports/latest_data_coverage.md
+- reports/latest_factor_analysis.md
+- reports/latest_weekly.md
+- reports/profit_protection_preview.md
+- reports/paper_performance_summary.json
+- reports/dashboard_data.json
+- reports/broad_base_balance_preview.json
+- reports/paper_performance_summary.md
+- reports/latest_ranking.md
+- reports/latest_brief.md
+- reports/buy_signal_ranking.md
+- reports/high_beta_risk_watch.md
+- reports/latest_data_health.md
+- reports/latest_buy_ranking.md
+- reports/portfolio_exposure.json
+- reports/sell_signal_review.md
+- reports/chatgpt_weekly_analysis_packet_latest.md
+- reports/latest_model_research.md
+- reports/chatgpt_weekly_analysis_packet_latest.json
+- src/paper_trade_engine.py
+- app/frontend/index.html
+- app/frontend/vite.config.js
+- app/frontend/package-lock.json
+- app/frontend/package.json
+- app/backend/readers.py
+- app/backend/safe_tasks.py
+- app/backend/task_runner.py
+- app/backend/__init__.py
+- app/backend/schemas.py
+- app/backend/main.py
+- app/frontend/src/format.js
+- app/frontend/src/styles.css
+- app/frontend/src/designTokens.js
+- app/frontend/src/main.jsx
+- app/frontend/src/App.jsx
+- app/frontend/src/api.js
+- app/frontend/src/components/PortfolioPanel.jsx
+- app/frontend/src/components/Timeline.jsx
+- app/frontend/src/components/Sparkline.jsx
+- app/frontend/src/components/ActionButton.jsx
+- app/frontend/src/components/SegmentedControl.jsx
+- app/frontend/src/components/StatusCard.jsx
+- app/frontend/src/components/LogsPanel.jsx
+- app/frontend/src/components/TaskPanel.jsx
+- app/frontend/src/components/SignalsPanel.jsx
+- app/frontend/src/components/StatusPill.jsx
+- app/frontend/src/components/ReportCard.jsx
+- app/frontend/src/components/Section.jsx
+- app/frontend/src/components/DataHealthPanel.jsx
+- app/frontend/src/pages/Portfolio.jsx
+- app/frontend/src/pages/ControlRoom.jsx
+- app/frontend/src/pages/DataCenter.jsx
+- app/frontend/src/pages/Signals.jsx
+- app/frontend/src/pages/Research.jsx
+- app/frontend/src/pages/Logs.jsx
+- app/frontend/src/pages/SettingsSafety.jsx
+- app/frontend/src/pages/Home.jsx
+- dist/app_icon.iconset/icon_32x32@2x.png
+- dist/app_icon.iconset/icon_128x128.png
+- dist/app_icon.iconset/icon_256x256@2x.png
+- dist/app_icon.iconset/icon_32x32.png
+- dist/app_icon.iconset/icon_512x512.png
+- dist/app_icon.iconset/icon_16x16.png
+- dist/app_icon.iconset/icon_16x16@2x.png
+- dist/app_icon.iconset/icon_128x128@2x.png
+- dist/app_icon.iconset/icon_512x512@2x.png
+- dist/app_icon.iconset/icon_256x256.png
+- dist/量化研究控制台.app/Contents/Info.plist
+- dist/量化研究控制台.app/Contents/MacOS/launch
+- dist/量化研究控制台.app/Contents/Resources/app_icon.icns
+- desktop/tauri/index.html
+- desktop/tauri/package-lock.json
+- desktop/tauri/package.json
+- desktop/tauri/src-tauri/Cargo.toml
+- desktop/tauri/src-tauri/tauri.conf.json
+- desktop/tauri/src-tauri/build.rs
+- desktop/tauri/src/main.js
+- desktop/tauri/src-tauri/capabilities/default.json
+- desktop/tauri/src-tauri/src/main.rs
+- data/etf_daily/sz_159858.csv
+- data/etf_daily/sz_159870.csv
+- data/etf_daily/sz_159327.csv
+- data/etf_daily/sz_159333.csv
+
+## SAFE_TO_ARCHIVE 样例
+
+- logs/launchd_daily_close.err.log
+- logs/launchd_open_check.out.log
+- logs/midday_check.log
+- logs/app_launch_status.json
+- logs/launchd_weekly_review.err.log
+- logs/open_check.log
+- logs/launchd_midday_check.out.log
+- logs/launchd_afternoon_open_check.err.log
+- logs/afternoon_open_check.log
+- logs/launchd_catchup_check.out.log
+- logs/app_dependency_check.log
+- logs/weekly_review.log
+- logs/launchd_daily_close.out.log
+- logs/launchd_open_check.err.log
+- logs/app_server.log
+- logs/launchd_weekly_review.out.log
+- logs/monthly_model_review.log
+- logs/app_backend.log
+- logs/launchd_afternoon_open_check.out.log
+- logs/launchd_midday_check.err.log
+- logs/daily_close.log
+- logs/streamlit_dashboard.log
+- logs/launchd_catchup_check.err.log
+- logs/catchup_check.log
+- reports/backtest_capital_sensitivity.csv
+- reports/topn_selection_diagnostics.csv
+- reports/trade_review_summary.json
+- reports/current_positions_strategy_fit_report.md
+- reports/b1_strategy_enhancement_preview_report.md
+- reports/phase4c_alpha_summary.json
+- reports/project_cleanup_roadmap.md
+- reports/etf_classification_report.md
+- reports/backtest_execution_timing_sensitivity.csv
+- reports/top10_candidate_filter_analysis.csv
+- reports/ranking_model_v2_design.md
+- reports/portfolio_exposure_report.md
+- reports/model_shadow_comparison.csv
+- reports/backtest_expand_pool_decision.md
+- reports/app_data_backfill_button_audit.md
+- reports/phase3a_fastapi_react_app_report.md
+- reports/tushare_baostock_compare.json
+- reports/phase2c_execution_layer_light_integration_report.md
+- reports/app_local_release_phase1_report.md
+- reports/etf_strategy_news_sentiment_research.md
+- reports/model_enhancement_decision_report.md
+- reports/paper_trade_pnl.csv
+- reports/jqdata_unit_diagnosis_report.md
+- reports/first_paper_buy_plan.md
+- reports/manual_download_report.md
+- reports/trade_review_details.md
+- reports/daily_rolling_backtest.csv
+- reports/ranking_model_v2_candidates.json
+- reports/trade_review_summary.md
+- reports/backtest_cost_diagnostics.csv
+- reports/data_freshness_execution_reality.md
+- reports/missed_opportunity_tracker.csv
+- reports/backtest_ranking_effectiveness.md
+- reports/paper_equity_curve_backfill_audit.md
+- reports/regime_aware_model_summary.csv
+- reports/data_update_status.datasource_refresh.json
+- reports/paper_equity_curve.md
+- reports/v2_underperformance_attribution.md
+- reports/tushare_baostock_compare.csv
+- reports/open_check.json
+- reports/persistence_breakout_shadow_portfolio.csv
+- reports/dashboard_app_future_plan.md
+- reports/strategy_preview_shadow_portfolio.md
+- reports/data_update_automation_fix_report.md
+- reports/exit_rule_research_report.md
+- reports/etf_type_aware_model_summary.csv
+- reports/ranking_model_v2_trades.csv
+- reports/manual_import_report.md
+- reports/backtest_summary.csv
+- reports/codex_weekly_research_prompt.md
+- reports/paper_trade_plan.md
+- reports/midday_check.json
+- reports/persistence_breakout_shadow_signal.md
+- reports/app_backfill_button_fix_20260624.md
+- reports/afternoon_open_check.md
+- reports/selected_vs_filtered_forward_return.md
+- reports/report_index.md
+- reports/phase4c_data_summary.json
+- reports/file_classification_plan.json
+- reports/afternoon_open_check.json
+- reports/shadow_observation_weekly.json
+- reports/model_overfit_guardrails.md
+- reports/top10_candidate_filter_analysis.md
+- reports/account_status.csv
+- reports/strategy_preview_tracking.csv
+- reports/baostock_diagnosis.md
+- reports/chatgpt_analysis_packet_2026-06-27.md
+- reports/backtest_diagnostics_summary.json
+- reports/app_launch_diagnostics.md
+- reports/etf_pool_research_report.md
+- reports/tushare_config_check.json
+- reports/data_quality_report.md
+- reports/backtest_ranking_effectiveness.csv
+- reports/exit_rule_candidates.json
+- reports/ranking_signal_research_summary.json
+- reports/model_dataset.csv
+- reports/app_launch_fix_report.json
+- reports/industry_etf_diagnosis.md
+- reports/etf_type_aware_model_metrics.json
+- reports/backtest_turnover_diagnostics.md
+- reports/backtest_turnover_by_month.csv
+- reports/midday_check.md
+- reports/data_update_status.dryrun.json
+- reports/codex_daily_research_prompt.md
+- reports/shadow_observation_weekly.csv
+- reports/app_release_phase2_shortcut_equity_backfill_report.md
+- reports/daily_signal_2026-06-15.md
+- reports/regime_aware_model_metrics.json
+- reports/alpha_factor_enhancement_research.md
+- reports/selected_vs_filtered_forward_return.csv
+- reports/news_sentiment_framework.md
+- reports/first_paper_trade_review.md
+- reports/qmt_test_report.md
+- reports/next_stage_strategy_optimization_report.md
+- reports/chatgpt_weekly_analysis_packet_2026-06-26.json
+- reports/etf_expansion_staging_validation_report.md
+
+## 建议
+
+- `CORE_CODE`、`DATA_CORE`、`SCRIPTS_RUNTIME`、`APP_CODE`、`DASHBOARD_CODE` 暂不移动。
+- `REPORT_ARCHIVE` 可以作为 Phase B 低风险归档候选，但必须保留 latest/current 原路径。
+- `RESEARCH_CODE` 和 `SCRIPTS_MAINTENANCE` 只有在路径配置化后再移动。
+- `TEMP_OR_LEGACY` 只生成候选清单，不直接删除。

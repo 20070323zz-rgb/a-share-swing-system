@@ -1,0 +1,351 @@
+path,target_path,category,reason,dependency_count,is_latest,is_dashboard_dependency,is_app_dependency,move_allowed,move_decision
+reports/account_status.csv,reports/account_status.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/afternoon_open_check.json,reports/afternoon_open_check.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/afternoon_open_check.md,reports/afternoon_open_check.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/akshare_connectivity_check.json,reports/akshare_connectivity_check.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/akshare_connectivity_check.md,reports/akshare_connectivity_check.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/alpha_factor_enhancement_metrics.json,reports/alpha_factor_enhancement_metrics.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/alpha_factor_enhancement_research.md,reports/alpha_factor_enhancement_research.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/alpha_factor_enhancement_summary.csv,reports/alpha_factor_enhancement_summary.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/app_backfill_button_fix_20260624.md,reports/archive/legacy_misc/app_backfill_button_fix_20260624.md,DATED_MISC,带日期的历史报告或修复记录。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/app_backfill_button_fix_report.md,reports/app_backfill_button_fix_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/app_data_backfill_button_audit.md,reports/app_data_backfill_button_audit.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/app_independent_launch_fix_report.md,reports/app_independent_launch_fix_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/app_launch_diagnostics.json,reports/app_launch_diagnostics.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,True,False,UNKNOWN_KEEP
+reports/app_launch_diagnostics.md,reports/app_launch_diagnostics.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/app_launch_fix_report.json,reports/app_launch_fix_report.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/app_launch_fix_report.md,reports/app_launch_fix_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/app_local_release_phase1_report.md,reports/app_local_release_phase1_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/app_polish_phase1_launch_stability_report.md,reports/archive/research_phases/app_polish_phase1_launch_stability_report.md,RESEARCH_PHASE,旧阶段研究/发布报告。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/app_release_phase2_shortcut_equity_backfill_report.md,reports/archive/research_phases/app_release_phase2_shortcut_equity_backfill_report.md,RESEARCH_PHASE,旧阶段研究/发布报告。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/app_task_status.json,reports/app_task_status.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,True,False,UNKNOWN_KEEP
+reports/archive_manifest_before.json,reports/archive_manifest_before.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/archive_manifest_before.md,reports/archive_manifest_before.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/automation_four_node_sync_report.md,reports/automation_four_node_sync_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/b1_strategy_enhancement_preview_report.md,reports/b1_strategy_enhancement_preview_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/b2_strategy_preview_tracking_report.md,reports/b2_strategy_preview_tracking_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/backtest_capital_sensitivity.csv,reports/backtest_capital_sensitivity.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/backtest_capital_sensitivity.md,reports/backtest_capital_sensitivity.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/backtest_consistency_check.json,reports/backtest_consistency_check.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/backtest_consistency_check.md,reports/backtest_consistency_check.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/backtest_cost_diagnostics.csv,reports/backtest_cost_diagnostics.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/backtest_cost_diagnostics.md,reports/backtest_cost_diagnostics.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/backtest_diagnostics_summary.json,reports/backtest_diagnostics_summary.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/backtest_drawdown_diagnostics.csv,reports/backtest_drawdown_diagnostics.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/backtest_drawdown_diagnostics.md,reports/backtest_drawdown_diagnostics.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/backtest_equity_curve.csv,reports/backtest_equity_curve.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/backtest_execution_timing_sensitivity.csv,reports/backtest_execution_timing_sensitivity.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/backtest_execution_timing_sensitivity.md,reports/backtest_execution_timing_sensitivity.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/backtest_exit_reason_summary.csv,reports/backtest_exit_reason_summary.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/backtest_expand_pool_decision.md,reports/backtest_expand_pool_decision.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/backtest_metrics.json,reports/backtest_metrics.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/backtest_phase4a_report.md,reports/backtest_phase4a_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/backtest_positions.csv,reports/backtest_positions.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/backtest_ranking_effectiveness.csv,reports/backtest_ranking_effectiveness.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/backtest_ranking_effectiveness.md,reports/backtest_ranking_effectiveness.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/backtest_readiness_report.md,reports/backtest_readiness_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/backtest_result.csv,reports/backtest_result.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/backtest_summary.csv,reports/backtest_summary.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/backtest_summary.md,reports/backtest_summary.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/backtest_symbol_contribution.csv,reports/backtest_symbol_contribution.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/backtest_symbol_contribution.md,reports/backtest_symbol_contribution.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/backtest_trade_distribution.csv,reports/backtest_trade_distribution.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/backtest_trade_distribution.md,reports/backtest_trade_distribution.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/backtest_trade_pool_report.md,reports/backtest_trade_pool_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/backtest_trades.csv,reports/backtest_trades.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/backtest_turnover_by_month.csv,reports/backtest_turnover_by_month.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/backtest_turnover_diagnostics.md,reports/backtest_turnover_diagnostics.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/backtest_yearly_summary.csv,reports/backtest_yearly_summary.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/baostock_app_backfill_fix_report.md,reports/baostock_app_backfill_fix_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/baostock_daily_source_optimization_report.md,reports/baostock_daily_source_optimization_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/baostock_diagnosis.md,reports/baostock_diagnosis.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/broad_base_balance_preview.csv,reports/broad_base_balance_preview.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/broad_base_balance_preview.json,reports/broad_base_balance_preview.json,NOT_CANDIDATE,latest/current 或明确禁止移动的活跃报告。,0,True,True,False,False,KEEP_IN_PLACE
+reports/broad_base_balance_preview.md,reports/broad_base_balance_preview.md,NOT_CANDIDATE,latest/current 或明确禁止移动的活跃报告。,0,True,True,False,False,KEEP_IN_PLACE
+reports/buy_ranking_report.md,reports/buy_ranking_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/buy_signal_ranking.md,reports/buy_signal_ranking.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/catchup_scheduler_status.md,reports/catchup_scheduler_status.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/chatgpt_analysis_packet_2026-06-27.md,reports/archive/chatgpt_packets/chatgpt_analysis_packet_2026-06-27.md,CHATGPT_DATED,历史日期版 ChatGPT / Main 分析包。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/chatgpt_report_summary_2026-06-27.md,reports/archive/chatgpt_packets/chatgpt_report_summary_2026-06-27.md,CHATGPT_DATED,历史日期版 ChatGPT / Main 分析包。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/chatgpt_weekly_analysis_packet_2026-06-26.json,reports/archive/chatgpt_packets/chatgpt_weekly_analysis_packet_2026-06-26.json,CHATGPT_DATED,历史日期版 ChatGPT / Main 分析包。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/chatgpt_weekly_analysis_packet_2026-06-26.md,reports/archive/chatgpt_packets/chatgpt_weekly_analysis_packet_2026-06-26.md,CHATGPT_DATED,历史日期版 ChatGPT / Main 分析包。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/chatgpt_weekly_analysis_packet_latest.json,reports/chatgpt_weekly_analysis_packet_latest.json,NOT_CANDIDATE,latest/current 或明确禁止移动的活跃报告。,0,True,True,False,False,KEEP_IN_PLACE
+reports/chatgpt_weekly_analysis_packet_latest.md,reports/chatgpt_weekly_analysis_packet_latest.md,NOT_CANDIDATE,latest/current 或明确禁止移动的活跃报告。,0,True,True,True,False,KEEP_IN_PLACE
+reports/chatgpt_weekly_report_summary_2026-06-27.md,reports/archive/chatgpt_packets/chatgpt_weekly_report_summary_2026-06-27.md,CHATGPT_DATED,历史日期版 ChatGPT / Main 分析包。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/codex_daily_research_prompt.md,reports/codex_daily_research_prompt.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/codex_weekly_research_prompt.md,reports/codex_weekly_research_prompt.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/current_positions_strategy_fit_report.md,reports/current_positions_strategy_fit_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/daily_data_update_diagnosis_report.md,reports/daily_data_update_diagnosis_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/daily_rolling_backtest.csv,reports/daily_rolling_backtest.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/daily_rolling_backtest.md,reports/daily_rolling_backtest.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/daily_signal_2026-06-01.md,reports/archive/daily/daily_signal_2026-06-01.md,DAILY_DATED,历史日期版 daily 报告。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/daily_signal_2026-06-02.md,reports/archive/daily/daily_signal_2026-06-02.md,DAILY_DATED,历史日期版 daily 报告。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/daily_signal_2026-06-03.md,reports/archive/daily/daily_signal_2026-06-03.md,DAILY_DATED,历史日期版 daily 报告。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/daily_signal_2026-06-09.md,reports/archive/daily/daily_signal_2026-06-09.md,DAILY_DATED,历史日期版 daily 报告。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/daily_signal_2026-06-10.md,reports/archive/daily/daily_signal_2026-06-10.md,DAILY_DATED,历史日期版 daily 报告。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/daily_signal_2026-06-11.md,reports/archive/daily/daily_signal_2026-06-11.md,DAILY_DATED,历史日期版 daily 报告。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/daily_signal_2026-06-12.md,reports/archive/daily/daily_signal_2026-06-12.md,DAILY_DATED,历史日期版 daily 报告。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/daily_signal_2026-06-15.md,reports/archive/daily/daily_signal_2026-06-15.md,DAILY_DATED,历史日期版 daily 报告。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/daily_signal_2026-06-16.md,reports/archive/daily/daily_signal_2026-06-16.md,DAILY_DATED,历史日期版 daily 报告。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/daily_signal_2026-06-17.md,reports/archive/daily/daily_signal_2026-06-17.md,DAILY_DATED,历史日期版 daily 报告。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/daily_signal_2026-06-18.md,reports/archive/daily/daily_signal_2026-06-18.md,DAILY_DATED,历史日期版 daily 报告。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/daily_signal_2026-06-22.md,reports/archive/daily/daily_signal_2026-06-22.md,DAILY_DATED,历史日期版 daily 报告。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/daily_signal_2026-06-23.md,reports/archive/daily/daily_signal_2026-06-23.md,DAILY_DATED,历史日期版 daily 报告。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/daily_signal_2026-06-24.md,reports/archive/daily/daily_signal_2026-06-24.md,DAILY_DATED,历史日期版 daily 报告。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/daily_signal_2026-06-25.md,reports/archive/daily/daily_signal_2026-06-25.md,DAILY_DATED,历史日期版 daily 报告。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/daily_signal_2026-06-26.md,reports/archive/daily/daily_signal_2026-06-26.md,DAILY_DATED,历史日期版 daily 报告。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/dashboard_app_future_plan.md,reports/dashboard_app_future_plan.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/dashboard_data.json,reports/dashboard_data.json,NOT_CANDIDATE,latest/current 或明确禁止移动的活跃报告。,0,True,True,True,False,KEEP_IN_PLACE
+reports/dashboard_redesign_research.md,reports/dashboard_redesign_research.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/data_coverage_report.md,reports/data_coverage_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/data_download_report.md,reports/data_download_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/data_freshness_execution_reality.md,reports/data_freshness_execution_reality.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/data_health_report.md,reports/data_health_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/data_provider_design.md,reports/data_provider_design.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/data_provider_status.json,reports/data_provider_status.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/data_provider_status.md,reports/data_provider_status.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,True,False,UNKNOWN_KEEP
+reports/data_quality_report.md,reports/data_quality_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/data_source_architecture_audit.json,reports/data_source_architecture_audit.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/data_source_architecture_audit.md,reports/data_source_architecture_audit.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/data_source_proposal.md,reports/data_source_proposal.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/data_source_status.json,reports/data_source_status.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,True,False,UNKNOWN_KEEP
+reports/data_source_status_report.md,reports/data_source_status_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,True,False,UNKNOWN_KEEP
+reports/data_update_app_task_fix_report.md,reports/data_update_app_task_fix_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/data_update_automation_fix_report.md,reports/data_update_automation_fix_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/data_update_diagnosis_report.md,reports/data_update_diagnosis_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/data_update_log.md,reports/data_update_log.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,True,False,UNKNOWN_KEEP
+reports/data_update_probe_fast.json,reports/data_update_probe_fast.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/data_update_status.baostock_fallback.json,reports/data_update_status.baostock_fallback.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/data_update_status.datasource_refresh.json,reports/data_update_status.datasource_refresh.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/data_update_status.dryrun.json,reports/data_update_status.dryrun.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/data_update_status.json,reports/data_update_status.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,True,False,UNKNOWN_KEEP
+reports/etf_classification_report.md,reports/etf_classification_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/etf_expansion_cleanup_report.md,reports/etf_expansion_cleanup_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/etf_expansion_import_report.md,reports/etf_expansion_import_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/etf_expansion_import_results.csv,reports/etf_expansion_import_results.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/etf_expansion_pipeline_report.md,reports/etf_expansion_pipeline_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/etf_expansion_quarantine_list.csv,reports/etf_expansion_quarantine_list.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/etf_expansion_staging_validation_report.md,reports/etf_expansion_staging_validation_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/etf_pool_expansion_plan.md,reports/etf_pool_expansion_plan.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/etf_pool_research_matrix.csv,reports/etf_pool_research_matrix.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/etf_pool_research_report.md,reports/etf_pool_research_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/etf_rotation_exit_rule_research.md,reports/etf_rotation_exit_rule_research.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/etf_rotation_mature_model_reference.md,reports/etf_rotation_mature_model_reference.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/etf_rotation_strategy_research.md,reports/etf_rotation_strategy_research.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/etf_strategy_news_sentiment_research.md,reports/etf_strategy_news_sentiment_research.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/etf_type_aware_model_metrics.json,reports/etf_type_aware_model_metrics.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/etf_type_aware_model_research.md,reports/etf_type_aware_model_research.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/etf_type_aware_model_summary.csv,reports/etf_type_aware_model_summary.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/etf_type_classification_report.md,reports/etf_type_classification_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/etf_volatility_profile.csv,reports/etf_volatility_profile.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/etf_volatility_profile.md,reports/etf_volatility_profile.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/execution_layer_integration_plan.md,reports/execution_layer_integration_plan.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/exit_rule_backtest_design.md,reports/exit_rule_backtest_design.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/exit_rule_by_etf_type.md,reports/exit_rule_by_etf_type.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/exit_rule_candidates.json,reports/exit_rule_candidates.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/exit_rule_candidates.md,reports/exit_rule_candidates.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/exit_rule_research.csv,reports/exit_rule_research.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/exit_rule_research_report.md,reports/exit_rule_research_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/exit_rule_research_results.csv,reports/exit_rule_research_results.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/factor_analysis_report.md,reports/factor_analysis_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/file_classification_plan.csv,reports/file_classification_plan.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/file_classification_plan.json,reports/file_classification_plan.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/file_classification_plan.md,reports/file_classification_plan.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/first_paper_buy_plan.md,reports/first_paper_buy_plan.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/first_paper_trade_review.md,reports/first_paper_trade_review.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/high_beta_risk_watch.csv,reports/high_beta_risk_watch.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/high_beta_risk_watch.json,reports/high_beta_risk_watch.json,NOT_CANDIDATE,latest/current 或明确禁止移动的活跃报告。,0,True,True,False,False,KEEP_IN_PLACE
+reports/high_beta_risk_watch.md,reports/high_beta_risk_watch.md,NOT_CANDIDATE,latest/current 或明确禁止移动的活跃报告。,0,True,True,False,False,KEEP_IN_PLACE
+reports/holding_period_research.csv,reports/holding_period_research.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/holding_period_research_report.md,reports/holding_period_research_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/holding_period_research_results.csv,reports/holding_period_research_results.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/industry_etf_diagnosis.md,reports/industry_etf_diagnosis.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/intelligence_data_source_plan.md,reports/intelligence_data_source_plan.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/jqdata_connection_diagnosis.md,reports/jqdata_connection_diagnosis.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/jqdata_import_report.md,reports/jqdata_import_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/jqdata_local_compare_report.md,reports/jqdata_local_compare_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/jqdata_primary_daily_source_report.md,reports/jqdata_primary_daily_source_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/jqdata_test_report.md,reports/jqdata_test_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/jqdata_unit_diagnosis_report.md,reports/jqdata_unit_diagnosis_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/latest_brief.md,reports/latest_brief.md,NOT_CANDIDATE,latest/current 或明确禁止移动的活跃报告。,0,True,True,False,False,KEEP_IN_PLACE
+reports/latest_buy_ranking.md,reports/latest_buy_ranking.md,NOT_CANDIDATE,latest/current 或明确禁止移动的活跃报告。,0,True,True,False,False,KEEP_IN_PLACE
+reports/latest_daily.md,reports/latest_daily.md,NOT_CANDIDATE,latest/current 或明确禁止移动的活跃报告。,0,True,False,False,False,KEEP_IN_PLACE
+reports/latest_data_coverage.md,reports/latest_data_coverage.md,NOT_CANDIDATE,latest/current 或明确禁止移动的活跃报告。,0,True,True,True,False,KEEP_IN_PLACE
+reports/latest_data_health.md,reports/latest_data_health.md,NOT_CANDIDATE,latest/current 或明确禁止移动的活跃报告。,0,True,True,True,False,KEEP_IN_PLACE
+reports/latest_factor_analysis.md,reports/latest_factor_analysis.md,NOT_CANDIDATE,latest/current 或明确禁止移动的活跃报告。,0,True,False,False,False,KEEP_IN_PLACE
+reports/latest_model_research.md,reports/latest_model_research.md,NOT_CANDIDATE,latest/current 或明确禁止移动的活跃报告。,0,True,False,False,False,KEEP_IN_PLACE
+reports/latest_paper_portfolio.md,reports/latest_paper_portfolio.md,NOT_CANDIDATE,latest/current 或明确禁止移动的活跃报告。,0,True,True,False,False,KEEP_IN_PLACE
+reports/latest_ranking.md,reports/latest_ranking.md,NOT_CANDIDATE,latest/current 或明确禁止移动的活跃报告。,0,True,False,False,False,KEEP_IN_PLACE
+reports/latest_short_swing.md,reports/latest_short_swing.md,NOT_CANDIDATE,latest/current 或明确禁止移动的活跃报告。,0,True,False,False,False,KEEP_IN_PLACE
+reports/latest_weekly.md,reports/latest_weekly.md,NOT_CANDIDATE,latest/current 或明确禁止移动的活跃报告。,0,True,False,False,False,KEEP_IN_PLACE
+reports/launchd_catchup_bugfix_report.md,reports/launchd_catchup_bugfix_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/launchd_catchup_upgrade_report.md,reports/launchd_catchup_upgrade_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/launchd_install_test_report.md,reports/launchd_install_test_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/local_validation.md,reports/local_validation.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/manual_download_report.md,reports/manual_download_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/manual_download_validation_report.md,reports/manual_download_validation_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/manual_failed_diagnosis_report.md,reports/manual_failed_diagnosis_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/manual_import_report.md,reports/manual_import_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/market_state.csv,reports/market_state.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/market_state_report.md,reports/market_state_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/midday_check.json,reports/midday_check.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/midday_check.md,reports/midday_check.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/missed_opportunity_by_filter_reason.csv,reports/missed_opportunity_by_filter_reason.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/missed_opportunity_by_filter_reason.md,reports/missed_opportunity_by_filter_reason.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,True,False,UNKNOWN_KEEP
+reports/missed_opportunity_observation_rules.md,reports/missed_opportunity_observation_rules.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/missed_opportunity_tracker.csv,reports/missed_opportunity_tracker.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/missed_opportunity_tracker.json,reports/missed_opportunity_tracker.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/missed_opportunity_tracker.md,reports/missed_opportunity_tracker.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,True,False,UNKNOWN_KEEP
+reports/model_data_maturity_analysis.json,reports/model_data_maturity_analysis.json,NOT_CANDIDATE,latest/current 或明确禁止移动的活跃报告。,0,True,False,False,False,KEEP_IN_PLACE
+reports/model_data_maturity_analysis.md,reports/model_data_maturity_analysis.md,NOT_CANDIDATE,latest/current 或明确禁止移动的活跃报告。,0,True,False,False,False,KEEP_IN_PLACE
+reports/model_data_maturity_tables.csv,reports/model_data_maturity_tables.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/model_dataset.csv,reports/model_dataset.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/model_enhancement_decision_report.md,reports/model_enhancement_decision_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/model_overfit_guardrails.md,reports/model_overfit_guardrails.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/model_research_quality_review.json,reports/model_research_quality_review.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/model_research_quality_review.md,reports/model_research_quality_review.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/model_research_report.md,reports/model_research_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/model_shadow_comparison.csv,reports/model_shadow_comparison.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/model_shadow_comparison.md,reports/model_shadow_comparison.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,True,False,UNKNOWN_KEEP
+reports/monthly_model_review.md,reports/monthly_model_review.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/news_data_source_plan.md,reports/news_data_source_plan.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/news_sentiment_framework.md,reports/news_sentiment_framework.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/next_stage_strategy_optimization_report.md,reports/next_stage_strategy_optimization_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/no_lookahead_data_rules.md,reports/no_lookahead_data_rules.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/open_check.json,reports/open_check.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/open_check.md,reports/open_check.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/paper_equity_curve.md,reports/paper_equity_curve.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/paper_equity_curve_backfill_audit.md,reports/paper_equity_curve_backfill_audit.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/paper_equity_curve_backfilled.md,reports/paper_equity_curve_backfilled.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/paper_equity_curve_gap_explanation.md,reports/paper_equity_curve_gap_explanation.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/paper_performance_daily.csv,reports/paper_performance_daily.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/paper_performance_summary.json,reports/paper_performance_summary.json,NOT_CANDIDATE,latest/current 或明确禁止移动的活跃报告。,0,True,True,True,False,KEEP_IN_PLACE
+reports/paper_performance_summary.md,reports/paper_performance_summary.md,NOT_CANDIDATE,latest/current 或明确禁止移动的活跃报告。,0,True,True,False,False,KEEP_IN_PLACE
+reports/paper_portfolio_metrics_audit.md,reports/paper_portfolio_metrics_audit.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/paper_trade_engine_design_report.md,reports/paper_trade_engine_design_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/paper_trade_engine_report.md,reports/paper_trade_engine_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/paper_trade_plan.csv,reports/paper_trade_plan.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/paper_trade_plan.md,reports/paper_trade_plan.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/paper_trade_pnl.csv,reports/paper_trade_pnl.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,True,False,UNKNOWN_KEEP
+reports/paper_trade_pnl.md,reports/paper_trade_pnl.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/parameter_sweep.csv,reports/parameter_sweep.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/parameter_sweep_report.md,reports/parameter_sweep_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/path_dependency_audit.json,reports/path_dependency_audit.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/path_dependency_audit.md,reports/path_dependency_audit.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/persistence_breakout_shadow_observation_rules.md,reports/persistence_breakout_shadow_observation_rules.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/persistence_breakout_shadow_portfolio.csv,reports/persistence_breakout_shadow_portfolio.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/persistence_breakout_shadow_portfolio.md,reports/persistence_breakout_shadow_portfolio.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,True,False,UNKNOWN_KEEP
+reports/persistence_breakout_shadow_signal.csv,reports/persistence_breakout_shadow_signal.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/persistence_breakout_shadow_signal.md,reports/persistence_breakout_shadow_signal.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,True,False,UNKNOWN_KEEP
+reports/persistence_breakout_shadow_summary.json,reports/persistence_breakout_shadow_summary.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/phase1_paper_trading_closure_report.md,reports/archive/research_phases/phase1_paper_trading_closure_report.md,RESEARCH_PHASE,旧阶段研究/发布报告。 但扫描到代码或看板/App/weekly 引用，保留原位。,0,False,False,False,False,KEEP_IN_PLACE
+reports/phase2c_execution_layer_light_integration_report.md,reports/archive/research_phases/phase2c_execution_layer_light_integration_report.md,RESEARCH_PHASE,旧阶段研究/发布报告。 但扫描到代码或看板/App/weekly 引用，保留原位。,0,False,True,False,False,KEEP_IN_PLACE
+reports/phase3a_fastapi_react_app_report.md,reports/archive/research_phases/phase3a_fastapi_react_app_report.md,RESEARCH_PHASE,旧阶段研究/发布报告。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/phase3b_app_control_room_upgrade_report.md,reports/archive/research_phases/phase3b_app_control_room_upgrade_report.md,RESEARCH_PHASE,旧阶段研究/发布报告。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/phase3c_desktop_app_mvp_report.md,reports/archive/research_phases/phase3c_desktop_app_mvp_report.md,RESEARCH_PHASE,旧阶段研究/发布报告。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/phase4c_alpha_model_comparison.csv,reports/archive/research_phases/phase4c_alpha_model_comparison.csv,RESEARCH_PHASE,旧阶段研究/发布报告。 但扫描到代码或看板/App/weekly 引用，保留原位。,0,False,False,False,False,KEEP_IN_PLACE
+reports/phase4c_alpha_model_comparison.md,reports/archive/research_phases/phase4c_alpha_model_comparison.md,RESEARCH_PHASE,旧阶段研究/发布报告。 但扫描到代码或看板/App/weekly 引用，保留原位。,0,False,True,False,False,KEEP_IN_PLACE
+reports/phase4c_alpha_model_decision.md,reports/archive/research_phases/phase4c_alpha_model_decision.md,RESEARCH_PHASE,旧阶段研究/发布报告。 但扫描到代码或看板/App/weekly 引用，保留原位。,0,False,True,False,False,KEEP_IN_PLACE
+reports/phase4c_alpha_summary.json,reports/archive/research_phases/phase4c_alpha_summary.json,RESEARCH_PHASE,旧阶段研究/发布报告。 但扫描到代码或看板/App/weekly 引用，保留原位。,0,False,True,False,False,KEEP_IN_PLACE
+reports/phase4c_data_next_step.md,reports/archive/research_phases/phase4c_data_next_step.md,RESEARCH_PHASE,旧阶段研究/发布报告。 但扫描到代码或看板/App/weekly 引用，保留原位。,0,False,True,False,False,KEEP_IN_PLACE
+reports/phase4c_data_summary.json,reports/archive/research_phases/phase4c_data_summary.json,RESEARCH_PHASE,旧阶段研究/发布报告。 但扫描到代码或看板/App/weekly 引用，保留原位。,0,False,True,False,False,KEEP_IN_PLACE
+reports/portfolio_exposure.csv,reports/portfolio_exposure.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/portfolio_exposure.json,reports/portfolio_exposure.json,NOT_CANDIDATE,latest/current 或明确禁止移动的活跃报告。,0,True,True,False,False,KEEP_IN_PLACE
+reports/portfolio_exposure.md,reports/portfolio_exposure.md,NOT_CANDIDATE,latest/current 或明确禁止移动的活跃报告。,0,True,False,False,False,KEEP_IN_PLACE
+reports/portfolio_exposure_report.md,reports/portfolio_exposure_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/position_review_state.csv,reports/position_review_state.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/position_review_state.json,reports/position_review_state.json,NOT_CANDIDATE,latest/current 或明确禁止移动的活跃报告。,0,True,True,False,False,KEEP_IN_PLACE
+reports/position_review_state.md,reports/position_review_state.md,NOT_CANDIDATE,latest/current 或明确禁止移动的活跃报告。,0,True,True,False,False,KEEP_IN_PLACE
+reports/post_expansion_automation_sync_report.md,reports/post_expansion_automation_sync_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/profit_protection_preview.csv,reports/profit_protection_preview.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/profit_protection_preview.json,reports/profit_protection_preview.json,NOT_CANDIDATE,latest/current 或明确禁止移动的活跃报告。,0,True,True,False,False,KEEP_IN_PLACE
+reports/profit_protection_preview.md,reports/profit_protection_preview.md,NOT_CANDIDATE,latest/current 或明确禁止移动的活跃报告。,0,True,True,False,False,KEEP_IN_PLACE
+reports/project_cleanup_roadmap.md,reports/project_cleanup_roadmap.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/project_structure_audit.json,reports/project_structure_audit.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/project_structure_audit.md,reports/project_structure_audit.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/qmt_test_report.md,reports/qmt_test_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/ranking_factor_diagnostics.csv,reports/ranking_factor_diagnostics.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/ranking_factor_diagnostics.md,reports/ranking_factor_diagnostics.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/ranking_logic_audit.json,reports/ranking_logic_audit.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/ranking_logic_audit.md,reports/ranking_logic_audit.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/ranking_model_v2_backtest_report.md,reports/ranking_model_v2_backtest_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/ranking_model_v2_candidates.json,reports/ranking_model_v2_candidates.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/ranking_model_v2_decision_report.md,reports/ranking_model_v2_decision_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/ranking_model_v2_design.md,reports/ranking_model_v2_design.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/ranking_model_v2_equity_curve.csv,reports/ranking_model_v2_equity_curve.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/ranking_model_v2_execution_assumption.md,reports/ranking_model_v2_execution_assumption.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/ranking_model_v2_metrics.json,reports/ranking_model_v2_metrics.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/ranking_model_v2_positions.csv,reports/ranking_model_v2_positions.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/ranking_model_v2_summary.csv,reports/ranking_model_v2_summary.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/ranking_model_v2_trades.csv,reports/ranking_model_v2_trades.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/ranking_model_v2_yearly_summary.csv,reports/ranking_model_v2_yearly_summary.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/ranking_report.md,reports/ranking_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/ranking_signal_research_summary.json,reports/ranking_signal_research_summary.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/recommended_project_layout.md,reports/recommended_project_layout.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/regime_aware_model_metrics.json,reports/regime_aware_model_metrics.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/regime_aware_model_research.md,reports/regime_aware_model_research.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/regime_aware_model_summary.csv,reports/regime_aware_model_summary.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/report_index.json,reports/report_index.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/report_index.md,reports/report_index.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/review_state_audit.json,reports/review_state_audit.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/review_state_audit.md,reports/review_state_audit.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/risk_on_empty_signal_analysis.csv,reports/risk_on_empty_signal_analysis.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/risk_on_empty_signal_analysis.md,reports/risk_on_empty_signal_analysis.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,True,False,UNKNOWN_KEEP
+reports/risk_report.md,reports/risk_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/selected_vs_filtered_forward_return.csv,reports/selected_vs_filtered_forward_return.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/selected_vs_filtered_forward_return.md,reports/selected_vs_filtered_forward_return.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/sell_signal_review.csv,reports/sell_signal_review.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/sell_signal_review.md,reports/sell_signal_review.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/sell_signal_review_design_report.md,reports/sell_signal_review_design_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/sell_signal_review_history.csv,reports/sell_signal_review_history.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/shadow_observation_weekly.csv,reports/shadow_observation_weekly.csv,NOT_CANDIDATE,latest/current 或明确禁止移动的活跃报告。,0,True,True,False,False,KEEP_IN_PLACE
+reports/shadow_observation_weekly.json,reports/shadow_observation_weekly.json,NOT_CANDIDATE,latest/current 或明确禁止移动的活跃报告。,0,True,True,False,False,KEEP_IN_PLACE
+reports/shadow_observation_weekly.md,reports/shadow_observation_weekly.md,NOT_CANDIDATE,latest/current 或明确禁止移动的活跃报告。,0,True,True,True,False,KEEP_IN_PLACE
+reports/signals.csv,reports/signals.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/strategy_compare_report.md,reports/strategy_compare_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/strategy_enhancement_preview.csv,reports/strategy_enhancement_preview.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,True,False,UNKNOWN_KEEP
+reports/strategy_enhancement_preview.md,reports/strategy_enhancement_preview.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/strategy_preview_shadow_portfolio.csv,reports/strategy_preview_shadow_portfolio.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/strategy_preview_shadow_portfolio.md,reports/strategy_preview_shadow_portfolio.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/strategy_preview_tracking.csv,reports/strategy_preview_tracking.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,True,False,UNKNOWN_KEEP
+reports/strategy_preview_tracking_report.md,reports/strategy_preview_tracking_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/top10_candidate_filter_analysis.csv,reports/top10_candidate_filter_analysis.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/top10_candidate_filter_analysis.md,reports/top10_candidate_filter_analysis.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/topn_selection_diagnostics.csv,reports/topn_selection_diagnostics.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/topn_selection_diagnostics.md,reports/topn_selection_diagnostics.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/trade_execution_realism_report.md,reports/trade_execution_realism_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/trade_review_audit.md,reports/trade_review_audit.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/trade_review_details.csv,reports/trade_review_details.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,True,False,UNKNOWN_KEEP
+reports/trade_review_details.md,reports/trade_review_details.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/trade_review_lessons.md,reports/trade_review_lessons.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/trade_review_open_positions.csv,reports/trade_review_open_positions.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,True,False,UNKNOWN_KEEP
+reports/trade_review_open_positions.md,reports/trade_review_open_positions.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/trade_review_summary.json,reports/trade_review_summary.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,True,False,UNKNOWN_KEEP
+reports/trade_review_summary.md,reports/trade_review_summary.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/tushare_baostock_compare.csv,reports/tushare_baostock_compare.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/tushare_baostock_compare.json,reports/tushare_baostock_compare.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/tushare_baostock_compare.md,reports/tushare_baostock_compare.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,True,False,UNKNOWN_KEEP
+reports/tushare_config_check.json,reports/tushare_config_check.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/tushare_config_check.md,reports/tushare_config_check.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/tushare_no_lookahead_check.md,reports/tushare_no_lookahead_check.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/tushare_staging_check.json,reports/tushare_staging_check.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/tushare_staging_check.md,reports/tushare_staging_check.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,True,False,UNKNOWN_KEEP
+reports/universe_quality_review.csv,reports/universe_quality_review.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/universe_quality_review.md,reports/universe_quality_review.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/v2_underperformance_attribution.csv,reports/v2_underperformance_attribution.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/v2_underperformance_attribution.json,reports/v2_underperformance_attribution.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/v2_underperformance_attribution.md,reports/v2_underperformance_attribution.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/valuation_consistency_audit.json,reports/valuation_consistency_audit.json,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/valuation_consistency_audit.md,reports/valuation_consistency_audit.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/valuation_consistency_check.md,reports/valuation_consistency_check.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/watchlist_health_report.md,reports/watchlist_health_report.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/weekly_full_backtest_results.csv,reports/weekly_full_backtest_results.csv,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,False,False,False,UNKNOWN_KEEP
+reports/weekly_full_review.md,reports/weekly_full_review.md,NOT_CANDIDATE,不是本轮低风险归档候选。,0,False,True,False,False,UNKNOWN_KEEP
+reports/weekly_review_2026-06-01.md,reports/archive/weekly/weekly_review_2026-06-01.md,WEEKLY_DATED,历史日期版 weekly 报告。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/weekly_review_2026-06-02.md,reports/archive/weekly/weekly_review_2026-06-02.md,WEEKLY_DATED,历史日期版 weekly 报告。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/weekly_review_2026-06-03.md,reports/archive/weekly/weekly_review_2026-06-03.md,WEEKLY_DATED,历史日期版 weekly 报告。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/weekly_review_2026-06-09.md,reports/archive/weekly/weekly_review_2026-06-09.md,WEEKLY_DATED,历史日期版 weekly 报告。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/weekly_review_2026-06-11.md,reports/archive/weekly/weekly_review_2026-06-11.md,WEEKLY_DATED,历史日期版 weekly 报告。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/weekly_review_2026-06-12.md,reports/archive/weekly/weekly_review_2026-06-12.md,WEEKLY_DATED,历史日期版 weekly 报告。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/weekly_review_2026-06-25.md,reports/archive/weekly/weekly_review_2026-06-25.md,WEEKLY_DATED,历史日期版 weekly 报告。,0,False,False,False,True,MOVE_TO_ARCHIVE
+reports/weekly_review_2026-06-26.md,reports/archive/weekly/weekly_review_2026-06-26.md,WEEKLY_DATED,历史日期版 weekly 报告。,0,False,False,False,True,MOVE_TO_ARCHIVE

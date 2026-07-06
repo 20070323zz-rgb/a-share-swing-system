@@ -11,18 +11,18 @@
 ## Top 参数组合
 | rank | momentum_window | volatility_window | max_holdings | sample_days | annual_return | annual_volatility | max_drawdown | sharpe_proxy | turnover_proxy | evidence | suggestion |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- | --- |
-| 1 | 10 | 20 | 5 | 260 | 50.92% | 33.42% | -24.95% | 1.52 | 42.59% | sample_limited | candidate_for_deeper_backtest |
-| 2 | 10 | 10 | 5 | 260 | 50.86% | 33.45% | -25.89% | 1.52 | 43.22% | sample_limited | candidate_for_deeper_backtest |
-| 3 | 10 | 10 | 8 | 260 | 43.51% | 30.41% | -24.01% | 1.43 | 40.60% | sample_limited | candidate_for_deeper_backtest |
-| 4 | 20 | 40 | 1 | 260 | 61.07% | 43.34% | -27.97% | 1.41 | 36.29% | sample_limited | candidate_for_deeper_backtest |
-| 5 | 10 | 40 | 8 | 260 | 41.80% | 30.47% | -23.30% | 1.37 | 40.36% | sample_limited | candidate_for_deeper_backtest |
-| 6 | 20 | 20 | 8 | 260 | 41.35% | 32.58% | -19.24% | 1.27 | 32.12% | sample_limited | candidate_for_deeper_backtest |
-| 7 | 20 | 40 | 8 | 260 | 41.16% | 32.64% | -18.20% | 1.26 | 31.68% | sample_limited | candidate_for_deeper_backtest |
-| 8 | 20 | 20 | 1 | 260 | 52.98% | 43.74% | -26.62% | 1.21 | 36.29% | sample_limited | candidate_for_deeper_backtest |
-| 9 | 10 | 20 | 8 | 260 | 36.72% | 30.50% | -24.04% | 1.20 | 40.94% | sample_limited | candidate_for_deeper_backtest |
-| 10 | 20 | 20 | 3 | 260 | 45.66% | 38.63% | -25.04% | 1.18 | 38.07% | sample_limited | candidate_for_deeper_backtest |
-| 11 | 40 | 40 | 8 | 260 | 37.70% | 32.23% | -19.10% | 1.17 | 27.16% | sample_limited | candidate_for_deeper_backtest |
-| 12 | 40 | 20 | 8 | 260 | 36.66% | 32.22% | -18.87% | 1.14 | 28.02% | sample_limited | candidate_for_deeper_backtest |
+| 1 | 10 | 20 | 5 | 260 | 66.47% | 35.73% | -24.95% | 1.86 | 42.70% | sample_limited | candidate_for_deeper_backtest |
+| 2 | 10 | 10 | 5 | 260 | 65.66% | 35.74% | -25.89% | 1.84 | 43.24% | sample_limited | candidate_for_deeper_backtest |
+| 3 | 10 | 10 | 8 | 260 | 43.84% | 32.32% | -24.01% | 1.36 | 40.01% | sample_limited | candidate_for_deeper_backtest |
+| 4 | 10 | 40 | 5 | 260 | 47.78% | 35.44% | -28.36% | 1.35 | 43.35% | sample_limited | candidate_for_deeper_backtest |
+| 5 | 10 | 20 | 3 | 260 | 50.07% | 40.52% | -30.25% | 1.24 | 45.02% | sample_limited | candidate_for_deeper_backtest |
+| 6 | 10 | 40 | 8 | 260 | 39.58% | 32.34% | -23.30% | 1.22 | 39.91% | sample_limited | candidate_for_deeper_backtest |
+| 7 | 10 | 10 | 3 | 260 | 48.29% | 40.35% | -30.73% | 1.20 | 45.56% | sample_limited | candidate_for_deeper_backtest |
+| 8 | 10 | 40 | 3 | 260 | 48.02% | 40.13% | -30.44% | 1.20 | 47.26% | sample_limited | candidate_for_deeper_backtest |
+| 9 | 40 | 40 | 8 | 260 | 39.47% | 35.28% | -19.10% | 1.12 | 25.53% | sample_limited | candidate_for_deeper_backtest |
+| 10 | 40 | 10 | 5 | 260 | 44.85% | 40.49% | -22.51% | 1.11 | 30.17% | sample_limited | candidate_for_deeper_backtest |
+| 11 | 40 | 20 | 8 | 260 | 38.33% | 35.27% | -18.87% | 1.09 | 26.38% | sample_limited | candidate_for_deeper_backtest |
+| 12 | 10 | 20 | 8 | 260 | 34.79% | 32.38% | -24.04% | 1.07 | 40.65% | sample_limited | candidate_for_deeper_backtest |
 
 ## 解释边界
 - 使用价格动量和波动惩罚代理，不等于当前正式 BUY ranking。

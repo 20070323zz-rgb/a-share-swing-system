@@ -1,0 +1,368 @@
+# Archive Candidate List
+
+生成时间：2026-06-29 22:15:43
+
+> 本清单只针对 `reports/` 根目录文件；latest/current、dashboard/App/weekly 依赖文件保留原位。
+
+## 统计
+
+- 候选总数：350
+- MOVE_TO_ARCHIVE：35
+- KEEP_IN_PLACE：39
+- UNKNOWN_KEEP：276
+
+## 本轮允许移动
+
+- `reports/app_backfill_button_fix_20260624.md` -> `reports/archive/legacy_misc/app_backfill_button_fix_20260624.md`：带日期的历史报告或修复记录。
+- `reports/app_polish_phase1_launch_stability_report.md` -> `reports/archive/research_phases/app_polish_phase1_launch_stability_report.md`：旧阶段研究/发布报告。
+- `reports/app_release_phase2_shortcut_equity_backfill_report.md` -> `reports/archive/research_phases/app_release_phase2_shortcut_equity_backfill_report.md`：旧阶段研究/发布报告。
+- `reports/chatgpt_analysis_packet_2026-06-27.md` -> `reports/archive/chatgpt_packets/chatgpt_analysis_packet_2026-06-27.md`：历史日期版 ChatGPT / Main 分析包。
+- `reports/chatgpt_report_summary_2026-06-27.md` -> `reports/archive/chatgpt_packets/chatgpt_report_summary_2026-06-27.md`：历史日期版 ChatGPT / Main 分析包。
+- `reports/chatgpt_weekly_analysis_packet_2026-06-26.json` -> `reports/archive/chatgpt_packets/chatgpt_weekly_analysis_packet_2026-06-26.json`：历史日期版 ChatGPT / Main 分析包。
+- `reports/chatgpt_weekly_analysis_packet_2026-06-26.md` -> `reports/archive/chatgpt_packets/chatgpt_weekly_analysis_packet_2026-06-26.md`：历史日期版 ChatGPT / Main 分析包。
+- `reports/chatgpt_weekly_report_summary_2026-06-27.md` -> `reports/archive/chatgpt_packets/chatgpt_weekly_report_summary_2026-06-27.md`：历史日期版 ChatGPT / Main 分析包。
+- `reports/daily_signal_2026-06-01.md` -> `reports/archive/daily/daily_signal_2026-06-01.md`：历史日期版 daily 报告。
+- `reports/daily_signal_2026-06-02.md` -> `reports/archive/daily/daily_signal_2026-06-02.md`：历史日期版 daily 报告。
+- `reports/daily_signal_2026-06-03.md` -> `reports/archive/daily/daily_signal_2026-06-03.md`：历史日期版 daily 报告。
+- `reports/daily_signal_2026-06-09.md` -> `reports/archive/daily/daily_signal_2026-06-09.md`：历史日期版 daily 报告。
+- `reports/daily_signal_2026-06-10.md` -> `reports/archive/daily/daily_signal_2026-06-10.md`：历史日期版 daily 报告。
+- `reports/daily_signal_2026-06-11.md` -> `reports/archive/daily/daily_signal_2026-06-11.md`：历史日期版 daily 报告。
+- `reports/daily_signal_2026-06-12.md` -> `reports/archive/daily/daily_signal_2026-06-12.md`：历史日期版 daily 报告。
+- `reports/daily_signal_2026-06-15.md` -> `reports/archive/daily/daily_signal_2026-06-15.md`：历史日期版 daily 报告。
+- `reports/daily_signal_2026-06-16.md` -> `reports/archive/daily/daily_signal_2026-06-16.md`：历史日期版 daily 报告。
+- `reports/daily_signal_2026-06-17.md` -> `reports/archive/daily/daily_signal_2026-06-17.md`：历史日期版 daily 报告。
+- `reports/daily_signal_2026-06-18.md` -> `reports/archive/daily/daily_signal_2026-06-18.md`：历史日期版 daily 报告。
+- `reports/daily_signal_2026-06-22.md` -> `reports/archive/daily/daily_signal_2026-06-22.md`：历史日期版 daily 报告。
+- `reports/daily_signal_2026-06-23.md` -> `reports/archive/daily/daily_signal_2026-06-23.md`：历史日期版 daily 报告。
+- `reports/daily_signal_2026-06-24.md` -> `reports/archive/daily/daily_signal_2026-06-24.md`：历史日期版 daily 报告。
+- `reports/daily_signal_2026-06-25.md` -> `reports/archive/daily/daily_signal_2026-06-25.md`：历史日期版 daily 报告。
+- `reports/daily_signal_2026-06-26.md` -> `reports/archive/daily/daily_signal_2026-06-26.md`：历史日期版 daily 报告。
+- `reports/phase3a_fastapi_react_app_report.md` -> `reports/archive/research_phases/phase3a_fastapi_react_app_report.md`：旧阶段研究/发布报告。
+- `reports/phase3b_app_control_room_upgrade_report.md` -> `reports/archive/research_phases/phase3b_app_control_room_upgrade_report.md`：旧阶段研究/发布报告。
+- `reports/phase3c_desktop_app_mvp_report.md` -> `reports/archive/research_phases/phase3c_desktop_app_mvp_report.md`：旧阶段研究/发布报告。
+- `reports/weekly_review_2026-06-01.md` -> `reports/archive/weekly/weekly_review_2026-06-01.md`：历史日期版 weekly 报告。
+- `reports/weekly_review_2026-06-02.md` -> `reports/archive/weekly/weekly_review_2026-06-02.md`：历史日期版 weekly 报告。
+- `reports/weekly_review_2026-06-03.md` -> `reports/archive/weekly/weekly_review_2026-06-03.md`：历史日期版 weekly 报告。
+- `reports/weekly_review_2026-06-09.md` -> `reports/archive/weekly/weekly_review_2026-06-09.md`：历史日期版 weekly 报告。
+- `reports/weekly_review_2026-06-11.md` -> `reports/archive/weekly/weekly_review_2026-06-11.md`：历史日期版 weekly 报告。
+- `reports/weekly_review_2026-06-12.md` -> `reports/archive/weekly/weekly_review_2026-06-12.md`：历史日期版 weekly 报告。
+- `reports/weekly_review_2026-06-25.md` -> `reports/archive/weekly/weekly_review_2026-06-25.md`：历史日期版 weekly 报告。
+- `reports/weekly_review_2026-06-26.md` -> `reports/archive/weekly/weekly_review_2026-06-26.md`：历史日期版 weekly 报告。
+
+## 保留原位或待复核样例
+
+- `reports/account_status.csv`：不是本轮低风险归档候选。
+- `reports/afternoon_open_check.json`：不是本轮低风险归档候选。
+- `reports/afternoon_open_check.md`：不是本轮低风险归档候选。
+- `reports/akshare_connectivity_check.json`：不是本轮低风险归档候选。
+- `reports/akshare_connectivity_check.md`：不是本轮低风险归档候选。
+- `reports/alpha_factor_enhancement_metrics.json`：不是本轮低风险归档候选。
+- `reports/alpha_factor_enhancement_research.md`：不是本轮低风险归档候选。
+- `reports/alpha_factor_enhancement_summary.csv`：不是本轮低风险归档候选。
+- `reports/app_backfill_button_fix_report.md`：不是本轮低风险归档候选。
+- `reports/app_data_backfill_button_audit.md`：不是本轮低风险归档候选。
+- `reports/app_independent_launch_fix_report.md`：不是本轮低风险归档候选。
+- `reports/app_launch_diagnostics.json`：不是本轮低风险归档候选。
+- `reports/app_launch_diagnostics.md`：不是本轮低风险归档候选。
+- `reports/app_launch_fix_report.json`：不是本轮低风险归档候选。
+- `reports/app_launch_fix_report.md`：不是本轮低风险归档候选。
+- `reports/app_local_release_phase1_report.md`：不是本轮低风险归档候选。
+- `reports/app_task_status.json`：不是本轮低风险归档候选。
+- `reports/archive_manifest_before.json`：不是本轮低风险归档候选。
+- `reports/archive_manifest_before.md`：不是本轮低风险归档候选。
+- `reports/automation_four_node_sync_report.md`：不是本轮低风险归档候选。
+- `reports/b1_strategy_enhancement_preview_report.md`：不是本轮低风险归档候选。
+- `reports/b2_strategy_preview_tracking_report.md`：不是本轮低风险归档候选。
+- `reports/backtest_capital_sensitivity.csv`：不是本轮低风险归档候选。
+- `reports/backtest_capital_sensitivity.md`：不是本轮低风险归档候选。
+- `reports/backtest_consistency_check.json`：不是本轮低风险归档候选。
+- `reports/backtest_consistency_check.md`：不是本轮低风险归档候选。
+- `reports/backtest_cost_diagnostics.csv`：不是本轮低风险归档候选。
+- `reports/backtest_cost_diagnostics.md`：不是本轮低风险归档候选。
+- `reports/backtest_diagnostics_summary.json`：不是本轮低风险归档候选。
+- `reports/backtest_drawdown_diagnostics.csv`：不是本轮低风险归档候选。
+- `reports/backtest_drawdown_diagnostics.md`：不是本轮低风险归档候选。
+- `reports/backtest_equity_curve.csv`：不是本轮低风险归档候选。
+- `reports/backtest_execution_timing_sensitivity.csv`：不是本轮低风险归档候选。
+- `reports/backtest_execution_timing_sensitivity.md`：不是本轮低风险归档候选。
+- `reports/backtest_exit_reason_summary.csv`：不是本轮低风险归档候选。
+- `reports/backtest_expand_pool_decision.md`：不是本轮低风险归档候选。
+- `reports/backtest_metrics.json`：不是本轮低风险归档候选。
+- `reports/backtest_phase4a_report.md`：不是本轮低风险归档候选。
+- `reports/backtest_positions.csv`：不是本轮低风险归档候选。
+- `reports/backtest_ranking_effectiveness.csv`：不是本轮低风险归档候选。
+- `reports/backtest_ranking_effectiveness.md`：不是本轮低风险归档候选。
+- `reports/backtest_readiness_report.md`：不是本轮低风险归档候选。
+- `reports/backtest_result.csv`：不是本轮低风险归档候选。
+- `reports/backtest_summary.csv`：不是本轮低风险归档候选。
+- `reports/backtest_summary.md`：不是本轮低风险归档候选。
+- `reports/backtest_symbol_contribution.csv`：不是本轮低风险归档候选。
+- `reports/backtest_symbol_contribution.md`：不是本轮低风险归档候选。
+- `reports/backtest_trade_distribution.csv`：不是本轮低风险归档候选。
+- `reports/backtest_trade_distribution.md`：不是本轮低风险归档候选。
+- `reports/backtest_trade_pool_report.md`：不是本轮低风险归档候选。
+- `reports/backtest_trades.csv`：不是本轮低风险归档候选。
+- `reports/backtest_turnover_by_month.csv`：不是本轮低风险归档候选。
+- `reports/backtest_turnover_diagnostics.md`：不是本轮低风险归档候选。
+- `reports/backtest_yearly_summary.csv`：不是本轮低风险归档候选。
+- `reports/baostock_app_backfill_fix_report.md`：不是本轮低风险归档候选。
+- `reports/baostock_daily_source_optimization_report.md`：不是本轮低风险归档候选。
+- `reports/baostock_diagnosis.md`：不是本轮低风险归档候选。
+- `reports/broad_base_balance_preview.csv`：不是本轮低风险归档候选。
+- `reports/broad_base_balance_preview.json`：latest/current 或明确禁止移动的活跃报告。
+- `reports/broad_base_balance_preview.md`：latest/current 或明确禁止移动的活跃报告。
+- `reports/buy_ranking_report.md`：不是本轮低风险归档候选。
+- `reports/buy_signal_ranking.md`：不是本轮低风险归档候选。
+- `reports/catchup_scheduler_status.md`：不是本轮低风险归档候选。
+- `reports/chatgpt_weekly_analysis_packet_latest.json`：latest/current 或明确禁止移动的活跃报告。
+- `reports/chatgpt_weekly_analysis_packet_latest.md`：latest/current 或明确禁止移动的活跃报告。
+- `reports/codex_daily_research_prompt.md`：不是本轮低风险归档候选。
+- `reports/codex_weekly_research_prompt.md`：不是本轮低风险归档候选。
+- `reports/current_positions_strategy_fit_report.md`：不是本轮低风险归档候选。
+- `reports/daily_data_update_diagnosis_report.md`：不是本轮低风险归档候选。
+- `reports/daily_rolling_backtest.csv`：不是本轮低风险归档候选。
+- `reports/daily_rolling_backtest.md`：不是本轮低风险归档候选。
+- `reports/dashboard_app_future_plan.md`：不是本轮低风险归档候选。
+- `reports/dashboard_data.json`：latest/current 或明确禁止移动的活跃报告。
+- `reports/dashboard_redesign_research.md`：不是本轮低风险归档候选。
+- `reports/data_coverage_report.md`：不是本轮低风险归档候选。
+- `reports/data_download_report.md`：不是本轮低风险归档候选。
+- `reports/data_freshness_execution_reality.md`：不是本轮低风险归档候选。
+- `reports/data_health_report.md`：不是本轮低风险归档候选。
+- `reports/data_provider_design.md`：不是本轮低风险归档候选。
+- `reports/data_provider_status.json`：不是本轮低风险归档候选。
+- `reports/data_provider_status.md`：不是本轮低风险归档候选。
+- `reports/data_quality_report.md`：不是本轮低风险归档候选。
+- `reports/data_source_architecture_audit.json`：不是本轮低风险归档候选。
+- `reports/data_source_architecture_audit.md`：不是本轮低风险归档候选。
+- `reports/data_source_proposal.md`：不是本轮低风险归档候选。
+- `reports/data_source_status.json`：不是本轮低风险归档候选。
+- `reports/data_source_status_report.md`：不是本轮低风险归档候选。
+- `reports/data_update_app_task_fix_report.md`：不是本轮低风险归档候选。
+- `reports/data_update_automation_fix_report.md`：不是本轮低风险归档候选。
+- `reports/data_update_diagnosis_report.md`：不是本轮低风险归档候选。
+- `reports/data_update_log.md`：不是本轮低风险归档候选。
+- `reports/data_update_probe_fast.json`：不是本轮低风险归档候选。
+- `reports/data_update_status.baostock_fallback.json`：不是本轮低风险归档候选。
+- `reports/data_update_status.datasource_refresh.json`：不是本轮低风险归档候选。
+- `reports/data_update_status.dryrun.json`：不是本轮低风险归档候选。
+- `reports/data_update_status.json`：不是本轮低风险归档候选。
+- `reports/etf_classification_report.md`：不是本轮低风险归档候选。
+- `reports/etf_expansion_cleanup_report.md`：不是本轮低风险归档候选。
+- `reports/etf_expansion_import_report.md`：不是本轮低风险归档候选。
+- `reports/etf_expansion_import_results.csv`：不是本轮低风险归档候选。
+- `reports/etf_expansion_pipeline_report.md`：不是本轮低风险归档候选。
+- `reports/etf_expansion_quarantine_list.csv`：不是本轮低风险归档候选。
+- `reports/etf_expansion_staging_validation_report.md`：不是本轮低风险归档候选。
+- `reports/etf_pool_expansion_plan.md`：不是本轮低风险归档候选。
+- `reports/etf_pool_research_matrix.csv`：不是本轮低风险归档候选。
+- `reports/etf_pool_research_report.md`：不是本轮低风险归档候选。
+- `reports/etf_rotation_exit_rule_research.md`：不是本轮低风险归档候选。
+- `reports/etf_rotation_mature_model_reference.md`：不是本轮低风险归档候选。
+- `reports/etf_rotation_strategy_research.md`：不是本轮低风险归档候选。
+- `reports/etf_strategy_news_sentiment_research.md`：不是本轮低风险归档候选。
+- `reports/etf_type_aware_model_metrics.json`：不是本轮低风险归档候选。
+- `reports/etf_type_aware_model_research.md`：不是本轮低风险归档候选。
+- `reports/etf_type_aware_model_summary.csv`：不是本轮低风险归档候选。
+- `reports/etf_type_classification_report.md`：不是本轮低风险归档候选。
+- `reports/etf_volatility_profile.csv`：不是本轮低风险归档候选。
+- `reports/etf_volatility_profile.md`：不是本轮低风险归档候选。
+- `reports/execution_layer_integration_plan.md`：不是本轮低风险归档候选。
+- `reports/exit_rule_backtest_design.md`：不是本轮低风险归档候选。
+- `reports/exit_rule_by_etf_type.md`：不是本轮低风险归档候选。
+- `reports/exit_rule_candidates.json`：不是本轮低风险归档候选。
+- `reports/exit_rule_candidates.md`：不是本轮低风险归档候选。
+- `reports/exit_rule_research.csv`：不是本轮低风险归档候选。
+- `reports/exit_rule_research_report.md`：不是本轮低风险归档候选。
+- `reports/exit_rule_research_results.csv`：不是本轮低风险归档候选。
+- `reports/factor_analysis_report.md`：不是本轮低风险归档候选。
+- `reports/file_classification_plan.csv`：不是本轮低风险归档候选。
+- `reports/file_classification_plan.json`：不是本轮低风险归档候选。
+- `reports/file_classification_plan.md`：不是本轮低风险归档候选。
+- `reports/first_paper_buy_plan.md`：不是本轮低风险归档候选。
+- `reports/first_paper_trade_review.md`：不是本轮低风险归档候选。
+- `reports/high_beta_risk_watch.csv`：不是本轮低风险归档候选。
+- `reports/high_beta_risk_watch.json`：latest/current 或明确禁止移动的活跃报告。
+- `reports/high_beta_risk_watch.md`：latest/current 或明确禁止移动的活跃报告。
+- `reports/holding_period_research.csv`：不是本轮低风险归档候选。
+- `reports/holding_period_research_report.md`：不是本轮低风险归档候选。
+- `reports/holding_period_research_results.csv`：不是本轮低风险归档候选。
+- `reports/industry_etf_diagnosis.md`：不是本轮低风险归档候选。
+- `reports/intelligence_data_source_plan.md`：不是本轮低风险归档候选。
+- `reports/jqdata_connection_diagnosis.md`：不是本轮低风险归档候选。
+- `reports/jqdata_import_report.md`：不是本轮低风险归档候选。
+- `reports/jqdata_local_compare_report.md`：不是本轮低风险归档候选。
+- `reports/jqdata_primary_daily_source_report.md`：不是本轮低风险归档候选。
+- `reports/jqdata_test_report.md`：不是本轮低风险归档候选。
+- `reports/jqdata_unit_diagnosis_report.md`：不是本轮低风险归档候选。
+- `reports/latest_brief.md`：latest/current 或明确禁止移动的活跃报告。
+- `reports/latest_buy_ranking.md`：latest/current 或明确禁止移动的活跃报告。
+- `reports/latest_daily.md`：latest/current 或明确禁止移动的活跃报告。
+- `reports/latest_data_coverage.md`：latest/current 或明确禁止移动的活跃报告。
+- `reports/latest_data_health.md`：latest/current 或明确禁止移动的活跃报告。
+- `reports/latest_factor_analysis.md`：latest/current 或明确禁止移动的活跃报告。
+- `reports/latest_model_research.md`：latest/current 或明确禁止移动的活跃报告。
+- `reports/latest_paper_portfolio.md`：latest/current 或明确禁止移动的活跃报告。
+- `reports/latest_ranking.md`：latest/current 或明确禁止移动的活跃报告。
+- `reports/latest_short_swing.md`：latest/current 或明确禁止移动的活跃报告。
+- `reports/latest_weekly.md`：latest/current 或明确禁止移动的活跃报告。
+- `reports/launchd_catchup_bugfix_report.md`：不是本轮低风险归档候选。
+- `reports/launchd_catchup_upgrade_report.md`：不是本轮低风险归档候选。
+- `reports/launchd_install_test_report.md`：不是本轮低风险归档候选。
+- `reports/local_validation.md`：不是本轮低风险归档候选。
+- `reports/manual_download_report.md`：不是本轮低风险归档候选。
+- `reports/manual_download_validation_report.md`：不是本轮低风险归档候选。
+- `reports/manual_failed_diagnosis_report.md`：不是本轮低风险归档候选。
+- `reports/manual_import_report.md`：不是本轮低风险归档候选。
+- `reports/market_state.csv`：不是本轮低风险归档候选。
+- `reports/market_state_report.md`：不是本轮低风险归档候选。
+- `reports/midday_check.json`：不是本轮低风险归档候选。
+- `reports/midday_check.md`：不是本轮低风险归档候选。
+- `reports/missed_opportunity_by_filter_reason.csv`：不是本轮低风险归档候选。
+- `reports/missed_opportunity_by_filter_reason.md`：不是本轮低风险归档候选。
+- `reports/missed_opportunity_observation_rules.md`：不是本轮低风险归档候选。
+- `reports/missed_opportunity_tracker.csv`：不是本轮低风险归档候选。
+- `reports/missed_opportunity_tracker.json`：不是本轮低风险归档候选。
+- `reports/missed_opportunity_tracker.md`：不是本轮低风险归档候选。
+- `reports/model_data_maturity_analysis.json`：latest/current 或明确禁止移动的活跃报告。
+- `reports/model_data_maturity_analysis.md`：latest/current 或明确禁止移动的活跃报告。
+- `reports/model_data_maturity_tables.csv`：不是本轮低风险归档候选。
+- `reports/model_dataset.csv`：不是本轮低风险归档候选。
+- `reports/model_enhancement_decision_report.md`：不是本轮低风险归档候选。
+- `reports/model_overfit_guardrails.md`：不是本轮低风险归档候选。
+- `reports/model_research_quality_review.json`：不是本轮低风险归档候选。
+- `reports/model_research_quality_review.md`：不是本轮低风险归档候选。
+- `reports/model_research_report.md`：不是本轮低风险归档候选。
+- `reports/model_shadow_comparison.csv`：不是本轮低风险归档候选。
+- `reports/model_shadow_comparison.md`：不是本轮低风险归档候选。
+- `reports/monthly_model_review.md`：不是本轮低风险归档候选。
+- `reports/news_data_source_plan.md`：不是本轮低风险归档候选。
+- `reports/news_sentiment_framework.md`：不是本轮低风险归档候选。
+- `reports/next_stage_strategy_optimization_report.md`：不是本轮低风险归档候选。
+- `reports/no_lookahead_data_rules.md`：不是本轮低风险归档候选。
+- `reports/open_check.json`：不是本轮低风险归档候选。
+- `reports/open_check.md`：不是本轮低风险归档候选。
+- `reports/paper_equity_curve.md`：不是本轮低风险归档候选。
+- `reports/paper_equity_curve_backfill_audit.md`：不是本轮低风险归档候选。
+- `reports/paper_equity_curve_backfilled.md`：不是本轮低风险归档候选。
+- `reports/paper_equity_curve_gap_explanation.md`：不是本轮低风险归档候选。
+- `reports/paper_performance_daily.csv`：不是本轮低风险归档候选。
+- `reports/paper_performance_summary.json`：latest/current 或明确禁止移动的活跃报告。
+- `reports/paper_performance_summary.md`：latest/current 或明确禁止移动的活跃报告。
+- `reports/paper_portfolio_metrics_audit.md`：不是本轮低风险归档候选。
+- `reports/paper_trade_engine_design_report.md`：不是本轮低风险归档候选。
+- `reports/paper_trade_engine_report.md`：不是本轮低风险归档候选。
+- `reports/paper_trade_plan.csv`：不是本轮低风险归档候选。
+- `reports/paper_trade_plan.md`：不是本轮低风险归档候选。
+- `reports/paper_trade_pnl.csv`：不是本轮低风险归档候选。
+- `reports/paper_trade_pnl.md`：不是本轮低风险归档候选。
+- `reports/parameter_sweep.csv`：不是本轮低风险归档候选。
+- `reports/parameter_sweep_report.md`：不是本轮低风险归档候选。
+- `reports/path_dependency_audit.json`：不是本轮低风险归档候选。
+- `reports/path_dependency_audit.md`：不是本轮低风险归档候选。
+- `reports/persistence_breakout_shadow_observation_rules.md`：不是本轮低风险归档候选。
+- `reports/persistence_breakout_shadow_portfolio.csv`：不是本轮低风险归档候选。
+- `reports/persistence_breakout_shadow_portfolio.md`：不是本轮低风险归档候选。
+- `reports/persistence_breakout_shadow_signal.csv`：不是本轮低风险归档候选。
+- `reports/persistence_breakout_shadow_signal.md`：不是本轮低风险归档候选。
+- `reports/persistence_breakout_shadow_summary.json`：不是本轮低风险归档候选。
+- `reports/phase1_paper_trading_closure_report.md`：旧阶段研究/发布报告。 但扫描到代码或看板/App/weekly 引用，保留原位。
+- `reports/phase2c_execution_layer_light_integration_report.md`：旧阶段研究/发布报告。 但扫描到代码或看板/App/weekly 引用，保留原位。
+- `reports/phase4c_alpha_model_comparison.csv`：旧阶段研究/发布报告。 但扫描到代码或看板/App/weekly 引用，保留原位。
+- `reports/phase4c_alpha_model_comparison.md`：旧阶段研究/发布报告。 但扫描到代码或看板/App/weekly 引用，保留原位。
+- `reports/phase4c_alpha_model_decision.md`：旧阶段研究/发布报告。 但扫描到代码或看板/App/weekly 引用，保留原位。
+- `reports/phase4c_alpha_summary.json`：旧阶段研究/发布报告。 但扫描到代码或看板/App/weekly 引用，保留原位。
+- `reports/phase4c_data_next_step.md`：旧阶段研究/发布报告。 但扫描到代码或看板/App/weekly 引用，保留原位。
+- `reports/phase4c_data_summary.json`：旧阶段研究/发布报告。 但扫描到代码或看板/App/weekly 引用，保留原位。
+- `reports/portfolio_exposure.csv`：不是本轮低风险归档候选。
+- `reports/portfolio_exposure.json`：latest/current 或明确禁止移动的活跃报告。
+- `reports/portfolio_exposure.md`：latest/current 或明确禁止移动的活跃报告。
+- `reports/portfolio_exposure_report.md`：不是本轮低风险归档候选。
+- `reports/position_review_state.csv`：不是本轮低风险归档候选。
+- `reports/position_review_state.json`：latest/current 或明确禁止移动的活跃报告。
+- `reports/position_review_state.md`：latest/current 或明确禁止移动的活跃报告。
+- `reports/post_expansion_automation_sync_report.md`：不是本轮低风险归档候选。
+- `reports/profit_protection_preview.csv`：不是本轮低风险归档候选。
+- `reports/profit_protection_preview.json`：latest/current 或明确禁止移动的活跃报告。
+- `reports/profit_protection_preview.md`：latest/current 或明确禁止移动的活跃报告。
+- `reports/project_cleanup_roadmap.md`：不是本轮低风险归档候选。
+- `reports/project_structure_audit.json`：不是本轮低风险归档候选。
+- `reports/project_structure_audit.md`：不是本轮低风险归档候选。
+- `reports/qmt_test_report.md`：不是本轮低风险归档候选。
+- `reports/ranking_factor_diagnostics.csv`：不是本轮低风险归档候选。
+- `reports/ranking_factor_diagnostics.md`：不是本轮低风险归档候选。
+- `reports/ranking_logic_audit.json`：不是本轮低风险归档候选。
+- `reports/ranking_logic_audit.md`：不是本轮低风险归档候选。
+- `reports/ranking_model_v2_backtest_report.md`：不是本轮低风险归档候选。
+- `reports/ranking_model_v2_candidates.json`：不是本轮低风险归档候选。
+- `reports/ranking_model_v2_decision_report.md`：不是本轮低风险归档候选。
+- `reports/ranking_model_v2_design.md`：不是本轮低风险归档候选。
+- `reports/ranking_model_v2_equity_curve.csv`：不是本轮低风险归档候选。
+- `reports/ranking_model_v2_execution_assumption.md`：不是本轮低风险归档候选。
+- `reports/ranking_model_v2_metrics.json`：不是本轮低风险归档候选。
+- `reports/ranking_model_v2_positions.csv`：不是本轮低风险归档候选。
+- `reports/ranking_model_v2_summary.csv`：不是本轮低风险归档候选。
+- `reports/ranking_model_v2_trades.csv`：不是本轮低风险归档候选。
+- `reports/ranking_model_v2_yearly_summary.csv`：不是本轮低风险归档候选。
+- `reports/ranking_report.md`：不是本轮低风险归档候选。
+- `reports/ranking_signal_research_summary.json`：不是本轮低风险归档候选。
+- `reports/recommended_project_layout.md`：不是本轮低风险归档候选。
+- `reports/regime_aware_model_metrics.json`：不是本轮低风险归档候选。
+- `reports/regime_aware_model_research.md`：不是本轮低风险归档候选。
+- `reports/regime_aware_model_summary.csv`：不是本轮低风险归档候选。
+- `reports/report_index.json`：不是本轮低风险归档候选。
+- `reports/report_index.md`：不是本轮低风险归档候选。
+- `reports/review_state_audit.json`：不是本轮低风险归档候选。
+- `reports/review_state_audit.md`：不是本轮低风险归档候选。
+- `reports/risk_on_empty_signal_analysis.csv`：不是本轮低风险归档候选。
+- `reports/risk_on_empty_signal_analysis.md`：不是本轮低风险归档候选。
+- `reports/risk_report.md`：不是本轮低风险归档候选。
+- `reports/selected_vs_filtered_forward_return.csv`：不是本轮低风险归档候选。
+- `reports/selected_vs_filtered_forward_return.md`：不是本轮低风险归档候选。
+- `reports/sell_signal_review.csv`：不是本轮低风险归档候选。
+- `reports/sell_signal_review.md`：不是本轮低风险归档候选。
+- `reports/sell_signal_review_design_report.md`：不是本轮低风险归档候选。
+- `reports/sell_signal_review_history.csv`：不是本轮低风险归档候选。
+- `reports/shadow_observation_weekly.csv`：latest/current 或明确禁止移动的活跃报告。
+- `reports/shadow_observation_weekly.json`：latest/current 或明确禁止移动的活跃报告。
+- `reports/shadow_observation_weekly.md`：latest/current 或明确禁止移动的活跃报告。
+- `reports/signals.csv`：不是本轮低风险归档候选。
+- `reports/strategy_compare_report.md`：不是本轮低风险归档候选。
+- `reports/strategy_enhancement_preview.csv`：不是本轮低风险归档候选。
+- `reports/strategy_enhancement_preview.md`：不是本轮低风险归档候选。
+- `reports/strategy_preview_shadow_portfolio.csv`：不是本轮低风险归档候选。
+- `reports/strategy_preview_shadow_portfolio.md`：不是本轮低风险归档候选。
+- `reports/strategy_preview_tracking.csv`：不是本轮低风险归档候选。
+- `reports/strategy_preview_tracking_report.md`：不是本轮低风险归档候选。
+- `reports/top10_candidate_filter_analysis.csv`：不是本轮低风险归档候选。
+- `reports/top10_candidate_filter_analysis.md`：不是本轮低风险归档候选。
+- `reports/topn_selection_diagnostics.csv`：不是本轮低风险归档候选。
+- `reports/topn_selection_diagnostics.md`：不是本轮低风险归档候选。
+- `reports/trade_execution_realism_report.md`：不是本轮低风险归档候选。
+- `reports/trade_review_audit.md`：不是本轮低风险归档候选。
+- `reports/trade_review_details.csv`：不是本轮低风险归档候选。
+- `reports/trade_review_details.md`：不是本轮低风险归档候选。
+- `reports/trade_review_lessons.md`：不是本轮低风险归档候选。
+- `reports/trade_review_open_positions.csv`：不是本轮低风险归档候选。
+- `reports/trade_review_open_positions.md`：不是本轮低风险归档候选。
+- `reports/trade_review_summary.json`：不是本轮低风险归档候选。
+- `reports/trade_review_summary.md`：不是本轮低风险归档候选。
+- `reports/tushare_baostock_compare.csv`：不是本轮低风险归档候选。
+- `reports/tushare_baostock_compare.json`：不是本轮低风险归档候选。
+- `reports/tushare_baostock_compare.md`：不是本轮低风险归档候选。
+- `reports/tushare_config_check.json`：不是本轮低风险归档候选。
+- `reports/tushare_config_check.md`：不是本轮低风险归档候选。
+- `reports/tushare_no_lookahead_check.md`：不是本轮低风险归档候选。
+- `reports/tushare_staging_check.json`：不是本轮低风险归档候选。
+- `reports/tushare_staging_check.md`：不是本轮低风险归档候选。
+- `reports/universe_quality_review.csv`：不是本轮低风险归档候选。
+- `reports/universe_quality_review.md`：不是本轮低风险归档候选。
+- `reports/v2_underperformance_attribution.csv`：不是本轮低风险归档候选。
+- `reports/v2_underperformance_attribution.json`：不是本轮低风险归档候选。
+- `reports/v2_underperformance_attribution.md`：不是本轮低风险归档候选。
+- `reports/valuation_consistency_audit.json`：不是本轮低风险归档候选。
+- `reports/valuation_consistency_audit.md`：不是本轮低风险归档候选。
+- `reports/valuation_consistency_check.md`：不是本轮低风险归档候选。
+- `reports/watchlist_health_report.md`：不是本轮低风险归档候选。
+- `reports/weekly_full_backtest_results.csv`：不是本轮低风险归档候选。
+- `reports/weekly_full_review.md`：不是本轮低风险归档候选。

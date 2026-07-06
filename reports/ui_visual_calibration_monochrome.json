@@ -1,0 +1,48 @@
+{
+  "completed_at": "2026-07-05",
+  "phase": "visual_calibration_monochrome",
+  "design_direction": "Monochrome Product Dashboard",
+  "business_logic_changed": false,
+  "api_changed": false,
+  "model_logic_changed": false,
+  "paper_trade_engine_changed": false,
+  "paper_trades_changed": false,
+  "paper_positions_changed": false,
+  "broker_api_connected": false,
+  "real_order_sent": false,
+  "preview_connected_to_execution": false,
+  "shadow_connected_to_execution": false,
+  "color_system": {
+    "background": "#fafafa",
+    "surface": "#ffffff",
+    "surface_subtle": "#f7f7f7",
+    "text_primary": "#111111",
+    "text_secondary": "#666666",
+    "text_muted": "#999999",
+    "border": "#e8e8e8",
+    "border_strong": "#d7d7d7",
+    "accent": "#171717"
+  },
+  "card_count": {
+    "home": 0,
+    "portfolio": 3,
+    "research": 0,
+    "data_center": 0,
+    "settings_safety": 0
+  },
+  "card_nesting_detected": false,
+  "large_hero_removed": true,
+  "large_gradient_removed": true,
+  "large_blue_surface_removed": true,
+  "large_yellow_surface_removed": true,
+  "font_size_reduced": true,
+  "font_weight_reduced": true,
+  "radius_reduced": true,
+  "shadow_reduced": true,
+  "validation": {
+    "frontend_build": "passed",
+    "dashboard_build": "passed",
+    "app_release_check": "passed"
+  },
+  "l2_boundary_kept": true
+}

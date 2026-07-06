@@ -1,13 +1,13 @@
-row_type,dimension,bucket,symbol,name,group,pool,etf_type,risk_profile,market_value,position_ratio,portfolio_weight,unrealized_pnl,unrealized_pnl_pct,data_health_status,sell_review_status,overall_status,warnings_json,exposure_note
-summary,portfolio,total,PORTFOLIO,paper_portfolio,,,,,2973.3,0.29733,1.0,105.0,,,,CAUTION,"[""组合暂无宽基 ETF，波动可能更依赖行业/主题轮动。""]",组合暂无宽基 ETF，波动可能更依赖行业/主题轮动。
-position,,,512800,银行ETF,金融地产,trade_pool,sector,sector_beta,855.8,0.08558,0.287828,-15.4,-0.017677,正常,REVIEW,,,银行金融红利属性，按低敏感行业处理; sell_review=REVIEW
-position,,,515000,科技ETF,科技成长,trade_pool,unknown,manual_review,1552.0,0.1552,0.521979,125.57,0.088031,正常,HOLD,,,ETF但规则无法确定，需人工确认
-position,,,512880,证券ETF,金融地产,trade_pool,high_beta,high_beta,565.5,0.05655,0.190193,-5.17,-0.00906,正常,HOLD,,,券商/非银高 beta 情绪行业
-group,group,科技成长,,,,,,,1552.0,0.1552,0.521979,,,,,,,
-group,group,金融地产,,,,,,,1421.3,0.14213,0.478021,,,,,,,
-etf_type,etf_type,unknown,,,,,,,1552.0,0.1552,0.521979,,,,,,,
-etf_type,etf_type,sector,,,,,,,855.8,0.08558,0.287828,,,,,,,
-etf_type,etf_type,high_beta,,,,,,,565.5,0.05655,0.190193,,,,,,,
-risk_profile,risk_profile,manual_review,,,,,,,1552.0,0.1552,0.521979,,,,,,,
-risk_profile,risk_profile,sector_beta,,,,,,,855.8,0.08558,0.287828,,,,,,,
-risk_profile,risk_profile,high_beta,,,,,,,565.5,0.05655,0.190193,,,,,,,
+row_type,dimension,bucket,symbol,name,group,pool,etf_type,risk_profile,market_value,position_ratio,portfolio_weight,unrealized_pnl,unrealized_pnl_pct,latest_close,as_of_date,price_status,valuation_source,market_value_diff_vs_position_file,data_health_status,sell_review_status,overall_status,warnings_json,exposure_note
+summary,portfolio,total,PORTFOLIO,paper_portfolio,,,,,2945.2,0.29452,1.0,76.9,,,,,paper_positions + etf_daily latest close,0.0,,,CAUTION,"[""组合暂无宽基 ETF，波动可能更依赖行业/主题轮动。""]",组合暂无宽基 ETF，波动可能更依赖行业/主题轮动。
+position,,,512800,银行ETF,金融地产,trade_pool,sector,sector_beta,821.7,0.08217,0.278996,-49.5,-0.056818,0.747,2026-07-03,ok,paper_positions + etf_daily latest close,0.0,正常,REVIEW,,,银行金融红利属性，按低敏感行业处理; sell_review=REVIEW
+position,,,515000,科技ETF,科技成长,trade_pool,unknown,manual_review,1546.0,0.1546,0.524922,119.57,0.083825,1.546,2026-07-03,ok,paper_positions + etf_daily latest close,0.0,正常,REVIEW,,,ETF但规则无法确定，需人工确认; sell_review=REVIEW
+position,,,512880,证券ETF,金融地产,trade_pool,high_beta,high_beta,577.5,0.05775,0.196082,6.83,0.011968,1.155,2026-07-03,ok,paper_positions + etf_daily latest close,0.0,正常,HOLD,,,券商/非银高 beta 情绪行业
+group,group,科技成长,,,,,,,1546.0,0.1546,0.524922,,,,,,paper_positions + etf_daily latest close,,,,,,
+group,group,金融地产,,,,,,,1399.2,0.13992,0.475078,,,,,,paper_positions + etf_daily latest close,,,,,,
+etf_type,etf_type,unknown,,,,,,,1546.0,0.1546,0.524922,,,,,,paper_positions + etf_daily latest close,,,,,,
+etf_type,etf_type,sector,,,,,,,821.7,0.08217,0.278996,,,,,,paper_positions + etf_daily latest close,,,,,,
+etf_type,etf_type,high_beta,,,,,,,577.5,0.05775,0.196082,,,,,,paper_positions + etf_daily latest close,,,,,,
+risk_profile,risk_profile,manual_review,,,,,,,1546.0,0.1546,0.524922,,,,,,paper_positions + etf_daily latest close,,,,,,
+risk_profile,risk_profile,sector_beta,,,,,,,821.7,0.08217,0.278996,,,,,,paper_positions + etf_daily latest close,,,,,,
+risk_profile,risk_profile,high_beta,,,,,,,577.5,0.05775,0.196082,,,,,,paper_positions + etf_daily latest close,,,,,,

@@ -2,98 +2,129 @@ import { useState } from "react";
 import DataHealthPanel from "../components/DataHealthPanel.jsx";
 import ReportCard from "../components/ReportCard.jsx";
 import Section from "../components/Section.jsx";
-import SegmentedControl from "../components/SegmentedControl.jsx";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { text } from "../format.js";
 
-function SourceCard({ label, value, note, tone = "" }) {
-  return (
-    <div className={`source-card ${tone}`}>
-      <span>{label}</span>
-      <strong>{text(value, "暂无数据")}</strong>
-      <small>{note}</small>
-    </div>
-  );
+function statusVariant(value) {
+  const raw = String(value || "").toLowerCase();
+  if (raw.includes("fail") || raw.includes("error") || raw.includes("异常")) return "danger";
+  if (raw.includes("warn") || raw.includes("caution") || raw.includes("提醒")) return "warning";
+  if (raw.includes("up_to_date") || raw.includes("ok") || raw.includes("normal") || raw.includes("正常")) return "success";
+  return "neutral";
 }
 
 export default function DataCenter({ dataHealth, status, onRun }) {
-  const [view, setView] = useState("summary");
+  const [view, setView] = useState("status");
   const sources = dataHealth?.data_sources || status?.data_sources || {};
   const universe = dataHealth?.universe_quality_review || {};
-  const options = [
-    { value: "summary", label: "概览" },
-    { value: "health", label: "健康" },
-    { value: "reports", label: "报告" }
-  ];
   const latestDate = dataHealth?.latest_data_date || status?.latest_data_date;
+  const updatedAt = dataHealth?.generated_at || status?.updated_at || status?.generated_at;
+  const coverageRows = [
+    ["ETF 总数", universe.total_etf ?? dataHealth?.etf_file_count ?? "暂无", "正式数据目录"],
+    ["建议交易池", universe.recommended_trade_pool ?? "暂无", "仅为回测前审查建议"],
+    ["建议观察池", universe.recommended_observe_pool ?? "暂无", "不等于正式买入"],
+    ["建议排除池", universe.recommended_exclude_pool ?? "暂无", "不进入研究/交易池"]
+  ];
+  const healthRows = [
+    ["正常", dataHealth?.normal_count ?? dataHealth?.healthy_count ?? "暂无", "可用于研究"],
+    ["提醒", dataHealth?.caution_count ?? dataHealth?.warning_count ?? "暂无", "需要标注 caution"],
+    ["异常", dataHealth?.abnormal_count ?? dataHealth?.error_count ?? dataHealth?.failed_count ?? 0, "不应进入交易池"],
+    ["缺失", dataHealth?.missing_count ?? "暂无", "等待补齐或排查"]
+  ];
 
   return (
     <main className="page-grid data-center">
-      <section className="apple-hero compact data-hero">
+      <section className="page-action-head">
         <div>
           <div className="eyebrow">数据中心</div>
-          <h2>管理本地 ETF 行情数据。</h2>
-          <p>补齐、检查和查看本地数据。这里不会连接券商，也不会生成真实交易。</p>
+          <h2>一键补齐 ETF 数据</h2>
+          <p>更新本地行情数据，不会交易，不连接券商。</p>
         </div>
-        <span className="status-pill blue">最新数据日 {text(latestDate, "等待更新")}</span>
+        <div className="action-head-side">
+          <Badge variant="blue">最新数据日 {text(latestDate, "等待更新")}</Badge>
+          <Badge variant="neutral">最近更新 {text(updatedAt, "暂无记录")}</Badge>
+          <Button type="button" onClick={() => onRun?.("backfill_etf_data")}>一键补齐 ETF 数据</Button>
+        </div>
       </section>
 
-      <section className="data-primary-action">
-        <div>
-          <span>常用操作</span>
-          <strong>一键补齐 ETF 数据</strong>
-          <small>只更新本地研究数据，并刷新覆盖、健康和看板快照。</small>
-        </div>
-        <button className="quick-action primary" type="button" onClick={() => onRun?.("backfill_etf_data")}>
-          <span>一键补齐 ETF 数据</span>
-          <small>不会交易，不会连接券商</small>
-        </button>
-      </section>
+      <Tabs value={view} onValueChange={setView}>
+        <TabsList>
+          <TabsTrigger value="status">数据状态</TabsTrigger>
+          <TabsTrigger value="coverage">数据覆盖</TabsTrigger>
+          <TabsTrigger value="health">数据健康</TabsTrigger>
+          <TabsTrigger value="reports">报告</TabsTrigger>
+        </TabsList>
 
-      <SegmentedControl options={options} value={view} onChange={setView} />
-
-      {view === "summary" ? (
-        <>
-          <section className="source-grid compact-sources">
-            <SourceCard label="正式数据源" value={sources.primary_source || dataHealth?.primary_source || "BaoStock"} note="日常更新主链路" tone="ok" />
-            <SourceCard label="候选数据源" value={sources.candidate_daily_source || "Tushare"} note="只用于研究验证" />
-            <SourceCard label="备用状态" value={sources.fallback_triggered ? "已触发" : "未触发"} note="自动化状态" />
-            <SourceCard label="券商连接" value="未连接" note="数据任务不接券商" tone="ok" />
-          </section>
-          <Section title="数据覆盖" eyebrow="概览">
-            <div className="matrix compact-matrix">
-              <div><span>ETF 总数</span><strong>{universe.total_etf ?? dataHealth?.etf_file_count ?? "暂无"}</strong></div>
-              <div><span>建议交易池</span><strong>{universe.recommended_trade_pool ?? "暂无"}</strong></div>
-              <div><span>建议观察池</span><strong>{universe.recommended_observe_pool ?? "暂无"}</strong></div>
-              <div><span>建议排除池</span><strong>{universe.recommended_exclude_pool ?? "暂无"}</strong></div>
+        <TabsContent value="status">
+          <Section title="数据状态" eyebrow="本地行情">
+            <div className="description-list">
+              <div><span>正式数据源</span><strong>{text(sources.primary_source || dataHealth?.primary_source || "BaoStock")}</strong><small>日常更新主链路</small></div>
+              <div><span>候选数据源</span><strong>{text(sources.candidate_daily_source || "Tushare")}</strong><small>只用于研究验证</small></div>
+              <div><span>备用状态</span><strong>{sources.fallback_triggered ? "已触发" : "未触发"}</strong><small>自动化状态</small></div>
+              <div><span>券商连接</span><strong>未连接</strong><small>数据任务不接券商</small></div>
             </div>
-            <div className="warning-line">{text(universe.readiness_summary || dataHealth?.diagnosis, "暂无额外诊断。")}</div>
+            <div className="inline-alert">{text(universe.readiness_summary || dataHealth?.diagnosis, "暂无额外诊断。")}</div>
           </Section>
-        </>
-      ) : null}
+        </TabsContent>
 
-      {view === "health" ? (
-        <>
+        <TabsContent value="coverage">
+          <Section title="数据覆盖" eyebrow="Universe">
+            <Table>
+              <TableHeader>
+                <TableRow><TableHead>指标</TableHead><TableHead>数量</TableHead><TableHead>说明</TableHead></TableRow>
+              </TableHeader>
+              <TableBody>
+                {coverageRows.map(([label, value, note]) => (
+                  <TableRow key={label}>
+                    <TableCell>{label}</TableCell>
+                    <TableCell>{value}</TableCell>
+                    <TableCell>{note}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+            <div className="maturity-row">
+              <span>回测准备度</span>
+              <strong>{universe.backtest_ready ? "可开始基础回测" : "需要继续审查"}</strong>
+              <Progress value={universe.backtest_ready ? 100 : 60} />
+            </div>
+          </Section>
+        </TabsContent>
+
+        <TabsContent value="health">
           <DataHealthPanel data={dataHealth} />
           <Section title="健康摘要" eyebrow="检查结果">
-            <div className="matrix compact-matrix">
-              <div><span>更新状态</span><strong>{text(dataHealth?.status, "等待更新")}</strong></div>
-              <div><span>新增行数</span><strong>{dataHealth?.new_rows ?? 0}</strong></div>
-              <div><span>失败数量</span><strong>{dataHealth?.failed_count ?? 0}</strong></div>
-              <div><span>BaoStock 调用</span><strong>{dataHealth?.baostock_api_calls ?? 0}</strong></div>
+            <Table>
+              <TableHeader>
+                <TableRow><TableHead>类别</TableHead><TableHead>数量</TableHead><TableHead>说明</TableHead></TableRow>
+              </TableHeader>
+              <TableBody>
+                {healthRows.map(([label, value, note]) => (
+                  <TableRow key={label}>
+                    <TableCell><Badge variant={statusVariant(label)}>{label}</Badge></TableCell>
+                    <TableCell>{value}</TableCell>
+                    <TableCell>{note}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </Section>
+        </TabsContent>
+
+        <TabsContent value="reports">
+          <Section title="数据报告" eyebrow="文档列表">
+            <div className="document-list">
+              <ReportCard title="数据覆盖报告" file="latest_data_coverage.md" summary={dataHealth?.coverage_tail} />
+              <ReportCard title="数据健康报告" file="latest_data_health.md" summary={dataHealth?.health_tail} />
+              <ReportCard title="数据源状态" file="data_source_status_report.md" summary={dataHealth?.data_sources || { status: "等待更新" }} />
             </div>
           </Section>
-        </>
-      ) : null}
-
-      {view === "reports" ? (
-        <Section title="数据报告" eyebrow="折叠查看">
-          <div className="report-preview-grid">
-            <ReportCard title="数据覆盖报告" file="latest_data_coverage.md" summary={dataHealth?.coverage_tail} />
-            <ReportCard title="数据健康报告" file="latest_data_health.md" summary={dataHealth?.health_tail} />
-            <ReportCard title="数据源状态" file="data_source_status_report.md" summary={dataHealth?.data_sources || { status: "等待更新" }} />
-          </div>
-        </Section>
-      ) : null}
+        </TabsContent>
+      </Tabs>
     </main>
   );
 }

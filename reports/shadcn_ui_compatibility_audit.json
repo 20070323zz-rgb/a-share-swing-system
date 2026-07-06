@@ -1,0 +1,15 @@
+{
+  "checked_at": "2026-07-05",
+  "scope": "app/frontend",
+  "compatibility": "compatible_with_changes",
+  "react_version": "18.3.1",
+  "vite_version": "5.4.x",
+  "tailwind_css": "added_4.3.x",
+  "components_json": "added",
+  "path_alias": "added_@",
+  "lucide_react": "added",
+  "radix": ["slot", "tabs", "tooltip", "collapsible", "scroll-area", "progress"],
+  "css_architecture": "single global styles.css with new compact workbench tokens",
+  "recommendation": "gradual migration only; do not rewrite app or business logic",
+  "status": "compatible_with_changes"
+}

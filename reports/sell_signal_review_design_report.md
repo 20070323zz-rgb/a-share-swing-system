@@ -1,6 +1,6 @@
 # 卖出复核系统设计报告
 
-- 生成时间：2026-06-24 23:04:51
+- 生成时间：2026-07-04 00:03:54
 - 权限等级：L2 联网数据权限。
 - 本设计只服务模拟盘复核，不生成真实交易指令。
 
@@ -34,8 +34,8 @@
 ## 5. 当前三只持仓复核结果
 | ETF | 名称 | 类型 | 状态 | 主要原因 |
 | --- | --- | --- | --- | --- |
-| 512800 | 银行ETF | sector | REVIEW | short_swing_buy_to_watch; rank_decline_2d |
-| 515000 | 科技ETF | unknown | REVIEW | rank_score_single_day_drop; rank_score_drop_pct_over_12; short_swing_buy_to_watch; rank_decline_2d |
+| 512800 | 银行ETF | sector | REVIEW | short_swing_buy_to_watch; floating_loss_over_3_5pct; rank_decline_2d |
+| 515000 | 科技ETF | unknown | REVIEW | rank_score_single_day_drop; rank_score_large_drop; rank_score_drop_pct_over_12; short_swing_buy_to_watch |
 | 512880 | 证券ETF | high_beta | HOLD |  |
 
 ## 6. 是否修改交易记录

@@ -1,31 +1,31 @@
 {
-  "generated_at": "2026-06-24 23:04:48",
+  "generated_at": "2026-07-04 00:00:48",
   "source": "baostock",
-  "mode": "dry-run",
+  "mode": "formal update",
   "requested_start": "2018-01-01",
-  "requested_end": "2026-06-24",
-  "latest_local_date": "2026-06-24",
+  "requested_end": "2026-07-03",
+  "latest_local_date": "2026-07-03",
   "stale_vs_requested": false,
-  "severity": "INFO",
-  "status": "dry_run",
-  "reason": "dry-run only; planned 0 BaoStock queries, no local CSV was written.",
+  "severity": "OK",
+  "status": "updated",
+  "reason": "Update appended 366 rows; existing local rows kept priority on duplicate dates.",
   "exit_code": 0,
   "universe_size": 183,
   "processed_symbols": 183,
-  "estimated_api_calls": 0,
-  "actual_api_calls": 0,
+  "estimated_api_calls": 183,
+  "actual_api_calls": 183,
   "status_counts": {
-    "already_up_to_date": 183
+    "success_appended": 183
   },
-  "added_rows": 0,
+  "added_rows": 366,
   "failed_count": 0,
   "failed_ratio": 0.0,
   "pending_count": 0,
   "pending_ratio": 0.0,
-  "up_to_date_count": 183,
+  "up_to_date_count": 0,
   "no_new_count": 0,
   "dry_run_planned_count": 0,
-  "baostock_api_calls": 0,
+  "baostock_api_calls": 183,
   "safety": {
     "broker_api": false,
     "real_order": false,
@@ -33,5 +33,5 @@
     "credentials_saved": false,
     "local_existing_rows_priority": true
   },
-  "recommendation": "Dry-run only. Run without --dry-run after reviewing estimated calls."
+  "recommendation": "Daily update status is acceptable under current local-data rules."
 }

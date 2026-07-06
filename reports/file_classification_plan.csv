@@ -1,0 +1,1065 @@
+path,category,move_safety,recommended_action,reason,dependency_count,can_archive,requires_code_change
+.env,UNKNOWN_NEEDS_REVIEW,UNKNOWN_NEEDS_REVIEW,人工复核后再决定,未命中明确分类规则。,0,False,False
+.gitignore,UNKNOWN_NEEDS_REVIEW,UNKNOWN_NEEDS_REVIEW,人工复核后再决定,未命中明确分类规则。,0,False,False
+.idea/.gitignore,UNKNOWN_NEEDS_REVIEW,UNKNOWN_NEEDS_REVIEW,人工复核后再决定,未命中明确分类规则。,0,False,False
+.idea/a-share-swing-system.iml,UNKNOWN_NEEDS_REVIEW,UNKNOWN_NEEDS_REVIEW,人工复核后再决定,未命中明确分类规则。,0,False,False
+.idea/inspectionProfiles/profiles_settings.xml,UNKNOWN_NEEDS_REVIEW,UNKNOWN_NEEDS_REVIEW,人工复核后再决定,未命中明确分类规则。,0,False,False
+.idea/misc.xml,UNKNOWN_NEEDS_REVIEW,UNKNOWN_NEEDS_REVIEW,人工复核后再决定,未命中明确分类规则。,0,False,False
+.idea/modules.xml,UNKNOWN_NEEDS_REVIEW,UNKNOWN_NEEDS_REVIEW,人工复核后再决定,未命中明确分类规则。,0,False,False
+.idea/vcs.xml,UNKNOWN_NEEDS_REVIEW,UNKNOWN_NEEDS_REVIEW,人工复核后再决定,未命中明确分类规则。,0,False,False
+.idea/workspace.xml,UNKNOWN_NEEDS_REVIEW,UNKNOWN_NEEDS_REVIEW,人工复核后再决定,未命中明确分类规则。,0,False,False
+=2.31.0,TEMP_OR_LEGACY,UNKNOWN_NEEDS_REVIEW,列入候选清理清单，确认后再处理,根目录疑似临时或旧版文件。,0,False,False
+A-Share Swing App.command,DIST_ASSETS,DO_NOT_MOVE,保持 App 包装器和图标路径,桌面启动器和打包资源可能依赖固定路径。,0,False,False
+APP_VERSION,UNKNOWN_NEEDS_REVIEW,UNKNOWN_NEEDS_REVIEW,人工复核后再决定,未命中明确分类规则。,0,False,False
+CHATGPT_NOTES.md,DOCS,SAFE_TO_ARCHIVE,可整理进 docs 或保留根目录索引,文档类文件，迁移需更新链接。,0,False,False
+DECISIONS.md,DOCS,SAFE_TO_ARCHIVE,可整理进 docs 或保留根目录索引,文档类文件，迁移需更新链接。,0,False,False
+PROJECT_INDEX.md,DOCS,SAFE_TO_ARCHIVE,可整理进 docs 或保留根目录索引,文档类文件，迁移需更新链接。,0,False,False
+PROJECT_STATE.md,DOCS,SAFE_TO_ARCHIVE,可整理进 docs 或保留根目录索引,文档类文件，迁移需更新链接。,0,False,False
+README.md,DOCS,SAFE_TO_ARCHIVE,可整理进 docs 或保留根目录索引,文档类文件，迁移需更新链接。,0,False,False
+RELEASE_NOTES.md,DOCS,SAFE_TO_ARCHIVE,可整理进 docs 或保留根目录索引,文档类文件，迁移需更新链接。,0,False,False
+app/README.md,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,True
+app/backend/__init__.py,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,True
+app/backend/main.py,CORE_CODE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,1,False,False
+app/backend/readers.py,CORE_CODE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,17,False,False
+app/backend/safe_tasks.py,CORE_CODE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,20,False,False
+app/backend/schemas.py,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,True
+app/backend/task_runner.py,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,True
+app/frontend/dist/assets/index-BIkG7Izd.js,APP_CODE,MOVE_ONLY_WITH_CODE_UPDATE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,False
+app/frontend/dist/assets/index-De2W5LG5.css,APP_CODE,MOVE_ONLY_WITH_CODE_UPDATE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,False
+app/frontend/dist/index.html,APP_CODE,MOVE_ONLY_WITH_CODE_UPDATE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,False
+app/frontend/index.html,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,True
+app/frontend/package-lock.json,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,True
+app/frontend/package.json,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,True
+app/frontend/src/App.jsx,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,True
+app/frontend/src/api.js,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,True
+app/frontend/src/components/ActionButton.jsx,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,True
+app/frontend/src/components/DataHealthPanel.jsx,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,True
+app/frontend/src/components/LogsPanel.jsx,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,True
+app/frontend/src/components/PortfolioPanel.jsx,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,True
+app/frontend/src/components/ReportCard.jsx,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,True
+app/frontend/src/components/Section.jsx,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,True
+app/frontend/src/components/SegmentedControl.jsx,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,True
+app/frontend/src/components/SignalsPanel.jsx,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,True
+app/frontend/src/components/Sparkline.jsx,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,True
+app/frontend/src/components/StatusCard.jsx,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,True
+app/frontend/src/components/StatusPill.jsx,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,True
+app/frontend/src/components/TaskPanel.jsx,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,True
+app/frontend/src/components/Timeline.jsx,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,True
+app/frontend/src/designTokens.js,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,True
+app/frontend/src/format.js,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,True
+app/frontend/src/main.jsx,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,True
+app/frontend/src/pages/ControlRoom.jsx,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,1,False,True
+app/frontend/src/pages/DataCenter.jsx,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,True
+app/frontend/src/pages/Home.jsx,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,True
+app/frontend/src/pages/Logs.jsx,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,True
+app/frontend/src/pages/Portfolio.jsx,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,4,False,True
+app/frontend/src/pages/Research.jsx,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,3,False,True
+app/frontend/src/pages/SettingsSafety.jsx,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,True
+app/frontend/src/pages/Signals.jsx,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,True
+app/frontend/src/styles.css,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,True
+app/frontend/vite.config.js,APP_CODE,DO_NOT_MOVE,保持 App 现有结构,FastAPI/Vite/Tauri 路径依赖较多。,0,False,True
+assets/app_icon.png,DIST_ASSETS,DO_NOT_MOVE,保持 App 包装器和图标路径,桌面启动器和打包资源可能依赖固定路径。,0,False,False
+assets/app_icon.svg,DIST_ASSETS,DO_NOT_MOVE,保持 App 包装器和图标路径,桌面启动器和打包资源可能依赖固定路径。,0,False,False
+codex_tasks.md,DOCS,SAFE_TO_ARCHIVE,可整理进 docs 或保留根目录索引,文档类文件，迁移需更新链接。,0,False,False
+dashboard/README.md,DASHBOARD_CODE,DO_NOT_MOVE,保持 dashboard 入口稳定,静态看板和 App 数据快照依赖固定路径。,7,False,False
+dashboard/app.py,DASHBOARD_CODE,DO_NOT_MOVE,保持 dashboard 入口稳定,静态看板和 App 数据快照依赖固定路径。,2,False,False
+dashboard/build_dashboard.py,CORE_CODE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,413,False,False
+dashboard/index.html,CORE_CODE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,218,False,False
+dashboard/open_dashboard.command,DASHBOARD_CODE,DO_NOT_MOVE,保持 dashboard 入口稳定,静态看板和 App 数据快照依赖固定路径。,0,False,False
+data/.gitkeep,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/159869.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/159915.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/159928.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/510300.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/510500.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/510880.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/512010.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/512100.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/512480.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/512690.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/512760.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/512800.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/512880.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/512890.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/513500.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/515050.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/515790.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/516160.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/518880.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/588000.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/automation_state.json,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/backtest_trade_pool.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/etf_classification.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/etf_daily/.gitkeep,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_510050.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_510060.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_510180.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_510230.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_510270.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_510300.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_510410.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_510500.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_510880.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_511010.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_511030.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_511090.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_511260.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_511360.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_511380.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_511520.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_511600.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_511690.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_511880.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_511990.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_512010.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_512050.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_512070.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_512100.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_512170.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_512200.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_512400.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_512480.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_512660.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_512670.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_512690.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_512760.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_512800.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_512880.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_512890.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_512980.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_513030.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_513050.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_513060.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_513100.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_513120.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_513130.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_513150.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_513180.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_513330.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_513500.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_513520.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_513880.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_515000.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_515050.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_515070.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_515080.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_515120.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_515170.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_515210.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_515220.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_515230.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_515260.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_515630.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_515650.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_515700.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_515790.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_515880.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_516020.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_516080.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_516110.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_516160.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_516360.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_516390.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_516510.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_516720.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_516750.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_516780.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_516800.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_518880.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_520550.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_560510.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_561360.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_561560.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_562500.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_562550.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_562920.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_563360.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_563800.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_588000.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_588030.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_588080.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_588120.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_588190.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_588200.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_588220.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sh_588800.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159001.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159301.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159302.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159315.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159321.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159327.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159332.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159333.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159336.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159338.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159352.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159363.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159395.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159396.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159398.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159516.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159518.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159531.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159532.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159536.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159538.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159539.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159540.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159545.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159547.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159549.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159551.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159558.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159559.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159562.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159593.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159595.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159608.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159611.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159613.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159615.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159625.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159638.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159658.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159663.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159667.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159669.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159671.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159697.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159699.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159703.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159717.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159726.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159732.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159735.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159736.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159745.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159755.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159758.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159763.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159766.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159770.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159787.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159791.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159795.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159797.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159806.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159819.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159825.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159835.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159840.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159857.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159858.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159865.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159869.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159870.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159876.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159883.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159888.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159889.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159898.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159901.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159905.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159915.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159920.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159928.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159929.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159930.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159940.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159941.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159949.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159954.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159992.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159995.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159996.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_daily/sz_159997.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/etf_pool_expansion_candidates.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/etf_theme_keywords.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/etf_type_classification.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/manual_import/159766.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/manual_import/159901.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/manual_import/159915.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/manual_import/159928.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/manual_import/159929.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/manual_import/159940.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/manual_import/159949.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/manual_import/510050.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/manual_import/510180.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/manual_import/510230.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/manual_import/510300.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/manual_import/510500.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/manual_import/512010.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/manual_import/512070.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/manual_import/512100.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/manual_import/512170.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/manual_import/512200.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/manual_import/512690.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/manual_import/512760.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/manual_import/512800.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/manual_import/512880.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/manual_import/515000.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/manual_import/515650.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/manual_import/515880.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/manual_import/588000.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/manual_import/588080.csv,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/missed_opportunity_tracking.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/paper_equity_curve.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/paper_equity_curve_backfilled.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/paper_positions.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/paper_trade_engine_state.json,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/paper_trades.csv,DATA_CORE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+data/persistence_breakout_shadow_tracking.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/raw/.gitkeep,DATA_DERIVED,UNKNOWN_NEEDS_REVIEW,先保留，后续按来源归档,数据文件需要确认是否仍被脚本使用。,0,False,False
+data/staging/etf_candidates/jqdata_etf_candidates.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/etf_candidates/resolved_etf_expansion_candidates.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/159001.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/159736.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/159755.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/159766.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/159806.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/159819.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/159825.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/159857.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/159865.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/159869.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/159876.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/159901.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/159905.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/159915.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/159920.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/159928.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/159929.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/159930.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/159940.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/159941.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/159949.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/159995.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/159996.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/510050.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/510180.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/510230.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/510300.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/510410.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/510500.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/510880.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/511010.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/511260.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/511360.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/511880.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/511990.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/512010.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/512070.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/512100.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/512170.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/512200.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/512400.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/512480.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/512660.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/512670.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/512690.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/512760.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/512800.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/512880.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/512890.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/512980.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/513050.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/513060.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/513100.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/513180.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/513500.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/515000.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/515050.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/515070.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/515080.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/515170.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/515220.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/515230.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/515650.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/515700.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/515790.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/515880.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/516110.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/516160.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/516390.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/516510.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/516780.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/516800.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/518880.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/588000.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/588080.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata/588200.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159301.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159302.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159315.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159321.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159327.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159332.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159333.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159336.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159338.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159352.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159363.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159395.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159396.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159398.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159516.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159518.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159531.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159532.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159536.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159538.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159539.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159540.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159545.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159547.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159549.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159551.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159558.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159559.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159562.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159593.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159595.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159608.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159611.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159613.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159615.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159625.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159638.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159658.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159663.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159667.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159669.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159671.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159697.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159699.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159703.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159717.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159726.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159732.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159735.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159745.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159758.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159763.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159770.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159787.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159791.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159795.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159797.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159835.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159840.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159858.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159870.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159883.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159888.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159889.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159898.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159954.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159992.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/159997.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/510060.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/510270.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/511030.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/511090.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/511380.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/511520.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/511600.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/511690.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/512050.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/513030.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/513120.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/513130.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/513150.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/513330.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/513520.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/513880.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/515120.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/515210.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/515260.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/515630.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/516020.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/516080.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/516360.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/516720.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/516750.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/520550.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/560510.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/561360.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/561560.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/562500.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/562550.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/562920.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/563360.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/563800.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/588030.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/588120.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/588190.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/588220.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded/588800.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded_failed/159053.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded_failed/159105.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded_failed/159119.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded_failed/159130.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded_failed/159159.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded_failed/159207.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded_failed/159209.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded_failed/159265.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded_failed/159296.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded_failed/159385.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded_failed/159389.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded_failed/159390.XSHE.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded_failed/562080.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/jqdata_expanded_failed/589520.XSHG.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/staging/tushare/tushare_etf_daily_sample.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+data/strategy_preview_tracking.csv,DATA_DERIVED,MOVE_ONLY_WITH_CODE_UPDATE,可在后续迁移到 data/derived 或 data/paper，但先不要动,派生数据可能被报告和 App 读取。,0,False,True
+desktop/README.md,DIST_ASSETS,DO_NOT_MOVE,保持 App 包装器和图标路径,桌面启动器和打包资源可能依赖固定路径。,0,False,False
+desktop/tauri/index.html,DIST_ASSETS,DO_NOT_MOVE,保持 App 包装器和图标路径,桌面启动器和打包资源可能依赖固定路径。,0,False,False
+desktop/tauri/package-lock.json,DIST_ASSETS,DO_NOT_MOVE,保持 App 包装器和图标路径,桌面启动器和打包资源可能依赖固定路径。,0,False,False
+desktop/tauri/package.json,DIST_ASSETS,DO_NOT_MOVE,保持 App 包装器和图标路径,桌面启动器和打包资源可能依赖固定路径。,0,False,False
+desktop/tauri/src-tauri/Cargo.toml,DIST_ASSETS,DO_NOT_MOVE,保持 App 包装器和图标路径,桌面启动器和打包资源可能依赖固定路径。,0,False,False
+desktop/tauri/src-tauri/build.rs,DIST_ASSETS,DO_NOT_MOVE,保持 App 包装器和图标路径,桌面启动器和打包资源可能依赖固定路径。,0,False,False
+desktop/tauri/src-tauri/capabilities/default.json,DIST_ASSETS,DO_NOT_MOVE,保持 App 包装器和图标路径,桌面启动器和打包资源可能依赖固定路径。,0,False,False
+desktop/tauri/src-tauri/src/main.rs,DIST_ASSETS,DO_NOT_MOVE,保持 App 包装器和图标路径,桌面启动器和打包资源可能依赖固定路径。,0,False,False
+desktop/tauri/src-tauri/tauri.conf.json,DIST_ASSETS,DO_NOT_MOVE,保持 App 包装器和图标路径,桌面启动器和打包资源可能依赖固定路径。,0,False,False
+desktop/tauri/src/main.js,DIST_ASSETS,DO_NOT_MOVE,保持 App 包装器和图标路径,桌面启动器和打包资源可能依赖固定路径。,0,False,False
+dist/app_icon.iconset/icon_128x128.png,DIST_ASSETS,DO_NOT_MOVE,保持 App 包装器和图标路径,桌面启动器和打包资源可能依赖固定路径。,0,False,False
+dist/app_icon.iconset/icon_128x128@2x.png,DIST_ASSETS,DO_NOT_MOVE,保持 App 包装器和图标路径,桌面启动器和打包资源可能依赖固定路径。,0,False,False
+dist/app_icon.iconset/icon_16x16.png,DIST_ASSETS,DO_NOT_MOVE,保持 App 包装器和图标路径,桌面启动器和打包资源可能依赖固定路径。,0,False,False
+dist/app_icon.iconset/icon_16x16@2x.png,DIST_ASSETS,DO_NOT_MOVE,保持 App 包装器和图标路径,桌面启动器和打包资源可能依赖固定路径。,0,False,False
+dist/app_icon.iconset/icon_256x256.png,DIST_ASSETS,DO_NOT_MOVE,保持 App 包装器和图标路径,桌面启动器和打包资源可能依赖固定路径。,0,False,False
+dist/app_icon.iconset/icon_256x256@2x.png,DIST_ASSETS,DO_NOT_MOVE,保持 App 包装器和图标路径,桌面启动器和打包资源可能依赖固定路径。,0,False,False
+dist/app_icon.iconset/icon_32x32.png,DIST_ASSETS,DO_NOT_MOVE,保持 App 包装器和图标路径,桌面启动器和打包资源可能依赖固定路径。,0,False,False
+dist/app_icon.iconset/icon_32x32@2x.png,DIST_ASSETS,DO_NOT_MOVE,保持 App 包装器和图标路径,桌面启动器和打包资源可能依赖固定路径。,0,False,False
+dist/app_icon.iconset/icon_512x512.png,DIST_ASSETS,DO_NOT_MOVE,保持 App 包装器和图标路径,桌面启动器和打包资源可能依赖固定路径。,0,False,False
+dist/app_icon.iconset/icon_512x512@2x.png,DIST_ASSETS,DO_NOT_MOVE,保持 App 包装器和图标路径,桌面启动器和打包资源可能依赖固定路径。,0,False,False
+dist/量化研究控制台.app/Contents/Info.plist,DIST_ASSETS,DO_NOT_MOVE,保持 App 包装器和图标路径,桌面启动器和打包资源可能依赖固定路径。,0,False,False
+dist/量化研究控制台.app/Contents/MacOS/launch,DIST_ASSETS,DO_NOT_MOVE,保持 App 包装器和图标路径,桌面启动器和打包资源可能依赖固定路径。,0,False,False
+dist/量化研究控制台.app/Contents/Resources/app_icon.icns,DIST_ASSETS,DO_NOT_MOVE,保持 App 包装器和图标路径,桌面启动器和打包资源可能依赖固定路径。,0,False,False
+docs/app_launch_guide.md,DOCS,SAFE_TO_ARCHIVE,可按 user_guides/technical/rules 逐步整理,文档迁移风险较低，但 README 链接需同步。,0,False,False
+docs/app_release_checklist.md,DOCS,SAFE_TO_ARCHIVE,可按 user_guides/technical/rules 逐步整理,文档迁移风险较低，但 README 链接需同步。,0,False,False
+docs/data_api_evaluation.md,DOCS,SAFE_TO_ARCHIVE,可按 user_guides/technical/rules 逐步整理,文档迁移风险较低，但 README 链接需同步。,0,False,False
+docs/local_app_release_guide.md,DOCS,SAFE_TO_ARCHIVE,可按 user_guides/technical/rules 逐步整理,文档迁移风险较低，但 README 链接需同步。,0,False,False
+docs/project_file_map.md,DOCS,SAFE_TO_ARCHIVE,可按 user_guides/technical/rules 逐步整理,文档迁移风险较低，但 README 链接需同步。,0,False,False
+docs/qmt_readonly_data_plan.md,DOCS,SAFE_TO_ARCHIVE,可按 user_guides/technical/rules 逐步整理,文档迁移风险较低，但 README 链接需同步。,0,False,False
+docs/trading_rules.md,DOCS,SAFE_TO_ARCHIVE,可按 user_guides/technical/rules 逐步整理,文档迁移风险较低，但 README 链接需同步。,0,False,False
+launchd/com.dayin.a-share.afternoon-open-check.plist,UNKNOWN_NEEDS_REVIEW,UNKNOWN_NEEDS_REVIEW,人工复核后再决定,未命中明确分类规则。,0,False,False
+launchd/com.dayin.a-share.catchup-check.plist,UNKNOWN_NEEDS_REVIEW,UNKNOWN_NEEDS_REVIEW,人工复核后再决定,未命中明确分类规则。,0,False,False
+launchd/com.dayin.a-share.daily-close.plist,UNKNOWN_NEEDS_REVIEW,UNKNOWN_NEEDS_REVIEW,人工复核后再决定,未命中明确分类规则。,0,False,False
+launchd/com.dayin.a-share.midday-check.plist,UNKNOWN_NEEDS_REVIEW,UNKNOWN_NEEDS_REVIEW,人工复核后再决定,未命中明确分类规则。,0,False,False
+launchd/com.dayin.a-share.monthly-model-review.plist,UNKNOWN_NEEDS_REVIEW,UNKNOWN_NEEDS_REVIEW,人工复核后再决定,未命中明确分类规则。,0,False,False
+launchd/com.dayin.a-share.open-check.plist,UNKNOWN_NEEDS_REVIEW,UNKNOWN_NEEDS_REVIEW,人工复核后再决定,未命中明确分类规则。,0,False,False
+launchd/com.dayin.a-share.weekly-review.plist,UNKNOWN_NEEDS_REVIEW,UNKNOWN_NEEDS_REVIEW,人工复核后再决定,未命中明确分类规则。,0,False,False
+logs/afternoon_open_check.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/app_backend.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/app_dependency_check.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/app_launch_status.json,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/app_server.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/app_tasks/20260616121919-0040d063_build_dashboard.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/app_tasks/20260616121953-d42764bc_run_daily_close_dryrun.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/app_tasks/20260616150120-98c8ac49_backfill_recent_data.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/app_tasks/20260616150308-98ec1165_backfill_recent_data.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/app_tasks/20260617004637-27393bec_refresh_all_reports.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/app_tasks/20260617222845-ab6f7985_run_strategy_tracking.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/app_tasks/20260617225552-4a10067e_check_app_env.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/app_tasks/20260617225553-7cac779e_run_daily_close_dryrun.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/app_tasks/20260618150644-4176d356_backfill_recent_data.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/app_tasks/20260618150751-7a5a607a_backfill_recent_data.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/app_tasks/20260618152325-d51b9b05_backfill_recent_data.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/app_tasks/20260618152702-88f8d042_backfill_recent_data.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/app_tasks/20260618203535-1a4e8f8f_backfill_recent_data.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/app_tasks/20260618203711-a7e4d1b1_backfill_recent_data.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/app_tasks/20260622194314-fbc66a5b_refresh_all_reports.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/app_tasks/20260624002940-e1c71158_backfill_etf_data.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/app_tasks/20260624003202-74f60ab4_backfill_etf_data.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/app_tasks/20260624003359-fbd24597_backfill_etf_data.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/app_tasks/latest.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/catchup_check.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/daily_close.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/launchd_afternoon_open_check.err.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/launchd_afternoon_open_check.out.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/launchd_catchup_check.err.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/launchd_catchup_check.out.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/launchd_daily_close.err.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/launchd_daily_close.out.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/launchd_midday_check.err.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/launchd_midday_check.out.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/launchd_open_check.err.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/launchd_open_check.out.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/launchd_weekly_review.err.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/launchd_weekly_review.out.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/midday_check.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/monthly_model_review.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/open_check.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/streamlit_dashboard.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+logs/weekly_review.log,LOGS,SAFE_TO_ARCHIVE,可按日期滚动归档或忽略提交,日志不是核心输入。,0,True,False
+notebooks/.gitkeep,UNKNOWN_NEEDS_REVIEW,UNKNOWN_NEEDS_REVIEW,人工复核后再决定,未命中明确分类规则。,0,False,False
+raw/.gitkeep,UNKNOWN_NEEDS_REVIEW,UNKNOWN_NEEDS_REVIEW,人工复核后再决定,未命中明确分类规则。,0,False,False
+reports/.gitkeep,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/account_status.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/afternoon_open_check.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/afternoon_open_check.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/akshare_connectivity_check.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/akshare_connectivity_check.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/alpha_factor_enhancement_metrics.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/alpha_factor_enhancement_research.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/alpha_factor_enhancement_summary.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/app_backfill_button_fix_20260624.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/app_backfill_button_fix_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/app_data_backfill_button_audit.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/app_independent_launch_fix_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/app_launch_diagnostics.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/app_launch_diagnostics.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/app_launch_fix_report.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/app_launch_fix_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/app_local_release_phase1_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/app_polish_phase1_launch_stability_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/app_release_phase2_shortcut_equity_backfill_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/app_task_status.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/automation_four_node_sync_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/b1_strategy_enhancement_preview_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/b2_strategy_preview_tracking_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/backtest_capital_sensitivity.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/backtest_capital_sensitivity.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/backtest_consistency_check.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/backtest_consistency_check.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/backtest_cost_diagnostics.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/backtest_cost_diagnostics.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/backtest_diagnostics_summary.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/backtest_drawdown_diagnostics.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/backtest_drawdown_diagnostics.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/backtest_equity_curve.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/backtest_execution_timing_sensitivity.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/backtest_execution_timing_sensitivity.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/backtest_exit_reason_summary.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/backtest_expand_pool_decision.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/backtest_metrics.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/backtest_phase4a_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/backtest_positions.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/backtest_ranking_effectiveness.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/backtest_ranking_effectiveness.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/backtest_readiness_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/backtest_result.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/backtest_summary.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/backtest_summary.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/backtest_symbol_contribution.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/backtest_symbol_contribution.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/backtest_trade_distribution.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/backtest_trade_distribution.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/backtest_trade_pool_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/backtest_trades.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/backtest_turnover_by_month.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/backtest_turnover_diagnostics.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/backtest_yearly_summary.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/baostock_app_backfill_fix_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/baostock_daily_source_optimization_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/baostock_diagnosis.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/broad_base_balance_preview.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/broad_base_balance_preview.json,REPORT_CURRENT,DO_NOT_MOVE,保持原路径,latest/current 报告被 dashboard/App/周报读取。,0,False,False
+reports/broad_base_balance_preview.md,REPORT_CURRENT,DO_NOT_MOVE,保持原路径,latest/current 报告被 dashboard/App/周报读取。,0,False,False
+reports/buy_ranking_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/buy_signal_ranking.md,REPORT_CURRENT,DO_NOT_MOVE,保持原路径,latest/current 报告被 dashboard/App/周报读取。,0,False,False
+reports/catchup_scheduler_status.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/chatgpt_analysis_packet_2026-06-27.md,REPORT_ARCHIVE,SAFE_TO_ARCHIVE,Phase B 可归档到 reports/archive/,日期版或历史摘要，保留 latest 路径即可。,0,True,False
+reports/chatgpt_report_summary_2026-06-27.md,REPORT_ARCHIVE,SAFE_TO_ARCHIVE,Phase B 可归档到 reports/archive/,日期版或历史摘要，保留 latest 路径即可。,0,True,False
+reports/chatgpt_weekly_analysis_packet_2026-06-26.json,REPORT_ARCHIVE,SAFE_TO_ARCHIVE,Phase B 可归档到 reports/archive/,日期版或历史摘要，保留 latest 路径即可。,0,True,False
+reports/chatgpt_weekly_analysis_packet_2026-06-26.md,REPORT_ARCHIVE,SAFE_TO_ARCHIVE,Phase B 可归档到 reports/archive/,日期版或历史摘要，保留 latest 路径即可。,0,True,False
+reports/chatgpt_weekly_analysis_packet_latest.json,REPORT_CURRENT,DO_NOT_MOVE,保持原路径,latest/current 报告被 dashboard/App/周报读取。,0,False,False
+reports/chatgpt_weekly_analysis_packet_latest.md,REPORT_CURRENT,DO_NOT_MOVE,保持原路径,latest/current 报告被 dashboard/App/周报读取。,0,False,False
+reports/chatgpt_weekly_report_summary_2026-06-27.md,REPORT_ARCHIVE,SAFE_TO_ARCHIVE,Phase B 可归档到 reports/archive/,日期版或历史摘要，保留 latest 路径即可。,0,True,False
+reports/codex_daily_research_prompt.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/codex_weekly_research_prompt.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/current_positions_strategy_fit_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/daily_data_update_diagnosis_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/daily_rolling_backtest.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/daily_rolling_backtest.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/daily_signal_2026-06-01.md,REPORT_ARCHIVE,SAFE_TO_ARCHIVE,Phase B 可归档到 reports/archive/,日期版或历史摘要，保留 latest 路径即可。,0,True,False
+reports/daily_signal_2026-06-02.md,REPORT_ARCHIVE,SAFE_TO_ARCHIVE,Phase B 可归档到 reports/archive/,日期版或历史摘要，保留 latest 路径即可。,0,True,False
+reports/daily_signal_2026-06-03.md,REPORT_ARCHIVE,SAFE_TO_ARCHIVE,Phase B 可归档到 reports/archive/,日期版或历史摘要，保留 latest 路径即可。,0,True,False
+reports/daily_signal_2026-06-09.md,REPORT_ARCHIVE,SAFE_TO_ARCHIVE,Phase B 可归档到 reports/archive/,日期版或历史摘要，保留 latest 路径即可。,0,True,False
+reports/daily_signal_2026-06-10.md,REPORT_ARCHIVE,SAFE_TO_ARCHIVE,Phase B 可归档到 reports/archive/,日期版或历史摘要，保留 latest 路径即可。,0,True,False
+reports/daily_signal_2026-06-11.md,REPORT_ARCHIVE,SAFE_TO_ARCHIVE,Phase B 可归档到 reports/archive/,日期版或历史摘要，保留 latest 路径即可。,0,True,False
+reports/daily_signal_2026-06-12.md,REPORT_ARCHIVE,SAFE_TO_ARCHIVE,Phase B 可归档到 reports/archive/,日期版或历史摘要，保留 latest 路径即可。,0,True,False
+reports/daily_signal_2026-06-15.md,REPORT_ARCHIVE,SAFE_TO_ARCHIVE,Phase B 可归档到 reports/archive/,日期版或历史摘要，保留 latest 路径即可。,0,True,False
+reports/daily_signal_2026-06-16.md,REPORT_ARCHIVE,SAFE_TO_ARCHIVE,Phase B 可归档到 reports/archive/,日期版或历史摘要，保留 latest 路径即可。,0,True,False
+reports/daily_signal_2026-06-17.md,REPORT_ARCHIVE,SAFE_TO_ARCHIVE,Phase B 可归档到 reports/archive/,日期版或历史摘要，保留 latest 路径即可。,0,True,False
+reports/daily_signal_2026-06-18.md,REPORT_ARCHIVE,SAFE_TO_ARCHIVE,Phase B 可归档到 reports/archive/,日期版或历史摘要，保留 latest 路径即可。,0,True,False
+reports/daily_signal_2026-06-22.md,REPORT_ARCHIVE,SAFE_TO_ARCHIVE,Phase B 可归档到 reports/archive/,日期版或历史摘要，保留 latest 路径即可。,0,True,False
+reports/daily_signal_2026-06-23.md,REPORT_ARCHIVE,SAFE_TO_ARCHIVE,Phase B 可归档到 reports/archive/,日期版或历史摘要，保留 latest 路径即可。,0,True,False
+reports/daily_signal_2026-06-24.md,REPORT_ARCHIVE,SAFE_TO_ARCHIVE,Phase B 可归档到 reports/archive/,日期版或历史摘要，保留 latest 路径即可。,0,True,False
+reports/daily_signal_2026-06-25.md,REPORT_ARCHIVE,SAFE_TO_ARCHIVE,Phase B 可归档到 reports/archive/,日期版或历史摘要，保留 latest 路径即可。,0,True,False
+reports/daily_signal_2026-06-26.md,REPORT_ARCHIVE,SAFE_TO_ARCHIVE,Phase B 可归档到 reports/archive/,日期版或历史摘要，保留 latest 路径即可。,0,True,False
+reports/dashboard_app_future_plan.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/dashboard_data.json,CORE_CODE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+reports/dashboard_redesign_research.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/data_coverage_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/data_download_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/data_freshness_execution_reality.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/data_health_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/data_provider_design.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/data_provider_status.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/data_provider_status.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/data_quality_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/data_source_architecture_audit.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/data_source_architecture_audit.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/data_source_proposal.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/data_source_status.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/data_source_status_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/data_update_app_task_fix_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/data_update_automation_fix_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/data_update_diagnosis_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/data_update_log.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/data_update_probe_fast.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/data_update_status.baostock_fallback.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/data_update_status.datasource_refresh.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/data_update_status.dryrun.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/data_update_status.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/etf_classification_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/etf_expansion_cleanup_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/etf_expansion_import_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/etf_expansion_import_results.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/etf_expansion_pipeline_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/etf_expansion_quarantine_list.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/etf_expansion_staging_validation_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/etf_pool_expansion_plan.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/etf_pool_research_matrix.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/etf_pool_research_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/etf_rotation_exit_rule_research.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/etf_rotation_mature_model_reference.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/etf_rotation_strategy_research.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/etf_strategy_news_sentiment_research.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/etf_type_aware_model_metrics.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/etf_type_aware_model_research.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/etf_type_aware_model_summary.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/etf_type_classification_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/etf_volatility_profile.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/etf_volatility_profile.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/execution_layer_integration_plan.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/exit_rule_backtest_design.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/exit_rule_by_etf_type.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/exit_rule_candidates.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/exit_rule_candidates.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/exit_rule_research.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/exit_rule_research_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/exit_rule_research_results.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/factor_analysis_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/file_classification_plan.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/file_classification_plan.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/file_classification_plan.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/first_paper_buy_plan.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/first_paper_trade_review.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/high_beta_risk_watch.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/high_beta_risk_watch.json,REPORT_CURRENT,DO_NOT_MOVE,保持原路径,latest/current 报告被 dashboard/App/周报读取。,0,False,False
+reports/high_beta_risk_watch.md,REPORT_CURRENT,DO_NOT_MOVE,保持原路径,latest/current 报告被 dashboard/App/周报读取。,0,False,False
+reports/holding_period_research.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/holding_period_research_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/holding_period_research_results.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/industry_etf_diagnosis.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/intelligence_data_source_plan.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/jqdata_connection_diagnosis.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/jqdata_import_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/jqdata_local_compare_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/jqdata_primary_daily_source_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/jqdata_test_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/jqdata_unit_diagnosis_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/latest_brief.md,REPORT_CURRENT,DO_NOT_MOVE,保持原路径,latest/current 报告被 dashboard/App/周报读取。,0,False,False
+reports/latest_buy_ranking.md,REPORT_CURRENT,DO_NOT_MOVE,保持原路径,latest/current 报告被 dashboard/App/周报读取。,0,False,False
+reports/latest_daily.md,REPORT_CURRENT,DO_NOT_MOVE,保持原路径,latest/current 报告被 dashboard/App/周报读取。,0,False,False
+reports/latest_data_coverage.md,REPORT_CURRENT,DO_NOT_MOVE,保持原路径,latest/current 报告被 dashboard/App/周报读取。,0,False,False
+reports/latest_data_health.md,REPORT_CURRENT,DO_NOT_MOVE,保持原路径,latest/current 报告被 dashboard/App/周报读取。,0,False,False
+reports/latest_factor_analysis.md,REPORT_CURRENT,DO_NOT_MOVE,保持原路径,latest/current 报告被 dashboard/App/周报读取。,0,False,False
+reports/latest_model_research.md,REPORT_CURRENT,DO_NOT_MOVE,保持原路径,latest/current 报告被 dashboard/App/周报读取。,0,False,False
+reports/latest_paper_portfolio.md,REPORT_CURRENT,DO_NOT_MOVE,保持原路径,latest/current 报告被 dashboard/App/周报读取。,0,False,False
+reports/latest_ranking.md,REPORT_CURRENT,DO_NOT_MOVE,保持原路径,latest/current 报告被 dashboard/App/周报读取。,0,False,False
+reports/latest_short_swing.md,REPORT_CURRENT,DO_NOT_MOVE,保持原路径,latest/current 报告被 dashboard/App/周报读取。,0,False,False
+reports/latest_weekly.md,REPORT_CURRENT,DO_NOT_MOVE,保持原路径,latest/current 报告被 dashboard/App/周报读取。,0,False,False
+reports/launchd_catchup_bugfix_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/launchd_catchup_upgrade_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/launchd_install_test_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/local_validation.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/manual_download_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/manual_download_validation_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/manual_failed_diagnosis_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/manual_import_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/market_state.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/market_state_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/midday_check.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/midday_check.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/missed_opportunity_by_filter_reason.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/missed_opportunity_by_filter_reason.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/missed_opportunity_observation_rules.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/missed_opportunity_tracker.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/missed_opportunity_tracker.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/missed_opportunity_tracker.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/model_data_maturity_analysis.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/model_data_maturity_analysis.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/model_data_maturity_tables.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/model_dataset.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/model_enhancement_decision_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/model_overfit_guardrails.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/model_research_quality_review.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/model_research_quality_review.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/model_research_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/model_shadow_comparison.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/model_shadow_comparison.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/monthly_model_review.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/news_data_source_plan.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/news_sentiment_framework.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/next_stage_strategy_optimization_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/no_lookahead_data_rules.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/open_check.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/open_check.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/paper_equity_curve.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/paper_equity_curve_backfill_audit.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/paper_equity_curve_backfilled.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/paper_equity_curve_gap_explanation.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/paper_performance_daily.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/paper_performance_summary.json,REPORT_CURRENT,DO_NOT_MOVE,保持原路径,latest/current 报告被 dashboard/App/周报读取。,0,False,False
+reports/paper_performance_summary.md,REPORT_CURRENT,DO_NOT_MOVE,保持原路径,latest/current 报告被 dashboard/App/周报读取。,0,False,False
+reports/paper_portfolio_metrics_audit.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/paper_trade_engine_design_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/paper_trade_engine_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/paper_trade_plan.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/paper_trade_plan.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/paper_trade_pnl.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/paper_trade_pnl.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/parameter_sweep.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/parameter_sweep_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/path_dependency_audit.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/path_dependency_audit.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/persistence_breakout_shadow_observation_rules.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/persistence_breakout_shadow_portfolio.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/persistence_breakout_shadow_portfolio.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/persistence_breakout_shadow_signal.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/persistence_breakout_shadow_signal.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/persistence_breakout_shadow_summary.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/phase1_paper_trading_closure_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/phase2c_execution_layer_light_integration_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/phase3a_fastapi_react_app_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/phase3b_app_control_room_upgrade_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/phase3c_desktop_app_mvp_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/phase4c_alpha_model_comparison.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/phase4c_alpha_model_comparison.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/phase4c_alpha_model_decision.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/phase4c_alpha_summary.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/phase4c_data_next_step.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/phase4c_data_summary.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/portfolio_exposure.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/portfolio_exposure.json,REPORT_CURRENT,DO_NOT_MOVE,保持原路径,latest/current 报告被 dashboard/App/周报读取。,0,False,False
+reports/portfolio_exposure.md,REPORT_CURRENT,DO_NOT_MOVE,保持原路径,latest/current 报告被 dashboard/App/周报读取。,0,False,False
+reports/portfolio_exposure_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/position_review_state.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/position_review_state.json,REPORT_CURRENT,DO_NOT_MOVE,保持原路径,latest/current 报告被 dashboard/App/周报读取。,0,False,False
+reports/position_review_state.md,REPORT_CURRENT,DO_NOT_MOVE,保持原路径,latest/current 报告被 dashboard/App/周报读取。,0,False,False
+reports/post_expansion_automation_sync_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/profit_protection_preview.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/profit_protection_preview.json,REPORT_CURRENT,DO_NOT_MOVE,保持原路径,latest/current 报告被 dashboard/App/周报读取。,0,False,False
+reports/profit_protection_preview.md,REPORT_CURRENT,DO_NOT_MOVE,保持原路径,latest/current 报告被 dashboard/App/周报读取。,0,False,False
+reports/project_cleanup_roadmap.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/project_structure_audit.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/project_structure_audit.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/qmt_test_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/ranking_factor_diagnostics.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/ranking_factor_diagnostics.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/ranking_logic_audit.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/ranking_logic_audit.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/ranking_model_v2_backtest_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/ranking_model_v2_candidates.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/ranking_model_v2_decision_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/ranking_model_v2_design.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/ranking_model_v2_equity_curve.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/ranking_model_v2_execution_assumption.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/ranking_model_v2_metrics.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/ranking_model_v2_positions.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/ranking_model_v2_summary.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/ranking_model_v2_trades.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/ranking_model_v2_yearly_summary.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/ranking_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/ranking_signal_research_summary.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/recommended_project_layout.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/regime_aware_model_metrics.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/regime_aware_model_research.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/regime_aware_model_summary.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/report_index.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/report_index.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/review_state_audit.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/review_state_audit.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/risk_on_empty_signal_analysis.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/risk_on_empty_signal_analysis.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/risk_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/selected_vs_filtered_forward_return.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/selected_vs_filtered_forward_return.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/sell_signal_review.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/sell_signal_review.md,REPORT_CURRENT,DO_NOT_MOVE,保持原路径,latest/current 报告被 dashboard/App/周报读取。,0,False,False
+reports/sell_signal_review_design_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/sell_signal_review_history.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/shadow_observation_weekly.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/shadow_observation_weekly.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/shadow_observation_weekly.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/signals.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/strategy_compare_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/strategy_enhancement_preview.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/strategy_enhancement_preview.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/strategy_preview_shadow_portfolio.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/strategy_preview_shadow_portfolio.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/strategy_preview_tracking.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/strategy_preview_tracking_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/top10_candidate_filter_analysis.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/top10_candidate_filter_analysis.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/topn_selection_diagnostics.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/topn_selection_diagnostics.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/trade_execution_realism_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/trade_review_audit.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/trade_review_details.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/trade_review_details.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/trade_review_lessons.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/trade_review_open_positions.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/trade_review_open_positions.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/trade_review_summary.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/trade_review_summary.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/tushare_baostock_compare.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/tushare_baostock_compare.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/tushare_baostock_compare.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/tushare_config_check.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/tushare_config_check.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/tushare_no_lookahead_check.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/tushare_staging_check.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/tushare_staging_check.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/universe_quality_review.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/universe_quality_review.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/v2_underperformance_attribution.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/v2_underperformance_attribution.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/v2_underperformance_attribution.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/valuation_consistency_audit.json,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/valuation_consistency_audit.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/valuation_consistency_check.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/watchlist_health_report.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/weekly_full_backtest_results.csv,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/weekly_full_review.md,REPORT_CURRENT,SAFE_TO_ARCHIVE,先加入 report_index；确认无读取依赖后可分类归档,研究/审计报告较多，部分可能被 dashboard_links 引用。,0,True,False
+reports/weekly_review_2026-06-01.md,REPORT_ARCHIVE,SAFE_TO_ARCHIVE,Phase B 可归档到 reports/archive/,日期版或历史摘要，保留 latest 路径即可。,0,True,False
+reports/weekly_review_2026-06-02.md,REPORT_ARCHIVE,SAFE_TO_ARCHIVE,Phase B 可归档到 reports/archive/,日期版或历史摘要，保留 latest 路径即可。,0,True,False
+reports/weekly_review_2026-06-03.md,REPORT_ARCHIVE,SAFE_TO_ARCHIVE,Phase B 可归档到 reports/archive/,日期版或历史摘要，保留 latest 路径即可。,0,True,False
+reports/weekly_review_2026-06-09.md,REPORT_ARCHIVE,SAFE_TO_ARCHIVE,Phase B 可归档到 reports/archive/,日期版或历史摘要，保留 latest 路径即可。,0,True,False
+reports/weekly_review_2026-06-11.md,REPORT_ARCHIVE,SAFE_TO_ARCHIVE,Phase B 可归档到 reports/archive/,日期版或历史摘要，保留 latest 路径即可。,0,True,False
+reports/weekly_review_2026-06-12.md,REPORT_ARCHIVE,SAFE_TO_ARCHIVE,Phase B 可归档到 reports/archive/,日期版或历史摘要，保留 latest 路径即可。,0,True,False
+reports/weekly_review_2026-06-25.md,REPORT_ARCHIVE,SAFE_TO_ARCHIVE,Phase B 可归档到 reports/archive/,日期版或历史摘要，保留 latest 路径即可。,0,True,False
+reports/weekly_review_2026-06-26.md,REPORT_ARCHIVE,SAFE_TO_ARCHIVE,Phase B 可归档到 reports/archive/,日期版或历史摘要，保留 latest 路径即可。,0,True,False
+requirements.txt,DOCS,SAFE_TO_ARCHIVE,可整理进 docs 或保留根目录索引,文档类文件，迁移需更新链接。,0,False,False
+risk_rules.md,DOCS,SAFE_TO_ARCHIVE,可整理进 docs 或保留根目录索引,文档类文件，迁移需更新链接。,0,False,False
+scripts/build_etf_expansion_plan.py,SCRIPTS_MAINTENANCE,MOVE_ONLY_WITH_CODE_UPDATE,后续可整理到 scripts/maintenance 或 scripts/data,维护脚本可整理，但需要更新 README/调用路径。,7,False,True
+scripts/check_app_env.sh,SCRIPTS_MAINTENANCE,MOVE_ONLY_WITH_CODE_UPDATE,后续可整理到 scripts/maintenance 或 scripts/data,维护脚本可整理，但需要更新 README/调用路径。,12,False,True
+scripts/check_app_release.sh,SCRIPTS_MAINTENANCE,MOVE_ONLY_WITH_CODE_UPDATE,后续可整理到 scripts/maintenance 或 scripts/data,维护脚本可整理，但需要更新 README/调用路径。,14,False,True
+scripts/compare_jqdata_with_local.py,SCRIPTS_MAINTENANCE,MOVE_ONLY_WITH_CODE_UPDATE,后续可整理到 scripts/maintenance 或 scripts/data,维护脚本可整理，但需要更新 README/调用路径。,3,False,True
+scripts/create_app_shortcut.sh,SCRIPTS_MAINTENANCE,MOVE_ONLY_WITH_CODE_UPDATE,后续可整理到 scripts/maintenance 或 scripts/data,维护脚本可整理，但需要更新 README/调用路径。,0,False,True
+scripts/diagnose_app_launch.sh,SCRIPTS_MAINTENANCE,MOVE_ONLY_WITH_CODE_UPDATE,后续可整理到 scripts/maintenance 或 scripts/data,维护脚本可整理，但需要更新 README/调用路径。,1,False,True
+scripts/diagnose_jqdata_units.py,SCRIPTS_MAINTENANCE,MOVE_ONLY_WITH_CODE_UPDATE,后续可整理到 scripts/maintenance 或 scripts/data,维护脚本可整理，但需要更新 README/调用路径。,2,False,True
+scripts/download_jqdata_expanded_etfs.py,SCRIPTS_MAINTENANCE,MOVE_ONLY_WITH_CODE_UPDATE,后续可整理到 scripts/maintenance 或 scripts/data,维护脚本可整理，但需要更新 README/调用路径。,1,False,True
+scripts/download_manual_etf_history.py,SCRIPTS_MAINTENANCE,MOVE_ONLY_WITH_CODE_UPDATE,后续可整理到 scripts/maintenance 或 scripts/data,维护脚本可整理，但需要更新 README/调用路径。,2,False,True
+scripts/fetch_jqdata_expansion_candidates.py,SCRIPTS_MAINTENANCE,MOVE_ONLY_WITH_CODE_UPDATE,后续可整理到 scripts/maintenance 或 scripts/data,维护脚本可整理，但需要更新 README/调用路径。,1,False,True
+scripts/fix_app_launch_permissions.sh,SCRIPTS_MAINTENANCE,MOVE_ONLY_WITH_CODE_UPDATE,后续可整理到 scripts/maintenance 或 scripts/data,维护脚本可整理，但需要更新 README/调用路径。,0,False,True
+scripts/import_jqdata_staging.py,SCRIPTS_MAINTENANCE,MOVE_ONLY_WITH_CODE_UPDATE,后续可整理到 scripts/maintenance 或 scripts/data,维护脚本可整理，但需要更新 README/调用路径。,5,False,True
+scripts/import_manual_csv.py,SCRIPTS_MAINTENANCE,MOVE_ONLY_WITH_CODE_UPDATE,后续可整理到 scripts/maintenance 或 scripts/data,维护脚本可整理，但需要更新 README/调用路径。,8,False,True
+scripts/install_launchd_jobs.sh,SCRIPTS_RUNTIME,DO_NOT_MOVE,保持原路径,launchd、App 或用户命令可能直接调用。,0,False,False
+scripts/normalize_csv.py,SCRIPTS_MAINTENANCE,MOVE_ONLY_WITH_CODE_UPDATE,后续可整理到 scripts/maintenance 或 scripts/data,维护脚本可整理，但需要更新 README/调用路径。,2,False,True
+scripts/project_hygiene_audit.py,SCRIPTS_MAINTENANCE,MOVE_ONLY_WITH_CODE_UPDATE,后续可整理到 scripts/maintenance 或 scripts/data,维护脚本可整理，但需要更新 README/调用路径。,0,False,True
+scripts/resolve_etf_expansion_candidates.py,SCRIPTS_MAINTENANCE,MOVE_ONLY_WITH_CODE_UPDATE,后续可整理到 scripts/maintenance 或 scripts/data,维护脚本可整理，但需要更新 README/调用路径。,1,False,True
+scripts/run_afternoon_open_check.sh,SCRIPTS_RUNTIME,DO_NOT_MOVE,保持原路径,launchd、App 或用户命令可能直接调用。,1,False,False
+scripts/run_app.sh,CORE_CODE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,1,False,False
+scripts/run_catchup_check.sh,SCRIPTS_RUNTIME,DO_NOT_MOVE,保持原路径,launchd、App 或用户命令可能直接调用。,0,False,False
+scripts/run_codex_daily_research.sh,SCRIPTS_RUNTIME,DO_NOT_MOVE,保持原路径,launchd、App 或用户命令可能直接调用。,0,False,False
+scripts/run_codex_weekly_research.sh,SCRIPTS_RUNTIME,DO_NOT_MOVE,保持原路径,launchd、App 或用户命令可能直接调用。,0,False,False
+scripts/run_daily_close.sh,CORE_CODE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,10,False,False
+scripts/run_desktop_app.sh,SCRIPTS_RUNTIME,DO_NOT_MOVE,保持原路径,launchd、App 或用户命令可能直接调用。,1,False,False
+scripts/run_etf_expansion_data_pipeline.py,SCRIPTS_RUNTIME,DO_NOT_MOVE,保持原路径,launchd、App 或用户命令可能直接调用。,6,False,False
+scripts/run_midday_check.sh,SCRIPTS_RUNTIME,DO_NOT_MOVE,保持原路径,launchd、App 或用户命令可能直接调用。,1,False,False
+scripts/run_monthly_model_review.sh,SCRIPTS_RUNTIME,DO_NOT_MOVE,保持原路径,launchd、App 或用户命令可能直接调用。,1,False,False
+scripts/run_open_check.sh,SCRIPTS_RUNTIME,DO_NOT_MOVE,保持原路径,launchd、App 或用户命令可能直接调用。,1,False,False
+scripts/run_weekly_review.sh,CORE_CODE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,5,False,False
+scripts/test_jqdata_etf_daily.py,SCRIPTS_MAINTENANCE,MOVE_ONLY_WITH_CODE_UPDATE,后续可整理到 scripts/maintenance 或 scripts/data,维护脚本可整理，但需要更新 README/调用路径。,4,False,True
+scripts/test_qmt_xtdata.py,SCRIPTS_MAINTENANCE,MOVE_ONLY_WITH_CODE_UPDATE,后续可整理到 scripts/maintenance 或 scripts/data,维护脚本可整理，但需要更新 README/调用路径。,6,False,True
+scripts/test_scheduled_jobs.sh,SCRIPTS_MAINTENANCE,MOVE_ONLY_WITH_CODE_UPDATE,后续可整理到 scripts/maintenance 或 scripts/data,维护脚本可整理，但需要更新 README/调用路径。,0,False,True
+scripts/uninstall_launchd_jobs.sh,SCRIPTS_RUNTIME,DO_NOT_MOVE,保持原路径,launchd、App 或用户命令可能直接调用。,0,False,False
+scripts/update_etf_data.py,SCRIPTS_MAINTENANCE,MOVE_ONLY_WITH_CODE_UPDATE,后续可整理到 scripts/maintenance 或 scripts/data,维护脚本可整理，但需要更新 README/调用路径。,4,False,True
+scripts/validate_manual_csv.py,SCRIPTS_MAINTENANCE,MOVE_ONLY_WITH_CODE_UPDATE,后续可整理到 scripts/maintenance 或 scripts/data,维护脚本可整理，但需要更新 README/调用路径。,2,False,True
+src/.gitkeep,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/__init__.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/account.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/akshare_connectivity_check.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,1,False,True
+src/alpha_factor_enhancement_research.py,RESEARCH_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/automation_nodes.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,7,False,True
+src/automation_scheduler.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,4,False,True
+src/automation_state.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/backtest.py,RESEARCH_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,1,False,True
+src/backtest_diagnostics.py,RESEARCH_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/backtest_engine.py,RESEARCH_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,4,False,True
+src/broad_base_balance_preview.py,RESEARCH_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,13,False,True
+src/buy_ranking.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,4,False,True
+src/chatgpt_weekly_packet.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,27,False,True
+src/config.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,2,False,True
+src/data_coverage.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/data_fetcher.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/data_health.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/data_loader.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,2,False,True
+src/data_provider_status.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,1,False,True
+src/data_providers/__init__.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/data_providers/akshare_provider.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/data_providers/baostock_provider.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/data_providers/base.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/data_providers/jqdata_provider.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/data_providers/local_cache_provider.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/data_providers/tushare_provider.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/data_source_architecture_audit.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,10,False,True
+src/data_source_compare.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/data_sources/__init__.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/data_sources/jqdata_source.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/data_sources/source_router.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/etf_classification.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/etf_classifier.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,2,False,True
+src/etf_type_aware_model_research.py,RESEARCH_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/etf_volatility_profile.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/exit_rule_candidates.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,4,False,True
+src/exit_rule_research.py,RESEARCH_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/factor_analysis.py,RESEARCH_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/features.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/high_beta_risk_watch.py,RESEARCH_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,15,False,True
+src/holding_period_research.py,RESEARCH_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,2,False,True
+src/indicators.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/labels.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/main.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,5,False,True
+src/market_state.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,1,False,True
+src/missed_opportunity_tracker.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,5,False,True
+src/model_research.py,RESEARCH_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/model_research_quality_review.py,RESEARCH_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,17,False,True
+src/next_stage_strategy_research.py,RESEARCH_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,15,False,True
+src/paper_equity_backfill.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,13,False,True
+src/paper_performance.py,RESEARCH_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,6,False,True
+src/paper_portfolio.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,6,False,True
+src/paper_trade_engine.py,CORE_CODE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,18,False,False
+src/parameter_sweep.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/persistence_breakout_shadow.py,RESEARCH_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,10,False,True
+src/phase4c_alpha_common.py,RESEARCH_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/portfolio.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/portfolio_exposure.py,RESEARCH_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,6,False,True
+src/position_review_state.py,RESEARCH_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,19,False,True
+src/profit_protection_preview.py,RESEARCH_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,10,False,True
+src/ranking_factor_diagnostics.py,RESEARCH_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,3,False,True
+src/ranking_model_v2_backtest.py,RESEARCH_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,11,False,True
+src/regime_aware_model_research.py,RESEARCH_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/reporting.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,2,False,True
+src/sell_signal_review.py,RESEARCH_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,6,False,True
+src/shadow_observation_weekly.py,RESEARCH_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,4,False,True
+src/signal_engine.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/strategy.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/strategy_enhancement_preview.py,RESEARCH_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,14,False,True
+src/strategy_preview_tracking.py,RESEARCH_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,8,False,True
+src/trade_review.py,RESEARCH_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,6,False,True
+src/tushare_staging_check.py,CORE_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,5,False,True
+src/universe_quality_review.py,RESEARCH_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/v2_underperformance_attribution.py,RESEARCH_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,0,False,True
+src/valuation.py,RESEARCH_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,2,False,True
+src/valuation_consistency_audit.py,RESEARCH_CODE,MOVE_ONLY_WITH_CODE_UPDATE,先配置化 import 和路径，再考虑迁移到 src 子包,Python 模块可能被脚本、App 或 dashboard 直接导入。,12,False,True
+strategy.md,DOCS,SAFE_TO_ARCHIVE,可整理进 docs 或保留根目录索引,文档类文件，迁移需更新链接。,0,False,False
+trades.csv,TEMP_OR_LEGACY,UNKNOWN_NEEDS_REVIEW,列入候选清理清单，确认后再处理,根目录疑似临时或旧版文件。,0,False,False
+watchlist.csv,CORE_CODE,LOCKED,保持原路径,被运行链路或安全边界直接依赖。,0,False,False
+weekly_review.md,TEMP_OR_LEGACY,UNKNOWN_NEEDS_REVIEW,列入候选清理清单，确认后再处理,根目录疑似临时或旧版文件。,0,False,False
+打开App说明.md,DOCS,SAFE_TO_ARCHIVE,可整理进 docs 或保留根目录索引,文档类文件，迁移需更新链接。,0,False,False
+打开量化研究控制台.command,DIST_ASSETS,DO_NOT_MOVE,保持 App 包装器和图标路径,桌面启动器和打包资源可能依赖固定路径。,0,False,False
