@@ -73,7 +73,7 @@ src/style_fit_robustness.py
 ```bash
 git diff --name-only "$(git merge-base origin/main HEAD)"..HEAD |
   while IFS= read -r file; do
-    test -f "$file" && rg -n '/Users/dayin' "$file"
+    test -f "$file" && rg -n '/Users/' "$file"
   done
 ```
 
