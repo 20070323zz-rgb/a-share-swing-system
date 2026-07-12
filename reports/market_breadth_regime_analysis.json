@@ -1,0 +1,49 @@
+{
+  "generated_at": "2026-07-06 21:55:33",
+  "rows": [
+    {
+      "normalized_regime": "DEFENSIVE",
+      "sample_count": 58,
+      "buy_breadth_mean": 0.261273,
+      "buy_breadth_median": 0.230769,
+      "sell_breadth_mean": 0.59328,
+      "sell_breadth_median": 0.615385,
+      "strong_resonance_breadth_mean": 0.248011,
+      "strong_resonance_breadth_median": 0.205128,
+      "risk_pressure_mean": 0.492927,
+      "risk_pressure_median": 0.519231
+    },
+    {
+      "normalized_regime": "NEUTRAL",
+      "sample_count": 55,
+      "buy_breadth_mean": 0.384149,
+      "buy_breadth_median": 0.358974,
+      "sell_breadth_mean": 0.462005,
+      "sell_breadth_median": 0.461538,
+      "strong_resonance_breadth_mean": 0.303963,
+      "strong_resonance_breadth_median": 0.307692,
+      "risk_pressure_mean": 0.399767,
+      "risk_pressure_median": 0.371795
+    },
+    {
+      "normalized_regime": "OFFENSIVE",
+      "sample_count": 154,
+      "buy_breadth_mean": 0.44622,
+      "buy_breadth_median": 0.435897,
+      "sell_breadth_mean": 0.299867,
+      "sell_breadth_median": 0.282051,
+      "strong_resonance_breadth_mean": 0.313686,
+      "strong_resonance_breadth_median": 0.307692,
+      "risk_pressure_mean": 0.244838,
+      "risk_pressure_median": 0.217949
+    }
+  ],
+  "offensive_buy_breadth_minus_defensive": 0.18494700000000003,
+  "defensive_sell_breadth_minus_offensive": 0.29341300000000003,
+  "offensive_buy_breadth_higher": true,
+  "defensive_sell_breadth_higher": true,
+  "local_hotspot_misread_risk": false,
+  "strong_resonance_predictive_value": "needs forward-return confirmation; breadth is descriptive in this phase",
+  "research_only": true,
+  "execution_allowed": false
+}

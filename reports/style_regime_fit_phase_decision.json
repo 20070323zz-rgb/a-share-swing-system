@@ -1,0 +1,17 @@
+{
+  "generated_at": "2026-07-08 12:59:21",
+  "style_fit_has_historical_support": true,
+  "style_fit_has_incremental_signal_value": true,
+  "current_buy_top10_has_regime_conflict": true,
+  "current_portfolio_has_regime_conflict": true,
+  "buy_top10_conflict_count": 3,
+  "portfolio_conflict_count": 2,
+  "ready_for_fit_shadow_observation": true,
+  "ready_for_adjusted_preview_research": true,
+  "ready_for_preview": false,
+  "ready_for_execution": false,
+  "decision_reason": "style fit has historical support, regime differentiation, and preliminary incremental signal value; still shadow-only.",
+  "research_only": true,
+  "shadow_only": true,
+  "execution_allowed": false
+}

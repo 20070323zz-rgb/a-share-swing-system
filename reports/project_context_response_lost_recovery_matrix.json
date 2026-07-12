@@ -1,0 +1,45 @@
+{
+  "generated_at": "2026-07-07 23:37:14 CST",
+  "scope": "Project Context Persistence Phase D3 recovery classification matrix",
+  "classifications": [
+    {
+      "classification": "PARTIAL SIDE EFFECT",
+      "detection_conditions": [
+        "some expected outputs exist",
+        "some expected outputs are missing",
+        "task objective is not complete"
+      ],
+      "allowed_action": "resume missing work only, then run required validation",
+      "forbidden_action": "blind full batch rerun",
+      "batch_state_before_validation": "IN_PROGRESS",
+      "batch_state_after_success": "IN_PROGRESS until the enclosing batch completion protocol explicitly completes the batch"
+    },
+    {
+      "classification": "COMPLETE BUT RESPONSE LOST",
+      "detection_conditions": [
+        "expected outputs are complete",
+        "validation passed",
+        "decision generated",
+        "checkpoint correctly persisted",
+        "only final assistant response is missing"
+      ],
+      "allowed_action": "verify existing outputs and summarize or continue to the next checkpoint",
+      "forbidden_action": "re-execute completed task",
+      "batch_state_before_validation": "IN_PROGRESS or already valid next checkpoint",
+      "batch_state_after_success": "preserve existing state; do not duplicate state transition"
+    },
+    {
+      "classification": "VALIDATION MISSING",
+      "detection_conditions": [
+        "expected outputs are basically complete",
+        "required validation did not run",
+        "validation artifact is missing or stale"
+      ],
+      "allowed_action": "run missing validation only and decide COMPLETE or BLOCKED from the validation result",
+      "forbidden_action": "mark COMPLETE before validation",
+      "batch_state_before_validation": "IN_PROGRESS",
+      "batch_state_after_success": "eligible for checkpoint or batch completion according to protocol"
+    }
+  ],
+  "all_required_classifications_defined": true
+}

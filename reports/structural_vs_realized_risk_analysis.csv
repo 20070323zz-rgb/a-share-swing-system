@@ -1,0 +1,184 @@
+symbol,name,style_profile,structural_risk_score,structural_risk_profile,realized_risk_score,realized_risk_profile,score_gap,profile_gap,gap_direction,gap_reason
+159001,货币ETF,BOND,9.75,DEFENSIVE,4.5902,DEFENSIVE,5.1598,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159301,公用事业ETF华夏,DIVIDEND,38.7125,CORE,39.4262,CORE,-0.7137,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159302,港股高股息ETF银华,QDII_OBSERVATION,40.975,CORE,16.9672,DEFENSIVE,24.0078,1,structural_gt_realized,QDII_OBSERVATION has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+159315,黄金股ETF工银,COMMODITY_CYCLICAL,78.45,OFFENSIVE,81.5301,HIGH_BETA,-3.0801,-1,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159321,黄金股ETF华安,COMMODITY_CYCLICAL,78.45,OFFENSIVE,80.6284,HIGH_BETA,-2.1784,-1,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159327,半导体设备ETF万家,HIGH_BETA_THEME,83.95,HIGH_BETA,78.4426,HIGH_BETA,5.5074,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159332,央企红利ETF富国,DIVIDEND,36.9625,CORE,23.8798,DEFENSIVE,13.0827,1,structural_gt_realized,DIVIDEND has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+159333,港股央企红利ETF万家,QDII_OBSERVATION,42.725,CORE,21.6667,DEFENSIVE,21.0583,1,structural_gt_realized,QDII_OBSERVATION has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+159336,央企红利ETF融通,DIVIDEND,40.4625,CORE,33.6339,CORE,6.8286,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159338,国泰中证A500ETF,CORE_LARGE_CAP,44.525,CORE,41.1202,CORE,3.4048,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159352,南方中证A500ETF,CORE_LARGE_CAP,44.525,CORE,42.2678,CORE,2.2572,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159363,创业板人工智能ETF华宝,GROWTH_BROAD,71.575,OFFENSIVE,79.3716,HIGH_BETA,-7.7966,-1,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159395,信用债ETF大成,BOND,9.75,DEFENSIVE,7.377,DEFENSIVE,2.373,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159396,信用债ETF博时,BOND,9.75,DEFENSIVE,7.541,DEFENSIVE,2.209,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159398,信用债ETF天弘,BOND,9.75,DEFENSIVE,6.4208,DEFENSIVE,3.3292,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159516,半导体设备ETF国泰,HIGH_BETA_THEME,85.175,HIGH_BETA,87.8962,HIGH_BETA,-2.7212,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159518,标普油气ETF嘉实,QDII_OBSERVATION,60.95,OFFENSIVE,56.6393,OFFENSIVE,4.3107,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159531,中证2000ETF南方,CORE_MID_CAP,49.525,BALANCED,45.4918,BALANCED,4.0332,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159532,中证2000ETF易方达,CORE_MID_CAP,49.525,BALANCED,43.224,CORE,6.301,1,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159536,中证2000ETF汇添富,CORE_MID_CAP,51.275,BALANCED,47.2951,BALANCED,3.9799,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159538,信创ETF富国,HIGH_BETA_THEME,83.425,HIGH_BETA,79.918,HIGH_BETA,3.507,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159539,信创ETF广发,HIGH_BETA_THEME,83.425,HIGH_BETA,80.3552,HIGH_BETA,3.0698,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159540,信创ETF易方达,HIGH_BETA_THEME,83.425,HIGH_BETA,78.8525,HIGH_BETA,4.5725,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159545,恒生红利低波ETF易方达,QDII_OBSERVATION,42.725,CORE,24.6448,DEFENSIVE,18.0802,1,structural_gt_realized,QDII_OBSERVATION has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+159547,红利低波ETF华夏,DIVIDEND,33.025,CORE,17.3224,DEFENSIVE,15.7026,1,structural_gt_realized,DIVIDEND has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+159549,红利低波ETF天弘,DIVIDEND,33.025,CORE,17.0765,DEFENSIVE,15.9485,1,structural_gt_realized,DIVIDEND has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+159551,机器人ETF国泰,HIGH_BETA_THEME,79.575,OFFENSIVE,65.4372,OFFENSIVE,14.1378,0,structural_gt_realized,HIGH_BETA_THEME has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+159558,半导体设备ETF易方达,HIGH_BETA_THEME,83.95,HIGH_BETA,80.1366,HIGH_BETA,3.8134,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159559,机器人ETF景顺,HIGH_BETA_THEME,77.125,OFFENSIVE,68.6066,OFFENSIVE,8.5184,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159562,黄金股ETF华夏,COMMODITY_CYCLICAL,78.45,OFFENSIVE,81.8306,HIGH_BETA,-3.3806,-1,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159593,中证A50ETF,CORE_LARGE_CAP,42.775,CORE,33.9891,CORE,8.7859,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159595,中证A50ETF大成,CORE_LARGE_CAP,40.7625,CORE,34.5082,CORE,6.2543,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159608,稀有金属ETF广发,COMMODITY_CYCLICAL,77.225,OFFENSIVE,76.2295,HIGH_BETA,0.9955,-1,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159611,电力ETF广发,DIVIDEND,42.2125,CORE,47.5956,BALANCED,-5.3831,-1,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159613,信息安全ETF嘉实,HIGH_BETA_THEME,83.3375,HIGH_BETA,74.1257,HIGH_BETA,9.2118,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159615,恒生生物科技ETF南方,QDII_OBSERVATION,58.95,BALANCED,50.9563,BALANCED,7.9937,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159625,绿色电力ETF嘉实,DIVIDEND,40.4625,CORE,44.5355,BALANCED,-4.073,-1,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159638,高端装备ETF嘉实,GROWTH_THEME,73.2625,OFFENSIVE,69.2077,OFFENSIVE,4.0548,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159658,数字经济ETF华安,HIGH_BETA_THEME,83.425,HIGH_BETA,74.1803,HIGH_BETA,9.2447,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159663,机床ETF华夏,HIGH_BETA_THEME,79.1375,OFFENSIVE,65.6011,OFFENSIVE,13.5364,0,structural_gt_realized,HIGH_BETA_THEME has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+159667,工业母机ETF国泰,HIGH_BETA_THEME,84.65,HIGH_BETA,93.8798,HIGH_BETA,-9.2298,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159669,绿色电力ETF国泰,DIVIDEND,40.4625,CORE,44.6175,BALANCED,-4.155,-1,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159671,稀有金属ETF工银,COMMODITY_CYCLICAL,77.225,OFFENSIVE,76.8852,HIGH_BETA,0.3398,-1,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159697,石油ETF鹏华,COMMODITY_CYCLICAL,63.8375,OFFENSIVE,37.4863,CORE,26.3512,2,structural_gt_realized,COMMODITY_CYCLICAL has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+159699,恒生消费ETF广发,QDII_OBSERVATION,54.6625,BALANCED,30.1093,DEFENSIVE,24.5532,2,structural_gt_realized,QDII_OBSERVATION has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+159703,新材料ETF天弘,COMMODITY_CYCLICAL,71.625,OFFENSIVE,57.8962,OFFENSIVE,13.7288,0,structural_gt_realized,COMMODITY_CYCLICAL has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+159717,ESGETF鹏华,DIVIDEND,42.475,CORE,39.8361,CORE,2.6389,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159726,港股通高股息ETF华夏,QDII_OBSERVATION,43.1625,CORE,17.8689,DEFENSIVE,25.2936,1,structural_gt_realized,QDII_OBSERVATION has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+159732,消费电子ETF华夏,SECTOR_DEFENSIVE,71.175,OFFENSIVE,76.0929,HIGH_BETA,-4.9179,-1,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159735,港股消费ETF银华,QDII_OBSERVATION,55.8875,BALANCED,34.0437,CORE,21.8438,1,structural_gt_realized,QDII_OBSERVATION has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+159736,食品ETF,SECTOR_DEFENSIVE,49.8125,BALANCED,33.0874,CORE,16.7251,1,structural_gt_realized,SECTOR_DEFENSIVE has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+159745,建材ETF国泰,COMMODITY_CYCLICAL,67.6,OFFENSIVE,39.9454,CORE,27.6546,2,structural_gt_realized,COMMODITY_CYCLICAL has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+159755,电池ETF,COMMODITY_CYCLICAL,75.125,OFFENSIVE,68.2514,OFFENSIVE,6.8736,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159758,红利质量ETF华夏,DIVIDEND,42.475,CORE,33.9891,CORE,8.4859,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159763,新材料ETF建信,COMMODITY_CYCLICAL,71.625,OFFENSIVE,57.4317,OFFENSIVE,14.1933,0,structural_gt_realized,COMMODITY_CYCLICAL has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+159766,旅游ETF,SECTOR_DEFENSIVE,54.5375,BALANCED,50.3825,BALANCED,4.155,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159770,机器人ETF,HIGH_BETA_THEME,79.575,OFFENSIVE,65.0,OFFENSIVE,14.575,0,structural_gt_realized,HIGH_BETA_THEME has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+159787,建材ETF易方达,COMMODITY_CYCLICAL,65.5875,OFFENSIVE,38.4973,CORE,27.0902,2,structural_gt_realized,COMMODITY_CYCLICAL has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+159791,300ESGETF华夏,DIVIDEND,38.7125,CORE,35.2732,CORE,3.4393,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159795,智能汽车ETF汇添富,GROWTH_THEME,70.725,OFFENSIVE,59.8907,OFFENSIVE,10.8343,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159797,医疗器械ETF汇添富,SECTOR_DEFENSIVE,52.7875,BALANCED,47.7869,BALANCED,5.0006,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159806,新能源车电池ETF,COMMODITY_CYCLICAL,73.375,OFFENSIVE,67.7322,OFFENSIVE,5.6428,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159819,人工智能ETF,HIGH_BETA_THEME,86.925,HIGH_BETA,78.6612,HIGH_BETA,8.2638,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159825,农业ETF,COMMODITY_CYCLICAL,66.1375,OFFENSIVE,44.3169,BALANCED,21.8206,1,structural_gt_realized,COMMODITY_CYCLICAL has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+159835,建信创新药ETF,SECTOR_DEFENSIVE,52.7625,BALANCED,47.4044,BALANCED,5.3581,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159840,锂电池ETF工银,COMMODITY_CYCLICAL,75.125,OFFENSIVE,67.6503,OFFENSIVE,7.4747,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159857,光伏ETF,COMMODITY_CYCLICAL,75.125,OFFENSIVE,71.3661,HIGH_BETA,3.7589,-1,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159858,南方创新药ETF,SECTOR_DEFENSIVE,54.5125,BALANCED,50.6284,BALANCED,3.8841,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159865,养殖ETF,COMMODITY_CYCLICAL,64.3875,OFFENSIVE,43.1694,CORE,21.2181,2,structural_gt_realized,COMMODITY_CYCLICAL has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+159869,游戏ETF,GROWTH_THEME,76.7625,OFFENSIVE,66.5847,OFFENSIVE,10.1778,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159870,化工ETF,COMMODITY_CYCLICAL,70.425,OFFENSIVE,56.4208,BALANCED,14.0042,1,structural_gt_realized,COMMODITY_CYCLICAL has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+159876,有色金属ETF,COMMODITY_CYCLICAL,80.75,HIGH_BETA,87.1038,HIGH_BETA,-6.3538,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159883,医疗器械ETF永赢,SECTOR_DEFENSIVE,52.7875,BALANCED,43.9344,BALANCED,8.8531,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159888,智能汽车ETF华夏,GROWTH_THEME,70.725,OFFENSIVE,57.5956,OFFENSIVE,13.1294,0,structural_gt_realized,GROWTH_THEME has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+159889,智能汽车ETF国泰,GROWTH_THEME,70.725,OFFENSIVE,55.4918,BALANCED,15.2332,1,structural_gt_realized,GROWTH_THEME has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+159898,医疗器械ETF招商,SECTOR_DEFENSIVE,52.7875,BALANCED,46.2842,BALANCED,6.5033,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159901,深100ETF,CORE_MID_CAP,56.5125,BALANCED,51.612,BALANCED,4.9005,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159905,深红利ETF,DIVIDEND,40.4625,CORE,34.2896,CORE,6.1729,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159915,创业板ETF,CORE_MID_CAP,63.25,OFFENSIVE,63.8251,OFFENSIVE,-0.5751,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159920,恒生ETF,QDII_OBSERVATION,56.675,BALANCED,30.2732,DEFENSIVE,26.4018,2,structural_gt_realized,QDII_OBSERVATION has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+159928,消费ETF,SECTOR_DEFENSIVE,51.0375,BALANCED,36.4754,CORE,14.5621,1,structural_gt_realized,SECTOR_DEFENSIVE has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+159929,医药ETF,SECTOR_DEFENSIVE,51.5625,BALANCED,39.3443,CORE,12.2182,1,structural_gt_realized,SECTOR_DEFENSIVE has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+159930,能源ETF,COMMODITY_CYCLICAL,63.1625,OFFENSIVE,41.0383,CORE,22.1242,2,structural_gt_realized,COMMODITY_CYCLICAL has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+159940,金融ETF,SECTOR_CYCLICAL,59.6125,BALANCED,31.4481,CORE,28.1644,1,structural_gt_realized,SECTOR_CYCLICAL has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+159941,纳指ETF,QDII_OBSERVATION,56.4125,BALANCED,45.0,BALANCED,11.4125,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159949,创业板50ETF,CORE_MID_CAP,64.5625,OFFENSIVE,67.5683,OFFENSIVE,-3.0058,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159954,恒生中国企业ETF南方,QDII_OBSERVATION,50.425,BALANCED,41.0109,CORE,9.4141,1,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159992,银华创新药ETF,SECTOR_DEFENSIVE,54.5125,BALANCED,51.0656,BALANCED,3.4469,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159995,芯片ETF,HIGH_BETA_THEME,86.925,HIGH_BETA,87.9781,HIGH_BETA,-1.0531,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+159996,家电ETF,SECTOR_DEFENSIVE,49.8125,BALANCED,30.3552,DEFENSIVE,19.4573,2,structural_gt_realized,SECTOR_DEFENSIVE has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+159997,电子ETF天弘,HIGH_BETA_THEME,83.425,HIGH_BETA,75.0,HIGH_BETA,8.425,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+510050,上证50ETF,CORE_LARGE_CAP,41.025,CORE,30.9563,DEFENSIVE,10.0687,1,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+510060,央企ETF,DIVIDEND,34.775,CORE,19.8361,DEFENSIVE,14.9389,1,structural_gt_realized,DIVIDEND has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+510180,上证180ETF,CORE_LARGE_CAP,42.775,CORE,32.2131,CORE,10.5619,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+510230,金融ETF,CORE_MID_CAP,42.2625,CORE,25.9563,DEFENSIVE,16.3062,1,structural_gt_realized,CORE_MID_CAP has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+510270,国企ETF,DIVIDEND,38.7125,CORE,24.5628,DEFENSIVE,14.1497,1,structural_gt_realized,DIVIDEND has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+510300,沪深300ETF,CORE_LARGE_CAP,42.775,CORE,38.0328,CORE,4.7422,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+510410,资源ETF,COMMODITY_CYCLICAL,73.4875,OFFENSIVE,56.5574,OFFENSIVE,16.9301,0,structural_gt_realized,COMMODITY_CYCLICAL has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+510500,中证500ETF,CORE_MID_CAP,62.025,OFFENSIVE,52.1038,BALANCED,9.9212,1,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+510880,红利ETF,DIVIDEND,35.2125,CORE,22.623,DEFENSIVE,12.5895,1,structural_gt_realized,DIVIDEND has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+511010,国债ETF,BOND,9.75,DEFENSIVE,6.4754,DEFENSIVE,3.2746,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+511030,公司债ETF,BOND,9.75,DEFENSIVE,6.8033,DEFENSIVE,2.9467,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+511090,30年国债ETF,BOND,9.75,DEFENSIVE,9.6448,DEFENSIVE,0.1052,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+511260,十年国债ETF,BOND,9.75,DEFENSIVE,7.4044,DEFENSIVE,2.3456,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+511360,短融ETF,BOND,9.75,DEFENSIVE,4.5902,DEFENSIVE,5.1598,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+511380,可转债ETF,BOND,19.025,DEFENSIVE,17.6776,DEFENSIVE,1.3474,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+511520,政金债ETF,BOND,9.75,DEFENSIVE,8.1148,DEFENSIVE,1.6352,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+511600,货币ETF,BOND,9.75,DEFENSIVE,5.9016,DEFENSIVE,3.8484,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+511690,交易货币ETF大成,BOND,9.75,DEFENSIVE,4.7541,DEFENSIVE,4.9959,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+511880,银华日利ETF,BOND,9.75,DEFENSIVE,4.7541,DEFENSIVE,4.9959,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+511990,华宝添益ETF,BOND,9.75,DEFENSIVE,4.918,DEFENSIVE,4.832,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+512010,医药ETF,SECTOR_DEFENSIVE,49.8125,BALANCED,39.7541,CORE,10.0584,1,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+512050,华夏中证A500ETF,CORE_LARGE_CAP,44.525,CORE,42.2951,CORE,2.2299,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+512070,非银ETF,SECTOR_CYCLICAL,76.7875,HIGH_BETA,56.5301,BALANCED,20.2574,2,structural_gt_realized,SECTOR_CYCLICAL has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+512100,中证1000ETF,CORE_MID_CAP,51.275,BALANCED,44.9727,BALANCED,6.3023,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+512170,医疗ETF,SECTOR_DEFENSIVE,52.7875,BALANCED,39.5355,CORE,13.252,1,structural_gt_realized,SECTOR_DEFENSIVE has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+512200,房地产ETF,SECTOR_CYCLICAL,66.35,OFFENSIVE,50.4372,BALANCED,15.9128,1,structural_gt_realized,SECTOR_CYCLICAL has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+512400,有色ETF,COMMODITY_CYCLICAL,80.75,HIGH_BETA,85.2459,HIGH_BETA,-4.4959,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+512480,半导体ETF,HIGH_BETA_THEME,88.15,HIGH_BETA,94.3169,HIGH_BETA,-6.1669,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+512660,军工ETF,COMMODITY_CYCLICAL,75.9125,OFFENSIVE,69.8087,OFFENSIVE,6.1038,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+512670,国防ETF,COMMODITY_CYCLICAL,75.9125,OFFENSIVE,70.8197,OFFENSIVE,5.0928,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+512690,酒ETF,SECTOR_DEFENSIVE,52.7875,BALANCED,42.4863,CORE,10.3012,1,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+512760,芯片ETF,HIGH_BETA_THEME,88.15,HIGH_BETA,93.8251,HIGH_BETA,-5.6751,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+512800,银行ETF,SECTOR_DEFENSIVE,44.125,CORE,16.5574,DEFENSIVE,27.5676,1,structural_gt_realized,SECTOR_DEFENSIVE has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+512880,证券ETF,SECTOR_CYCLICAL,75.5625,HIGH_BETA,55.6011,BALANCED,19.9614,2,structural_gt_realized,SECTOR_CYCLICAL has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+512890,红利低波ETF,DIVIDEND,33.025,CORE,15.7104,DEFENSIVE,17.3146,1,structural_gt_realized,DIVIDEND has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+512980,传媒ETF,GROWTH_THEME,76.7625,OFFENSIVE,71.2022,OFFENSIVE,5.5603,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+513030,德国ETF,QDII_OBSERVATION,56.4125,BALANCED,37.2131,CORE,19.1994,1,structural_gt_realized,QDII_OBSERVATION has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+513050,中概互联网ETF,QDII_OBSERVATION,61.4,OFFENSIVE,56.8033,OFFENSIVE,4.5967,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+513060,恒生医疗ETF,QDII_OBSERVATION,57.6375,BALANCED,49.0164,BALANCED,8.6211,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+513100,纳指ETF,QDII_OBSERVATION,56.4125,BALANCED,42.5956,CORE,13.8169,1,structural_gt_realized,QDII_OBSERVATION has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+513120,港股创新药ETF,QDII_OBSERVATION,66.2,OFFENSIVE,56.9126,OFFENSIVE,9.2874,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+513130,恒生科技ETF,QDII_OBSERVATION,63.15,OFFENSIVE,55.3279,BALANCED,7.8221,1,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+513150,港股科技ETF,QDII_OBSERVATION,63.15,OFFENSIVE,59.3716,OFFENSIVE,3.7784,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+513180,恒生科技ETF,QDII_OBSERVATION,63.15,OFFENSIVE,58.0055,OFFENSIVE,5.1445,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+513330,恒生互联网ETF,QDII_OBSERVATION,61.4,OFFENSIVE,55.6011,BALANCED,5.7989,1,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+513500,标普500ETF,QDII_OBSERVATION,51.1625,BALANCED,21.5027,DEFENSIVE,29.6598,2,structural_gt_realized,QDII_OBSERVATION has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+513520,日经ETF,QDII_OBSERVATION,68.7375,OFFENSIVE,64.1257,OFFENSIVE,4.6118,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+513880,日经225ETF,QDII_OBSERVATION,68.7375,OFFENSIVE,63.0055,OFFENSIVE,5.732,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+515000,科技ETF,GROWTH_THEME,76.075,OFFENSIVE,68.5519,OFFENSIVE,7.5231,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+515050,5GETF,GROWTH_THEME,81.2375,HIGH_BETA,94.9454,HIGH_BETA,-13.7079,0,realized_gt_structural,"Recent realized volatility/beta/drawdown is higher than the ETF's structural style baseline; needs observation, not automatic action."
+515070,AIETF,HIGH_BETA_THEME,88.15,HIGH_BETA,96.4754,HIGH_BETA,-8.3254,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+515080,中证红利ETF,DIVIDEND,34.775,CORE,25.6831,DEFENSIVE,9.0919,1,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+515120,广发创新药ETF,SECTOR_DEFENSIVE,54.5125,BALANCED,52.0492,BALANCED,2.4633,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+515170,食品饮料ETF,SECTOR_DEFENSIVE,51.5625,BALANCED,33.7978,CORE,17.7647,1,structural_gt_realized,SECTOR_DEFENSIVE has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+515210,钢铁ETF,COMMODITY_CYCLICAL,67.6,OFFENSIVE,46.1749,BALANCED,21.4251,1,structural_gt_realized,COMMODITY_CYCLICAL has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+515220,煤炭ETF,COMMODITY_CYCLICAL,67.45,OFFENSIVE,50.8743,BALANCED,16.5757,1,structural_gt_realized,COMMODITY_CYCLICAL has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+515230,软件ETF,GROWTH_THEME,81.2375,HIGH_BETA,78.224,HIGH_BETA,3.0135,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+515260,电子ETF,HIGH_BETA_THEME,83.425,HIGH_BETA,75.9563,HIGH_BETA,7.4687,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+515630,保险证券,SECTOR_CYCLICAL,75.5625,HIGH_BETA,55.2459,BALANCED,20.3166,2,structural_gt_realized,SECTOR_CYCLICAL has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+515650,消费50ETF,SECTOR_DEFENSIVE,48.0625,BALANCED,28.5792,DEFENSIVE,19.4833,2,structural_gt_realized,SECTOR_DEFENSIVE has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+515700,新能源车ETF,COMMODITY_CYCLICAL,73.375,OFFENSIVE,68.7705,OFFENSIVE,4.6045,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+515790,光伏ETF,COMMODITY_CYCLICAL,73.375,OFFENSIVE,69.4536,OFFENSIVE,3.9214,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+515880,证券公司ETF,SECTOR_CYCLICAL,84.8375,HIGH_BETA,96.776,HIGH_BETA,-11.9385,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+516020,化工ETF,COMMODITY_CYCLICAL,70.425,OFFENSIVE,53.9071,BALANCED,16.5179,1,structural_gt_realized,COMMODITY_CYCLICAL has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+516080,易方达创新药ETF,SECTOR_DEFENSIVE,54.5125,BALANCED,49.6175,BALANCED,4.895,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+516110,汽车ETF,SECTOR_DEFENSIVE,54.8,BALANCED,48.9617,BALANCED,5.8383,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+516160,新能源ETF,COMMODITY_CYCLICAL,76.35,OFFENSIVE,66.4208,OFFENSIVE,9.9292,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+516360,新材料ETF,COMMODITY_CYCLICAL,71.625,OFFENSIVE,57.8142,OFFENSIVE,13.8108,0,structural_gt_realized,COMMODITY_CYCLICAL has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+516390,新能源汽车ETF,COMMODITY_CYCLICAL,73.375,OFFENSIVE,67.2404,OFFENSIVE,6.1346,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+516510,云计算ETF,GROWTH_THEME,80.0125,HIGH_BETA,79.1803,HIGH_BETA,0.8322,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+516720,ESGETF,DIVIDEND,40.4625,CORE,41.4754,CORE,-1.0129,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+516750,建材ETF,COMMODITY_CYCLICAL,67.6,OFFENSIVE,39.3989,CORE,28.2011,2,structural_gt_realized,COMMODITY_CYCLICAL has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+516780,稀土ETF,COMMODITY_CYCLICAL,77.6875,OFFENSIVE,83.3333,HIGH_BETA,-5.6458,-1,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+516800,智能制造ETF,COMMODITY_CYCLICAL,76.4375,OFFENSIVE,73.4153,HIGH_BETA,3.0222,-1,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+518880,黄金ETF,SECTOR_CYCLICAL,67.4,OFFENSIVE,48.7705,BALANCED,18.6295,1,structural_gt_realized,SECTOR_CYCLICAL has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+520550,港股红利低波ETF,QDII_OBSERVATION,42.725,CORE,22.1038,DEFENSIVE,20.6212,1,structural_gt_realized,QDII_OBSERVATION has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+560510,泰康中证A500ETF,CORE_LARGE_CAP,42.775,CORE,40.4098,CORE,2.3652,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+561360,石油ETF,COMMODITY_CYCLICAL,65.15,OFFENSIVE,37.2678,CORE,27.8822,2,structural_gt_realized,COMMODITY_CYCLICAL has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+561560,电力ETF,DIVIDEND,40.4625,CORE,45.929,BALANCED,-5.4665,-1,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+562500,机器人ETF华夏,HIGH_BETA_THEME,79.575,OFFENSIVE,65.2186,OFFENSIVE,14.3564,0,structural_gt_realized,HIGH_BETA_THEME has higher long-term/structural risk character than recent realized market risk; not a trading signal.
+562550,绿电ETF,DIVIDEND,40.4625,CORE,47.1038,BALANCED,-6.6413,-1,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+562920,信息安全,HIGH_BETA_THEME,82.1125,HIGH_BETA,74.4536,HIGH_BETA,7.6589,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+563360,华泰柏瑞中证A500ETF,CORE_LARGE_CAP,44.525,CORE,42.377,CORE,2.148,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+563800,广发中证A500ETF,CORE_LARGE_CAP,42.775,CORE,40.6557,CORE,2.1193,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+588000,科创50ETF,CORE_MID_CAP,67.625,OFFENSIVE,77.2951,HIGH_BETA,-9.6701,-1,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+588030,博时科创100ETF,CORE_MID_CAP,63.3375,OFFENSIVE,64.4262,OFFENSIVE,-1.0887,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+588080,科创创业50ETF,CORE_MID_CAP,67.625,OFFENSIVE,76.6667,HIGH_BETA,-9.0417,-1,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+588120,国泰科创100ETF,CORE_MID_CAP,62.8125,OFFENSIVE,82.8415,HIGH_BETA,-20.029,-1,realized_gt_structural,"Recent realized volatility/beta/drawdown is higher than the ETF's structural style baseline; needs observation, not automatic action."
+588190,银华科创100ETF,CORE_MID_CAP,63.3375,OFFENSIVE,65.4645,OFFENSIVE,-2.127,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+588200,科创芯片ETF,HIGH_BETA_THEME,83.725,HIGH_BETA,84.1257,HIGH_BETA,-0.4007,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+588220,科创100ETF基金,CORE_MID_CAP,63.3375,OFFENSIVE,65.4645,OFFENSIVE,-2.127,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.
+588800,华夏科创100ETF,CORE_MID_CAP,63.3375,OFFENSIVE,65.2459,OFFENSIVE,-1.9084,0,aligned_or_mild_gap,Structural and realized risk are broadly aligned or only mildly different.

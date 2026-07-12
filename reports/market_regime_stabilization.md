@@ -1,0 +1,24 @@
+# Market Regime Stabilization Replay
+
+Candidate A/B/C/D 均为 research-only / shadow-only，不影响正式 market_regime。
+
+- selected_candidate: ASYMMETRIC_CONFIRM
+- current_date: 2026-07-06
+- raw_regime: NEUTRAL
+- CONFIRM_2D: NEUTRAL
+- CONFIRM_3D: NEUTRAL
+- ASYMMETRIC_CONFIRM: NEUTRAL
+
+## Latest Rows
+| date | raw_regime | candidate_b_regime | candidate_c_regime | candidate_d_regime |
+| --- | --- | --- | --- | --- |
+| 2026-06-23 | OFFENSIVE | OFFENSIVE | OFFENSIVE | OFFENSIVE |
+| 2026-06-24 | NEUTRAL | OFFENSIVE | OFFENSIVE | OFFENSIVE |
+| 2026-06-25 | OFFENSIVE | OFFENSIVE | OFFENSIVE | OFFENSIVE |
+| 2026-06-26 | NEUTRAL | OFFENSIVE | OFFENSIVE | OFFENSIVE |
+| 2026-06-29 | OFFENSIVE | OFFENSIVE | OFFENSIVE | OFFENSIVE |
+| 2026-06-30 | OFFENSIVE | OFFENSIVE | OFFENSIVE | OFFENSIVE |
+| 2026-07-01 | OFFENSIVE | OFFENSIVE | OFFENSIVE | OFFENSIVE |
+| 2026-07-02 | NEUTRAL | OFFENSIVE | OFFENSIVE | OFFENSIVE |
+| 2026-07-03 | NEUTRAL | NEUTRAL | OFFENSIVE | NEUTRAL |
+| 2026-07-06 | NEUTRAL | NEUTRAL | NEUTRAL | NEUTRAL |

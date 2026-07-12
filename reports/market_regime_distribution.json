@@ -1,0 +1,177 @@
+{
+  "generated_at": "2026-07-06 21:55:05",
+  "total_days": 267,
+  "distribution": {
+    "OFFENSIVE": {
+      "day_count": 154,
+      "percentage": 0.5767790262172284
+    },
+    "NEUTRAL": {
+      "day_count": 55,
+      "percentage": 0.20599250936329588
+    },
+    "DEFENSIVE": {
+      "day_count": 58,
+      "percentage": 0.21722846441947566
+    }
+  },
+  "monthly_distribution": [
+    {
+      "month": "2025-05",
+      "trading_days": 1,
+      "OFFENSIVE_days": 0,
+      "OFFENSIVE_pct": 0.0,
+      "NEUTRAL_days": 1,
+      "NEUTRAL_pct": 1.0,
+      "DEFENSIVE_days": 0,
+      "DEFENSIVE_pct": 0.0
+    },
+    {
+      "month": "2025-06",
+      "trading_days": 20,
+      "OFFENSIVE_days": 4,
+      "OFFENSIVE_pct": 0.2,
+      "NEUTRAL_days": 12,
+      "NEUTRAL_pct": 0.6,
+      "DEFENSIVE_days": 4,
+      "DEFENSIVE_pct": 0.2
+    },
+    {
+      "month": "2025-07",
+      "trading_days": 23,
+      "OFFENSIVE_days": 23,
+      "OFFENSIVE_pct": 1.0,
+      "NEUTRAL_days": 0,
+      "NEUTRAL_pct": 0.0,
+      "DEFENSIVE_days": 0,
+      "DEFENSIVE_pct": 0.0
+    },
+    {
+      "month": "2025-08",
+      "trading_days": 21,
+      "OFFENSIVE_days": 21,
+      "OFFENSIVE_pct": 1.0,
+      "NEUTRAL_days": 0,
+      "NEUTRAL_pct": 0.0,
+      "DEFENSIVE_days": 0,
+      "DEFENSIVE_pct": 0.0
+    },
+    {
+      "month": "2025-09",
+      "trading_days": 22,
+      "OFFENSIVE_days": 22,
+      "OFFENSIVE_pct": 1.0,
+      "NEUTRAL_days": 0,
+      "NEUTRAL_pct": 0.0,
+      "DEFENSIVE_days": 0,
+      "DEFENSIVE_pct": 0.0
+    },
+    {
+      "month": "2025-10",
+      "trading_days": 17,
+      "OFFENSIVE_days": 10,
+      "OFFENSIVE_pct": 0.5882352941176471,
+      "NEUTRAL_days": 5,
+      "NEUTRAL_pct": 0.29411764705882354,
+      "DEFENSIVE_days": 2,
+      "DEFENSIVE_pct": 0.11764705882352941
+    },
+    {
+      "month": "2025-11",
+      "trading_days": 20,
+      "OFFENSIVE_days": 4,
+      "OFFENSIVE_pct": 0.2,
+      "NEUTRAL_days": 8,
+      "NEUTRAL_pct": 0.4,
+      "DEFENSIVE_days": 8,
+      "DEFENSIVE_pct": 0.4
+    },
+    {
+      "month": "2025-12",
+      "trading_days": 23,
+      "OFFENSIVE_days": 10,
+      "OFFENSIVE_pct": 0.43478260869565216,
+      "NEUTRAL_days": 4,
+      "NEUTRAL_pct": 0.17391304347826086,
+      "DEFENSIVE_days": 9,
+      "DEFENSIVE_pct": 0.391304347826087
+    },
+    {
+      "month": "2026-01",
+      "trading_days": 20,
+      "OFFENSIVE_days": 15,
+      "OFFENSIVE_pct": 0.75,
+      "NEUTRAL_days": 5,
+      "NEUTRAL_pct": 0.25,
+      "DEFENSIVE_days": 0,
+      "DEFENSIVE_pct": 0.0
+    },
+    {
+      "month": "2026-02",
+      "trading_days": 14,
+      "OFFENSIVE_days": 0,
+      "OFFENSIVE_pct": 0.0,
+      "NEUTRAL_days": 0,
+      "NEUTRAL_pct": 0.0,
+      "DEFENSIVE_days": 14,
+      "DEFENSIVE_pct": 1.0
+    },
+    {
+      "month": "2026-03",
+      "trading_days": 22,
+      "OFFENSIVE_days": 1,
+      "OFFENSIVE_pct": 0.045454545454545456,
+      "NEUTRAL_days": 11,
+      "NEUTRAL_pct": 0.5,
+      "DEFENSIVE_days": 10,
+      "DEFENSIVE_pct": 0.45454545454545453
+    },
+    {
+      "month": "2026-04",
+      "trading_days": 21,
+      "OFFENSIVE_days": 13,
+      "OFFENSIVE_pct": 0.6190476190476191,
+      "NEUTRAL_days": 1,
+      "NEUTRAL_pct": 0.047619047619047616,
+      "DEFENSIVE_days": 7,
+      "DEFENSIVE_pct": 0.3333333333333333
+    },
+    {
+      "month": "2026-05",
+      "trading_days": 18,
+      "OFFENSIVE_days": 18,
+      "OFFENSIVE_pct": 1.0,
+      "NEUTRAL_days": 0,
+      "NEUTRAL_pct": 0.0,
+      "DEFENSIVE_days": 0,
+      "DEFENSIVE_pct": 0.0
+    },
+    {
+      "month": "2026-06",
+      "trading_days": 21,
+      "OFFENSIVE_days": 12,
+      "OFFENSIVE_pct": 0.5714285714285714,
+      "NEUTRAL_days": 5,
+      "NEUTRAL_pct": 0.23809523809523808,
+      "DEFENSIVE_days": 4,
+      "DEFENSIVE_pct": 0.19047619047619047
+    },
+    {
+      "month": "2026-07",
+      "trading_days": 4,
+      "OFFENSIVE_days": 1,
+      "OFFENSIVE_pct": 0.25,
+      "NEUTRAL_days": 3,
+      "NEUTRAL_pct": 0.75,
+      "DEFENSIVE_days": 0,
+      "DEFENSIVE_pct": 0.0
+    }
+  ],
+  "dominant_regime": "OFFENSIVE",
+  "dominant_regime_percentage": 0.5767790262172284,
+  "extreme_imbalance": false,
+  "has_two_states_with_samples": true,
+  "has_discrimination": true,
+  "research_only": true,
+  "execution_allowed": false
+}

@@ -1,0 +1,44 @@
+{
+  "simulation_version": 1,
+  "generated_at": "2026-07-07 23:37:14 CST",
+  "simulated_event": "Codex response stream disconnected after partial D3 side effects",
+  "simulated_task": "Context Phase D3 - Response Lost Recovery Simulation",
+  "response_lost": true,
+  "worktree_inspection_required": true,
+  "expected_output_inspection_required": true,
+  "validation_inspection_required": true,
+  "expected_outputs": {
+    "A": {
+      "path": "reports/project_context_response_lost_recovery_simulation.md",
+      "simulated_state": "exists_before_recovery"
+    },
+    "B": {
+      "path": "reports/project_context_response_lost_recovery_simulation.json",
+      "simulated_state": "exists_before_recovery"
+    },
+    "C": {
+      "path": "reports/project_context_phase_d3_decision.json",
+      "simulated_state": "missing_before_recovery"
+    }
+  },
+  "completed_side_effects": [
+    "reports/project_context_response_lost_recovery_simulation.md",
+    "reports/project_context_response_lost_recovery_simulation.json"
+  ],
+  "missing_side_effects": [
+    "reports/project_context_phase_d3_decision.json",
+    "required validation run",
+    "checkpoint migration to Context Phase D4"
+  ],
+  "validation_state_before_recovery": "not_fully_run",
+  "simulated_recovery_classification": "PARTIAL SIDE EFFECT",
+  "classification_reason": "Expected outputs A and B are already present, expected output C is missing, and required validation has not fully run. The task objective is incomplete but some side effects must be preserved.",
+  "minimal_resume_action": "Audit A/B, preserve verified side effects, create missing D3 decision C, run required validation, then update the internal checkpoint to Context Phase D4 only if validation passes.",
+  "blind_rerun_allowed": false,
+  "completed_work_preserved": true,
+  "missing_work_only_resumed": true,
+  "validation_required_before_complete": true,
+  "response_lost_recovery_supported": true,
+  "response_lost_is_execution_failure": false,
+  "response_lost_is_task_complete": false
+}

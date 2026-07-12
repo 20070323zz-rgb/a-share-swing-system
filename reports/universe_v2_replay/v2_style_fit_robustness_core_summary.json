@@ -1,0 +1,51 @@
+{
+  "generated_at": "2026-07-08 20:53:12",
+  "phase": "Research Generalization Phase 5.2",
+  "time_robustness_classification": "FRAGILE",
+  "calendar_split_conclusion": "INSUFFICIENT=1, NEUTRAL=1",
+  "chronological_split_conclusion": "INSUFFICIENT=1, NEUTRAL=1",
+  "etf_level_robustness_classification": "PARTIAL_SUPPORT",
+  "pooled_vs_etf_direction_reversal": false,
+  "pooling_bias_flag": "MODERATE_SHIFT",
+  "segment_robustness_classification": "FRAGILE",
+  "segment_count": 23,
+  "single_segment_dominance_found": true,
+  "segment_concentration_flag": "HIGH",
+  "horizon_robustness_classification": "CONFLICTING",
+  "horizon_directions": {
+    "1d": "CONFLICT_BEATS_SUPPORTED",
+    "3d": "CONFLICT_BEATS_SUPPORTED",
+    "5d": "NEUTRAL",
+    "10d": "NEUTRAL",
+    "20d": "CONFLICT_BEATS_SUPPORTED"
+  },
+  "core_horizons_same_direction": false,
+  "horizon_fragile": true,
+  "incremental_value_robustness_preliminary": "CONFLICTING",
+  "pooled_support": false,
+  "time_split_support": false,
+  "etf_level_support": true,
+  "segment_level_support": true,
+  "horizon_support": false,
+  "high_beta_theme_preliminary_explanation": "HIGH_BETA_THEME remains positive across OFFENSIVE and DEFENSIVE at ETF-level on core horizons.",
+  "high_beta_theme_flags": [
+    "TRUE_MULTI_REGIME_BEHAVIOR"
+  ],
+  "commodity_cyclical_preliminary_explanation": "COMMODITY_CYCLICAL evidence is not cleanly robust after ETF-level and segment-level checks.",
+  "commodity_cyclical_flags": [
+    "SAMPLE_DEPENDENCE_RISK"
+  ],
+  "phase3_original_conclusion_still_directionally_supported": false,
+  "phase3_incremental_value_still_directionally_supported": false,
+  "major_robustness_warning_found": true,
+  "blocking_methodology_issue_found": false,
+  "ready_for_phase_3_5b": true,
+  "ready_for_preview": false,
+  "ready_for_execution": false,
+  "research_only": true,
+  "shadow_only": true,
+  "execution_allowed": false,
+  "universe_version": "universe_v2",
+  "preview_research_status": "NOT_STARTED",
+  "formal_execution_status": "BLOCKED"
+}

@@ -1,0 +1,51 @@
+{
+  "generated_at": "2026-07-10 10:52:32 CST",
+  "phase": "Exposure Framework Phase E-B - Multi-Benchmark Market Exposure Prototype",
+  "prototype_status": "COMPLETE",
+  "universe_version": "universe_v2_qualified_research",
+  "calculation_date": "2026-07-08",
+  "benchmark_basket_version": "market_benchmark_basket_v1",
+  "benchmark_codes": [
+    "510300",
+    "510500",
+    "512100",
+    "159915",
+    "588000",
+    "510880"
+  ],
+  "benchmark_count": 6,
+  "available_benchmark_count": 6,
+  "etf_count": 16,
+  "lookback_windows": [
+    60,
+    120
+  ],
+  "expected_vector_rows": 192,
+  "vector_rows": 192,
+  "missing_rows": 0,
+  "benchmark_pair_rows": 30,
+  "high_redundancy_pair_rows": 3,
+  "comparison_rows": 32,
+  "comparison_rows_with_added_explanatory_dimension": 20,
+  "research_only": true,
+  "execution_allowed": false,
+  "beta_values_normalized": false,
+  "predictive_claim": false,
+  "replay_started": false,
+  "preview_research_status": "NOT_STARTED",
+  "formal_execution_status": "BLOCKED",
+  "pit_safety_summary": [
+    "All ETF and benchmark return observations are at or before calculation_date.",
+    "Each rolling window uses only trailing paired daily returns.",
+    "ETF benchmark proxies are marked PIT_SAFE_WITH_PROXY.",
+    "Missing benchmarks or insufficient paired history produce explicit missing rows."
+  ],
+  "output_files": {
+    "values_csv": "/Users/dayin/Code/a-share-swing-system/data/research/exposure_prototype/market_exposure_vector_values.csv",
+    "missing_csv": "/Users/dayin/Code/a-share-swing-system/data/research/exposure_prototype/market_exposure_vector_missing.csv",
+    "benchmark_coverage_csv": "/Users/dayin/Code/a-share-swing-system/data/research/exposure_prototype/market_exposure_vector_benchmark_coverage.csv",
+    "benchmark_redundancy_csv": "/Users/dayin/Code/a-share-swing-system/data/research/exposure_prototype/market_exposure_vector_benchmark_redundancy.csv",
+    "single_vs_multi_csv": "/Users/dayin/Code/a-share-swing-system/data/research/exposure_prototype/market_exposure_vector_single_vs_multi.csv",
+    "manifest_json": "/Users/dayin/Code/a-share-swing-system/data/research/exposure_prototype/market_exposure_vector_manifest.json"
+  }
+}

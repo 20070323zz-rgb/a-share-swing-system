@@ -1,0 +1,94 @@
+{
+  "generated_at": "2026-07-07 23:56:13 CST",
+  "scope": "Project Context Persistence Phase D4 final truth summary",
+  "project_identity": {
+    "project": "A-Share Swing System",
+    "repository_root": "/Users/dayin/Code/a-share-swing-system",
+    "old_repository_path_status": "deprecated; do not use /Users/dayin/Documents/量化学习/a-share-swing-system for new project references"
+  },
+  "formal_boundary": {
+    "formal_model_changed": false,
+    "mid_trend_weight": 0.7,
+    "short_swing_weight": 0.3,
+    "paper_simulation_active": true,
+    "etf_first": true,
+    "stock_exposure_limit": "<= 10%",
+    "regime_layer_connected_to_formal_execution": false,
+    "style_fit_changed_buy_ranking": false
+  },
+  "research_phase_state": {
+    "completed_phases": [
+      "Regime & Risk Allocation Phase 1",
+      "Regime & Risk Allocation Phase 1.5",
+      "Regime Layer Phase 2",
+      "Regime Layer Phase 2.5",
+      "Regime Layer Phase 3"
+    ]
+  },
+  "current_research_architecture": [
+    "Market Regime",
+    "Stable Shadow Regime",
+    "Style-Regime Fit",
+    "mid_trend + short_swing",
+    "BUY Ranking",
+    "Structural / Realized Risk",
+    "Portfolio Exposure"
+  ],
+  "responsibilities": {
+    "style_profile": "opportunity / regime fit",
+    "structural_risk": "future risk budget research",
+    "realized_risk": "recent observed risk",
+    "structural_risk_regime_fit_supported": false
+  },
+  "shadow_candidate": {
+    "selected_shadow_regime_candidate": "ASYMMETRIC_CONFIRM",
+    "candidate_layer": "SHADOW / RESEARCH",
+    "formal_status": "research-only; shadow-only; not formal execution"
+  },
+  "latest_known_snapshot": {
+    "latest_data_date": "2026-07-07",
+    "latest_known_regime_date": "2026-07-06",
+    "latest_known_raw_regime": "NEUTRAL",
+    "latest_known_shadow_regime": "NEUTRAL",
+    "regime_snapshot_stale": true,
+    "snapshot_language_required": "Latest known raw/shadow regime as of 2026-07-06 is NEUTRAL; this is stale relative to 2026-07-07 data and must not be treated as live current market regime."
+  },
+  "phase_3_decision": {
+    "style_fit_has_historical_support": true,
+    "style_fit_has_incremental_signal_value": true,
+    "ready_for_fit_shadow_observation": true,
+    "ready_for_adjusted_preview_research": true,
+    "ready_for_preview": false,
+    "ready_for_execution": false,
+    "execution_allowed": false,
+    "permission_boundary": "research permission != preview permission != execution permission"
+  },
+  "open_research_risks": [
+    "HIGH_BETA_THEME multi-regime support anomaly",
+    "COMMODITY_CYCLICAL multi-regime support anomaly",
+    "real dual-regime behavior",
+    "style aggregation masking",
+    "cross-sectional dependence",
+    "effective sample size inflation",
+    "regime segment dependence"
+  ],
+  "current_bottlenecks": [
+    "Style Fit robustness not yet proven",
+    "real forward shadow samples limited",
+    "formal exit logic remains a major strategy bottleneck",
+    "formal model remains statistically research-unproven"
+  ],
+  "next_research_phase": {
+    "name": "Regime Layer Phase 3.5 - Style Fit Robustness Audit",
+    "status": "NOT_STARTED"
+  },
+  "source_files": [
+    "AGENTS.md",
+    "docs/current_project_state.md",
+    "docs/current_phase_status.json",
+    "reports/regime_stabilization_candidate_decision.json",
+    "reports/style_regime_fit_phase_decision.json",
+    "reports/project_context_phase_d2_decision.json",
+    "reports/project_context_phase_d3_decision.json"
+  ]
+}

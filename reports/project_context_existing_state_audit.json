@@ -1,0 +1,70 @@
+{
+  "generated_at": "2026-07-07",
+  "scope": "Project Context Persistence Phase A existing state audit",
+  "files": {
+    "AGENTS.md": "missing",
+    "PROJECT_INDEX.md": "present",
+    "README.md": "present",
+    "CHANGELOG.md": "missing",
+    "docs/": "present",
+    "reports/": "present",
+    "reports/project_structure_audit.md": "present",
+    "reports/project_file_map.md": "missing",
+    "docs/project_file_map.md": "present",
+    "docs/current_project_state.md": "missing",
+    "docs/current_phase_status.json": "missing",
+    "docs/project_context_architecture.md": "missing"
+  },
+  "answers": {
+    "has_agents_md": false,
+    "agents_md_content": null,
+    "has_current_project_state_like_file": true,
+    "current_project_state_like_files": [
+      "PROJECT_STATE.md"
+    ],
+    "has_phase_status": false,
+    "has_handoff_file": false,
+    "project_index_role": "Root project entry index for core entrypoints, data, reports, protected move list, audit reports, and archive notes.",
+    "long_lived_rules_scattered_in": [
+      "README.md",
+      "DECISIONS.md",
+      "docs/trading_rules.md",
+      "reports/*phase*.md"
+    ],
+    "current_research_state_scattered_in": [
+      "reports/regime_layer_phase2_market_audit.md",
+      "reports/regime_layer_phase2_5_stabilization.md",
+      "reports/regime_layer_phase3_style_fit.md",
+      "reports/style_regime_fit_phase_decision.json",
+      "reports/current_buy_top10_style_regime_fit.json",
+      "reports/current_portfolio_style_regime_fit.json"
+    ],
+    "thread_only_risk_items": [
+      "Main Phase + Execution Batch workflow",
+      "remote compact / stream disconnect handling",
+      "Context Phase A/B/C/D plan",
+      "recent Phase 3 resume handoff details"
+    ],
+    "estimated_files_needed_for_new_thread_recovery_before_phase_a": 9,
+    "has_conflicting_or_stale_context": true,
+    "conflict_or_staleness_examples": [
+      "PROJECT_STATE.md last updated 2026-06-03 and references deprecated path",
+      "README.md points new conversations to old memory files rather than current context foundation",
+      "latest Regime/Risk state exists mainly in phase reports and decision JSON"
+    ],
+    "context_gap_risk": "HIGH"
+  },
+  "classification": {
+    "immutable_long_lived_rules": "AGENTS.md",
+    "current_project_state": "docs/current_project_state.md",
+    "execution_state": "docs/current_phase_status.json",
+    "evidence_decision_history": [
+      "reports/*phase*.md",
+      "reports/*decision*.json",
+      "DECISIONS.md",
+      "CHANGELOG.md"
+    ]
+  },
+  "research_only": true,
+  "execution_allowed": false
+}

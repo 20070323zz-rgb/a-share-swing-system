@@ -1,0 +1,369 @@
+{
+  "generated_at": "2026-07-08 21:12:25 CST",
+  "phase": "Phase 5.3 Failure Attribution",
+  "failure_attribution_complete": true,
+  "primary_causes": [
+    "Universe Shift",
+    "Horizon Conflict",
+    "Methodology Limitation",
+    "Style Instability"
+  ],
+  "failure_tree": [
+    {
+      "Node": "Universe Shift",
+      "Contribution": "HIGH",
+      "Confidence": "HIGH",
+      "Evidence": "V2 has 5/16 HIGH_BETA_THEME, 3/16 DIVIDEND utilities/dividend, 0 BOND; V1 trade pool had 8 BOND and 8 COMMODITY_CYCLICAL. Actual V2 robustness base has no BOND rows and much larger high-beta/core concentration."
+    },
+    {
+      "Node": "Cell Migration",
+      "Contribution": "MEDIUM",
+      "Confidence": "HIGH",
+      "Evidence": "Migration counts are {'CHANGED_DIRECTION_OR_CATEGORY': 6, 'DOWNGRADED': 3, 'UNCHANGED': 24, 'UPGRADED': 3}. Most cells are unchanged, but changed cells include support/conflict flips and loss of BOND support coverage."
+    },
+    {
+      "Node": "Style Instability",
+      "Contribution": "HIGH",
+      "Confidence": "MEDIUM",
+      "Evidence": "BOND becomes unrecoverable, SECTOR_DEFENSIVE flips sign in OFFENSIVE/DEFENSIVE, HIGH_BETA_THEME remains special-style unstable in NEUTRAL, and COMMODITY_CYCLICAL is conditional/sample-dependent."
+    },
+    {
+      "Node": "Regime Instability",
+      "Contribution": "MEDIUM",
+      "Confidence": "MEDIUM",
+      "Evidence": "NEUTRAL concentrates unstable/downgraded outcomes; OFFENSIVE and DEFENSIVE contain direction flips but also some support cells."
+    },
+    {
+      "Node": "Horizon Conflict",
+      "Contribution": "HIGH",
+      "Confidence": "HIGH",
+      "Evidence": "Horizon robustness is CONFLICTING with directions {'1d': 'CONFLICT_BEATS_SUPPORTED', '3d': 'CONFLICT_BEATS_SUPPORTED', '5d': 'NEUTRAL', '10d': 'NEUTRAL', '20d': 'CONFLICT_BEATS_SUPPORTED'}; incremental value robustness is CONFLICTING."
+    },
+    {
+      "Node": "Methodology Limitation",
+      "Contribution": "HIGH",
+      "Confidence": "MEDIUM",
+      "Evidence": "Same feature/ranking/regime/style mapping with only Universe changed produces a failed verdict; this points to Universe-sensitive style buckets, ETF-day dependence, and effective sample structure fragility."
+    },
+    {
+      "Node": "Unknown / Residual",
+      "Contribution": "LOW",
+      "Confidence": "MEDIUM",
+      "Evidence": "Engineering coverage is clean and single-source. Residual uncertainty remains around untested style definitions and whether V2 history length is too short for some exposures, but no repository evidence proves another blocking cause."
+    }
+  ],
+  "style_failure_ranking": [
+    {
+      "Style": "SECTOR_DEFENSIVE",
+      "Contribution": "HIGH",
+      "Severity Score": 16,
+      "V2 Categories": "QUALIFIED_SUPPORT=2, UNSTABLE=1",
+      "Migrations": "CHANGED_DIRECTION_OR_CATEGORY=2, UNCHANGED=1",
+      "Horizon Conflicts": 1,
+      "V2 Base Share": "6.2%",
+      "Interpretation": "Direction flips from V1 conflict to V2 support in OFFENSIVE/DEFENSIVE; material sign instability."
+    },
+    {
+      "Style": "BOND",
+      "Contribution": "HIGH",
+      "Severity Score": 10,
+      "V2 Categories": "INSUFFICIENT=3",
+      "Migrations": "CHANGED_DIRECTION_OR_CATEGORY=1, DOWNGRADED=2",
+      "Horizon Conflicts": 0,
+      "V2 Base Share": "0.0%",
+      "Interpretation": "V2 contains no BOND qualified ETFs, so V1 bond support becomes unrecoverable rather than contradicted."
+    },
+    {
+      "Style": "CORE_MID_CAP",
+      "Contribution": "HIGH",
+      "Severity Score": 8,
+      "V2 Categories": "QUALIFIED_SUPPORT=2, UNSTABLE=1",
+      "Migrations": "CHANGED_DIRECTION_OR_CATEGORY=2, UPGRADED=1",
+      "Horizon Conflicts": 1,
+      "V2 Base Share": "12.5%",
+      "Interpretation": "OFFENSIVE/DEFENSIVE strengthen, NEUTRAL becomes unstable; contributes to regime/horizon inconsistency."
+    },
+    {
+      "Style": "SECTOR_CYCLICAL",
+      "Contribution": "MEDIUM",
+      "Severity Score": 4,
+      "V2 Categories": "DESCRIPTIVE_ONLY=3",
+      "Migrations": "DOWNGRADED=1, UNCHANGED=2",
+      "Horizon Conflicts": 0,
+      "V2 Base Share": "6.2%",
+      "Interpretation": "NEUTRAL negative evidence downgrades to descriptive; financial beta does not replicate V1 negative cell."
+    },
+    {
+      "Style": "COMMODITY_CYCLICAL",
+      "Contribution": "MEDIUM",
+      "Severity Score": 3,
+      "V2 Categories": "CONDITIONAL_SUPPORT=2, DESCRIPTIVE_ONLY=1",
+      "Migrations": "CHANGED_DIRECTION_OR_CATEGORY=1, UNCHANGED=2",
+      "Horizon Conflicts": 0,
+      "V2 Base Share": "12.5%",
+      "Interpretation": "Retains multi-regime support in V2 but is capped to conditional and carries sample-dependence risk."
+    },
+    {
+      "Style": "HIGH_BETA_THEME",
+      "Contribution": "MEDIUM",
+      "Severity Score": 3,
+      "V2 Categories": "CONDITIONAL_SUPPORT=2, UNSTABLE=1",
+      "Migrations": "UNCHANGED=2, UPGRADED=1",
+      "Horizon Conflicts": 1,
+      "V2 Base Share": "31.2%",
+      "Interpretation": "Largest V2 style exposure; OFFENSIVE/DEFENSIVE support remains, but NEUTRAL becomes UNSTABLE and special-style risk persists."
+    },
+    {
+      "Style": "GROWTH_BROAD",
+      "Contribution": "MEDIUM",
+      "Severity Score": 0,
+      "V2 Categories": "INSUFFICIENT=3",
+      "Migrations": "UNCHANGED=3",
+      "Horizon Conflicts": 0,
+      "V2 Base Share": "0.0%",
+      "Interpretation": "No V2 qualified exposure; remains insufficient."
+    },
+    {
+      "Style": "GROWTH_THEME",
+      "Contribution": "MEDIUM",
+      "Severity Score": 0,
+      "V2 Categories": "INSUFFICIENT=3",
+      "Migrations": "UNCHANGED=3",
+      "Horizon Conflicts": 0,
+      "V2 Base Share": "0.0%",
+      "Interpretation": "No V2 qualified exposure; remains insufficient."
+    },
+    {
+      "Style": "LOW_VOL",
+      "Contribution": "MEDIUM",
+      "Severity Score": 0,
+      "V2 Categories": "INSUFFICIENT=3",
+      "Migrations": "UNCHANGED=3",
+      "Horizon Conflicts": 0,
+      "V2 Base Share": "0.0%",
+      "Interpretation": "No V2 qualified exposure; remains insufficient."
+    },
+    {
+      "Style": "QDII_OBSERVATION",
+      "Contribution": "MEDIUM",
+      "Severity Score": 0,
+      "V2 Categories": "INSUFFICIENT=3",
+      "Migrations": "UNCHANGED=3",
+      "Horizon Conflicts": 0,
+      "V2 Base Share": "0.0%",
+      "Interpretation": "No V2 qualified exposure; remains insufficient."
+    },
+    {
+      "Style": "CORE_LARGE_CAP",
+      "Contribution": "LOW",
+      "Severity Score": 0,
+      "V2 Categories": "DESCRIPTIVE_ONLY=2, QUALIFIED_CONFLICT=1",
+      "Migrations": "UNCHANGED=2, UPGRADED=1",
+      "Horizon Conflicts": 0,
+      "V2 Base Share": "12.5%",
+      "Interpretation": "NEUTRAL becomes new qualified conflict while other regimes remain descriptive."
+    },
+    {
+      "Style": "DIVIDEND",
+      "Contribution": "LOW",
+      "Severity Score": 0,
+      "V2 Categories": "DESCRIPTIVE_ONLY=3",
+      "Migrations": "UNCHANGED=3",
+      "Horizon Conflicts": 0,
+      "V2 Base Share": "18.8%",
+      "Interpretation": "V2 adds dividend/utilities exposure, but all regimes remain descriptive, not a direct evidence driver."
+    }
+  ],
+  "regime_failure_ranking": [
+    {
+      "Regime": "DEFENSIVE",
+      "Contribution": "HIGH",
+      "Severity Score": 18,
+      "V2 Categories": "CONDITIONAL_SUPPORT=2, DESCRIPTIVE_ONLY=3, INSUFFICIENT=5, QUALIFIED_SUPPORT=2",
+      "Migrations": "CHANGED_DIRECTION_OR_CATEGORY=4, UNCHANGED=8",
+      "Horizon Conflict Cells": 0,
+      "Interpretation": "Includes direction changes in sector/core styles; contributes through category flips rather than broad collapse."
+    },
+    {
+      "Regime": "NEUTRAL",
+      "Contribution": "HIGH",
+      "Severity Score": 13,
+      "V2 Categories": "DESCRIPTIVE_ONLY=3, INSUFFICIENT=5, QUALIFIED_CONFLICT=1, UNSTABLE=3",
+      "Migrations": "DOWNGRADED=2, UNCHANGED=7, UPGRADED=3",
+      "Horizon Conflict Cells": 3,
+      "Interpretation": "Largest concentration of downgrades/unstable cells; NEUTRAL is the clearest regime-level failure source."
+    },
+    {
+      "Regime": "OFFENSIVE",
+      "Contribution": "HIGH",
+      "Severity Score": 13,
+      "V2 Categories": "CONDITIONAL_SUPPORT=2, DESCRIPTIVE_ONLY=3, INSUFFICIENT=5, QUALIFIED_SUPPORT=2",
+      "Migrations": "CHANGED_DIRECTION_OR_CATEGORY=2, DOWNGRADED=1, UNCHANGED=9",
+      "Horizon Conflict Cells": 0,
+      "Interpretation": "OFFENSIVE has support in some V2 growth/core cells but also direction flips in defensive sectors."
+    }
+  ],
+  "top_failure_cells": [
+    {
+      "Style": "SECTOR_DEFENSIVE",
+      "Regime": "DEFENSIVE",
+      "V1": "QUALIFIED_CONFLICT",
+      "V2": "QUALIFIED_SUPPORT",
+      "Migration": "CHANGED_DIRECTION_OR_CATEGORY",
+      "V1 Evidence": "CONFLICT",
+      "V2 Evidence": "SUPPORTED",
+      "V1 Excess": "-0.0251",
+      "V2 Excess": "0.0225",
+      "Severity": 8,
+      "Why": "changed direction/category; support/conflict direction flip; material excess-return shift"
+    },
+    {
+      "Style": "SECTOR_DEFENSIVE",
+      "Regime": "OFFENSIVE",
+      "V1": "CONDITIONAL_CONFLICT",
+      "V2": "QUALIFIED_SUPPORT",
+      "Migration": "CHANGED_DIRECTION_OR_CATEGORY",
+      "V1 Evidence": "CONFLICT",
+      "V2 Evidence": "SUPPORTED",
+      "V1 Excess": "-0.0204",
+      "V2 Excess": "0.0272",
+      "Severity": 8,
+      "Why": "changed direction/category; support/conflict direction flip; material excess-return shift"
+    },
+    {
+      "Style": "BOND",
+      "Regime": "NEUTRAL",
+      "V1": "CONDITIONAL_SUPPORT",
+      "V2": "INSUFFICIENT",
+      "Migration": "DOWNGRADED",
+      "V1 Evidence": "SUPPORTED",
+      "V2 Evidence": "INSUFFICIENT",
+      "V1 Excess": "0.0040",
+      "V2 Excess": "",
+      "Severity": 5,
+      "Why": "downgraded; lost support coverage"
+    },
+    {
+      "Style": "SECTOR_CYCLICAL",
+      "Regime": "NEUTRAL",
+      "V1": "CONDITIONAL_CONFLICT",
+      "V2": "DESCRIPTIVE_ONLY",
+      "Migration": "DOWNGRADED",
+      "V1 Evidence": "CONFLICT",
+      "V2 Evidence": "NEUTRAL",
+      "V1 Excess": "-0.0115",
+      "V2 Excess": "-0.0049",
+      "Severity": 4,
+      "Why": "downgraded; lost negative evidence"
+    },
+    {
+      "Style": "BOND",
+      "Regime": "DEFENSIVE",
+      "V1": "DESCRIPTIVE_ONLY",
+      "V2": "INSUFFICIENT",
+      "Migration": "CHANGED_DIRECTION_OR_CATEGORY",
+      "V1 Evidence": "WEAK_SUPPORT",
+      "V2 Evidence": "INSUFFICIENT",
+      "V1 Excess": "-0.0170",
+      "V2 Excess": "",
+      "Severity": 3,
+      "Why": "changed direction/category"
+    },
+    {
+      "Style": "COMMODITY_CYCLICAL",
+      "Regime": "DEFENSIVE",
+      "V1": "QUALIFIED_SUPPORT",
+      "V2": "CONDITIONAL_SUPPORT",
+      "Migration": "CHANGED_DIRECTION_OR_CATEGORY",
+      "V1 Evidence": "SUPPORTED",
+      "V2 Evidence": "SUPPORTED",
+      "V1 Excess": "0.0061",
+      "V2 Excess": "0.0170",
+      "Severity": 3,
+      "Why": "changed direction/category"
+    },
+    {
+      "Style": "CORE_MID_CAP",
+      "Regime": "DEFENSIVE",
+      "V1": "CONDITIONAL_SUPPORT",
+      "V2": "QUALIFIED_SUPPORT",
+      "Migration": "CHANGED_DIRECTION_OR_CATEGORY",
+      "V1 Evidence": "SUPPORTED",
+      "V2 Evidence": "SUPPORTED",
+      "V1 Excess": "0.0052",
+      "V2 Excess": "0.0091",
+      "Severity": 3,
+      "Why": "changed direction/category"
+    },
+    {
+      "Style": "CORE_MID_CAP",
+      "Regime": "OFFENSIVE",
+      "V1": "CONDITIONAL_SUPPORT",
+      "V2": "QUALIFIED_SUPPORT",
+      "Migration": "CHANGED_DIRECTION_OR_CATEGORY",
+      "V1 Evidence": "SUPPORTED",
+      "V2 Evidence": "SUPPORTED",
+      "V1 Excess": "0.0113",
+      "V2 Excess": "0.0153",
+      "Severity": 3,
+      "Why": "changed direction/category"
+    },
+    {
+      "Style": "BOND",
+      "Regime": "OFFENSIVE",
+      "V1": "UNSTABLE",
+      "V2": "INSUFFICIENT",
+      "Migration": "DOWNGRADED",
+      "V1 Evidence": "WEAK_SUPPORT",
+      "V2 Evidence": "INSUFFICIENT",
+      "V1 Excess": "-0.0131",
+      "V2 Excess": "",
+      "Severity": 2,
+      "Why": "downgraded"
+    },
+    {
+      "Style": "CORE_MID_CAP",
+      "Regime": "NEUTRAL",
+      "V1": "DESCRIPTIVE_ONLY",
+      "V2": "UNSTABLE",
+      "Migration": "UPGRADED",
+      "V1 Evidence": "NEUTRAL",
+      "V2 Evidence": "WEAK_CONFLICT",
+      "V1 Excess": "0.0007",
+      "V2 Excess": "-0.0022",
+      "Severity": 2,
+      "Why": "upgraded to unstable rather than usable evidence"
+    },
+    {
+      "Style": "HIGH_BETA_THEME",
+      "Regime": "NEUTRAL",
+      "V1": "CONDITIONAL_CONFLICT",
+      "V2": "UNSTABLE",
+      "Migration": "UPGRADED",
+      "V1 Evidence": "CONFLICT",
+      "V2 Evidence": "WEAK_CONFLICT",
+      "V1 Excess": "-0.0189",
+      "V2 Excess": "-0.0090",
+      "Severity": 2,
+      "Why": "upgraded to unstable rather than usable evidence"
+    },
+    {
+      "Style": "HIGH_BETA_THEME",
+      "Regime": "DEFENSIVE",
+      "V1": "CONDITIONAL_SUPPORT",
+      "V2": "CONDITIONAL_SUPPORT",
+      "Migration": "UNCHANGED",
+      "V1 Evidence": "SUPPORTED",
+      "V2 Evidence": "SUPPORTED",
+      "V1 Excess": "0.0001",
+      "V2 Excess": "0.0294",
+      "Severity": 1,
+      "Why": "material excess-return shift"
+    }
+  ],
+  "generalization_verdict": "FAILED_GENERALIZATION",
+  "style_fit_v1_specific_finding": true,
+  "preview_research_status": "NOT_STARTED",
+  "formal_execution_status": "BLOCKED",
+  "execution_allowed": false
+}

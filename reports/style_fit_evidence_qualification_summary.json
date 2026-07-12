@@ -1,0 +1,124 @@
+{
+  "generated_at": "2026-07-08 14:03:36",
+  "total_cells": 36,
+  "qualified_support_count": 1,
+  "conditional_support_count": 6,
+  "descriptive_only_count": 11,
+  "unstable_count": 2,
+  "qualified_conflict_count": 1,
+  "conditional_conflict_count": 3,
+  "insufficient_count": 12,
+  "positive_filter_research_eligible_count": 7,
+  "negative_filter_research_eligible_count": 4,
+  "top_qualified_support_cells": [
+    {
+      "style_profile": "COMMODITY_CYCLICAL",
+      "stable_regime": "DEFENSIVE",
+      "phase3_evidence_level": "SUPPORTED",
+      "phase3_benchmark_excess_median": 0.006124,
+      "pooling_bias_flag": "NO_MATERIAL_SHIFT",
+      "segment_concentration_flag": "INSUFFICIENT",
+      "evidence_confidence": "HIGH",
+      "qualification_reason": "Phase 3 support is confirmed by positive ETF-level evidence, supportive core horizons, and no major concentration or sample-dependence flag."
+    }
+  ],
+  "top_conditional_support_cells": [
+    {
+      "style_profile": "HIGH_BETA_THEME",
+      "stable_regime": "OFFENSIVE",
+      "phase3_evidence_level": "SUPPORTED",
+      "phase3_benchmark_excess_median": 0.013881,
+      "pooling_bias_flag": "INSUFFICIENT",
+      "segment_concentration_flag": "INSUFFICIENT",
+      "evidence_confidence": "MEDIUM",
+      "qualification_reason": "Support direction remains usable for future research, but confidence is capped by partial segment evidence, weak excess, concentration, or sample-dependence caveat."
+    },
+    {
+      "style_profile": "CORE_MID_CAP",
+      "stable_regime": "OFFENSIVE",
+      "phase3_evidence_level": "SUPPORTED",
+      "phase3_benchmark_excess_median": 0.01134,
+      "pooling_bias_flag": "INSUFFICIENT",
+      "segment_concentration_flag": "INSUFFICIENT",
+      "evidence_confidence": "MEDIUM",
+      "qualification_reason": "Support direction remains usable for future research, but confidence is capped by partial segment evidence, weak excess, concentration, or sample-dependence caveat."
+    },
+    {
+      "style_profile": "CORE_MID_CAP",
+      "stable_regime": "DEFENSIVE",
+      "phase3_evidence_level": "SUPPORTED",
+      "phase3_benchmark_excess_median": 0.005195,
+      "pooling_bias_flag": "INSUFFICIENT",
+      "segment_concentration_flag": "INSUFFICIENT",
+      "evidence_confidence": "MEDIUM",
+      "qualification_reason": "Support direction remains usable for future research, but confidence is capped by partial segment evidence, weak excess, concentration, or sample-dependence caveat."
+    },
+    {
+      "style_profile": "COMMODITY_CYCLICAL",
+      "stable_regime": "OFFENSIVE",
+      "phase3_evidence_level": "SUPPORTED",
+      "phase3_benchmark_excess_median": 0.004926,
+      "pooling_bias_flag": "MODERATE_SHIFT",
+      "segment_concentration_flag": "MODERATE",
+      "evidence_confidence": "MEDIUM",
+      "qualification_reason": "Support direction remains usable for future research, but confidence is capped by partial segment evidence, weak excess, concentration, or sample-dependence caveat."
+    },
+    {
+      "style_profile": "BOND",
+      "stable_regime": "NEUTRAL",
+      "phase3_evidence_level": "SUPPORTED",
+      "phase3_benchmark_excess_median": 0.004019,
+      "pooling_bias_flag": "NO_MATERIAL_SHIFT",
+      "segment_concentration_flag": "INSUFFICIENT",
+      "evidence_confidence": "MEDIUM",
+      "qualification_reason": "Support direction remains usable for future research, but confidence is capped by partial segment evidence, weak excess, concentration, or sample-dependence caveat."
+    },
+    {
+      "style_profile": "HIGH_BETA_THEME",
+      "stable_regime": "DEFENSIVE",
+      "phase3_evidence_level": "SUPPORTED",
+      "phase3_benchmark_excess_median": 0.0001,
+      "pooling_bias_flag": "INSUFFICIENT",
+      "segment_concentration_flag": "INSUFFICIENT",
+      "evidence_confidence": "MEDIUM",
+      "qualification_reason": "Support direction remains usable for future research, but confidence is capped by partial segment evidence, weak excess, concentration, or sample-dependence caveat."
+    }
+  ],
+  "top_qualified_conflict_cells": [
+    {
+      "style_profile": "SECTOR_DEFENSIVE",
+      "stable_regime": "DEFENSIVE",
+      "phase3_evidence_level": "CONFLICT",
+      "phase3_benchmark_excess_median": -0.025147,
+      "pooling_bias_flag": "NO_MATERIAL_SHIFT",
+      "segment_concentration_flag": "INSUFFICIENT",
+      "evidence_confidence": "HIGH",
+      "qualification_reason": "Phase 3 conflict is confirmed by negative ETF-level evidence and conflict-oriented core horizons."
+    }
+  ],
+  "top_unstable_cells": [
+    {
+      "style_profile": "SECTOR_DEFENSIVE",
+      "stable_regime": "NEUTRAL",
+      "phase3_evidence_level": "CONFLICT",
+      "phase3_benchmark_excess_median": -0.004805,
+      "pooling_bias_flag": "DIRECTION_REVERSAL",
+      "segment_concentration_flag": "INSUFFICIENT",
+      "evidence_confidence": "LOW",
+      "qualification_reason": "Conflict Phase 3 evidence is blocked by ETF/segment instability: etf=MIXED_NEGATIVE, pooling=DIRECTION_REVERSAL, segment_flag=INSUFFICIENT."
+    },
+    {
+      "style_profile": "BOND",
+      "stable_regime": "OFFENSIVE",
+      "phase3_evidence_level": "WEAK_SUPPORT",
+      "phase3_benchmark_excess_median": -0.013078,
+      "pooling_bias_flag": "DIRECTION_REVERSAL",
+      "segment_concentration_flag": "INSUFFICIENT",
+      "evidence_confidence": "LOW",
+      "qualification_reason": "Positive Phase 3 evidence is blocked by ETF/segment instability: etf=MIXED_POSITIVE, pooling=DIRECTION_REVERSAL, segment_flag=INSUFFICIENT."
+    }
+  ],
+  "research_only": true,
+  "shadow_only": true,
+  "execution_allowed": false
+}

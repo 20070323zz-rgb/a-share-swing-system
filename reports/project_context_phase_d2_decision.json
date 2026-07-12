@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-07-07 23:18:25 CST",
+  "scope": "Project Context Persistence Phase D2 Closeout - Checkpoint Persistence & Resume Synchronization",
+  "decision_type": "phase_d_internal_checkpoint_decision",
+  "source_result_file": "reports/project_context_recovery_correctness_score.json",
+  "standalone_d1_files_found": false,
+  "standalone_d1_files_missing": [
+    "reports/project_context_recovery_drill_bootstrap_summary.md",
+    "reports/project_context_recovery_drill_bootstrap_summary.json",
+    "reports/project_context_recovery_truth_check.md",
+    "reports/project_context_recovery_truth_check.json",
+    "reports/project_context_phase_d1_decision.md",
+    "reports/project_context_phase_d1_decision.json"
+  ],
+  "d1_compatibility_note": "Standalone D1 output files were not present. D1 pass state is verified through the existing D2 score artifact, which explicitly evaluates Context Phase D1 recovery correctness and records a 100/100 score.",
+  "field_mapping": {
+    "source_recovery_correctness_score": "reports/project_context_recovery_correctness_score.json:recovery_correctness_score",
+    "source_recovery_correctness_max_score": "reports/project_context_recovery_correctness_score.json:max_score",
+    "bootstrap_correctness_score": "recovery_correctness_score / max_score",
+    "no_blind_resume_supported": "all entries in no_blind_resume_simulation have result=PASS"
+  },
+  "phase_d1_passed": true,
+  "recovery_correctness_score_raw": 100,
+  "recovery_correctness_score_max": 100,
+  "bootstrap_correctness_score": 1.0,
+  "critical_failure_count": 0,
+  "correctness_score_passed": true,
+  "no_blind_resume_supported": true,
+  "resume_point_recovered": true,
+  "resume_point": "Context Phase D",
+  "resume_simulation_passed": true,
+  "blocking_conflict_found": false,
+  "critical_recovery_error_found": false,
+  "phase_d2_passed": true,
+  "ready_for_phase_d3": true,
+  "phase_d_completed_checkpoints": [
+    "Context Phase D1",
+    "Context Phase D2"
+  ],
+  "phase_d_resume_checkpoint": "Context Phase D3",
+  "context_phase_d_complete": false,
+  "project_context_persistence_phase_complete": false,
+  "validation_status_at_decision": "VALID_WITH_WARNINGS",
+  "decision_reason": "Existing D2 score artifact confirms D1 recovery correctness score 100/100, no blind resume simulation PASS, no critical failures, and no blocking conflict. Phase D remains in progress and should resume at Context Phase D3.",
+  "safety": {
+    "formal_model_changed": false,
+    "buy_ranking_changed": false,
+    "market_regime_changed": false,
+    "selected_shadow_regime_changed": false,
+    "style_fit_changed": false,
+    "adjusted_preview_changed": false,
+    "app_changed": false,
+    "dashboard_business_data_changed_by_this_closeout": false,
+    "protected_execution_files_changed_by_this_closeout": false,
+    "brokerage_api_connected": false,
+    "real_order_placed": false,
+    "l2_boundary_preserved": true
+  },
+  "sources": [
+    "AGENTS.md",
+    "docs/current_phase_status.json",
+    "docs/project_context_transition_protocol.md",
+    "docs/project_context_architecture.md",
+    "docs/codex_new_thread_bootstrap.md",
+    "reports/project_context_recovery_correctness_score.md",
+    "reports/project_context_recovery_correctness_score.json"
+  ]
+}

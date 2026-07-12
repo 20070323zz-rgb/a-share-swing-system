@@ -1,0 +1,24 @@
+{
+  "generated_at": "2026-07-08 14:03:36",
+  "preview_research_allowed": true,
+  "allowed_positive_qualifications": [
+    "CONDITIONAL_SUPPORT",
+    "QUALIFIED_SUPPORT"
+  ],
+  "allowed_negative_qualifications": [
+    "CONDITIONAL_CONFLICT",
+    "QUALIFIED_CONFLICT"
+  ],
+  "disallowed_qualifications": [
+    "DESCRIPTIVE_ONLY",
+    "INSUFFICIENT",
+    "UNSTABLE"
+  ],
+  "score_bonus_allowed": false,
+  "score_penalty_allowed": false,
+  "raw_ranking_must_remain_unchanged": true,
+  "research_only": true,
+  "shadow_only": true,
+  "execution_allowed": false,
+  "scope_note": "Phase 3.5B only defines evidence categories eligible for future preview research; it does not authorize score changes."
+}

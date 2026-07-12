@@ -1,0 +1,6 @@
+horizon,supported_median_return,conflict_median_return,median_diff,supported_benchmark_excess_median,conflict_benchmark_excess_median,excess_diff,supported_positive_rate,conflict_positive_rate,positive_rate_diff,supported_count,conflict_count,direction,research_only,execution_allowed
+1d,0.001768,0.001969,-0.000201,-0.000102,0.001438,-0.00154,0.551532,0.59322,-0.041688,359,59,CONFLICT_BEATS_SUPPORTED,True,False
+3d,0.00515,0.008842,-0.003692,-0.000669,0.003409,-0.004078,0.598886,0.578947,0.019939,359,57,CONFLICT_BEATS_SUPPORTED,True,False
+5d,0.008627,-0.00114,0.009767,-0.001078,0.004382,-0.00546,0.603352,0.482143,0.121209,358,56,NEUTRAL,True,False
+10d,0.01443,0.003185,0.011245,-0.000595,0.003596,-0.004191,0.634561,0.5,0.134561,353,56,NEUTRAL,True,False
+20d,0.024665,0.030723,-0.006058,-0.00163,0.014639,-0.016269,0.65,0.74,-0.09,340,50,CONFLICT_BEATS_SUPPORTED,True,False

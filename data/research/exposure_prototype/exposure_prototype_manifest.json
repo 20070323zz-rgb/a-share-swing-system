@@ -1,0 +1,48 @@
+{
+  "generated_at": "2026-07-09 18:05:25 CST",
+  "phase": "Exposure Framework Phase C - Narrow Prototype Development",
+  "universe_version": "universe_v2_qualified_research",
+  "calculation_date": "2026-07-08",
+  "approved_exposures": [
+    "market_beta",
+    "realized_volatility",
+    "downside_drawdown_risk",
+    "trading_liquidity",
+    "return_momentum"
+  ],
+  "exposure_count": 5,
+  "etf_count": 16,
+  "value_rows": 240,
+  "missing_rows": 0,
+  "coverage_rows": 16,
+  "exposure_value_counts": {
+    "downside_drawdown_risk": 64,
+    "market_beta": 32,
+    "realized_volatility": 32,
+    "return_momentum": 48,
+    "trading_liquidity": 64
+  },
+  "confidence_counts": {
+    "HIGH": 224,
+    "MEDIUM": 16
+  },
+  "all_outputs_research_only": true,
+  "execution_allowed": false,
+  "preview_research_status": "NOT_STARTED",
+  "formal_execution_status": "BLOCKED",
+  "single_source_of_truth": true,
+  "etf_daily_copied": false,
+  "pit_safety_summary": [
+    "All rolling windows end at calculation_date.",
+    "No forward returns are read or generated.",
+    "Benchmark beta uses only ETF and benchmark returns <= calculation_date.",
+    "Missing data produces explicit missing rows and confidence flags."
+  ],
+  "output_files": {
+    "values_csv": "/Users/dayin/Code/a-share-swing-system/data/research/exposure_prototype/exposure_prototype_values.csv",
+    "wide_csv": "/Users/dayin/Code/a-share-swing-system/data/research/exposure_prototype/exposure_prototype_wide.csv",
+    "missing_csv": "/Users/dayin/Code/a-share-swing-system/data/research/exposure_prototype/exposure_prototype_missing_data.csv",
+    "coverage_csv": "/Users/dayin/Code/a-share-swing-system/data/research/exposure_prototype/exposure_prototype_universe_coverage.csv",
+    "manifest_json": "/Users/dayin/Code/a-share-swing-system/data/research/exposure_prototype/exposure_prototype_manifest.json"
+  }
+}

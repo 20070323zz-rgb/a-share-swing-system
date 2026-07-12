@@ -1,0 +1,48 @@
+{
+  "generated_at": "2026-07-08 14:02:13",
+  "phase": "Regime Layer Phase 3.5A",
+  "time_robustness_classification": "ROBUST_SUPPORT",
+  "calendar_split_conclusion": "SUPPORTED_BEATS_CONFLICT=2",
+  "chronological_split_conclusion": "SUPPORTED_BEATS_CONFLICT=2",
+  "etf_level_robustness_classification": "CONFLICTING",
+  "pooled_vs_etf_direction_reversal": true,
+  "pooling_bias_flag": "DIRECTION_REVERSAL",
+  "segment_robustness_classification": "PARTIAL_SUPPORT",
+  "segment_count": 23,
+  "single_segment_dominance_found": false,
+  "segment_concentration_flag": "MODERATE",
+  "horizon_robustness_classification": "ROBUST_SUPPORT",
+  "horizon_directions": {
+    "1d": "SUPPORTED_BEATS_CONFLICT",
+    "3d": "SUPPORTED_BEATS_CONFLICT",
+    "5d": "SUPPORTED_BEATS_CONFLICT",
+    "10d": "SUPPORTED_BEATS_CONFLICT",
+    "20d": "SUPPORTED_BEATS_CONFLICT"
+  },
+  "core_horizons_same_direction": true,
+  "horizon_fragile": false,
+  "incremental_value_robustness_preliminary": "PARTIAL_SUPPORT",
+  "pooled_support": true,
+  "time_split_support": true,
+  "etf_level_support": true,
+  "segment_level_support": true,
+  "horizon_support": true,
+  "high_beta_theme_preliminary_explanation": "HIGH_BETA_THEME evidence is not cleanly robust after ETF-level and segment-level checks.",
+  "high_beta_theme_flags": [
+    "SAMPLE_DEPENDENCE_RISK"
+  ],
+  "commodity_cyclical_preliminary_explanation": "COMMODITY_CYCLICAL remains positive across OFFENSIVE and DEFENSIVE at ETF-level on core horizons.",
+  "commodity_cyclical_flags": [
+    "TRUE_MULTI_REGIME_BEHAVIOR"
+  ],
+  "phase3_original_conclusion_still_directionally_supported": true,
+  "phase3_incremental_value_still_directionally_supported": true,
+  "major_robustness_warning_found": true,
+  "blocking_methodology_issue_found": false,
+  "ready_for_phase_3_5b": true,
+  "ready_for_preview": false,
+  "ready_for_execution": false,
+  "research_only": true,
+  "shadow_only": true,
+  "execution_allowed": false
+}

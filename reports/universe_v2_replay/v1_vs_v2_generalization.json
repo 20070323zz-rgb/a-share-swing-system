@@ -1,0 +1,729 @@
+{
+  "generated_at": "2026-07-08 20:53:12 CST",
+  "comparison": "Universe V1 historical research baseline vs Universe V2 qualified research replay",
+  "single_changed_variable": "Universe membership; features/signals/ranking/regime/style mapping unchanged.",
+  "v1_qualification_counts": {
+    "CONDITIONAL_CONFLICT": 3,
+    "CONDITIONAL_SUPPORT": 6,
+    "DESCRIPTIVE_ONLY": 11,
+    "INSUFFICIENT": 12,
+    "QUALIFIED_CONFLICT": 1,
+    "QUALIFIED_SUPPORT": 1,
+    "UNSTABLE": 2
+  },
+  "v2_qualification_counts": {
+    "CONDITIONAL_SUPPORT": 4,
+    "DESCRIPTIVE_ONLY": 9,
+    "INSUFFICIENT": 15,
+    "QUALIFIED_CONFLICT": 1,
+    "QUALIFIED_SUPPORT": 4,
+    "UNSTABLE": 3
+  },
+  "migration_counts": {
+    "CHANGED_DIRECTION_OR_CATEGORY": 6,
+    "DOWNGRADED": 3,
+    "UNCHANGED": 24,
+    "UPGRADED": 3
+  },
+  "migration_rows": [
+    {
+      "style_profile": "BOND",
+      "stable_regime": "DEFENSIVE",
+      "v1_final_research_qualification": "DESCRIPTIVE_ONLY",
+      "v2_final_research_qualification": "INSUFFICIENT",
+      "migration": "CHANGED_DIRECTION_OR_CATEGORY",
+      "v1_phase3_evidence_level": "WEAK_SUPPORT",
+      "v2_evidence_level": "INSUFFICIENT",
+      "v1_sample_count": 496.0,
+      "v2_sample_count": null,
+      "v1_benchmark_excess_median": -0.016971,
+      "v2_benchmark_excess_median": null
+    },
+    {
+      "style_profile": "BOND",
+      "stable_regime": "NEUTRAL",
+      "v1_final_research_qualification": "CONDITIONAL_SUPPORT",
+      "v2_final_research_qualification": "INSUFFICIENT",
+      "migration": "DOWNGRADED",
+      "v1_phase3_evidence_level": "SUPPORTED",
+      "v2_evidence_level": "INSUFFICIENT",
+      "v1_sample_count": 464.0,
+      "v2_sample_count": null,
+      "v1_benchmark_excess_median": 0.004019,
+      "v2_benchmark_excess_median": null
+    },
+    {
+      "style_profile": "BOND",
+      "stable_regime": "OFFENSIVE",
+      "v1_final_research_qualification": "UNSTABLE",
+      "v2_final_research_qualification": "INSUFFICIENT",
+      "migration": "DOWNGRADED",
+      "v1_phase3_evidence_level": "WEAK_SUPPORT",
+      "v2_evidence_level": "INSUFFICIENT",
+      "v1_sample_count": 1104.0,
+      "v2_sample_count": null,
+      "v1_benchmark_excess_median": -0.013078,
+      "v2_benchmark_excess_median": null
+    },
+    {
+      "style_profile": "COMMODITY_CYCLICAL",
+      "stable_regime": "DEFENSIVE",
+      "v1_final_research_qualification": "QUALIFIED_SUPPORT",
+      "v2_final_research_qualification": "CONDITIONAL_SUPPORT",
+      "migration": "CHANGED_DIRECTION_OR_CATEGORY",
+      "v1_phase3_evidence_level": "SUPPORTED",
+      "v2_evidence_level": "SUPPORTED",
+      "v1_sample_count": 496.0,
+      "v2_sample_count": 124.0,
+      "v1_benchmark_excess_median": 0.006124,
+      "v2_benchmark_excess_median": 0.0170263619
+    },
+    {
+      "style_profile": "COMMODITY_CYCLICAL",
+      "stable_regime": "NEUTRAL",
+      "v1_final_research_qualification": "DESCRIPTIVE_ONLY",
+      "v2_final_research_qualification": "DESCRIPTIVE_ONLY",
+      "migration": "UNCHANGED",
+      "v1_phase3_evidence_level": "NEUTRAL",
+      "v2_evidence_level": "NEUTRAL",
+      "v1_sample_count": 464.0,
+      "v2_sample_count": 116.0,
+      "v1_benchmark_excess_median": -0.000969,
+      "v2_benchmark_excess_median": 0.0040728018
+    },
+    {
+      "style_profile": "COMMODITY_CYCLICAL",
+      "stable_regime": "OFFENSIVE",
+      "v1_final_research_qualification": "CONDITIONAL_SUPPORT",
+      "v2_final_research_qualification": "CONDITIONAL_SUPPORT",
+      "migration": "UNCHANGED",
+      "v1_phase3_evidence_level": "SUPPORTED",
+      "v2_evidence_level": "SUPPORTED",
+      "v1_sample_count": 1104.0,
+      "v2_sample_count": 278.0,
+      "v1_benchmark_excess_median": 0.004926,
+      "v2_benchmark_excess_median": 0.0031318276
+    },
+    {
+      "style_profile": "CORE_LARGE_CAP",
+      "stable_regime": "DEFENSIVE",
+      "v1_final_research_qualification": "DESCRIPTIVE_ONLY",
+      "v2_final_research_qualification": "DESCRIPTIVE_ONLY",
+      "migration": "UNCHANGED",
+      "v1_phase3_evidence_level": "SUPPORTED",
+      "v2_evidence_level": "WEAK_SUPPORT",
+      "v1_sample_count": 248.0,
+      "v2_sample_count": 124.0,
+      "v1_benchmark_excess_median": 0.001515,
+      "v2_benchmark_excess_median": -0.0054478533
+    },
+    {
+      "style_profile": "CORE_LARGE_CAP",
+      "stable_regime": "NEUTRAL",
+      "v1_final_research_qualification": "DESCRIPTIVE_ONLY",
+      "v2_final_research_qualification": "QUALIFIED_CONFLICT",
+      "migration": "UPGRADED",
+      "v1_phase3_evidence_level": "NEUTRAL",
+      "v2_evidence_level": "CONFLICT",
+      "v1_sample_count": 232.0,
+      "v2_sample_count": 116.0,
+      "v1_benchmark_excess_median": -0.0,
+      "v2_benchmark_excess_median": -0.0008468784
+    },
+    {
+      "style_profile": "CORE_LARGE_CAP",
+      "stable_regime": "OFFENSIVE",
+      "v1_final_research_qualification": "DESCRIPTIVE_ONLY",
+      "v2_final_research_qualification": "DESCRIPTIVE_ONLY",
+      "migration": "UNCHANGED",
+      "v1_phase3_evidence_level": "SUPPORTED",
+      "v2_evidence_level": "WEAK_SUPPORT",
+      "v1_sample_count": 552.0,
+      "v2_sample_count": 278.0,
+      "v1_benchmark_excess_median": 1.8e-05,
+      "v2_benchmark_excess_median": -0.0050253669
+    },
+    {
+      "style_profile": "CORE_MID_CAP",
+      "stable_regime": "DEFENSIVE",
+      "v1_final_research_qualification": "CONDITIONAL_SUPPORT",
+      "v2_final_research_qualification": "QUALIFIED_SUPPORT",
+      "migration": "CHANGED_DIRECTION_OR_CATEGORY",
+      "v1_phase3_evidence_level": "SUPPORTED",
+      "v2_evidence_level": "SUPPORTED",
+      "v1_sample_count": 186.0,
+      "v2_sample_count": 124.0,
+      "v1_benchmark_excess_median": 0.005195,
+      "v2_benchmark_excess_median": 0.0091106614
+    },
+    {
+      "style_profile": "CORE_MID_CAP",
+      "stable_regime": "NEUTRAL",
+      "v1_final_research_qualification": "DESCRIPTIVE_ONLY",
+      "v2_final_research_qualification": "UNSTABLE",
+      "migration": "UPGRADED",
+      "v1_phase3_evidence_level": "NEUTRAL",
+      "v2_evidence_level": "WEAK_CONFLICT",
+      "v1_sample_count": 174.0,
+      "v2_sample_count": 116.0,
+      "v1_benchmark_excess_median": 0.000715,
+      "v2_benchmark_excess_median": -0.0021844244
+    },
+    {
+      "style_profile": "CORE_MID_CAP",
+      "stable_regime": "OFFENSIVE",
+      "v1_final_research_qualification": "CONDITIONAL_SUPPORT",
+      "v2_final_research_qualification": "QUALIFIED_SUPPORT",
+      "migration": "CHANGED_DIRECTION_OR_CATEGORY",
+      "v1_phase3_evidence_level": "SUPPORTED",
+      "v2_evidence_level": "SUPPORTED",
+      "v1_sample_count": 414.0,
+      "v2_sample_count": 278.0,
+      "v1_benchmark_excess_median": 0.01134,
+      "v2_benchmark_excess_median": 0.0153082161
+    },
+    {
+      "style_profile": "DIVIDEND",
+      "stable_regime": "DEFENSIVE",
+      "v1_final_research_qualification": "DESCRIPTIVE_ONLY",
+      "v2_final_research_qualification": "DESCRIPTIVE_ONLY",
+      "migration": "UNCHANGED",
+      "v1_phase3_evidence_level": "WEAK_SUPPORT",
+      "v2_evidence_level": "NEUTRAL",
+      "v1_sample_count": 186.0,
+      "v2_sample_count": 186.0,
+      "v1_benchmark_excess_median": -0.013824,
+      "v2_benchmark_excess_median": -0.0158859168
+    },
+    {
+      "style_profile": "DIVIDEND",
+      "stable_regime": "NEUTRAL",
+      "v1_final_research_qualification": "DESCRIPTIVE_ONLY",
+      "v2_final_research_qualification": "DESCRIPTIVE_ONLY",
+      "migration": "UNCHANGED",
+      "v1_phase3_evidence_level": "NEUTRAL",
+      "v2_evidence_level": "NEUTRAL",
+      "v1_sample_count": 174.0,
+      "v2_sample_count": 174.0,
+      "v1_benchmark_excess_median": -0.001952,
+      "v2_benchmark_excess_median": -0.000159497
+    },
+    {
+      "style_profile": "DIVIDEND",
+      "stable_regime": "OFFENSIVE",
+      "v1_final_research_qualification": "DESCRIPTIVE_ONLY",
+      "v2_final_research_qualification": "DESCRIPTIVE_ONLY",
+      "migration": "UNCHANGED",
+      "v1_phase3_evidence_level": "NEUTRAL",
+      "v2_evidence_level": "NEUTRAL",
+      "v1_sample_count": 414.0,
+      "v2_sample_count": 417.0,
+      "v1_benchmark_excess_median": -0.016161,
+      "v2_benchmark_excess_median": -0.0125005586
+    },
+    {
+      "style_profile": "GROWTH_BROAD",
+      "stable_regime": "DEFENSIVE",
+      "v1_final_research_qualification": "INSUFFICIENT",
+      "v2_final_research_qualification": "INSUFFICIENT",
+      "migration": "UNCHANGED",
+      "v1_phase3_evidence_level": "INSUFFICIENT",
+      "v2_evidence_level": "INSUFFICIENT",
+      "v1_sample_count": null,
+      "v2_sample_count": null,
+      "v1_benchmark_excess_median": null,
+      "v2_benchmark_excess_median": null
+    },
+    {
+      "style_profile": "GROWTH_BROAD",
+      "stable_regime": "NEUTRAL",
+      "v1_final_research_qualification": "INSUFFICIENT",
+      "v2_final_research_qualification": "INSUFFICIENT",
+      "migration": "UNCHANGED",
+      "v1_phase3_evidence_level": "INSUFFICIENT",
+      "v2_evidence_level": "INSUFFICIENT",
+      "v1_sample_count": null,
+      "v2_sample_count": null,
+      "v1_benchmark_excess_median": null,
+      "v2_benchmark_excess_median": null
+    },
+    {
+      "style_profile": "GROWTH_BROAD",
+      "stable_regime": "OFFENSIVE",
+      "v1_final_research_qualification": "INSUFFICIENT",
+      "v2_final_research_qualification": "INSUFFICIENT",
+      "migration": "UNCHANGED",
+      "v1_phase3_evidence_level": "INSUFFICIENT",
+      "v2_evidence_level": "INSUFFICIENT",
+      "v1_sample_count": null,
+      "v2_sample_count": null,
+      "v1_benchmark_excess_median": null,
+      "v2_benchmark_excess_median": null
+    },
+    {
+      "style_profile": "GROWTH_THEME",
+      "stable_regime": "DEFENSIVE",
+      "v1_final_research_qualification": "INSUFFICIENT",
+      "v2_final_research_qualification": "INSUFFICIENT",
+      "migration": "UNCHANGED",
+      "v1_phase3_evidence_level": "INSUFFICIENT",
+      "v2_evidence_level": "INSUFFICIENT",
+      "v1_sample_count": null,
+      "v2_sample_count": null,
+      "v1_benchmark_excess_median": null,
+      "v2_benchmark_excess_median": null
+    },
+    {
+      "style_profile": "GROWTH_THEME",
+      "stable_regime": "NEUTRAL",
+      "v1_final_research_qualification": "INSUFFICIENT",
+      "v2_final_research_qualification": "INSUFFICIENT",
+      "migration": "UNCHANGED",
+      "v1_phase3_evidence_level": "INSUFFICIENT",
+      "v2_evidence_level": "INSUFFICIENT",
+      "v1_sample_count": null,
+      "v2_sample_count": null,
+      "v1_benchmark_excess_median": null,
+      "v2_benchmark_excess_median": null
+    },
+    {
+      "style_profile": "GROWTH_THEME",
+      "stable_regime": "OFFENSIVE",
+      "v1_final_research_qualification": "INSUFFICIENT",
+      "v2_final_research_qualification": "INSUFFICIENT",
+      "migration": "UNCHANGED",
+      "v1_phase3_evidence_level": "INSUFFICIENT",
+      "v2_evidence_level": "INSUFFICIENT",
+      "v1_sample_count": null,
+      "v2_sample_count": null,
+      "v1_benchmark_excess_median": null,
+      "v2_benchmark_excess_median": null
+    },
+    {
+      "style_profile": "HIGH_BETA_THEME",
+      "stable_regime": "DEFENSIVE",
+      "v1_final_research_qualification": "CONDITIONAL_SUPPORT",
+      "v2_final_research_qualification": "CONDITIONAL_SUPPORT",
+      "migration": "UNCHANGED",
+      "v1_phase3_evidence_level": "SUPPORTED",
+      "v2_evidence_level": "SUPPORTED",
+      "v1_sample_count": 124.0,
+      "v2_sample_count": 310.0,
+      "v1_benchmark_excess_median": 0.0001,
+      "v2_benchmark_excess_median": 0.0294083372
+    },
+    {
+      "style_profile": "HIGH_BETA_THEME",
+      "stable_regime": "NEUTRAL",
+      "v1_final_research_qualification": "CONDITIONAL_CONFLICT",
+      "v2_final_research_qualification": "UNSTABLE",
+      "migration": "UPGRADED",
+      "v1_phase3_evidence_level": "CONFLICT",
+      "v2_evidence_level": "WEAK_CONFLICT",
+      "v1_sample_count": 116.0,
+      "v2_sample_count": 290.0,
+      "v1_benchmark_excess_median": -0.01887,
+      "v2_benchmark_excess_median": -0.0089517876
+    },
+    {
+      "style_profile": "HIGH_BETA_THEME",
+      "stable_regime": "OFFENSIVE",
+      "v1_final_research_qualification": "CONDITIONAL_SUPPORT",
+      "v2_final_research_qualification": "CONDITIONAL_SUPPORT",
+      "migration": "UNCHANGED",
+      "v1_phase3_evidence_level": "SUPPORTED",
+      "v2_evidence_level": "SUPPORTED",
+      "v1_sample_count": 276.0,
+      "v2_sample_count": 695.0,
+      "v1_benchmark_excess_median": 0.013881,
+      "v2_benchmark_excess_median": 0.0209187765
+    },
+    {
+      "style_profile": "LOW_VOL",
+      "stable_regime": "DEFENSIVE",
+      "v1_final_research_qualification": "INSUFFICIENT",
+      "v2_final_research_qualification": "INSUFFICIENT",
+      "migration": "UNCHANGED",
+      "v1_phase3_evidence_level": "INSUFFICIENT",
+      "v2_evidence_level": "INSUFFICIENT",
+      "v1_sample_count": null,
+      "v2_sample_count": null,
+      "v1_benchmark_excess_median": null,
+      "v2_benchmark_excess_median": null
+    },
+    {
+      "style_profile": "LOW_VOL",
+      "stable_regime": "NEUTRAL",
+      "v1_final_research_qualification": "INSUFFICIENT",
+      "v2_final_research_qualification": "INSUFFICIENT",
+      "migration": "UNCHANGED",
+      "v1_phase3_evidence_level": "INSUFFICIENT",
+      "v2_evidence_level": "INSUFFICIENT",
+      "v1_sample_count": null,
+      "v2_sample_count": null,
+      "v1_benchmark_excess_median": null,
+      "v2_benchmark_excess_median": null
+    },
+    {
+      "style_profile": "LOW_VOL",
+      "stable_regime": "OFFENSIVE",
+      "v1_final_research_qualification": "INSUFFICIENT",
+      "v2_final_research_qualification": "INSUFFICIENT",
+      "migration": "UNCHANGED",
+      "v1_phase3_evidence_level": "INSUFFICIENT",
+      "v2_evidence_level": "INSUFFICIENT",
+      "v1_sample_count": null,
+      "v2_sample_count": null,
+      "v1_benchmark_excess_median": null,
+      "v2_benchmark_excess_median": null
+    },
+    {
+      "style_profile": "QDII_OBSERVATION",
+      "stable_regime": "DEFENSIVE",
+      "v1_final_research_qualification": "INSUFFICIENT",
+      "v2_final_research_qualification": "INSUFFICIENT",
+      "migration": "UNCHANGED",
+      "v1_phase3_evidence_level": "INSUFFICIENT",
+      "v2_evidence_level": "INSUFFICIENT",
+      "v1_sample_count": null,
+      "v2_sample_count": null,
+      "v1_benchmark_excess_median": null,
+      "v2_benchmark_excess_median": null
+    },
+    {
+      "style_profile": "QDII_OBSERVATION",
+      "stable_regime": "NEUTRAL",
+      "v1_final_research_qualification": "INSUFFICIENT",
+      "v2_final_research_qualification": "INSUFFICIENT",
+      "migration": "UNCHANGED",
+      "v1_phase3_evidence_level": "INSUFFICIENT",
+      "v2_evidence_level": "INSUFFICIENT",
+      "v1_sample_count": null,
+      "v2_sample_count": null,
+      "v1_benchmark_excess_median": null,
+      "v2_benchmark_excess_median": null
+    },
+    {
+      "style_profile": "QDII_OBSERVATION",
+      "stable_regime": "OFFENSIVE",
+      "v1_final_research_qualification": "INSUFFICIENT",
+      "v2_final_research_qualification": "INSUFFICIENT",
+      "migration": "UNCHANGED",
+      "v1_phase3_evidence_level": "INSUFFICIENT",
+      "v2_evidence_level": "INSUFFICIENT",
+      "v1_sample_count": null,
+      "v2_sample_count": null,
+      "v1_benchmark_excess_median": null,
+      "v2_benchmark_excess_median": null
+    },
+    {
+      "style_profile": "SECTOR_CYCLICAL",
+      "stable_regime": "DEFENSIVE",
+      "v1_final_research_qualification": "DESCRIPTIVE_ONLY",
+      "v2_final_research_qualification": "DESCRIPTIVE_ONLY",
+      "migration": "UNCHANGED",
+      "v1_phase3_evidence_level": "NEUTRAL",
+      "v2_evidence_level": "NEUTRAL",
+      "v1_sample_count": 248.0,
+      "v2_sample_count": 62.0,
+      "v1_benchmark_excess_median": -0.018667,
+      "v2_benchmark_excess_median": -0.0151120169
+    },
+    {
+      "style_profile": "SECTOR_CYCLICAL",
+      "stable_regime": "NEUTRAL",
+      "v1_final_research_qualification": "CONDITIONAL_CONFLICT",
+      "v2_final_research_qualification": "DESCRIPTIVE_ONLY",
+      "migration": "DOWNGRADED",
+      "v1_phase3_evidence_level": "CONFLICT",
+      "v2_evidence_level": "NEUTRAL",
+      "v1_sample_count": 232.0,
+      "v2_sample_count": 58.0,
+      "v1_benchmark_excess_median": -0.011463,
+      "v2_benchmark_excess_median": -0.0049061505
+    },
+    {
+      "style_profile": "SECTOR_CYCLICAL",
+      "stable_regime": "OFFENSIVE",
+      "v1_final_research_qualification": "DESCRIPTIVE_ONLY",
+      "v2_final_research_qualification": "DESCRIPTIVE_ONLY",
+      "migration": "UNCHANGED",
+      "v1_phase3_evidence_level": "NEUTRAL",
+      "v2_evidence_level": "NEUTRAL",
+      "v1_sample_count": 552.0,
+      "v2_sample_count": 139.0,
+      "v1_benchmark_excess_median": -0.007272,
+      "v2_benchmark_excess_median": -0.0079885544
+    },
+    {
+      "style_profile": "SECTOR_DEFENSIVE",
+      "stable_regime": "DEFENSIVE",
+      "v1_final_research_qualification": "QUALIFIED_CONFLICT",
+      "v2_final_research_qualification": "QUALIFIED_SUPPORT",
+      "migration": "CHANGED_DIRECTION_OR_CATEGORY",
+      "v1_phase3_evidence_level": "CONFLICT",
+      "v2_evidence_level": "SUPPORTED",
+      "v1_sample_count": 434.0,
+      "v2_sample_count": 62.0,
+      "v1_benchmark_excess_median": -0.025147,
+      "v2_benchmark_excess_median": 0.0224979962
+    },
+    {
+      "style_profile": "SECTOR_DEFENSIVE",
+      "stable_regime": "NEUTRAL",
+      "v1_final_research_qualification": "UNSTABLE",
+      "v2_final_research_qualification": "UNSTABLE",
+      "migration": "UNCHANGED",
+      "v1_phase3_evidence_level": "CONFLICT",
+      "v2_evidence_level": "WEAK_CONFLICT",
+      "v1_sample_count": 406.0,
+      "v2_sample_count": 58.0,
+      "v1_benchmark_excess_median": -0.004805,
+      "v2_benchmark_excess_median": -0.0008127885
+    },
+    {
+      "style_profile": "SECTOR_DEFENSIVE",
+      "stable_regime": "OFFENSIVE",
+      "v1_final_research_qualification": "CONDITIONAL_CONFLICT",
+      "v2_final_research_qualification": "QUALIFIED_SUPPORT",
+      "migration": "CHANGED_DIRECTION_OR_CATEGORY",
+      "v1_phase3_evidence_level": "CONFLICT",
+      "v2_evidence_level": "SUPPORTED",
+      "v1_sample_count": 966.0,
+      "v2_sample_count": 139.0,
+      "v1_benchmark_excess_median": -0.020352,
+      "v2_benchmark_excess_median": 0.0272248818
+    }
+  ],
+  "upgraded_cells": [
+    [
+      "CORE_LARGE_CAP",
+      "NEUTRAL",
+      "DESCRIPTIVE_ONLY",
+      "QUALIFIED_CONFLICT"
+    ],
+    [
+      "CORE_MID_CAP",
+      "NEUTRAL",
+      "DESCRIPTIVE_ONLY",
+      "UNSTABLE"
+    ],
+    [
+      "HIGH_BETA_THEME",
+      "NEUTRAL",
+      "CONDITIONAL_CONFLICT",
+      "UNSTABLE"
+    ]
+  ],
+  "downgraded_cells": [
+    [
+      "BOND",
+      "NEUTRAL",
+      "CONDITIONAL_SUPPORT",
+      "INSUFFICIENT"
+    ],
+    [
+      "BOND",
+      "OFFENSIVE",
+      "UNSTABLE",
+      "INSUFFICIENT"
+    ],
+    [
+      "SECTOR_CYCLICAL",
+      "NEUTRAL",
+      "CONDITIONAL_CONFLICT",
+      "DESCRIPTIVE_ONLY"
+    ]
+  ],
+  "maintained_cells": [
+    [
+      "COMMODITY_CYCLICAL",
+      "NEUTRAL",
+      "DESCRIPTIVE_ONLY"
+    ],
+    [
+      "COMMODITY_CYCLICAL",
+      "OFFENSIVE",
+      "CONDITIONAL_SUPPORT"
+    ],
+    [
+      "CORE_LARGE_CAP",
+      "DEFENSIVE",
+      "DESCRIPTIVE_ONLY"
+    ],
+    [
+      "CORE_LARGE_CAP",
+      "OFFENSIVE",
+      "DESCRIPTIVE_ONLY"
+    ],
+    [
+      "DIVIDEND",
+      "DEFENSIVE",
+      "DESCRIPTIVE_ONLY"
+    ],
+    [
+      "DIVIDEND",
+      "NEUTRAL",
+      "DESCRIPTIVE_ONLY"
+    ],
+    [
+      "DIVIDEND",
+      "OFFENSIVE",
+      "DESCRIPTIVE_ONLY"
+    ],
+    [
+      "GROWTH_BROAD",
+      "DEFENSIVE",
+      "INSUFFICIENT"
+    ],
+    [
+      "GROWTH_BROAD",
+      "NEUTRAL",
+      "INSUFFICIENT"
+    ],
+    [
+      "GROWTH_BROAD",
+      "OFFENSIVE",
+      "INSUFFICIENT"
+    ],
+    [
+      "GROWTH_THEME",
+      "DEFENSIVE",
+      "INSUFFICIENT"
+    ],
+    [
+      "GROWTH_THEME",
+      "NEUTRAL",
+      "INSUFFICIENT"
+    ],
+    [
+      "GROWTH_THEME",
+      "OFFENSIVE",
+      "INSUFFICIENT"
+    ],
+    [
+      "HIGH_BETA_THEME",
+      "DEFENSIVE",
+      "CONDITIONAL_SUPPORT"
+    ],
+    [
+      "HIGH_BETA_THEME",
+      "OFFENSIVE",
+      "CONDITIONAL_SUPPORT"
+    ],
+    [
+      "LOW_VOL",
+      "DEFENSIVE",
+      "INSUFFICIENT"
+    ],
+    [
+      "LOW_VOL",
+      "NEUTRAL",
+      "INSUFFICIENT"
+    ],
+    [
+      "LOW_VOL",
+      "OFFENSIVE",
+      "INSUFFICIENT"
+    ],
+    [
+      "QDII_OBSERVATION",
+      "DEFENSIVE",
+      "INSUFFICIENT"
+    ],
+    [
+      "QDII_OBSERVATION",
+      "NEUTRAL",
+      "INSUFFICIENT"
+    ],
+    [
+      "QDII_OBSERVATION",
+      "OFFENSIVE",
+      "INSUFFICIENT"
+    ],
+    [
+      "SECTOR_CYCLICAL",
+      "DEFENSIVE",
+      "DESCRIPTIVE_ONLY"
+    ],
+    [
+      "SECTOR_CYCLICAL",
+      "OFFENSIVE",
+      "DESCRIPTIVE_ONLY"
+    ],
+    [
+      "SECTOR_DEFENSIVE",
+      "NEUTRAL",
+      "UNSTABLE"
+    ]
+  ],
+  "new_stable_relationships": [
+    [
+      "CORE_LARGE_CAP",
+      "NEUTRAL",
+      "QUALIFIED_CONFLICT"
+    ]
+  ],
+  "stable_evidence_count_v2": 9,
+  "v2_core_summary": {
+    "generated_at": "2026-07-08 20:53:12",
+    "phase": "Research Generalization Phase 5.2",
+    "time_robustness_classification": "FRAGILE",
+    "calendar_split_conclusion": "INSUFFICIENT=1, NEUTRAL=1",
+    "chronological_split_conclusion": "INSUFFICIENT=1, NEUTRAL=1",
+    "etf_level_robustness_classification": "PARTIAL_SUPPORT",
+    "pooled_vs_etf_direction_reversal": false,
+    "pooling_bias_flag": "MODERATE_SHIFT",
+    "segment_robustness_classification": "FRAGILE",
+    "segment_count": 23,
+    "single_segment_dominance_found": true,
+    "segment_concentration_flag": "HIGH",
+    "horizon_robustness_classification": "CONFLICTING",
+    "horizon_directions": {
+      "1d": "CONFLICT_BEATS_SUPPORTED",
+      "3d": "CONFLICT_BEATS_SUPPORTED",
+      "5d": "NEUTRAL",
+      "10d": "NEUTRAL",
+      "20d": "CONFLICT_BEATS_SUPPORTED"
+    },
+    "core_horizons_same_direction": false,
+    "horizon_fragile": true,
+    "incremental_value_robustness_preliminary": "CONFLICTING",
+    "pooled_support": false,
+    "time_split_support": false,
+    "etf_level_support": true,
+    "segment_level_support": true,
+    "horizon_support": false,
+    "high_beta_theme_preliminary_explanation": "HIGH_BETA_THEME remains positive across OFFENSIVE and DEFENSIVE at ETF-level on core horizons.",
+    "high_beta_theme_flags": [
+      "TRUE_MULTI_REGIME_BEHAVIOR"
+    ],
+    "commodity_cyclical_preliminary_explanation": "COMMODITY_CYCLICAL evidence is not cleanly robust after ETF-level and segment-level checks.",
+    "commodity_cyclical_flags": [
+      "SAMPLE_DEPENDENCE_RISK"
+    ],
+    "phase3_original_conclusion_still_directionally_supported": false,
+    "phase3_incremental_value_still_directionally_supported": false,
+    "major_robustness_warning_found": true,
+    "blocking_methodology_issue_found": false,
+    "ready_for_phase_3_5b": true,
+    "ready_for_preview": false,
+    "ready_for_execution": false,
+    "research_only": true,
+    "shadow_only": true,
+    "execution_allowed": false,
+    "universe_version": "universe_v2",
+    "preview_research_status": "NOT_STARTED",
+    "formal_execution_status": "BLOCKED"
+  },
+  "generalization_verdict": "FAILED_GENERALIZATION",
+  "methodology_risk": "MEDIUM",
+  "coverage_risk": "LOW",
+  "engineering_risk": "LOW",
+  "phase3_research_impact": "CHALLENGED",
+  "preview_research_recommendation": "DO_NOT_START_AUTOMATICALLY",
+  "preview_blocking_reason": "Phase 5.2 is a generalization validation batch only; Preview Research requires explicit Main approval and governance gate even when generalization is supported.",
+  "research_only": true,
+  "shadow_only": true,
+  "execution_allowed": false
+}

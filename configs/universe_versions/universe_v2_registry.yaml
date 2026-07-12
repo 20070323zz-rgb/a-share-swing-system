@@ -1,0 +1,1475 @@
+schema_version: 1
+version: universe_v2_registry
+created_at: 2026-07-08 18:52:15 CST
+status: QUALIFIED
+purpose: Track Universe V2 candidate qualification without creating a second ETF data store.
+data_source_policy:
+  single_source_of_truth: true
+  unified_etf_daily_database: data/etf_daily/*.csv
+  forbidden:
+  - No second ETF daily database.
+  - No copied V2 daily data.
+  - No direct trade-pool activation from registry.
+source_files:
+- configs/universe_versions/universe_v2_candidate.yaml
+- reports/universe_quality_review.csv
+- reports/etf_risk_profile.csv
+- data/backtest_trade_pool.csv
+- data/etf_daily/*.csv
+qualification_policy:
+  history_ok: '>= 240 local trading rows and latest date equals 2026-07-08'
+  history_observe: 120-239 rows or otherwise short relative to V2 peer set
+  liquidity_ok: 60d average amount >= 50,000,000
+  liquidity_watch: 20,000,000 <= 60d average amount < 50,000,000
+  liquidity_low: 5,000,000 <= 60d average amount < 20,000,000
+  liquidity_ultra_low: < 5,000,000
+  qdii_policy: Observe only until a dedicated QDII premium/FX/calendar policy exists.
+  qualified_research: Eligible for V2 Research Universe preparation, not replay or trade activation.
+summary:
+  candidate_count: 36
+  qualified_research: 16
+  observe: 15
+  reject: 5
+  all_candidates_in_unified_etf_db: true
+  needs_data_refresh_count: 0
+  needs_backfill_count: 0
+  research_universe_status: READY_FOR_REPLAY_PREPARATION
+  replay_status: NOT_STARTED
+  trade_pool_activation: BLOCKED
+records:
+- etf_code: '159301'
+  etf_name: 公用事业ETF华夏
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: OBSERVE
+  research_value: HIGH
+  coverage_contribution: HIGH
+  coverage_contribution_note: Adds utilities/public-service defensive exposure missing from V1 trade evidence.
+  redundancy: Low versus V1 trade pool.
+  liquidity:
+    status: WATCH
+    avg_amount_20d: 22470164.35
+    avg_amount_60d: 24573414.18
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sz_159301.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Research Universe
+  style_profile: DIVIDEND
+  exposure_category: utilities / public services / defensive dividend
+  asset_flags:
+  - A_SHARE_ETF
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: unknown
+    liquidity_status: watch
+    volatility_status: normal
+    recommended_action: observe_only_before_backtest
+  in_v1_backtest_trade_pool: false
+  notes: Unique utilities exposure, but 60d liquidity is only watch-level and V1 classification is unknown.
+  blocking_or_watch_flags:
+  - CLASSIFICATION_REQUIRES_FINALIZATION
+- etf_code: '561560'
+  etf_name: 电力ETF
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: QUALIFIED_RESEARCH
+  research_value: HIGH
+  coverage_contribution: HIGH
+  coverage_contribution_note: Adds power sector and dividend-defensive regime behavior coverage.
+  redundancy: Related to green-power candidates but not redundant with V1 trade pool.
+  liquidity:
+    status: OK
+    avg_amount_20d: 118606182.55
+    avg_amount_60d: 135008117.2
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sh_561560.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Research Universe
+  style_profile: DIVIDEND
+  exposure_category: power / utilities
+  asset_flags:
+  - A_SHARE_ETF
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: unknown
+    liquidity_status: ok
+    volatility_status: normal
+    recommended_action: observe_only_before_backtest
+  in_v1_backtest_trade_pool: false
+  notes: Power-sector defensive/dividend exposure with current data and sufficient liquidity.
+  blocking_or_watch_flags:
+  - CLASSIFICATION_REQUIRES_FINALIZATION
+- etf_code: '562550'
+  etf_name: 绿电ETF
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: QUALIFIED_RESEARCH
+  research_value: HIGH
+  coverage_contribution: HIGH
+  coverage_contribution_note: Adds green-power defensive/dividend exposure distinct from broad commodity and new-energy manufacturing.
+  redundancy: Moderate with 561560; keep one primary after V2 liquidity review.
+  liquidity:
+    status: OK
+    avg_amount_20d: 161431392.8
+    avg_amount_60d: 199828138.37
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sh_562550.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Research Universe
+  style_profile: DIVIDEND
+  exposure_category: green power / utilities
+  asset_flags:
+  - A_SHARE_ETF
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: unknown
+    liquidity_status: ok
+    volatility_status: normal
+    recommended_action: observe_only_before_backtest
+  in_v1_backtest_trade_pool: false
+  notes: Green-power defensive/dividend exposure with current data and sufficient liquidity.
+  blocking_or_watch_flags:
+  - CLASSIFICATION_REQUIRES_FINALIZATION
+- etf_code: '515630'
+  etf_name: 保险证券
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: QUALIFIED_RESEARCH
+  research_value: MEDIUM
+  coverage_contribution: MEDIUM
+  coverage_contribution_note: Potential insurance/financial cyclical exposure not separately represented by V1 securities/non-bank
+    proxies.
+  redundancy: Moderate with V1 securities and non-bank ETF exposure.
+  liquidity:
+    status: OK
+    avg_amount_20d: 80223746.0
+    avg_amount_60d: 52260532.03
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sh_515630.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Research Universe
+  style_profile: SECTOR_CYCLICAL
+  exposure_category: insurance / financial beta
+  asset_flags:
+  - A_SHARE_ETF
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: unknown
+    liquidity_status: ok
+    volatility_status: normal
+    recommended_action: observe_only_before_backtest
+  in_v1_backtest_trade_pool: false
+  notes: Insurance/financial-cyclical exposure adds coverage beyond V1 securities proxies; classification should be finalized
+    before replay prep.
+  blocking_or_watch_flags:
+  - CLASSIFICATION_REQUIRES_FINALIZATION
+- etf_code: '515260'
+  etf_name: 电子ETF
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: QUALIFIED_RESEARCH
+  research_value: MEDIUM
+  coverage_contribution: MEDIUM
+  coverage_contribution_note: Adds broad electronics exposure beyond semiconductor/chip-only themes.
+  redundancy: Moderate with chip, AI, and high-beta theme names.
+  liquidity:
+    status: OK
+    avg_amount_20d: 112331106.15
+    avg_amount_60d: 74800698.68
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sh_515260.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Research Universe
+  style_profile: HIGH_BETA_THEME
+  exposure_category: electronics / growth technology
+  asset_flags:
+  - A_SHARE_ETF
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: unknown
+    liquidity_status: ok
+    volatility_status: high_volatility
+    recommended_action: observe_only_before_backtest
+  in_v1_backtest_trade_pool: false
+  notes: Broad electronics exposure adds research coverage beyond chip-only themes; high-beta behavior should be flagged.
+  blocking_or_watch_flags:
+  - CLASSIFICATION_REQUIRES_FINALIZATION
+  - HIGH_VOLATILITY
+- etf_code: '159732'
+  etf_name: 消费电子ETF华夏
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: QUALIFIED_RESEARCH
+  research_value: HIGH
+  coverage_contribution: MEDIUM
+  coverage_contribution_note: Adds consumer-electronics exposure as a more specific electronics/technology demand proxy.
+  redundancy: Moderate with electronics and growth theme candidates.
+  liquidity:
+    status: OK
+    avg_amount_20d: 776804003.94
+    avg_amount_60d: 491579905.71
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sz_159732.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Research Universe
+  style_profile: SECTOR_DEFENSIVE
+  exposure_category: consumer electronics
+  asset_flags:
+  - A_SHARE_ETF
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: unknown
+    liquidity_status: ok
+    volatility_status: normal
+    recommended_action: observe_only_before_backtest
+  in_v1_backtest_trade_pool: false
+  notes: Consumer-electronics exposure has strong liquidity and clear incremental technology-demand coverage.
+  blocking_or_watch_flags:
+  - CLASSIFICATION_REQUIRES_FINALIZATION
+- etf_code: '159613'
+  etf_name: 信息安全ETF嘉实
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: OBSERVE
+  research_value: MEDIUM
+  coverage_contribution: MEDIUM
+  coverage_contribution_note: Adds information-security exposure related to Xinchuang/domestic substitution.
+  redundancy: Moderate with software/cloud/security candidates.
+  liquidity:
+    status: LOW
+    avg_amount_20d: 8599488.88
+    avg_amount_60d: 7492222.44
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sz_159613.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Research Universe
+  style_profile: HIGH_BETA_THEME
+  exposure_category: information security / domestic substitution
+  asset_flags:
+  - A_SHARE_ETF
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: unknown
+    liquidity_status: low
+    volatility_status: normal
+    recommended_action: observe_only_before_backtest
+  in_v1_backtest_trade_pool: false
+  notes: Information-security exposure is useful, but liquidity is low and classification is unknown.
+  blocking_or_watch_flags:
+  - LIQUIDITY_LOW
+  - CLASSIFICATION_REQUIRES_FINALIZATION
+- etf_code: '562920'
+  etf_name: 信息安全
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: REJECT
+  research_value: LOW
+  coverage_contribution: LOW
+  coverage_contribution_note: Alternative information-security proxy for coverage comparison.
+  redundancy: High with 159613.
+  liquidity:
+    status: LOW
+    avg_amount_20d: 9082271.65
+    avg_amount_60d: 9858338.43
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sh_562920.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Master Universe
+  style_profile: HIGH_BETA_THEME
+  exposure_category: information security
+  asset_flags:
+  - A_SHARE_ETF
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: unknown
+    liquidity_status: low
+    volatility_status: normal
+    recommended_action: observe_only_before_backtest
+  in_v1_backtest_trade_pool: false
+  notes: Information-security peer has low liquidity, unknown classification, and weaker maintainability than 159613.
+  blocking_or_watch_flags:
+  - LIQUIDITY_LOW
+  - CLASSIFICATION_REQUIRES_FINALIZATION
+  - HIGH_REDUNDANCY
+- etf_code: '159538'
+  etf_name: 信创ETF富国
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: OBSERVE
+  research_value: MEDIUM
+  coverage_contribution: MEDIUM
+  coverage_contribution_note: Adds Xinchuang/domestic-substitution theme coverage.
+  redundancy: Moderate with 159539/159540; keep one primary after V2 screen.
+  liquidity:
+    status: LOW
+    avg_amount_20d: 36476509.96
+    avg_amount_60d: 17486665.38
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sz_159538.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Research Universe
+  style_profile: HIGH_BETA_THEME
+  exposure_category: Xinchuang / domestic substitution
+  asset_flags:
+  - A_SHARE_ETF
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: unknown
+    liquidity_status: low
+    volatility_status: high_volatility
+    recommended_action: observe_only_before_backtest
+  in_v1_backtest_trade_pool: false
+  notes: Xinchuang exposure is useful, but 60d liquidity is low and volatility/classification are not mature.
+  blocking_or_watch_flags:
+  - LIQUIDITY_LOW
+  - CLASSIFICATION_REQUIRES_FINALIZATION
+  - HIGH_VOLATILITY
+- etf_code: '159540'
+  etf_name: 信创ETF易方达
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: OBSERVE
+  research_value: LOW
+  coverage_contribution: LOW
+  coverage_contribution_note: Secondary Xinchuang peer for duplicate-exposure control.
+  redundancy: High with 159538/159539.
+  liquidity:
+    status: WATCH
+    avg_amount_20d: 48737368.31
+    avg_amount_60d: 37889159.73
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sz_159540.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Master Universe
+  style_profile: HIGH_BETA_THEME
+  exposure_category: Xinchuang / domestic substitution
+  asset_flags:
+  - A_SHARE_ETF
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: unknown
+    liquidity_status: watch
+    volatility_status: high_volatility
+    recommended_action: observe_only_before_backtest
+  in_v1_backtest_trade_pool: false
+  notes: Xinchuang peer is duplicate exposure; keep only for peer monitoring.
+  blocking_or_watch_flags:
+  - CLASSIFICATION_REQUIRES_FINALIZATION
+  - HIGH_REDUNDANCY
+  - HIGH_VOLATILITY
+- etf_code: '159658'
+  etf_name: 数字经济ETF华安
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: OBSERVE
+  research_value: MEDIUM
+  coverage_contribution: MEDIUM
+  coverage_contribution_note: Adds digital-economy theme coverage missing from V1 trade evidence.
+  redundancy: Moderate with AI/software/cloud.
+  liquidity:
+    status: LOW
+    avg_amount_20d: 13392553.29
+    avg_amount_60d: 11295241.15
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sz_159658.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Research Universe
+  style_profile: HIGH_BETA_THEME
+  exposure_category: digital economy
+  asset_flags:
+  - A_SHARE_ETF
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: unknown
+    liquidity_status: low
+    volatility_status: normal
+    recommended_action: observe_only_before_backtest
+  in_v1_backtest_trade_pool: false
+  notes: Digital-economy exposure is useful, but liquidity is too low for V2 research activation.
+  blocking_or_watch_flags:
+  - LIQUIDITY_LOW
+  - CLASSIFICATION_REQUIRES_FINALIZATION
+- etf_code: '159551'
+  etf_name: 机器人ETF国泰
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: OBSERVE
+  research_value: LOW
+  coverage_contribution: LOW
+  coverage_contribution_note: Robot peer for V1 robot exposure comparison.
+  redundancy: High with 562500 and 159770.
+  liquidity:
+    status: WATCH
+    avg_amount_20d: 37070552.65
+    avg_amount_60d: 33050728.3
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sz_159551.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Master Universe
+  style_profile: HIGH_BETA_THEME
+  exposure_category: robotics
+  asset_flags:
+  - A_SHARE_ETF
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: unknown
+    liquidity_status: watch
+    volatility_status: normal
+    recommended_action: observe_only_before_backtest
+  in_v1_backtest_trade_pool: false
+  notes: Robot peer duplicates existing V1 robot representatives; monitor only.
+  blocking_or_watch_flags:
+  - CLASSIFICATION_REQUIRES_FINALIZATION
+  - HIGH_REDUNDANCY
+- etf_code: '159638'
+  etf_name: 高端装备ETF嘉实
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: QUALIFIED_RESEARCH
+  research_value: MEDIUM
+  coverage_contribution: MEDIUM
+  coverage_contribution_note: Adds high-end manufacturing exposure separate from military/new-energy manufacturing.
+  redundancy: Moderate with robotics/industrial-machine candidates.
+  liquidity:
+    status: OK
+    avg_amount_20d: 59476007.5
+    avg_amount_60d: 69743401.88
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sz_159638.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Research Universe
+  style_profile: HIGH_BETA_THEME
+  exposure_category: high-end manufacturing
+  asset_flags:
+  - A_SHARE_ETF
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: unknown
+    liquidity_status: ok
+    volatility_status: normal
+    recommended_action: observe_only_before_backtest
+  in_v1_backtest_trade_pool: false
+  notes: High-end equipment/manufacturing exposure adds useful coverage with sufficient liquidity.
+  blocking_or_watch_flags:
+  - CLASSIFICATION_REQUIRES_FINALIZATION
+- etf_code: '159667'
+  etf_name: 工业母机ETF国泰
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: QUALIFIED_RESEARCH
+  research_value: MEDIUM
+  coverage_contribution: MEDIUM
+  coverage_contribution_note: Adds industrial-machine exposure as a manufacturing-cycle proxy.
+  redundancy: Moderate with 159638 and robotics.
+  liquidity:
+    status: OK
+    avg_amount_20d: 361047973.13
+    avg_amount_60d: 298652745.31
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sz_159667.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Research Universe
+  style_profile: HIGH_BETA_THEME
+  exposure_category: industrial machine / high-end manufacturing
+  asset_flags:
+  - A_SHARE_ETF
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: unknown
+    liquidity_status: ok
+    volatility_status: extreme_volatility
+    recommended_action: observe_only_before_backtest
+  in_v1_backtest_trade_pool: false
+  notes: Industrial-machine exposure adds manufacturing-cycle coverage; extreme-volatility flag remains a research caveat.
+  blocking_or_watch_flags:
+  - CLASSIFICATION_REQUIRES_FINALIZATION
+  - EXTREME_VOLATILITY
+- etf_code: '159516'
+  etf_name: 半导体设备ETF国泰
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: QUALIFIED_RESEARCH
+  research_value: HIGH
+  coverage_contribution: HIGH
+  coverage_contribution_note: Adds semiconductor-equipment exposure distinct from broad chip ETFs.
+  redundancy: Moderate to high with chip/AI technology exposure.
+  liquidity:
+    status: OK
+    avg_amount_20d: 5316217160.04
+    avg_amount_60d: 3450940824.17
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sz_159516.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Research Universe
+  style_profile: HIGH_BETA_THEME
+  exposure_category: semiconductor equipment
+  asset_flags:
+  - A_SHARE_ETF
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: unknown
+    liquidity_status: ok
+    volatility_status: extreme_volatility
+    recommended_action: observe_only_before_backtest
+  in_v1_backtest_trade_pool: false
+  notes: Semiconductor-equipment exposure is highly liquid and adds a distinct technology sub-theme.
+  blocking_or_watch_flags:
+  - CLASSIFICATION_REQUIRES_FINALIZATION
+  - EXTREME_VOLATILITY
+- etf_code: '159558'
+  etf_name: 半导体设备ETF易方达
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: OBSERVE
+  research_value: LOW
+  coverage_contribution: LOW
+  coverage_contribution_note: Secondary semiconductor-equipment peer for duplicate comparison.
+  redundancy: High with 159516.
+  liquidity:
+    status: OK
+    avg_amount_20d: 1737325840.19
+    avg_amount_60d: 1033941279.37
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sz_159558.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Master Universe
+  style_profile: HIGH_BETA_THEME
+  exposure_category: semiconductor equipment
+  asset_flags:
+  - A_SHARE_ETF
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: unknown
+    liquidity_status: ok
+    volatility_status: high_volatility
+    recommended_action: observe_only_before_backtest
+  in_v1_backtest_trade_pool: false
+  notes: Highly liquid but duplicate semiconductor-equipment peer; keep for redundancy monitoring.
+  blocking_or_watch_flags:
+  - CLASSIFICATION_REQUIRES_FINALIZATION
+  - HIGH_REDUNDANCY
+  - HIGH_VOLATILITY
+- etf_code: '561360'
+  etf_name: 石油ETF
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: QUALIFIED_RESEARCH
+  research_value: MEDIUM
+  coverage_contribution: MEDIUM
+  coverage_contribution_note: Adds oil/energy commodity-cycle exposure not cleanly represented by V1 coal/chemical/nonferrous
+    set.
+  redundancy: Moderate with commodity/resource names.
+  liquidity:
+    status: OK
+    avg_amount_20d: 74795923.05
+    avg_amount_60d: 110861936.7
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sh_561360.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Research Universe
+  style_profile: COMMODITY_CYCLICAL
+  exposure_category: oil and gas / resource
+  asset_flags:
+  - A_SHARE_ETF
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: unknown
+    liquidity_status: ok
+    volatility_status: normal
+    recommended_action: observe_only_before_backtest
+  in_v1_backtest_trade_pool: false
+  notes: Oil/resource exposure broadens commodity-cycle coverage with sufficient liquidity.
+  blocking_or_watch_flags:
+  - CLASSIFICATION_REQUIRES_FINALIZATION
+- etf_code: '159697'
+  etf_name: 石油ETF鹏华
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: OBSERVE
+  research_value: LOW
+  coverage_contribution: LOW
+  coverage_contribution_note: Alternative oil/gas proxy for V2 data discovery.
+  redundancy: High with 561360.
+  liquidity:
+    status: OK
+    avg_amount_20d: 69603787.2
+    avg_amount_60d: 92074991.07
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sz_159697.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Master Universe
+  style_profile: COMMODITY_CYCLICAL
+  exposure_category: oil and gas
+  asset_flags:
+  - A_SHARE_ETF
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: unknown
+    liquidity_status: ok
+    volatility_status: normal
+    recommended_action: observe_only_before_backtest
+  in_v1_backtest_trade_pool: false
+  notes: Oil peer duplicates 561360; monitor as alternate only.
+  blocking_or_watch_flags:
+  - CLASSIFICATION_REQUIRES_FINALIZATION
+  - HIGH_REDUNDANCY
+- etf_code: '159608'
+  etf_name: 稀有金属ETF广发
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: QUALIFIED_RESEARCH
+  research_value: MEDIUM
+  coverage_contribution: MEDIUM
+  coverage_contribution_note: Adds rare-metal resource exposure beyond V1 nonferrous/coal/chemical.
+  redundancy: Moderate with nonferrous/rare-earth.
+  liquidity:
+    status: OK
+    avg_amount_20d: 255589288.8
+    avg_amount_60d: 208268287.98
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sz_159608.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Research Universe
+  style_profile: COMMODITY_CYCLICAL
+  exposure_category: rare metals
+  asset_flags:
+  - A_SHARE_ETF
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: unknown
+    liquidity_status: ok
+    volatility_status: normal
+    recommended_action: observe_only_before_backtest
+  in_v1_backtest_trade_pool: false
+  notes: Rare-metal exposure adds resource-cycle breadth with sufficient liquidity.
+  blocking_or_watch_flags:
+  - CLASSIFICATION_REQUIRES_FINALIZATION
+- etf_code: '516750'
+  etf_name: 建材ETF
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: REJECT
+  research_value: LOW
+  coverage_contribution: LOW
+  coverage_contribution_note: Adds building-materials cyclical exposure for completeness.
+  redundancy: Low to moderate versus V1 trade pool.
+  liquidity:
+    status: LOW
+    avg_amount_20d: 7378883.35
+    avg_amount_60d: 10894739.55
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sh_516750.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Master Universe
+  style_profile: COMMODITY_CYCLICAL
+  exposure_category: building materials
+  asset_flags:
+  - A_SHARE_ETF
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: unknown
+    liquidity_status: low
+    volatility_status: normal
+    recommended_action: observe_only_before_backtest
+  in_v1_backtest_trade_pool: false
+  notes: Building-materials exposure is useful in theory, but liquidity is low and classification is unknown.
+  blocking_or_watch_flags:
+  - LIQUIDITY_LOW
+  - CLASSIFICATION_REQUIRES_FINALIZATION
+- etf_code: '516360'
+  etf_name: 新材料ETF
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: REJECT
+  research_value: LOW
+  coverage_contribution: LOW
+  coverage_contribution_note: New-materials category is strategically relevant for future master coverage.
+  redundancy: Moderate with commodity/resource candidates.
+  liquidity:
+    status: LOW
+    avg_amount_20d: 6816746.25
+    avg_amount_60d: 5283187.8
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sh_516360.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Master Universe
+  style_profile: COMMODITY_CYCLICAL
+  exposure_category: new materials
+  asset_flags:
+  - A_SHARE_ETF
+  existing_v1_quality:
+    recommended_pool: exclude_pool
+    classification_status: unknown
+    liquidity_status: ultra_low
+    volatility_status: normal
+    recommended_action: exclude_before_backtest
+  in_v1_backtest_trade_pool: false
+  notes: New-materials ETF has ultra-low liquidity and unknown classification.
+  blocking_or_watch_flags:
+  - LIQUIDITY_LOW
+  - CLASSIFICATION_REQUIRES_FINALIZATION
+- etf_code: '159332'
+  etf_name: 央企红利ETF富国
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: REJECT
+  research_value: LOW
+  coverage_contribution: HIGH
+  coverage_contribution_note: Adds central-SOE dividend exposure, improving value/dividend style coverage.
+  redundancy: Moderate with dividend/low-vol candidates.
+  liquidity:
+    status: ULTRA_LOW
+    avg_amount_20d: 1713977.32
+    avg_amount_60d: 2059762.71
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sz_159332.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Research Universe
+  style_profile: DIVIDEND
+  exposure_category: central SOE dividend
+  asset_flags:
+  - A_SHARE_ETF
+  existing_v1_quality:
+    recommended_pool: exclude_pool
+    classification_status: unknown
+    liquidity_status: ultra_low
+    volatility_status: normal
+    recommended_action: exclude_before_backtest
+  in_v1_backtest_trade_pool: false
+  notes: Central-SOE dividend idea is useful, but actual liquidity is ultra-low in unified data.
+  blocking_or_watch_flags:
+  - LIQUIDITY_ULTRA_LOW
+  - CLASSIFICATION_REQUIRES_FINALIZATION
+- etf_code: '159547'
+  etf_name: 红利低波ETF华夏
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: QUALIFIED_RESEARCH
+  research_value: HIGH
+  coverage_contribution: HIGH
+  coverage_contribution_note: Adds low-volatility dividend factor exposure missing from V1 trade evidence.
+  redundancy: Moderate with dividend names; low-vol factor is incremental.
+  liquidity:
+    status: OK
+    avg_amount_20d: 157345040.56
+    avg_amount_60d: 131471792.02
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sz_159547.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Research Universe
+  style_profile: DIVIDEND
+  exposure_category: dividend low volatility
+  asset_flags:
+  - A_SHARE_ETF
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: unknown
+    liquidity_status: ok
+    volatility_status: normal
+    recommended_action: observe_only_before_backtest
+  in_v1_backtest_trade_pool: false
+  notes: Dividend low-volatility exposure has sufficient liquidity and clear style contribution.
+  blocking_or_watch_flags:
+  - CLASSIFICATION_REQUIRES_FINALIZATION
+- etf_code: '159593'
+  etf_name: 中证A50ETF
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: QUALIFIED_RESEARCH
+  research_value: HIGH
+  coverage_contribution: HIGH
+  coverage_contribution_note: Adds A50/new core-large-cap exposure distinct from V1 CSI A500 and legacy large-cap peers.
+  redundancy: Moderate with A500/CSI300/Shanghai50.
+  liquidity:
+    status: OK
+    avg_amount_20d: 60440744.01
+    avg_amount_60d: 95745831.58
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sz_159593.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Research Universe
+  style_profile: CORE_LARGE_CAP
+  exposure_category: large-cap core / A50
+  asset_flags:
+  - A_SHARE_ETF
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: classified
+    liquidity_status: ok
+    volatility_status: normal
+    recommended_action: keep_best_liquidity_peer_in_trade_pool
+  in_v1_backtest_trade_pool: false
+  notes: A50 broad-index exposure is classified, liquid, and useful for V2 broad-index comparison.
+  blocking_or_watch_flags: []
+- etf_code: '159531'
+  etf_name: 中证2000ETF南方
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: QUALIFIED_RESEARCH
+  research_value: HIGH
+  coverage_contribution: HIGH
+  coverage_contribution_note: Adds small-cap/CSI2000 exposure not captured by V1 core mid-cap broad indices.
+  redundancy: Low to moderate with CSI1000/Core mid-cap proxies.
+  liquidity:
+    status: OK
+    avg_amount_20d: 145366694.92
+    avg_amount_60d: 143860199.7
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sz_159531.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Research Universe
+  style_profile: CORE_MID_CAP
+  exposure_category: CSI2000 / small cap
+  asset_flags:
+  - A_SHARE_ETF
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: unknown
+    liquidity_status: ok
+    volatility_status: normal
+    recommended_action: observe_only_before_backtest
+  in_v1_backtest_trade_pool: false
+  notes: CSI2000 small-cap exposure adds a missing size/style segment with sufficient liquidity.
+  blocking_or_watch_flags:
+  - CLASSIFICATION_REQUIRES_FINALIZATION
+- etf_code: '159595'
+  etf_name: 中证A50ETF大成
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: OBSERVE
+  research_value: LOW
+  coverage_contribution: LOW
+  coverage_contribution_note: A50 peer for duplicate-exposure comparison.
+  redundancy: High with 159593.
+  liquidity:
+    status: OK
+    avg_amount_20d: 118301712.19
+    avg_amount_60d: 138365381.11
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sz_159595.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Master Universe
+  style_profile: CORE_LARGE_CAP
+  exposure_category: large-cap core / A50
+  asset_flags:
+  - A_SHARE_ETF
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: unknown
+    liquidity_status: ok
+    volatility_status: normal
+    recommended_action: observe_only_before_backtest
+  in_v1_backtest_trade_pool: false
+  notes: A50 peer duplicates 159593 and remains classification-unknown in the V1 quality review.
+  blocking_or_watch_flags:
+  - CLASSIFICATION_REQUIRES_FINALIZATION
+  - HIGH_REDUNDANCY
+- etf_code: '510050'
+  etf_name: 上证50ETF
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: QUALIFIED_RESEARCH
+  research_value: MEDIUM
+  coverage_contribution: MEDIUM
+  coverage_contribution_note: Classic large-cap defensive proxy; useful for V1 vs V2 broad-index comparison even if not V1
+    trade pool.
+  redundancy: Moderate with CSI300/A500/A50.
+  liquidity:
+    status: OK
+    avg_amount_20d: 2364893642.15
+    avg_amount_60d: 2827392296.85
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sh_510050.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Research Universe
+  style_profile: CORE_LARGE_CAP
+  exposure_category: large-cap core / Shanghai 50
+  asset_flags:
+  - A_SHARE_ETF
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: classified
+    liquidity_status: ok
+    volatility_status: normal
+    recommended_action: keep_best_liquidity_peer_in_trade_pool
+  in_v1_backtest_trade_pool: false
+  notes: Classic Shanghai 50 large-cap proxy is liquid and useful for broad-index robustness comparison.
+  blocking_or_watch_flags: []
+- etf_code: '588220'
+  etf_name: 科创100ETF基金
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: QUALIFIED_RESEARCH
+  research_value: MEDIUM
+  coverage_contribution: MEDIUM
+  coverage_contribution_note: Adds STAR-market growth broad exposure for regime/style research.
+  redundancy: High with other STAR 100 peers.
+  liquidity:
+    status: OK
+    avg_amount_20d: 613098393.5
+    avg_amount_60d: 666112663.55
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sh_588220.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Research Universe
+  style_profile: CORE_MID_CAP
+  exposure_category: STAR 100 / growth broad
+  asset_flags:
+  - A_SHARE_ETF
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: classified
+    liquidity_status: ok
+    volatility_status: normal
+    recommended_action: keep_best_liquidity_peer_in_trade_pool
+  in_v1_backtest_trade_pool: false
+  notes: STAR 100 growth-broad exposure is liquid and useful despite duplicate-peer caveat.
+  blocking_or_watch_flags:
+  - HIGH_REDUNDANCY
+- etf_code: '515880'
+  etf_name: 证券公司ETF
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: OBSERVE
+  research_value: MEDIUM
+  coverage_contribution: MEDIUM
+  coverage_contribution_note: High-liquidity securities proxy; useful only after forward history matures.
+  redundancy: High with V1 securities ETF and non-bank ETF.
+  liquidity:
+    status: OK
+    avg_amount_20d: 6263738624.5
+    avg_amount_60d: 4381938967.58
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: SHORT_OBSERVE
+    start_date: '2026-01-05'
+    end_date: '2026-07-08'
+    row_count: 122
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sh_515880.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Research Universe
+  style_profile: SECTOR_CYCLICAL
+  exposure_category: securities / financial high beta
+  asset_flags:
+  - A_SHARE_ETF
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: classified
+    liquidity_status: ok
+    volatility_status: high_volatility
+    recommended_action: observe_only_before_backtest
+  in_v1_backtest_trade_pool: false
+  notes: Very liquid securities proxy, but unified history is short and volatility is high.
+  blocking_or_watch_flags:
+  - SHORT_OBSERVE
+  - HIGH_REDUNDANCY
+  - HIGH_VOLATILITY
+- etf_code: '588200'
+  etf_name: 科创芯片ETF
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: QUALIFIED_RESEARCH
+  research_value: HIGH
+  coverage_contribution: HIGH
+  coverage_contribution_note: Very liquid chip/STAR exposure; useful for high-beta theme stress research.
+  redundancy: High with semiconductor/chip themes.
+  liquidity:
+    status: OK
+    avg_amount_20d: 6193061922.7
+    avg_amount_60d: 5276323342.93
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sh_588200.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Research Universe
+  style_profile: HIGH_BETA_THEME
+  exposure_category: STAR chip / high-beta growth
+  asset_flags:
+  - A_SHARE_ETF
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: classified
+    liquidity_status: ok
+    volatility_status: high_volatility
+    recommended_action: observe_or_small_weight_only
+  in_v1_backtest_trade_pool: false
+  notes: Very liquid STAR-chip high-beta stress proxy; qualified for research, not trade activation.
+  blocking_or_watch_flags:
+  - HIGH_REDUNDANCY
+  - HIGH_VOLATILITY
+- etf_code: '513180'
+  etf_name: 恒生科技ETF
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: OBSERVE
+  research_value: HIGH
+  coverage_contribution: HIGH
+  coverage_contribution_note: Useful cross-border technology observation proxy.
+  redundancy: Moderate with 513130 and other Hang Seng Tech products.
+  liquidity:
+    status: OK
+    avg_amount_20d: 3226577532.5
+    avg_amount_60d: 3735459455.9
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sh_513180.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Master Universe
+  style_profile: QDII_OBSERVATION
+  exposure_category: Hong Kong technology / QDII
+  asset_flags:
+  - QDII
+  - CROSS_BORDER
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: classified
+    liquidity_status: ok
+    volatility_status: normal
+    recommended_action: observe_only_before_backtest
+  in_v1_backtest_trade_pool: false
+  notes: QDII Hang Seng Tech proxy is useful but requires premium/FX/calendar handling.
+  blocking_or_watch_flags:
+  - QDII_SEPARATE_HANDLING
+- etf_code: '159941'
+  etf_name: 纳指ETF
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: OBSERVE
+  research_value: HIGH
+  coverage_contribution: HIGH
+  coverage_contribution_note: Useful US growth observation proxy.
+  redundancy: Moderate with 513100.
+  liquidity:
+    status: OK
+    avg_amount_20d: 1972610720.96
+    avg_amount_60d: 1835410709.3
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sz_159941.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Master Universe
+  style_profile: QDII_OBSERVATION
+  exposure_category: NASDAQ / QDII
+  asset_flags:
+  - QDII
+  - CROSS_BORDER
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: classified
+    liquidity_status: ok
+    volatility_status: normal
+    recommended_action: observe_only_before_backtest
+  in_v1_backtest_trade_pool: false
+  notes: QDII NASDAQ proxy is useful but must remain separate from A-share replay.
+  blocking_or_watch_flags:
+  - QDII_SEPARATE_HANDLING
+- etf_code: '513050'
+  etf_name: 中概互联网ETF
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: OBSERVE
+  research_value: MEDIUM
+  coverage_contribution: MEDIUM
+  coverage_contribution_note: China offshore internet observation proxy.
+  redundancy: Moderate with HK tech/internet QDII names.
+  liquidity:
+    status: OK
+    avg_amount_20d: 2257656592.25
+    avg_amount_60d: 2188244485.97
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sh_513050.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Master Universe
+  style_profile: QDII_OBSERVATION
+  exposure_category: China internet / QDII
+  asset_flags:
+  - QDII
+  - CROSS_BORDER
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: classified
+    liquidity_status: ok
+    volatility_status: normal
+    recommended_action: observe_only_before_backtest
+  in_v1_backtest_trade_pool: false
+  notes: QDII China-internet proxy is useful but requires separate QDII handling.
+  blocking_or_watch_flags:
+  - QDII_SEPARATE_HANDLING
+- etf_code: '513520'
+  etf_name: 日经ETF
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: OBSERVE
+  research_value: MEDIUM
+  coverage_contribution: MEDIUM
+  coverage_contribution_note: Japan equity observation proxy for external-market comparison.
+  redundancy: Moderate with 513880.
+  liquidity:
+    status: OK
+    avg_amount_20d: 645285103.7
+    avg_amount_60d: 470257968.62
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sh_513520.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Master Universe
+  style_profile: QDII_OBSERVATION
+  exposure_category: Japan equity / QDII
+  asset_flags:
+  - QDII
+  - CROSS_BORDER
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: classified
+    liquidity_status: ok
+    volatility_status: normal
+    recommended_action: observe_only_before_backtest
+  in_v1_backtest_trade_pool: false
+  notes: QDII Japan equity proxy is useful for observation only.
+  blocking_or_watch_flags:
+  - QDII_SEPARATE_HANDLING
+- etf_code: '520550'
+  etf_name: 港股红利低波ETF
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: OBSERVE
+  research_value: MEDIUM
+  coverage_contribution: MEDIUM
+  coverage_contribution_note: Cross-border dividend/low-vol observation proxy.
+  redundancy: Moderate with other HK dividend/high-dividend names.
+  liquidity:
+    status: WATCH
+    avg_amount_20d: 51626174.45
+    avg_amount_60d: 49814986.1
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sh_520550.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Master Universe
+  style_profile: QDII_OBSERVATION
+  exposure_category: Hong Kong dividend low volatility / QDII
+  asset_flags:
+  - QDII
+  - CROSS_BORDER
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: classified
+    liquidity_status: watch
+    volatility_status: normal
+    recommended_action: observe_only_before_backtest
+  in_v1_backtest_trade_pool: false
+  notes: QDII Hong Kong dividend-low-vol proxy has watch-level liquidity and QDII handling needs.
+  blocking_or_watch_flags:
+  - QDII_SEPARATE_HANDLING
+- etf_code: '159315'
+  etf_name: 黄金股ETF工银
+  current_status: UNIVERSE_V2_CANDIDATE
+  universe_version: universe_v2_candidate
+  qualification_verdict: REJECT
+  research_value: LOW
+  coverage_contribution: LOW
+  coverage_contribution_note: Gold-equity proxy for special-asset observation.
+  redundancy: Low with V1 trade pool, but high risk.
+  liquidity:
+    status: LOW
+    avg_amount_20d: 20636912.6
+    avg_amount_60d: 19086698.76
+    source: data/etf_daily unified database as of 2026-07-08
+  history:
+    status: OK
+    start_date: '2025-03-03'
+    end_date: '2026-07-08'
+    row_count: 329
+    duplicate_dates: 0
+    needs_refresh: false
+    needs_backfill: false
+    source: data/etf_daily/sz_159315.csv
+  data_source_status: CURRENT
+  source_candidates_file_layer: Master Universe
+  style_profile: COMMODITY_CYCLICAL
+  exposure_category: gold equities
+  asset_flags:
+  - A_SHARE_ETF
+  - SPECIAL_ASSET
+  existing_v1_quality:
+    recommended_pool: observe_pool
+    classification_status: unknown
+    liquidity_status: low
+    volatility_status: high_volatility
+    recommended_action: observe_only_before_backtest
+  in_v1_backtest_trade_pool: false
+  notes: Gold-equity proxy has low liquidity, high volatility, and unknown classification.
+  blocking_or_watch_flags:
+  - LIQUIDITY_LOW
+  - CLASSIFICATION_REQUIRES_FINALIZATION
+  - HIGH_VOLATILITY

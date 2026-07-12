@@ -1,0 +1,15 @@
+{
+  "generated_at": "2026-07-06 21:55:33",
+  "existing_regime_is_informative": true,
+  "existing_regime_is_stable": false,
+  "existing_regime_has_whipsaw_problem": true,
+  "style_regime_fit_supported": true,
+  "structural_risk_regime_fit_supported": false,
+  "realized_risk_analysis_mode": "point_in_time_recomputed",
+  "ready_for_regime_fit_phase": true,
+  "ready_for_preview": false,
+  "ready_for_execution": false,
+  "decision_reason": "informative breadth/regime separation; whipsaw/hysteresis issue needs study; style fit supported; structural fit weak; ready for next audit phase",
+  "research_only": true,
+  "execution_allowed": false
+}

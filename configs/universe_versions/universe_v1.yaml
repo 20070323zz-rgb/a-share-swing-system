@@ -1,0 +1,72 @@
+schema_version: 1
+version: "universe_v1"
+created_at: "2026-07-08"
+status: "LOCKED_HISTORICAL_BASELINE"
+purpose: "Preserve the ETF universe used by Phase 3 and Phase 3.5 research."
+source:
+  master_daily_files: "data/etf_daily/*.csv"
+  trade_pool: "data/backtest_trade_pool.csv"
+  quality_review: "reports/universe_quality_review.csv"
+  risk_profile: "reports/etf_risk_profile.csv"
+  robustness_base: "data/style_fit_robustness_base.csv"
+binding:
+  phase_3_research: "universe_v1"
+  phase_3_5a_research: "universe_v1"
+  phase_3_5b_research: "universe_v1"
+  phase_3_5c_governance: "universe_v1"
+  replay_binding: "historical only"
+  formal_execution_binding: "none"
+counts:
+  master_universe: 183
+  quality_review_trade_pool: 39
+  quality_review_observe_pool: 132
+  quality_review_exclude_pool: 12
+  backtest_trade_pool: 39
+layers:
+  master_universe:
+    pool_level: "master"
+    source: "data/etf_daily/*.csv"
+    count: 183
+    inclusion_reason: "All ETF daily files maintained by the local repository as of Universe V1."
+    exclusion_reason: "Not applicable at master level; master records may still be excluded from research or trade layers."
+    style_profile: "Defined per symbol in reports/etf_risk_profile.csv."
+    exposure_category: "Defined by etf_type/group in reports/universe_quality_review.csv."
+    liquidity_notes: "Per-symbol avg_amount_20d and liquidity_status are stored in reports/universe_quality_review.csv."
+    history_coverage_notes: "Per-symbol start_date, end_date, trading_days, and data_length_status are stored in reports/universe_quality_review.csv."
+  research_universe:
+    pool_level: "research"
+    source: "data/style_fit_robustness_base.csv; data/backtest_trade_pool.csv"
+    effective_symbol_count: 39
+    inclusion_reason: "Symbols that passed the V1 history/liquidity/classification screen and entered Phase 3.5 robustness evidence."
+    exclusion_reason: "Observe/exclude names were not used as Phase 3/3.5 evidence baseline."
+    style_profile: "Phase 3/3.5 style profiles are repository-recoverable from reports/etf_risk_profile.csv and evidence reports."
+    exposure_category: "V1 research exposure is constrained by the 39-symbol backtest trade pool."
+    liquidity_notes: "V1 research symbols passed the then-current liquidity screen."
+    history_coverage_notes: "Replay effective coverage was governed by the common intersection and warm-up window documented in reports/effective_sample_coverage_audit.md."
+  trade_pool:
+    pool_level: "trade_candidate_baseline"
+    source: "data/backtest_trade_pool.csv"
+    count: 39
+    inclusion_reason: "V1 backtest candidates selected by universe quality review."
+    exclusion_reason: "Universe V1 is not a live execution authorization."
+    style_profile: "No direct score, ranking, preview, or execution permission is implied."
+    exposure_category: "ETF-first candidate pool used by historical research."
+    liquidity_notes: "Historical liquidity screen passed at V1 selection time."
+    history_coverage_notes: "Historical replay used V1 available data only."
+per_symbol_record_contract:
+  version: "universe_v1"
+  created_at: "inherited from this file"
+  purpose: "historical research baseline"
+  source: "reports/universe_quality_review.csv + reports/etf_risk_profile.csv"
+  pool_level: "recommended_pool or backtest_trade_pool membership"
+  inclusion_reason: "review_reason / recommended_action"
+  exclusion_reason: "review_reason where recommended_pool is observe_pool or exclude_pool"
+  style_profile: "style_profile"
+  exposure_category: "etf_type + group + duplicate_exposure_group"
+  liquidity_notes: "avg_amount_20d + liquidity_status"
+  history_coverage_notes: "start_date + end_date + trading_days + data_length_status"
+constraints:
+  overwrite_policy: "DO_NOT_OVERWRITE"
+  phase_3_3_5_conclusion_policy: "Remain explicitly bound to universe_v1."
+  universe_v2_policy: "V2 may be designed independently but must not mutate this baseline."
+  execution_policy: "No formal execution permission."

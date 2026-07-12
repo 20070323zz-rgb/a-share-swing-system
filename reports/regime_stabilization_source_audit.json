@@ -1,0 +1,41 @@
+{
+  "generated_at": "2026-07-06 22:25:24",
+  "input_files": {
+    "raw_replay_csv": "/Users/dayin/Code/a-share-swing-system/data/market_regime_replay.csv",
+    "raw_replay_json": "/Users/dayin/Code/a-share-swing-system/reports/market_regime_replay.json",
+    "phase2_stability_json": "/Users/dayin/Code/a-share-swing-system/reports/market_regime_stability.json",
+    "phase2_style_forward_csv": "/Users/dayin/Code/a-share-swing-system/reports/regime_style_forward_return.csv",
+    "phase2_decision_json": "/Users/dayin/Code/a-share-swing-system/reports/market_regime_audit_decision.json",
+    "etf_risk_profile_csv": "/Users/dayin/Code/a-share-swing-system/reports/etf_risk_profile.csv"
+  },
+  "raw_replay_rows": 267,
+  "raw_replay_start": "2025-05-30",
+  "raw_replay_end": "2026-07-06",
+  "date_order_is_monotonic": true,
+  "duplicate_date_count": 0,
+  "normalized_regime_values": [
+    "DEFENSIVE",
+    "NEUTRAL",
+    "OFFENSIVE"
+  ],
+  "normalized_regime_mapping": {
+    "risk_on": "OFFENSIVE",
+    "neutral": "NEUTRAL",
+    "risk_off": "DEFENSIVE"
+  },
+  "required_regimes_present": true,
+  "forward_return_label_columns": [
+    "benchmark_return_1d",
+    "benchmark_return_3d",
+    "benchmark_return_5d",
+    "benchmark_return_10d",
+    "benchmark_return_20d"
+  ],
+  "forward_returns_are_labels_only": true,
+  "replay_is_point_in_time": true,
+  "point_in_time_note": "Phase 2 raw replay was produced from row_on_date <= T. Phase 2.5 only transforms known raw regime states through confirmation rules.",
+  "phase2_raw_regime_modified": false,
+  "profile_rows": 183,
+  "research_only": true,
+  "execution_allowed": false
+}

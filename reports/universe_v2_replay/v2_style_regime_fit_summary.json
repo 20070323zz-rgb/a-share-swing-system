@@ -1,0 +1,794 @@
+{
+  "generated_at": "2026-07-08 20:53:02",
+  "rows": [
+    {
+      "style_profile": "BOND",
+      "regime": "OFFENSIVE",
+      "overall_fit_evidence": "INSUFFICIENT",
+      "horizon_consistency": "insufficient_core_horizon",
+      "horizon_conflict": false,
+      "overall_reason": "fewer than 2 core horizons have enough samples",
+      "sample_count_10d": null,
+      "median_return_10d": null,
+      "benchmark_excess_median_10d": null,
+      "fit_evidence_10d": "INSUFFICIENT",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "BOND",
+      "regime": "NEUTRAL",
+      "overall_fit_evidence": "INSUFFICIENT",
+      "horizon_consistency": "insufficient_core_horizon",
+      "horizon_conflict": false,
+      "overall_reason": "fewer than 2 core horizons have enough samples",
+      "sample_count_10d": null,
+      "median_return_10d": null,
+      "benchmark_excess_median_10d": null,
+      "fit_evidence_10d": "INSUFFICIENT",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "BOND",
+      "regime": "DEFENSIVE",
+      "overall_fit_evidence": "INSUFFICIENT",
+      "horizon_consistency": "insufficient_core_horizon",
+      "horizon_conflict": false,
+      "overall_reason": "fewer than 2 core horizons have enough samples",
+      "sample_count_10d": null,
+      "median_return_10d": null,
+      "benchmark_excess_median_10d": null,
+      "fit_evidence_10d": "INSUFFICIENT",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "DIVIDEND",
+      "regime": "OFFENSIVE",
+      "overall_fit_evidence": "NEUTRAL",
+      "horizon_consistency": "mixed_or_flat",
+      "horizon_conflict": false,
+      "overall_reason": "no stable positive/negative direction",
+      "sample_count_10d": 417,
+      "median_return_10d": 0.0032076985,
+      "benchmark_excess_median_10d": -0.0125005586,
+      "fit_evidence_10d": "NEUTRAL",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "DIVIDEND",
+      "regime": "NEUTRAL",
+      "overall_fit_evidence": "NEUTRAL",
+      "horizon_consistency": "mixed_or_flat",
+      "horizon_conflict": false,
+      "overall_reason": "no stable positive/negative direction",
+      "sample_count_10d": 174,
+      "median_return_10d": -0.0016838465,
+      "benchmark_excess_median_10d": -0.000159497,
+      "fit_evidence_10d": "WEAK_CONFLICT",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "DIVIDEND",
+      "regime": "DEFENSIVE",
+      "overall_fit_evidence": "NEUTRAL",
+      "horizon_consistency": "mixed_or_flat",
+      "horizon_conflict": false,
+      "overall_reason": "no stable positive/negative direction",
+      "sample_count_10d": 186,
+      "median_return_10d": 0.001870909,
+      "benchmark_excess_median_10d": -0.0158859168,
+      "fit_evidence_10d": "NEUTRAL",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "LOW_VOL",
+      "regime": "OFFENSIVE",
+      "overall_fit_evidence": "INSUFFICIENT",
+      "horizon_consistency": "insufficient_core_horizon",
+      "horizon_conflict": false,
+      "overall_reason": "fewer than 2 core horizons have enough samples",
+      "sample_count_10d": null,
+      "median_return_10d": null,
+      "benchmark_excess_median_10d": null,
+      "fit_evidence_10d": "INSUFFICIENT",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "LOW_VOL",
+      "regime": "NEUTRAL",
+      "overall_fit_evidence": "INSUFFICIENT",
+      "horizon_consistency": "insufficient_core_horizon",
+      "horizon_conflict": false,
+      "overall_reason": "fewer than 2 core horizons have enough samples",
+      "sample_count_10d": null,
+      "median_return_10d": null,
+      "benchmark_excess_median_10d": null,
+      "fit_evidence_10d": "INSUFFICIENT",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "LOW_VOL",
+      "regime": "DEFENSIVE",
+      "overall_fit_evidence": "INSUFFICIENT",
+      "horizon_consistency": "insufficient_core_horizon",
+      "horizon_conflict": false,
+      "overall_reason": "fewer than 2 core horizons have enough samples",
+      "sample_count_10d": null,
+      "median_return_10d": null,
+      "benchmark_excess_median_10d": null,
+      "fit_evidence_10d": "INSUFFICIENT",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "CORE_LARGE_CAP",
+      "regime": "OFFENSIVE",
+      "overall_fit_evidence": "WEAK_SUPPORT",
+      "horizon_consistency": "consistent_positive",
+      "horizon_conflict": false,
+      "overall_reason": "core horizons positive",
+      "sample_count_10d": 278,
+      "median_return_10d": 0.0091748587,
+      "benchmark_excess_median_10d": -0.0050253669,
+      "fit_evidence_10d": "WEAK_SUPPORT",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "CORE_LARGE_CAP",
+      "regime": "NEUTRAL",
+      "overall_fit_evidence": "CONFLICT",
+      "horizon_consistency": "consistent_negative",
+      "horizon_conflict": false,
+      "overall_reason": "core horizons negative",
+      "sample_count_10d": 116,
+      "median_return_10d": -0.0037860268,
+      "benchmark_excess_median_10d": -0.0008468784,
+      "fit_evidence_10d": "CONFLICT",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "CORE_LARGE_CAP",
+      "regime": "DEFENSIVE",
+      "overall_fit_evidence": "WEAK_SUPPORT",
+      "horizon_consistency": "consistent_positive",
+      "horizon_conflict": false,
+      "overall_reason": "core horizons positive",
+      "sample_count_10d": 124,
+      "median_return_10d": 0.0106008839,
+      "benchmark_excess_median_10d": -0.0054478533,
+      "fit_evidence_10d": "WEAK_SUPPORT",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "CORE_MID_CAP",
+      "regime": "OFFENSIVE",
+      "overall_fit_evidence": "SUPPORTED",
+      "horizon_consistency": "consistent_positive",
+      "horizon_conflict": false,
+      "overall_reason": "core horizons positive",
+      "sample_count_10d": 278,
+      "median_return_10d": 0.0293997599,
+      "benchmark_excess_median_10d": 0.0153082161,
+      "fit_evidence_10d": "SUPPORTED",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "CORE_MID_CAP",
+      "regime": "NEUTRAL",
+      "overall_fit_evidence": "WEAK_CONFLICT",
+      "horizon_consistency": "mixed_core_horizon",
+      "horizon_conflict": true,
+      "overall_reason": "core horizons mixed; cannot mark CONFLICT",
+      "sample_count_10d": 116,
+      "median_return_10d": -0.0061767889,
+      "benchmark_excess_median_10d": -0.0021844244,
+      "fit_evidence_10d": "WEAK_CONFLICT",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "CORE_MID_CAP",
+      "regime": "DEFENSIVE",
+      "overall_fit_evidence": "SUPPORTED",
+      "horizon_consistency": "consistent_positive",
+      "horizon_conflict": false,
+      "overall_reason": "core horizons positive",
+      "sample_count_10d": 124,
+      "median_return_10d": 0.0333253574,
+      "benchmark_excess_median_10d": 0.0091106614,
+      "fit_evidence_10d": "SUPPORTED",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "GROWTH_BROAD",
+      "regime": "OFFENSIVE",
+      "overall_fit_evidence": "INSUFFICIENT",
+      "horizon_consistency": "insufficient_core_horizon",
+      "horizon_conflict": false,
+      "overall_reason": "fewer than 2 core horizons have enough samples",
+      "sample_count_10d": null,
+      "median_return_10d": null,
+      "benchmark_excess_median_10d": null,
+      "fit_evidence_10d": "INSUFFICIENT",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "GROWTH_BROAD",
+      "regime": "NEUTRAL",
+      "overall_fit_evidence": "INSUFFICIENT",
+      "horizon_consistency": "insufficient_core_horizon",
+      "horizon_conflict": false,
+      "overall_reason": "fewer than 2 core horizons have enough samples",
+      "sample_count_10d": null,
+      "median_return_10d": null,
+      "benchmark_excess_median_10d": null,
+      "fit_evidence_10d": "INSUFFICIENT",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "GROWTH_BROAD",
+      "regime": "DEFENSIVE",
+      "overall_fit_evidence": "INSUFFICIENT",
+      "horizon_consistency": "insufficient_core_horizon",
+      "horizon_conflict": false,
+      "overall_reason": "fewer than 2 core horizons have enough samples",
+      "sample_count_10d": null,
+      "median_return_10d": null,
+      "benchmark_excess_median_10d": null,
+      "fit_evidence_10d": "INSUFFICIENT",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "GROWTH_THEME",
+      "regime": "OFFENSIVE",
+      "overall_fit_evidence": "INSUFFICIENT",
+      "horizon_consistency": "insufficient_core_horizon",
+      "horizon_conflict": false,
+      "overall_reason": "fewer than 2 core horizons have enough samples",
+      "sample_count_10d": null,
+      "median_return_10d": null,
+      "benchmark_excess_median_10d": null,
+      "fit_evidence_10d": "INSUFFICIENT",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "GROWTH_THEME",
+      "regime": "NEUTRAL",
+      "overall_fit_evidence": "INSUFFICIENT",
+      "horizon_consistency": "insufficient_core_horizon",
+      "horizon_conflict": false,
+      "overall_reason": "fewer than 2 core horizons have enough samples",
+      "sample_count_10d": null,
+      "median_return_10d": null,
+      "benchmark_excess_median_10d": null,
+      "fit_evidence_10d": "INSUFFICIENT",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "GROWTH_THEME",
+      "regime": "DEFENSIVE",
+      "overall_fit_evidence": "INSUFFICIENT",
+      "horizon_consistency": "insufficient_core_horizon",
+      "horizon_conflict": false,
+      "overall_reason": "fewer than 2 core horizons have enough samples",
+      "sample_count_10d": null,
+      "median_return_10d": null,
+      "benchmark_excess_median_10d": null,
+      "fit_evidence_10d": "INSUFFICIENT",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "SECTOR_CYCLICAL",
+      "regime": "OFFENSIVE",
+      "overall_fit_evidence": "NEUTRAL",
+      "horizon_consistency": "mixed_or_flat",
+      "horizon_conflict": false,
+      "overall_reason": "no stable positive/negative direction",
+      "sample_count_10d": 139,
+      "median_return_10d": 0.0027894003,
+      "benchmark_excess_median_10d": -0.0079885544,
+      "fit_evidence_10d": "NEUTRAL",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "SECTOR_CYCLICAL",
+      "regime": "NEUTRAL",
+      "overall_fit_evidence": "NEUTRAL",
+      "horizon_consistency": "mixed_or_flat",
+      "horizon_conflict": false,
+      "overall_reason": "no stable positive/negative direction",
+      "sample_count_10d": 58,
+      "median_return_10d": -0.0069134247,
+      "benchmark_excess_median_10d": -0.0049061505,
+      "fit_evidence_10d": "CONFLICT",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "SECTOR_CYCLICAL",
+      "regime": "DEFENSIVE",
+      "overall_fit_evidence": "NEUTRAL",
+      "horizon_consistency": "mixed_or_flat",
+      "horizon_conflict": false,
+      "overall_reason": "no stable positive/negative direction",
+      "sample_count_10d": 62,
+      "median_return_10d": 0.0201250523,
+      "benchmark_excess_median_10d": -0.0151120169,
+      "fit_evidence_10d": "WEAK_SUPPORT",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "SECTOR_DEFENSIVE",
+      "regime": "OFFENSIVE",
+      "overall_fit_evidence": "SUPPORTED",
+      "horizon_consistency": "consistent_positive",
+      "horizon_conflict": false,
+      "overall_reason": "core horizons positive",
+      "sample_count_10d": 139,
+      "median_return_10d": 0.0497737557,
+      "benchmark_excess_median_10d": 0.0272248818,
+      "fit_evidence_10d": "SUPPORTED",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "SECTOR_DEFENSIVE",
+      "regime": "NEUTRAL",
+      "overall_fit_evidence": "WEAK_CONFLICT",
+      "horizon_consistency": "mixed_core_horizon",
+      "horizon_conflict": true,
+      "overall_reason": "core horizons mixed; cannot mark CONFLICT",
+      "sample_count_10d": 58,
+      "median_return_10d": -0.0036559467,
+      "benchmark_excess_median_10d": -0.0008127885,
+      "fit_evidence_10d": "WEAK_CONFLICT",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "SECTOR_DEFENSIVE",
+      "regime": "DEFENSIVE",
+      "overall_fit_evidence": "SUPPORTED",
+      "horizon_consistency": "consistent_positive",
+      "horizon_conflict": false,
+      "overall_reason": "core horizons positive",
+      "sample_count_10d": 62,
+      "median_return_10d": 0.0512038061,
+      "benchmark_excess_median_10d": 0.0224979962,
+      "fit_evidence_10d": "SUPPORTED",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "HIGH_BETA_THEME",
+      "regime": "OFFENSIVE",
+      "overall_fit_evidence": "SUPPORTED",
+      "horizon_consistency": "consistent_positive",
+      "horizon_conflict": false,
+      "overall_reason": "core horizons positive",
+      "sample_count_10d": 695,
+      "median_return_10d": 0.0385438972,
+      "benchmark_excess_median_10d": 0.0209187765,
+      "fit_evidence_10d": "SUPPORTED",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "HIGH_BETA_THEME",
+      "regime": "NEUTRAL",
+      "overall_fit_evidence": "WEAK_CONFLICT",
+      "horizon_consistency": "mixed_core_horizon",
+      "horizon_conflict": true,
+      "overall_reason": "core horizons mixed; cannot mark CONFLICT",
+      "sample_count_10d": 290,
+      "median_return_10d": -0.013725543,
+      "benchmark_excess_median_10d": -0.0089517876,
+      "fit_evidence_10d": "CONFLICT",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "HIGH_BETA_THEME",
+      "regime": "DEFENSIVE",
+      "overall_fit_evidence": "SUPPORTED",
+      "horizon_consistency": "consistent_positive",
+      "horizon_conflict": false,
+      "overall_reason": "core horizons positive",
+      "sample_count_10d": 310,
+      "median_return_10d": 0.0538125998,
+      "benchmark_excess_median_10d": 0.0294083372,
+      "fit_evidence_10d": "SUPPORTED",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "COMMODITY_CYCLICAL",
+      "regime": "OFFENSIVE",
+      "overall_fit_evidence": "SUPPORTED",
+      "horizon_consistency": "consistent_positive",
+      "horizon_conflict": false,
+      "overall_reason": "core horizons positive",
+      "sample_count_10d": 278,
+      "median_return_10d": 0.0198636814,
+      "benchmark_excess_median_10d": 0.0031318276,
+      "fit_evidence_10d": "SUPPORTED",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "COMMODITY_CYCLICAL",
+      "regime": "NEUTRAL",
+      "overall_fit_evidence": "NEUTRAL",
+      "horizon_consistency": "mixed_or_flat",
+      "horizon_conflict": false,
+      "overall_reason": "no stable positive/negative direction",
+      "sample_count_10d": 116,
+      "median_return_10d": -0.0016756107,
+      "benchmark_excess_median_10d": 0.0040728018,
+      "fit_evidence_10d": "NEUTRAL",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "COMMODITY_CYCLICAL",
+      "regime": "DEFENSIVE",
+      "overall_fit_evidence": "SUPPORTED",
+      "horizon_consistency": "consistent_positive",
+      "horizon_conflict": false,
+      "overall_reason": "core horizons positive",
+      "sample_count_10d": 124,
+      "median_return_10d": 0.0310638093,
+      "benchmark_excess_median_10d": 0.0170263619,
+      "fit_evidence_10d": "SUPPORTED",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "QDII_OBSERVATION",
+      "regime": "OFFENSIVE",
+      "overall_fit_evidence": "INSUFFICIENT",
+      "horizon_consistency": "insufficient_core_horizon",
+      "horizon_conflict": false,
+      "overall_reason": "fewer than 2 core horizons have enough samples",
+      "sample_count_10d": null,
+      "median_return_10d": null,
+      "benchmark_excess_median_10d": null,
+      "fit_evidence_10d": "INSUFFICIENT",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "QDII_OBSERVATION",
+      "regime": "NEUTRAL",
+      "overall_fit_evidence": "INSUFFICIENT",
+      "horizon_consistency": "insufficient_core_horizon",
+      "horizon_conflict": false,
+      "overall_reason": "fewer than 2 core horizons have enough samples",
+      "sample_count_10d": null,
+      "median_return_10d": null,
+      "benchmark_excess_median_10d": null,
+      "fit_evidence_10d": "INSUFFICIENT",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "style_profile": "QDII_OBSERVATION",
+      "regime": "DEFENSIVE",
+      "overall_fit_evidence": "INSUFFICIENT",
+      "horizon_consistency": "insufficient_core_horizon",
+      "horizon_conflict": false,
+      "overall_reason": "fewer than 2 core horizons have enough samples",
+      "sample_count_10d": null,
+      "median_return_10d": null,
+      "benchmark_excess_median_10d": null,
+      "fit_evidence_10d": "INSUFFICIENT",
+      "research_only": true,
+      "execution_allowed": false
+    }
+  ],
+  "matrix_table": [
+    {
+      "style_profile": "BOND",
+      "OFFENSIVE": {
+        "overall_fit_evidence": "INSUFFICIENT",
+        "median_return_10d": null,
+        "benchmark_excess_median_10d": null,
+        "sample_count_10d": null
+      },
+      "NEUTRAL": {
+        "overall_fit_evidence": "INSUFFICIENT",
+        "median_return_10d": null,
+        "benchmark_excess_median_10d": null,
+        "sample_count_10d": null
+      },
+      "DEFENSIVE": {
+        "overall_fit_evidence": "INSUFFICIENT",
+        "median_return_10d": null,
+        "benchmark_excess_median_10d": null,
+        "sample_count_10d": null
+      }
+    },
+    {
+      "style_profile": "DIVIDEND",
+      "OFFENSIVE": {
+        "overall_fit_evidence": "NEUTRAL",
+        "median_return_10d": 0.0032076985,
+        "benchmark_excess_median_10d": -0.0125005586,
+        "sample_count_10d": 417
+      },
+      "NEUTRAL": {
+        "overall_fit_evidence": "NEUTRAL",
+        "median_return_10d": -0.0016838465,
+        "benchmark_excess_median_10d": -0.000159497,
+        "sample_count_10d": 174
+      },
+      "DEFENSIVE": {
+        "overall_fit_evidence": "NEUTRAL",
+        "median_return_10d": 0.001870909,
+        "benchmark_excess_median_10d": -0.0158859168,
+        "sample_count_10d": 186
+      }
+    },
+    {
+      "style_profile": "LOW_VOL",
+      "OFFENSIVE": {
+        "overall_fit_evidence": "INSUFFICIENT",
+        "median_return_10d": null,
+        "benchmark_excess_median_10d": null,
+        "sample_count_10d": null
+      },
+      "NEUTRAL": {
+        "overall_fit_evidence": "INSUFFICIENT",
+        "median_return_10d": null,
+        "benchmark_excess_median_10d": null,
+        "sample_count_10d": null
+      },
+      "DEFENSIVE": {
+        "overall_fit_evidence": "INSUFFICIENT",
+        "median_return_10d": null,
+        "benchmark_excess_median_10d": null,
+        "sample_count_10d": null
+      }
+    },
+    {
+      "style_profile": "CORE_LARGE_CAP",
+      "OFFENSIVE": {
+        "overall_fit_evidence": "WEAK_SUPPORT",
+        "median_return_10d": 0.0091748587,
+        "benchmark_excess_median_10d": -0.0050253669,
+        "sample_count_10d": 278
+      },
+      "NEUTRAL": {
+        "overall_fit_evidence": "CONFLICT",
+        "median_return_10d": -0.0037860268,
+        "benchmark_excess_median_10d": -0.0008468784,
+        "sample_count_10d": 116
+      },
+      "DEFENSIVE": {
+        "overall_fit_evidence": "WEAK_SUPPORT",
+        "median_return_10d": 0.0106008839,
+        "benchmark_excess_median_10d": -0.0054478533,
+        "sample_count_10d": 124
+      }
+    },
+    {
+      "style_profile": "CORE_MID_CAP",
+      "OFFENSIVE": {
+        "overall_fit_evidence": "SUPPORTED",
+        "median_return_10d": 0.0293997599,
+        "benchmark_excess_median_10d": 0.0153082161,
+        "sample_count_10d": 278
+      },
+      "NEUTRAL": {
+        "overall_fit_evidence": "WEAK_CONFLICT",
+        "median_return_10d": -0.0061767889,
+        "benchmark_excess_median_10d": -0.0021844244,
+        "sample_count_10d": 116
+      },
+      "DEFENSIVE": {
+        "overall_fit_evidence": "SUPPORTED",
+        "median_return_10d": 0.0333253574,
+        "benchmark_excess_median_10d": 0.0091106614,
+        "sample_count_10d": 124
+      }
+    },
+    {
+      "style_profile": "GROWTH_BROAD",
+      "OFFENSIVE": {
+        "overall_fit_evidence": "INSUFFICIENT",
+        "median_return_10d": null,
+        "benchmark_excess_median_10d": null,
+        "sample_count_10d": null
+      },
+      "NEUTRAL": {
+        "overall_fit_evidence": "INSUFFICIENT",
+        "median_return_10d": null,
+        "benchmark_excess_median_10d": null,
+        "sample_count_10d": null
+      },
+      "DEFENSIVE": {
+        "overall_fit_evidence": "INSUFFICIENT",
+        "median_return_10d": null,
+        "benchmark_excess_median_10d": null,
+        "sample_count_10d": null
+      }
+    },
+    {
+      "style_profile": "GROWTH_THEME",
+      "OFFENSIVE": {
+        "overall_fit_evidence": "INSUFFICIENT",
+        "median_return_10d": null,
+        "benchmark_excess_median_10d": null,
+        "sample_count_10d": null
+      },
+      "NEUTRAL": {
+        "overall_fit_evidence": "INSUFFICIENT",
+        "median_return_10d": null,
+        "benchmark_excess_median_10d": null,
+        "sample_count_10d": null
+      },
+      "DEFENSIVE": {
+        "overall_fit_evidence": "INSUFFICIENT",
+        "median_return_10d": null,
+        "benchmark_excess_median_10d": null,
+        "sample_count_10d": null
+      }
+    },
+    {
+      "style_profile": "SECTOR_CYCLICAL",
+      "OFFENSIVE": {
+        "overall_fit_evidence": "NEUTRAL",
+        "median_return_10d": 0.0027894003,
+        "benchmark_excess_median_10d": -0.0079885544,
+        "sample_count_10d": 139
+      },
+      "NEUTRAL": {
+        "overall_fit_evidence": "NEUTRAL",
+        "median_return_10d": -0.0069134247,
+        "benchmark_excess_median_10d": -0.0049061505,
+        "sample_count_10d": 58
+      },
+      "DEFENSIVE": {
+        "overall_fit_evidence": "NEUTRAL",
+        "median_return_10d": 0.0201250523,
+        "benchmark_excess_median_10d": -0.0151120169,
+        "sample_count_10d": 62
+      }
+    },
+    {
+      "style_profile": "SECTOR_DEFENSIVE",
+      "OFFENSIVE": {
+        "overall_fit_evidence": "SUPPORTED",
+        "median_return_10d": 0.0497737557,
+        "benchmark_excess_median_10d": 0.0272248818,
+        "sample_count_10d": 139
+      },
+      "NEUTRAL": {
+        "overall_fit_evidence": "WEAK_CONFLICT",
+        "median_return_10d": -0.0036559467,
+        "benchmark_excess_median_10d": -0.0008127885,
+        "sample_count_10d": 58
+      },
+      "DEFENSIVE": {
+        "overall_fit_evidence": "SUPPORTED",
+        "median_return_10d": 0.0512038061,
+        "benchmark_excess_median_10d": 0.0224979962,
+        "sample_count_10d": 62
+      }
+    },
+    {
+      "style_profile": "HIGH_BETA_THEME",
+      "OFFENSIVE": {
+        "overall_fit_evidence": "SUPPORTED",
+        "median_return_10d": 0.0385438972,
+        "benchmark_excess_median_10d": 0.0209187765,
+        "sample_count_10d": 695
+      },
+      "NEUTRAL": {
+        "overall_fit_evidence": "WEAK_CONFLICT",
+        "median_return_10d": -0.013725543,
+        "benchmark_excess_median_10d": -0.0089517876,
+        "sample_count_10d": 290
+      },
+      "DEFENSIVE": {
+        "overall_fit_evidence": "SUPPORTED",
+        "median_return_10d": 0.0538125998,
+        "benchmark_excess_median_10d": 0.0294083372,
+        "sample_count_10d": 310
+      }
+    },
+    {
+      "style_profile": "COMMODITY_CYCLICAL",
+      "OFFENSIVE": {
+        "overall_fit_evidence": "SUPPORTED",
+        "median_return_10d": 0.0198636814,
+        "benchmark_excess_median_10d": 0.0031318276,
+        "sample_count_10d": 278
+      },
+      "NEUTRAL": {
+        "overall_fit_evidence": "NEUTRAL",
+        "median_return_10d": -0.0016756107,
+        "benchmark_excess_median_10d": 0.0040728018,
+        "sample_count_10d": 116
+      },
+      "DEFENSIVE": {
+        "overall_fit_evidence": "SUPPORTED",
+        "median_return_10d": 0.0310638093,
+        "benchmark_excess_median_10d": 0.0170263619,
+        "sample_count_10d": 124
+      }
+    },
+    {
+      "style_profile": "QDII_OBSERVATION",
+      "OFFENSIVE": {
+        "overall_fit_evidence": "INSUFFICIENT",
+        "median_return_10d": null,
+        "benchmark_excess_median_10d": null,
+        "sample_count_10d": null
+      },
+      "NEUTRAL": {
+        "overall_fit_evidence": "INSUFFICIENT",
+        "median_return_10d": null,
+        "benchmark_excess_median_10d": null,
+        "sample_count_10d": null
+      },
+      "DEFENSIVE": {
+        "overall_fit_evidence": "INSUFFICIENT",
+        "median_return_10d": null,
+        "benchmark_excess_median_10d": null,
+        "sample_count_10d": null
+      }
+    }
+  ],
+  "support_by_regime": {
+    "OFFENSIVE": [
+      "CORE_LARGE_CAP",
+      "CORE_MID_CAP",
+      "SECTOR_DEFENSIVE",
+      "HIGH_BETA_THEME",
+      "COMMODITY_CYCLICAL"
+    ],
+    "NEUTRAL": [],
+    "DEFENSIVE": [
+      "CORE_LARGE_CAP",
+      "CORE_MID_CAP",
+      "SECTOR_DEFENSIVE",
+      "HIGH_BETA_THEME",
+      "COMMODITY_CYCLICAL"
+    ]
+  },
+  "conflict_by_regime": {
+    "OFFENSIVE": [],
+    "NEUTRAL": [
+      "CORE_LARGE_CAP",
+      "CORE_MID_CAP",
+      "SECTOR_DEFENSIVE",
+      "HIGH_BETA_THEME"
+    ],
+    "DEFENSIVE": []
+  },
+  "minimum_sample_count": 30,
+  "research_only": true,
+  "shadow_only": true,
+  "execution_allowed": false
+}

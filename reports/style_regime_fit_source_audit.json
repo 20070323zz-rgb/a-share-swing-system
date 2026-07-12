@@ -1,0 +1,27 @@
+{
+  "generated_at": "2026-07-08 12:58:59",
+  "selected_candidate": "ASYMMETRIC_CONFIRM",
+  "selected_candidate_column": "candidate_d_regime",
+  "selected_candidate_is_expected": true,
+  "stable_regime_current_date": "2026-07-06",
+  "current_stable_regime": "NEUTRAL",
+  "replay_rows": 267,
+  "replay_start": "2025-05-30",
+  "replay_end": "2026-07-06",
+  "stable_regime_column_present": true,
+  "stable_regime_values": [
+    "DEFENSIVE",
+    "NEUTRAL",
+    "OFFENSIVE"
+  ],
+  "stable_regime_point_in_time": true,
+  "stable_regime_point_in_time_note": "ASYMMETRIC_CONFIRM was generated sequentially from raw regime using only T and prior days; no backfill.",
+  "profile_rows": 183,
+  "style_profile_unknown_count": 0,
+  "style_profile_unknown_zero": true,
+  "minimum_sample_count": 30,
+  "forward_returns_label_only": true,
+  "research_only": true,
+  "shadow_only": true,
+  "execution_allowed": false
+}

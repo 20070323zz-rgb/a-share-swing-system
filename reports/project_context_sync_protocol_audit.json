@@ -1,0 +1,51 @@
+{
+  "generated_at": "2026-07-07 18:41:57 CST",
+  "scope": "Project Context Persistence Phase B sync protocol audit",
+  "protocol_complete": true,
+  "schema_v2_valid": true,
+  "promotion_rules_defined": true,
+  "staleness_rules_defined": true,
+  "manifest_valid": true,
+  "blocking_conflict_found": false,
+  "checks": {
+    "main_phase_status_enum_defined": true,
+    "batch_status_enum_defined": true,
+    "phase_complete_conditions_defined": true,
+    "batch_completion_protocol_defined": true,
+    "response_lost_recovery_classification_defined": true,
+    "decision_promotion_defined": true,
+    "sticky_false_safety_gate_defined": true,
+    "readiness_layers_distinguished": true,
+    "current_project_state_update_responsibility_defined": true,
+    "snapshot_dating_defined": true,
+    "staleness_flags_defined": true,
+    "context_manifest_created": true,
+    "bootstrap_read_order_defined": true,
+    "blocking_context_conflict_found": false
+  },
+  "main_phase_status_enum": [
+    "NOT_STARTED",
+    "IN_PROGRESS",
+    "BLOCKED",
+    "COMPLETE",
+    "ABORTED"
+  ],
+  "batch_status_enum": [
+    "PENDING",
+    "IN_PROGRESS",
+    "COMPLETE",
+    "BLOCKED",
+    "SKIPPED"
+  ],
+  "staleness_flags": [
+    "regime_snapshot_stale",
+    "project_state_snapshot_stale",
+    "phase_status_stale",
+    "decision_state_conflict",
+    "context_consistency_unknown"
+  ],
+  "context_manifest": "docs/project_context_manifest.json",
+  "transition_protocol": "docs/project_context_transition_protocol.md",
+  "research_only": true,
+  "execution_allowed": false
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "required_context_files": [
+    {
+      "path": "AGENTS.md",
+      "role": "long_lived_rules",
+      "required": true
+    },
+    {
+      "path": "PROJECT_INDEX.md",
+      "role": "project_map",
+      "required": true
+    },
+    {
+      "path": "docs/current_project_state.md",
+      "role": "current_project_state",
+      "required": true
+    },
+    {
+      "path": "docs/current_phase_status.json",
+      "role": "execution_state",
+      "required": true
+    },
+    {
+      "path": "docs/project_context_architecture.md",
+      "role": "context_architecture",
+      "required": true
+    },
+    {
+      "path": "docs/project_context_transition_protocol.md",
+      "role": "transition_protocol",
+      "required": true
+    }
+  ],
+  "bootstrap_read_order": [
+    "AGENTS.md",
+    "PROJECT_INDEX.md",
+    "docs/current_project_state.md",
+    "docs/current_phase_status.json",
+    "docs/project_context_architecture.md",
+    "docs/project_context_transition_protocol.md"
+  ]
+}

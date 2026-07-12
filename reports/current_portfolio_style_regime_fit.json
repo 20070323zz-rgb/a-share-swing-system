@@ -1,0 +1,67 @@
+{
+  "generated_at": "2026-07-08 12:59:10",
+  "current_stable_regime": "NEUTRAL",
+  "rows": [
+    {
+      "symbol": "512800",
+      "name": "银行ETF",
+      "current_weight": 0.28598342125094195,
+      "style_profile": "SECTOR_DEFENSIVE",
+      "structural_risk_profile": "CORE",
+      "realized_risk_profile": "DEFENSIVE",
+      "current_stable_regime": "NEUTRAL",
+      "overall_fit_evidence": "CONFLICT",
+      "fit_interpretation": "512800 style=SECTOR_DEFENSIVE has CONFLICT under NEUTRAL; signal can be strong but regime fit is a research caution.",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "symbol": "515000",
+      "name": "科技ETF",
+      "current_weight": 0.5216825375077071,
+      "style_profile": "GROWTH_THEME",
+      "structural_risk_profile": "OFFENSIVE",
+      "realized_risk_profile": "OFFENSIVE",
+      "current_stable_regime": "NEUTRAL",
+      "overall_fit_evidence": "INSUFFICIENT",
+      "fit_interpretation": "515000 style=GROWTH_THEME is INSUFFICIENT under NEUTRAL; keep observation.",
+      "research_only": true,
+      "execution_allowed": false
+    },
+    {
+      "symbol": "512880",
+      "name": "证券ETF",
+      "current_weight": 0.19233404124135095,
+      "style_profile": "SECTOR_CYCLICAL",
+      "structural_risk_profile": "HIGH_BETA",
+      "realized_risk_profile": "BALANCED",
+      "current_stable_regime": "NEUTRAL",
+      "overall_fit_evidence": "CONFLICT",
+      "fit_interpretation": "512880 style=SECTOR_CYCLICAL has CONFLICT under NEUTRAL; signal can be strong but regime fit is a research caution.",
+      "research_only": true,
+      "execution_allowed": false
+    }
+  ],
+  "counts": {
+    "SUPPORTED": 0,
+    "WEAK_SUPPORT": 0,
+    "NEUTRAL": 0,
+    "WEAK_CONFLICT": 0,
+    "CONFLICT": 2,
+    "INSUFFICIENT": 1
+  },
+  "conflict_count": 2,
+  "portfolio_has_regime_conflict": true,
+  "regime_style_concentration": {
+    "counts": {
+      "SECTOR_DEFENSIVE": 1,
+      "GROWTH_THEME": 1,
+      "SECTOR_CYCLICAL": 1
+    },
+    "top_style": "SECTOR_DEFENSIVE",
+    "top_style_count": 1
+  },
+  "research_only": true,
+  "shadow_only": true,
+  "execution_allowed": false
+}

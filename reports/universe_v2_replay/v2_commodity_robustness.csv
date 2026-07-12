@@ -1,0 +1,4 @@
+style_profile,stable_regime,etf_count,observation_count,segment_count,research_only,execution_allowed,5d_median,5d_benchmark_excess_median,5d_etf_level_median,5d_segment_level_median,10d_median,10d_benchmark_excess_median,10d_etf_level_median,10d_segment_level_median,20d_median,20d_benchmark_excess_median,20d_etf_level_median,20d_segment_level_median
+COMMODITY_CYCLICAL,OFFENSIVE,2,290,5,True,False,0.008093,-0.000333,0.0115,0.009209,0.019864,0.003132,0.029632,0.021422,0.038516,0.016616,0.050306,0.022266
+COMMODITY_CYCLICAL,NEUTRAL,2,120,10,True,False,0.002317,0.003055,0.003722,0.013938,-0.001676,0.004073,-0.000207,0.020963,0.018617,0.008132,0.028826,0.032601
+COMMODITY_CYCLICAL,DEFENSIVE,2,124,8,True,False,0.022616,0.01227,0.025431,0.027478,0.031064,0.017026,0.034097,0.033575,0.048101,0.035626,0.055856,0.033916
