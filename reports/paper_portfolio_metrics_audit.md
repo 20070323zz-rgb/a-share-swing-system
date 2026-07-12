@@ -1,10 +1,10 @@
-# 模拟仓绩效指标审计 2026-07-04 00:03:43
+# 模拟仓绩效指标审计 2026-07-11 16:43:41
 
 本审计只读取本地模拟仓文件，不修改 paper_trades.csv / paper_positions.csv。
 
 ## 当前数据来源
 - 持仓来源：`/Users/dayin/Code/a-share-swing-system/data/paper_positions.csv`，当前 3 条持仓记录。
-- 交易来源：`/Users/dayin/Code/a-share-swing-system/data/paper_trades.csv`，当前 7 条交易流水。
+- 交易来源：`/Users/dayin/Code/a-share-swing-system/data/paper_trades.csv`，当前 11 条交易流水。
 - 最新估值价格：优先使用 positions 当前价；权益曲线使用 `data/etf_daily/` 本地 close。
 
 ## 当前能计算的指标
@@ -30,6 +30,6 @@
 
 ## 结论
 - 是否需要新增 `data/paper_equity_curve.csv`：是，已新增。
-- 当前权益曲线记录数：18。
-- 当前逐笔 PnL 记录数：5。
+- 当前权益曲线记录数：23。
+- 当前逐笔 PnL 记录数：7。
 - 安全边界：未接券商 API，未真实下单，未读取真实账户。

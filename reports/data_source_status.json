@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-04 00:00:48",
+  "generated_at": "2026-07-11 16:43:40",
   "source_priority": [
     "baostock",
     "jqdata",
@@ -12,10 +12,10 @@
   "fallback_triggered": false,
   "jqdata_status": "SKIPPED",
   "jqdata_message": "",
-  "baostock_status": "UPDATED",
-  "baostock_message": "Update appended 366 rows; existing local rows kept priority on duplicate dates.",
-  "latest_data_date": "2026-07-03",
-  "new_rows": 366,
+  "baostock_status": "UP_TO_DATE",
+  "baostock_message": "No new rows were needed; local files already cover the requested range or source returned no older backfill.",
+  "latest_data_date": "2026-07-10",
+  "new_rows": 0,
   "failed_count": 0,
   "failed_symbols": [],
   "pending_count": 0,

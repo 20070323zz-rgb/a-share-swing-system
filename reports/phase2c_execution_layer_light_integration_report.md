@@ -1,6 +1,6 @@
 # Phase 2C 执行层轻量接入报告
 
-- 生成时间：2026-07-04 00:00:52
+- 生成时间：2026-07-10 16:28:05
 - 本报告说明 Phase 2B 高置信度研究结论如何轻量进入模拟交易计划和看板。
 
 ## 本轮接入字段
@@ -27,8 +27,8 @@
 - etf_type 的 max_holding_days / stop_loss_pct 先用于计划解释和风险展示，不新增硬卖出规则。
 
 ## 是否改变买卖结果
-- buy_count：0
-- sell_count：0
+- buy_count：2
+- sell_count：1
 - dry_run：False
 - 本轮新增字段不参与 amount、slots、can_buy、sell_reason 的核心判断。
 
@@ -44,10 +44,10 @@
 - execute 模式仍保留原有防重复交易机制。
 
 ## 计划字段覆盖
-- paper_trade_plan 行数：6
+- paper_trade_plan 行数：5
 - 新增字段存在数量：16 / 16
-- 执行前仓位：29.44%
-- 执行后仓位：29.44%
+- 执行前仓位：24.43%
+- 执行后仓位：29.96%
 - PAPER_USE_MARKET_STATE_POSITION：False
 
 ## L2 安全边界

@@ -2,9 +2,9 @@
 
 ## 输入文件
 
-- 交易流水：`data/paper_trades.csv`，读取 5 条
+- 交易流水：`data/paper_trades.csv`，读取 11 条
 - 当前持仓：`data/paper_positions.csv`，读取 3 条
-- 原始权益曲线：`data/paper_equity_curve.csv`，读取 9 条
+- 原始权益曲线：`data/paper_equity_curve.csv`，读取 23 条
 - ETF 日线目录：`/Users/dayin/Code/a-share-swing-system/data/etf_daily`
 
 ## 字段映射

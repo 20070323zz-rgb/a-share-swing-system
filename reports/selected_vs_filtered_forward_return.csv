@@ -1,4 +1,4 @@
 date,market_regime,bucket,symbol_count,symbols,forward_return_1d_mean,forward_return_3d_mean,forward_return_5d_mean,forward_return_10d_mean,forward_return_20d_mean,conclusion
-2026-07-03,neutral,selected_candidates,1,511030,,,,,,pending
-2026-07-03,neutral,filtered_candidates,10,515220 159930 512200 512690 515790 515080 518880 511690 512890 512800,,,,,,pending
-2026-07-03,neutral,510300_benchmark,1,510300,,,,,,pending
+2026-07-09,risk_on,selected_candidates,1,511030,,,,,,pending
+2026-07-09,risk_on,filtered_candidates,9,512690 515790 515220 512200 515080 159930 512890 512400 512800,,,,,,pending
+2026-07-09,risk_on,510300_benchmark,1,510300,,,,,,pending

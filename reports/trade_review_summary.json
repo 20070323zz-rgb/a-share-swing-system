@@ -1,21 +1,21 @@
 {
   "status": "active",
-  "trade_count": 7,
-  "review_trade_count": 5,
-  "closed_trade_count": 2,
+  "trade_count": 11,
+  "review_trade_count": 7,
+  "closed_trade_count": 4,
   "open_position_count": 3,
   "winning_trade_count": 1,
-  "losing_trade_count": 1,
-  "largest_net_profit": 119.57,
+  "losing_trade_count": 3,
+  "largest_net_profit": 195.57,
   "largest_net_loss": -117.62,
-  "largest_unrealized_pnl": 119.57,
+  "largest_unrealized_pnl": 195.57,
   "largest_mfe_pct": 0.22904744953307454,
   "largest_mae_pct": -0.10735294117647065,
   "max_unrealized_trade": {
     "symbol": "515000",
     "name": "科技ETF",
-    "net_pnl": 119.57,
-    "return_pct": 0.08382465315507948,
+    "net_pnl": 195.57,
+    "return_pct": 0.13710451967499293,
     "review_tag": "持仓中;盈利交易;浮盈未兑现;回撤较小;跑赢510300"
   },
   "max_adverse_trade": {
@@ -26,7 +26,7 @@
     "return_pct": -0.07862299465240634,
     "review_tag": "亏损交易;回撤较大;成本拖累;跑输510300"
   },
-  "cost_impact_total": 10.0,
+  "cost_impact_total": 20.0,
   "main_issue": "样本太少，且已实现盈亏为负；当前总盈利主要依赖未实现浮盈，不能判断策略稳定盈利。",
   "positive_signal": "当前未平仓持仓合计浮盈为正，说明部分买入信号已有正反馈，但仍需观察能否转为已实现收益。",
   "should_not_conclude": "不应得出策略已稳定盈利、可以实盘、shadow 模型可接入执行层等结论。",
@@ -37,7 +37,7 @@
     "关注 515880 data_health caution 对持仓风险的影响"
   ],
   "sample_warning": "样本较少，不能判断策略稳定盈利。",
-  "last_updated": "2026-07-04 00:02:01",
+  "last_updated": "2026-07-10 16:29:13",
   "safety": {
     "broker_api": false,
     "real_order": false,

@@ -11,9 +11,9 @@
 ## 当前持仓分类
 | symbol | name | group | pool | etf_type | risk_profile | holding_profile | stop_loss_pct | auto_buy_allowed | reason |
 | --- | --- | --- | --- | --- | --- | --- | ---: | ---: | --- |
-| 512800 | 银行ETF | 金融地产 | trade_pool | sector | sector_beta | 10-30 | 6.00% | 1 | 银行金融红利属性，按低敏感行业处理 |
-| 512880 | 证券ETF | 金融地产 | trade_pool | high_beta | high_beta | 5-20 | 5.00% | 1 | 券商/非银高 beta 情绪行业 |
+| 159929 | 医药ETF | 消费医药 | trade_pool | sector | sector_beta | 10-30 | 6.00% | 1 | 行业/风格关键词 |
 | 515000 | 科技ETF | 科技成长 | trade_pool | unknown | manual_review | N/A | 0.00% | 0 | ETF但规则无法确定，需人工确认 |
+| 516510 | 云计算ETF | 科技成长 | trade_pool | theme | theme_beta | 5-20 | 5.00% | 0 | 主题/科技成长关键词 |
 
 ## 分类规则
 - broad_index：宽基指数，适合中期趋势与横截面轮动研究。

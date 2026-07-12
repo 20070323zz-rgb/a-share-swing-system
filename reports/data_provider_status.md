@@ -1,4 +1,4 @@
-# Data provider 状态 2026-06-26 22:00:35
+# Data provider 状态 2026-07-10 21:41:15
 
 本报告只做 provider 诊断，不切换正式日更主源，不写入 data/etf_daily。
 

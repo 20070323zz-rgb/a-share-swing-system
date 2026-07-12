@@ -1,4 +1,4 @@
-# ETF Data Update Log 2026-07-04 00:02:45
+# ETF Data Update Log 2026-07-11 16:43:40
 
 本日志来自本机 BaoStock ETF 更新脚本；不接券商 API，不下单，不读取账号密码。
 
@@ -8,7 +8,7 @@
 - Status counts: {'up_to_date': 183}
 - Update severity: OK
 - Update status: up_to_date
-- Latest local date: 2026-07-03
+- Latest local date: 2026-07-10
 - Reason: No new rows were needed; local files already cover the requested range or source returned no older backfill.
 - True failed_error: 0
 - Unsupported_or_empty: 0

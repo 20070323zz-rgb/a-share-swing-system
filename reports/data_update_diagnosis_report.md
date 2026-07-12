@@ -1,4 +1,4 @@
-# 自动化数据更新诊断报告 2026-07-04 00:02:45
+# 自动化数据更新诊断报告 2026-07-11 16:43:40
 
 本报告用于解释 daily_close 数据更新是否真正完成。它只检查本地行情更新状态，不接券商 API，不下单，不读取账号密码。
 
@@ -11,8 +11,8 @@
 ## 关键数字
 - source：baostock
 - mode：formal update
-- requested_end：2026-07-03
-- latest_local_date：2026-07-03
+- requested_end：2026-07-10
+- latest_local_date：2026-07-10
 - universe_size：183
 - estimated_api_calls：0
 - added_rows：0

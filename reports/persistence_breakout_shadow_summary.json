@@ -6,8 +6,8 @@
   "paper_trade_engine_enabled": false,
   "real_trade_enabled": false,
   "initial_cash_assumption": 20000.0,
-  "latest_signal_date": "2026-07-03",
-  "market_regime": "neutral",
+  "latest_signal_date": "2026-07-09",
+  "market_regime": "risk_on",
   "selected_count": 1,
   "selected_symbols": [
     "511030"
@@ -17,7 +17,7 @@
   "overlap_with_top10_diversified": 0,
   "high_beta_count": 0,
   "data_health_caution_count": 0,
-  "tracking_days": 6,
+  "tracking_days": 10,
   "ready_for_preview": false,
   "ready_for_execution": false,
   "summary": "persistence_breakout_v2 is active in shadow tracking only; it is not connected to paper_trade_engine.",

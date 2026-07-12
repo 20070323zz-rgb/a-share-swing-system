@@ -1,34 +1,34 @@
 # B2 Original vs Adjusted Preview Tracking 报告
 
-- 生成时间：2026-07-04 00:00:55
+- 生成时间：2026-07-10 16:28:08
 - 阶段：B2 strategy_preview_tracking_v1。
 - 目标：长期跟踪 original ranking 与 adjusted preview ranking 的 forward returns。
 
 ## 今日 Top 3
 ### Original Top 3
-1. 512010 医药ETF：rank=1，score=95.1375
-2. 512880 证券ETF：rank=2，score=94.493
-3. 159929 医药ETF：rank=3，score=79.4343
+1. 516510 云计算ETF：rank=1，score=88.861
+2. 159929 医药ETF：rank=2，score=86.2162
+3. 515000 科技ETF：rank=3，score=77.0373
 
 ### Adjusted Preview Top 3
-1. 512010 医药ETF：rank=1，score=95.1375
-2. 512880 证券ETF：rank=2，score=90.493
-3. 588000 科创50ETF：rank=3，score=79.6456
+1. 516510 云计算ETF：rank=1，score=86.861
+2. 159929 医药ETF：rank=2，score=84.2162
+3. 515000 科技ETF：rank=3，score=75.0373
 
-- Top 3 是否变化：是。
+- Top 3 是否变化：否。
 
 ## Tracking 写入
-- 新增：11 条。
+- 新增：7 条。
 - 更新：0 条。
-- forward return 回填 cell：46。
-- completed / partial / pending / missing：26 / 57 / 11 / 0。
+- forward return 回填 cell：26。
+- completed / partial / pending / missing：55 / 64 / 7 / 0。
 
 ## 当前样本结论
-- 样本是否足够：否。
-- 是否可以证明 adjusted preview 更优：否。当前样本不足，不能证明 adjusted preview 优于 original ranking。
+- 样本是否足够：是。
+- 是否可以证明 adjusted preview 更优：否。样本已开始积累，但仍需结合周/月度复盘后再判断是否接入执行层。
 
 ## 影子组合
-- shadow rows：36。
+- shadow rows：48。
 - initial_cash_assumption：20000.00。
 - single_position_target：20%；total_target_position：60%；min_trade_value：3000.00。
 - shadow_model_enabled：true。

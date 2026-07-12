@@ -1,20 +1,20 @@
 # 第一阶段模拟买卖闭环升级报告
 
-- 生成时间：2026-07-04 00:00:52
+- 生成时间：2026-07-10 16:28:05
 - 阶段目标：模拟盘自动买卖闭环 + 真实化交易成本/滑点/交易单位约束。
 - 本报告是本地模拟盘研究报告，不是真实交易方案。
 
 ## 闭环状态
 - paper_trade_engine 状态：executed
 - dry_run：False
-- 今日买入数量：0
-- 今日卖出数量：0
+- 今日买入数量：2
+- 今日卖出数量：1
 - 今日跳过重复：False
 - 跳过原因：
-- 执行前现金：7058.11
-- 执行后现金：7058.11
+- 执行前现金：7608.44
+- 执行后现金：7040.47
 - 执行后持仓数：3
-- 执行后仓位：29.44%
+- 执行后仓位：29.96%
 
 ## 规则落地
 - 卖出优先于买入。
@@ -27,8 +27,8 @@
 - 佣金率：0.00012
 - 单笔最低佣金：5.00 元
 - 滑点率：0.0003
-- 今日佣金：0.00
-- 今日滑点成本估算：0.00
+- 今日佣金：15.00
+- 今日滑点成本估算：0.67
 - ETF 模拟暂不计印花税：0.0
 
 ## 安全边界
@@ -39,9 +39,8 @@
 ## 今日计划摘要
 | symbol | action | status | quantity | gross_amount | commission | reason |
 | --- | --- | --- | ---: | ---: | ---: | --- |
-| 512800 | SELL | skipped_no_sell_signal | 1100 | 821.45 | 5 | sell rules not triggered |
-| 515000 | SELL | skipped_no_sell_signal | 1000 | 1545.54 | 5 | sell rules not triggered |
-| 512880 | SELL | skipped_no_sell_signal | 500 | 577.33 | 5 | sell rules not triggered |
-| 512010 | BUY | skipped_rule_blocked | 0 | 0 | 0 | max holdings reached |
-| 512880 | BUY | skipped_rule_blocked | 0 | 0 | 0 | already held |
-| 159929 | BUY | skipped_rule_blocked | 0 | 0 | 0 | max holdings reached |
+| 512800 | SELL | executed | 1100 | 836.85 | 5 | max_holding_days reached without signal recovery |
+| 515000 | SELL | skipped_no_sell_signal | 1000 | 1621.51 | 5 | sell rules not triggered |
+| 516510 | BUY | executed | 700 | 1263.88 | 5 | paper_rule_validation; rank=1; rank_score=88.861036; mid_trend=BUY; short_swing=BUY; amount=1263.88 |
+| 159929 | BUY | executed | 100 | 125.94 | 5 | paper_rule_validation; rank=2; rank_score=86.216237; mid_trend=BUY; short_swing=BUY; amount=125.94 |
+| 515000 | BUY | skipped_rule_blocked | 0 | 0 | 0 | already held |
