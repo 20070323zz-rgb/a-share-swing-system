@@ -150,4 +150,3 @@ Exposure Framework Development = NOT_STARTED
 Preview Research = NOT_STARTED
 Formal Execution = BLOCKED
 ```
-

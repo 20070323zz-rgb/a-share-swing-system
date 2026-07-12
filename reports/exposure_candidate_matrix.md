@@ -42,4 +42,3 @@ The strongest near-term candidates are those that are objective and already meas
 - Fama/French risk-factor research supports the idea that size, value, profitability, and investment-related characteristics can explain return differences.
 - MSCI and BlackRock/iShares describe factor investing as exposure to persistent, economically grounded characteristics such as value, quality, momentum, size, yield/dividend, and low volatility.
 - MSCI's public factor material also shows multi-factor construction, which supports allowing one ETF to carry more than one exposure rather than forcing a single label.
-

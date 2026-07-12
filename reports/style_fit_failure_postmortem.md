@@ -55,4 +55,3 @@ The correct interpretation is not that Style Fit is useless. The repository evid
 ## Recommended Next Research Posture
 
 Do not proceed to Preview Research. The next phase should be a research design decision, not optimization. Main should choose between freezing Style Fit as a V1-specific research asset or opening a new Style Framework redesign track. The evidence favors redesigning the Style Framework if Style Fit remains strategically important.
-

@@ -1,7 +1,7 @@
 # ChatGPT / Main 分析包：A 股 ETF 双周期模拟盘周报
 
-> 本报告用于研究分析，不是交易指令。  
-> 安全边界：不接券商 API、不真实下单、不读取真实账户、不保存密码/token。  
+> 本报告用于研究分析，不是交易指令。
+> 安全边界：不接券商 API、不真实下单、不读取真实账户、不保存密码/token。
 > adjusted preview / shadow / profit protection / high_beta / broad base balance 均为观察层，不接执行层。
 
 ---

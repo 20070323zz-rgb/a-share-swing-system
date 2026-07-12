@@ -1,6 +1,6 @@
 # shadcn/ui Migration Phase 1
 
-完成时间：2026-07-05  
+完成时间：2026-07-05
 目标：建立统一 UI primitives，并渐进式迁移 Home / Portfolio。
 
 ## 技术栈

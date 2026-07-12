@@ -175,4 +175,3 @@ The failure exposes methodology fragility rather than an obvious implementation 
 ## Attribution Verdict
 
 The failure is best explained as a combination of Universe Shift + Horizon Conflict + Methodology Limitation. Cell and regime analysis localize the breakage, while style analysis shows that BOND absence, high-beta concentration, sector direction flips, and conditional commodity behavior are the visible channels through which the failure appears.
-

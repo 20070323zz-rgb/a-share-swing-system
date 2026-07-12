@@ -95,4 +95,3 @@ def _write_csv(path: Path, fields: list[str], rows: list[dict]) -> None:
         writer = csv.DictWriter(handle, fieldnames=fields)
         writer.writeheader()
         writer.writerows(rows)
-

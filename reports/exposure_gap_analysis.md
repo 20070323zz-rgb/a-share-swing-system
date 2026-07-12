@@ -106,4 +106,3 @@ Holdings-based concentration
 ## Research Boundary
 
 No additional data was downloaded for this analysis. No replay was started. No model, strategy, ranking, score, universe, preview, or execution files were modified.
-

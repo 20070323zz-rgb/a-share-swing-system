@@ -1,6 +1,6 @@
 # shadcn Card Density Audit
 
-检查时间：2026-07-05  
+检查时间：2026-07-05
 范围：App 一级页面与本轮迁移组件
 
 ## 结论
@@ -32,4 +32,3 @@ Phase 2 已明显降低剩余一级页面的 Card 密度。Research、DataCenter
 1. 下一轮可单独迁移 Portfolio 交易复盘的旧 `details.report-preview`。
 2. `ControlRoom.jsx` 如果重新纳入导航，应另开一轮迁移。
 3. Card 应继续只用于核心资产、账户摘要和高层状态，不用于一条状态一个卡片。
-

@@ -186,10 +186,7 @@ def download_item(item: EtfItem, start: str, end: str, output_dir: Path, retry: 
 
     rows = merge_existing_history(output_path, rows)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    with output_path.open("w", newline="", encoding="utf-8") as file:
-        writer = csv.DictWriter(file, fieldnames=CSV_COLUMNS)
-        writer.writeheader()
-        writer.writerows(rows)
+    write_history_csv(output_path, rows)
 
     result.status = "success"
     result.failure_reason = ""
@@ -197,6 +194,14 @@ def download_item(item: EtfItem, start: str, end: str, output_dir: Path, retry: 
     result.start_date = rows[0]["date"]
     result.end_date = rows[-1]["date"]
     return result
+
+
+def write_history_csv(path: Path, rows: list[dict[str, str]]) -> None:
+    """Write portable LF-delimited CSV without changing field serialization."""
+    with path.open("w", newline="", encoding="utf-8") as file:
+        writer = csv.DictWriter(file, fieldnames=CSV_COLUMNS, lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(rows)
 
 
 def merge_existing_history(path: Path, downloaded_rows: list[dict[str, str]]) -> list[dict[str, str]]:

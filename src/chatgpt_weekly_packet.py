@@ -63,7 +63,7 @@ def main() -> None:
     dated_md = DATED_ARCHIVE_DIR / f"chatgpt_weekly_analysis_packet_{generated_date}.md"
     dated_json = DATED_ARCHIVE_DIR / f"chatgpt_weekly_analysis_packet_{generated_date}.json"
 
-    markdown = render_markdown(packet)
+    markdown = normalize_markdown(render_markdown(packet))
     payload = _clean_json(packet)
 
     for path in [LATEST_MD, dated_md]:
@@ -75,6 +75,12 @@ def main() -> None:
     print(f"written: {LATEST_JSON}")
     print(f"written: {dated_md}")
     print(f"written: {dated_json}")
+
+
+def normalize_markdown(text: str) -> str:
+    """Remove non-semantic line-end whitespace and keep one final newline."""
+    cleaned = "\n".join(line.rstrip(" \t") for line in text.splitlines())
+    return cleaned.rstrip("\n") + "\n"
 
 
 def build_packet() -> dict[str, Any]:
@@ -177,8 +183,8 @@ def render_markdown(packet: dict[str, Any]) -> str:
     lines = [
         "# ChatGPT / Main 分析包：A 股 ETF 双周期模拟盘周报",
         "",
-        "> 本报告用于研究分析，不是交易指令。  ",
-        "> 安全边界：不接券商 API、不真实下单、不读取真实账户、不保存密码/token。  ",
+        "> 本报告用于研究分析，不是交易指令。",
+        "> 安全边界：不接券商 API、不真实下单、不读取真实账户、不保存密码/token。",
         "> adjusted preview / shadow / profit protection / high_beta / broad base balance 均为观察层，不接执行层。",
         "",
         "---",

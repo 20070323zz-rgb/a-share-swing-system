@@ -105,4 +105,3 @@ execution_allowed=false
 ## Governance Boundary
 
 This taxonomy is a research design artifact. It does not replace Style Fit 1.0, does not create new style labels for execution, and does not authorize exposure scoring.
-

@@ -56,4 +56,3 @@ def price_file_candidates(symbol: str) -> list[Path]:
         ETF_DAILY_DIR / f"sh_{symbol}.csv",
         ETF_DAILY_DIR / f"sz_{symbol}.csv",
     ]
-

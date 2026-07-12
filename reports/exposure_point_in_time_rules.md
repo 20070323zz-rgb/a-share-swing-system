@@ -237,4 +237,3 @@ execution_allowed=false
 ## Governance Boundary
 
 An exposure that cannot be made point-in-time safe must not enter replay, robustness, preview, ranking, score, or formal execution. It can remain a descriptive metadata tag or manual review attribute.
-

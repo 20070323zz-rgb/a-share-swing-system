@@ -184,4 +184,3 @@ def render_data_quality(manifest: dict, values: pd.DataFrame, missing: pd.DataFr
 
 if __name__ == "__main__":
     main()
-

@@ -1,6 +1,6 @@
 # UI Visual Calibration: Monochrome Product Dashboard
 
-完成时间：2026-07-05  
+完成时间：2026-07-05
 范围：`app/frontend/`
 
 ## 视觉原则
@@ -145,4 +145,3 @@
 - 主界面中文优先；
 - 一键补齐 ETF 数据入口存在；
 - 未发现明显 `undefined / NaN / null / [object Object]`。
-

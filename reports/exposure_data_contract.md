@@ -74,4 +74,3 @@ execution_allowed=false
 ## Non-Authorization Statement
 
 This data contract does not authorize calculating final exposure scores. Phase C must create prototype outputs separately and must remain research-only unless Main approves a later governance gate.
-

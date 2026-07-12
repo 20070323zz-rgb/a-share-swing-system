@@ -1,6 +1,6 @@
 # Frontend CSS Cleanup Audit
 
-检查时间：2026-07-05  
+检查时间：2026-07-05
 范围：`app/frontend/src/styles.css`
 
 ## 结论

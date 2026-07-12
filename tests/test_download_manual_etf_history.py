@@ -1,7 +1,7 @@
 import csv
 from pathlib import Path
 
-from scripts.download_manual_etf_history import CSV_COLUMNS, merge_existing_history
+from scripts.download_manual_etf_history import CSV_COLUMNS, merge_existing_history, write_history_csv
 
 
 def _row(date: str, close: str) -> dict[str, str]:
@@ -39,3 +39,16 @@ def test_downloaded_row_wins_only_on_overlapping_date(tmp_path: Path) -> None:
 
     assert len(merged) == 1
     assert merged[0]["close"] == "1.1"
+
+
+def test_history_writer_uses_lf_without_changing_fields(tmp_path: Path) -> None:
+    target = tmp_path / "510300.csv"
+    rows = [_row("2026-07-08", "1.1")]
+
+    write_history_csv(target, rows)
+
+    raw = target.read_bytes()
+    assert b"\r\n" not in raw
+    assert raw.count(b"\n") == 2
+    with target.open(newline="", encoding="utf-8") as file:
+        assert list(csv.DictReader(file)) == rows

@@ -1,8 +1,8 @@
 # 模拟交易周报
 
-报告周期：2026-07-06 至 2026-07-10  
-生成时间：2026-07-10 21:48 CST  
-报告状态：`NEEDS_REVIEW`  
+报告周期：2026-07-06 至 2026-07-10
+生成时间：2026-07-10 21:48 CST
+报告状态：`NEEDS_REVIEW`
 报告性质：只读模拟盘复盘，不构成交易建议。
 
 ## 一、周度结论
@@ -106,4 +106,3 @@
 - `reports/paper_performance_summary.md`
 - `reports/paper_performance_daily.csv`
 - `reports/data_update_status.json`
-
