@@ -39,10 +39,10 @@
     "Missing data produces explicit missing rows and confidence flags."
   ],
   "output_files": {
-    "values_csv": "/Users/dayin/Code/a-share-swing-system/data/research/exposure_prototype/exposure_prototype_values.csv",
-    "wide_csv": "/Users/dayin/Code/a-share-swing-system/data/research/exposure_prototype/exposure_prototype_wide.csv",
-    "missing_csv": "/Users/dayin/Code/a-share-swing-system/data/research/exposure_prototype/exposure_prototype_missing_data.csv",
-    "coverage_csv": "/Users/dayin/Code/a-share-swing-system/data/research/exposure_prototype/exposure_prototype_universe_coverage.csv",
-    "manifest_json": "/Users/dayin/Code/a-share-swing-system/data/research/exposure_prototype/exposure_prototype_manifest.json"
+    "values_csv": "<project_root>/data/research/exposure_prototype/exposure_prototype_values.csv",
+    "wide_csv": "<project_root>/data/research/exposure_prototype/exposure_prototype_wide.csv",
+    "missing_csv": "<project_root>/data/research/exposure_prototype/exposure_prototype_missing_data.csv",
+    "coverage_csv": "<project_root>/data/research/exposure_prototype/exposure_prototype_universe_coverage.csv",
+    "manifest_json": "<project_root>/data/research/exposure_prototype/exposure_prototype_manifest.json"
   }
 }

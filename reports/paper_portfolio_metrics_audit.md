@@ -3,8 +3,8 @@
 本审计只读取本地模拟仓文件，不修改 paper_trades.csv / paper_positions.csv。
 
 ## 当前数据来源
-- 持仓来源：`/Users/dayin/Code/a-share-swing-system/data/paper_positions.csv`，当前 3 条持仓记录。
-- 交易来源：`/Users/dayin/Code/a-share-swing-system/data/paper_trades.csv`，当前 11 条交易流水。
+- 持仓来源：`<project_root>/data/paper_positions.csv`，当前 3 条持仓记录。
+- 交易来源：`<project_root>/data/paper_trades.csv`，当前 11 条交易流水。
 - 最新估值价格：优先使用 positions 当前价；权益曲线使用 `data/etf_daily/` 本地 close。
 
 ## 当前能计算的指标
@@ -20,13 +20,13 @@
 - 未平仓逐笔 PnL 使用最新 close 估算，状态标记为 open。
 
 ## 新增派生文件
-- `/Users/dayin/Code/a-share-swing-system/data/paper_equity_curve.csv`
-- `/Users/dayin/Code/a-share-swing-system/reports/paper_performance_summary.json`
-- `/Users/dayin/Code/a-share-swing-system/reports/paper_performance_summary.md`
-- `/Users/dayin/Code/a-share-swing-system/reports/paper_performance_daily.csv`
-- `/Users/dayin/Code/a-share-swing-system/reports/paper_trade_pnl.csv`
-- `/Users/dayin/Code/a-share-swing-system/reports/paper_trade_pnl.md`
-- `/Users/dayin/Code/a-share-swing-system/reports/paper_equity_curve.md`
+- `<project_root>/data/paper_equity_curve.csv`
+- `<project_root>/reports/paper_performance_summary.json`
+- `<project_root>/reports/paper_performance_summary.md`
+- `<project_root>/reports/paper_performance_daily.csv`
+- `<project_root>/reports/paper_trade_pnl.csv`
+- `<project_root>/reports/paper_trade_pnl.md`
+- `<project_root>/reports/paper_equity_curve.md`
 
 ## 结论
 - 是否需要新增 `data/paper_equity_curve.csv`：是，已新增。

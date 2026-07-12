@@ -6,7 +6,7 @@
 - 模型结果只用于研究，不参与当天信号，不替代人工确认。
 
 ## 已刷新研究报告
-- 因子报告：/Users/dayin/Code/a-share-swing-system/reports/factor_analysis_report.md
+- 因子报告：<project_root>/reports/factor_analysis_report.md
 - 模型研究报告：reports/model_research_report.md
 
 ## ETF 池质量摘要

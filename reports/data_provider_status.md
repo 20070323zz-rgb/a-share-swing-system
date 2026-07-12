@@ -14,7 +14,7 @@
 ## Provider 明细
 | provider | configured | usable | message |
 | --- | --- | --- | --- |
-| local_cache | True | True | local cache dir: /Users/dayin/Code/a-share-swing-system/data/etf_daily |
+| local_cache | True | True | local cache dir: <project_root>/data/etf_daily |
 | baostock | True | True | baostock import ok |
 | tushare | True | True | tushare package missing; HTTP API fallback will be used |
 | akshare | True | True | akshare import ok; run akshare_connectivity_check for endpoint health |

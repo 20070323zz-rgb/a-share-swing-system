@@ -3873,7 +3873,7 @@
       "file": "dashboard/README.md",
       "line": 20,
       "pattern": "dashboard/",
-      "snippet": "file:///Users/dayin/Code/a-share-swing-system/dashboard/index.html"
+      "snippet": "file://<project_root>/dashboard/index.html"
     },
     {
       "file": "dashboard/README.md",

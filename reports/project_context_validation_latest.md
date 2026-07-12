@@ -1,8 +1,8 @@
 # Project Context Validation Latest
 
 - validation_status: VALID_WITH_WARNINGS
-- validated_at: 2026-07-12 10:29:20 
-- repository_root: `/Users/dayin/Code/a-share-swing-system`
+- validated_at: 2026-07-12 10:53:45
+- repository_root: `<project_root>`
 - blocking_conflict_found: False
 
 ## 当前恢复点

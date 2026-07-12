@@ -17,10 +17,10 @@ This project is not a real automated trading system, not a brokerage trading sys
 Canonical repository root:
 
 ```text
-/Users/dayin/Code/a-share-swing-system
+<project_root>
 ```
 
-The old path `/Users/dayin/Documents/量化学习/a-share-swing-system` is deprecated and must not be used for new project references.
+The old path `<deprecated_project_root>` is deprecated and must not be used for new project references.
 
 ## 3. Formal Strategy Boundary
 

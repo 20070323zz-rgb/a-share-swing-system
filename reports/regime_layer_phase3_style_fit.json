@@ -1313,7 +1313,7 @@
         "matured_20d": false
       }
     ],
-    "tracking_file": "/Users/dayin/Code/a-share-swing-system/data/style_regime_fit_tracking.csv",
+    "tracking_file": "<project_root>/data/style_regime_fit_tracking.csv",
     "research_only": true,
     "execution_allowed": false
   },

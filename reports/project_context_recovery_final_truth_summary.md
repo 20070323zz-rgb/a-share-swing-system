@@ -5,8 +5,8 @@
 ## Project Identity
 
 - Project: A-Share Swing System
-- Repository root: `/Users/dayin/Code/a-share-swing-system`
-- Old repository path: deprecated; do not use `/Users/dayin/Documents/量化学习/a-share-swing-system` for new references.
+- Repository root: `<project_root>`
+- Old repository path: deprecated; do not use `<deprecated_project_root>` for new references.
 
 ## Formal Boundary
 

@@ -4,12 +4,12 @@
   "source_audit": {
     "generated_at": "2026-07-06 22:25:24",
     "input_files": {
-      "raw_replay_csv": "/Users/dayin/Code/a-share-swing-system/data/market_regime_replay.csv",
-      "raw_replay_json": "/Users/dayin/Code/a-share-swing-system/reports/market_regime_replay.json",
-      "phase2_stability_json": "/Users/dayin/Code/a-share-swing-system/reports/market_regime_stability.json",
-      "phase2_style_forward_csv": "/Users/dayin/Code/a-share-swing-system/reports/regime_style_forward_return.csv",
-      "phase2_decision_json": "/Users/dayin/Code/a-share-swing-system/reports/market_regime_audit_decision.json",
-      "etf_risk_profile_csv": "/Users/dayin/Code/a-share-swing-system/reports/etf_risk_profile.csv"
+      "raw_replay_csv": "<project_root>/data/market_regime_replay.csv",
+      "raw_replay_json": "<project_root>/reports/market_regime_replay.json",
+      "phase2_stability_json": "<project_root>/reports/market_regime_stability.json",
+      "phase2_style_forward_csv": "<project_root>/reports/regime_style_forward_return.csv",
+      "phase2_decision_json": "<project_root>/reports/market_regime_audit_decision.json",
+      "etf_risk_profile_csv": "<project_root>/reports/etf_risk_profile.csv"
     },
     "raw_replay_rows": 267,
     "raw_replay_start": "2025-05-30",

@@ -80,11 +80,22 @@ PAPER_TRADE_PLAN_FILE = REPORT_DIR / "paper_trade_plan.csv"
 def main() -> None:
     DASHBOARD_DIR.mkdir(parents=True, exist_ok=True)
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
-    snapshot = build_snapshot()
+    snapshot = _sanitize_local_paths(build_snapshot())
     SNAPSHOT_FILE.write_text(json.dumps(snapshot, ensure_ascii=False, indent=2), encoding="utf-8")
     HTML_FILE.write_text(render_html(snapshot), encoding="utf-8")
     print(f"已生成静态看板：{HTML_FILE}")
     print(f"已生成看板快照：{SNAPSHOT_FILE}")
+
+
+def _sanitize_local_paths(value):
+    """Remove checkout-specific user paths from publishable dashboard data."""
+    if isinstance(value, dict):
+        return {key: _sanitize_local_paths(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [_sanitize_local_paths(item) for item in value]
+    if isinstance(value, str):
+        return value.replace(str(PROJECT_ROOT), "<project_root>")
+    return value
 
 
 def build_snapshot() -> dict:

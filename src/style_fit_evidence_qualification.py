@@ -672,7 +672,7 @@ def render_current_project_state(decision: dict[str, Any], summary: dict[str, An
 ## 1. Snapshot Metadata
 
 - Project: A-Share Swing System
-- Repository root: `/Users/dayin/Code/a-share-swing-system`
+- Repository root: `<project_root>`
 - State snapshot date: 2026-07-08
 - State snapshot source: Regime Layer Phase 3.5B evidence qualification and decision files.
 

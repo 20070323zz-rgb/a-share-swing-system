@@ -3,8 +3,8 @@
   "scope": "Project Context Persistence Phase D4 final truth summary",
   "project_identity": {
     "project": "A-Share Swing System",
-    "repository_root": "/Users/dayin/Code/a-share-swing-system",
-    "old_repository_path_status": "deprecated; do not use /Users/dayin/Documents/量化学习/a-share-swing-system for new project references"
+    "repository_root": "<project_root>",
+    "old_repository_path_status": "deprecated; do not use <deprecated_project_root> for new project references"
   },
   "formal_boundary": {
     "formal_model_changed": false,

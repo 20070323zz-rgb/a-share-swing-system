@@ -4,7 +4,7 @@ Use this template when starting a new Codex thread for this project.
 
 ```text
 项目路径：
-/Users/dayin/Code/a-share-swing-system
+<project_root>
 
 这是已有长期项目，不是新项目。
 

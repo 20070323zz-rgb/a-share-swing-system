@@ -41,11 +41,11 @@
     "Missing benchmarks or insufficient paired history produce explicit missing rows."
   ],
   "output_files": {
-    "values_csv": "/Users/dayin/Code/a-share-swing-system/data/research/exposure_prototype/market_exposure_vector_values.csv",
-    "missing_csv": "/Users/dayin/Code/a-share-swing-system/data/research/exposure_prototype/market_exposure_vector_missing.csv",
-    "benchmark_coverage_csv": "/Users/dayin/Code/a-share-swing-system/data/research/exposure_prototype/market_exposure_vector_benchmark_coverage.csv",
-    "benchmark_redundancy_csv": "/Users/dayin/Code/a-share-swing-system/data/research/exposure_prototype/market_exposure_vector_benchmark_redundancy.csv",
-    "single_vs_multi_csv": "/Users/dayin/Code/a-share-swing-system/data/research/exposure_prototype/market_exposure_vector_single_vs_multi.csv",
-    "manifest_json": "/Users/dayin/Code/a-share-swing-system/data/research/exposure_prototype/market_exposure_vector_manifest.json"
+    "values_csv": "<project_root>/data/research/exposure_prototype/market_exposure_vector_values.csv",
+    "missing_csv": "<project_root>/data/research/exposure_prototype/market_exposure_vector_missing.csv",
+    "benchmark_coverage_csv": "<project_root>/data/research/exposure_prototype/market_exposure_vector_benchmark_coverage.csv",
+    "benchmark_redundancy_csv": "<project_root>/data/research/exposure_prototype/market_exposure_vector_benchmark_redundancy.csv",
+    "single_vs_multi_csv": "<project_root>/data/research/exposure_prototype/market_exposure_vector_single_vs_multi.csv",
+    "manifest_json": "<project_root>/data/research/exposure_prototype/market_exposure_vector_manifest.json"
   }
 }

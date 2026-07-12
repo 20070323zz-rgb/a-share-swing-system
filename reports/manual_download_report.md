@@ -1,7 +1,7 @@
 # Manual ETF History Download Report
 
 - Requested range: 2026-07-08 to 2026-07-08
-- Output directory: /Users/dayin/Code/a-share-swing-system/data/manual_import
+- Output directory: <project_root>/data/manual_import
 - Broker API: not used
 - Account credentials: not read
 - Real orders: not placed

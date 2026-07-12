@@ -2,7 +2,7 @@
 set -u
 
 TASK_NAME="weekly_review"
-PROJECT_ROOT="/Users/dayin/Code/a-share-swing-system"
+PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 PYTHON_BIN="$PROJECT_ROOT/.venv/bin/python"
 LOG_DIR="$PROJECT_ROOT/logs"
 LOG_FILE="$LOG_DIR/weekly_review.log"

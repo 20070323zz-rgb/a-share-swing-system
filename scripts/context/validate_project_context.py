@@ -76,7 +76,7 @@ def repo_root() -> Path:
 
 
 def now_text() -> str:
-    return datetime.now().strftime("%Y-%m-%d %H:%M:%S %Z")
+    return datetime.now().strftime("%Y-%m-%d %H:%M:%S %Z").strip()
 
 
 def read_json(path: Path, errors: list[str]) -> dict[str, Any]:
@@ -204,7 +204,9 @@ def validate_status(root: Path, errors: list[str], warnings: list[str]) -> tuple
     missing = [key for key in REQUIRED_STATUS_FIELDS if key not in status]
     if missing:
         errors.append(f"current_phase_status missing fields: {missing}")
-    if status.get("repository_root") != str(root):
+    root_value = status.get("repository_root")
+    root_matches = root_value in {"<project_root>", str(root)}
+    if not root_matches:
         errors.append("repository_root mismatch")
 
     if has_nonfinite(status):
@@ -237,7 +239,7 @@ def validate_status(root: Path, errors: list[str], warnings: list[str]) -> tuple
         and result["main_phase_state_valid"]
         and result["batch_state_valid"]
         and phase_batch_ok
-        and status.get("repository_root") == str(root)
+        and root_matches
     )
     if status.get("phase_status") == "IN_PROGRESS" and status.get("current_batch_status") == "PENDING":
         warnings.append("current batch is pending; resume from current_batch before doing substantive work")
@@ -546,7 +548,7 @@ def run_validation(root: Path | None = None, write_report: bool = True) -> dict[
     result = {
         "validation_status": validation_status,
         "validated_at": now_text(),
-        "repository_root": str(root),
+        "repository_root": "<project_root>",
         **manifest_result,
         **status_result,
         "decision_sources_valid": decision_result["decision_sources_valid"],

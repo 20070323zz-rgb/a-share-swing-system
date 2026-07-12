@@ -1,7 +1,7 @@
 {
   "validation_status": "VALID_WITH_WARNINGS",
-  "validated_at": "2026-07-12 10:29:20 ",
-  "repository_root": "/Users/dayin/Code/a-share-swing-system",
+  "validated_at": "2026-07-12 10:53:45",
+  "repository_root": "<project_root>",
   "manifest_valid": true,
   "required_context_files_complete": true,
   "bootstrap_read_order_valid": true,

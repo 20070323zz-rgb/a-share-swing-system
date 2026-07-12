@@ -18,12 +18,12 @@
 ## launchd plist
 | label | plist | exists | scheduled |
 | --- | --- | --- | --- |
-| com.dayin.a-share.open-check | /Users/dayin/Code/a-share-swing-system/launchd/com.dayin.a-share.open-check.plist | True | 09:40 weekdays |
-| com.dayin.a-share.midday-check | /Users/dayin/Code/a-share-swing-system/launchd/com.dayin.a-share.midday-check.plist | True | 12:40 weekdays |
-| com.dayin.a-share.afternoon-open-check | /Users/dayin/Code/a-share-swing-system/launchd/com.dayin.a-share.afternoon-open-check.plist | True | 13:10 weekdays |
-| com.dayin.a-share.daily-close | /Users/dayin/Code/a-share-swing-system/launchd/com.dayin.a-share.daily-close.plist | True | 15:30 weekdays |
-| com.dayin.a-share.weekly-review | /Users/dayin/Code/a-share-swing-system/launchd/com.dayin.a-share.weekly-review.plist | True | 15:40 Friday |
-| com.dayin.a-share.monthly-model-review | /Users/dayin/Code/a-share-swing-system/launchd/com.dayin.a-share.monthly-model-review.plist | True | 16:10 day 1 monthly |
+| com.dayin.a-share.open-check | <project_root>/launchd/com.dayin.a-share.open-check.plist | True | 09:40 weekdays |
+| com.dayin.a-share.midday-check | <project_root>/launchd/com.dayin.a-share.midday-check.plist | True | 12:40 weekdays |
+| com.dayin.a-share.afternoon-open-check | <project_root>/launchd/com.dayin.a-share.afternoon-open-check.plist | True | 13:10 weekdays |
+| com.dayin.a-share.daily-close | <project_root>/launchd/com.dayin.a-share.daily-close.plist | True | 15:30 weekdays |
+| com.dayin.a-share.weekly-review | <project_root>/launchd/com.dayin.a-share.weekly-review.plist | True | 15:40 Friday |
+| com.dayin.a-share.monthly-model-review | <project_root>/launchd/com.dayin.a-share.monthly-model-review.plist | True | 16:10 day 1 monthly |
 
 ## 报告同步状态
 | report | exists | updated_at |

@@ -63,7 +63,7 @@ current batch is pending; resume from current_batch before doing substantive wor
 
 | Fact | Recovered Value | Result |
 | --- | --- | --- |
-| Repository root | `/Users/dayin/Code/a-share-swing-system` | PASS |
+| Repository root | `<project_root>` | PASS |
 | Main Phase | `Project Context Persistence Phase` | PASS |
 | Phase status | `IN_PROGRESS` | PASS |
 | Current Batch | `Context Phase D` | PASS |

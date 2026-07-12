@@ -2,7 +2,7 @@
   "schema_version": 2,
   "context_schema_version": 2,
   "project": "a-share-swing-system",
-  "repository_root": "/Users/dayin/Code/a-share-swing-system",
+  "repository_root": "<project_root>",
   "context_updated_at": "2026-07-12 10:12:45 CST",
   "context_updated_by": "Codex",
   "context_update_reason": "Main accepted the completed Tushare 5000 capability and gap audit; Reports Governance Phase A was verified as not started because its required catalog and registry-design artifacts are absent. No staging, data-foundation upgrade, or report migration started.",
@@ -706,5 +706,6 @@
   "tushare_5000_data_foundation_audit_status": "COMPLETE",
   "reports_governance_phase_a_status": "NOT_STARTED",
   "report_file_migration_status": "BLOCKED",
+  "draft_pr_1_status": "READY_FOR_REVIEW",
   "tushare_5000_data_foundation_audit_eligibility": "ELIGIBLE_FOR_SEPARATE_AUDIT"
 }

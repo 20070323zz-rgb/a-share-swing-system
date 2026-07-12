@@ -1,7 +1,7 @@
 {
   "app_ready_snapshot_version": "regime_layer_phase3_style_fit_v1",
   "local_app_version": "v0.2.0-local",
-  "generated_at": "2026-07-12 10:29:12",
+  "generated_at": "2026-07-12 10:52:55",
   "app_control_center": {
     "current_phase": "Shadow Observation Period",
     "formal_model_changed": false,
@@ -27,7 +27,7 @@
     "formal_daily_source": "baostock",
     "candidate_daily_source": "tushare",
     "recommended_action": "Continue observation; do not relax filters; do not enter preview.",
-    "last_updated": "2026-07-12 10:29:12",
+    "last_updated": "2026-07-12 10:52:55",
     "live_evidence_summary": "Forward returns are mostly pending; evidence is insufficient. Keep all filters unchanged and continue weekly observation.",
     "missed_opportunity_candidate_count": 123,
     "matured_forward_return_count": 49,
@@ -95,7 +95,7 @@
       "started_at": "2026-07-11 16:43:13",
       "finished_at": "2026-07-11 16:43:42",
       "exit_code": 0,
-      "stdout_tail": "已生成数据覆盖报告：/Users/dayin/Code/a-share-swing-system/reports/data_coverage_report.md\n本报告只读取本地 CSV，不包含任何真实交易接口。\n\n已生成数据健康报告：/Users/dayin/Code/a-share-swing-system/reports/data_health_report.md\n本报告只读取本地 CSV，不包含任何真实交易接口。\n\n已生成模拟仓绩效报告：/Users/dayin/Code/a-share-swing-system/reports/paper_performance_summary.md\n已生成模拟仓权益曲线：/Users/dayin/Code/a-share-swing-system/data/paper_equity_curve.csv\n\n已生成回填权益曲线：/Users/dayin/Code/a-share-swing-system/data/paper_equity_curve_backfilled.csv\n已生成回填说明报告：/Users/dayin/Code/a-share-swing-system/reports/paper_equity_curve_backfilled.md\n已生成回填审计报告：/Users/dayin/Code/a-share-swing-system/reports/paper_equity_curve_backfill_audit.md\n\n已生成静态看板：/Users/dayin/Code/a-share-swing-system/dashboard/index.html\n已生成看板快照：/Users/dayin/Code/a-share-swing-system/reports/dashboard_data.json\n",
+      "stdout_tail": "已生成数据覆盖报告：<project_root>/reports/data_coverage_report.md\n本报告只读取本地 CSV，不包含任何真实交易接口。\n\n已生成数据健康报告：<project_root>/reports/data_health_report.md\n本报告只读取本地 CSV，不包含任何真实交易接口。\n\n已生成模拟仓绩效报告：<project_root>/reports/paper_performance_summary.md\n已生成模拟仓权益曲线：<project_root>/data/paper_equity_curve.csv\n\n已生成回填权益曲线：<project_root>/data/paper_equity_curve_backfilled.csv\n已生成回填说明报告：<project_root>/reports/paper_equity_curve_backfilled.md\n已生成回填审计报告：<project_root>/reports/paper_equity_curve_backfill_audit.md\n\n已生成静态看板：<project_root>/dashboard/index.html\n已生成看板快照：<project_root>/reports/dashboard_data.json\n",
       "stderr_tail": "",
       "warning": "",
       "data_update_severity": "OK",
@@ -106,7 +106,7 @@
       "data_update_processed_symbols": 183,
       "data_update_up_to_date_count": 183,
       "data_update_actual_api_calls": 0,
-      "log_path": "/Users/dayin/Code/a-share-swing-system/logs/app_tasks/20260711164313-091f6af6_backfill_etf_data.log",
+      "log_path": "<project_root>/logs/app_tasks/20260711164313-091f6af6_backfill_etf_data.log",
       "modifies_paper_positions": false,
       "real_trade": false,
       "duration_seconds": 29,
@@ -122,7 +122,7 @@
         "started_at": "2026-07-11 16:43:13",
         "finished_at": "2026-07-11 16:43:42",
         "exit_code": 0,
-        "stdout_tail": "已生成数据覆盖报告：/Users/dayin/Code/a-share-swing-system/reports/data_coverage_report.md\n本报告只读取本地 CSV，不包含任何真实交易接口。\n\n已生成数据健康报告：/Users/dayin/Code/a-share-swing-system/reports/data_health_report.md\n本报告只读取本地 CSV，不包含任何真实交易接口。\n\n已生成模拟仓绩效报告：/Users/dayin/Code/a-share-swing-system/reports/paper_performance_summary.md\n已生成模拟仓权益曲线：/Users/dayin/Code/a-share-swing-system/data/paper_equity_curve.csv\n\n已生成回填权益曲线：/Users/dayin/Code/a-share-swing-system/data/paper_equity_curve_backfilled.csv\n已生成回填说明报告：/Users/dayin/Code/a-share-swing-system/reports/paper_equity_curve_backfilled.md\n已生成回填审计报告：/Users/dayin/Code/a-share-swing-system/reports/paper_equity_curve_backfill_audit.md\n\n已生成静态看板：/Users/dayin/Code/a-share-swing-system/dashboard/index.html\n已生成看板快照：/Users/dayin/Code/a-share-swing-system/reports/dashboard_data.json\n",
+        "stdout_tail": "已生成数据覆盖报告：<project_root>/reports/data_coverage_report.md\n本报告只读取本地 CSV，不包含任何真实交易接口。\n\n已生成数据健康报告：<project_root>/reports/data_health_report.md\n本报告只读取本地 CSV，不包含任何真实交易接口。\n\n已生成模拟仓绩效报告：<project_root>/reports/paper_performance_summary.md\n已生成模拟仓权益曲线：<project_root>/data/paper_equity_curve.csv\n\n已生成回填权益曲线：<project_root>/data/paper_equity_curve_backfilled.csv\n已生成回填说明报告：<project_root>/reports/paper_equity_curve_backfilled.md\n已生成回填审计报告：<project_root>/reports/paper_equity_curve_backfill_audit.md\n\n已生成静态看板：<project_root>/dashboard/index.html\n已生成看板快照：<project_root>/reports/dashboard_data.json\n",
         "stderr_tail": "",
         "warning": "",
         "data_update_severity": "OK",
@@ -133,7 +133,7 @@
         "data_update_processed_symbols": 183,
         "data_update_up_to_date_count": 183,
         "data_update_actual_api_calls": 0,
-        "log_path": "/Users/dayin/Code/a-share-swing-system/logs/app_tasks/20260711164313-091f6af6_backfill_etf_data.log",
+        "log_path": "<project_root>/logs/app_tasks/20260711164313-091f6af6_backfill_etf_data.log",
         "modifies_paper_positions": false,
         "real_trade": false,
         "duration_seconds": 29,
@@ -148,7 +148,7 @@
         "started_at": "2026-07-11 16:07:23",
         "finished_at": "2026-07-11 16:07:43",
         "exit_code": 0,
-        "stdout_tail": "已生成数据覆盖报告：/Users/dayin/Code/a-share-swing-system/reports/data_coverage_report.md\n本报告只读取本地 CSV，不包含任何真实交易接口。\n\n已生成数据健康报告：/Users/dayin/Code/a-share-swing-system/reports/data_health_report.md\n本报告只读取本地 CSV，不包含任何真实交易接口。\n\n已生成静态看板：/Users/dayin/Code/a-share-swing-system/dashboard/index.html\n已生成看板快照：/Users/dayin/Code/a-share-swing-system/reports/dashboard_data.json\n",
+        "stdout_tail": "已生成数据覆盖报告：<project_root>/reports/data_coverage_report.md\n本报告只读取本地 CSV，不包含任何真实交易接口。\n\n已生成数据健康报告：<project_root>/reports/data_health_report.md\n本报告只读取本地 CSV，不包含任何真实交易接口。\n\n已生成静态看板：<project_root>/dashboard/index.html\n已生成看板快照：<project_root>/reports/dashboard_data.json\n",
         "stderr_tail": "",
         "warning": "",
         "data_update_severity": "OK",
@@ -159,7 +159,7 @@
         "data_update_processed_symbols": 183,
         "data_update_up_to_date_count": 183,
         "data_update_actual_api_calls": 0,
-        "log_path": "/Users/dayin/Code/a-share-swing-system/logs/app_tasks/20260711160723-7025c9dd_backfill_etf_data.log",
+        "log_path": "<project_root>/logs/app_tasks/20260711160723-7025c9dd_backfill_etf_data.log",
         "modifies_paper_positions": false,
         "real_trade": false,
         "duration_seconds": 20,
@@ -174,7 +174,7 @@
         "started_at": "2026-07-10 16:51:24",
         "finished_at": "2026-07-10 16:51:46",
         "exit_code": 0,
-        "stdout_tail": "已生成数据覆盖报告：/Users/dayin/Code/a-share-swing-system/reports/data_coverage_report.md\n本报告只读取本地 CSV，不包含任何真实交易接口。\n\n已生成数据健康报告：/Users/dayin/Code/a-share-swing-system/reports/data_health_report.md\n本报告只读取本地 CSV，不包含任何真实交易接口。\n\n已生成静态看板：/Users/dayin/Code/a-share-swing-system/dashboard/index.html\n已生成看板快照：/Users/dayin/Code/a-share-swing-system/reports/dashboard_data.json\n",
+        "stdout_tail": "已生成数据覆盖报告：<project_root>/reports/data_coverage_report.md\n本报告只读取本地 CSV，不包含任何真实交易接口。\n\n已生成数据健康报告：<project_root>/reports/data_health_report.md\n本报告只读取本地 CSV，不包含任何真实交易接口。\n\n已生成静态看板：<project_root>/dashboard/index.html\n已生成看板快照：<project_root>/reports/dashboard_data.json\n",
         "stderr_tail": "",
         "warning": "",
         "data_update_severity": "OK",
@@ -182,7 +182,7 @@
         "data_update_latest_local_date": "2026-07-09",
         "data_update_requested_end": "2026-07-09",
         "data_update_added_rows": 0,
-        "log_path": "/Users/dayin/Code/a-share-swing-system/logs/app_tasks/20260710165124-90bbc2b8_backfill_etf_data.log",
+        "log_path": "<project_root>/logs/app_tasks/20260710165124-90bbc2b8_backfill_etf_data.log",
         "modifies_paper_positions": false,
         "real_trade": false,
         "duration_seconds": 22,
@@ -197,7 +197,7 @@
         "started_at": "2026-06-24 00:33:59",
         "finished_at": "2026-06-24 00:37:56",
         "exit_code": 0,
-        "stdout_tail": "已生成数据覆盖报告：/Users/dayin/Code/a-share-swing-system/reports/data_coverage_report.md\n本报告只读取本地 CSV，不包含任何真实交易接口。\n\n已生成数据健康报告：/Users/dayin/Code/a-share-swing-system/reports/data_health_report.md\n本报告只读取本地 CSV，不包含任何真实交易接口。\n\n已生成静态看板：/Users/dayin/Code/a-share-swing-system/dashboard/index.html\n已生成看板快照：/Users/dayin/Code/a-share-swing-system/reports/dashboard_data.json\n",
+        "stdout_tail": "已生成数据覆盖报告：<project_root>/reports/data_coverage_report.md\n本报告只读取本地 CSV，不包含任何真实交易接口。\n\n已生成数据健康报告：<project_root>/reports/data_health_report.md\n本报告只读取本地 CSV，不包含任何真实交易接口。\n\n已生成静态看板：<project_root>/dashboard/index.html\n已生成看板快照：<project_root>/reports/dashboard_data.json\n",
         "stderr_tail": "",
         "warning": "",
         "data_update_severity": "OK",
@@ -205,7 +205,7 @@
         "data_update_latest_local_date": "2026-06-23",
         "data_update_requested_end": "2026-06-23",
         "data_update_added_rows": 183,
-        "log_path": "/Users/dayin/Code/a-share-swing-system/logs/app_tasks/20260624003359-fbd24597_backfill_etf_data.log",
+        "log_path": "<project_root>/logs/app_tasks/20260624003359-fbd24597_backfill_etf_data.log",
         "modifies_paper_positions": false,
         "real_trade": false,
         "duration_seconds": 237,
@@ -220,7 +220,7 @@
         "started_at": "2026-06-24 00:32:02",
         "finished_at": "2026-06-24 00:32:44",
         "exit_code": 0,
-        "stdout_tail": "已生成数据覆盖报告：/Users/dayin/Code/a-share-swing-system/reports/data_coverage_report.md\n本报告只读取本地 CSV，不包含任何真实交易接口。\n\n已生成数据健康报告：/Users/dayin/Code/a-share-swing-system/reports/data_health_report.md\n本报告只读取本地 CSV，不包含任何真实交易接口。\n\n已生成静态看板：/Users/dayin/Code/a-share-swing-system/dashboard/index.html\n已生成看板快照：/Users/dayin/Code/a-share-swing-system/reports/dashboard_data.json\n",
+        "stdout_tail": "已生成数据覆盖报告：<project_root>/reports/data_coverage_report.md\n本报告只读取本地 CSV，不包含任何真实交易接口。\n\n已生成数据健康报告：<project_root>/reports/data_health_report.md\n本报告只读取本地 CSV，不包含任何真实交易接口。\n\n已生成静态看板：<project_root>/dashboard/index.html\n已生成看板快照：<project_root>/reports/dashboard_data.json\n",
         "stderr_tail": "",
         "warning": "BaoStock source probe indicates 2026-06-24 daily data is not ready yet; skipped full-universe empty run. Probe: 510300: 返回空数据；159915: 返回空数据；512800: 返回空数据；515000: 返回空数据；515220: 返回空数据",
         "data_update_severity": "CAUTION",
@@ -228,7 +228,7 @@
         "data_update_latest_local_date": "2026-06-22",
         "data_update_requested_end": "2026-06-24",
         "data_update_added_rows": 0,
-        "log_path": "/Users/dayin/Code/a-share-swing-system/logs/app_tasks/20260624003202-74f60ab4_backfill_etf_data.log",
+        "log_path": "<project_root>/logs/app_tasks/20260624003202-74f60ab4_backfill_etf_data.log",
         "modifies_paper_positions": false,
         "real_trade": false,
         "duration_seconds": 42,
@@ -244,14 +244,14 @@
         "finished_at": "2026-06-24 00:29:40",
         "exit_code": 1,
         "stdout_tail": "",
-        "stderr_tail": "Traceback (most recent call last):\n  File \"/Users/dayin/Code/a-share-swing-system/scripts/update_etf_data.py\", line 22, in <module>\n    import pandas as pd\nModuleNotFoundError: No module named 'pandas'\n",
+        "stderr_tail": "Traceback (most recent call last):\n  File \"<project_root>/scripts/update_etf_data.py\", line 22, in <module>\n    import pandas as pd\nModuleNotFoundError: No module named 'pandas'\n",
         "warning": "No new rows were appended and local data is still stale versus requested end 2026-06-23.",
         "data_update_severity": "CAUTION",
         "data_update_status": "stale_no_new_rows",
         "data_update_latest_local_date": "2026-06-22",
         "data_update_requested_end": "2026-06-23",
         "data_update_added_rows": 0,
-        "log_path": "/Users/dayin/Code/a-share-swing-system/logs/app_tasks/20260624002940-e1c71158_backfill_etf_data.log",
+        "log_path": "<project_root>/logs/app_tasks/20260624002940-e1c71158_backfill_etf_data.log",
         "modifies_paper_positions": false,
         "real_trade": false,
         "duration_seconds": 0,
@@ -266,7 +266,7 @@
         "started_at": "2026-06-22 19:43:14",
         "finished_at": "2026-06-22 19:43:20",
         "exit_code": 0,
-        "stdout_tail": "已生成每日信号报告：/Users/dayin/Code/a-share-swing-system/reports/daily_signal_2026-06-18.md\n已生成每日最简摘要：/Users/dayin/Code/a-share-swing-system/reports/latest_brief.md\n已生成ETF横截面排名报告：/Users/dayin/Code/a-share-swing-system/reports/ranking_report.md\n已生成BUY ETF排名报告：/Users/dayin/Code/a-share-swing-system/reports/buy_signal_ranking.md\n已生成第一次模拟买入计划：/Users/dayin/Code/a-share-swing-system/reports/first_paper_buy_plan.md\n已生成因子有效性报告：/Users/dayin/Code/a-share-swing-system/reports/factor_analysis_report.md\n已生成短期策略报告：/Users/dayin/Code/a-share-swing-system/reports/latest_short_swing.md\n已生成数据覆盖报告：reports/latest_data_coverage.md\n已生成数据健康报告：reports/latest_data_health.md\n已生成模拟盘持仓报告：/Users/dayin/Code/a-share-swing-system/reports/latest_paper_portfolio.md\n已生成风险控制报告：/Users/dayin/Code/a-share-swing-system/reports/risk_report.md\n已更新模型研究数据集：/Users/dayin/Code/a-share-swing-system/reports/model_dataset.csv\n已生成静态看板：/Users/dayin/Code/a-share-swing-system/dashboard/index.html\n已生成看板快照：/Users/dayin/Code/a-share-swing-system/reports/dashboard_data.json\n已生成静态网页看板：/Users/dayin/Code/a-share-swing-system/dashboard/index.html\n所有交易均为模拟盘记录，不含任何真实下单接口。\n\n已生成模拟盘持仓报告：/Users/dayin/Code/a-share-swing-system/reports/latest_paper_portfolio.md\n本报告只读取本地模拟盘 CSV，不接券商 API，不下单。\n\n已生成卖出复核报告：/Users/dayin/Code/a-share-swing-system/reports/sell_signal_review.md\n已生成卖出复核 CSV：/Users/dayin/Code/a-share-swing-system/reports/sell_signal_review.csv\n\nmarket_state rows: 11\nwritten: /Users/dayin/Code/a-share-swing-system/reports/market_state.csv\nwritten: /Users/dayin/Code/a-share-swing-system/reports/market_state_report.md\n\nETF classification rows: 185\nwritten: /Users/dayin/Code/a-share-swing-system/data/etf_classification.csv\nwritten: /Users/dayin/Code/a-share-swing-system/reports/etf_classification_report.md\n\nportfolio_exposure rows: 12\nwritten: /Users/dayin/Code/a-share-swing-system/reports/portfolio_exposure.csv\nwritten: /Users/dayin/Code/a-share-swing-system/reports/portfolio_exposure_report.md\n\n已生成策略增强预览报告：/Users/dayin/Code/a-share-swing-system/reports/strategy_enhancement_preview.md\n已生成策略增强预览 CSV：/Users/dayin/Code/a-share-swing-system/reports/strategy_enhancement_preview.csv\n\n已生成策略预览跟踪账本：/Users/dayin/Code/a-share-swing-system/data/strategy_preview_tracking.csv\n已生成策略预览跟踪报告：/Users/dayin/Code/a-share-swing-system/reports/strategy_preview_tracking_report.md\n\npersistence_breakout_v2 latest_date: 2026-06-18\nselected_count: 0\nwritten: /Users/dayin/Code/a-share-swing-system/reports/persistence_breakout_shadow_signal.md\nwritten: /Users/dayin/Code/a-share-swing-system/reports/persistence_breakout_shadow_portfolio.md\nwritten: /Users/dayin/Code/a-share-swing-system/reports/model_shadow_comparison.md\nwritten: /Users/dayin/Code/a-share-swing-system/data/persistence_breakout_shadow_tracking.csv\n\nmissed opportunity candidates: 10\ntracking rows: 10\nwritten: /Users/dayin/Code/a-share-swing-system/reports/missed_opportunity_tracker.md\nwritten: /Users/dayin/Code/a-share-swing-system/data/missed_opportunity_tracking.csv\nwritten: /Users/dayin/Code/a-share-swing-system/reports/missed_opportunity_by_filter_reason.md\nwritten: /Users/dayin/Code/a-share-swing-system/reports/risk_on_empty_signal_analysis.md\nwritten: /Users/dayin/Code/a-share-swing-system/reports/selected_vs_filtered_forward_return.md\n\nshadow observation evidence_level: insufficient\nmissed candidates: 10\nmatured_10d_count: 0\nwritten: /Users/dayin/Code/a-share-swing-system/reports/shadow_observation_weekly.md\nwritten: /Users/dayin/Code/a-share-swing-system/reports/shadow_observation_weekly.csv\nwritten: /Users/dayin/Code/a-share-swing-system/reports/shadow_observation_weekly.json\n\n已生成静态看板：/Users/dayin/Code/a-share-swing-system/dashboard/index.html\n已生成看板快照：/Users/dayin/Code/a-share-swing-system/reports/dashboard_data.json\n",
+        "stdout_tail": "已生成每日信号报告：<project_root>/reports/daily_signal_2026-06-18.md\n已生成每日最简摘要：<project_root>/reports/latest_brief.md\n已生成ETF横截面排名报告：<project_root>/reports/ranking_report.md\n已生成BUY ETF排名报告：<project_root>/reports/buy_signal_ranking.md\n已生成第一次模拟买入计划：<project_root>/reports/first_paper_buy_plan.md\n已生成因子有效性报告：<project_root>/reports/factor_analysis_report.md\n已生成短期策略报告：<project_root>/reports/latest_short_swing.md\n已生成数据覆盖报告：reports/latest_data_coverage.md\n已生成数据健康报告：reports/latest_data_health.md\n已生成模拟盘持仓报告：<project_root>/reports/latest_paper_portfolio.md\n已生成风险控制报告：<project_root>/reports/risk_report.md\n已更新模型研究数据集：<project_root>/reports/model_dataset.csv\n已生成静态看板：<project_root>/dashboard/index.html\n已生成看板快照：<project_root>/reports/dashboard_data.json\n已生成静态网页看板：<project_root>/dashboard/index.html\n所有交易均为模拟盘记录，不含任何真实下单接口。\n\n已生成模拟盘持仓报告：<project_root>/reports/latest_paper_portfolio.md\n本报告只读取本地模拟盘 CSV，不接券商 API，不下单。\n\n已生成卖出复核报告：<project_root>/reports/sell_signal_review.md\n已生成卖出复核 CSV：<project_root>/reports/sell_signal_review.csv\n\nmarket_state rows: 11\nwritten: <project_root>/reports/market_state.csv\nwritten: <project_root>/reports/market_state_report.md\n\nETF classification rows: 185\nwritten: <project_root>/data/etf_classification.csv\nwritten: <project_root>/reports/etf_classification_report.md\n\nportfolio_exposure rows: 12\nwritten: <project_root>/reports/portfolio_exposure.csv\nwritten: <project_root>/reports/portfolio_exposure_report.md\n\n已生成策略增强预览报告：<project_root>/reports/strategy_enhancement_preview.md\n已生成策略增强预览 CSV：<project_root>/reports/strategy_enhancement_preview.csv\n\n已生成策略预览跟踪账本：<project_root>/data/strategy_preview_tracking.csv\n已生成策略预览跟踪报告：<project_root>/reports/strategy_preview_tracking_report.md\n\npersistence_breakout_v2 latest_date: 2026-06-18\nselected_count: 0\nwritten: <project_root>/reports/persistence_breakout_shadow_signal.md\nwritten: <project_root>/reports/persistence_breakout_shadow_portfolio.md\nwritten: <project_root>/reports/model_shadow_comparison.md\nwritten: <project_root>/data/persistence_breakout_shadow_tracking.csv\n\nmissed opportunity candidates: 10\ntracking rows: 10\nwritten: <project_root>/reports/missed_opportunity_tracker.md\nwritten: <project_root>/data/missed_opportunity_tracking.csv\nwritten: <project_root>/reports/missed_opportunity_by_filter_reason.md\nwritten: <project_root>/reports/risk_on_empty_signal_analysis.md\nwritten: <project_root>/reports/selected_vs_filtered_forward_return.md\n\nshadow observation evidence_level: insufficient\nmissed candidates: 10\nmatured_10d_count: 0\nwritten: <project_root>/reports/shadow_observation_weekly.md\nwritten: <project_root>/reports/shadow_observation_weekly.csv\nwritten: <project_root>/reports/shadow_observation_weekly.json\n\n已生成静态看板：<project_root>/dashboard/index.html\n已生成看板快照：<project_root>/reports/dashboard_data.json\n",
         "stderr_tail": "",
         "warning": "",
         "data_update_severity": "",
@@ -274,7 +274,7 @@
         "data_update_latest_local_date": "",
         "data_update_requested_end": "",
         "data_update_added_rows": "",
-        "log_path": "/Users/dayin/Code/a-share-swing-system/logs/app_tasks/20260622194314-fbc66a5b_refresh_all_reports.log",
+        "log_path": "<project_root>/logs/app_tasks/20260622194314-fbc66a5b_refresh_all_reports.log",
         "modifies_paper_positions": false,
         "real_trade": false,
         "duration_seconds": 6,
@@ -289,7 +289,7 @@
         "started_at": "2026-06-18 20:37:11",
         "finished_at": "2026-06-18 20:43:05",
         "exit_code": 0,
-        "stdout_tail": "已生成数据覆盖报告：/Users/dayin/Code/a-share-swing-system/reports/data_coverage_report.md\n本报告只读取本地 CSV，不包含任何真实交易接口。\n\n已生成数据健康报告：/Users/dayin/Code/a-share-swing-system/reports/data_health_report.md\n本报告只读取本地 CSV，不包含任何真实交易接口。\n\n已生成静态看板：/Users/dayin/Code/a-share-swing-system/dashboard/index.html\n已生成看板快照：/Users/dayin/Code/a-share-swing-system/reports/dashboard_data.json\n",
+        "stdout_tail": "已生成数据覆盖报告：<project_root>/reports/data_coverage_report.md\n本报告只读取本地 CSV，不包含任何真实交易接口。\n\n已生成数据健康报告：<project_root>/reports/data_health_report.md\n本报告只读取本地 CSV，不包含任何真实交易接口。\n\n已生成静态看板：<project_root>/dashboard/index.html\n已生成看板快照：<project_root>/reports/dashboard_data.json\n",
         "stderr_tail": "",
         "warning": "",
         "data_update_severity": "OK",
@@ -297,7 +297,7 @@
         "data_update_latest_local_date": "2026-06-18",
         "data_update_requested_end": "2026-06-18",
         "data_update_added_rows": 183,
-        "log_path": "/Users/dayin/Code/a-share-swing-system/logs/app_tasks/20260618203711-a7e4d1b1_backfill_recent_data.log",
+        "log_path": "<project_root>/logs/app_tasks/20260618203711-a7e4d1b1_backfill_recent_data.log",
         "modifies_paper_positions": false,
         "real_trade": false,
         "duration_seconds": 354,
@@ -320,7 +320,7 @@
         "data_update_latest_local_date": "",
         "data_update_requested_end": "",
         "data_update_added_rows": "",
-        "log_path": "/Users/dayin/Code/a-share-swing-system/logs/app_tasks/20260618203535-1a4e8f8f_backfill_recent_data.log",
+        "log_path": "<project_root>/logs/app_tasks/20260618203535-1a4e8f8f_backfill_recent_data.log",
         "modifies_paper_positions": false,
         "real_trade": false,
         "duration_seconds": 2,
@@ -335,9 +335,9 @@
         "started_at": "2026-06-18 15:27:02",
         "finished_at": "2026-06-18 15:27:12",
         "exit_code": 0,
-        "stdout_tail": "已生成数据覆盖报告：/Users/dayin/Code/a-share-swing-system/reports/data_coverage_report.md\n本报告只读取本地 CSV，不包含任何真实交易接口。\n\n已生成数据健康报告：/Users/dayin/Code/a-share-swing-system/reports/data_health_report.md\n本报告只读取本地 CSV，不包含任何真实交易接口。\n\n已生成静态看板：/Users/dayin/Code/a-share-swing-system/dashboard/index.html\n已生成看板快照：/Users/dayin/Code/a-share-swing-system/reports/dashboard_data.json\n",
+        "stdout_tail": "已生成数据覆盖报告：<project_root>/reports/data_coverage_report.md\n本报告只读取本地 CSV，不包含任何真实交易接口。\n\n已生成数据健康报告：<project_root>/reports/data_health_report.md\n本报告只读取本地 CSV，不包含任何真实交易接口。\n\n已生成静态看板：<project_root>/dashboard/index.html\n已生成看板快照：<project_root>/reports/dashboard_data.json\n",
         "stderr_tail": "",
-        "log_path": "/Users/dayin/Code/a-share-swing-system/logs/app_tasks/20260618152702-88f8d042_backfill_recent_data.log",
+        "log_path": "<project_root>/logs/app_tasks/20260618152702-88f8d042_backfill_recent_data.log",
         "modifies_paper_positions": false,
         "real_trade": false,
         "duration_seconds": 10,
@@ -403,7 +403,7 @@
       "local_existing_rows_priority": true
     },
     "recommendation": "Daily update status is acceptable under current local-data rules.",
-    "stdout_tail": "login success!\nlogout success!\nlogin success!\nlogout success!\nlogin success!\nlogout success!\nlogin success!\nlogout success!\nETF 数据更新完成：新增/部分新增 0 个，已最新 183 个，数据源未更新/无新增 0 个，真正失败/不可用 0 个。\n状态统计：{'up_to_date': 183}\n更新健康：OK / up_to_date - No new rows were needed; local files already cover the requested range or source returned no older backfill.\n已生成下载报告：/Users/dayin/Code/a-share-swing-system/reports/data_download_report.md\n",
+    "stdout_tail": "login success!\nlogout success!\nlogin success!\nlogout success!\nlogin success!\nlogout success!\nlogin success!\nlogout success!\nETF 数据更新完成：新增/部分新增 0 个，已最新 183 个，数据源未更新/无新增 0 个，真正失败/不可用 0 个。\n状态统计：{'up_to_date': 183}\n更新健康：OK / up_to_date - No new rows were needed; local files already cover the requested range or source returned no older backfill.\n已生成下载报告：<project_root>/reports/data_download_report.md\n",
     "stderr_tail": "",
     "raw_source_exit_code": 0,
     "latest_data_date": "2026-07-10",
@@ -8882,7 +8882,7 @@
     "estimated": true,
     "app_uses_backfilled_curve": true,
     "display_note": "历史缺口使用估算回填，最新及重叠交易日使用正式绩效曲线。",
-    "last_updated": "2026-07-12 10:29:12"
+    "last_updated": "2026-07-12 10:52:55"
   },
   "paper_trade_pnl": [
     {
@@ -9423,7 +9423,7 @@
       "latest_close": 1.546,
       "as_of_date": "2026-07-10",
       "price_status": "ok",
-      "price_source": "/Users/dayin/Code/a-share-swing-system/data/etf_daily/sh_515000.csv",
+      "price_source": "<project_root>/data/etf_daily/sh_515000.csv",
       "valuation_source": "paper_positions + etf_daily latest close",
       "warning": "",
       "position_file_price": 1.622,
@@ -9515,7 +9515,7 @@
       "latest_close": 1.821,
       "as_of_date": "2026-07-10",
       "price_status": "ok",
-      "price_source": "/Users/dayin/Code/a-share-swing-system/data/etf_daily/sh_516510.csv",
+      "price_source": "<project_root>/data/etf_daily/sh_516510.csv",
       "valuation_source": "paper_positions + etf_daily latest close",
       "warning": "",
       "position_file_price": 1.805,
@@ -9607,7 +9607,7 @@
       "latest_close": 1.286,
       "as_of_date": "2026-07-10",
       "price_status": "ok",
-      "price_source": "/Users/dayin/Code/a-share-swing-system/data/etf_daily/sz_159929.csv",
+      "price_source": "<project_root>/data/etf_daily/sz_159929.csv",
       "valuation_source": "paper_positions + etf_daily latest close",
       "warning": "",
       "position_file_price": 1.259,
@@ -10834,7 +10834,7 @@
       "task_whitelist_only": true,
       "app_launch_status": {
         "started_at": "2026-07-11 16:38:09",
-        "project_dir": "/Users/dayin/Code/a-share-swing-system",
+        "project_dir": "<project_root>",
         "app_version": "v0.2.0-local",
         "port": 8000,
         "status": "running",
@@ -10854,61 +10854,61 @@
             "status": "OK",
             "key": "app_bundle",
             "label": ".app 包装器",
-            "detail": "/Users/dayin/Code/a-share-swing-system/dist/量化研究控制台.app"
+            "detail": "<project_root>/dist/量化研究控制台.app"
           },
           {
             "status": "OK",
             "key": "app_executable",
             "label": ".app 启动文件",
-            "detail": "可执行：/Users/dayin/Code/a-share-swing-system/dist/量化研究控制台.app/Contents/MacOS/launch"
+            "detail": "可执行：<project_root>/dist/量化研究控制台.app/Contents/MacOS/launch"
           },
           {
             "status": "OK",
             "key": "info_plist",
             "label": "Info.plist",
-            "detail": "/Users/dayin/Code/a-share-swing-system/dist/量化研究控制台.app/Contents/Info.plist"
+            "detail": "<project_root>/dist/量化研究控制台.app/Contents/Info.plist"
           },
           {
             "status": "OK",
             "key": "icon_icns",
             "label": "App 图标资源",
-            "detail": "/Users/dayin/Code/a-share-swing-system/dist/量化研究控制台.app/Contents/Resources/app_icon.icns"
+            "detail": "<project_root>/dist/量化研究控制台.app/Contents/Resources/app_icon.icns"
           },
           {
             "status": "OK",
             "key": "run_app",
             "label": "run_app.sh",
-            "detail": "可执行：/Users/dayin/Code/a-share-swing-system/scripts/run_app.sh"
+            "detail": "可执行：<project_root>/scripts/run_app.sh"
           },
           {
             "status": "OK",
             "key": "command_launcher",
             "label": "中文 .command 启动器",
-            "detail": "可执行：/Users/dayin/Code/a-share-swing-system/打开量化研究控制台.command"
+            "detail": "可执行：<project_root>/打开量化研究控制台.command"
           },
           {
             "status": "OK",
             "key": "legacy_launcher",
             "label": "英文 .command 启动器",
-            "detail": "可执行：/Users/dayin/Code/a-share-swing-system/A-Share Swing App.command"
+            "detail": "可执行：<project_root>/A-Share Swing App.command"
           },
           {
             "status": "OK",
             "key": "venv_dir",
             "label": ".venv 虚拟环境",
-            "detail": "/Users/dayin/Code/a-share-swing-system/.venv"
+            "detail": "<project_root>/.venv"
           },
           {
             "status": "OK",
             "key": "venv_python",
             "label": ".venv Python",
-            "detail": "可执行：/Users/dayin/Code/a-share-swing-system/.venv/bin/python"
+            "detail": "可执行：<project_root>/.venv/bin/python"
           },
           {
             "status": "OK",
             "key": "frontend_dist",
             "label": "前端构建产物",
-            "detail": "/Users/dayin/Code/a-share-swing-system/app/frontend/dist/index.html"
+            "detail": "<project_root>/app/frontend/dist/index.html"
           },
           {
             "status": "OK",
@@ -10926,7 +10926,7 @@
             "status": "OK",
             "key": "log_writable",
             "label": "日志文件",
-            "detail": "可写：/Users/dayin/Code/a-share-swing-system/logs/app_server.log"
+            "detail": "可写：<project_root>/logs/app_server.log"
           },
           {
             "status": "OK",
@@ -18071,7 +18071,7 @@
       "task_whitelist_only": true,
       "app_launch_status": {
         "started_at": "2026-07-11 16:38:09",
-        "project_dir": "/Users/dayin/Code/a-share-swing-system",
+        "project_dir": "<project_root>",
         "app_version": "v0.2.0-local",
         "port": 8000,
         "status": "running",
@@ -18091,61 +18091,61 @@
             "status": "OK",
             "key": "app_bundle",
             "label": ".app 包装器",
-            "detail": "/Users/dayin/Code/a-share-swing-system/dist/量化研究控制台.app"
+            "detail": "<project_root>/dist/量化研究控制台.app"
           },
           {
             "status": "OK",
             "key": "app_executable",
             "label": ".app 启动文件",
-            "detail": "可执行：/Users/dayin/Code/a-share-swing-system/dist/量化研究控制台.app/Contents/MacOS/launch"
+            "detail": "可执行：<project_root>/dist/量化研究控制台.app/Contents/MacOS/launch"
           },
           {
             "status": "OK",
             "key": "info_plist",
             "label": "Info.plist",
-            "detail": "/Users/dayin/Code/a-share-swing-system/dist/量化研究控制台.app/Contents/Info.plist"
+            "detail": "<project_root>/dist/量化研究控制台.app/Contents/Info.plist"
           },
           {
             "status": "OK",
             "key": "icon_icns",
             "label": "App 图标资源",
-            "detail": "/Users/dayin/Code/a-share-swing-system/dist/量化研究控制台.app/Contents/Resources/app_icon.icns"
+            "detail": "<project_root>/dist/量化研究控制台.app/Contents/Resources/app_icon.icns"
           },
           {
             "status": "OK",
             "key": "run_app",
             "label": "run_app.sh",
-            "detail": "可执行：/Users/dayin/Code/a-share-swing-system/scripts/run_app.sh"
+            "detail": "可执行：<project_root>/scripts/run_app.sh"
           },
           {
             "status": "OK",
             "key": "command_launcher",
             "label": "中文 .command 启动器",
-            "detail": "可执行：/Users/dayin/Code/a-share-swing-system/打开量化研究控制台.command"
+            "detail": "可执行：<project_root>/打开量化研究控制台.command"
           },
           {
             "status": "OK",
             "key": "legacy_launcher",
             "label": "英文 .command 启动器",
-            "detail": "可执行：/Users/dayin/Code/a-share-swing-system/A-Share Swing App.command"
+            "detail": "可执行：<project_root>/A-Share Swing App.command"
           },
           {
             "status": "OK",
             "key": "venv_dir",
             "label": ".venv 虚拟环境",
-            "detail": "/Users/dayin/Code/a-share-swing-system/.venv"
+            "detail": "<project_root>/.venv"
           },
           {
             "status": "OK",
             "key": "venv_python",
             "label": ".venv Python",
-            "detail": "可执行：/Users/dayin/Code/a-share-swing-system/.venv/bin/python"
+            "detail": "可执行：<project_root>/.venv/bin/python"
           },
           {
             "status": "OK",
             "key": "frontend_dist",
             "label": "前端构建产物",
-            "detail": "/Users/dayin/Code/a-share-swing-system/app/frontend/dist/index.html"
+            "detail": "<project_root>/app/frontend/dist/index.html"
           },
           {
             "status": "OK",
@@ -18163,7 +18163,7 @@
             "status": "OK",
             "key": "log_writable",
             "label": "日志文件",
-            "detail": "可写：/Users/dayin/Code/a-share-swing-system/logs/app_server.log"
+            "detail": "可写：<project_root>/logs/app_server.log"
           },
           {
             "status": "OK",
@@ -19762,7 +19762,7 @@
       "latest_close": 1.546,
       "as_of_date": "2026-07-10",
       "price_status": "ok",
-      "price_source": "/Users/dayin/Code/a-share-swing-system/data/etf_daily/sh_515000.csv",
+      "price_source": "<project_root>/data/etf_daily/sh_515000.csv",
       "valuation_source": "paper_positions + etf_daily latest close",
       "warning": "",
       "position_file_price": 1.622,
@@ -19854,7 +19854,7 @@
       "latest_close": 1.821,
       "as_of_date": "2026-07-10",
       "price_status": "ok",
-      "price_source": "/Users/dayin/Code/a-share-swing-system/data/etf_daily/sh_516510.csv",
+      "price_source": "<project_root>/data/etf_daily/sh_516510.csv",
       "valuation_source": "paper_positions + etf_daily latest close",
       "warning": "",
       "position_file_price": 1.805,
@@ -19946,7 +19946,7 @@
       "latest_close": 1.286,
       "as_of_date": "2026-07-10",
       "price_status": "ok",
-      "price_source": "/Users/dayin/Code/a-share-swing-system/data/etf_daily/sz_159929.csv",
+      "price_source": "<project_root>/data/etf_daily/sz_159929.csv",
       "valuation_source": "paper_positions + etf_daily latest close",
       "warning": "",
       "position_file_price": 1.259,
@@ -42919,7 +42919,7 @@
       "title": "月度模型复盘",
       "status": "OK",
       "conclusion": "见报告",
-      "generated_at": "2026-07-01 23:50:06",
+      "generated_at": "2026-07-12 10:49:36",
       "report_href": "../reports/monthly_model_review.md"
     }
   ],
@@ -43002,7 +43002,7 @@
       "title": "月度模型复盘",
       "status": "OK",
       "conclusion": "见报告",
-      "generated_at": "2026-07-01 23:50:06",
+      "generated_at": "2026-07-12 10:49:36",
       "report_href": "../reports/monthly_model_review.md"
     }
   ],
@@ -43023,7 +43023,7 @@
       {
         "name": "月度模型复盘",
         "status": "OK",
-        "updated_at": "2026-07-01 23:50:06",
+        "updated_at": "2026-07-12 10:49:36",
         "href": "../reports/monthly_model_review.md"
       },
       {
@@ -44029,7 +44029,7 @@
     "task_whitelist_only": true,
     "app_launch_status": {
       "started_at": "2026-07-11 16:38:09",
-      "project_dir": "/Users/dayin/Code/a-share-swing-system",
+      "project_dir": "<project_root>",
       "app_version": "v0.2.0-local",
       "port": 8000,
       "status": "running",
@@ -44049,61 +44049,61 @@
           "status": "OK",
           "key": "app_bundle",
           "label": ".app 包装器",
-          "detail": "/Users/dayin/Code/a-share-swing-system/dist/量化研究控制台.app"
+          "detail": "<project_root>/dist/量化研究控制台.app"
         },
         {
           "status": "OK",
           "key": "app_executable",
           "label": ".app 启动文件",
-          "detail": "可执行：/Users/dayin/Code/a-share-swing-system/dist/量化研究控制台.app/Contents/MacOS/launch"
+          "detail": "可执行：<project_root>/dist/量化研究控制台.app/Contents/MacOS/launch"
         },
         {
           "status": "OK",
           "key": "info_plist",
           "label": "Info.plist",
-          "detail": "/Users/dayin/Code/a-share-swing-system/dist/量化研究控制台.app/Contents/Info.plist"
+          "detail": "<project_root>/dist/量化研究控制台.app/Contents/Info.plist"
         },
         {
           "status": "OK",
           "key": "icon_icns",
           "label": "App 图标资源",
-          "detail": "/Users/dayin/Code/a-share-swing-system/dist/量化研究控制台.app/Contents/Resources/app_icon.icns"
+          "detail": "<project_root>/dist/量化研究控制台.app/Contents/Resources/app_icon.icns"
         },
         {
           "status": "OK",
           "key": "run_app",
           "label": "run_app.sh",
-          "detail": "可执行：/Users/dayin/Code/a-share-swing-system/scripts/run_app.sh"
+          "detail": "可执行：<project_root>/scripts/run_app.sh"
         },
         {
           "status": "OK",
           "key": "command_launcher",
           "label": "中文 .command 启动器",
-          "detail": "可执行：/Users/dayin/Code/a-share-swing-system/打开量化研究控制台.command"
+          "detail": "可执行：<project_root>/打开量化研究控制台.command"
         },
         {
           "status": "OK",
           "key": "legacy_launcher",
           "label": "英文 .command 启动器",
-          "detail": "可执行：/Users/dayin/Code/a-share-swing-system/A-Share Swing App.command"
+          "detail": "可执行：<project_root>/A-Share Swing App.command"
         },
         {
           "status": "OK",
           "key": "venv_dir",
           "label": ".venv 虚拟环境",
-          "detail": "/Users/dayin/Code/a-share-swing-system/.venv"
+          "detail": "<project_root>/.venv"
         },
         {
           "status": "OK",
           "key": "venv_python",
           "label": ".venv Python",
-          "detail": "可执行：/Users/dayin/Code/a-share-swing-system/.venv/bin/python"
+          "detail": "可执行：<project_root>/.venv/bin/python"
         },
         {
           "status": "OK",
           "key": "frontend_dist",
           "label": "前端构建产物",
-          "detail": "/Users/dayin/Code/a-share-swing-system/app/frontend/dist/index.html"
+          "detail": "<project_root>/app/frontend/dist/index.html"
         },
         {
           "status": "OK",
@@ -44121,7 +44121,7 @@
           "status": "OK",
           "key": "log_writable",
           "label": "日志文件",
-          "detail": "可写：/Users/dayin/Code/a-share-swing-system/logs/app_server.log"
+          "detail": "可写：<project_root>/logs/app_server.log"
         },
         {
           "status": "OK",

@@ -133,7 +133,7 @@ PLIST
 
 cat > "$MACOS_DIR/launch" <<'LAUNCH'
 #!/bin/bash
-PROJECT_ROOT="/Users/dayin/Code/a-share-swing-system"
+PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../../.." && pwd)"
 unset __PYVENV_LAUNCHER__
 unset PYTHONHOME
 export PATH="/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"

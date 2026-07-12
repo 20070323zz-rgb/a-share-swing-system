@@ -184,6 +184,7 @@ def download_item(item: EtfItem, start: str, end: str, output_dir: Path, retry: 
     if not rows:
         return result
 
+    rows = merge_existing_history(output_path, rows)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with output_path.open("w", newline="", encoding="utf-8") as file:
         writer = csv.DictWriter(file, fieldnames=CSV_COLUMNS)
@@ -196,6 +197,31 @@ def download_item(item: EtfItem, start: str, end: str, output_dir: Path, retry: 
     result.start_date = rows[0]["date"]
     result.end_date = rows[-1]["date"]
     return result
+
+
+def merge_existing_history(path: Path, downloaded_rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    """Preserve existing dates when a narrow-range refresh writes the cache.
+
+    A caller may intentionally use ``--no-skip-existing`` to fetch a missing
+    day. That must extend the manual cache instead of replacing its complete
+    history with the requested slice. Freshly downloaded rows win only on an
+    overlapping date.
+    """
+    by_date: dict[str, dict[str, str]] = {}
+    if path.exists():
+        with path.open(newline="", encoding="utf-8-sig") as file:
+            reader = csv.DictReader(file)
+            if reader.fieldnames and set(CSV_COLUMNS).issubset(reader.fieldnames):
+                for row in reader:
+                    date = str(row.get("date", "")).strip()
+                    if date:
+                        by_date[date] = {column: str(row.get(column, "")) for column in CSV_COLUMNS}
+
+    for row in downloaded_rows:
+        date = str(row.get("date", "")).strip()
+        if date:
+            by_date[date] = {column: str(row.get(column, "")) for column in CSV_COLUMNS}
+    return [by_date[date] for date in sorted(by_date)]
 
 
 def fetch_eastmoney(symbol: str, market: str, start: str, end: str) -> dict[str, Any]:

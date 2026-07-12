@@ -60,7 +60,7 @@
 当前环境未安装 Rust/cargo，因此本轮未实际打开 Tauri 桌面窗口。安装 Rust 后可继续运行：
 
 ```bash
-cd /Users/dayin/Code/a-share-swing-system
+cd <project_root>
 bash scripts/run_desktop_app.sh
 ```
 

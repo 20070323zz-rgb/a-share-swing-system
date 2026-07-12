@@ -6,7 +6,7 @@
 
 ## 摘要
 
-- 项目根目录：`/Users/dayin/Code/a-share-swing-system`
+- 项目根目录：`<project_root>`
 - 忽略目录：`.git, .mypy_cache, .pytest_cache, .venv, __pycache__, app/frontend/dist, node_modules`
 - 统计文件数：1064
 - `reports/` 文件数：349，其中 md 225、json 53、csv 70

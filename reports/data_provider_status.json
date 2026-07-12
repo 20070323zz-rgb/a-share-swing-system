@@ -28,7 +28,7 @@
   "local_cache_status": {
     "configured": true,
     "usable": true,
-    "message": "local cache dir: /Users/dayin/Code/a-share-swing-system/data/etf_daily",
+    "message": "local cache dir: <project_root>/data/etf_daily",
     "last_error": false,
     "etf_file_count": 183
   },

@@ -34,7 +34,7 @@
     "local_existing_rows_priority": true
   },
   "recommendation": "Daily update status is acceptable under current local-data rules.",
-  "stdout_tail": "login success!\nlogout success!\nlogin success!\nlogout success!\nlogin success!\nlogout success!\nlogin success!\nlogout success!\nETF 数据更新完成：新增/部分新增 0 个，已最新 183 个，数据源未更新/无新增 0 个，真正失败/不可用 0 个。\n状态统计：{'up_to_date': 183}\n更新健康：OK / up_to_date - No new rows were needed; local files already cover the requested range or source returned no older backfill.\n已生成下载报告：/Users/dayin/Code/a-share-swing-system/reports/data_download_report.md\n",
+  "stdout_tail": "login success!\nlogout success!\nlogin success!\nlogout success!\nlogin success!\nlogout success!\nlogin success!\nlogout success!\nETF 数据更新完成：新增/部分新增 0 个，已最新 183 个，数据源未更新/无新增 0 个，真正失败/不可用 0 个。\n状态统计：{'up_to_date': 183}\n更新健康：OK / up_to_date - No new rows were needed; local files already cover the requested range or source returned no older backfill.\n已生成下载报告：<project_root>/reports/data_download_report.md\n",
   "stderr_tail": "",
   "raw_source_exit_code": 0,
   "latest_data_date": "2026-07-10",

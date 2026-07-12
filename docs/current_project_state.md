@@ -3,7 +3,7 @@
 ## 1. Snapshot Metadata
 
 - Project: A-Share Swing System
-- Repository root: `/Users/dayin/Code/a-share-swing-system`
+- Repository root: `<project_root>`
 - State snapshot date: 2026-07-12
 - State snapshot source: Paper Execution Safety Phase 1 outputs, Tushare audit artifacts, and existing project context evidence.
 
@@ -75,6 +75,7 @@ Tushare 5000 Data Foundation Audit COMPLETE
 Reports Governance Phase A NOT_STARTED
 Report File Migration BLOCKED
 Data Foundation Upgrade NOT_STARTED
+Draft PR #1 READY_FOR_REVIEW
 Style Framework 2.0 Status FEASIBILITY_STUDY_COMPLETE
 Exposure Framework Development RESEARCH_ONLY_PROTOTYPE_COMPLETE
 Preview Research NOT_STARTED

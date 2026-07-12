@@ -34,7 +34,7 @@
     "local_existing_rows_priority": true
   },
   "recommendation": "Dry-run only. Run without --dry-run after reviewing estimated calls.",
-  "stdout_tail": "ETF 数据下载 dry-run 完成：计划调用 0 次，标的 183 个。\n已生成下载报告：/Users/dayin/Code/a-share-swing-system/reports/data_download_report.md\n",
+  "stdout_tail": "ETF 数据下载 dry-run 完成：计划调用 0 次，标的 183 个。\n已生成下载报告：<project_root>/reports/data_download_report.md\n",
   "stderr_tail": "",
   "raw_source_exit_code": 0,
   "latest_data_date": "2026-06-26",

@@ -8,7 +8,7 @@
 
 ## Required Sequence
 
-1. 定位 repository root：`/Users/dayin/Code/a-share-swing-system`。
+1. 定位 repository root：`<project_root>`。
 2. 读取 `AGENTS.md`。
 3. 读取 `docs/project_context_manifest.json`。
 4. 按 `bootstrap_read_order` 读取上下文文件。
