@@ -46,7 +46,7 @@ export default function PortfolioPanel({ portfolio }) {
                 <TableCell>{text(row.etf_type)}<small>{text(row.group)}</small></TableCell>
                 <TableCell className="num">{money(row.market_value)}<small>{pct(row.position_ratio)}</small></TableCell>
                 <TableCell className="num">{row.avg_cost ?? row.entry_price ?? "暂无"}</TableCell>
-                <TableCell className="num">{row.last_price ?? row.current_price ?? "暂无"}</TableCell>
+                <TableCell className="num">{row.last_price ?? row.current_price ?? "暂无"}<small>价格日 {row.as_of_date || "暂无"}</small></TableCell>
                 <TableCell className={`num ${Number(row.unrealized_pnl) >= 0 ? "cn-profit" : "cn-loss"}`}>
                   {money(row.unrealized_pnl)}<small>{pct(row.unrealized_pnl_pct)}</small>
                 </TableCell>

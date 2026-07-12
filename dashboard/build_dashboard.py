@@ -106,6 +106,9 @@ def build_snapshot() -> dict:
     preview_tracking = _strategy_preview_tracking_snapshot()
     type_aware_review = _type_aware_review_snapshot(sell_review_rows)
     market_state = _market_state_snapshot()
+    market_regime_audit = _market_regime_audit_snapshot()
+    market_regime_stabilization = _market_regime_stabilization_snapshot()
+    style_regime_fit = _style_regime_fit_snapshot()
     portfolio_exposure = _portfolio_exposure_snapshot()
     model_research = _model_research_snapshot()
     research_quality = _research_quality_snapshot()
@@ -122,6 +125,7 @@ def build_snapshot() -> dict:
     backtest_diagnostics = _backtest_diagnostics_snapshot()
     ranking_signal_research = _ranking_signal_research_snapshot()
     ranking_model_v2_backtest = _ranking_model_v2_backtest_snapshot()
+    etf_risk_profile = _etf_risk_profile_snapshot()
     paper_performance = _paper_performance_snapshot()
     paper_equity_backfill = _paper_equity_backfill_snapshot(paper_performance)
     app_shortcut = _app_shortcut_snapshot()
@@ -183,7 +187,7 @@ def build_snapshot() -> dict:
     )
 
     return {
-        "app_ready_snapshot_version": "step6_chatgpt_weekly_packet_v1",
+        "app_ready_snapshot_version": "regime_layer_phase3_style_fit_v1",
         "local_app_version": f"v{APP_VERSION}",
         "generated_at": pd.Timestamp.now().strftime("%Y-%m-%d %H:%M:%S"),
         "app_control_center": app_control_center,
@@ -224,6 +228,9 @@ def build_snapshot() -> dict:
         "data_sources": data_sources,
         "console": console,
         "market_state": market_state,
+        "market_regime_audit": market_regime_audit,
+        "market_regime_stabilization": market_regime_stabilization,
+        "style_regime_fit": style_regime_fit,
         "paper_summary": summary,
         "valuation_consistency": _valuation_consistency_snapshot(),
         "position_review_state": position_review_state.get("rows", []),
@@ -292,6 +299,12 @@ def build_snapshot() -> dict:
         "backtest_diagnostics": backtest_diagnostics,
         "ranking_signal_research": ranking_signal_research,
         "ranking_model_v2_backtest": ranking_model_v2_backtest,
+        "etf_risk_profile": etf_risk_profile,
+        "etf_risk_profile_summary": etf_risk_profile.get("summary", {}),
+        "portfolio_risk_profile": etf_risk_profile.get("portfolio_risk_profile", {}),
+        "buy_ranking_risk_profile": etf_risk_profile.get("buy_ranking_risk_profile", {}),
+        "risk_profile_distribution": etf_risk_profile.get("risk_profile_distribution", {}),
+        "style_profile_distribution": etf_risk_profile.get("style_profile_distribution", {}),
         "execution_layer_integration": execution_layer_integration,
         "health_summary": health_summary,
         "failed_counts": failed_counts,
@@ -680,6 +693,7 @@ def render_html(data: dict) -> str:
       <a href="#phase4c-data">Data Sources</a>
       <a href="#phase4c-tushare">Tushare</a>
       <a href="#phase4c-alpha">Alpha</a>
+      <a href="#etf-risk-profile">Risk Profile</a>
       <a href="#review">Review</a>
       <a href="#links">Links</a>
     </div>
@@ -888,6 +902,9 @@ def render_html(data: dict) -> str:
       </div>
       <div class="grid two">
         <div class="panel">{_market_state_panel(data.get("market_state", {}))}</div>
+        <div class="panel">{_market_regime_audit_panel(data.get("market_regime_audit", {}))}</div>
+        <div class="panel">{_market_regime_stabilization_panel(data.get("market_regime_stabilization", {}))}</div>
+        <div class="panel">{_style_regime_fit_panel(data.get("style_regime_fit", {}))}</div>
         <div class="panel">{_classification_panel(data.get("classification_summary", {}))}</div>
         <div class="panel">{_portfolio_exposure_panel(data.get("portfolio_exposure", {}))}</div>
         <div class="panel">{_model_research_panel(data.get("model_research", {}))}</div>
@@ -912,6 +929,9 @@ def render_html(data: dict) -> str:
       </div>
       <div class="panel" style="margin-top:14px;">
         {_ranking_model_v2_backtest_panel(data.get("ranking_model_v2_backtest", {}))}
+      </div>
+      <div class="panel" style="margin-top:14px;" id="etf-risk-profile">
+        {_etf_risk_profile_panel(data.get("etf_risk_profile", {}))}
       </div>
     </section>
 
@@ -1953,6 +1973,151 @@ def _market_state_panel(market: dict) -> str:
     )
 
 
+def _market_regime_audit_panel(audit: dict) -> str:
+    if not audit or audit.get("status") == "missing":
+        return (
+            "<h3>市场状态审计 Market Regime Audit</h3>"
+            '<div class="muted">暂无市场状态历史回放。运行 <code>python3 src/market_regime_replay.py</code> 后刷新。</div>'
+        )
+    distribution = audit.get("distribution", {}).get("distribution", {})
+    stability = audit.get("stability", {})
+    decision = audit.get("decision", {})
+    replay = audit.get("replay", {})
+    current = audit.get("current", {})
+    compact_rows = audit.get("compact_fit_rows", [])
+    stats = [
+        _mini_stat("当前状态", str(current.get("normalized_regime", "N/A")), str(current.get("raw_market_regime", "研究回放"))),
+        _mini_stat("OFFENSIVE", _pct(distribution.get("OFFENSIVE", {}).get("percentage")), f"{distribution.get('OFFENSIVE', {}).get('day_count', 0)} 天"),
+        _mini_stat("平均持续", f"{_score(stability.get('average_regime_duration'))} 天", f"切换 {stability.get('regime_switch_count', 0)} 次"),
+        _mini_stat("whipsaw", str(stability.get("short_regime_whipsaw_count", 0)), "短周期反复"),
+        _mini_stat("Regime Fit", "YES" if decision.get("ready_for_regime_fit_phase") else "NO", "research only"),
+        _mini_stat("执行层", "NO", "不接 paper_trade_engine"),
+    ]
+    rows = []
+    for row in compact_rows:
+        rows.append(
+            "<tr>"
+            f"<td>{escape(str(row.get('market_state', '')))}</td>"
+            f"<td class=\"num\">{_pct(row.get('growth_theme_10d'))}</td>"
+            f"<td class=\"num\">{_pct(row.get('high_risk_asset_10d'))}</td>"
+            f"<td class=\"num\">{_pct(row.get('core_broad_10d'))}</td>"
+            f"<td class=\"num\">{_pct(row.get('defensive_asset_10d'))}</td>"
+            "</tr>"
+        )
+    table = _table(["market_state", "成长主题10日", "高风险10日", "核心宽基10日", "防御资产10日"], rows) if rows else '<div class="muted">暂无 regime fit 表。</div>'
+    return (
+        "<h3>市场状态审计 Market Regime Audit</h3>"
+        + '<div class="grid three">'
+        + "".join(stats)
+        + "</div>"
+        + "<div style=\"margin-top:12px;\">"
+        + table
+        + "</div>"
+        + '<div class="inline-alert">Phase 2 只验证市场状态是否有信息量；不修改 BUY ranking、不修改交易规则、不接执行层。</div>'
+        + '<div class="links" style="margin-top:12px;">'
+        + '<a href="../reports/regime_layer_phase2_market_audit.md">Phase 2 总报告</a>'
+        + '<a href="../reports/market_regime_audit_decision.md">审计决策</a>'
+        + '<a href="../reports/market_regime_replay.md">历史回放</a>'
+        + '<a href="../reports/regime_style_forward_return.md">Style x Regime</a>'
+        + "</div>"
+    )
+
+
+def _market_regime_stabilization_panel(payload: dict) -> str:
+    if not payload or payload.get("status") == "missing":
+        return (
+            "<h3>市场状态稳定化 Regime Stabilization</h3>"
+            '<div class="muted">暂无稳定化研究。运行 <code>python3 src/market_regime_stabilization.py</code> 后刷新。</div>'
+        )
+    decision = payload.get("decision", {})
+    raw = payload.get("raw_metrics", {})
+    selected = payload.get("selected_metrics", {})
+    lag = payload.get("selected_lag", {})
+    rows = payload.get("comparison_rows", [])
+    stats = [
+        _mini_stat("原始状态", str(decision.get("current_raw_regime", "N/A")), str(decision.get("current_date", ""))),
+        _mini_stat("影子状态", str(decision.get("current_selected_shadow_regime", "N/A")), str(decision.get("selected_candidate", ""))),
+        _mini_stat("RAW whipsaw", str(raw.get("three_day_whipsaw_count", "N/A")), f"median {_score(raw.get('median_regime_duration'))}"),
+        _mini_stat("影子 whipsaw", str(selected.get("three_day_whipsaw_count", "N/A")), f"median {_score(selected.get('median_regime_duration'))}"),
+        _mini_stat("检测延迟", f"{_score(lag.get('average_detection_lag'))} 天", f"miss {_pct(lag.get('missed_segment_ratio'))}"),
+        _mini_stat("执行层", "NO", "shadow only"),
+    ]
+    table_rows = []
+    for row in rows:
+        table_rows.append(
+            "<tr>"
+            f"<td>{escape(str(row.get('candidate', '')))}</td>"
+            f"<td class=\"num\">{row.get('regime_switch_count', '')}</td>"
+            f"<td class=\"num\">{_score(row.get('median_regime_duration'))}</td>"
+            f"<td class=\"num\">{row.get('three_day_whipsaw_count', '')}</td>"
+            f"<td class=\"num\">{_score(row.get('average_detection_lag'))}</td>"
+            f"<td>{escape(str(row.get('style_fit', 'N/A')))}</td>"
+            "</tr>"
+        )
+    table = _table(["候选", "切换", "中位持续", "Whipsaw", "检测延迟", "Style Fit"], table_rows) if table_rows else '<div class="muted">暂无比较表。</div>'
+    return (
+        "<h3>市场状态稳定化 Regime Stabilization</h3>"
+        + '<div class="grid three">'
+        + "".join(stats)
+        + "</div>"
+        + "<div style=\"margin-top:12px;\">"
+        + table
+        + "</div>"
+        + '<div class="inline-alert">影子状态仅研究展示，不影响正式模拟仓、不修改 market_regime、不接执行层。</div>'
+        + '<div class="links" style="margin-top:12px;">'
+        + '<a href="../reports/regime_layer_phase2_5_stabilization.md">Phase 2.5 总报告</a>'
+        + '<a href="../reports/regime_stabilization_candidate_decision.md">候选决策</a>'
+        + '<a href="../reports/regime_stabilization_comparison.md">稳定性比较</a>'
+        + '<a href="../reports/regime_stabilization_detection_lag.md">检测延迟</a>'
+        + "</div>"
+    )
+
+
+def _style_regime_fit_panel(payload: dict) -> str:
+    if not payload or payload.get("status") == "missing":
+        return (
+            "<h3>风格适配 Style-Regime Fit</h3>"
+            '<div class="muted">暂无风格适配研究。运行 <code>python3 src/style_regime_fit.py</code> 后刷新。</div>'
+        )
+    decision = payload.get("phase_decision", {})
+    matrix = payload.get("matrix_rows", [])
+    stats = [
+        _mini_stat("稳定状态", str(payload.get("current_stable_regime", "N/A")), str(payload.get("selected_candidate", ""))),
+        _mini_stat("历史支持", "YES" if decision.get("style_fit_has_historical_support") else "NO", "style x regime"),
+        _mini_stat("增量信息", "YES" if decision.get("style_fit_has_incremental_signal_value") else "NO", "signal interaction"),
+        _mini_stat("BUY 冲突", str(payload.get("buy_conflict_count", 0)), "Top10"),
+        _mini_stat("持仓冲突", str(payload.get("portfolio_conflict_count", 0)), "current portfolio"),
+        _mini_stat("执行层", "NO", "shadow only"),
+    ]
+    rows = []
+    for row in matrix[:12]:
+        rows.append(
+            "<tr>"
+            f"<td>{escape(str(row.get('style_profile', '')))}</td>"
+            f"<td>{escape(str(row.get('OFFENSIVE', '')))}</td>"
+            f"<td>{escape(str(row.get('NEUTRAL', '')))}</td>"
+            f"<td>{escape(str(row.get('DEFENSIVE', '')))}</td>"
+            "</tr>"
+        )
+    table = _table(["风格", "进攻", "中性", "防御"], rows) if rows else '<div class="muted">暂无适配矩阵。</div>'
+    return (
+        "<h3>风格适配 Style-Regime Fit</h3>"
+        + '<div class="grid three">'
+        + "".join(stats)
+        + "</div>"
+        + "<div style=\"margin-top:12px;\">"
+        + table
+        + "</div>"
+        + '<div class="inline-alert">fit evidence 是影子研究标签，不生成正式 regime_asset_fit 分数，不修改 BUY ranking。</div>'
+        + '<div class="links" style="margin-top:12px;">'
+        + '<a href="../reports/regime_layer_phase3_style_fit.md">Phase 3 总报告</a>'
+        + '<a href="../reports/style_regime_fit_summary.md">适配矩阵</a>'
+        + '<a href="../reports/current_buy_top10_style_regime_fit.md">BUY Top10 Fit</a>'
+        + '<a href="../reports/style_fit_signal_interaction.md">Signal Interaction</a>'
+        + "</div>"
+    )
+
+
 def _portfolio_exposure_panel(exposure: dict) -> str:
     summary = exposure.get("summary", {})
     warnings = exposure.get("warnings", [])
@@ -2888,25 +3053,53 @@ def _merge_performance_summary(summary: dict, performance: dict, exposure: dict)
     return merged
 
 
+def _merge_equity_curve_frames(backfilled: pd.DataFrame, original: pd.DataFrame) -> pd.DataFrame:
+    """Merge backfilled history with the formal curve, preferring formal rows."""
+    frames: list[pd.DataFrame] = []
+    for priority, frame in enumerate((backfilled, original)):
+        if frame.empty or "date" not in frame.columns:
+            continue
+        current = frame.copy()
+        current["date"] = current["date"].astype(str).str.strip()
+        current = current[current["date"].str.match(r"^\d{4}-\d{2}-\d{2}$", na=False)]
+        current["_curve_priority"] = priority
+        frames.append(current)
+    if not frames:
+        return pd.DataFrame()
+    merged = pd.concat(frames, ignore_index=True, sort=False)
+    merged = merged.sort_values(["date", "_curve_priority"]).drop_duplicates("date", keep="last")
+    return merged.drop(columns=["_curve_priority"]).sort_values("date").reset_index(drop=True)
+
+
+def _frame_date_bounds(frame: pd.DataFrame) -> tuple[str, str]:
+    if frame.empty or "date" not in frame.columns:
+        return "", ""
+    dates = frame["date"].dropna().astype(str).sort_values()
+    return (str(dates.iloc[0]), str(dates.iloc[-1])) if not dates.empty else ("", "")
+
+
 def _paper_performance_snapshot() -> dict:
     summary = _read_json(REPORT_DIR / "paper_performance_summary.json")
     if not summary:
         summary = {"status": "missing", "reason": "paper_performance_summary.json not generated"}
-    daily = _read_csv(DATA_DIR / "paper_equity_curve.csv")
-    if daily.empty:
-        daily = _read_csv(REPORT_DIR / "paper_performance_daily.csv")
-    original_rows = len(daily)
+    original = _read_csv(DATA_DIR / "paper_equity_curve.csv")
+    if original.empty:
+        original = _read_csv(REPORT_DIR / "paper_performance_daily.csv")
+    original_rows = len(original)
     backfilled = _read_csv(DATA_DIR / "paper_equity_curve_backfilled.csv")
-    uses_backfilled = not backfilled.empty and len(backfilled) >= len(daily)
-    if uses_backfilled:
-        daily = backfilled
+    daily = _merge_equity_curve_frames(backfilled, original)
+    original_dates = set(original["date"].astype(str)) if not original.empty and "date" in original.columns else set()
+    backfilled_dates = set(backfilled["date"].astype(str)) if not backfilled.empty and "date" in backfilled.columns else set()
+    uses_backfilled = bool(backfilled_dates - original_dates)
+    source = "merged_backfill_and_original" if uses_backfilled and original_rows else "backfilled_estimated" if uses_backfilled else "original"
     trade_pnl = _read_csv(REPORT_DIR / "paper_trade_pnl.csv")
     return {
         "summary": summary,
-        "equity_curve": daily.to_dict(orient="records"),
-        "equity_curve_source": "backfilled_estimated" if uses_backfilled else "original",
+        "equity_curve": daily.astype(object).where(pd.notna(daily), None).to_dict(orient="records"),
+        "equity_curve_source": source,
         "original_equity_curve_rows": original_rows,
         "backfilled_equity_curve_rows": len(backfilled),
+        "merged_equity_curve_rows": len(daily),
         "trade_pnl": trade_pnl.to_dict(orient="records"),
     }
 
@@ -2945,22 +3138,40 @@ def _valuation_consistency_snapshot() -> dict:
 def _paper_equity_backfill_snapshot(paper_performance: dict) -> dict:
     original = _read_csv(DATA_DIR / "paper_equity_curve.csv")
     backfilled = _read_csv(DATA_DIR / "paper_equity_curve_backfilled.csv")
+    merged = _merge_equity_curve_frames(backfilled, original)
     quality = {}
     if not backfilled.empty and "quality_flag" in backfilled.columns:
         quality = {str(k): int(v) for k, v in backfilled["quality_flag"].value_counts().to_dict().items()}
-    uses_backfilled = bool(not backfilled.empty and len(backfilled) >= len(original))
+    original_dates = set(original["date"].astype(str)) if not original.empty and "date" in original.columns else set()
+    backfilled_dates = set(backfilled["date"].astype(str)) if not backfilled.empty and "date" in backfilled.columns else set()
+    uses_backfilled = bool(backfilled_dates - original_dates)
     summary = paper_performance.get("summary", {}) if isinstance(paper_performance, dict) else {}
+    merged_start, merged_end = _frame_date_bounds(merged)
+    original_start, original_end = _frame_date_bounds(original)
+    backfilled_start, backfilled_end = _frame_date_bounds(backfilled)
+    valuation_date = str(summary.get("valuation_as_of_date") or summary.get("latest_data_date") or "")
+    freshness = "fresh" if merged_end and (not valuation_date or merged_end >= valuation_date) else "stale"
     return {
         "status": "active" if not backfilled.empty else "missing",
+        "freshness_status": freshness,
+        "curve_source": paper_performance.get("equity_curve_source", "original"),
         "backfilled_records": int(len(backfilled)),
         "original_records": int(len(original)),
-        "start_date": str(backfilled["date"].iloc[0]) if not backfilled.empty and "date" in backfilled.columns else "",
-        "end_date": str(backfilled["date"].iloc[-1]) if not backfilled.empty and "date" in backfilled.columns else "",
+        "merged_records": int(len(merged)),
+        "start_date": merged_start,
+        "end_date": merged_end,
+        "curve_start_date": merged_start,
+        "curve_end_date": merged_end,
+        "valuation_as_of_date": valuation_date,
+        "original_start_date": original_start,
+        "original_end_date": original_end,
+        "backfilled_start_date": backfilled_start,
+        "backfilled_end_date": backfilled_end,
         "initial_cash": float(summary.get("initial_cash") or PAPER_INITIAL_CASH),
         "quality": quality,
-        "estimated": True,
+        "estimated": uses_backfilled,
         "app_uses_backfilled_curve": uses_backfilled,
-        "display_note": "历史回填数据（估算）：由交易流水和 ETF 历史收盘价重建。" if uses_backfilled else "使用原始权益曲线。",
+        "display_note": "历史缺口使用估算回填，最新及重叠交易日使用正式绩效曲线。" if uses_backfilled else "使用正式模拟仓绩效曲线。",
         "last_updated": pd.Timestamp.now().strftime("%Y-%m-%d %H:%M:%S") if not backfilled.empty else "",
     }
 
@@ -3513,6 +3724,38 @@ def _dashboard_links() -> list[dict]:
         ("Missed Opportunity 观察规则", "research", REPORT_DIR / "missed_opportunity_observation_rules.md", "../reports/missed_opportunity_observation_rules.md"),
         ("Shadow 每周观察", "research", REPORT_DIR / "shadow_observation_weekly.md", "../reports/shadow_observation_weekly.md"),
         ("ChatGPT/Main 周报分析包", "research", REPORT_DIR / "chatgpt_weekly_analysis_packet_latest.md", "../reports/chatgpt_weekly_analysis_packet_latest.md"),
+        ("ETF 风险画像", "research", REPORT_DIR / "etf_risk_profile.md", "../reports/etf_risk_profile.md"),
+        ("ETF 风险画像来源审计", "research", REPORT_DIR / "etf_risk_profile_source_audit.md", "../reports/etf_risk_profile_source_audit.md"),
+        ("BUY 风险结构分析", "research", REPORT_DIR / "buy_ranking_risk_profile_analysis.md", "../reports/buy_ranking_risk_profile_analysis.md"),
+        ("Risk Profile 一致性审计", "research", REPORT_DIR / "etf_risk_profile_consistency_audit.md", "../reports/etf_risk_profile_consistency_audit.md"),
+        ("ETF Style UNKNOWN 审计", "research", REPORT_DIR / "etf_style_unknown_audit.md", "../reports/etf_style_unknown_audit.md"),
+        ("Structural vs Realized Risk", "research", REPORT_DIR / "structural_vs_realized_risk_analysis.md", "../reports/structural_vs_realized_risk_analysis.md"),
+        ("Regime Risk Phase 1", "research", REPORT_DIR / "regime_risk_phase1_etf_profile.md", "../reports/regime_risk_phase1_etf_profile.md"),
+        ("Regime Risk Phase 1.5", "research", REPORT_DIR / "regime_risk_phase1_5_style_structural_profile.md", "../reports/regime_risk_phase1_5_style_structural_profile.md"),
+        ("Market Regime Source Audit", "research", REPORT_DIR / "market_regime_source_audit.md", "../reports/market_regime_source_audit.md"),
+        ("Market Regime Replay", "research", REPORT_DIR / "market_regime_replay.md", "../reports/market_regime_replay.md"),
+        ("Market Regime Distribution", "research", REPORT_DIR / "market_regime_distribution.md", "../reports/market_regime_distribution.md"),
+        ("Market Regime Stability", "research", REPORT_DIR / "market_regime_stability.md", "../reports/market_regime_stability.md"),
+        ("Regime Style Forward Return", "research", REPORT_DIR / "regime_style_forward_return.md", "../reports/regime_style_forward_return.md"),
+        ("Regime Structural Risk Forward Return", "research", REPORT_DIR / "regime_structural_risk_forward_return.md", "../reports/regime_structural_risk_forward_return.md"),
+        ("Market Regime Audit Decision", "research", REPORT_DIR / "market_regime_audit_decision.md", "../reports/market_regime_audit_decision.md"),
+        ("Regime Layer Phase 2", "research", REPORT_DIR / "regime_layer_phase2_market_audit.md", "../reports/regime_layer_phase2_market_audit.md"),
+        ("Regime Stabilization Source Audit", "research", REPORT_DIR / "regime_stabilization_source_audit.md", "../reports/regime_stabilization_source_audit.md"),
+        ("Regime Stabilization Replay", "research", REPORT_DIR / "market_regime_stabilization.md", "../reports/market_regime_stabilization.md"),
+        ("Regime Stabilization Comparison", "research", REPORT_DIR / "regime_stabilization_comparison.md", "../reports/regime_stabilization_comparison.md"),
+        ("Regime Stabilization Detection Lag", "research", REPORT_DIR / "regime_stabilization_detection_lag.md", "../reports/regime_stabilization_detection_lag.md"),
+        ("Stabilized Style Forward Return", "research", REPORT_DIR / "stabilized_regime_style_forward_return.md", "../reports/stabilized_regime_style_forward_return.md"),
+        ("Regime Stabilization Decision", "research", REPORT_DIR / "regime_stabilization_candidate_decision.md", "../reports/regime_stabilization_candidate_decision.md"),
+        ("Regime Layer Phase 2.5", "research", REPORT_DIR / "regime_layer_phase2_5_stabilization.md", "../reports/regime_layer_phase2_5_stabilization.md"),
+        ("Style-Regime Fit Source Audit", "research", REPORT_DIR / "style_regime_fit_source_audit.md", "../reports/style_regime_fit_source_audit.md"),
+        ("Style-Regime Fit Matrix", "research", REPORT_DIR / "style_regime_fit_matrix.md", "../reports/style_regime_fit_matrix.md"),
+        ("Style-Regime Fit Summary", "research", REPORT_DIR / "style_regime_fit_summary.md", "../reports/style_regime_fit_summary.md"),
+        ("Style-Regime Differentiation", "research", REPORT_DIR / "style_regime_differentiation.md", "../reports/style_regime_differentiation.md"),
+        ("Current BUY Top10 Style-Regime Fit", "research", REPORT_DIR / "current_buy_top10_style_regime_fit.md", "../reports/current_buy_top10_style_regime_fit.md"),
+        ("Current Portfolio Style-Regime Fit", "research", REPORT_DIR / "current_portfolio_style_regime_fit.md", "../reports/current_portfolio_style_regime_fit.md"),
+        ("Style Fit Signal Interaction", "research", REPORT_DIR / "style_fit_signal_interaction.md", "../reports/style_fit_signal_interaction.md"),
+        ("Style-Regime Fit Phase Decision", "research", REPORT_DIR / "style_regime_fit_phase_decision.md", "../reports/style_regime_fit_phase_decision.md"),
+        ("Regime Layer Phase 3", "research", REPORT_DIR / "regime_layer_phase3_style_fit.md", "../reports/regime_layer_phase3_style_fit.md"),
         ("每日最简摘要", "daily", REPORT_DIR / "latest_brief.md", "../reports/latest_brief.md"),
         ("模拟盘持仓", "paper", REPORT_DIR / "latest_paper_portfolio.md", "../reports/latest_paper_portfolio.md"),
         ("BUY Ranking", "signal", REPORT_DIR / "buy_signal_ranking.md", "../reports/buy_signal_ranking.md"),
@@ -3783,6 +4026,211 @@ def _market_state_snapshot() -> dict:
     payload["components"] = components
     payload["report_href"] = "../reports/market_state_report.md"
     return payload
+
+
+def _market_regime_audit_snapshot() -> dict:
+    phase = _read_json(REPORT_DIR / "regime_layer_phase2_market_audit.json")
+    if not isinstance(phase, dict) or not phase:
+        return {
+            "status": "missing",
+            "research_only": True,
+            "execution_allowed": False,
+            "report_href": "../reports/regime_layer_phase2_market_audit.md",
+        }
+    replay = phase.get("replay", {})
+    distribution = _read_json(REPORT_DIR / "market_regime_distribution.json") or phase.get("distribution", {})
+    stability = _read_json(REPORT_DIR / "market_regime_stability.json") or phase.get("stability", {})
+    decision = _read_json(REPORT_DIR / "market_regime_audit_decision.json") or phase.get("decision", {})
+    style = _read_json(REPORT_DIR / "regime_style_forward_return.json") or {}
+    structural = _read_json(REPORT_DIR / "regime_structural_risk_forward_return.json") or {}
+    breadth = _read_json(REPORT_DIR / "market_breadth_regime_analysis.json") or phase.get("breadth", {})
+    replay_df = _read_csv(DATA_DIR / "market_regime_replay.csv")
+    current = replay_df.tail(1).to_dict(orient="records")[0] if not replay_df.empty else {}
+    return {
+        "status": "generated",
+        "generated_at": phase.get("generated_at", _mtime(REPORT_DIR / "regime_layer_phase2_market_audit.json")),
+        "current": current,
+        "replay": replay,
+        "distribution": distribution,
+        "stability": stability,
+        "decision": decision,
+        "style_forward_return": style,
+        "structural_forward_return": structural,
+        "breadth": breadth,
+        "compact_fit_rows": _market_regime_compact_fit_rows(style, structural),
+        "source_file": phase.get("market_regime_source", {}).get("file"),
+        "source_function": phase.get("market_regime_source", {}).get("function"),
+        "report_href": "../reports/regime_layer_phase2_market_audit.md",
+        "decision_href": "../reports/market_regime_audit_decision.md",
+        "replay_href": "../reports/market_regime_replay.md",
+        "distribution_href": "../reports/market_regime_distribution.md",
+        "stability_href": "../reports/market_regime_stability.md",
+        "style_href": "../reports/regime_style_forward_return.md",
+        "structural_href": "../reports/regime_structural_risk_forward_return.md",
+        "breadth_href": "../reports/market_breadth_regime_analysis.md",
+        "research_only": True,
+        "execution_allowed": False,
+    }
+
+
+def _market_regime_compact_fit_rows(style: dict, structural: dict) -> list[dict]:
+    rows = []
+    style_rows = style.get("rows", []) if isinstance(style, dict) else []
+    structural_rows = structural.get("rows", []) if isinstance(structural, dict) else []
+    for regime in ["OFFENSIVE", "NEUTRAL", "DEFENSIVE"]:
+        rows.append({
+            "market_state": regime,
+            "growth_theme_10d": _regime_metric(style_rows, regime, "style_profile", ["GROWTH_THEME", "HIGH_BETA_THEME"], 10),
+            "high_risk_asset_10d": _regime_metric(structural_rows, regime, "structural_risk_profile", ["HIGH_BETA", "OFFENSIVE"], 10),
+            "core_broad_10d": _regime_metric(style_rows, regime, "style_profile", ["CORE_LARGE_CAP", "CORE_MID_CAP", "GROWTH_BROAD"], 10),
+            "defensive_asset_10d": _regime_metric(style_rows, regime, "style_profile", ["SECTOR_DEFENSIVE", "DIVIDEND", "BOND"], 10),
+        })
+    return rows
+
+
+def _market_regime_stabilization_snapshot() -> dict:
+    phase = _read_json(REPORT_DIR / "regime_layer_phase2_5_stabilization.json")
+    if not isinstance(phase, dict) or not phase:
+        return {
+            "status": "missing",
+            "research_only": True,
+            "shadow_only": True,
+            "execution_allowed": False,
+            "report_href": "../reports/regime_layer_phase2_5_stabilization.md",
+        }
+    decision = _read_json(REPORT_DIR / "regime_stabilization_candidate_decision.json") or phase.get("decision", {})
+    comparison = _read_json(REPORT_DIR / "regime_stabilization_comparison.json") or phase.get("comparison", {})
+    lag = _read_json(REPORT_DIR / "regime_stabilization_detection_lag.json") or phase.get("detection_lag", {})
+    scores = phase.get("candidate_scores", {})
+    comparison_rows = comparison.get("rows", [])
+    score_map = {row.get("candidate"): row for row in scores.get("rows", [])}
+    lag_summary = lag.get("summary", {})
+    raw_metrics = next((row for row in comparison_rows if row.get("candidate") == "RAW"), {})
+    selected_candidate = decision.get("selected_candidate", "")
+    selected_metrics = next((row for row in comparison_rows if row.get("candidate") == selected_candidate), {})
+    selected_lag = lag_summary.get(selected_candidate, {})
+    compact_rows = []
+    for row in comparison_rows:
+        candidate = row.get("candidate")
+        compact_rows.append({
+            "candidate": candidate,
+            "regime_switch_count": row.get("regime_switch_count"),
+            "median_regime_duration": row.get("median_regime_duration"),
+            "three_day_whipsaw_count": row.get("three_day_whipsaw_count"),
+            "average_detection_lag": lag_summary.get(candidate, {}).get("average_detection_lag"),
+            "missed_segment_ratio": lag_summary.get(candidate, {}).get("missed_segment_ratio"),
+            "style_fit": "YES" if _float(score_map.get(candidate, {}).get("style_fit_preservation")) >= 0.75 else "WATCH",
+            "candidate_research_score": score_map.get(candidate, {}).get("candidate_research_score"),
+        })
+    return {
+        "status": "generated",
+        "generated_at": phase.get("generated_at", _mtime(REPORT_DIR / "regime_layer_phase2_5_stabilization.json")),
+        "decision": decision,
+        "comparison": comparison,
+        "detection_lag": lag,
+        "candidate_scores": scores,
+        "comparison_rows": compact_rows,
+        "raw_metrics": raw_metrics,
+        "selected_metrics": selected_metrics,
+        "selected_lag": selected_lag,
+        "selected_candidate": selected_candidate,
+        "current_raw_regime": decision.get("current_raw_regime"),
+        "current_selected_shadow_regime": decision.get("current_selected_shadow_regime"),
+        "ready_for_style_regime_fit_research": decision.get("ready_for_style_regime_fit_research", False),
+        "ready_for_preview": decision.get("ready_for_preview", False),
+        "ready_for_execution": decision.get("ready_for_execution", False),
+        "report_href": "../reports/regime_layer_phase2_5_stabilization.md",
+        "decision_href": "../reports/regime_stabilization_candidate_decision.md",
+        "comparison_href": "../reports/regime_stabilization_comparison.md",
+        "lag_href": "../reports/regime_stabilization_detection_lag.md",
+        "style_href": "../reports/stabilized_regime_style_forward_return.md",
+        "research_only": True,
+        "shadow_only": True,
+        "execution_allowed": False,
+    }
+
+
+def _style_regime_fit_snapshot() -> dict:
+    phase = _read_json(REPORT_DIR / "regime_layer_phase3_style_fit.json")
+    if not isinstance(phase, dict) or not phase:
+        return {
+            "status": "missing",
+            "research_only": True,
+            "shadow_only": True,
+            "execution_allowed": False,
+            "report_href": "../reports/regime_layer_phase3_style_fit.md",
+        }
+    decision = _read_json(REPORT_DIR / "style_regime_fit_phase_decision.json") or phase.get("phase_decision", {})
+    summary = _read_json(REPORT_DIR / "style_regime_fit_summary.json")
+    buy = _read_json(REPORT_DIR / "current_buy_top10_style_regime_fit.json") or phase.get("current_buy_top10_fit", {})
+    portfolio = _read_json(REPORT_DIR / "current_portfolio_style_regime_fit.json") or phase.get("current_portfolio_fit", {})
+    differentiation = _read_json(REPORT_DIR / "style_regime_differentiation.json")
+    interaction = _read_json(REPORT_DIR / "style_fit_signal_interaction.json") or phase.get("signal_interaction", {})
+    matrix_rows = []
+    for row in (summary.get("matrix_table") or phase.get("style_regime_matrix") or []):
+        item = {"style_profile": row.get("style_profile")}
+        for regime in ["OFFENSIVE", "NEUTRAL", "DEFENSIVE"]:
+            cell = row.get(regime, {}) if isinstance(row.get(regime), dict) else {}
+            ev = cell.get("overall_fit_evidence", "N/A")
+            med = cell.get("median_return_10d")
+            item[regime] = f"{_style_fit_label(ev)} / 10d {_pct(med)}"
+            item[f"{regime}_evidence"] = ev
+            item[f"{regime}_median_return_10d"] = med
+            item[f"{regime}_sample_count_10d"] = cell.get("sample_count_10d")
+        matrix_rows.append(item)
+    return {
+        "status": "generated",
+        "generated_at": phase.get("generated_at", _mtime(REPORT_DIR / "regime_layer_phase3_style_fit.json")),
+        "selected_candidate": phase.get("selected_stable_regime_candidate"),
+        "current_stable_regime": phase.get("current_stable_regime"),
+        "phase_decision": decision,
+        "matrix_rows": matrix_rows,
+        "support_by_regime": phase.get("support_by_regime", {}),
+        "conflict_by_regime": phase.get("conflict_by_regime", {}),
+        "regime_sensitive_styles": differentiation.get("regime_sensitive_styles", phase.get("regime_sensitive_styles", [])),
+        "regime_insensitive_styles": differentiation.get("regime_insensitive_styles", phase.get("regime_insensitive_styles", [])),
+        "buy_top10": buy,
+        "portfolio": portfolio,
+        "signal_interaction": interaction,
+        "buy_conflict_count": decision.get("buy_top10_conflict_count", buy.get("conflict_count", 0)),
+        "portfolio_conflict_count": decision.get("portfolio_conflict_count", portfolio.get("conflict_count", 0)),
+        "tracking_rows": phase.get("tracking", {}).get("tracking_rows"),
+        "report_href": "../reports/regime_layer_phase3_style_fit.md",
+        "summary_href": "../reports/style_regime_fit_summary.md",
+        "buy_href": "../reports/current_buy_top10_style_regime_fit.md",
+        "portfolio_href": "../reports/current_portfolio_style_regime_fit.md",
+        "interaction_href": "../reports/style_fit_signal_interaction.md",
+        "decision_href": "../reports/style_regime_fit_phase_decision.md",
+        "research_only": True,
+        "shadow_only": True,
+        "execution_allowed": False,
+    }
+
+
+def _style_fit_label(value: object) -> str:
+    mapping = {
+        "SUPPORTED": "支持",
+        "WEAK_SUPPORT": "弱支持",
+        "NEUTRAL": "中性",
+        "WEAK_CONFLICT": "弱冲突",
+        "CONFLICT": "冲突",
+        "INSUFFICIENT": "样本不足",
+    }
+    return mapping.get(str(value), str(value))
+
+
+def _regime_metric(rows: list[dict], regime: str, key: str, candidates: list[str], horizon: int) -> float | None:
+    for candidate in candidates:
+        for row in rows:
+            row_horizon = _float(row.get("forward_horizon"), fallback=float("nan"))
+            if (
+                str(row.get("normalized_regime")) == regime
+                and str(row.get(key)) == candidate
+                and pd.notna(row_horizon)
+                and int(row_horizon) == horizon
+            ):
+                return _float(row.get("mean_forward_return"), fallback=float("nan"))
+    return None
 
 
 def _portfolio_exposure_snapshot() -> dict:
@@ -4822,6 +5270,100 @@ def _ranking_model_v2_backtest_panel(review: dict) -> str:
     )
 
 
+def _etf_risk_profile_panel(profile: dict) -> str:
+    if not profile or profile.get("status") == "missing":
+        return "<h3>ETF Risk Profile</h3><div class=\"muted\">暂无 ETF 风险画像。运行 <code>python3 src/etf_risk_profile.py</code> 后刷新。</div>"
+    summary = profile.get("summary", {})
+    portfolio = profile.get("portfolio_risk_profile", {})
+    buy = profile.get("buy_ranking_risk_profile", {})
+    rows = portfolio.get("rows", []) if isinstance(portfolio, dict) else []
+    buy_rows = buy.get("rows", []) if isinstance(buy, dict) else []
+    top_rows = (summary.get("risk_score_top10") or [])[:5]
+    low_rows = (summary.get("risk_score_bottom10") or [])[:5]
+    metrics = [
+        _mini_stat("ETF 画像数", str(summary.get("valid_profile_count", profile.get("row_count", 0))), f"total {summary.get('total_etf', profile.get('row_count', 0))}"),
+        _mini_stat("UNKNOWN style", str(summary.get("unknown_style_count", 0)), "target <= 15"),
+        _mini_stat("组合近期风险", _score(portfolio.get("weighted_realized_risk_score", portfolio.get("weighted_risk_score"))), "realized"),
+        _mini_stat("组合结构风险", _score(portfolio.get("weighted_structural_risk_score")), "structural"),
+        _mini_stat("BUY Top 近期风险", _score(buy.get("top10_avg_realized_risk_score", buy.get("top10_avg_risk_score"))), f"offensive {_pct(buy.get('offensive_high_beta_ratio'))}"),
+        _mini_stat("BUY Top 结构风险", _score(buy.get("top10_avg_structural_risk_score")), f"offensive {_pct(buy.get('structural_offensive_high_beta_ratio'))}"),
+    ]
+    position_body = []
+    for row in rows:
+        position_body.append(
+            "<tr>"
+            f"<td><b>{escape(str(row.get('symbol','')))}</b><div class=\"muted\">{escape(str(row.get('name','')))}</div></td>"
+            f"<td>{escape(str(row.get('style_profile','')))}</td>"
+            f"<td>{_tag(row.get('realized_risk_profile', row.get('risk_profile')), _tag_class(row.get('realized_risk_profile', row.get('risk_profile'))))}<div class=\"muted\">{_score(row.get('realized_risk_score', row.get('risk_score')))}</div></td>"
+            f"<td>{_tag(row.get('structural_risk_profile'), _tag_class(row.get('structural_risk_profile')))}<div class=\"muted\">{_score(row.get('structural_risk_score'))}</div></td>"
+            f"<td class=\"num\">{_pct(row.get('current_weight'))}</td>"
+            f"<td class=\"num\">{_pct(row.get('volatility_60d'))}</td>"
+            f"<td class=\"num\">{_number(row.get('beta_60d'))}</td>"
+            "</tr>"
+        )
+    buy_body = []
+    for row in buy_rows[:10]:
+        buy_body.append(
+            "<tr>"
+            f"<td>{escape(str(row.get('rank','')))}</td>"
+            f"<td><b>{escape(str(row.get('symbol','')))}</b><div class=\"muted\">{escape(str(row.get('name','')))}</div></td>"
+            f"<td>{escape(str(row.get('group','')))}</td>"
+            f"<td class=\"num\">{_score(row.get('rank_score'))}</td>"
+            f"<td>{escape(str(row.get('style_profile','')))}</td>"
+            f"<td>{_tag(row.get('realized_risk_profile', row.get('risk_profile')), _tag_class(row.get('realized_risk_profile', row.get('risk_profile'))))}<div class=\"muted\">{_score(row.get('realized_risk_score', row.get('risk_score_profile')))}</div></td>"
+            f"<td>{_tag(row.get('structural_risk_profile'), _tag_class(row.get('structural_risk_profile')))}<div class=\"muted\">{_score(row.get('structural_risk_score'))}</div></td>"
+            "</tr>"
+        )
+    top_body = [
+        "<tr>"
+        f"<td><b>{escape(str(row.get('symbol','')))}</b><div class=\"muted\">{escape(str(row.get('name','')))}</div></td>"
+        f"<td>{escape(str(row.get('style_profile','')))}</td>"
+        f"<td>{_tag(row.get('realized_risk_profile', row.get('risk_profile')), _tag_class(row.get('realized_risk_profile', row.get('risk_profile'))))}<div class=\"muted\">{_score(row.get('realized_risk_score', row.get('risk_score')))}</div></td>"
+        f"<td>{_tag(row.get('structural_risk_profile'), _tag_class(row.get('structural_risk_profile')))}<div class=\"muted\">{_score(row.get('structural_risk_score'))}</div></td>"
+        "</tr>"
+        for row in top_rows
+    ]
+    low_body = [
+        "<tr>"
+        f"<td><b>{escape(str(row.get('symbol','')))}</b><div class=\"muted\">{escape(str(row.get('name','')))}</div></td>"
+        f"<td>{escape(str(row.get('style_profile','')))}</td>"
+        f"<td>{_tag(row.get('realized_risk_profile', row.get('risk_profile')), _tag_class(row.get('realized_risk_profile', row.get('risk_profile'))))}<div class=\"muted\">{_score(row.get('realized_risk_score', row.get('risk_score')))}</div></td>"
+        f"<td>{_tag(row.get('structural_risk_profile'), _tag_class(row.get('structural_risk_profile')))}<div class=\"muted\">{_score(row.get('structural_risk_score'))}</div></td>"
+        "</tr>"
+        for row in low_rows
+    ]
+    return (
+        "<h3>ETF Risk Profile / 双风险画像层</h3>"
+        + '<div class="grid four">'
+        + "".join(metrics)
+        + "</div>"
+        + '<div class="risk-banner" style="margin-top:14px;"><div class="risk-title">Research-only</div><div>risk_score/risk_profile 是 realized risk 兼容别名；structural risk 独立描述 ETF 结构性风险。二者均不修改 BUY ranking、market_regime 或模拟交易执行层。</div></div>'
+        + '<div class="grid two" style="margin-top:14px;">'
+        + '<div><h3>当前持仓风险画像</h3>'
+        + _table(["ETF", "风格", "近期风险", "结构风险", "权重", "60日波动", "beta"], position_body)
+        + "</div>"
+        + '<div><h3>BUY Top 风险结构</h3>'
+        + _table(["rank", "ETF", "group", "rank", "风格", "近期风险", "结构风险"], buy_body)
+        + "</div></div>"
+        + '<div class="grid two" style="margin-top:14px;">'
+        + '<div><h3>风险最高 Top 5</h3>'
+        + _table(["ETF", "风格", "近期风险", "结构风险"], top_body)
+        + "</div>"
+        + '<div><h3>风险最低 Bottom 5</h3>'
+        + _table(["ETF", "风格", "近期风险", "结构风险"], low_body)
+        + "</div></div>"
+        + '<div class="links" style="margin-top:12px;">'
+        + '<a href="../reports/etf_risk_profile.md">风险画像报告</a>'
+        + '<a href="../reports/buy_ranking_risk_profile_analysis.md">BUY 风险结构</a>'
+        + '<a href="../reports/etf_risk_profile_consistency_audit.md">一致性审计</a>'
+        + '<a href="../reports/structural_vs_realized_risk_analysis.md">结构/近期差异</a>'
+        + '<a href="../reports/etf_style_unknown_audit.md">Style UNKNOWN 审计</a>'
+        + '<a href="../reports/regime_risk_phase1_5_style_structural_profile.md">Phase 1.5 报告</a>'
+        + '<a href="../reports/regime_risk_phase1_etf_profile.md">Phase 报告</a>'
+        + "</div>"
+    )
+
+
 def _boolish(value: object) -> bool:
     if isinstance(value, bool):
         return value
@@ -4831,6 +5373,45 @@ def _boolish(value: object) -> bool:
     if text in {"0", "false", "no", "n", "", "none", "nan"}:
         return False
     return bool(value)
+
+
+def _etf_risk_profile_snapshot() -> dict:
+    payload = _read_json(REPORT_DIR / "etf_risk_profile.json")
+    if isinstance(payload, dict) and payload:
+        payload["status"] = "generated"
+        payload["report_href"] = "../reports/etf_risk_profile.md"
+        payload["source_audit_href"] = "../reports/etf_risk_profile_source_audit.md"
+        payload["buy_analysis_href"] = "../reports/buy_ranking_risk_profile_analysis.md"
+        payload["consistency_href"] = "../reports/etf_risk_profile_consistency_audit.md"
+        payload["style_unknown_href"] = "../reports/etf_style_unknown_audit.md"
+        payload["structural_analysis_href"] = "../reports/structural_vs_realized_risk_analysis.md"
+        payload["phase_report_href"] = "../reports/regime_risk_phase1_etf_profile.md"
+        payload["phase_1_5_report_href"] = "../reports/regime_risk_phase1_5_style_structural_profile.md"
+        payload["row_count"] = len(payload.get("rows", [])) if isinstance(payload.get("rows"), list) else 0
+        payload["research_only"] = True
+        payload["execution_allowed"] = False
+        return payload
+    return {
+        "status": "missing",
+        "summary": {
+            "total_etf": 0,
+            "valid_profile_count": 0,
+            "insufficient_data_count": 0,
+            "risk_profile_distribution": {},
+            "style_profile_distribution": {},
+        },
+        "portfolio_risk_profile": {},
+        "buy_ranking_risk_profile": {},
+        "risk_profile_distribution": {},
+        "style_profile_distribution": {},
+        "rows": [],
+        "report_href": "../reports/etf_risk_profile.md",
+        "style_unknown_href": "../reports/etf_style_unknown_audit.md",
+        "structural_analysis_href": "../reports/structural_vs_realized_risk_analysis.md",
+        "phase_1_5_report_href": "../reports/regime_risk_phase1_5_style_structural_profile.md",
+        "research_only": True,
+        "execution_allowed": False,
+    }
 
 
 def _research_quality_snapshot() -> dict:

@@ -1,4 +1,4 @@
-export const appVersion = "v0.1.0-local";
+export const appVersion = "v0.2.0-local";
 
 export const designTokens = {
   color: {

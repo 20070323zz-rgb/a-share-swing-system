@@ -55,7 +55,23 @@ def _tail(text: str, limit: int = 4000) -> str:
 def read_status() -> dict[str, Any]:
     try:
         if STATUS_FILE.exists():
-            return json.loads(STATUS_FILE.read_text(encoding="utf-8"))
+            payload = json.loads(STATUS_FILE.read_text(encoding="utf-8"))
+            latest = payload.get("latest_task") if isinstance(payload, dict) else None
+            if isinstance(latest, dict) and latest.get("task_name") in {"backfill_etf_data", "backfill_recent_data", "update_daily_data"}:
+                data_status = _task_data_update_status(str(latest.get("task_name")))
+                if data_status:
+                    enriched = dict(latest)
+                    enriched.update(
+                        {
+                            "data_update_processed_symbols": data_status.get("processed_symbols", 0),
+                            "data_update_up_to_date_count": data_status.get("up_to_date_count", 0),
+                            "data_update_actual_api_calls": data_status.get("actual_api_calls", 0),
+                            "data_update_requested_end": data_status.get("requested_end", enriched.get("data_update_requested_end", "")),
+                        }
+                    )
+                    payload = dict(payload)
+                    payload["latest_task"] = enriched
+            return payload
     except Exception:
         pass
     return {"running": False, "latest_task": None, "history": []}
@@ -173,6 +189,9 @@ def _run_task(task_id: str, task_name: str) -> None:
         "data_update_latest_local_date": data_update_status.get("latest_local_date", ""),
         "data_update_requested_end": data_update_status.get("requested_end", ""),
         "data_update_added_rows": data_update_status.get("added_rows", ""),
+        "data_update_processed_symbols": data_update_status.get("processed_symbols", ""),
+        "data_update_up_to_date_count": data_update_status.get("up_to_date_count", ""),
+        "data_update_actual_api_calls": data_update_status.get("actual_api_calls", ""),
         "log_path": str(log_path),
         "modifies_paper_positions": task.modifies_paper_positions,
         "real_trade": task.real_trade,
@@ -201,6 +220,9 @@ def _task_data_update_status(task_name: str) -> dict[str, Any]:
         "latest_local_date": payload.get("latest_local_date", ""),
         "requested_end": payload.get("requested_end", ""),
         "added_rows": payload.get("added_rows", 0),
+        "processed_symbols": payload.get("processed_symbols", 0),
+        "up_to_date_count": payload.get("up_to_date_count", 0),
+        "actual_api_calls": payload.get("actual_api_calls", payload.get("baostock_api_calls", 0)),
         "stale_vs_requested": payload.get("stale_vs_requested", False),
     }
 

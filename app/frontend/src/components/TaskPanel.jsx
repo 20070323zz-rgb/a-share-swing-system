@@ -6,7 +6,7 @@ import { Separator } from "@/components/ui/separator";
 import Section from "./Section.jsx";
 
 const actions = [
-  ["一键补齐 ETF 数据", "补最近缺口，只写本地行情和报告", "backfill_etf_data", "common"],
+  ["一键补齐 ETF 数据", "先核对价格日期，只在发现缺口时下载", "backfill_etf_data", "common"],
   ["刷新研究报告", "刷新信号、研究报告和看板", "refresh_all_reports", "common"],
   ["刷新模拟仓绩效", "只生成绩效报告，不改交易和持仓", "run_paper_performance", "common"],
   ["一键日更数据", "更新正式 ETF 池，只写本地行情", "update_daily_data", "advanced"],
@@ -43,6 +43,13 @@ function statusVariant(value) {
   return "neutral";
 }
 
+function latestTaskDisplay(latest, running) {
+  if (running) return { title: "任务运行中", label: "运行中", variant: "blue" };
+  if (latest?.data_update_status === "up_to_date") return { title: "数据检查完成", label: "已是最新", variant: "success" };
+  if (latest?.data_update_status === "updated") return { title: "数据补齐完成", label: "有新增", variant: "success" };
+  return { title: "最近任务", label: statusCn(latest?.status || "idle"), variant: statusVariant(latest?.status || "idle") };
+}
+
 function ActionRow({ title, note, taskName, running, primary, onRun }) {
   return (
     <div className="task-action-row">
@@ -65,6 +72,7 @@ export default function TaskPanel({ taskStatus, onRun, compact = false, allowedT
   const visibleActions = allowedTasks ? actions.filter(([, , taskName]) => allowedTasks.includes(taskName)) : actions;
   const commonActions = visibleActions.filter(([, , , group]) => group === "common");
   const advancedActions = visibleActions.filter(([, , , group]) => group !== "common");
+  const latestDisplay = latestTaskDisplay(latest, running);
 
   return (
     <Section title="安全快捷操作" eyebrow="白名单任务">
@@ -93,12 +101,12 @@ export default function TaskPanel({ taskStatus, onRun, compact = false, allowedT
       <Separator />
       <div className={`task-status ${running ? "running" : latest?.status || "idle"}`}>
         <div>
-          <strong>{running ? "任务运行中" : "最近任务"}</strong>
-          <Badge variant={statusVariant(latest?.status || (running ? "running" : "idle"))}>{statusCn(running ? "running" : latest?.status || "idle")}</Badge>
+          <strong>{latestDisplay.title}</strong>
+          <Badge variant={latestDisplay.variant}>{latestDisplay.label}</Badge>
         </div>
         <p>{latest ? `${latest.description || latest.task_name} · ${latest.duration_label || "暂无耗时"}` : "暂无任务记录"}</p>
         {latest?.data_update_status ? (
-          <small>{`数据更新：${latest.data_update_severity || "暂无"} / ${latest.data_update_status} · 本地最新 ${latest.data_update_latest_local_date || "暂无"} · 新增 ${latest.data_update_added_rows ?? "暂无"}`}</small>
+          <small>{`价格日 ${latest.data_update_latest_local_date || "暂无"} / 目标 ${latest.data_update_requested_end || "暂无"} · 检查 ${latest.data_update_processed_symbols ?? "暂无"} 只 · 已更新 ${latest.data_update_up_to_date_count ?? "暂无"} 只 · 新增 ${latest.data_update_added_rows ?? "暂无"} 行 · 请求 ${latest.data_update_actual_api_calls ?? "暂无"} 次`}</small>
         ) : null}
         {latest?.log_path ? <small>{`日志路径：${latest.log_path}`}</small> : null}
         {latest?.warning ? <pre>{latest.warning}</pre> : null}

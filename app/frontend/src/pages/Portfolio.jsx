@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { CalendarClock, ChartNoAxesCombined, CircleCheck, Database, TriangleAlert } from "lucide-react";
 import PortfolioPanel from "../components/PortfolioPanel.jsx";
 import Section from "../components/Section.jsx";
 import Sparkline from "../components/Sparkline.jsx";
@@ -29,6 +30,17 @@ function pnlClass(value) {
 function shown(value, fallback = "暂无") {
   if (value === null || value === undefined || value === "" || Number.isNaN(value)) return fallback;
   return String(value);
+}
+
+function researchStateLabel(value, fallback = "暂无") {
+  const labels = {
+    HB_NORMAL: "波动正常",
+    HB_WATCH: "高波观察",
+    BROAD_BASE_BALANCED: "宽基已平衡",
+    BROAD_BASE_MISSING: "宽基缺位",
+    UNKNOWN: "待确认",
+  };
+  return labels[value] || shown(value, fallback);
 }
 
 function Metric({ label, value, note }) {
@@ -107,6 +119,14 @@ export default function Portfolio({ portfolio }) {
   const broadBasePreview = portfolio?.broad_base_balance_preview || {};
   const broadBaseSummary = portfolio?.broad_base_balance_summary || {};
   const caution = positions.filter((row) => String(row.risk_tag || row.health_status || "").includes("CAUTION") || String(row.health_status || "").includes("提醒"));
+  const valuationDate = performance.valuation_as_of_date || summary.valuation_as_of_date || equityCurve[equityCurve.length - 1]?.date || "暂无";
+  const curveDate = equityMeta.curve_end_date || equityMeta.end_date || equityCurve[equityCurve.length - 1]?.date || "暂无";
+  const curveFresh = equityMeta.freshness_status !== "stale" && curveDate !== "暂无" && (valuationDate === "暂无" || curveDate >= valuationDate);
+  const curveSourceLabel = equityMeta.curve_source === "merged_backfill_and_original"
+    ? "历史回填 + 正式绩效"
+    : equityMeta.curve_source === "original"
+      ? "正式绩效曲线"
+      : "历史回填估算";
   return (
     <main className="page-grid">
       <section className="mono-page-head">
@@ -121,11 +141,24 @@ export default function Portfolio({ portfolio }) {
         </div>
       </section>
 
+      <section className={`portfolio-freshness ${curveFresh ? "is-fresh" : "is-stale"}`} aria-label="绩效数据同步状态">
+        <div className="portfolio-freshness-title">
+          {curveFresh ? <CircleCheck size={19} aria-hidden="true" /> : <TriangleAlert size={19} aria-hidden="true" />}
+          <div><strong>{curveFresh ? "绩效曲线已同步" : "绩效曲线待同步"}</strong><span>估值日与曲线末日直接对照</span></div>
+        </div>
+        <div className="portfolio-freshness-facts">
+          <span><CalendarClock size={15} aria-hidden="true" /><small>估值日期</small><strong>{valuationDate}</strong></span>
+          <span><ChartNoAxesCombined size={15} aria-hidden="true" /><small>曲线日期</small><strong>{curveDate}</strong></span>
+          <span><Database size={15} aria-hidden="true" /><small>数据口径</small><strong>{curveSourceLabel}</strong></span>
+        </div>
+        <Badge variant={curveFresh ? "success" : "warning"}>{curveFresh ? "同步正常" : "需要刷新"}</Badge>
+      </section>
+
       <section className="mono-metric-row">
-        <Metric label="总资产" value={money(performance.current_total_equity ?? summary.total_equity)} note="正式模拟仓" />
-        <Metric label="收益" value={pct(performance.total_return_pct)} note={signedMoney(performance.total_pnl_amount)} />
-        <Metric label="现金" value={money(performance.current_cash ?? summary.cash)} note={pct(summary.cash_ratio)} />
-        <Metric label="持仓市值" value={money(performance.current_position_value ?? summary.market_value)} note={pct(summary.position_ratio)} />
+        <Metric label="总资产" value={money(performance.current_total_equity ?? summary.total_equity)} note={`价格日 ${valuationDate}`} />
+        <Metric label="收益" value={pct(performance.total_return_pct)} note={`${signedMoney(performance.total_pnl_amount)} · 价格日 ${valuationDate}`} />
+        <Metric label="现金" value={money(performance.current_cash ?? summary.cash)} note={`${pct(summary.cash_ratio)} · 估值日 ${valuationDate}`} />
+        <Metric label="持仓市值" value={money(performance.current_position_value ?? summary.market_value)} note={`${pct(summary.position_ratio)} · 价格日 ${valuationDate}`} />
       </section>
 
       <Tabs value={view} onValueChange={setView}>
@@ -142,18 +175,19 @@ export default function Portfolio({ portfolio }) {
             <Metric label="风险持仓" value={String(caution.length)} note={caution.map((row) => row.symbol).join(" / ") || "无"} tone={caution.length ? "warn" : "ok"} />
             <Metric label="减仓候选观察" value={String(reviewSummary.reduce_candidate_count ?? 0)} note="观察状态，不会自动交易" tone={(reviewSummary.reduce_candidate_count ?? 0) ? "warn" : "ok"} />
             <Metric label="浮盈保护观察" value={String(profitSummary.profit_watch_count ?? 0)} note="研究指标，不自动止盈" tone={(profitSummary.profit_watch_count ?? 0) ? "warn" : "ok"} />
-            <Metric label="高波动观察" value={shown(highBetaSummary.high_beta_exposure_state, "HB_NORMAL")} note={`${highBetaSummary.high_beta_position_count ?? 0} 只 · 权益 ${pct(highBetaSummary.high_beta_weight_of_equity)}`} tone={highBetaSummary.high_beta_exposure_state && highBetaSummary.high_beta_exposure_state !== "HB_NORMAL" ? "warn" : "ok"} />
-            <Metric label="宽基平衡观察" value={shown(broadBaseSummary.broad_base_balance_state, "UNKNOWN")} note={`宽基 ${pct(broadBaseSummary.broad_base_weight)} · 候选 ${broadBaseSummary.balance_candidate_count ?? 0}`} tone={broadBaseSummary.broad_base_balance_state === "BROAD_BASE_BALANCED" ? "ok" : "warn"} />
+            <Metric label="高波动观察" value={researchStateLabel(highBetaSummary.high_beta_exposure_state, "波动正常")} note={`${highBetaSummary.high_beta_position_count ?? 0} 只 · 权益 ${pct(highBetaSummary.high_beta_weight_of_equity)}`} tone={highBetaSummary.high_beta_exposure_state && highBetaSummary.high_beta_exposure_state !== "HB_NORMAL" ? "warn" : "ok"} />
+            <Metric label="宽基平衡观察" value={researchStateLabel(broadBaseSummary.broad_base_balance_state, "待确认")} note={`宽基 ${pct(broadBaseSummary.broad_base_weight)} · 候选 ${broadBaseSummary.balance_candidate_count ?? 0}`} tone={broadBaseSummary.broad_base_balance_state === "BROAD_BASE_BALANCED" ? "ok" : "warn"} />
             <Metric label="已实现盈亏" value={signedMoney(performance.realized_pnl)} note="来自卖出交易" tone={pnlClass(performance.realized_pnl)} />
             <Metric label="未实现盈亏" value={signedMoney(performance.unrealized_pnl)} note="当前持仓估值" tone={pnlClass(performance.unrealized_pnl)} />
             <Metric label="最大回撤" value={pct(performance.max_drawdown)} note={`最高权益 ${money(performance.max_equity)}`} />
             <Metric label="交易次数" value={String(performance.trade_count ?? 0)} note={`买 ${performance.buy_count ?? 0} · 卖 ${performance.sell_count ?? 0}`} />
           </section>
           <Section title="绩效曲线" eyebrow="Equity Curve">
-            {equityMeta?.app_uses_backfilled_curve ? (
-              <div className="empty-note">历史回填数据（估算）：由交易流水和 ETF 历史收盘价重建，早期模拟仓未持续保存每日账户快照。</div>
-            ) : null}
-            <Sparkline rows={equityCurve} label="模拟仓权益曲线" />
+            <div className={`curve-provenance ${curveFresh ? "is-fresh" : "is-stale"}`}>
+              <span><Database size={15} aria-hidden="true" />{equityMeta?.display_note || "使用正式模拟仓绩效曲线。"}</span>
+              <strong>{equityMeta?.merged_records ?? equityCurve.length} 个点 · 截至 {curveDate}</strong>
+            </div>
+            <Sparkline rows={equityCurve} label="模拟仓权益曲线" xLabel="日期" xUnit="交易日" yLabel="模拟仓权益" yUnit="元" />
           </Section>
           <Section title="交易复盘摘要" eyebrow="Trade Review">
             <div className="metric-grid">
@@ -207,7 +241,7 @@ export default function Portfolio({ portfolio }) {
             <div className="empty-note">
               {equityMeta?.display_note || "早期模拟仓未持续保存每日账户快照；如存在回填曲线，页面会明确标注估算口径。"}
             </div>
-            <Sparkline rows={equityCurve} label="历史盈亏曲线" />
+            <Sparkline rows={equityCurve} label="历史权益曲线" xLabel="日期" xUnit="交易日" yLabel="账户权益" yUnit="元" />
           </Section>
           <Section title="每日权益记录" eyebrow="Daily">
             <DailyTable rows={equityCurve} />

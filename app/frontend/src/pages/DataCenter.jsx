@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { CalendarDays, CheckCircle2, Database, RefreshCw, Search } from "lucide-react";
 import DataHealthPanel from "../components/DataHealthPanel.jsx";
 import ReportCard from "../components/ReportCard.jsx";
 import Section from "../components/Section.jsx";
@@ -8,6 +9,17 @@ import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { text } from "../format.js";
+
+function price(value) {
+  const number = Number(value);
+  return Number.isFinite(number) ? `${number.toFixed(3)} 元` : "暂无";
+}
+
+function change(value) {
+  const number = Number(value);
+  if (!Number.isFinite(number)) return "暂无涨跌";
+  return `${number > 0 ? "+" : ""}${number.toFixed(2)}%`;
+}
 
 function statusVariant(value) {
   const raw = String(value || "").toLowerCase();
@@ -19,10 +31,24 @@ function statusVariant(value) {
 
 export default function DataCenter({ dataHealth, status, onRun }) {
   const [view, setView] = useState("status");
+  const [inventoryQuery, setInventoryQuery] = useState("");
   const sources = dataHealth?.data_sources || status?.data_sources || {};
   const universe = dataHealth?.universe_quality_review || {};
   const latestDate = dataHealth?.latest_data_date || status?.latest_data_date;
   const updatedAt = dataHealth?.generated_at || status?.updated_at || status?.generated_at;
+  const inventoryRows = dataHealth?.etf_inventory || [];
+  const inventorySummary = dataHealth?.inventory_summary || {};
+  const filteredInventory = useMemo(() => {
+    const query = inventoryQuery.trim().toLowerCase();
+    if (!query) return inventoryRows;
+    return inventoryRows.filter((row) => [row.symbol, row.name, row.group, row.etf_type, row.pool].some((value) => String(value || "").toLowerCase().includes(query)));
+  }, [inventoryRows, inventoryQuery]);
+  const updateStatus = String(dataHealth?.status || status?.data_update_status || "unknown").toLowerCase();
+  const updateTitle = updateStatus === "up_to_date" ? "检查完成，数据已是最新" : updateStatus === "updated" ? "补齐完成，本次有新增" : updateStatus.includes("stale") ? "仍有数据落后" : "等待数据检查";
+  const updateVariant = statusVariant(updateStatus);
+  const liveInventorySummary = inventoryRows.length
+    ? `本地库存 ${inventorySummary.total_count ?? inventoryRows.length} 只 ETF，已更新 ${inventorySummary.up_to_date_count ?? 0} 只、待补齐 ${inventorySummary.lagging_count ?? 0} 只；最新价格日 ${text(latestDate, "暂无")}。建议交易池 ${universe.recommended_trade_pool ?? "暂无"} 只，仅用于研究与回测审查。`
+    : text(dataHealth?.diagnosis, "暂无额外诊断。");
   const coverageRows = [
     ["ETF 总数", universe.total_etf ?? dataHealth?.etf_file_count ?? "暂无", "正式数据目录"],
     ["建议交易池", universe.recommended_trade_pool ?? "暂无", "仅为回测前审查建议"],
@@ -42,24 +68,31 @@ export default function DataCenter({ dataHealth, status, onRun }) {
         <div>
           <div className="eyebrow">数据中心</div>
           <h2>一键补齐 ETF 数据</h2>
-          <p>更新本地行情数据，不会交易，不连接券商。</p>
+          <p>先检查每只 ETF 的价格日期，仅在发现缺口时下载；不会交易，不连接券商。</p>
         </div>
         <div className="action-head-side">
-          <Badge variant="blue">最新数据日 {text(latestDate, "等待更新")}</Badge>
+          <Badge variant="blue">价格日 {text(latestDate, "等待更新")}</Badge>
+          <Badge variant={inventorySummary.lagging_count ? "warning" : "success"}>{inventorySummary.up_to_date_count ?? 0}/{inventorySummary.total_count ?? 0} 已更新</Badge>
           <Badge variant="neutral">最近更新 {text(updatedAt, "暂无记录")}</Badge>
-          <Button type="button" onClick={() => onRun?.("backfill_etf_data")}>一键补齐 ETF 数据</Button>
+          <Button type="button" onClick={() => onRun?.("backfill_etf_data")}><RefreshCw size={15} aria-hidden="true" />检查并补齐</Button>
         </div>
       </section>
 
       <Tabs value={view} onValueChange={setView}>
         <TabsList>
           <TabsTrigger value="status">数据状态</TabsTrigger>
+          <TabsTrigger value="database">ETF 数据库</TabsTrigger>
           <TabsTrigger value="coverage">数据覆盖</TabsTrigger>
           <TabsTrigger value="health">数据健康</TabsTrigger>
           <TabsTrigger value="reports">报告</TabsTrigger>
         </TabsList>
 
         <TabsContent value="status">
+          <section className={`data-update-proof ${updateVariant}`}>
+            <div className="data-update-proof-icon">{updateStatus === "up_to_date" || updateStatus === "updated" ? <CheckCircle2 size={22} aria-hidden="true" /> : <RefreshCw size={22} aria-hidden="true" />}</div>
+            <div><span>最近一次补齐结果</span><strong>{updateTitle}</strong><p>目标价格日 {text(dataHealth?.requested_end || inventorySummary.expected_price_date, "暂无")} · 检查 {dataHealth?.processed_symbols ?? inventorySummary.total_count ?? 0} 只 · 新增 {dataHealth?.new_rows ?? 0} 行 · 行情请求 {dataHealth?.actual_api_calls ?? 0} 次</p></div>
+            <Badge variant={updateVariant}>{updateStatus === "up_to_date" ? "已是最新" : updateStatus === "updated" ? "有新增" : text(updateStatus)}</Badge>
+          </section>
           <Section title="数据状态" eyebrow="本地行情">
             <div className="description-list">
               <div><span>正式数据源</span><strong>{text(sources.primary_source || dataHealth?.primary_source || "BaoStock")}</strong><small>日常更新主链路</small></div>
@@ -67,7 +100,38 @@ export default function DataCenter({ dataHealth, status, onRun }) {
               <div><span>备用状态</span><strong>{sources.fallback_triggered ? "已触发" : "未触发"}</strong><small>自动化状态</small></div>
               <div><span>券商连接</span><strong>未连接</strong><small>数据任务不接券商</small></div>
             </div>
-            <div className="inline-alert">{text(universe.readiness_summary || dataHealth?.diagnosis, "暂无额外诊断。")}</div>
+            <div className="inline-alert">{liveInventorySummary}</div>
+          </Section>
+        </TabsContent>
+
+        <TabsContent value="database">
+          <Section title="ETF 数据库" eyebrow="183 只本地日线库存">
+            <div className="inventory-toolbar">
+              <div className="inventory-search">
+                <Search size={15} aria-hidden="true" />
+                <input aria-label="搜索 ETF 数据库" onChange={(event) => setInventoryQuery(event.target.value)} placeholder="搜索代码、名称、分类或数据池" type="search" value={inventoryQuery} />
+              </div>
+              <div className="inventory-meta"><Database size={15} aria-hidden="true" /><span>显示 {filteredInventory.length} / {inventoryRows.length} 只</span><CalendarDays size={15} aria-hidden="true" /><span>目标价格日 {text(inventorySummary.expected_price_date, "暂无")}</span></div>
+            </div>
+            <Table className="data-inventory-table">
+              <TableHeader>
+                <TableRow><TableHead>ETF</TableHead><TableHead>分类 / 数据池</TableHead><TableHead>最新收盘价</TableHead><TableHead>价格日期</TableHead><TableHead>覆盖起点</TableHead><TableHead>记录数</TableHead><TableHead>更新状态</TableHead></TableRow>
+              </TableHeader>
+              <TableBody>
+                {filteredInventory.map((row) => (
+                  <TableRow key={row.symbol}>
+                    <TableCell><strong>{row.symbol}</strong><small>{row.name}</small></TableCell>
+                    <TableCell>{row.group}<small>{row.etf_type} · {row.pool}</small></TableCell>
+                    <TableCell className="num"><strong>{price(row.close)}</strong><small>{change(row.change_pct)}</small></TableCell>
+                    <TableCell><strong>{text(row.price_date)}</strong><small>该收盘价对应日期</small></TableCell>
+                    <TableCell>{text(row.data_start)}</TableCell>
+                    <TableCell className="num">{row.row_count ?? "暂无"}</TableCell>
+                    <TableCell><Badge variant={row.update_status === "up_to_date" ? "success" : "warning"}>{row.update_status === "up_to_date" ? "已更新" : "待补齐"}</Badge></TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+            {!filteredInventory.length ? <div className="v2-empty">没有匹配的 ETF 数据记录。</div> : null}
           </Section>
         </TabsContent>
 

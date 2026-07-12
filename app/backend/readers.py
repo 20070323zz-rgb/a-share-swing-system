@@ -18,6 +18,8 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DATA_DIR = PROJECT_ROOT / "data"
 REPORT_DIR = PROJECT_ROOT / "reports"
 LOG_DIR = PROJECT_ROOT / "logs"
+ETF_DAILY_DIR = DATA_DIR / "etf_daily"
+_ETF_INVENTORY_CACHE: dict[str, Any] = {"signature": None, "rows": []}
 
 
 def read_json(path: Path, default: Any | None = None) -> Any:
@@ -65,6 +67,76 @@ def normalize_value(value: Any) -> Any:
     return text
 
 
+def _curve_date(row: dict[str, Any]) -> str:
+    value = str(row.get("date") or "").strip()
+    return value if len(value) == 10 and value[4:5] == "-" and value[7:8] == "-" else ""
+
+
+def merge_equity_curves(
+    backfilled_rows: list[dict[str, Any]] | None,
+    original_rows: list[dict[str, Any]] | None,
+    dashboard_rows: list[dict[str, Any]] | None = None,
+) -> list[dict[str, Any]]:
+    """Merge equity history by date, with the formal derived curve authoritative.
+
+    Backfilled rows may add early or non-trading-day continuity. Dashboard rows
+    are a cache only. Original paper performance rows always win on overlap.
+    """
+    by_date: dict[str, dict[str, Any]] = {}
+    for rows in (backfilled_rows or [], dashboard_rows or [], original_rows or []):
+        for row in rows:
+            if not isinstance(row, dict):
+                continue
+            date_key = _curve_date(row)
+            if date_key:
+                by_date[date_key] = dict(row)
+    return [by_date[key] for key in sorted(by_date)]
+
+
+def build_equity_curve_meta(
+    merged_rows: list[dict[str, Any]],
+    original_rows: list[dict[str, Any]],
+    backfilled_rows: list[dict[str, Any]],
+    valuation_date: Any,
+) -> dict[str, Any]:
+    merged_dates = [_curve_date(row) for row in merged_rows]
+    original_dates = {_curve_date(row) for row in original_rows}
+    backfilled_dates = {_curve_date(row) for row in backfilled_rows}
+    merged_dates = [value for value in merged_dates if value]
+    original_dates.discard("")
+    backfilled_dates.discard("")
+    curve_end = merged_dates[-1] if merged_dates else ""
+    valuation = str(valuation_date or "").strip()
+    freshness = "fresh" if curve_end and (not valuation or curve_end >= valuation) else "stale"
+    backfill_contributes = bool(backfilled_dates - original_dates)
+    if original_dates and backfill_contributes:
+        source = "merged_backfill_and_original"
+        note = "历史缺口使用估算回填，最新及重叠交易日使用正式绩效曲线。"
+    elif original_dates:
+        source = "original"
+        note = "使用正式模拟仓绩效曲线。"
+    elif backfilled_dates:
+        source = "backfilled_estimated"
+        note = "仅有历史回填估算曲线，等待正式绩效数据。"
+    else:
+        source = "missing"
+        note = "暂无可用绩效曲线。"
+    return {
+        "status": "active" if merged_rows else "missing",
+        "freshness_status": freshness,
+        "curve_source": source,
+        "curve_start_date": merged_dates[0] if merged_dates else "",
+        "curve_end_date": curve_end,
+        "valuation_as_of_date": valuation,
+        "original_records": len(original_rows),
+        "backfilled_records": len(backfilled_rows),
+        "merged_records": len(merged_rows),
+        "estimated": backfill_contributes or not original_dates,
+        "app_uses_backfilled_curve": backfill_contributes,
+        "display_note": note,
+    }
+
+
 def tail_text(path: Path, max_lines: int = 200) -> str:
     if not path.exists() or not path.is_file():
         return ""
@@ -90,6 +162,62 @@ def data_source_status() -> dict[str, Any]:
     data = dashboard_data()
     source_status = read_json(REPORT_DIR / "data_source_status.json", {})
     return source_status or data.get("data_sources", {}) or {}
+
+
+def etf_inventory_snapshot() -> list[dict[str, Any]]:
+    """Return a cached read-only inventory over the existing ETF daily CSV store."""
+    files = sorted(ETF_DAILY_DIR.glob("*.csv"))
+    signature = tuple((path.name, path.stat().st_mtime_ns, path.stat().st_size) for path in files)
+    if signature == _ETF_INVENTORY_CACHE.get("signature"):
+        return list(_ETF_INVENTORY_CACHE.get("rows", []))
+
+    classification_rows = read_csv_rows(DATA_DIR / "etf_type_classification.csv")
+    classification = {
+        str(row.get("symbol") or row.get("code")): row
+        for row in classification_rows
+        if row.get("symbol") or row.get("code")
+    }
+    inventory: list[dict[str, Any]] = []
+    for path in files:
+        symbol = path.stem.split("_", 1)[-1]
+        first_row: dict[str, Any] | None = None
+        last_row: dict[str, Any] | None = None
+        row_count = 0
+        try:
+            with path.open("r", encoding="utf-8-sig", newline="") as handle:
+                for raw in csv.DictReader(handle):
+                    row = {key: normalize_value(value) for key, value in raw.items() if key is not None}
+                    if first_row is None:
+                        first_row = row
+                    last_row = row
+                    row_count += 1
+        except Exception:
+            continue
+        if last_row is None:
+            continue
+        meta = classification.get(symbol, {})
+        inventory.append(
+            {
+                "symbol": symbol,
+                "name": meta.get("name") or symbol,
+                "group": meta.get("group") or "未分类",
+                "etf_type": meta.get("etf_type") or "unknown",
+                "pool": meta.get("pool") or "research_only",
+                "data_start": (first_row or {}).get("date"),
+                "price_date": last_row.get("date"),
+                "close": last_row.get("close"),
+                "change_pct": last_row.get("pctChg"),
+                "volume": last_row.get("volume"),
+                "row_count": row_count,
+                "price_unit": "元",
+                "source": "本地 ETF 日线 CSV",
+            }
+        )
+
+    inventory.sort(key=lambda row: str(row.get("symbol") or ""))
+    _ETF_INVENTORY_CACHE["signature"] = signature
+    _ETF_INVENTORY_CACHE["rows"] = inventory
+    return list(inventory)
 
 
 def app_task_status() -> dict[str, Any]:
@@ -252,7 +380,7 @@ def portfolio_snapshot() -> dict[str, Any]:
     summary = data.get("paper_summary", {})
     performance = data.get("paper_performance", {}) if isinstance(data, dict) else {}
     equity_curve = data.get("paper_equity_curve", []) if isinstance(data, dict) else []
-    equity_curve_meta = data.get("paper_equity_backfill", {}) if isinstance(data, dict) else {}
+    dashboard_curve_meta = data.get("paper_equity_backfill", {}) if isinstance(data, dict) else {}
     trade_pnl = data.get("paper_trade_pnl", []) if isinstance(data, dict) else []
     trade_review = data.get("trade_review", {}) if isinstance(data, dict) else {}
     trade_review_details = data.get("trade_review_details", []) if isinstance(data, dict) else []
@@ -269,24 +397,12 @@ def portfolio_snapshot() -> dict[str, Any]:
         performance = read_json(REPORT_DIR / "paper_performance_summary.json", {})
     backfilled_curve = read_csv_rows(DATA_DIR / "paper_equity_curve_backfilled.csv")
     original_curve = read_csv_rows(DATA_DIR / "paper_equity_curve.csv")
-    if backfilled_curve and len(backfilled_curve) >= max(len(equity_curve), len(original_curve)):
-        equity_curve = backfilled_curve[-180:]
-        if not equity_curve_meta:
-            equity_curve_meta = {
-                "status": "active",
-                "estimated": True,
-                "app_uses_backfilled_curve": True,
-                "display_note": "历史回填数据（估算）：由交易流水和 ETF 历史收盘价重建。",
-            }
-    elif not equity_curve:
-        equity_curve = original_curve[-120:]
-        if not equity_curve_meta:
-            equity_curve_meta = {
-                "status": "original",
-                "estimated": False,
-                "app_uses_backfilled_curve": False,
-                "display_note": "原始权益曲线记录。",
-            }
+    equity_curve = merge_equity_curves(backfilled_curve, original_curve, equity_curve)[-180:]
+    valuation_date = performance.get("valuation_as_of_date") or performance.get("latest_data_date") or summary.get("valuation_as_of_date")
+    equity_curve_meta = {
+        **(dashboard_curve_meta if isinstance(dashboard_curve_meta, dict) else {}),
+        **build_equity_curve_meta(equity_curve, original_curve, backfilled_curve, valuation_date),
+    }
     if not trade_pnl:
         trade_pnl = read_csv_rows(REPORT_DIR / "paper_trade_pnl.csv")[-120:]
     if not trade_review:
@@ -365,6 +481,15 @@ def data_health_snapshot() -> dict[str, Any]:
     health = data.get("health_summary", {}) if isinstance(data, dict) else {}
     coverage_md = tail_text(REPORT_DIR / "latest_data_coverage.md", 80)
     health_md = tail_text(REPORT_DIR / "latest_data_health.md", 80)
+    expected_date = str(update.get("requested_end") or update.get("latest_local_date") or data.get("latest_data_date") or "")
+    inventory_rows = etf_inventory_snapshot()
+    dated_inventory = []
+    for row in inventory_rows:
+        item = dict(row)
+        price_date = str(item.get("price_date") or "")
+        item["update_status"] = "up_to_date" if expected_date and price_date >= expected_date else "lagging"
+        dated_inventory.append(item)
+    current_count = sum(1 for row in dated_inventory if row.get("update_status") == "up_to_date")
     return {
         "etf_file_count": update.get("universe_size") or health.get("etf_file_count"),
         "latest_data_date": update.get("latest_local_date") or data.get("latest_data_date"),
@@ -385,6 +510,19 @@ def data_health_snapshot() -> dict[str, Any]:
         "coverage_tail": coverage_md,
         "health_tail": health_md,
         "baostock_api_calls": update.get("baostock_api_calls", 0),
+        "actual_api_calls": update.get("actual_api_calls", update.get("baostock_api_calls", 0)),
+        "processed_symbols": update.get("processed_symbols", 0),
+        "up_to_date_count": update.get("up_to_date_count", 0),
+        "requested_end": update.get("requested_end"),
+        "generated_at": update.get("generated_at") or data.get("generated_at"),
+        "inventory_summary": {
+            "expected_price_date": expected_date or None,
+            "total_count": len(dated_inventory),
+            "up_to_date_count": current_count,
+            "lagging_count": max(0, len(dated_inventory) - current_count),
+            "price_unit": "元",
+        },
+        "etf_inventory": dated_inventory,
         "universe_quality_review": data.get("universe_quality_review", {}) if isinstance(data, dict) else {},
         "phase4c_data": data.get("phase4c_data", {}) if isinstance(data, dict) else {},
         "phase4c_tushare_staging": data.get("phase4c_tushare_staging", {}) if isinstance(data, dict) else {},
@@ -423,6 +561,9 @@ def research_snapshot() -> dict[str, Any]:
         "research_quality_review": quality,
         "execution_layer_integration": integration,
         "market_state": data.get("market_state", {}) if isinstance(data, dict) else {},
+        "market_regime_audit": data.get("market_regime_audit", {}) if isinstance(data, dict) else {},
+        "market_regime_stabilization": data.get("market_regime_stabilization", {}) if isinstance(data, dict) else {},
+        "style_regime_fit": data.get("style_regime_fit", {}) if isinstance(data, dict) else {},
         "portfolio_exposure": data.get("portfolio_exposure", {}) if isinstance(data, dict) else {},
         "classification_summary": data.get("classification_summary", {}) if isinstance(data, dict) else {},
         "universe_quality_review": data.get("universe_quality_review", {}) if isinstance(data, dict) else {},
@@ -439,6 +580,12 @@ def research_snapshot() -> dict[str, Any]:
         "backtest_diagnostics": data.get("backtest_diagnostics", {}) if isinstance(data, dict) else {},
         "ranking_signal_research": data.get("ranking_signal_research", {}) if isinstance(data, dict) else {},
         "ranking_model_v2_backtest": data.get("ranking_model_v2_backtest", {}) if isinstance(data, dict) else {},
+        "etf_risk_profile": data.get("etf_risk_profile", {}) if isinstance(data, dict) else {},
+        "etf_risk_profile_summary": data.get("etf_risk_profile_summary", {}) if isinstance(data, dict) else {},
+        "portfolio_risk_profile": data.get("portfolio_risk_profile", {}) if isinstance(data, dict) else {},
+        "buy_ranking_risk_profile": data.get("buy_ranking_risk_profile", {}) if isinstance(data, dict) else {},
+        "risk_profile_distribution": data.get("risk_profile_distribution", {}) if isinstance(data, dict) else {},
+        "style_profile_distribution": data.get("style_profile_distribution", {}) if isinstance(data, dict) else {},
         "trade_review": data.get("trade_review", {}) if isinstance(data, dict) else {},
         "report_summaries": research_report_summaries(),
         "research_only": True,
@@ -497,6 +644,56 @@ def research_report_summaries() -> dict[str, Any]:
             REPORT_DIR / "tushare_baostock_compare.md",
             "Tushare 与 BaoStock 对比",
             "检查两个数据源口径差异。",
+        ),
+        "regime_layer_phase2_market_audit": (
+            REPORT_DIR / "regime_layer_phase2_market_audit.md",
+            "市场状态 Phase 2 审计",
+            "历史回放现有 market_regime，只用于研究判断。",
+        ),
+        "market_regime_audit_decision": (
+            REPORT_DIR / "market_regime_audit_decision.md",
+            "市场状态审计决策",
+            "判断是否可以进入下一阶段 Regime Fit 研究。",
+        ),
+        "market_regime_replay": (
+            REPORT_DIR / "market_regime_replay.md",
+            "市场状态历史回放",
+            "逐交易日 point-in-time 回放，不改执行层。",
+        ),
+        "regime_style_forward_return": (
+            REPORT_DIR / "regime_style_forward_return.md",
+            "Style x Regime 表现",
+            "按 ETF style 分层观察不同市场状态下的后续收益。",
+        ),
+        "regime_layer_phase2_5_stabilization": (
+            REPORT_DIR / "regime_layer_phase2_5_stabilization.md",
+            "市场状态稳定化研究",
+            "比较 raw 与多个稳定化候选，只作 shadow 研究。",
+        ),
+        "regime_stabilization_candidate_decision": (
+            REPORT_DIR / "regime_stabilization_candidate_decision.md",
+            "稳定化候选决策",
+            "选择 shadow-only 稳定候选，不接执行层。",
+        ),
+        "regime_stabilization_detection_lag": (
+            REPORT_DIR / "regime_stabilization_detection_lag.md",
+            "稳定化检测延迟",
+            "检查稳定化是否以过大滞后为代价。",
+        ),
+        "regime_layer_phase3_style_fit": (
+            REPORT_DIR / "regime_layer_phase3_style_fit.md",
+            "风格与市场状态适配研究",
+            "Style-Regime Fit 研究报告，只做 shadow 观察。",
+        ),
+        "style_regime_fit_summary": (
+            REPORT_DIR / "style_regime_fit_summary.md",
+            "风格适配矩阵",
+            "按风格与稳定市场状态展示 fit evidence。",
+        ),
+        "current_buy_top10_style_regime_fit": (
+            REPORT_DIR / "current_buy_top10_style_regime_fit.md",
+            "当前 BUY Top10 风格适配",
+            "不修改 BUY ranking，只展示 fit 标签。",
         ),
     }
     result: dict[str, Any] = {}
