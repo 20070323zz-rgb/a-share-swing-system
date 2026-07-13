@@ -4,8 +4,8 @@
 
 - Project: A-Share Swing System
 - Repository root: `<project_root>`
-- State snapshot date: 2026-07-12
-- State snapshot source: Paper Execution Safety Phase 1 outputs, Tushare audit artifacts, and existing project context evidence.
+- State snapshot date: 2026-07-13
+- State snapshot source: Tushare Minimal Staging Proof, PIT contract artifacts, and existing project context evidence.
 
 This file is a human and Codex shared current project fact snapshot. It is not a history log, README replacement, or phase report.
 
@@ -83,8 +83,8 @@ PR #1 MERGED
 Post-Merge Validation PASS
 Main Branch STABLE
 Main Branch Merge COMPLETE
-Tushare Minimal Staging Proof & PIT Contract NEXT_CANDIDATE
-Tushare Staging / PIT NOT_STARTED
+Tushare Minimal Staging Proof & PIT Contract COMPLETE
+Tushare Staging / PIT COMPLETE_WITH_LIMITATIONS
 Style Framework 2.0 Status FEASIBILITY_STUDY_COMPLETE
 Exposure Framework Development RESEARCH_ONLY_PROTOTYPE_COMPLETE
 Preview Research NOT_STARTED
@@ -131,6 +131,7 @@ Style Fit has not changed BUY ranking or raw ranking scores.
 | Exposure Framework Phase F | Exposure Governance & Portfolio Role Definition | COMPLETE |
 | Project Infrastructure | Batch Standardization V1 | COMPLETE |
 | Paper Execution Safety Phase 1 | Freshness Gate & Non-Destructive Audit | COMPLETE |
+| Data Foundation Validation | Tushare Minimal Staging Proof & PIT Contract | COMPLETE |
 
 ## 5. Current Research Architecture
 
@@ -923,7 +924,28 @@ The separately authorized Tushare 5000 Data Foundation Audit is `COMPLETE` after
 
 Reports Governance Phase A remains `NOT_STARTED`: the taxonomy feasibility study exists, but the catalog generator, catalog outputs, dependency summary, and Path Registry design required by Phase A do not exist. Report migration remains `BLOCKED`.
 
-PR #1 final hygiene cleanup is `COMPLETE`. PR #1 was merged into `main` with merge commit `40a6017402456d62609169325cb5f1d31a1a140b` at 2026-07-13 09:49:26 CST. Post-merge validation is `PASS` and `main` is `STABLE`. Formal execution logic, protected paper ledgers, and ETF business data were unchanged by the merge/validation batch. The new Tushare Minimal Staging Proof & PIT Contract remains `NEXT_CANDIDATE` and was not started.
+PR #1 final hygiene cleanup is `COMPLETE`. PR #1 was merged into `main` with merge commit `40a6017402456d62609169325cb5f1d31a1a140b` at 2026-07-13 09:49:26 CST. Post-merge validation is `PASS` and `main` is `STABLE`. Formal execution logic, protected paper ledgers, and ETF business data were unchanged by the merge/validation batch.
+
+## 8M. Tushare Minimal Staging Proof & PIT Contract
+
+The separately authorized proof completed run `real-20260713-minimal-proof-v3` with 17 real API requests under the configured limit of 30. `index_basic`, `index_daily`, `index_weight`, `index_classify`, `index_member_all`, `daily_basic`, `fund_portfolio`, and `shibor` all returned accessible real data and passed the configured schema checks.
+
+```text
+Tushare Minimal Staging Proof = COMPLETE
+Tushare PIT Contract = COMPLETE_WITH_LIMITATIONS
+Accessible interfaces = 8 / 8
+Real API requests = 17 / 30
+Data Foundation Upgrade = NOT_STARTED
+Unified Data Upgrade = NOT_STARTED
+Exposure Phase 2 = NOT_STARTED
+Regime 2.0 = NOT_STARTED
+Exit Logic = NOT_STARTED
+Next Decision = MAIN_REVIEW_REQUIRED
+```
+
+PIT handling is intentionally asymmetric: `fund_portfolio` is `PIT_RESOLVED` through retained `ann_date` versions; `daily_basic` and `index_daily` use a conservative next-trading-day contract when the next date exists; `shibor` is conservative; `index_weight` and `index_member_all` remain partial; current taxonomy and index metadata remain unresolved for historical publication time. The latest 2026-07-10 daily rows remain partial until a later local trading-calendar date is present.
+
+All real payloads and row-level proof artifacts remain isolated under Git-ignored run directories. `data/etf_daily/` remains the ETF price Single Source of Truth. No staged response was promoted into Replay, Exposure Phase 2, Strategy, Ranking, Preview, Shadow, Formal, or paper execution.
 
 ## 9. Current Main Bottlenecks
 
@@ -991,10 +1013,11 @@ PR #1 = MERGED
 Post-Merge Validation = PASS
 Main Branch = STABLE
 Main Branch Merge = COMPLETE
-Tushare Minimal Staging Proof & PIT Contract = NEXT_CANDIDATE
-Tushare Staging / PIT = NOT_STARTED
+Tushare Minimal Staging Proof & PIT Contract = COMPLETE
+Tushare Staging / PIT = COMPLETE_WITH_LIMITATIONS
+Next Data Foundation Decision = MAIN_REVIEW_REQUIRED
 ```
 
 Do not create adjusted preview. Current `ready_for_preview=false`.
 
-Context updated at: 2026-07-13 09:51:50 CST
+Context updated at: 2026-07-13 10:25:02 CST

@@ -1,13 +1,13 @@
 # Project Context Validation Latest
 
 - validation_status: VALID_WITH_WARNINGS
-- validated_at: 2026-07-12 17:44:07
+- validated_at: 2026-07-13 10:28:53
 - repository_root: `<project_root>`
 - blocking_conflict_found: False
 
 ## 当前恢复点
 
-- Main Phase: Paper Execution Safety Phase 1 - Freshness Gate & Non-Destructive Audit
+- Main Phase: Tushare Minimal Staging Proof & PIT Contract
 - Current Batch: None
 - Resume From: None
 - Selected Shadow Regime Candidate: ASYMMETRIC_CONFIRM

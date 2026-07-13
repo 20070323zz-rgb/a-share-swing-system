@@ -1,6 +1,6 @@
 # A-share Swing System Project Index
 
-生成时间：2026-07-13 09:51:50
+生成时间：2026-07-13 10:25:02
 
 ## 当前阶段
 
@@ -65,8 +65,9 @@ PR #1: MERGED
 Post-Merge Validation: PASS
 Main Branch: STABLE
 Main Branch Merge: COMPLETE
-Tushare Minimal Staging Proof & PIT Contract: NEXT_CANDIDATE
-Tushare Staging / PIT: NOT_STARTED
+Tushare Minimal Staging Proof & PIT Contract: COMPLETE
+Tushare Staging / PIT: COMPLETE_WITH_LIMITATIONS
+Tushare Formal Staging Architecture: MAIN_REVIEW_REQUIRED
 Paper Execution Freshness Gate: ACTIVE
 Guarded Paper Execution Entry: ACTIVE
 Stale Data Fallback: BLOCKED
@@ -186,6 +187,13 @@ Formal Execution: BLOCKED
 - 2026-07-10 Stale Trade Audit：`reports/paper_execution_stale_trade_audit_2026-07-10.md`
 - Tushare 5000 Capability Gap Audit：`reports/tushare_capability_gap_audit.md`
 - Tushare Priority Matrix：`reports/tushare_priority_matrix.csv`
+- Tushare Minimal Staging Proof：`reports/tushare_minimal_staging_proof.md`
+- Tushare Interface Probe Matrix：`reports/tushare_interface_probe_matrix.csv`
+- Tushare PIT Contract Matrix：`reports/tushare_pit_contract_matrix.csv`
+- Tushare Gap Reassessment：`reports/tushare_gap_reassessment.md`
+- Tushare PIT Contract：`docs/tushare_pit_contract.md`
+- Tushare Minimal Proof Config：`configs/tushare_minimal_proof.yaml`
+- Tushare Minimal Proof Runner：`scripts/run_tushare_minimal_proof.py`
 
 这些入口用于新 Codex thread 恢复项目状态。
 
