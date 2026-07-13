@@ -1,6 +1,6 @@
 # A-share Swing System Project Index
 
-生成时间：2026-07-13 10:25:02
+生成时间：2026-07-13 17:03:10
 
 ## 当前阶段
 
@@ -67,7 +67,13 @@ Main Branch: STABLE
 Main Branch Merge: COMPLETE
 Tushare Minimal Staging Proof & PIT Contract: COMPLETE
 Tushare Staging / PIT: COMPLETE_WITH_LIMITATIONS
-Tushare Formal Staging Architecture: MAIN_REVIEW_REQUIRED
+Tushare Evidence Isolation: COMPLETE
+PR #2: DRAFT_AWAITING_RE_QC
+Tushare Formal Staging Architecture: NOT_STARTED
+Tushare Primary Upstream Migration: APPROVED_FOR_FUTURE_ENGINEERING / NOT_STARTED
+ETF Daily Availability Timing Audit: NOT_STARTED
+Data Foundation Upgrade: NOT_STARTED
+Data Promotion: BLOCKED
 Paper Execution Freshness Gate: ACTIVE
 Guarded Paper Execution Entry: ACTIVE
 Stale Data Fallback: BLOCKED
@@ -190,6 +196,9 @@ Formal Execution: BLOCKED
 - Tushare Minimal Staging Proof：`reports/tushare_minimal_staging_proof.md`
 - Tushare Interface Probe Matrix：`reports/tushare_interface_probe_matrix.csv`
 - Tushare PIT Contract Matrix：`reports/tushare_pit_contract_matrix.csv`
+- Tushare Index Weight Reduction Evidence：`reports/tushare_index_weight_reduction_evidence.csv`
+- Tushare Real Run Attestations：`reports/tushare_real_run_attestations.md`
+- Tushare Evidence Remediation：`reports/tushare_proof_evidence_remediation.md`
 - Tushare Gap Reassessment：`reports/tushare_gap_reassessment.md`
 - Tushare PIT Contract：`docs/tushare_pit_contract.md`
 - Tushare Minimal Proof Config：`configs/tushare_minimal_proof.yaml`
