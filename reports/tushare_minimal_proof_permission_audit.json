@@ -1,0 +1,57 @@
+{
+  "api_request_count": 17,
+  "api_request_limit": 30,
+  "aggregate_budget_status": "AGGREGATE_BUDGET_WARNING",
+  "batch_real_api_request_count": 51,
+  "completed_real_run_ids": [
+    "real-20260713-minimal-proof",
+    "real-20260713-minimal-proof-v2",
+    "real-20260713-minimal-proof-v3"
+  ],
+  "interfaces": [
+    {
+      "access_verdict": "ACCESS_PASS",
+      "interface": "index_basic",
+      "permission_status": "ACCESS_PASS"
+    },
+    {
+      "access_verdict": "ACCESS_PASS",
+      "interface": "index_daily",
+      "permission_status": "ACCESS_PASS"
+    },
+    {
+      "access_verdict": "ACCESS_PASS",
+      "interface": "index_weight",
+      "permission_status": "ACCESS_PASS"
+    },
+    {
+      "access_verdict": "ACCESS_PASS",
+      "interface": "index_classify",
+      "permission_status": "ACCESS_PASS"
+    },
+    {
+      "access_verdict": "ACCESS_PASS",
+      "interface": "index_member_all",
+      "permission_status": "ACCESS_PASS"
+    },
+    {
+      "access_verdict": "ACCESS_PASS",
+      "interface": "daily_basic",
+      "permission_status": "ACCESS_PASS"
+    },
+    {
+      "access_verdict": "ACCESS_PASS",
+      "interface": "fund_portfolio",
+      "permission_status": "ACCESS_PASS"
+    },
+    {
+      "access_verdict": "ACCESS_PASS",
+      "interface": "shibor",
+      "permission_status": "ACCESS_PASS"
+    }
+  ],
+  "request_parameters_contain_token": false,
+  "run_id": "real-20260713-minimal-proof-v3",
+  "schema_version": 1,
+  "token_value_recorded": false
+}

@@ -1,0 +1,77 @@
+{
+  "api_request_count": 17,
+  "api_request_limit": 30,
+  "commit_safe_outputs": [
+    "reports/tushare_minimal_staging_proof.md",
+    "reports/tushare_interface_probe_matrix.csv",
+    "reports/tushare_pit_contract_matrix.csv",
+    "reports/tushare_gap_reassessment.md",
+    "reports/tushare_minimal_proof_run_manifest.json",
+    "reports/tushare_minimal_proof_permission_audit.json"
+  ],
+  "formal_integration": false,
+  "interface_summary_hash": "0514b199aa385739eee32c95dc42c5df3c3b9eaaa6806e115b825b9addebd801",
+  "legacy_sample_status": [
+    {
+      "path": "data/staging/tushare/tushare_etf_daily_sample.csv",
+      "status": "LEGACY_UNVERIFIED_SAMPLE"
+    }
+  ],
+  "local_trade_date_max": "2026-07-10",
+  "local_trade_date_min": "2022-01-04",
+  "pit_summary_hash": "06d585fed0a4de76cc0fa1e74f0e23002a42bac9f3c74d3c44bcf7d7dac20d49",
+  "proof_name": "tushare_minimal_staging_proof",
+  "research_only": true,
+  "run_id": "real-20260713-minimal-proof-v3",
+  "run_scoped_staging": "data/staging/tushare_minimal_proof/real-20260713-minimal-proof-v3",
+  "run_started_at": "2026-07-13T10:24:30+08:00",
+  "schema_version": 1,
+  "selected_constituents": [
+    "000020.SZ",
+    "000021.SZ",
+    "000045.SZ"
+  ],
+  "selected_etfs": [
+    {
+      "benchmark_family": "core_market",
+      "etf_code": "510300",
+      "in_v2_registry": false,
+      "selection_source": "market_exposure_vector.BENCHMARK_BASKET",
+      "ts_code": "510300.SH"
+    },
+    {
+      "benchmark_family": "growth",
+      "etf_code": "159915",
+      "in_v2_registry": false,
+      "selection_source": "market_exposure_vector.BENCHMARK_BASKET",
+      "ts_code": "159915.SZ"
+    },
+    {
+      "benchmark_family": "technology",
+      "etf_code": "588000",
+      "in_v2_registry": false,
+      "selection_source": "market_exposure_vector.BENCHMARK_BASKET",
+      "ts_code": "588000.SH"
+    }
+  ],
+  "selected_indices": [
+    {
+      "benchmark_family": "core_market",
+      "name": "沪深300",
+      "ts_code": "000300.SH"
+    },
+    {
+      "benchmark_family": "growth",
+      "name": "创业板指",
+      "ts_code": "399006.SZ"
+    },
+    {
+      "benchmark_family": "technology",
+      "name": "科创50",
+      "ts_code": "000688.SH"
+    }
+  ],
+  "status": "COMPLETE",
+  "token_configured": true,
+  "unified_database_write": false
+}
