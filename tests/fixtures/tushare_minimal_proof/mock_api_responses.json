@@ -1,0 +1,38 @@
+{
+  "index_basic": {
+    "fields": ["ts_code", "name", "fullname", "market", "base_date", "list_date"],
+    "items": [
+      ["000300.SH", "沪深300", "沪深300指数", "SSE", "20041231", "20050408"],
+      ["399006.SZ", "创业板指", "创业板指数", "SZSE", "20100531", "20100601"],
+      ["000688.SH", "科创50", "上证科创板50成份指数", "SSE", "20191231", "20200722"]
+    ]
+  },
+  "index_daily": {
+    "fields": ["ts_code", "trade_date", "close", "open", "high", "low", "pre_close", "change", "pct_chg", "vol", "amount"],
+    "items": [["000300.SH", "20260710", 4800.0, 4780.0, 4820.0, 4770.0, 4775.0, 25.0, 0.52, 100000.0, 250000000.0]]
+  },
+  "index_weight": {
+    "fields": ["index_code", "con_code", "trade_date", "weight"],
+    "items": [["000300.SH", "600000.SH", "20260701", 50.0], ["000300.SH", "600519.SH", "20260701", 50.0]]
+  },
+  "index_classify": {
+    "fields": ["index_code", "industry_name", "level", "industry_code", "is_pub", "parent_code", "src"],
+    "items": [["801080.SI", "电子", "L1", "801080", "1", "", "SW2021"]]
+  },
+  "index_member_all": {
+    "fields": ["l1_code", "l1_name", "l2_code", "l2_name", "l3_code", "l3_name", "ts_code", "name", "in_date", "out_date", "is_new"],
+    "items": [["801080.SI", "电子", "", "", "", "", "600000.SH", "样本A", "20210101", "", "Y"], ["801080.SI", "电子", "", "", "", "", "600519.SH", "样本B", "20210101", "", "Y"]]
+  },
+  "daily_basic": {
+    "fields": ["ts_code", "trade_date", "turnover_rate", "turnover_rate_f", "volume_ratio", "pe", "pe_ttm", "pb", "ps", "ps_ttm", "dv_ratio", "dv_ttm", "total_share", "float_share", "free_share", "total_mv", "circ_mv"],
+    "items": [["600000.SH", "20260710", 1.2, 1.5, 1.0, 8.0, 8.2, 0.7, 1.0, 1.1, 4.0, 4.1, 1000000.0, 800000.0, 700000.0, 12000000.0, 9600000.0]]
+  },
+  "fund_portfolio": {
+    "fields": ["ts_code", "ann_date", "end_date", "symbol", "mkv", "amount", "stk_mkv_ratio", "stk_float_ratio"],
+    "items": [["510300.SH", "20260422", "20260331", "600000", 1000000.0, 100000.0, 2.0, 0.1], ["510300.SH", "20260430", "20260331", "600000", 1100000.0, 110000.0, 2.1, 0.1]]
+  },
+  "shibor": {
+    "fields": ["date", "on", "1w", "2w", "1m", "3m", "6m", "9m", "1y"],
+    "items": [["20260710", 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1]]
+  }
+}

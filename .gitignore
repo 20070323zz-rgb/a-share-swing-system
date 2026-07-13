@@ -42,3 +42,6 @@ raw/*
 !raw/.gitkeep
 data/raw/*
 !data/raw/.gitkeep
+
+# Run-scoped Tushare proof payloads are local evidence, never committed.
+data/staging/tushare_minimal_proof/
