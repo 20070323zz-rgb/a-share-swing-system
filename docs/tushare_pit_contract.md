@@ -3,6 +3,9 @@
 ## Status
 
 - Scope: minimal, research-only staging proof
+- Evidence Isolation: `COMPLETE`
+- PIT Contract: `COMPLETE_WITH_LIMITATIONS`
+- Formal Staging Architecture: `NOT_STARTED`
 - Unified ETF price database: `data/etf_daily/` remains authoritative
 - Historical replay admission: blocked unless this contract explicitly permits it
 - Schema version: `1`
@@ -11,7 +14,7 @@
 
 Every normalized row must have a separate PIT record containing:
 
-`source`, `source_interface`, `entity_id`, `observation_date`, `period_end`, `announcement_date`, `source_update_window`, `retrieved_at`, `available_at`, `available_date`, `pit_basis`, `pit_confidence`, `pit_status`, `query_hash`, `raw_payload_hash`, and `schema_version`.
+`source`, `evidence_mode`, `source_interface`, `entity_id`, `observation_date`, `period_end`, `announcement_date`, `source_update_window`, `official_release_time`, `project_conservative_available_time`, `conservative_lag_minutes`, `retrieved_at`, `available_at`, `available_date`, `pit_basis`, `pit_confidence`, `pit_status`, `query_hash`, `raw_payload_hash`, and `schema_version`.
 
 Business dates and historical availability dates are different concepts. A trade date, effective date, report period, or constituent entry date does not prove that the value was available to the project on that date.
 
@@ -53,13 +56,16 @@ Current index metadata is `PIT_UNRESOLVED` unless historical metadata versions a
 
 ### `shibor`
 
-The date-level value uses the documented daily update pattern and a conservative noon Asia/Shanghai availability timestamp. It is `PIT_CONSERVATIVE`, not intraday tick evidence. Holiday gaps remain valid missing dates and must not be forward-filled across unknown publication times.
+The official release time is `11:00 Asia/Shanghai`. The project deliberately applies a 60-minute lag and uses `12:00 Asia/Shanghai` as its conservative available time, with `pit_basis = OFFICIAL_11AM_PLUS_PROJECT_LAG`. The official time, project time, and actual `retrieved_at` are separate fields. This is `PIT_CONSERVATIVE`, not intraday tick evidence. Holiday gaps remain valid missing dates and must not be forward-filled across unknown publication times. Shibor is `EXPLANATION_ONLY / INTEREST_RATE_CONTEXT`; it is not ETF duration exposure.
 
 ## Storage And Audit Rules
 
-- Real responses, normalized samples, row-level PIT records, and validation details live under a unique `data/staging/tushare_minimal_proof/<run_id>/` directory.
+- New real responses, normalized samples, row-level PIT records, validation details, manifests, and report evidence live under `data/staging/tushare_minimal_proof/real/<real-run_id>/`.
+- Mock fixtures and every derived mock artifact live under `data/staging/tushare_minimal_proof/mock/<mock-run_id>/`; mock output cannot overwrite global real reports.
+- The three historical real directories retain their legacy flat paths and are not moved, overwritten, or renamed.
 - Run directories are immutable by convention and Git-ignored. A repeated run creates a new ID.
 - Commit-safe reports contain hashes, counts, schemas, permission verdicts, and aggregate statistics, not authentication material or bulk vendor payloads.
 - Query hashes exclude credentials. Raw hashes cover only the response bytes.
 - The legacy sample under `data/staging/tushare/` remains `LEGACY_UNVERIFIED_SAMPLE`.
 - No proof output is promoted into `data/etf_daily/`, Replay, Exposure Phase 2, Strategy, Ranking, Preview, or execution by this contract.
+- Completing this PIT contract does not start Formal Staging Architecture, Primary Source Migration, ETF Daily Availability Timing Audit, or Data Foundation Upgrade. Data Promotion remains `BLOCKED`.

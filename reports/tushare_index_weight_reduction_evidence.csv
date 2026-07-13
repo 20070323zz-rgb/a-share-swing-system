@@ -1,0 +1,4 @@
+evidence_mode,run_id,index_code,query_start_date,query_end_date,visible_trade_dates,selected_trade_dates,excluded_trade_dates,raw_count,proof_count,excluded_count,reduction_reason,reduction_policy_version
+real,real-20260713-minimal-proof-v3,000300.SH,2026-04-01,2026-07-10,2026-04-30|2026-05-29|2026-06-30,2026-05-29|2026-06-30,2026-04-30,900,600,300,PROOF_SAMPLE_DATE_WINDOW_REDUCTION,PROOF_DATE_WINDOW_V1
+real,real-20260713-minimal-proof-v3,399006.SZ,2026-04-01,2026-07-10,2026-04-30|2026-05-29|2026-06-30,2026-05-29|2026-06-30,2026-04-30,300,200,100,PROOF_SAMPLE_DATE_WINDOW_REDUCTION,PROOF_DATE_WINDOW_V1
+real,real-20260713-minimal-proof-v3,000688.SH,2026-04-01,2026-07-10,2026-04-30|2026-05-29|2026-06-30,2026-05-29|2026-06-30,2026-04-30,150,100,50,PROOF_SAMPLE_DATE_WINDOW_REDUCTION,PROOF_DATE_WINDOW_V1

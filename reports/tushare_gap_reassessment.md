@@ -1,6 +1,7 @@
 # Tushare Gap Reassessment
 
-- Run status: `COMPLETE`
+- Evidence mode: `real`
+- Run status: `REAL_PROOF_COMPLETE`
 - Proven accessible: `index_basic, index_daily, index_weight, index_classify, index_member_all, daily_basic, fund_portfolio, shibor`
 - Permission/dependency/validation gaps: `none`
 
@@ -25,4 +26,4 @@ Top 3 for Main reassessment are Concentration, Dividend, and Size, conditional o
 
 ## Next Gate
 
-Formal staging architecture remains a separate Main approval. It requires permission-gap resolution where relevant, retained run manifests, schema-versioned ingestion, and acceptance tests against the PIT contract.
+Formal Staging Architecture remains `NOT_STARTED`. Tushare Primary Upstream Migration, ETF Daily Availability Timing Audit, Data Foundation Upgrade, and Data Promotion have not been activated; Data Promotion remains `BLOCKED`. A future separately authorized engineering batch would still require schema-versioned ingestion and acceptance tests against the PIT contract.

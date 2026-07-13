@@ -1,15 +1,65 @@
 {
-  "api_request_count": 17,
-  "api_request_limit": 30,
+  "batch_aggregate_real_call_count": 51,
+  "budget_status": "AGGREGATE_BUDGET_WARNING",
   "commit_safe_outputs": [
     "reports/tushare_minimal_staging_proof.md",
     "reports/tushare_interface_probe_matrix.csv",
     "reports/tushare_pit_contract_matrix.csv",
+    "reports/tushare_index_weight_reduction_evidence.csv",
     "reports/tushare_gap_reassessment.md",
     "reports/tushare_minimal_proof_run_manifest.json",
-    "reports/tushare_minimal_proof_permission_audit.json"
+    "reports/tushare_minimal_proof_permission_audit.json",
+    "reports/tushare_real_run_attestations.csv",
+    "reports/tushare_real_run_attestations.md",
+    "reports/tushare_proof_evidence_remediation.md"
   ],
+  "configured_real_budget": 30,
+  "evidence_mode": "real",
   "formal_integration": false,
+  "index_weight_reduction_summary": [
+    {
+      "evidence_mode": "real",
+      "excluded_count": 300,
+      "excluded_trade_dates": ["2026-04-30"],
+      "proof_count": 600,
+      "query_end_date": "2026-07-10",
+      "query_start_date": "2026-04-01",
+      "raw_count": 900,
+      "reduction_policy_version": "PROOF_DATE_WINDOW_V1",
+      "reduction_reason": "PROOF_SAMPLE_DATE_WINDOW_REDUCTION",
+      "sample_scope": "000300.SH",
+      "selected_trade_dates": ["2026-05-29", "2026-06-30"],
+      "visible_trade_dates": ["2026-04-30", "2026-05-29", "2026-06-30"]
+    },
+    {
+      "evidence_mode": "real",
+      "excluded_count": 100,
+      "excluded_trade_dates": ["2026-04-30"],
+      "proof_count": 200,
+      "query_end_date": "2026-07-10",
+      "query_start_date": "2026-04-01",
+      "raw_count": 300,
+      "reduction_policy_version": "PROOF_DATE_WINDOW_V1",
+      "reduction_reason": "PROOF_SAMPLE_DATE_WINDOW_REDUCTION",
+      "sample_scope": "399006.SZ",
+      "selected_trade_dates": ["2026-05-29", "2026-06-30"],
+      "visible_trade_dates": ["2026-04-30", "2026-05-29", "2026-06-30"]
+    },
+    {
+      "evidence_mode": "real",
+      "excluded_count": 50,
+      "excluded_trade_dates": ["2026-04-30"],
+      "proof_count": 100,
+      "query_end_date": "2026-07-10",
+      "query_start_date": "2026-04-01",
+      "raw_count": 150,
+      "reduction_policy_version": "PROOF_DATE_WINDOW_V1",
+      "reduction_reason": "PROOF_SAMPLE_DATE_WINDOW_REDUCTION",
+      "sample_scope": "000688.SH",
+      "selected_trade_dates": ["2026-05-29", "2026-06-30"],
+      "visible_trade_dates": ["2026-04-30", "2026-05-29", "2026-06-30"]
+    }
+  ],
   "interface_summary_hash": "0514b199aa385739eee32c95dc42c5df3c3b9eaaa6806e115b825b9addebd801",
   "legacy_sample_status": [
     {
@@ -17,20 +67,21 @@
       "status": "LEGACY_UNVERIFIED_SAMPLE"
     }
   ],
+  "legacy_storage_layout": true,
   "local_trade_date_max": "2026-07-10",
   "local_trade_date_min": "2022-01-04",
+  "mock_call_count": 0,
+  "mode_scoped_outputs": [],
+  "per_run_real_call_count": 17,
   "pit_summary_hash": "06d585fed0a4de76cc0fa1e74f0e23002a42bac9f3c74d3c44bcf7d7dac20d49",
   "proof_name": "tushare_minimal_staging_proof",
+  "real_api_call_count": 17,
   "research_only": true,
   "run_id": "real-20260713-minimal-proof-v3",
   "run_scoped_staging": "data/staging/tushare_minimal_proof/real-20260713-minimal-proof-v3",
   "run_started_at": "2026-07-13T10:24:30+08:00",
-  "schema_version": 1,
-  "selected_constituents": [
-    "000020.SZ",
-    "000021.SZ",
-    "000045.SZ"
-  ],
+  "schema_version": 2,
+  "selected_constituents": ["000020.SZ", "000021.SZ", "000045.SZ"],
   "selected_etfs": [
     {
       "benchmark_family": "core_market",
@@ -55,23 +106,19 @@
     }
   ],
   "selected_indices": [
-    {
-      "benchmark_family": "core_market",
-      "name": "沪深300",
-      "ts_code": "000300.SH"
-    },
-    {
-      "benchmark_family": "growth",
-      "name": "创业板指",
-      "ts_code": "399006.SZ"
-    },
-    {
-      "benchmark_family": "technology",
-      "name": "科创50",
-      "ts_code": "000688.SH"
-    }
+    {"benchmark_family": "core_market", "name": "沪深300", "ts_code": "000300.SH"},
+    {"benchmark_family": "growth", "name": "创业板指", "ts_code": "399006.SZ"},
+    {"benchmark_family": "technology", "name": "科创50", "ts_code": "000688.SH"}
   ],
-  "status": "COMPLETE",
+  "state_boundaries": {
+    "data_foundation_upgrade": "NOT_STARTED",
+    "data_promotion": "BLOCKED",
+    "etf_daily_availability_timing_audit": "NOT_STARTED",
+    "formal_staging_architecture": "NOT_STARTED",
+    "primary_source_migration": "NOT_STARTED"
+  },
+  "status": "REAL_PROOF_COMPLETE",
   "token_configured": true,
+  "total_call_count": 17,
   "unified_database_write": false
 }

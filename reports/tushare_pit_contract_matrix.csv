@@ -1,9 +1,9 @@
-source,source_interface,pit_statuses,pit_resolved_rows,pit_conservative_rows,pit_partial_rows,pit_unresolved_rows,reject_rows,default_contract,historical_backtest_policy
-tushare,index_basic,['PIT_UNRESOLVED'],0,0,0,693,0,PIT_UNRESOLVED,REJECT_OR_REVIEW
-tushare,index_daily,"['PIT_CONSERVATIVE', 'PIT_PARTIAL']",0,3,3,0,0,PIT_CONSERVATIVE,ALLOW_WITH_CONTRACT
-tushare,index_weight,['PIT_PARTIAL'],0,0,900,0,0,PIT_PARTIAL,REJECT_OR_REVIEW
-tushare,index_classify,['PIT_UNRESOLVED'],0,0,0,31,0,PIT_UNRESOLVED,REJECT_OR_REVIEW
-tushare,index_member_all,['PIT_PARTIAL'],0,0,517,0,0,PIT_PARTIAL,REJECT_OR_REVIEW
-tushare,daily_basic,['PIT_PARTIAL'],0,0,3,0,0,PIT_CONSERVATIVE,ALLOW_WITH_CONTRACT
-tushare,fund_portfolio,['PIT_RESOLVED'],538,0,0,0,0,PIT_RESOLVED,ALLOW_WITH_CONTRACT
-tushare,shibor,['PIT_CONSERVATIVE'],0,11,0,0,0,PIT_CONSERVATIVE,ALLOW_WITH_CONTRACT
+evidence_mode,source,source_interface,pit_statuses,pit_resolved_rows,pit_conservative_rows,pit_partial_rows,pit_unresolved_rows,reject_rows,default_contract,historical_backtest_policy
+real,tushare,index_basic,['PIT_UNRESOLVED'],0,0,0,693,0,PIT_UNRESOLVED,REJECT_OR_REVIEW
+real,tushare,index_daily,"['PIT_CONSERVATIVE', 'PIT_PARTIAL']",0,3,3,0,0,PIT_CONSERVATIVE,ALLOW_WITH_CONTRACT
+real,tushare,index_weight,['PIT_PARTIAL'],0,0,900,0,0,PIT_PARTIAL,REJECT_OR_REVIEW
+real,tushare,index_classify,['PIT_UNRESOLVED'],0,0,0,31,0,PIT_UNRESOLVED,REJECT_OR_REVIEW
+real,tushare,index_member_all,['PIT_PARTIAL'],0,0,517,0,0,PIT_PARTIAL,REJECT_OR_REVIEW
+real,tushare,daily_basic,['PIT_PARTIAL'],0,0,3,0,0,PIT_CONSERVATIVE,ALLOW_WITH_CONTRACT
+real,tushare,fund_portfolio,['PIT_RESOLVED'],538,0,0,0,0,PIT_RESOLVED,ALLOW_WITH_CONTRACT
+real,tushare,shibor,['PIT_CONSERVATIVE'],0,11,0,0,0,PIT_CONSERVATIVE,ALLOW_WITH_CONTRACT
