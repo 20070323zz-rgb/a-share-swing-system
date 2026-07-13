@@ -1,5 +1,19 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import {
+  Activity,
+  BarChart3,
+  BookOpenCheck,
+  BriefcaseBusiness,
+  Database,
+  FlaskConical,
+  HomeIcon,
+  Menu,
+  RefreshCw,
+  ShieldCheck,
+  TerminalSquare,
+  X
+} from "lucide-react";
+import {
   getAppEnv,
   getDataHealth,
   getLog,
@@ -14,23 +28,30 @@ import {
 } from "./api.js";
 import DataCenter from "./pages/DataCenter.jsx";
 import Home from "./pages/Home.jsx";
+import Logs from "./pages/Logs.jsx";
 import Portfolio from "./pages/Portfolio.jsx";
 import Research from "./pages/Research.jsx";
 import SettingsSafety from "./pages/SettingsSafety.jsx";
+import Signals from "./pages/Signals.jsx";
 import { appVersion } from "./designTokens.js";
 
 const tabs = [
-  ["home", "首页"],
-  ["portfolio", "模拟仓"],
-  ["research", "模型观察"],
-  ["data", "数据中心"],
-  ["safety", "设置与安全"]
+  { key: "home", label: "总览", hint: "今日研究工作台", icon: HomeIcon },
+  { key: "portfolio", label: "模拟仓", hint: "资产与持仓复盘", icon: BriefcaseBusiness },
+  { key: "signals", label: "信号观察", hint: "排名与影子预览", icon: BarChart3 },
+  { key: "research", label: "研究图谱", hint: "模型、风险与证据", icon: FlaskConical },
+  { key: "data", label: "数据中心", hint: "覆盖、来源与质量", icon: Database },
+  { key: "tasks", label: "任务中心", hint: "自动化与运行记录", icon: TerminalSquare },
+  { key: "safety", label: "设置与安全", hint: "边界与本地环境", icon: ShieldCheck }
 ];
 
 const confirmTasks = new Set(["backfill_etf_data", "backfill_recent_data", "update_daily_data", "refresh_all_reports", "run_daily_close_dryrun"]);
 
 export default function App() {
-  const [tab, setTab] = useState("home");
+  const initialTab = typeof window === "undefined" ? "home" : window.location.hash.replace("#", "");
+  const [tab, setTab] = useState(tabs.some((item) => item.key === initialTab) ? initialTab : "home");
+  const [navOpen, setNavOpen] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
   const [status, setStatus] = useState({});
   const [dataHealth, setDataHealth] = useState({});
   const [portfolio, setPortfolio] = useState({});
@@ -86,6 +107,24 @@ export default function App() {
     }
   }, [logName]);
 
+  const navigate = useCallback((nextTab) => {
+    setTab(nextTab);
+    setNavOpen(false);
+    if (typeof window !== "undefined") {
+      window.history.replaceState(null, "", `#${nextTab}`);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, []);
+
+  const refreshAll = useCallback(async () => {
+    setRefreshing(true);
+    try {
+      await Promise.all([refreshCore(), refreshLog()]);
+    } finally {
+      setRefreshing(false);
+    }
+  }, [refreshCore, refreshLog]);
+
   useEffect(() => {
     refreshCore();
     refreshAppEnv();
@@ -134,68 +173,98 @@ export default function App() {
     setLogName,
     logData,
     onRun: handleRun,
-    onNavigate: setTab,
+    onNavigate: navigate,
     refreshAppEnv
-  }), [status, dataHealth, portfolio, signals, research, taskStatus, tasks, safety, appEnv, logName, logData, handleRun, refreshAppEnv]);
+  }), [status, dataHealth, portfolio, signals, research, taskStatus, tasks, safety, appEnv, logName, logData, handleRun, refreshAppEnv, navigate]);
 
-  const currentLabel = tabs.find(([key]) => key === tab)?.[1] || "首页";
+  const currentItem = tabs.find((item) => item.key === tab) || tabs[0];
+  const CurrentIcon = currentItem.icon;
+  const currentLabel = currentItem.label;
   const pageDescription = {
-    home: "今天最重要的系统状态、模拟仓、数据和安全边界。",
-    portfolio: "这里展示模拟交易账户表现，不是真实账户。",
-    research: "这里用于观察 shadow 模型表现和证据成熟度，不影响正式模拟仓。",
-    data: "这里查看本地 ETF 日线数据、数据源和健康状态。",
-    safety: "这里管理白名单本地任务、启动环境和永久安全边界。"
+    home: "把资产、信号、数据、研究与任务状态收进一张清晰的工作台。",
+    portfolio: "复盘模拟交易账户、持仓结构与风险观察，不读取真实账户。",
+    signals: "查看原始排名、影子预览与后续跟踪，所有结果均不进入执行层。",
+    research: "沿研究图谱查看模型、Regime、风险画像与证据成熟度。",
+    data: "集中查看 ETF 日线覆盖、数据来源、质量与更新状态。",
+    tasks: "运行白名单本地任务，查看自动化状态、任务历史与诊断日志。",
+    safety: "管理本地启动环境与永久安全边界。"
   }[tab];
 
+  const statusText = status?.system_status === "ERROR" ? "需要处理" : status?.system_status === "CAUTION" ? "观察中" : "运行正常";
+  const marketLabel = {
+    market_neutral: "中性快照",
+    market_offensive: "进攻快照",
+    market_defensive: "防御快照"
+  }[String(status?.market_state || "").toLowerCase()] || "市场快照待更新";
+
   return (
-    <div className="app-shell">
-      <aside className="side-nav">
+    <div className={`app-shell ${navOpen ? "nav-is-open" : ""}`}>
+      <button className="nav-backdrop" aria-hidden={!navOpen} aria-label="关闭导航" onClick={() => setNavOpen(false)} tabIndex={navOpen ? 0 : -1} type="button" />
+      <aside className={`side-nav ${navOpen ? "open" : ""}`}>
         <div className="brand">
-          <span className="brand-mark">ETF</span>
+          <span className="brand-mark"><Activity size={18} aria-hidden="true" /></span>
           <div>
-            <strong>A 股 ETF 控制室</strong>
-            <small>本地研究应用 · {appVersion}</small>
+            <strong>弦图 Quant Lab</strong>
+            <small>A 股 ETF 研究工作台</small>
           </div>
         </div>
-        <nav>
-          {tabs.map(([key, label]) => (
-            <button className={tab === key ? "active" : ""} key={key} onClick={() => setTab(key)}>{label}</button>
+        <div className="nav-label">研究空间</div>
+        <nav aria-label="主导航">
+          {tabs.map(({ key, label, hint, icon: Icon }) => (
+            <button
+              aria-current={tab === key ? "page" : undefined}
+              className={tab === key ? "active" : ""}
+              key={key}
+              onClick={() => navigate(key)}
+              type="button"
+            >
+              <Icon size={18} strokeWidth={1.8} aria-hidden="true" />
+              <span><strong>{label}</strong><small>{hint}</small></span>
+            </button>
           ))}
         </nav>
         <div className="safety-rail">
-          <span>仅模拟盘</span>
-          <span>券商接口未连接</span>
-          <span>真实交易禁用</span>
+          <div className="safety-rail-head"><ShieldCheck size={16} aria-hidden="true" /><strong>本地安全边界</strong></div>
+          <p>仅模拟盘研究，不连接券商，不提供真实交易入口。</p>
+          <div className="safety-rail-tags"><span>执行锁定</span><span>L2 本地</span></div>
         </div>
       </aside>
       <div className="main-shell">
         <div className="global-status-bar">
-          <span>本地研究系统</span>
-          <button type="button" onClick={() => setTab("safety")}>{appVersion}</button>
-          <span>执行禁用</span>
-          <span>未接券商</span>
-          <span>仅模拟盘</span>
+          <div className="status-live"><i className={String(status?.system_status || "normal").toLowerCase()} />{statusText}</div>
+          <span>{marketLabel}</span>
+          <span>数据截至 {status?.latest_data_date || "待更新"}</span>
+          <button type="button" onClick={() => navigate("safety")}>{appVersion}</button>
         </div>
         <header className="topbar">
-          <div>
-            <div className="eyebrow">本地模拟盘研究控制台</div>
-            <h1>{currentLabel}</h1>
-            <p>{pageDescription || "只读展示与白名单本地任务，所有真实交易入口关闭。"}</p>
+          <button className="mobile-nav-toggle" aria-expanded={navOpen} aria-label={navOpen ? "关闭导航" : "打开导航"} onClick={() => setNavOpen((value) => !value)} type="button">
+            {navOpen ? <X size={19} aria-hidden="true" /> : <Menu size={19} aria-hidden="true" />}
+          </button>
+          <div className="topbar-copy">
+            <div className="topbar-icon"><CurrentIcon size={19} aria-hidden="true" /></div>
+            <div>
+              <div className="eyebrow">A 股 ETF · 本地模拟研究</div>
+              <h1>{currentLabel}</h1>
+              <p>{pageDescription || "只读展示与白名单本地任务，所有真实交易入口关闭。"}</p>
+            </div>
           </div>
           <div className="top-actions">
-            <span className={`pill ${String(status?.system_status || "NORMAL").toLowerCase()}`}>{status?.system_status === "ERROR" ? "异常" : status?.system_status === "CAUTION" ? "观察" : "正常"}</span>
-            <span className="pill">数据日 {status?.latest_data_date || "暂无"}</span>
-            <span className="pill">{appVersion}</span>
-            <button className="ghost-button" onClick={refreshCore}>刷新</button>
+            {taskStatus?.running ? <span className="pill running">任务运行中</span> : null}
+            <button className="ghost-button refresh-button" disabled={refreshing} onClick={refreshAll} type="button">
+              <RefreshCw className={refreshing ? "spinning" : ""} size={16} aria-hidden="true" />
+              {refreshing ? "刷新中" : "刷新数据"}
+            </button>
           </div>
         </header>
-        {warning ? <div className="top-warning">{warning}</div> : null}
+        {warning ? <div className="top-warning"><Activity size={16} aria-hidden="true" /><span>{warning}</span></div> : null}
         {tab === "home" ? <Home {...pageProps} /> : null}
         {tab === "portfolio" ? <Portfolio {...pageProps} /> : null}
+        {tab === "signals" ? <Signals {...pageProps} /> : null}
         {tab === "research" ? <Research {...pageProps} /> : null}
         {tab === "data" ? <DataCenter {...pageProps} /> : null}
+        {tab === "tasks" ? <Logs {...pageProps} /> : null}
         {tab === "safety" ? <SettingsSafety {...pageProps} /> : null}
-        <footer>本地模拟盘学习系统：不接券商 API，不真实下单，不读取真实账户，不暴露账号密码。</footer>
+        <footer><BookOpenCheck size={14} aria-hidden="true" /> 本地模拟盘学习系统 · 不接券商 API · 不真实下单 · 不读取真实账户</footer>
       </div>
     </div>
   );

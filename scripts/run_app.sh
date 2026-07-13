@@ -11,7 +11,7 @@ PORT="8000"
 LOG_DIR="$PROJECT_ROOT/logs"
 LOG_FILE="$LOG_DIR/app_server.log"
 LAUNCH_STATUS_FILE="$LOG_DIR/app_launch_status.json"
-APP_VERSION="$(cat "$PROJECT_ROOT/APP_VERSION" 2>/dev/null || echo "0.1.0-local")"
+APP_VERSION="$(cat "$PROJECT_ROOT/APP_VERSION" 2>/dev/null || echo "0.2.0-local")"
 
 # macOS LaunchServices may inject this variable when a .app starts a Python
 # process. It can make a virtualenv Python resolve packages incorrectly.

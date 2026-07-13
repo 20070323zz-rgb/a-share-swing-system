@@ -1,0 +1,29 @@
+{
+  "replay_date_count": 267,
+  "replay_start": "2025-05-30",
+  "replay_end": "2026-07-06",
+  "daily_rows_total": 4272,
+  "ranked_rows_total": 4272,
+  "forward_rows_total": 20880,
+  "base_rows_total": 4272,
+  "forward_label_last_date_by_horizon": {
+    "1": "2026-07-06",
+    "3": "2026-07-03",
+    "5": "2026-07-01",
+    "10": "2026-06-24",
+    "20": "2026-06-09"
+  },
+  "v2_replay_etf_count": 16,
+  "qualified_research_registry_count": 16,
+  "only_qualified_research_used": true,
+  "non_qualified_registry_symbols_excluded_count": 20,
+  "qdii_included": false,
+  "single_source_of_truth": true,
+  "second_etf_database_created": false,
+  "v2_common_dates_start": "2025-03-03",
+  "v2_common_dates_end": "2026-07-08",
+  "v2_common_dates_count": 329,
+  "stable_replay_start": "2025-05-30",
+  "stable_replay_end": "2026-07-06",
+  "stable_replay_rows": 267
+}

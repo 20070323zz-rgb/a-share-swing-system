@@ -69,7 +69,7 @@ cat > "$STATUS_JSON" <<JSON
 {
   "started_at": "$(date '+%Y-%m-%d %H:%M:%S')",
   "project_dir": "$PROJECT_ROOT",
-  "app_version": "$(cat "$PROJECT_ROOT/APP_VERSION" 2>/dev/null || echo "0.1.0-local")",
+  "app_version": "$(cat "$PROJECT_ROOT/APP_VERSION" 2>/dev/null || echo "0.2.0-local")",
   "port": 8000,
   "status": "permissions_checked",
   "error_summary": "",

@@ -1,6 +1,6 @@
 # 本地正式版使用说明
 
-版本：v0.1.0-local
+版本：v0.2.0-local
 
 ## 如何启动
 
@@ -9,7 +9,7 @@
 先生成本地 App 包装器：
 
 ```bash
-cd /Users/dayin/Code/a-share-swing-system
+cd <project_root>
 bash scripts/create_app_shortcut.sh
 ```
 
@@ -27,14 +27,14 @@ bash scripts/create_app_shortcut.sh
 方式三：终端启动
 
 ```bash
-cd /Users/dayin/Code/a-share-swing-system
+cd <project_root>
 bash scripts/run_app.sh
 ```
 
 方式四：局域网模式
 
 ```bash
-cd /Users/dayin/Code/a-share-swing-system
+cd <project_root>
 bash scripts/run_app.sh --lan
 ```
 
@@ -107,7 +107,7 @@ bash scripts/check_app_env.sh
 也可以运行更完整的启动诊断：
 
 ```bash
-cd /Users/dayin/Code/a-share-swing-system
+cd <project_root>
 bash scripts/diagnose_app_launch.sh
 ```
 

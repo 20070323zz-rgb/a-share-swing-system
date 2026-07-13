@@ -125,8 +125,8 @@ SAFE_TASKS: dict[str, TaskSpec] = {
     ),
     "update_daily_data": TaskSpec(
         "update_daily_data",
-        "按正式 ETF universe 执行稳健日更。",
-        "只更新本地 ETF 日线数据；不接券商；不会真实下单。",
+        "按正式 ETF universe 执行稳健日更并刷新派生绩效。",
+        "只更新本地 ETF 日线与派生绩效报告；不改交易流水或持仓；不接券商；不会真实下单。",
         False,
         False,
         [
@@ -166,13 +166,18 @@ SAFE_TASKS: dict[str, TaskSpec] = {
                 "20",
                 "--status-json",
                 "reports/data_update_status.json",
-            )
+            ),
+            _cmd(PYTHON, "src/data_coverage.py"),
+            _cmd(PYTHON, "src/data_health.py"),
+            _cmd(PYTHON, "src/paper_performance.py"),
+            _cmd(PYTHON, "src/paper_equity_backfill.py"),
+            _cmd(PYTHON, "dashboard/build_dashboard.py"),
         ],
     ),
     "backfill_etf_data": TaskSpec(
         "backfill_etf_data",
         "一键补齐 ETF 数据。",
-        "补齐本地 ETF 日线数据，不会交易，不会连接券商。",
+        "补齐本地 ETF 日线并刷新派生绩效；不改交易流水或持仓，不会交易，不会连接券商。",
         False,
         False,
         [
@@ -217,13 +222,15 @@ SAFE_TASKS: dict[str, TaskSpec] = {
             ),
             _cmd(PYTHON, "src/data_coverage.py"),
             _cmd(PYTHON, "src/data_health.py"),
+            _cmd(PYTHON, "src/paper_performance.py"),
+            _cmd(PYTHON, "src/paper_equity_backfill.py"),
             _cmd(PYTHON, "dashboard/build_dashboard.py"),
         ],
     ),
     "backfill_recent_data": TaskSpec(
         "backfill_recent_data",
         "补齐最近约三周 ETF 日线缺口。",
-        "只写本地行情 CSV；本地原行优先；不会真实下单。",
+        "只写本地行情 CSV 与派生绩效报告；本地原行优先；不改交易流水或持仓；不会真实下单。",
         False,
         False,
         [
@@ -268,6 +275,8 @@ SAFE_TASKS: dict[str, TaskSpec] = {
             ),
             _cmd(PYTHON, "src/data_coverage.py"),
             _cmd(PYTHON, "src/data_health.py"),
+            _cmd(PYTHON, "src/paper_performance.py"),
+            _cmd(PYTHON, "src/paper_equity_backfill.py"),
             _cmd(PYTHON, "dashboard/build_dashboard.py"),
         ],
     ),
@@ -285,7 +294,7 @@ SAFE_TASKS: dict[str, TaskSpec] = {
         "只生成计划；不写模拟交易和持仓；不会真实下单。",
         False,
         False,
-        [_cmd(PYTHON, "src/paper_trade_engine.py", "--dry-run")],
+        [_cmd(PYTHON, "scripts/run_paper_execution_guarded.py", "--dry-run")],
     ),
     "run_paper_performance": TaskSpec(
         "run_paper_performance",

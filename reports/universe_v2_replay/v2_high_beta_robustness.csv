@@ -1,0 +1,4 @@
+style_profile,stable_regime,etf_count,observation_count,segment_count,research_only,execution_allowed,5d_median,5d_benchmark_excess_median,5d_etf_level_median,5d_segment_level_median,10d_median,10d_benchmark_excess_median,10d_etf_level_median,10d_segment_level_median,20d_median,20d_benchmark_excess_median,20d_etf_level_median,20d_segment_level_median
+HIGH_BETA_THEME,OFFENSIVE,5,725,5,True,False,0.020964,0.011498,0.026749,0.017921,0.038544,0.020919,0.049853,0.036585,0.072296,0.045077,0.098655,0.054314
+HIGH_BETA_THEME,NEUTRAL,5,300,10,True,False,-0.014345,-0.007529,-0.016168,-0.0054,-0.013726,-0.008952,-0.01475,0.003378,0.018116,0.007545,0.014881,0.010868
+HIGH_BETA_THEME,DEFENSIVE,5,310,8,True,False,0.028516,0.016951,0.027299,0.030191,0.053813,0.029408,0.049354,0.047298,0.090395,0.039876,0.07109,0.069391

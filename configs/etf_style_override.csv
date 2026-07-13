@@ -1,0 +1,3 @@
+symbol,style_profile,structural_risk_override,reason
+512880,SECTOR_CYCLICAL,HIGH_BETA,证券 ETF 具有长期高 beta 情绪弹性；保留为结构性高风险观察，不影响近期实现风险。
+515000,GROWTH_THEME,,科技 ETF 名称明确但上游分类为 unknown；按成长主题处理，不影响近期实现风险。

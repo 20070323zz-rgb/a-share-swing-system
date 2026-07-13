@@ -2,7 +2,7 @@
 set -u
 
 TASK_NAME="daily_close"
-PROJECT_ROOT="/Users/dayin/Code/a-share-swing-system"
+PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 PYTHON_BIN="$PROJECT_ROOT/.venv/bin/python"
 LOG_DIR="$PROJECT_ROOT/logs"
 LOG_FILE="$LOG_DIR/daily_close.log"
@@ -99,7 +99,8 @@ ENGINE_MODE="--execute"
 if [ "${DAILY_CLOSE_DRY_RUN:-0}" = "1" ]; then
   ENGINE_MODE="--dry-run"
 fi
-CMD5=("$PYTHON_BIN" src/paper_trade_engine.py "$ENGINE_MODE")
+# Rollback: restore src/paper_trade_engine.py here only with Main approval.
+CMD5=("$PYTHON_BIN" scripts/run_paper_execution_guarded.py "$ENGINE_MODE")
 CMD6=("$PYTHON_BIN" src/paper_portfolio.py)
 CMD7=("$PYTHON_BIN" src/automation_nodes.py --node daily_rolling_backtest)
 CMD8=("$PYTHON_BIN" src/automation_nodes.py --node sync_report)

@@ -32,6 +32,11 @@ logs/
 *.bak
 =2.31.0
 
+# Local Baostock batch/probe status snapshots and duplicate report copies
+reports/data_update_status.baostock_*batch*.json
+reports/data_update_status.baostock_probe*.json
+reports/report_taxonomy_feasibility_study_副本.md
+
 # Manual raw imports can contain ad-hoc local files. Keep directory markers.
 raw/*
 !raw/.gitkeep

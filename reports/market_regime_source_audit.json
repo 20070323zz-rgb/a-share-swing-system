@@ -1,0 +1,72 @@
+{
+  "generated_at": "2026-07-06 21:55:01",
+  "primary_market_regime_source_file": "src/phase4c_alpha_common.py",
+  "primary_market_regime_function": "market_regime(date, context)",
+  "primary_market_regime_states": [
+    "risk_on",
+    "neutral",
+    "risk_off"
+  ],
+  "normalized_mapping": {
+    "risk_on": "OFFENSIVE",
+    "neutral": "NEUTRAL",
+    "risk_off": "DEFENSIVE"
+  },
+  "market_state_source_file": "src/market_state.py",
+  "market_state_function": "build_market_rows / _summary_row / _state_and_range",
+  "market_state_states": [
+    "market_strong",
+    "market_neutral",
+    "market_weak",
+    "risk_off"
+  ],
+  "phase4c_logic": {
+    "path": "src/phase4c_alpha_common.py",
+    "function": "market_regime",
+    "line_start": 43,
+    "line_end": 60,
+    "returns": "rule-based output; see source for exact implementation"
+  },
+  "market_state_logic": {
+    "path": "src/market_state.py",
+    "function": "build_market_rows",
+    "line_start": 44,
+    "line_end": 52,
+    "returns": "rule-based output; see source for exact implementation"
+  },
+  "input_features": [
+    "510300 ret_20 ret_60 volatility_20 close_vs_ma60",
+    "159915 ret_20 minus 510300 ret_20",
+    "518880 ret_20 minus 510300 ret_20"
+  ],
+  "thresholds": [
+    "risk_on if 510300 ret20 > 2.5%, ret60 > 0, close > ma60",
+    "risk_on if 159915 ret20 - 510300 ret20 > 2.5% and 510300 ret20 > 0",
+    "risk_off if 510300 ret20 < -2.5%",
+    "risk_off if 510300 ret60 < -4%",
+    "risk_off if 510300 vol20 > 1.8% and ret20 < 0",
+    "risk_off if 518880 ret20 - 510300 ret20 > 4% and 510300 ret20 < 1%"
+  ],
+  "future_data_risk": "No direct future data in phase4c_alpha_common.market_regime; it uses row_on_date(df, date), which selects <= date.",
+  "single_index_dependency": "High. 510300 is the main anchor; 159915 and 518880 are auxiliary.",
+  "uses_etf_pool_breadth": false,
+  "uses_buy_watch_sell_count": false,
+  "uses_high_beta_growth_strength": "Growth only through 159915 relative strength; no ETF pool high_beta breadth.",
+  "uses_risk_pressure": "Gold relative strength and 510300 vol/drawdown proxy only.",
+  "logic_complexity": "simple rule-based proxy",
+  "research_only": true,
+  "modules_reading_market_regime": [
+    "app/backend/readers.py",
+    "app/frontend/src/pages/Research.jsx",
+    "dashboard/build_dashboard.py",
+    "src/backtest_diagnostics.py",
+    "src/etf_risk_profile.py",
+    "src/market_regime_replay.py",
+    "src/missed_opportunity_tracker.py",
+    "src/persistence_breakout_shadow.py",
+    "src/phase4c_alpha_common.py",
+    "src/shadow_observation_weekly.py"
+  ],
+  "paper_trade_engine_impact": "No direct paper_trade_engine dependency found in this audit; Phase 4C/shadow research reads market_regime.",
+  "execution_allowed": false
+}

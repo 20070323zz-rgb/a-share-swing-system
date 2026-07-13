@@ -1,0 +1,449 @@
+{
+  "generated_at": "2026-07-09 18:19:04 CST",
+  "phase": "Exposure Framework Phase D - Exposure Validation",
+  "exposure_validation": "COMPLETE",
+  "exposure_research_readiness": "PARTIAL_READY",
+  "coverage_rows": [
+    {
+      "exposure_name": "market_beta",
+      "etf_covered": 16,
+      "value_rows": 32,
+      "missing_rows": 0,
+      "confidence_counts": "HIGH=16, MEDIUM=16",
+      "pit_status_counts": "PIT_SAFE_WITH_PROXY=32"
+    },
+    {
+      "exposure_name": "realized_volatility",
+      "etf_covered": 16,
+      "value_rows": 32,
+      "missing_rows": 0,
+      "confidence_counts": "HIGH=32",
+      "pit_status_counts": "PIT_SAFE=32"
+    },
+    {
+      "exposure_name": "downside_drawdown_risk",
+      "etf_covered": 16,
+      "value_rows": 64,
+      "missing_rows": 0,
+      "confidence_counts": "HIGH=64",
+      "pit_status_counts": "PIT_SAFE=64"
+    },
+    {
+      "exposure_name": "trading_liquidity",
+      "etf_covered": 16,
+      "value_rows": 64,
+      "missing_rows": 0,
+      "confidence_counts": "HIGH=64",
+      "pit_status_counts": "PIT_SAFE=64"
+    },
+    {
+      "exposure_name": "return_momentum",
+      "etf_covered": 16,
+      "value_rows": 48,
+      "missing_rows": 0,
+      "confidence_counts": "HIGH=48",
+      "pit_status_counts": "PIT_SAFE=48"
+    }
+  ],
+  "stability_rows": [
+    {
+      "exposure_name": "market_beta",
+      "window_pair": "beta_60_vs_120",
+      "spearman_rank_corr": "0.947",
+      "sign_consistency": "0.938",
+      "top_quartile_overlap": "1.000",
+      "bottom_quartile_overlap": "1.000",
+      "verdict": "STABLE"
+    },
+    {
+      "exposure_name": "realized_volatility",
+      "window_pair": "vol_20_vs_60",
+      "spearman_rank_corr": "0.903",
+      "sign_consistency": "1.000",
+      "top_quartile_overlap": "1.000",
+      "bottom_quartile_overlap": "1.000",
+      "verdict": "STABLE"
+    },
+    {
+      "exposure_name": "downside_drawdown_risk",
+      "window_pair": "max_drawdown_60_vs_120",
+      "spearman_rank_corr": "0.765",
+      "sign_consistency": "1.000",
+      "top_quartile_overlap": "1.000",
+      "bottom_quartile_overlap": "1.000",
+      "verdict": "PARTIALLY_STABLE"
+    },
+    {
+      "exposure_name": "downside_drawdown_risk",
+      "window_pair": "downside_vol_60_vs_120",
+      "spearman_rank_corr": "0.938",
+      "sign_consistency": "1.000",
+      "top_quartile_overlap": "1.000",
+      "bottom_quartile_overlap": "1.000",
+      "verdict": "STABLE"
+    },
+    {
+      "exposure_name": "trading_liquidity",
+      "window_pair": "avg_amount_20_vs_60",
+      "spearman_rank_corr": "0.956",
+      "sign_consistency": "1.000",
+      "top_quartile_overlap": "1.000",
+      "bottom_quartile_overlap": "1.000",
+      "verdict": "STABLE"
+    },
+    {
+      "exposure_name": "trading_liquidity",
+      "window_pair": "avg_volume_20_vs_60",
+      "spearman_rank_corr": "0.962",
+      "sign_consistency": "1.000",
+      "top_quartile_overlap": "1.000",
+      "bottom_quartile_overlap": "1.000",
+      "verdict": "STABLE"
+    },
+    {
+      "exposure_name": "return_momentum",
+      "window_pair": "return_20_vs_60",
+      "spearman_rank_corr": "0.924",
+      "sign_consistency": "0.938",
+      "top_quartile_overlap": "1.000",
+      "bottom_quartile_overlap": "1.000",
+      "verdict": "STABLE"
+    },
+    {
+      "exposure_name": "return_momentum",
+      "window_pair": "return_60_vs_120",
+      "spearman_rank_corr": "0.697",
+      "sign_consistency": "0.625",
+      "top_quartile_overlap": "1.000",
+      "bottom_quartile_overlap": "1.000",
+      "verdict": "UNSTABLE"
+    },
+    {
+      "exposure_name": "return_momentum",
+      "window_pair": "return_20_vs_120",
+      "spearman_rank_corr": "0.641",
+      "sign_consistency": "0.688",
+      "top_quartile_overlap": "1.000",
+      "bottom_quartile_overlap": "1.000",
+      "verdict": "UNSTABLE"
+    }
+  ],
+  "exposure_stability": {
+    "market_beta": "STABLE",
+    "realized_volatility": "STABLE",
+    "downside_drawdown_risk": "PARTIALLY_STABLE",
+    "trading_liquidity": "STABLE",
+    "return_momentum": "PARTIALLY_STABLE"
+  },
+  "differentiation_rows": [
+    {
+      "exposure_name": "market_beta",
+      "primary_metric": "beta_120d",
+      "min": "0.120",
+      "median": "1.019",
+      "max": "1.755",
+      "iqr": "1.023",
+      "cv": "0.508",
+      "extreme_z_gt_3": 0,
+      "top_symbol": 588200,
+      "top_name": "科创芯片ETF",
+      "bottom_symbol": 159547,
+      "bottom_name": "红利低波ETF华夏",
+      "verdict": "STRONG_DIFFERENTIATION"
+    },
+    {
+      "exposure_name": "realized_volatility",
+      "primary_metric": "annualized_volatility_60d",
+      "min": "0.135",
+      "median": "0.303",
+      "max": "1.455",
+      "iqr": "0.242",
+      "cv": "0.773",
+      "extreme_z_gt_3": 1,
+      "top_symbol": 159667,
+      "top_name": "工业母机ETF国泰",
+      "bottom_symbol": 159547,
+      "bottom_name": "红利低波ETF华夏",
+      "verdict": "STRONG_DIFFERENTIATION"
+    },
+    {
+      "exposure_name": "downside_drawdown_risk",
+      "primary_metric": "max_drawdown_120d",
+      "min": "-0.681",
+      "median": "-0.195",
+      "max": "-0.076",
+      "iqr": "0.109",
+      "cv": "0.693",
+      "extreme_z_gt_3": 0,
+      "top_symbol": 159593,
+      "top_name": "中证A50ETF",
+      "bottom_symbol": 159667,
+      "bottom_name": "工业母机ETF国泰",
+      "verdict": "STRONG_DIFFERENTIATION"
+    },
+    {
+      "exposure_name": "trading_liquidity",
+      "primary_metric": "avg_amount_60d",
+      "min": "52260532.033",
+      "median": "171844169.031",
+      "max": "5276323342.933",
+      "iqr": "428130184.748",
+      "cv": "1.742",
+      "extreme_z_gt_3": 0,
+      "top_symbol": 588200,
+      "top_name": "科创芯片ETF",
+      "bottom_symbol": 515630,
+      "bottom_name": "保险证券",
+      "verdict": "STRONG_DIFFERENTIATION"
+    },
+    {
+      "exposure_name": "return_momentum",
+      "primary_metric": "past_return_60d",
+      "min": "-0.565",
+      "median": "0.006",
+      "max": "1.021",
+      "iqr": "0.460",
+      "cv": "2.948",
+      "extreme_z_gt_3": 0,
+      "top_symbol": 159516,
+      "top_name": "半导体设备ETF国泰",
+      "bottom_symbol": 159667,
+      "bottom_name": "工业母机ETF国泰",
+      "verdict": "STRONG_DIFFERENTIATION"
+    }
+  ],
+  "redundancy_matrix": {
+    "market_beta": {
+      "market_beta": 1.0,
+      "realized_volatility": 0.873529,
+      "downside_drawdown_risk": 0.232353,
+      "trading_liquidity": 0.408824,
+      "return_momentum": 0.594118
+    },
+    "realized_volatility": {
+      "market_beta": 0.873529,
+      "realized_volatility": 1.0,
+      "downside_drawdown_risk": 0.558824,
+      "trading_liquidity": 0.405882,
+      "return_momentum": 0.385294
+    },
+    "downside_drawdown_risk": {
+      "market_beta": 0.232353,
+      "realized_volatility": 0.558824,
+      "downside_drawdown_risk": 1.0,
+      "trading_liquidity": -0.038235,
+      "return_momentum": -0.294118
+    },
+    "trading_liquidity": {
+      "market_beta": 0.408824,
+      "realized_volatility": 0.405882,
+      "downside_drawdown_risk": -0.038235,
+      "trading_liquidity": 1.0,
+      "return_momentum": 0.379412
+    },
+    "return_momentum": {
+      "market_beta": 0.594118,
+      "realized_volatility": 0.385294,
+      "downside_drawdown_risk": -0.294118,
+      "trading_liquidity": 0.379412,
+      "return_momentum": 1.0
+    }
+  },
+  "redundancy_pairs": [
+    {
+      "pair": "market_beta / realized_volatility",
+      "spearman_corr": "0.874",
+      "redundancy_level": "HIGH"
+    },
+    {
+      "pair": "market_beta / downside_drawdown_risk",
+      "spearman_corr": "0.232",
+      "redundancy_level": "LOW"
+    },
+    {
+      "pair": "market_beta / trading_liquidity",
+      "spearman_corr": "0.409",
+      "redundancy_level": "LOW"
+    },
+    {
+      "pair": "market_beta / return_momentum",
+      "spearman_corr": "0.594",
+      "redundancy_level": "LOW"
+    },
+    {
+      "pair": "realized_volatility / downside_drawdown_risk",
+      "spearman_corr": "0.559",
+      "redundancy_level": "LOW"
+    },
+    {
+      "pair": "realized_volatility / trading_liquidity",
+      "spearman_corr": "0.406",
+      "redundancy_level": "LOW"
+    },
+    {
+      "pair": "realized_volatility / return_momentum",
+      "spearman_corr": "0.385",
+      "redundancy_level": "LOW"
+    },
+    {
+      "pair": "downside_drawdown_risk / trading_liquidity",
+      "spearman_corr": "-0.038",
+      "redundancy_level": "LOW"
+    },
+    {
+      "pair": "downside_drawdown_risk / return_momentum",
+      "spearman_corr": "-0.294",
+      "redundancy_level": "LOW"
+    },
+    {
+      "pair": "trading_liquidity / return_momentum",
+      "spearman_corr": "0.379",
+      "redundancy_level": "LOW"
+    }
+  ],
+  "market_beta_correlation_summary": [
+    {
+      "lookback_window": 60,
+      "min": -0.1404028143041328,
+      "median": 0.6090688469976244,
+      "max": 0.9330125850870563,
+      "mean": 0.554324966160276
+    },
+    {
+      "lookback_window": 120,
+      "min": 0.15855425539921317,
+      "median": 0.6310975452005247,
+      "max": 0.9297089123365587,
+      "mean": 0.5407159722740539
+    }
+  ],
+  "market_beta_low_correlation_rows": [
+    {
+      "symbol": 159516,
+      "name": "半导体设备ETF国泰",
+      "lookback_window": 120,
+      "exposure_value": 1.7523962961,
+      "correlation": 0.1922474267057082
+    },
+    {
+      "symbol": 159547,
+      "name": "红利低波ETF华夏",
+      "lookback_window": 60,
+      "exposure_value": -0.0996512273,
+      "correlation": -0.1404028143041328
+    },
+    {
+      "symbol": 159547,
+      "name": "红利低波ETF华夏",
+      "lookback_window": 120,
+      "exposure_value": 0.1196182044,
+      "correlation": 0.15855425539921317
+    },
+    {
+      "symbol": 159667,
+      "name": "工业母机ETF国泰",
+      "lookback_window": 60,
+      "exposure_value": 2.1584255069,
+      "correlation": 0.28314214003788596
+    },
+    {
+      "symbol": 159667,
+      "name": "工业母机ETF国泰",
+      "lookback_window": 120,
+      "exposure_value": 1.7483324464,
+      "correlation": 0.2991857330328764
+    },
+    {
+      "symbol": 561360,
+      "name": "石油ETF",
+      "lookback_window": 60,
+      "exposure_value": 0.3613327317,
+      "correlation": 0.3209972025002401
+    },
+    {
+      "symbol": 561360,
+      "name": "石油ETF",
+      "lookback_window": 120,
+      "exposure_value": 0.4010887621,
+      "correlation": 0.20493996951032245
+    },
+    {
+      "symbol": 561560,
+      "name": "电力ETF",
+      "lookback_window": 60,
+      "exposure_value": 0.5080149849,
+      "correlation": 0.36877021942683563
+    },
+    {
+      "symbol": 561560,
+      "name": "电力ETF",
+      "lookback_window": 120,
+      "exposure_value": 0.5368455924,
+      "correlation": 0.39189508039662935
+    },
+    {
+      "symbol": 562550,
+      "name": "绿电ETF",
+      "lookback_window": 60,
+      "exposure_value": 0.5063906065,
+      "correlation": 0.3614458418719423
+    },
+    {
+      "symbol": 562550,
+      "name": "绿电ETF",
+      "lookback_window": 120,
+      "exposure_value": 0.4861205234,
+      "correlation": 0.34983127302907446
+    }
+  ],
+  "readiness_rows": [
+    {
+      "exposure_name": "market_beta",
+      "readiness_verdict": "NEEDS_REFINEMENT",
+      "stability": "STABLE",
+      "differentiation": "STRONG_DIFFERENTIATION",
+      "pit_safety": "PIT_SAFE_WITH_PROXY",
+      "redundancy_note": "risk-cluster overlap",
+      "reason": "PIT-safe and stable, but 510300 is only a broad proxy; small-cap/STAR/theme ETF proxy bias and high redundancy with volatility require multi-benchmark review."
+    },
+    {
+      "exposure_name": "realized_volatility",
+      "readiness_verdict": "READY_FOR_RESEARCH_OBSERVATION",
+      "stability": "STABLE",
+      "differentiation": "STRONG_DIFFERENTIATION",
+      "pit_safety": "PIT_SAFE",
+      "redundancy_note": "risk-cluster overlap",
+      "reason": "PIT-safe, stable across 20d/60d, interpretable, and differentiates high-beta themes from defensive/core ETFs."
+    },
+    {
+      "exposure_name": "downside_drawdown_risk",
+      "readiness_verdict": "READY_FOR_RESEARCH_OBSERVATION",
+      "stability": "PARTIALLY_STABLE",
+      "differentiation": "STRONG_DIFFERENTIATION",
+      "pit_safety": "PIT_SAFE",
+      "redundancy_note": "risk-cluster overlap",
+      "reason": "PIT-safe and interpretable as tail/downside risk; max drawdown is only partially stable but adds information beyond simple volatility."
+    },
+    {
+      "exposure_name": "trading_liquidity",
+      "readiness_verdict": "READY_FOR_RESEARCH_OBSERVATION",
+      "stability": "STABLE",
+      "differentiation": "STRONG_DIFFERENTIATION",
+      "pit_safety": "PIT_SAFE",
+      "redundancy_note": "mostly independent",
+      "reason": "PIT-safe, very stable across 20d/60d, highly interpretable, and not redundant with the risk cluster."
+    },
+    {
+      "exposure_name": "return_momentum",
+      "readiness_verdict": "READY_FOR_RESEARCH_OBSERVATION",
+      "stability": "PARTIALLY_STABLE",
+      "differentiation": "STRONG_DIFFERENTIATION",
+      "pit_safety": "PIT_SAFE",
+      "redundancy_note": "moderate independence",
+      "reason": "PIT-safe and differentiating; horizon dependence is expected for a dynamic exposure, so observe with separate 20d/60d/120d windows."
+    }
+  ],
+  "preview_research_status": "NOT_STARTED",
+  "formal_execution_status": "BLOCKED",
+  "execution_allowed": false
+}

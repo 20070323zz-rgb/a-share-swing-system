@@ -1,0 +1,28 @@
+dataset,interface,research_use,current_gap,priority,recommended_layer,overfitting_risk
+fund_metadata,fund_basic,"ETF成立/上市日期、基金类型、投资类型、文本基准与基础元数据","结构化ETF metadata与benchmark mapping不足",HIGH,STAGING_CANDIDATE,LOW
+fund_market_data,fund_daily,"ETF日行情交叉核验","现有统一ETF日行情已满足核心需求",LOW,NOT_REQUIRED,LOW
+fund_adjustment,fund_adj,"ETF复权因子与价格连续性核验","复权事件治理可加强但不是当前核心研究瓶颈",MEDIUM,STAGING_CANDIDATE,LOW
+fund_holdings,fund_portfolio,"季度持仓、集中度、行业与基本面穿透研究","ETF holdings与concentration exposure缺失",HIGH,STAGING_CANDIDATE,MEDIUM
+index_metadata,index_basic,"指数发布方、类别、加权规则与描述登记","benchmark registry与方法学元数据不足",HIGH,STAGING_CANDIDATE,LOW
+index_market_data,index_daily,"基准收益、相关性与多benchmark exposure研究","部分指数benchmark历史缺口",MEDIUM,STAGING_CANDIDATE,LOW
+index_constituents,index_weight,"指数成分、权重、集中度及成分穿透","指数权重和成分历史缺失",HIGH,STAGING_CANDIDATE,LOW
+index_valuation,index_dailybasic,"宽基估值、换手率与规模环境研究","估值环境与size/value context不足",MEDIUM,STAGING_CANDIDATE,MEDIUM
+industry_taxonomy,index_classify,"稳定的申万行业层级字典","统一行业taxonomy缺失",HIGH,STAGING_CANDIDATE,LOW
+industry_membership,index_member_all,"股票行业归属及纳入剔除日期","PIT行业成分映射缺失",HIGH,STAGING_CANDIDATE,LOW
+industry_market_data,sw_daily,"行业收益、估值、成交与市场环境研究","行业级Regime/Exposure解释变量不足",MEDIUM,STAGING_CANDIDATE,MEDIUM
+stock_valuation,daily_basic,"按指数或持仓权重聚合PE/PB/股息率/市值","Dividend、Size、Value/Growth exposure缺少底层字段",HIGH,STAGING_CANDIDATE,MEDIUM
+stock_daily,daily,"全市场宽度与成分收益聚合","现有ETF级breadth已可用；全A股宽度仅是潜在增强",MEDIUM,RESEARCH_ONLY,MEDIUM
+money_market_rate,shibor,"流动性与短端利率环境解释","利率环境变量缺失",MEDIUM,STAGING_CANDIDATE,LOW
+policy_rate,shibor_lpr,"贷款基准与政策传导环境解释","中期利率环境变量不足",LOW,EXPLANATION_ONLY,LOW
+macro_cycle,cn_pmi,"经济景气状态解释","宏观解释层缺少可发布时间治理的景气变量",MEDIUM,RESEARCH_ONLY,MEDIUM
+macro_inflation,cn_cpi_cn_ppi,"通胀与资源周期背景解释","通胀环境解释变量缺失",LOW,EXPLANATION_ONLY,MEDIUM
+macro_liquidity,cn_m_cn_sf,"货币与社融环境解释","宏观流动性解释变量缺失",LOW,EXPLANATION_ONLY,MEDIUM
+market_financing,margin_detail,"风险偏好与杠杆环境研究","杠杆情绪不是当前核心决策缺口",LOW,RESEARCH_ONLY,HIGH
+market_moneyflow,moneyflow_ind_ths,"行业资金流向与短期情绪研究","接口口径依赖供应商且易诱发后验解释",REJECT,NOT_REQUIRED,HIGH
+market_hotlist,ths_hot_dc_hot,"热点、榜单与题材热度","不属于已确认核心研究缺口",REJECT,NOT_REQUIRED,HIGH
+news_text,news_and_policy_corpus,"事件解释与研究叙事","不可直接形成稳定PIT exposure或signal",REJECT,EXPLANATION_ONLY,HIGH
+etf_metadata_v2,etf_basic,"结构化ETF到跟踪指数映射与QDII分类","这是高价值缺口但官方当前要求8000积分",REJECT,NOT_REQUIRED,LOW
+etf_benchmark_registry,etf_index,"ETF基准指数发布方与调整周期","这是高价值缺口但官方当前要求8000积分",REJECT,NOT_REQUIRED,LOW
+etf_scale,etf_share_size,"每日份额、规模、净值及资金变化","AUM/份额是高价值缺口但官方当前要求8000积分",REJECT,NOT_REQUIRED,MEDIUM
+bond_yield_curve,yc_cb,"完整期限结构与Interest Rate Sensitivity研究","收益率曲线是高价值缺口但属于单独权限",REJECT,NOT_REQUIRED,LOW
+etf_pcf,etf_sh_cons_etf_sz_cons,"ETF每日盘前申赎篮子与持仓研究","高频PIT持仓有价值但官方当前要求8000积分",REJECT,NOT_REQUIRED,MEDIUM

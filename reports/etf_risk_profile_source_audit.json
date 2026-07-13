@@ -1,0 +1,147 @@
+{
+  "generated_at": "2026-07-06 21:20:57",
+  "expected_data_watchlist_exists": false,
+  "actual_watchlist_path": "watchlist.csv",
+  "watchlist_groups": [
+    "QDII观察",
+    "个股观察",
+    "债券货币观察",
+    "周期资源",
+    "宽基",
+    "新能源制造",
+    "消费医药",
+    "科技成长",
+    "金融地产",
+    "防御风格"
+  ],
+  "watchlist_types": [
+    "ETF",
+    "STOCK"
+  ],
+  "classification_etf_types": {
+    "unknown": 75,
+    "broad_index": 22,
+    "commodity_resource": 21,
+    "sector": 19,
+    "theme": 18,
+    "qdii": 15,
+    "bond_cash": 12,
+    "high_beta": 3
+  },
+  "classification_risk_profiles": {
+    "manual_review": 75,
+    "core_beta": 22,
+    "commodity_cycle": 21,
+    "sector_beta": 19,
+    "theme_beta": 18,
+    "cross_border": 15,
+    "low_volatility": 12,
+    "high_beta": 3
+  },
+  "unknown_classification_count": 75,
+  "high_beta_definition": "Existing high_beta watcher flags names/types containing high_beta, 证券, 券商. Risk Profile additionally uses beta_60d>=1.20 or annualized volatility_60d>=35%.",
+  "broad_base_definition": "Existing broad_base preview uses curated traditional/quasi broad codes and broad-index names. Risk Profile splits is_broad_base and is_quasi_broad_base with code/name/group rules.",
+  "manual_label_fields": [
+    "watchlist.group",
+    "watchlist.role",
+    "classification.etf_type",
+    "classification.risk_profile",
+    "classification.classification_reason"
+  ],
+  "historical_market_fields": [
+    "return_20d/60d/120d",
+    "volatility_20d/60d/120d",
+    "beta_60d/120d",
+    "max_drawdown_60d/120d",
+    "downside_volatility_60d",
+    "up_capture_60d",
+    "down_capture_60d"
+  ],
+  "usable_inputs": [
+    "name",
+    "group",
+    "type",
+    "etf_type",
+    "pool",
+    "local daily OHLCV/amount",
+    "existing high_beta/broad_base/portfolio exposure reports"
+  ],
+  "keyword_hits": [
+    {
+      "keyword": "type",
+      "file_count": 71,
+      "hit_count": 1410,
+      "example_files": "src/trade_review.py, src/high_beta_risk_watch.py, src/shadow_observation_weekly.py, src/ranking_model_v2_backtest.py, src/factor_analysis.py"
+    },
+    {
+      "keyword": "group",
+      "file_count": 54,
+      "hit_count": 831,
+      "example_files": "src/high_beta_risk_watch.py, src/shadow_observation_weekly.py, src/ranking_model_v2_backtest.py, src/factor_analysis.py, src/labels.py"
+    },
+    {
+      "keyword": "high_beta",
+      "file_count": 33,
+      "hit_count": 593,
+      "example_files": "src/high_beta_risk_watch.py, src/shadow_observation_weekly.py, src/ranking_model_v2_backtest.py, src/chatgpt_weekly_packet.py, src/phase4c_alpha_common.py"
+    },
+    {
+      "keyword": "theme",
+      "file_count": 25,
+      "hit_count": 109,
+      "example_files": "src/shadow_observation_weekly.py, src/ranking_model_v2_backtest.py, src/chatgpt_weekly_packet.py, src/phase4c_alpha_common.py, src/etf_classifier.py"
+    },
+    {
+      "keyword": "defensive",
+      "file_count": 14,
+      "hit_count": 72,
+      "example_files": "src/regime_aware_model_research.py, src/phase4c_alpha_common.py, src/etf_volatility_profile.py, src/strategy_preview_tracking.py, src/etf_style_profile.py"
+    },
+    {
+      "keyword": "sector",
+      "file_count": 15,
+      "hit_count": 68,
+      "example_files": "src/ranking_model_v2_backtest.py, src/etf_classifier.py, src/universe_quality_review.py, src/etf_volatility_profile.py, src/etf_style_profile.py"
+    },
+    {
+      "keyword": "bond",
+      "file_count": 15,
+      "hit_count": 64,
+      "example_files": "src/ranking_model_v2_backtest.py, src/phase4c_alpha_common.py, src/etf_classifier.py, src/etf_volatility_profile.py, src/etf_style_profile.py"
+    },
+    {
+      "keyword": "growth",
+      "file_count": 8,
+      "hit_count": 44,
+      "example_files": "src/chatgpt_weekly_packet.py, src/phase4c_alpha_common.py, src/etf_style_profile.py, src/broad_base_balance_preview.py, src/etf_risk_profile.py"
+    },
+    {
+      "keyword": "is_broad_base",
+      "file_count": 3,
+      "hit_count": 16,
+      "example_files": "src/etf_style_profile.py, src/broad_base_balance_preview.py, src/etf_risk_profile.py"
+    },
+    {
+      "keyword": "is_quasi_broad_base",
+      "file_count": 3,
+      "hit_count": 9,
+      "example_files": "src/etf_style_profile.py, src/broad_base_balance_preview.py, src/etf_risk_profile.py"
+    },
+    {
+      "keyword": "dividend",
+      "file_count": 3,
+      "hit_count": 9,
+      "example_files": "src/etf_style_profile.py, src/exit_rule_candidates.py, src/etf_risk_profile.py"
+    },
+    {
+      "keyword": "low_vol",
+      "file_count": 4,
+      "hit_count": 9,
+      "example_files": "src/etf_classifier.py, src/etf_style_profile.py, src/strategy_enhancement_preview.py, src/etf_risk_profile.py"
+    }
+  ],
+  "profile_unknown_style_count": 0,
+  "watchlist_modified": false,
+  "research_only": true,
+  "execution_allowed": false
+}

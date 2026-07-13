@@ -31,7 +31,7 @@ from .task_runner import read_status, start_task
 FRONTEND_DIST = PROJECT_ROOT / "app" / "frontend" / "dist"
 REPORTS_DIR = PROJECT_ROOT / "reports"
 APP_VERSION_FILE = PROJECT_ROOT / "APP_VERSION"
-APP_VERSION = APP_VERSION_FILE.read_text(encoding="utf-8").strip() if APP_VERSION_FILE.exists() else "0.1.0-local"
+APP_VERSION = APP_VERSION_FILE.read_text(encoding="utf-8").strip() if APP_VERSION_FILE.exists() else "0.2.0-local"
 
 app = FastAPI(
     title="A-share ETF Paper Trading Control Room",

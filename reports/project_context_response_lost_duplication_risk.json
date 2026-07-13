@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-07-07 23:37:14 CST",
+  "scope": "Project Context Persistence Phase D3 duplication risk audit",
+  "tracking_duplication_risk": "A blind rerun could append duplicate rows to snapshot or tracking ledgers if the original side effects had already completed.",
+  "report_duplication_risk": "A blind rerun could overwrite or duplicate report append sections without checking whether the previous run already wrote the target output.",
+  "state_transition_duplication_risk": "A blind rerun could append duplicate checkpoint transition records or mark a future checkpoint complete twice.",
+  "blind_rerun_risk": true,
+  "dedup_required_before_resume": true,
+  "idempotency_check_required": true,
+  "same_snapshot_tracking_checked": true,
+  "same_report_append_checked": true,
+  "same_state_transition_checked": true,
+  "response_failure_cannot_prove_execution_failure": true,
+  "response_failure_cannot_prove_task_complete": true,
+  "duplication_risk_controlled": true,
+  "control_policy": [
+    "inspect worktree before resuming",
+    "inspect expected outputs before writing",
+    "inspect validation artifacts before declaring success",
+    "inspect checkpoint state before appending transitions",
+    "resume only missing work"
+  ],
+  "business_tracking_modified": false,
+  "style_fit_tracking_modified": false
+}

@@ -1,18 +1,18 @@
-# ETF 本机数据下载报告 2026-06-24 23:04:48
+# ETF 本机数据下载报告 2026-07-11 16:43:40
 
 本报告来自本机 BaoStock ETF 下载脚本。脚本只下载行情数据，不接券商 API，不下单，不读取账号密码。
 
 - 保存目录：`data/etf_daily/`
 - 复权参数 adjustflag：2
-- 模式：dry-run
+- 模式：formal update
 - estimated_api_calls：0
-- update_severity：INFO
-- update_status：dry_run
-- latest_local_date：2026-06-24
+- update_severity：OK
+- update_status：up_to_date
+- latest_local_date：2026-07-10
 - added_rows：0
-- reason：dry-run only; planned 0 BaoStock queries, no local CSV was written.
+- reason：No new rows were needed; local files already cover the requested range or source returned no older backfill.
 - BaoStock API calls are one query per ETF with missing requested range; skipped/up-to-date files are not queried.
-- 状态统计：{'already_up_to_date': 183}
+- 状态统计：{'up_to_date': 183}
 - 真正请求/系统错误 failed_error：0
 - 数据源暂未更新 pending_source_update：0
 - 无新增 no_new_data：0
@@ -21,186 +21,186 @@
 ## 下载结果
 | 代码 | 名称 | group | pool | BaoStock代码 | 请求起始 | 请求结束 | 状态 | 是否前补 | 前补新增行数 | 是否后补 | 后补新增行数 | 最终起始日期 | 最终结束日期 | 最终行数 | 文件 | 说明 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---: | --- | ---: | --- | --- | ---: | --- | --- |
-| 159001 | 货币ETF | 债券货币观察 | observe_pool | sz.159001 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159001.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159301 | 159301 | formal_data | data_update | sz.159301 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159301.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159302 | 159302 | formal_data | data_update | sz.159302 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159302.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159315 | 159315 | formal_data | data_update | sz.159315 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159315.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159321 | 159321 | formal_data | data_update | sz.159321 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159321.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159327 | 159327 | formal_data | data_update | sz.159327 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159327.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159332 | 159332 | formal_data | data_update | sz.159332 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159332.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159333 | 159333 | formal_data | data_update | sz.159333 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159333.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159336 | 159336 | formal_data | data_update | sz.159336 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159336.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159338 | 国泰中证A500ETF | 新宽基与新风格 | trade_pool | sz.159338 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159338.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159352 | 南方中证A500ETF | 新宽基与新风格 | trade_pool | sz.159352 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159352.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159363 | 159363 | formal_data | data_update | sz.159363 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159363.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159395 | 159395 | formal_data | data_update | sz.159395 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159395.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159396 | 159396 | formal_data | data_update | sz.159396 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159396.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159398 | 159398 | formal_data | data_update | sz.159398 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159398.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159516 | 159516 | formal_data | data_update | sz.159516 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159516.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159518 | 159518 | formal_data | data_update | sz.159518 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159518.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159531 | 159531 | formal_data | data_update | sz.159531 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159531.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159532 | 159532 | formal_data | data_update | sz.159532 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159532.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159536 | 159536 | formal_data | data_update | sz.159536 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159536.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159538 | 159538 | formal_data | data_update | sz.159538 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159538.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159539 | 159539 | formal_data | data_update | sz.159539 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159539.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159540 | 159540 | formal_data | data_update | sz.159540 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159540.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159545 | 159545 | formal_data | data_update | sz.159545 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159545.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159547 | 159547 | formal_data | data_update | sz.159547 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159547.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159549 | 159549 | formal_data | data_update | sz.159549 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159549.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159551 | 159551 | formal_data | data_update | sz.159551 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159551.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159558 | 159558 | formal_data | data_update | sz.159558 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159558.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159559 | 159559 | formal_data | data_update | sz.159559 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159559.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159562 | 159562 | formal_data | data_update | sz.159562 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159562.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159593 | 中证A50ETF | 新宽基与新风格 | trade_pool | sz.159593 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159593.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159595 | 159595 | formal_data | data_update | sz.159595 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159595.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159608 | 159608 | formal_data | data_update | sz.159608 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159608.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159611 | 159611 | formal_data | data_update | sz.159611 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159611.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159613 | 159613 | formal_data | data_update | sz.159613 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159613.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159615 | 159615 | formal_data | data_update | sz.159615 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159615.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159625 | 159625 | formal_data | data_update | sz.159625 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159625.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159638 | 159638 | formal_data | data_update | sz.159638 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159638.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159658 | 159658 | formal_data | data_update | sz.159658 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159658.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159663 | 159663 | formal_data | data_update | sz.159663 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159663.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159667 | 159667 | formal_data | data_update | sz.159667 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159667.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159669 | 159669 | formal_data | data_update | sz.159669 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159669.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159671 | 159671 | formal_data | data_update | sz.159671 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159671.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159697 | 159697 | formal_data | data_update | sz.159697 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159697.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159699 | 159699 | formal_data | data_update | sz.159699 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159699.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159703 | 159703 | formal_data | data_update | sz.159703 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159703.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159717 | 159717 | formal_data | data_update | sz.159717 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159717.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159726 | 159726 | formal_data | data_update | sz.159726 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159726.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159732 | 159732 | formal_data | data_update | sz.159732 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159732.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159735 | 159735 | formal_data | data_update | sz.159735 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159735.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159736 | 食品ETF | 消费医药 | trade_pool | sz.159736 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159736.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159745 | 159745 | formal_data | data_update | sz.159745 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159745.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159755 | 电池ETF | 新能源制造 | trade_pool | sz.159755 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159755.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159758 | 159758 | formal_data | data_update | sz.159758 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159758.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159763 | 159763 | formal_data | data_update | sz.159763 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159763.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159766 | 旅游ETF | 消费医药 | trade_pool | sz.159766 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159766.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159770 | 机器人ETF | 科技与新质生产力 | observe_pool | sz.159770 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159770.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159787 | 159787 | formal_data | data_update | sz.159787 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159787.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159791 | 159791 | formal_data | data_update | sz.159791 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159791.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159795 | 159795 | formal_data | data_update | sz.159795 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159795.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159797 | 159797 | formal_data | data_update | sz.159797 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159797.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159806 | 新能源车电池ETF | 新能源制造 | trade_pool | sz.159806 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159806.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159819 | 人工智能ETF | 科技成长 | trade_pool | sz.159819 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159819.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159825 | 农业ETF | 周期资源 | trade_pool | sz.159825 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159825.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159835 | 建信创新药ETF | 医药与消费升级 | observe_pool | sz.159835 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159835.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159840 | 159840 | formal_data | data_update | sz.159840 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159840.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159857 | 光伏ETF | 新能源制造 | trade_pool | sz.159857 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159857.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159858 | 南方创新药ETF | 医药与消费升级 | observe_pool | sz.159858 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159858.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159865 | 养殖ETF | 周期资源 | trade_pool | sz.159865 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159865.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159869 | 游戏ETF | 科技成长 | trade_pool | sz.159869 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159869.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159870 | 化工ETF | 周期、资源、商品 | observe_pool | sz.159870 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159870.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159876 | 有色金属ETF | 周期资源 | trade_pool | sz.159876 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159876.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159883 | 159883 | formal_data | data_update | sz.159883 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159883.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159888 | 159888 | formal_data | data_update | sz.159888 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159888.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159889 | 159889 | formal_data | data_update | sz.159889 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159889.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159898 | 159898 | formal_data | data_update | sz.159898 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159898.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159901 | 深100ETF | 宽基 | trade_pool | sz.159901 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159901.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159905 | 深红利ETF | 防御风格 | trade_pool | sz.159905 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159905.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159915 | 创业板ETF | 宽基 | trade_pool | sz.159915 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2022-01-04 | 2026-06-24 | 1081 | data/etf_daily/sz_159915.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159920 | 恒生ETF | QDII观察 | observe_pool | sz.159920 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159920.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159928 | 消费ETF | 消费医药 | trade_pool | sz.159928 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159928.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159929 | 医药ETF | 消费医药 | trade_pool | sz.159929 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159929.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159930 | 能源ETF | 周期资源 | trade_pool | sz.159930 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159930.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159940 | 金融ETF | 金融地产 | trade_pool | sz.159940 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159940.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159941 | 纳指ETF | QDII观察 | observe_pool | sz.159941 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159941.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159949 | 创业板50ETF | 宽基 | trade_pool | sz.159949 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159949.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159954 | 159954 | formal_data | data_update | sz.159954 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159954.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159992 | 银华创新药ETF | 医药与消费升级 | trade_pool | sz.159992 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159992.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159995 | 芯片ETF | 科技成长 | trade_pool | sz.159995 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159995.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159996 | 家电ETF | 消费医药 | trade_pool | sz.159996 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159996.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 159997 | 159997 | formal_data | data_update | sz.159997 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sz_159997.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 510050 | 上证50ETF | 宽基 | trade_pool | sh.510050 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_510050.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 510060 | 510060 | formal_data | data_update | sh.510060 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_510060.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 510180 | 上证180ETF | 宽基 | trade_pool | sh.510180 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2026-01-05 | 2026-06-24 | 112 | data/etf_daily/sh_510180.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 510230 | 金融ETF | 金融地产 | trade_pool | sh.510230 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_510230.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 510270 | 510270 | formal_data | data_update | sh.510270 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_510270.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 510300 | 沪深300ETF | 宽基 | trade_pool | sh.510300 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2022-01-04 | 2026-06-24 | 1081 | data/etf_daily/sh_510300.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 510410 | 资源ETF | 周期资源 | trade_pool | sh.510410 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_510410.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 510500 | 中证500ETF | 宽基 | trade_pool | sh.510500 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2026-01-05 | 2026-06-24 | 112 | data/etf_daily/sh_510500.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 510880 | 红利ETF | 防御风格 | trade_pool | sh.510880 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2026-01-05 | 2026-06-24 | 112 | data/etf_daily/sh_510880.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 511010 | 国债ETF | 债券货币观察 | observe_pool | sh.511010 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_511010.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 511030 | 公司债ETF | 债券货币 | observe_pool | sh.511030 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_511030.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 511090 | 30年国债ETF | 债券货币 | observe_pool | sh.511090 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_511090.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 511260 | 十年国债ETF | 债券货币观察 | observe_pool | sh.511260 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_511260.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 511360 | 短融ETF | 债券货币观察 | observe_pool | sh.511360 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_511360.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 511380 | 可转债ETF | 债券货币 | observe_pool | sh.511380 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_511380.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 511520 | 政金债ETF | 债券货币 | observe_pool | sh.511520 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_511520.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 511600 | 511600 | formal_data | data_update | sh.511600 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_511600.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 511690 | 511690 | formal_data | data_update | sh.511690 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_511690.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 511880 | 银华日利ETF | 债券货币观察 | observe_pool | sh.511880 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_511880.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 511990 | 华宝添益ETF | 债券货币观察 | observe_pool | sh.511990 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_511990.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 512010 | 医药ETF | 消费医药 | trade_pool | sh.512010 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_512010.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 512050 | 华夏中证A500ETF | 新宽基与新风格 | trade_pool | sh.512050 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_512050.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 512070 | 非银ETF | 金融地产 | trade_pool | sh.512070 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_512070.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 512100 | 中证1000ETF | 宽基 | trade_pool | sh.512100 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2026-01-05 | 2026-06-24 | 112 | data/etf_daily/sh_512100.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 512170 | 医疗ETF | 消费医药 | trade_pool | sh.512170 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_512170.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 512200 | 房地产ETF | 金融地产 | trade_pool | sh.512200 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_512200.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 512400 | 有色ETF | 周期资源 | trade_pool | sh.512400 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_512400.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 512480 | 半导体ETF | 科技成长 | trade_pool | sh.512480 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_512480.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 512660 | 军工ETF | 新能源制造 | trade_pool | sh.512660 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_512660.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 512670 | 国防ETF | 新能源制造 | trade_pool | sh.512670 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_512670.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 512690 | 酒ETF | 消费医药 | trade_pool | sh.512690 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_512690.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 512760 | 芯片ETF | 科技成长 | trade_pool | sh.512760 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_512760.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 512800 | 银行ETF | 金融地产 | trade_pool | sh.512800 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_512800.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 512880 | 证券ETF | 金融地产 | trade_pool | sh.512880 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_512880.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 512890 | 红利低波ETF | 防御风格 | trade_pool | sh.512890 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_512890.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 512980 | 传媒ETF | 科技成长 | trade_pool | sh.512980 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_512980.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 513030 | 德国ETF | 跨境与港股 | research_only | sh.513030 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_513030.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 513050 | 中概互联网ETF | QDII观察 | observe_pool | sh.513050 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_513050.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 513060 | 恒生医疗ETF | QDII观察 | observe_pool | sh.513060 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_513060.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 513100 | 纳指ETF | QDII观察 | observe_pool | sh.513100 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_513100.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 513120 | 港股创新药ETF | 医药与消费升级 | observe_pool | sh.513120 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_513120.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 513130 | 恒生科技ETF | 跨境与港股 | observe_pool | sh.513130 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_513130.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 513150 | 港股科技ETF | 跨境与港股 | observe_pool | sh.513150 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_513150.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 513180 | 恒生科技ETF | QDII观察 | observe_pool | sh.513180 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_513180.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 513330 | 恒生互联网ETF | 跨境与港股 | observe_pool | sh.513330 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_513330.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 513500 | 标普500ETF | QDII观察 | observe_pool | sh.513500 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_513500.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 513520 | 日经ETF | 跨境与港股 | research_only | sh.513520 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_513520.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 513880 | 日经225ETF | 跨境与港股 | research_only | sh.513880 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_513880.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 515000 | 科技ETF | 科技成长 | trade_pool | sh.515000 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2022-01-04 | 2026-06-24 | 1081 | data/etf_daily/sh_515000.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 515050 | 5GETF | 科技成长 | trade_pool | sh.515050 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_515050.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 515070 | AIETF | 科技成长 | trade_pool | sh.515070 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_515070.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 515080 | 中证红利ETF | 防御风格 | trade_pool | sh.515080 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_515080.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 515120 | 广发创新药ETF | 医药与消费升级 | trade_pool | sh.515120 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_515120.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 515170 | 食品饮料ETF | 消费医药 | trade_pool | sh.515170 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_515170.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 515210 | 515210 | formal_data | data_update | sh.515210 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_515210.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 515220 | 煤炭ETF | 周期资源 | trade_pool | sh.515220 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_515220.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 515230 | 软件ETF | 科技成长 | trade_pool | sh.515230 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_515230.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 515260 | 515260 | formal_data | data_update | sh.515260 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_515260.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 515630 | 515630 | formal_data | data_update | sh.515630 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_515630.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 515650 | 消费50ETF | 消费医药 | trade_pool | sh.515650 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_515650.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 515700 | 新能源车ETF | 新能源制造 | trade_pool | sh.515700 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_515700.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 515790 | 光伏ETF | 新能源制造 | trade_pool | sh.515790 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_515790.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 515880 | 证券公司ETF | 金融地产 | trade_pool | sh.515880 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2026-01-05 | 2026-06-24 | 112 | data/etf_daily/sh_515880.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 516020 | 化工ETF | 周期、资源、商品 | trade_pool | sh.516020 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_516020.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 516080 | 易方达创新药ETF | 医药与消费升级 | trade_pool | sh.516080 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_516080.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 516110 | 汽车ETF | 消费医药 | trade_pool | sh.516110 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_516110.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 516160 | 新能源ETF | 新能源制造 | trade_pool | sh.516160 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_516160.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 516360 | 516360 | formal_data | data_update | sh.516360 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_516360.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 516390 | 新能源汽车ETF | 新能源制造 | trade_pool | sh.516390 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_516390.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 516510 | 云计算ETF | 科技成长 | trade_pool | sh.516510 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_516510.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 516720 | 516720 | formal_data | data_update | sh.516720 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_516720.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 516750 | 516750 | formal_data | data_update | sh.516750 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_516750.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 516780 | 稀土ETF | 周期资源 | trade_pool | sh.516780 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_516780.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 516800 | 智能制造ETF | 新能源制造 | trade_pool | sh.516800 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_516800.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 518880 | 黄金ETF | 防御风格 | trade_pool | sh.518880 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_518880.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 520550 | 港股红利低波ETF | 防御、红利、质量 | observe_pool | sh.520550 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_520550.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 560510 | 泰康中证A500ETF | 新宽基与新风格 | observe_pool | sh.560510 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_560510.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 561360 | 561360 | formal_data | data_update | sh.561360 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_561360.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 561560 | 561560 | formal_data | data_update | sh.561560 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_561560.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 562500 | 机器人ETF华夏 | 科技与新质生产力 | trade_pool | sh.562500 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_562500.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 562550 | 562550 | formal_data | data_update | sh.562550 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_562550.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 562920 | 562920 | formal_data | data_update | sh.562920 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_562920.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 563360 | 华泰柏瑞中证A500ETF | 新宽基与新风格 | trade_pool | sh.563360 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_563360.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 563800 | 广发中证A500ETF | 新宽基与新风格 | trade_pool | sh.563800 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_563800.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 588000 | 科创50ETF | 宽基 | trade_pool | sh.588000 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_588000.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 588030 | 博时科创100ETF | 新宽基与新风格 | trade_pool | sh.588030 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_588030.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 588080 | 科创创业50ETF | 宽基 | trade_pool | sh.588080 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_588080.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 588120 | 国泰科创100ETF | 新宽基与新风格 | observe_pool | sh.588120 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_588120.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 588190 | 银华科创100ETF | 新宽基与新风格 | observe_pool | sh.588190 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_588190.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 588200 | 科创芯片ETF | 科技成长 | trade_pool | sh.588200 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_588200.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 588220 | 科创100ETF基金 | 新宽基与新风格 | trade_pool | sh.588220 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_588220.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
-| 588800 | 华夏科创100ETF | 新宽基与新风格 | observe_pool | sh.588800 | 2018-01-01 | 2026-06-24 | already_up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-06-24 | 319 | data/etf_daily/sh_588800.csv | dry-run: 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159001 | 货币ETF | 债券货币观察 | observe_pool | sz.159001 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159001.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159301 | 159301 | formal_data | data_update | sz.159301 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159301.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159302 | 159302 | formal_data | data_update | sz.159302 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159302.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159315 | 159315 | formal_data | data_update | sz.159315 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159315.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159321 | 159321 | formal_data | data_update | sz.159321 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159321.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159327 | 159327 | formal_data | data_update | sz.159327 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159327.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159332 | 159332 | formal_data | data_update | sz.159332 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159332.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159333 | 159333 | formal_data | data_update | sz.159333 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159333.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159336 | 159336 | formal_data | data_update | sz.159336 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159336.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159338 | 国泰中证A500ETF | 新宽基与新风格 | trade_pool | sz.159338 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159338.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159352 | 南方中证A500ETF | 新宽基与新风格 | trade_pool | sz.159352 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159352.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159363 | 159363 | formal_data | data_update | sz.159363 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159363.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159395 | 159395 | formal_data | data_update | sz.159395 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159395.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159396 | 159396 | formal_data | data_update | sz.159396 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159396.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159398 | 159398 | formal_data | data_update | sz.159398 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159398.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159516 | 159516 | formal_data | data_update | sz.159516 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159516.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159518 | 159518 | formal_data | data_update | sz.159518 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159518.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159531 | 159531 | formal_data | data_update | sz.159531 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159531.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159532 | 159532 | formal_data | data_update | sz.159532 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159532.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159536 | 159536 | formal_data | data_update | sz.159536 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159536.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159538 | 159538 | formal_data | data_update | sz.159538 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159538.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159539 | 159539 | formal_data | data_update | sz.159539 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159539.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159540 | 159540 | formal_data | data_update | sz.159540 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159540.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159545 | 159545 | formal_data | data_update | sz.159545 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159545.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159547 | 159547 | formal_data | data_update | sz.159547 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159547.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159549 | 159549 | formal_data | data_update | sz.159549 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159549.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159551 | 159551 | formal_data | data_update | sz.159551 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159551.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159558 | 159558 | formal_data | data_update | sz.159558 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159558.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159559 | 159559 | formal_data | data_update | sz.159559 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159559.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159562 | 159562 | formal_data | data_update | sz.159562 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159562.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159593 | 中证A50ETF | 新宽基与新风格 | trade_pool | sz.159593 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159593.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159595 | 159595 | formal_data | data_update | sz.159595 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159595.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159608 | 159608 | formal_data | data_update | sz.159608 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159608.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159611 | 159611 | formal_data | data_update | sz.159611 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159611.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159613 | 159613 | formal_data | data_update | sz.159613 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159613.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159615 | 159615 | formal_data | data_update | sz.159615 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159615.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159625 | 159625 | formal_data | data_update | sz.159625 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159625.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159638 | 159638 | formal_data | data_update | sz.159638 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159638.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159658 | 159658 | formal_data | data_update | sz.159658 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159658.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159663 | 159663 | formal_data | data_update | sz.159663 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159663.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159667 | 159667 | formal_data | data_update | sz.159667 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159667.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159669 | 159669 | formal_data | data_update | sz.159669 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159669.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159671 | 159671 | formal_data | data_update | sz.159671 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159671.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159697 | 159697 | formal_data | data_update | sz.159697 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159697.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159699 | 159699 | formal_data | data_update | sz.159699 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159699.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159703 | 159703 | formal_data | data_update | sz.159703 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159703.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159717 | 159717 | formal_data | data_update | sz.159717 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159717.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159726 | 159726 | formal_data | data_update | sz.159726 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159726.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159732 | 159732 | formal_data | data_update | sz.159732 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159732.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159735 | 159735 | formal_data | data_update | sz.159735 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159735.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159736 | 食品ETF | 消费医药 | trade_pool | sz.159736 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159736.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159745 | 159745 | formal_data | data_update | sz.159745 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159745.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159755 | 电池ETF | 新能源制造 | trade_pool | sz.159755 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159755.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159758 | 159758 | formal_data | data_update | sz.159758 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159758.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159763 | 159763 | formal_data | data_update | sz.159763 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159763.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159766 | 旅游ETF | 消费医药 | trade_pool | sz.159766 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159766.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159770 | 机器人ETF | 科技与新质生产力 | observe_pool | sz.159770 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159770.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159787 | 159787 | formal_data | data_update | sz.159787 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159787.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159791 | 159791 | formal_data | data_update | sz.159791 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159791.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159795 | 159795 | formal_data | data_update | sz.159795 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159795.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159797 | 159797 | formal_data | data_update | sz.159797 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159797.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159806 | 新能源车电池ETF | 新能源制造 | trade_pool | sz.159806 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159806.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159819 | 人工智能ETF | 科技成长 | trade_pool | sz.159819 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159819.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159825 | 农业ETF | 周期资源 | trade_pool | sz.159825 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159825.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159835 | 建信创新药ETF | 医药与消费升级 | observe_pool | sz.159835 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159835.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159840 | 159840 | formal_data | data_update | sz.159840 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159840.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159857 | 光伏ETF | 新能源制造 | trade_pool | sz.159857 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159857.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159858 | 南方创新药ETF | 医药与消费升级 | observe_pool | sz.159858 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159858.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159865 | 养殖ETF | 周期资源 | trade_pool | sz.159865 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159865.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159869 | 游戏ETF | 科技成长 | trade_pool | sz.159869 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159869.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159870 | 化工ETF | 周期、资源、商品 | observe_pool | sz.159870 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159870.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159876 | 有色金属ETF | 周期资源 | trade_pool | sz.159876 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159876.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159883 | 159883 | formal_data | data_update | sz.159883 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159883.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159888 | 159888 | formal_data | data_update | sz.159888 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159888.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159889 | 159889 | formal_data | data_update | sz.159889 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159889.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159898 | 159898 | formal_data | data_update | sz.159898 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159898.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159901 | 深100ETF | 宽基 | trade_pool | sz.159901 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159901.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159905 | 深红利ETF | 防御风格 | trade_pool | sz.159905 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159905.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159915 | 创业板ETF | 宽基 | trade_pool | sz.159915 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2022-01-04 | 2026-07-10 | 1093 | data/etf_daily/sz_159915.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159920 | 恒生ETF | QDII观察 | observe_pool | sz.159920 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159920.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159928 | 消费ETF | 消费医药 | trade_pool | sz.159928 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159928.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159929 | 医药ETF | 消费医药 | trade_pool | sz.159929 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159929.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159930 | 能源ETF | 周期资源 | trade_pool | sz.159930 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159930.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159940 | 金融ETF | 金融地产 | trade_pool | sz.159940 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159940.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159941 | 纳指ETF | QDII观察 | observe_pool | sz.159941 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159941.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159949 | 创业板50ETF | 宽基 | trade_pool | sz.159949 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159949.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159954 | 159954 | formal_data | data_update | sz.159954 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159954.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159992 | 银华创新药ETF | 医药与消费升级 | trade_pool | sz.159992 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159992.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159995 | 芯片ETF | 科技成长 | trade_pool | sz.159995 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159995.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159996 | 家电ETF | 消费医药 | trade_pool | sz.159996 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159996.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 159997 | 159997 | formal_data | data_update | sz.159997 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sz_159997.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 510050 | 上证50ETF | 宽基 | trade_pool | sh.510050 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_510050.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 510060 | 510060 | formal_data | data_update | sh.510060 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_510060.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 510180 | 上证180ETF | 宽基 | trade_pool | sh.510180 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2026-01-05 | 2026-07-10 | 124 | data/etf_daily/sh_510180.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 510230 | 金融ETF | 金融地产 | trade_pool | sh.510230 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_510230.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 510270 | 510270 | formal_data | data_update | sh.510270 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_510270.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 510300 | 沪深300ETF | 宽基 | trade_pool | sh.510300 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2022-01-04 | 2026-07-10 | 1093 | data/etf_daily/sh_510300.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 510410 | 资源ETF | 周期资源 | trade_pool | sh.510410 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_510410.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 510500 | 中证500ETF | 宽基 | trade_pool | sh.510500 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2026-01-05 | 2026-07-10 | 124 | data/etf_daily/sh_510500.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 510880 | 红利ETF | 防御风格 | trade_pool | sh.510880 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2026-01-05 | 2026-07-10 | 124 | data/etf_daily/sh_510880.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 511010 | 国债ETF | 债券货币观察 | observe_pool | sh.511010 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_511010.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 511030 | 公司债ETF | 债券货币 | observe_pool | sh.511030 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_511030.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 511090 | 30年国债ETF | 债券货币 | observe_pool | sh.511090 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_511090.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 511260 | 十年国债ETF | 债券货币观察 | observe_pool | sh.511260 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_511260.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 511360 | 短融ETF | 债券货币观察 | observe_pool | sh.511360 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_511360.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 511380 | 可转债ETF | 债券货币 | observe_pool | sh.511380 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_511380.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 511520 | 政金债ETF | 债券货币 | observe_pool | sh.511520 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_511520.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 511600 | 511600 | formal_data | data_update | sh.511600 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_511600.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 511690 | 511690 | formal_data | data_update | sh.511690 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_511690.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 511880 | 银华日利ETF | 债券货币观察 | observe_pool | sh.511880 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_511880.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 511990 | 华宝添益ETF | 债券货币观察 | observe_pool | sh.511990 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_511990.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 512010 | 医药ETF | 消费医药 | trade_pool | sh.512010 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_512010.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 512050 | 华夏中证A500ETF | 新宽基与新风格 | trade_pool | sh.512050 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_512050.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 512070 | 非银ETF | 金融地产 | trade_pool | sh.512070 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_512070.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 512100 | 中证1000ETF | 宽基 | trade_pool | sh.512100 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2026-01-05 | 2026-07-10 | 124 | data/etf_daily/sh_512100.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 512170 | 医疗ETF | 消费医药 | trade_pool | sh.512170 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_512170.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 512200 | 房地产ETF | 金融地产 | trade_pool | sh.512200 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_512200.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 512400 | 有色ETF | 周期资源 | trade_pool | sh.512400 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_512400.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 512480 | 半导体ETF | 科技成长 | trade_pool | sh.512480 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_512480.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 512660 | 军工ETF | 新能源制造 | trade_pool | sh.512660 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_512660.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 512670 | 国防ETF | 新能源制造 | trade_pool | sh.512670 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_512670.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 512690 | 酒ETF | 消费医药 | trade_pool | sh.512690 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_512690.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 512760 | 芯片ETF | 科技成长 | trade_pool | sh.512760 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_512760.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 512800 | 银行ETF | 金融地产 | trade_pool | sh.512800 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_512800.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 512880 | 证券ETF | 金融地产 | trade_pool | sh.512880 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_512880.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 512890 | 红利低波ETF | 防御风格 | trade_pool | sh.512890 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_512890.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 512980 | 传媒ETF | 科技成长 | trade_pool | sh.512980 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_512980.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 513030 | 德国ETF | 跨境与港股 | research_only | sh.513030 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_513030.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 513050 | 中概互联网ETF | QDII观察 | observe_pool | sh.513050 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_513050.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 513060 | 恒生医疗ETF | QDII观察 | observe_pool | sh.513060 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_513060.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 513100 | 纳指ETF | QDII观察 | observe_pool | sh.513100 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_513100.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 513120 | 港股创新药ETF | 医药与消费升级 | observe_pool | sh.513120 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_513120.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 513130 | 恒生科技ETF | 跨境与港股 | observe_pool | sh.513130 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_513130.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 513150 | 港股科技ETF | 跨境与港股 | observe_pool | sh.513150 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_513150.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 513180 | 恒生科技ETF | QDII观察 | observe_pool | sh.513180 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_513180.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 513330 | 恒生互联网ETF | 跨境与港股 | observe_pool | sh.513330 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_513330.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 513500 | 标普500ETF | QDII观察 | observe_pool | sh.513500 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_513500.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 513520 | 日经ETF | 跨境与港股 | research_only | sh.513520 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_513520.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 513880 | 日经225ETF | 跨境与港股 | research_only | sh.513880 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_513880.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 515000 | 科技ETF | 科技成长 | trade_pool | sh.515000 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2022-01-04 | 2026-07-10 | 1093 | data/etf_daily/sh_515000.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 515050 | 5GETF | 科技成长 | trade_pool | sh.515050 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_515050.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 515070 | AIETF | 科技成长 | trade_pool | sh.515070 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_515070.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 515080 | 中证红利ETF | 防御风格 | trade_pool | sh.515080 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_515080.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 515120 | 广发创新药ETF | 医药与消费升级 | trade_pool | sh.515120 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_515120.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 515170 | 食品饮料ETF | 消费医药 | trade_pool | sh.515170 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_515170.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 515210 | 515210 | formal_data | data_update | sh.515210 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_515210.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 515220 | 煤炭ETF | 周期资源 | trade_pool | sh.515220 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_515220.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 515230 | 软件ETF | 科技成长 | trade_pool | sh.515230 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_515230.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 515260 | 515260 | formal_data | data_update | sh.515260 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_515260.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 515630 | 515630 | formal_data | data_update | sh.515630 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_515630.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 515650 | 消费50ETF | 消费医药 | trade_pool | sh.515650 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_515650.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 515700 | 新能源车ETF | 新能源制造 | trade_pool | sh.515700 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_515700.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 515790 | 光伏ETF | 新能源制造 | trade_pool | sh.515790 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_515790.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 515880 | 证券公司ETF | 金融地产 | trade_pool | sh.515880 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2026-01-05 | 2026-07-10 | 124 | data/etf_daily/sh_515880.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 516020 | 化工ETF | 周期、资源、商品 | trade_pool | sh.516020 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_516020.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 516080 | 易方达创新药ETF | 医药与消费升级 | trade_pool | sh.516080 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_516080.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 516110 | 汽车ETF | 消费医药 | trade_pool | sh.516110 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_516110.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 516160 | 新能源ETF | 新能源制造 | trade_pool | sh.516160 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_516160.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 516360 | 516360 | formal_data | data_update | sh.516360 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_516360.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 516390 | 新能源汽车ETF | 新能源制造 | trade_pool | sh.516390 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_516390.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 516510 | 云计算ETF | 科技成长 | trade_pool | sh.516510 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_516510.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 516720 | 516720 | formal_data | data_update | sh.516720 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_516720.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 516750 | 516750 | formal_data | data_update | sh.516750 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_516750.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 516780 | 稀土ETF | 周期资源 | trade_pool | sh.516780 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_516780.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 516800 | 智能制造ETF | 新能源制造 | trade_pool | sh.516800 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_516800.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 518880 | 黄金ETF | 防御风格 | trade_pool | sh.518880 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_518880.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 520550 | 港股红利低波ETF | 防御、红利、质量 | observe_pool | sh.520550 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_520550.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 560510 | 泰康中证A500ETF | 新宽基与新风格 | observe_pool | sh.560510 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_560510.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 561360 | 561360 | formal_data | data_update | sh.561360 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_561360.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 561560 | 561560 | formal_data | data_update | sh.561560 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_561560.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 562500 | 机器人ETF华夏 | 科技与新质生产力 | trade_pool | sh.562500 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_562500.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 562550 | 562550 | formal_data | data_update | sh.562550 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_562550.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 562920 | 562920 | formal_data | data_update | sh.562920 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_562920.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 563360 | 华泰柏瑞中证A500ETF | 新宽基与新风格 | trade_pool | sh.563360 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_563360.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 563800 | 广发中证A500ETF | 新宽基与新风格 | trade_pool | sh.563800 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_563800.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 588000 | 科创50ETF | 宽基 | trade_pool | sh.588000 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_588000.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 588030 | 博时科创100ETF | 新宽基与新风格 | trade_pool | sh.588030 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_588030.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 588080 | 科创创业50ETF | 宽基 | trade_pool | sh.588080 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_588080.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 588120 | 国泰科创100ETF | 新宽基与新风格 | observe_pool | sh.588120 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_588120.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 588190 | 银华科创100ETF | 新宽基与新风格 | observe_pool | sh.588190 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_588190.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 588200 | 科创芯片ETF | 科技成长 | trade_pool | sh.588200 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_588200.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 588220 | 科创100ETF基金 | 新宽基与新风格 | trade_pool | sh.588220 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_588220.csv | 本地 CSV 已覆盖本次 start/end 范围。 |
+| 588800 | 华夏科创100ETF | 新宽基与新风格 | observe_pool | sh.588800 | 2026-06-19 | 2026-07-10 | up_to_date | 否 | 0 | 否 | 0 | 2025-03-03 | 2026-07-10 | 331 | data/etf_daily/sh_588800.csv | 本地 CSV 已覆盖本次 start/end 范围。 |

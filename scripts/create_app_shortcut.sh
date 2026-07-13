@@ -109,9 +109,9 @@ cat > "$CONTENTS_DIR/Info.plist" <<'PLIST'
   <key>CFBundleIdentifier</key>
   <string>local.dayin.a-share-swing-system</string>
   <key>CFBundleVersion</key>
-  <string>0.1.0-local</string>
+  <string>0.2.0-local</string>
   <key>CFBundleShortVersionString</key>
-  <string>0.1.0-local</string>
+  <string>0.2.0-local</string>
   <key>CFBundleExecutable</key>
   <string>launch</string>
   <key>LSArchitecturePriority</key>
@@ -133,7 +133,7 @@ PLIST
 
 cat > "$MACOS_DIR/launch" <<'LAUNCH'
 #!/bin/bash
-PROJECT_ROOT="/Users/dayin/Code/a-share-swing-system"
+PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../../.." && pwd)"
 unset __PYVENV_LAUNCHER__
 unset PYTHONHOME
 export PATH="/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"

@@ -1,0 +1,39 @@
+{
+  "generated_at": "2026-07-07",
+  "scope": "Project Context Persistence Phase A foundation consistency audit",
+  "consistency_status": "PASS",
+  "conflict_found": false,
+  "checks": {
+    "phase3_complete": true,
+    "selected_candidate_is_ASYMMETRIC_CONFIRM": true,
+    "current_snapshot_regime_date_is_2026_07_06": true,
+    "raw_regime_is_NEUTRAL": true,
+    "shadow_regime_is_NEUTRAL": true,
+    "style_fit_has_historical_support": true,
+    "style_fit_has_incremental_signal_value": true,
+    "ready_for_adjusted_preview_research": true,
+    "ready_for_preview_false": true,
+    "ready_for_execution_false": true,
+    "structural_risk_not_asset_fit_core": true,
+    "formal_model_unchanged": true,
+    "buy_ranking_unchanged": true,
+    "market_regime_unchanged": true
+  },
+  "sources": {
+    "agents": "AGENTS.md",
+    "project_index": "PROJECT_INDEX.md",
+    "current_project_state": "docs/current_project_state.md",
+    "current_phase_status": "docs/current_phase_status.json",
+    "phase2_report": "reports/regime_layer_phase2_market_audit.md",
+    "phase25_report": "reports/regime_layer_phase2_5_stabilization.md",
+    "phase3_report": "reports/regime_layer_phase3_style_fit.md",
+    "phase3_decision": "reports/style_regime_fit_phase_decision.json"
+  },
+  "notes": [
+    "PROJECT_STATE.md is stale and not treated as current truth.",
+    "data/paper_positions.csv is dirty in the worktree but was not modified by this batch.",
+    "latest known regime snapshot is not live market state."
+  ],
+  "research_only": true,
+  "execution_allowed": false
+}

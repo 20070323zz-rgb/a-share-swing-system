@@ -1,0 +1,1 @@
+calculation_date,universe_version,benchmark_basket_version,etf_code,etf_name,benchmark_code,benchmark_name,benchmark_family,lookback_window,beta,correlation,r_squared,sample_size,window_start_date,window_end_date,confidence,PIT_status,missing_flag,missing_reason,source_data,research_only,execution_allowed

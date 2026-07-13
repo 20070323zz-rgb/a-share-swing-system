@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-06-21 21:00:03",
+  "generated_at": "2026-07-10 21:41:15",
   "baostock_status": {
-    "configured": false,
-    "usable": false,
-    "message": "baostock import failed",
-    "last_error": true
+    "configured": true,
+    "usable": true,
+    "message": "baostock import ok",
+    "last_error": false
   },
   "tushare_status": {
     "configured": true,
@@ -22,13 +22,13 @@
   "jqdata_status": {
     "configured": false,
     "usable": false,
-    "message": "jqdatasdk import ok; credential values are never printed",
-    "last_error": false
+    "message": "jqdatasdk import failed",
+    "last_error": true
   },
   "local_cache_status": {
     "configured": true,
     "usable": true,
-    "message": "local cache dir: /Users/dayin/Code/a-share-swing-system/data/etf_daily",
+    "message": "local cache dir: <project_root>/data/etf_daily",
     "last_error": false,
     "etf_file_count": 183
   },

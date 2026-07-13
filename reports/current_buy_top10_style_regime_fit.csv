@@ -1,0 +1,7 @@
+rank,symbol,name,raw_score,style_profile,current_stable_regime,overall_fit_evidence,10d_median_forward_return,10d_benchmark_excess_median,sample_count,fit_interpretation,snapshot_date,research_only,execution_allowed
+1,512010,医药ETF,93.784265,SECTOR_DEFENSIVE,NEUTRAL,CONFLICT,-0.010727,-0.004805,406.0,512010 style=SECTOR_DEFENSIVE has CONFLICT under NEUTRAL; signal can be strong but regime fit is a research caution.,2026-07-06,True,False
+2,159865,养殖ETF,75.000286,COMMODITY_CYCLICAL,NEUTRAL,NEUTRAL,-0.001799,-0.000969,464.0,159865 style=COMMODITY_CYCLICAL is NEUTRAL under NEUTRAL; keep observation.,2026-07-06,True,False
+3,159869,游戏ETF,74.542513,GROWTH_THEME,NEUTRAL,INSUFFICIENT,,,,159869 style=GROWTH_THEME is INSUFFICIENT under NEUTRAL; keep observation.,2026-07-06,True,False
+4,512880,证券ETF,74.345049,SECTOR_CYCLICAL,NEUTRAL,CONFLICT,-0.011625,-0.011463,232.0,512880 style=SECTOR_CYCLICAL has CONFLICT under NEUTRAL; signal can be strong but regime fit is a research caution.,2026-07-06,True,False
+5,159929,医药ETF,72.29994,SECTOR_DEFENSIVE,NEUTRAL,CONFLICT,-0.010727,-0.004805,406.0,159929 style=SECTOR_DEFENSIVE has CONFLICT under NEUTRAL; signal can be strong but regime fit is a research caution.,2026-07-06,True,False
+6,159825,农业ETF,68.162327,COMMODITY_CYCLICAL,NEUTRAL,NEUTRAL,-0.001799,-0.000969,464.0,159825 style=COMMODITY_CYCLICAL is NEUTRAL under NEUTRAL; keep observation.,2026-07-06,True,False

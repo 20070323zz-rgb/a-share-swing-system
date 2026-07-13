@@ -1,0 +1,307 @@
+{
+  "generated_at": "2026-07-06 21:55:05",
+  "regime_switch_count": 44,
+  "average_regime_duration": 5.933333,
+  "median_regime_duration": 2.0,
+  "max_regime_duration": 73,
+  "one_day_reversal_count": 14,
+  "three_day_reversal_count": 30,
+  "five_day_reversal_count": 36,
+  "short_regime_whipsaw_count": 19,
+  "by_regime": {
+    "OFFENSIVE": {
+      "run_count": 13,
+      "average_duration": 11.846154,
+      "median_duration": 2.0,
+      "max_duration": 73
+    },
+    "NEUTRAL": {
+      "run_count": 20,
+      "average_duration": 2.75,
+      "median_duration": 2.0,
+      "max_duration": 9
+    },
+    "DEFENSIVE": {
+      "run_count": 12,
+      "average_duration": 4.833333,
+      "median_duration": 2.5,
+      "max_duration": 15
+    }
+  },
+  "runs": [
+    {
+      "regime": "NEUTRAL",
+      "start_date": "2025-05-30",
+      "end_date": "2025-06-11",
+      "duration": 8
+    },
+    {
+      "regime": "DEFENSIVE",
+      "start_date": "2025-06-12",
+      "end_date": "2025-06-16",
+      "duration": 3
+    },
+    {
+      "regime": "NEUTRAL",
+      "start_date": "2025-06-17",
+      "end_date": "2025-06-17",
+      "duration": 1
+    },
+    {
+      "regime": "DEFENSIVE",
+      "start_date": "2025-06-18",
+      "end_date": "2025-06-18",
+      "duration": 1
+    },
+    {
+      "regime": "NEUTRAL",
+      "start_date": "2025-06-19",
+      "end_date": "2025-06-24",
+      "duration": 4
+    },
+    {
+      "regime": "OFFENSIVE",
+      "start_date": "2025-06-25",
+      "end_date": "2025-10-13",
+      "duration": 73
+    },
+    {
+      "regime": "NEUTRAL",
+      "start_date": "2025-10-14",
+      "end_date": "2025-10-14",
+      "duration": 1
+    },
+    {
+      "regime": "OFFENSIVE",
+      "start_date": "2025-10-15",
+      "end_date": "2025-10-16",
+      "duration": 2
+    },
+    {
+      "regime": "DEFENSIVE",
+      "start_date": "2025-10-17",
+      "end_date": "2025-10-20",
+      "duration": 2
+    },
+    {
+      "regime": "NEUTRAL",
+      "start_date": "2025-10-21",
+      "end_date": "2025-10-23",
+      "duration": 3
+    },
+    {
+      "regime": "OFFENSIVE",
+      "start_date": "2025-10-24",
+      "end_date": "2025-10-30",
+      "duration": 5
+    },
+    {
+      "regime": "NEUTRAL",
+      "start_date": "2025-10-31",
+      "end_date": "2025-11-03",
+      "duration": 2
+    },
+    {
+      "regime": "DEFENSIVE",
+      "start_date": "2025-11-04",
+      "end_date": "2025-11-05",
+      "duration": 2
+    },
+    {
+      "regime": "NEUTRAL",
+      "start_date": "2025-11-06",
+      "end_date": "2025-11-07",
+      "duration": 2
+    },
+    {
+      "regime": "OFFENSIVE",
+      "start_date": "2025-11-10",
+      "end_date": "2025-11-11",
+      "duration": 2
+    },
+    {
+      "regime": "NEUTRAL",
+      "start_date": "2025-11-12",
+      "end_date": "2025-11-12",
+      "duration": 1
+    },
+    {
+      "regime": "OFFENSIVE",
+      "start_date": "2025-11-13",
+      "end_date": "2025-11-14",
+      "duration": 2
+    },
+    {
+      "regime": "NEUTRAL",
+      "start_date": "2025-11-17",
+      "end_date": "2025-11-20",
+      "duration": 4
+    },
+    {
+      "regime": "DEFENSIVE",
+      "start_date": "2025-11-21",
+      "end_date": "2025-12-05",
+      "duration": 11
+    },
+    {
+      "regime": "NEUTRAL",
+      "start_date": "2025-12-08",
+      "end_date": "2025-12-10",
+      "duration": 3
+    },
+    {
+      "regime": "DEFENSIVE",
+      "start_date": "2025-12-11",
+      "end_date": "2025-12-11",
+      "duration": 1
+    },
+    {
+      "regime": "NEUTRAL",
+      "start_date": "2025-12-12",
+      "end_date": "2025-12-12",
+      "duration": 1
+    },
+    {
+      "regime": "DEFENSIVE",
+      "start_date": "2025-12-15",
+      "end_date": "2025-12-16",
+      "duration": 2
+    },
+    {
+      "regime": "OFFENSIVE",
+      "start_date": "2025-12-17",
+      "end_date": "2025-12-17",
+      "duration": 1
+    },
+    {
+      "regime": "DEFENSIVE",
+      "start_date": "2025-12-18",
+      "end_date": "2025-12-18",
+      "duration": 1
+    },
+    {
+      "regime": "OFFENSIVE",
+      "start_date": "2025-12-19",
+      "end_date": "2026-01-21",
+      "duration": 22
+    },
+    {
+      "regime": "NEUTRAL",
+      "start_date": "2026-01-22",
+      "end_date": "2026-01-28",
+      "duration": 5
+    },
+    {
+      "regime": "OFFENSIVE",
+      "start_date": "2026-01-29",
+      "end_date": "2026-01-30",
+      "duration": 2
+    },
+    {
+      "regime": "DEFENSIVE",
+      "start_date": "2026-02-02",
+      "end_date": "2026-03-02",
+      "duration": 15
+    },
+    {
+      "regime": "NEUTRAL",
+      "start_date": "2026-03-03",
+      "end_date": "2026-03-13",
+      "duration": 9
+    },
+    {
+      "regime": "OFFENSIVE",
+      "start_date": "2026-03-16",
+      "end_date": "2026-03-16",
+      "duration": 1
+    },
+    {
+      "regime": "NEUTRAL",
+      "start_date": "2026-03-17",
+      "end_date": "2026-03-18",
+      "duration": 2
+    },
+    {
+      "regime": "DEFENSIVE",
+      "start_date": "2026-03-19",
+      "end_date": "2026-03-31",
+      "duration": 9
+    },
+    {
+      "regime": "NEUTRAL",
+      "start_date": "2026-04-01",
+      "end_date": "2026-04-01",
+      "duration": 1
+    },
+    {
+      "regime": "DEFENSIVE",
+      "start_date": "2026-04-02",
+      "end_date": "2026-04-13",
+      "duration": 7
+    },
+    {
+      "regime": "OFFENSIVE",
+      "start_date": "2026-04-14",
+      "end_date": "2026-06-04",
+      "duration": 35
+    },
+    {
+      "regime": "NEUTRAL",
+      "start_date": "2026-06-05",
+      "end_date": "2026-06-05",
+      "duration": 1
+    },
+    {
+      "regime": "DEFENSIVE",
+      "start_date": "2026-06-08",
+      "end_date": "2026-06-11",
+      "duration": 4
+    },
+    {
+      "regime": "NEUTRAL",
+      "start_date": "2026-06-12",
+      "end_date": "2026-06-15",
+      "duration": 2
+    },
+    {
+      "regime": "OFFENSIVE",
+      "start_date": "2026-06-16",
+      "end_date": "2026-06-23",
+      "duration": 5
+    },
+    {
+      "regime": "NEUTRAL",
+      "start_date": "2026-06-24",
+      "end_date": "2026-06-24",
+      "duration": 1
+    },
+    {
+      "regime": "OFFENSIVE",
+      "start_date": "2026-06-25",
+      "end_date": "2026-06-25",
+      "duration": 1
+    },
+    {
+      "regime": "NEUTRAL",
+      "start_date": "2026-06-26",
+      "end_date": "2026-06-26",
+      "duration": 1
+    },
+    {
+      "regime": "OFFENSIVE",
+      "start_date": "2026-06-29",
+      "end_date": "2026-07-01",
+      "duration": 3
+    },
+    {
+      "regime": "NEUTRAL",
+      "start_date": "2026-07-02",
+      "end_date": "2026-07-06",
+      "duration": 3
+    }
+  ],
+  "frequent_switching": true,
+  "needs_future_hysteresis_research": true,
+  "research_only": true,
+  "execution_allowed": false
+}

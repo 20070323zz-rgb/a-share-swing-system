@@ -2,7 +2,7 @@
 set -u
 
 TASK_NAME="weekly_review"
-PROJECT_ROOT="/Users/dayin/Code/a-share-swing-system"
+PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 PYTHON_BIN="$PROJECT_ROOT/.venv/bin/python"
 LOG_DIR="$PROJECT_ROOT/logs"
 LOG_FILE="$LOG_DIR/weekly_review.log"
@@ -34,6 +34,7 @@ log_start() {
     echo "running command: $PYTHON_BIN src/missed_opportunity_tracker.py"
     echo "running command: $PYTHON_BIN src/shadow_observation_weekly.py"
     echo "running command: $PYTHON_BIN src/trade_review.py"
+    echo "running command: $PYTHON_BIN src/chatgpt_weekly_packet.py"
   } >> "$LOG_FILE" 2>&1
 }
 
@@ -68,6 +69,7 @@ PERSISTENCE_SHADOW_STATUS=0
 MISSED_OPPORTUNITY_STATUS=0
 SHADOW_OBSERVATION_STATUS=0
 TRADE_REVIEW_STATUS=0
+CHATGPT_PACKET_STATUS=0
 COMMAND="$PYTHON_BIN src/main.py --weekly"
 "$PYTHON_BIN" src/main.py --weekly >> "$LOG_FILE" 2>&1 || STATUS=$?
 if [ "$STATUS" -eq 0 ]; then
@@ -123,6 +125,23 @@ if [ "$STATUS" -eq 0 ]; then
       echo "warning command: $PYTHON_BIN src/trade_review.py"
       echo "exit code: $TRADE_REVIEW_STATUS"
       echo "message: trade review failed; continuing weekly review without changing paper trades"
+    } >> "$LOG_FILE" 2>&1
+  fi
+fi
+if [ "$STATUS" -eq 0 ]; then
+  "$PYTHON_BIN" src/chatgpt_weekly_packet.py >> "$LOG_FILE" 2>&1 || CHATGPT_PACKET_STATUS=$?
+  if [ "$CHATGPT_PACKET_STATUS" -ne 0 ]; then
+    {
+      echo "[$(timestamp)] $TASK_NAME warning"
+      echo "warning command: $PYTHON_BIN src/chatgpt_weekly_packet.py"
+      echo "exit code: $CHATGPT_PACKET_STATUS"
+      echo "message: ChatGPT/Main weekly packet failed; continuing weekly review without changing paper trades"
+    } >> "$LOG_FILE" 2>&1
+  else
+    {
+      echo "[$(timestamp)] $TASK_NAME info"
+      echo "generated: reports/chatgpt_weekly_analysis_packet_latest.md"
+      echo "generated: reports/chatgpt_weekly_analysis_packet_latest.json"
     } >> "$LOG_FILE" 2>&1
   fi
 fi

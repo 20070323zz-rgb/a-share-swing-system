@@ -1,0 +1,14 @@
+{
+  "generated_at": "2026-06-29 22:15:43",
+  "reports_root_file_count": 348,
+  "archive_file_count": 0,
+  "moved_count": 0,
+  "moved_files": [],
+  "latest_retained": {
+    "dashboard_data.json": true,
+    "latest_brief.md": true,
+    "latest_paper_portfolio.md": true,
+    "chatgpt_weekly_analysis_packet_latest.md": true,
+    "chatgpt_weekly_analysis_packet_latest.json": true
+  }
+}

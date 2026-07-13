@@ -1,0 +1,11 @@
+snapshot_date,stable_regime,symbol,name,rank,raw_score,style_profile,fit_evidence,fit_reason,research_only,execution_allowed,forward_1d,matured_1d,forward_3d,matured_3d,forward_5d,matured_5d,forward_10d,matured_10d,forward_20d,matured_20d
+2026-07-06,NEUTRAL,512010,医药ETF,1,93.784265,SECTOR_DEFENSIVE,CONFLICT,512010 style=SECTOR_DEFENSIVE has CONFLICT under NEUTRAL; signal can be strong but regime fit is a research caution.,True,False,-0.03542234332425076,True,,False,,False,,False,,False
+2026-07-06,NEUTRAL,159865,养殖ETF,2,75.000286,COMMODITY_CYCLICAL,NEUTRAL,159865 style=COMMODITY_CYCLICAL is NEUTRAL under NEUTRAL; keep observation.,True,False,,False,,False,,False,,False,,False
+2026-07-06,NEUTRAL,159869,游戏ETF,3,74.542513,GROWTH_THEME,INSUFFICIENT,159869 style=GROWTH_THEME is INSUFFICIENT under NEUTRAL; keep observation.,True,False,,False,,False,,False,,False,,False
+2026-07-06,NEUTRAL,512880,证券ETF,4,74.345049,SECTOR_CYCLICAL,CONFLICT,512880 style=SECTOR_CYCLICAL has CONFLICT under NEUTRAL; signal can be strong but regime fit is a research caution.,True,False,-0.031896551724137856,True,,False,,False,,False,,False
+2026-07-06,NEUTRAL,588080,科创创业50ETF,4,76.588658,CORE_MID_CAP,NEUTRAL,588080 style=CORE_MID_CAP is NEUTRAL under NEUTRAL; keep observation.,True,False,,False,,False,,False,,False,,False
+2026-07-06,NEUTRAL,159929,医药ETF,5,72.29994,SECTOR_DEFENSIVE,CONFLICT,159929 style=SECTOR_DEFENSIVE has CONFLICT under NEUTRAL; signal can be strong but regime fit is a research caution.,True,False,,False,,False,,False,,False,,False
+2026-07-06,NEUTRAL,588000,科创50ETF,5,76.558597,CORE_MID_CAP,NEUTRAL,588000 style=CORE_MID_CAP is NEUTRAL under NEUTRAL; keep observation.,True,False,,False,,False,,False,,False,,False
+2026-07-06,NEUTRAL,159825,农业ETF,6,68.162327,COMMODITY_CYCLICAL,NEUTRAL,159825 style=COMMODITY_CYCLICAL is NEUTRAL under NEUTRAL; keep observation.,True,False,,False,,False,,False,,False,,False
+2026-07-06,NEUTRAL,512170,医疗ETF,6,76.291409,SECTOR_DEFENSIVE,CONFLICT,512170 style=SECTOR_DEFENSIVE has CONFLICT under NEUTRAL; signal can be strong but regime fit is a research caution.,True,False,,False,,False,,False,,False,,False
+2026-07-06,NEUTRAL,515000,科技ETF,8,71.346297,GROWTH_THEME,INSUFFICIENT,515000 style=GROWTH_THEME is INSUFFICIENT under NEUTRAL; keep observation.,True,False,,False,,False,,False,,False,,False

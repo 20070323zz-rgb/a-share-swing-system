@@ -1,0 +1,22 @@
+{
+  "generated_at": "2026-07-08 14:03:36",
+  "pooled_support": true,
+  "time_split_support": true,
+  "etf_level_support": true,
+  "segment_level_support": true,
+  "horizon_support": true,
+  "etf_level_overall_classification": "CONFLICTING",
+  "style_fit_incremental_signal_value_robustness": "PARTIALLY_ROBUST",
+  "incremental_signal_value_final_answer": "YES_WITH_ROBUSTNESS_CAVEAT",
+  "key_supporting_evidence": [
+    "Pooled ETF-day, time split, ETF-level, segment-level, and horizon checks are supportive in majority/core views."
+  ],
+  "key_robustness_caveats": [
+    "ETF-level overall robustness is CONFLICTING; pooled support cannot be called fully robust.",
+    "1 core aggregation comparison has direction reversal.",
+    "Major robustness warning remains active."
+  ],
+  "research_only": true,
+  "shadow_only": true,
+  "execution_allowed": false
+}

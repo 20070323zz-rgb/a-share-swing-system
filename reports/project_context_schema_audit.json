@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-07-07 18:41:57 CST",
+  "scope": "Project Context Persistence Phase B schema audit",
+  "schema_sufficient": false,
+  "missing_state_fields": [
+    "context_schema_version",
+    "context_updated_at",
+    "context_updated_by",
+    "context_update_reason",
+    "main_phase_id",
+    "phase_started_at",
+    "phase_completed_at",
+    "current_batch_id",
+    "current_batch_status",
+    "blocked_batches",
+    "skipped_batches",
+    "last_completed_batch",
+    "required_batches",
+    "final_closeout_batch",
+    "current_phase_decision",
+    "latest_data_date",
+    "latest_data_date_source",
+    "status_sources",
+    "phase_transition_history"
+  ],
+  "ambiguous_state_fields": [
+    "schema_version does not distinguish context schema from file schema",
+    "current_phase_decision_json should be normalized to current_phase_decision",
+    "completed_batches are names only without transition records",
+    "pending_batches are names only without required/skipped/blocked semantics",
+    "current_phase_report has no paired last_completed_batch_report field"
+  ],
+  "transition_risks": [
+    "batch completion can be marked without required validation order",
+    "response-lost recovery lacks last completed batch marker",
+    "current batch lacks explicit status enum",
+    "phase transitions lack history",
+    "main phase completion lacks required batch and final closeout conditions"
+  ],
+  "staleness_risks": [
+    "latest known regime is a dated snapshot, not live current state",
+    "latest data date is not stored",
+    "staleness flags are absent",
+    "decision source attribution is not machine-readable"
+  ],
+  "sources_read": [
+    "AGENTS.md",
+    "PROJECT_INDEX.md",
+    "docs/current_project_state.md",
+    "docs/current_phase_status.json",
+    "docs/project_context_architecture.md",
+    "reports/regime_layer_phase2_market_audit.md",
+    "reports/market_regime_audit_decision.json",
+    "reports/regime_layer_phase2_5_stabilization.md",
+    "reports/regime_stabilization_candidate_decision.json",
+    "reports/regime_layer_phase3_style_fit.md",
+    "reports/style_regime_fit_phase_decision.json"
+  ],
+  "research_only": true,
+  "execution_allowed": false
+}

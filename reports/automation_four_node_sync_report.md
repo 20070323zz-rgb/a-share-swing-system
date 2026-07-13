@@ -1,6 +1,6 @@
 # 四节点自动化同步报告
 
-- 检查时间：2026-06-24 23:04:56
+- 检查时间：2026-07-10 16:29:13
 - dry-run：no
 - 正式 ETF 日线文件数量：183
 - 权限等级：L2 联网数据权限；本轮未读取账号、未接券商、未真实下单。
@@ -18,26 +18,26 @@
 ## launchd plist
 | label | plist | exists | scheduled |
 | --- | --- | --- | --- |
-| com.dayin.a-share.open-check | /Users/dayin/Code/a-share-swing-system/launchd/com.dayin.a-share.open-check.plist | True | 09:40 weekdays |
-| com.dayin.a-share.midday-check | /Users/dayin/Code/a-share-swing-system/launchd/com.dayin.a-share.midday-check.plist | True | 12:40 weekdays |
-| com.dayin.a-share.afternoon-open-check | /Users/dayin/Code/a-share-swing-system/launchd/com.dayin.a-share.afternoon-open-check.plist | True | 13:10 weekdays |
-| com.dayin.a-share.daily-close | /Users/dayin/Code/a-share-swing-system/launchd/com.dayin.a-share.daily-close.plist | True | 15:30 weekdays |
-| com.dayin.a-share.weekly-review | /Users/dayin/Code/a-share-swing-system/launchd/com.dayin.a-share.weekly-review.plist | True | 15:40 Friday |
-| com.dayin.a-share.monthly-model-review | /Users/dayin/Code/a-share-swing-system/launchd/com.dayin.a-share.monthly-model-review.plist | True | 16:10 day 1 monthly |
+| com.dayin.a-share.open-check | <project_root>/launchd/com.dayin.a-share.open-check.plist | True | 09:40 weekdays |
+| com.dayin.a-share.midday-check | <project_root>/launchd/com.dayin.a-share.midday-check.plist | True | 12:40 weekdays |
+| com.dayin.a-share.afternoon-open-check | <project_root>/launchd/com.dayin.a-share.afternoon-open-check.plist | True | 13:10 weekdays |
+| com.dayin.a-share.daily-close | <project_root>/launchd/com.dayin.a-share.daily-close.plist | True | 15:30 weekdays |
+| com.dayin.a-share.weekly-review | <project_root>/launchd/com.dayin.a-share.weekly-review.plist | True | 15:40 Friday |
+| com.dayin.a-share.monthly-model-review | <project_root>/launchd/com.dayin.a-share.monthly-model-review.plist | True | 16:10 day 1 monthly |
 
 ## 报告同步状态
 | report | exists | updated_at |
 | --- | --- | --- |
-| open_check.md | True | 2026-06-24 09:54:32 |
-| midday_check.md | True | 2026-06-24 12:55:23 |
-| afternoon_open_check.md | True | 2026-06-24 13:13:59 |
-| daily_rolling_backtest.md | True | 2026-06-24 23:04:56 |
-| weekly_full_review.md | True | 2026-06-12 15:48:29 |
-| monthly_model_review.md | True | 2026-06-10 12:36:56 |
-| latest_brief.md | True | 2026-06-24 23:04:50 |
-| latest_paper_portfolio.md | True | 2026-06-24 23:04:52 |
-| buy_signal_ranking.md | True | 2026-06-24 23:04:50 |
-| dashboard_data.json | True | 2026-06-24 23:04:50 |
+| open_check.md | True | 2026-07-10 09:56:01 |
+| midday_check.md | True | 2026-07-09 12:41:52 |
+| afternoon_open_check.md | True | 2026-07-09 13:16:43 |
+| daily_rolling_backtest.md | True | 2026-07-10 16:28:11 |
+| weekly_full_review.md | True | 2026-07-10 16:28:25 |
+| monthly_model_review.md | True | 2026-07-01 23:50:06 |
+| latest_brief.md | True | 2026-07-10 16:28:13 |
+| latest_paper_portfolio.md | True | 2026-07-10 16:28:13 |
+| buy_signal_ranking.md | True | 2026-07-10 16:28:13 |
+| dashboard_data.json | True | 2026-07-10 16:28:13 |
 
 ## 诊断结论
 - 当前 launchd 调用项目内 scripts/run_*.sh 脚本。

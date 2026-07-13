@@ -1,0 +1,732 @@
+# Project Structure Audit
+
+生成时间：2026-06-29 16:08:04
+
+> 本报告只做文件结构审计和整理建议；未移动、未删除、未修改交易规则。
+
+## 摘要
+
+- 项目根目录：`<project_root>`
+- 忽略目录：`.git, .mypy_cache, .pytest_cache, .venv, __pycache__, app/frontend/dist, node_modules`
+- 统计文件数：1064
+- `reports/` 文件数：349，其中 md 225、json 53、csv 70
+- `src/` 顶层 Python 模块数：66
+- `scripts/` 顶层脚本数：35
+- `data/etf_daily/` ETF CSV 数：183
+- `dashboard/index.html`：exists
+- `app/frontend/dist/index.html`：exists
+
+## 当前目录树摘要
+
+```text
+  - .idea/ (7 files)
+    - inspectionProfiles/ (1 files)
+    - .gitignore
+    - a-share-swing-system.iml
+    - misc.xml
+    - modules.xml
+    - vcs.xml
+    - workspace.xml
+  - app/ (41 files)
+    - backend/ (6 files)
+    - frontend/ (34 files)
+    - README.md
+  - assets/ (2 files)
+    - app_icon.png
+    - app_icon.svg
+  - dashboard/ (5 files)
+    - app.py
+    - build_dashboard.py
+    - index.html
+    - open_dashboard.command
+    - README.md
+  - data/ (446 files)
+    - etf_daily/ (184 files)
+    - manual_import/ (26 files)
+    - raw/ (1 files)
+    - staging/ (200 files)
+    - .gitkeep
+    - 159869.csv
+    - 159915.csv
+    - 159928.csv
+    - 510300.csv
+    - 510500.csv
+    - 510880.csv
+    - 512010.csv
+    - 512100.csv
+    - 512480.csv
+    - 512690.csv
+    - 512760.csv
+    - 512800.csv
+    - 512880.csv
+    - 512890.csv
+    - 513500.csv
+    - 515050.csv
+    - 515790.csv
+    - 516160.csv
+    - 518880.csv
+    - 588000.csv
+    - automation_state.json
+    - backtest_trade_pool.csv
+    - etf_classification.csv
+    - etf_pool_expansion_candidates.csv
+    - etf_theme_keywords.csv
+    - etf_type_classification.csv
+    - missed_opportunity_tracking.csv
+    - paper_equity_curve.csv
+    - paper_equity_curve_backfilled.csv
+    - paper_positions.csv
+    - paper_trade_engine_state.json
+    - paper_trades.csv
+    - persistence_breakout_shadow_tracking.csv
+    - strategy_preview_tracking.csv
+  - desktop/ (10 files)
+    - tauri/ (9 files)
+    - README.md
+  - dist/ (14 files)
+    - app_icon.iconset/ (10 files)
+    - 量化研究控制台.app/ (3 files)
+  - docs/ (7 files)
+    - app_launch_guide.md
+    - app_release_checklist.md
+    - data_api_evaluation.md
+    - local_app_release_guide.md
+    - project_file_map.md
+    - qmt_readonly_data_plan.md
+    - trading_rules.md
+  - launchd/ (7 files)
+    - com.dayin.a-share.afternoon-open-check.plist
+    - com.dayin.a-share.catchup-check.plist
+    - com.dayin.a-share.daily-close.plist
+    - com.dayin.a-share.midday-check.plist
+    - com.dayin.a-share.monthly-model-review.plist
+    - com.dayin.a-share.open-check.plist
+    - com.dayin.a-share.weekly-review.plist
+  - logs/ (43 files)
+    - app_tasks/ (19 files)
+    - afternoon_open_check.log
+    - app_backend.log
+    - app_dependency_check.log
+    - app_launch_status.json
+    - app_server.log
+    - catchup_check.log
+    - daily_close.log
+    - launchd_afternoon_open_check.err.log
+    - launchd_afternoon_open_check.out.log
+    - launchd_catchup_check.err.log
+    - launchd_catchup_check.out.log
+    - launchd_daily_close.err.log
+    - launchd_daily_close.out.log
+    - launchd_midday_check.err.log
+    - launchd_midday_check.out.log
+    - launchd_open_check.err.log
+    - launchd_open_check.out.log
+    - launchd_weekly_review.err.log
+    - launchd_weekly_review.out.log
+    - midday_check.log
+    - monthly_model_review.log
+    - open_check.log
+    - streamlit_dashboard.log
+    - weekly_review.log
+  - notebooks/ (1 files)
+    - .gitkeep
+  - raw/ (1 files)
+    - .gitkeep
+  - reports/ (349 files)
+    - .gitkeep
+    - account_status.csv
+    - afternoon_open_check.json
+    - afternoon_open_check.md
+    - akshare_connectivity_check.json
+    - akshare_connectivity_check.md
+    - alpha_factor_enhancement_metrics.json
+    - alpha_factor_enhancement_research.md
+    - alpha_factor_enhancement_summary.csv
+    - app_backfill_button_fix_20260624.md
+    - app_backfill_button_fix_report.md
+    - app_data_backfill_button_audit.md
+    - app_independent_launch_fix_report.md
+    - app_launch_diagnostics.json
+    - app_launch_diagnostics.md
+    - app_launch_fix_report.json
+    - app_launch_fix_report.md
+    - app_local_release_phase1_report.md
+    - app_polish_phase1_launch_stability_report.md
+    - app_release_phase2_shortcut_equity_backfill_report.md
+    - app_task_status.json
+    - automation_four_node_sync_report.md
+    - b1_strategy_enhancement_preview_report.md
+    - b2_strategy_preview_tracking_report.md
+    - backtest_capital_sensitivity.csv
+    - backtest_capital_sensitivity.md
+    - backtest_consistency_check.json
+    - backtest_consistency_check.md
+    - backtest_cost_diagnostics.csv
+    - backtest_cost_diagnostics.md
+    - backtest_diagnostics_summary.json
+    - backtest_drawdown_diagnostics.csv
+    - backtest_drawdown_diagnostics.md
+    - backtest_equity_curve.csv
+    - backtest_execution_timing_sensitivity.csv
+    - backtest_execution_timing_sensitivity.md
+    - backtest_exit_reason_summary.csv
+    - backtest_expand_pool_decision.md
+    - backtest_metrics.json
+    - backtest_phase4a_report.md
+    - backtest_positions.csv
+    - backtest_ranking_effectiveness.csv
+    - backtest_ranking_effectiveness.md
+    - backtest_readiness_report.md
+    - backtest_result.csv
+    - backtest_summary.csv
+    - backtest_summary.md
+    - backtest_symbol_contribution.csv
+    - backtest_symbol_contribution.md
+    - backtest_trade_distribution.csv
+    - backtest_trade_distribution.md
+    - backtest_trade_pool_report.md
+    - backtest_trades.csv
+    - backtest_turnover_by_month.csv
+    - backtest_turnover_diagnostics.md
+    - backtest_yearly_summary.csv
+    - baostock_app_backfill_fix_report.md
+    - baostock_daily_source_optimization_report.md
+    - baostock_diagnosis.md
+    - broad_base_balance_preview.csv
+    - broad_base_balance_preview.json
+    - broad_base_balance_preview.md
+    - buy_ranking_report.md
+    - buy_signal_ranking.md
+    - catchup_scheduler_status.md
+    - chatgpt_analysis_packet_2026-06-27.md
+    - chatgpt_report_summary_2026-06-27.md
+    - chatgpt_weekly_analysis_packet_2026-06-26.json
+    - chatgpt_weekly_analysis_packet_2026-06-26.md
+    - chatgpt_weekly_analysis_packet_latest.json
+    - chatgpt_weekly_analysis_packet_latest.md
+    - chatgpt_weekly_report_summary_2026-06-27.md
+    - codex_daily_research_prompt.md
+    - codex_weekly_research_prompt.md
+    - current_positions_strategy_fit_report.md
+    - daily_data_update_diagnosis_report.md
+    - daily_rolling_backtest.csv
+    - daily_rolling_backtest.md
+    - daily_signal_2026-06-01.md
+    - daily_signal_2026-06-02.md
+    - daily_signal_2026-06-03.md
+    - daily_signal_2026-06-09.md
+    - daily_signal_2026-06-10.md
+    - daily_signal_2026-06-11.md
+    - daily_signal_2026-06-12.md
+    - daily_signal_2026-06-15.md
+    - daily_signal_2026-06-16.md
+    - daily_signal_2026-06-17.md
+    - daily_signal_2026-06-18.md
+    - daily_signal_2026-06-22.md
+    - daily_signal_2026-06-23.md
+    - daily_signal_2026-06-24.md
+    - daily_signal_2026-06-25.md
+    - daily_signal_2026-06-26.md
+    - dashboard_app_future_plan.md
+    - dashboard_data.json
+    - dashboard_redesign_research.md
+    - data_coverage_report.md
+    - data_download_report.md
+    - data_freshness_execution_reality.md
+    - data_health_report.md
+    - data_provider_design.md
+    - data_provider_status.json
+    - data_provider_status.md
+    - data_quality_report.md
+    - data_source_architecture_audit.json
+    - data_source_architecture_audit.md
+    - data_source_proposal.md
+    - data_source_status.json
+    - data_source_status_report.md
+    - data_update_app_task_fix_report.md
+    - data_update_automation_fix_report.md
+    - data_update_diagnosis_report.md
+    - data_update_log.md
+    - data_update_probe_fast.json
+    - data_update_status.baostock_fallback.json
+    - data_update_status.datasource_refresh.json
+    - data_update_status.dryrun.json
+    - data_update_status.json
+    - etf_classification_report.md
+    - etf_expansion_cleanup_report.md
+    - etf_expansion_import_report.md
+    - etf_expansion_import_results.csv
+    - etf_expansion_pipeline_report.md
+    - etf_expansion_quarantine_list.csv
+    - etf_expansion_staging_validation_report.md
+    - etf_pool_expansion_plan.md
+    - etf_pool_research_matrix.csv
+    - etf_pool_research_report.md
+    - etf_rotation_exit_rule_research.md
+    - etf_rotation_mature_model_reference.md
+    - etf_rotation_strategy_research.md
+    - etf_strategy_news_sentiment_research.md
+    - etf_type_aware_model_metrics.json
+    - etf_type_aware_model_research.md
+    - etf_type_aware_model_summary.csv
+    - etf_type_classification_report.md
+    - etf_volatility_profile.csv
+    - etf_volatility_profile.md
+    - execution_layer_integration_plan.md
+    - exit_rule_backtest_design.md
+    - exit_rule_by_etf_type.md
+    - exit_rule_candidates.json
+    - exit_rule_candidates.md
+    - exit_rule_research.csv
+    - exit_rule_research_report.md
+    - exit_rule_research_results.csv
+    - factor_analysis_report.md
+    - file_classification_plan.csv
+    - file_classification_plan.json
+    - file_classification_plan.md
+    - first_paper_buy_plan.md
+    - first_paper_trade_review.md
+    - high_beta_risk_watch.csv
+    - high_beta_risk_watch.json
+    - high_beta_risk_watch.md
+    - holding_period_research.csv
+    - holding_period_research_report.md
+    - holding_period_research_results.csv
+    - industry_etf_diagnosis.md
+    - intelligence_data_source_plan.md
+    - jqdata_connection_diagnosis.md
+    - jqdata_import_report.md
+    - jqdata_local_compare_report.md
+    - jqdata_primary_daily_source_report.md
+    - jqdata_test_report.md
+    - jqdata_unit_diagnosis_report.md
+    - latest_brief.md
+    - latest_buy_ranking.md
+    - latest_daily.md
+    - latest_data_coverage.md
+    - latest_data_health.md
+    - latest_factor_analysis.md
+    - latest_model_research.md
+    - latest_paper_portfolio.md
+    - latest_ranking.md
+    - latest_short_swing.md
+    - latest_weekly.md
+    - launchd_catchup_bugfix_report.md
+    - launchd_catchup_upgrade_report.md
+    - launchd_install_test_report.md
+    - local_validation.md
+    - manual_download_report.md
+    - manual_download_validation_report.md
+    - manual_failed_diagnosis_report.md
+    - manual_import_report.md
+    - market_state.csv
+    - market_state_report.md
+    - midday_check.json
+    - midday_check.md
+    - missed_opportunity_by_filter_reason.csv
+    - missed_opportunity_by_filter_reason.md
+    - missed_opportunity_observation_rules.md
+    - missed_opportunity_tracker.csv
+    - missed_opportunity_tracker.json
+    - missed_opportunity_tracker.md
+    - model_data_maturity_analysis.json
+    - model_data_maturity_analysis.md
+    - model_data_maturity_tables.csv
+    - model_dataset.csv
+    - model_enhancement_decision_report.md
+    - model_overfit_guardrails.md
+    - model_research_quality_review.json
+    - model_research_quality_review.md
+    - model_research_report.md
+    - model_shadow_comparison.csv
+    - model_shadow_comparison.md
+    - monthly_model_review.md
+    - news_data_source_plan.md
+    - news_sentiment_framework.md
+    - next_stage_strategy_optimization_report.md
+    - no_lookahead_data_rules.md
+    - open_check.json
+    - open_check.md
+    - paper_equity_curve.md
+    - paper_equity_curve_backfill_audit.md
+    - paper_equity_curve_backfilled.md
+    - paper_equity_curve_gap_explanation.md
+    - paper_performance_daily.csv
+    - paper_performance_summary.json
+    - paper_performance_summary.md
+    - paper_portfolio_metrics_audit.md
+    - paper_trade_engine_design_report.md
+    - paper_trade_engine_report.md
+    - paper_trade_plan.csv
+    - paper_trade_plan.md
+    - paper_trade_pnl.csv
+    - paper_trade_pnl.md
+    - parameter_sweep.csv
+    - parameter_sweep_report.md
+    - path_dependency_audit.json
+    - path_dependency_audit.md
+    - persistence_breakout_shadow_observation_rules.md
+    - persistence_breakout_shadow_portfolio.csv
+    - persistence_breakout_shadow_portfolio.md
+    - persistence_breakout_shadow_signal.csv
+    - persistence_breakout_shadow_signal.md
+    - persistence_breakout_shadow_summary.json
+    - phase1_paper_trading_closure_report.md
+    - phase2c_execution_layer_light_integration_report.md
+    - phase3a_fastapi_react_app_report.md
+    - phase3b_app_control_room_upgrade_report.md
+    - phase3c_desktop_app_mvp_report.md
+    - phase4c_alpha_model_comparison.csv
+    - phase4c_alpha_model_comparison.md
+    - phase4c_alpha_model_decision.md
+    - phase4c_alpha_summary.json
+    - phase4c_data_next_step.md
+    - phase4c_data_summary.json
+    - portfolio_exposure.csv
+    - portfolio_exposure.json
+    - portfolio_exposure.md
+    - portfolio_exposure_report.md
+    - position_review_state.csv
+    - position_review_state.json
+    - position_review_state.md
+    - post_expansion_automation_sync_report.md
+    - profit_protection_preview.csv
+    - profit_protection_preview.json
+    - profit_protection_preview.md
+    - project_cleanup_roadmap.md
+    - project_structure_audit.json
+    - project_structure_audit.md
+    - qmt_test_report.md
+    - ranking_factor_diagnostics.csv
+    - ranking_factor_diagnostics.md
+    - ranking_logic_audit.json
+    - ranking_logic_audit.md
+    - ranking_model_v2_backtest_report.md
+    - ranking_model_v2_candidates.json
+    - ranking_model_v2_decision_report.md
+    - ranking_model_v2_design.md
+    - ranking_model_v2_equity_curve.csv
+    - ranking_model_v2_execution_assumption.md
+    - ranking_model_v2_metrics.json
+    - ranking_model_v2_positions.csv
+    - ranking_model_v2_summary.csv
+    - ranking_model_v2_trades.csv
+    - ranking_model_v2_yearly_summary.csv
+    - ranking_report.md
+    - ranking_signal_research_summary.json
+    - recommended_project_layout.md
+    - regime_aware_model_metrics.json
+    - regime_aware_model_research.md
+    - regime_aware_model_summary.csv
+    - report_index.json
+    - report_index.md
+    - review_state_audit.json
+    - review_state_audit.md
+    - risk_on_empty_signal_analysis.csv
+    - risk_on_empty_signal_analysis.md
+    - risk_report.md
+    - selected_vs_filtered_forward_return.csv
+    - selected_vs_filtered_forward_return.md
+    - sell_signal_review.csv
+    - sell_signal_review.md
+    - sell_signal_review_design_report.md
+    - sell_signal_review_history.csv
+    - shadow_observation_weekly.csv
+    - shadow_observation_weekly.json
+    - shadow_observation_weekly.md
+    - signals.csv
+    - strategy_compare_report.md
+    - strategy_enhancement_preview.csv
+    - strategy_enhancement_preview.md
+    - strategy_preview_shadow_portfolio.csv
+    - strategy_preview_shadow_portfolio.md
+    - strategy_preview_tracking.csv
+    - strategy_preview_tracking_report.md
+    - top10_candidate_filter_analysis.csv
+    - top10_candidate_filter_analysis.md
+    - topn_selection_diagnostics.csv
+    - topn_selection_diagnostics.md
+    - trade_execution_realism_report.md
+    - trade_review_audit.md
+    - trade_review_details.csv
+    - trade_review_details.md
+    - trade_review_lessons.md
+    - trade_review_open_positions.csv
+    - trade_review_open_positions.md
+    - trade_review_summary.json
+    - trade_review_summary.md
+    - tushare_baostock_compare.csv
+    - tushare_baostock_compare.json
+    - tushare_baostock_compare.md
+    - tushare_config_check.json
+    - tushare_config_check.md
+    - tushare_no_lookahead_check.md
+    - tushare_staging_check.json
+    - tushare_staging_check.md
+    - universe_quality_review.csv
+    - universe_quality_review.md
+    - v2_underperformance_attribution.csv
+    - v2_underperformance_attribution.json
+    - v2_underperformance_attribution.md
+    - valuation_consistency_audit.json
+    - valuation_consistency_audit.md
+    - valuation_consistency_check.md
+    - watchlist_health_report.md
+    - weekly_full_backtest_results.csv
+    - weekly_full_review.md
+    - weekly_review_2026-06-01.md
+    - weekly_review_2026-06-02.md
+    - weekly_review_2026-06-03.md
+    - weekly_review_2026-06-09.md
+    - weekly_review_2026-06-11.md
+    - weekly_review_2026-06-12.md
+    - weekly_review_2026-06-25.md
+    - weekly_review_2026-06-26.md
+  - scripts/ (35 files)
+    - build_etf_expansion_plan.py
+    - check_app_env.sh
+    - check_app_release.sh
+    - compare_jqdata_with_local.py
+    - create_app_shortcut.sh
+    - diagnose_app_launch.sh
+    - diagnose_jqdata_units.py
+    - download_jqdata_expanded_etfs.py
+    - download_manual_etf_history.py
+    - fetch_jqdata_expansion_candidates.py
+    - fix_app_launch_permissions.sh
+    - import_jqdata_staging.py
+    - import_manual_csv.py
+    - install_launchd_jobs.sh
+    - normalize_csv.py
+    - project_hygiene_audit.py
+    - resolve_etf_expansion_candidates.py
+    - run_afternoon_open_check.sh
+    - run_app.sh
+    - run_catchup_check.sh
+    - run_codex_daily_research.sh
+    - run_codex_weekly_research.sh
+    - run_daily_close.sh
+    - run_desktop_app.sh
+    - run_etf_expansion_data_pipeline.py
+    - run_midday_check.sh
+    - run_monthly_model_review.sh
+    - run_open_check.sh
+    - run_weekly_review.sh
+    - test_jqdata_etf_daily.py
+    - test_qmt_xtdata.py
+    - test_scheduled_jobs.sh
+    - uninstall_launchd_jobs.sh
+    - update_etf_data.py
+    - validate_manual_csv.py
+  - src/ (77 files)
+    - data_providers/ (7 files)
+    - data_sources/ (3 files)
+    - .gitkeep
+    - __init__.py
+    - account.py
+    - akshare_connectivity_check.py
+    - alpha_factor_enhancement_research.py
+    - automation_nodes.py
+    - automation_scheduler.py
+    - automation_state.py
+    - backtest.py
+    - backtest_diagnostics.py
+    - backtest_engine.py
+    - broad_base_balance_preview.py
+    - buy_ranking.py
+    - chatgpt_weekly_packet.py
+    - config.py
+    - data_coverage.py
+    - data_fetcher.py
+    - data_health.py
+    - data_loader.py
+    - data_provider_status.py
+    - data_source_architecture_audit.py
+    - data_source_compare.py
+    - etf_classification.py
+    - etf_classifier.py
+    - etf_type_aware_model_research.py
+    - etf_volatility_profile.py
+    - exit_rule_candidates.py
+    - exit_rule_research.py
+    - factor_analysis.py
+    - features.py
+    - high_beta_risk_watch.py
+    - holding_period_research.py
+    - indicators.py
+    - labels.py
+    - main.py
+    - market_state.py
+    - missed_opportunity_tracker.py
+    - model_research.py
+    - model_research_quality_review.py
+    - next_stage_strategy_research.py
+    - paper_equity_backfill.py
+    - paper_performance.py
+    - paper_portfolio.py
+    - paper_trade_engine.py
+    - parameter_sweep.py
+    - persistence_breakout_shadow.py
+    - phase4c_alpha_common.py
+    - portfolio.py
+    - portfolio_exposure.py
+    - position_review_state.py
+    - profit_protection_preview.py
+    - ranking_factor_diagnostics.py
+    - ranking_model_v2_backtest.py
+    - regime_aware_model_research.py
+    - reporting.py
+    - sell_signal_review.py
+    - shadow_observation_weekly.py
+    - signal_engine.py
+    - strategy.py
+    - strategy_enhancement_preview.py
+    - strategy_preview_tracking.py
+    - trade_review.py
+    - tushare_staging_check.py
+    - universe_quality_review.py
+    - v2_underperformance_attribution.py
+    - valuation.py
+    - valuation_consistency_audit.py
+  - .env
+  - .gitignore
+  - =2.31.0
+  - A-Share Swing App.command
+  - APP_VERSION
+  - CHATGPT_NOTES.md
+  - codex_tasks.md
+  - DECISIONS.md
+  - PROJECT_INDEX.md
+  - PROJECT_STATE.md
+  - README.md
+  - RELEASE_NOTES.md
+  - requirements.txt
+  - risk_rules.md
+  - strategy.md
+  - trades.csv
+  - watchlist.csv
+  - weekly_review.md
+  - 打开App说明.md
+  - 打开量化研究控制台.command
+```
+
+## 文件分类统计
+
+- APP_CODE: 38
+- CORE_CODE: 56
+- DASHBOARD_CODE: 3
+- DATA_CORE: 186
+- DATA_DERIVED: 260
+- DIST_ASSETS: 27
+- DOCS: 18
+- LOGS: 43
+- REPORT_ARCHIVE: 29
+- REPORT_CURRENT: 319
+- RESEARCH_CODE: 31
+- SCRIPTS_MAINTENANCE: 21
+- SCRIPTS_RUNTIME: 11
+- TEMP_OR_LEGACY: 3
+- UNKNOWN_NEEDS_REVIEW: 19
+
+## 移动安全等级统计
+
+- DO_NOT_MOVE: 103
+- LOCKED: 197
+- MOVE_ONLY_WITH_CODE_UPDATE: 305
+- SAFE_TO_ARCHIVE: 382
+- UNKNOWN_NEEDS_REVIEW: 77
+
+## 明显临时或疑似旧文件
+
+- weekly_review.md
+- trades.csv
+- =2.31.0
+
+## 可归档候选样例
+
+- logs/launchd_daily_close.err.log
+- logs/launchd_open_check.out.log
+- logs/midday_check.log
+- logs/app_launch_status.json
+- logs/launchd_weekly_review.err.log
+- logs/open_check.log
+- logs/launchd_midday_check.out.log
+- logs/launchd_afternoon_open_check.err.log
+- logs/afternoon_open_check.log
+- logs/launchd_catchup_check.out.log
+- logs/app_dependency_check.log
+- logs/weekly_review.log
+- logs/launchd_daily_close.out.log
+- logs/launchd_open_check.err.log
+- logs/app_server.log
+- logs/launchd_weekly_review.out.log
+- logs/monthly_model_review.log
+- logs/app_backend.log
+- logs/launchd_afternoon_open_check.out.log
+- logs/launchd_midday_check.err.log
+- logs/daily_close.log
+- logs/streamlit_dashboard.log
+- logs/launchd_catchup_check.err.log
+- logs/catchup_check.log
+- reports/backtest_capital_sensitivity.csv
+- reports/topn_selection_diagnostics.csv
+- reports/trade_review_summary.json
+- reports/current_positions_strategy_fit_report.md
+- reports/b1_strategy_enhancement_preview_report.md
+- reports/phase4c_alpha_summary.json
+- reports/project_cleanup_roadmap.md
+- reports/etf_classification_report.md
+- reports/backtest_execution_timing_sensitivity.csv
+- reports/top10_candidate_filter_analysis.csv
+- reports/ranking_model_v2_design.md
+- reports/portfolio_exposure_report.md
+- reports/model_shadow_comparison.csv
+- reports/backtest_expand_pool_decision.md
+- reports/app_data_backfill_button_audit.md
+- reports/phase3a_fastapi_react_app_report.md
+- reports/tushare_baostock_compare.json
+- reports/phase2c_execution_layer_light_integration_report.md
+- reports/app_local_release_phase1_report.md
+- reports/etf_strategy_news_sentiment_research.md
+- reports/model_enhancement_decision_report.md
+- reports/paper_trade_pnl.csv
+- reports/jqdata_unit_diagnosis_report.md
+- reports/first_paper_buy_plan.md
+- reports/manual_download_report.md
+- reports/trade_review_details.md
+- reports/daily_rolling_backtest.csv
+- reports/ranking_model_v2_candidates.json
+- reports/trade_review_summary.md
+- reports/backtest_cost_diagnostics.csv
+- reports/data_freshness_execution_reality.md
+- reports/missed_opportunity_tracker.csv
+- reports/backtest_ranking_effectiveness.md
+- reports/paper_equity_curve_backfill_audit.md
+- reports/regime_aware_model_summary.csv
+- reports/data_update_status.datasource_refresh.json
+- reports/paper_equity_curve.md
+- reports/v2_underperformance_attribution.md
+- reports/tushare_baostock_compare.csv
+- reports/open_check.json
+- reports/persistence_breakout_shadow_portfolio.csv
+- reports/dashboard_app_future_plan.md
+- reports/strategy_preview_shadow_portfolio.md
+- reports/data_update_automation_fix_report.md
+- reports/exit_rule_research_report.md
+- reports/etf_type_aware_model_summary.csv
+- reports/ranking_model_v2_trades.csv
+- reports/manual_import_report.md
+- reports/backtest_summary.csv
+- reports/codex_weekly_research_prompt.md
+- reports/paper_trade_plan.md
+- reports/midday_check.json
+- reports/persistence_breakout_shadow_signal.md
+- reports/app_backfill_button_fix_20260624.md
+- reports/afternoon_open_check.md
+- reports/selected_vs_filtered_forward_return.md
+
+## 安全说明
+
+- 未读取 `.env` 内容；如存在，仅记录为 secret 文件存在。
+- 未移动 `data/paper_trades.csv`、`data/paper_positions.csv`、`src/paper_trade_engine.py`。
+- 未删除任何文件。

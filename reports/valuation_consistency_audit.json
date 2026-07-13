@@ -1,0 +1,66 @@
+{
+  "status": "PASS",
+  "official_valuation_basis": "data/paper_positions.csv + data/etf_daily/{symbol}.csv latest close",
+  "as_of_date": "2026-06-26",
+  "position_count": 3,
+  "position_file_snapshot_market_value": 3074.8,
+  "unified_latest_close_market_value": 3008.1,
+  "paper_performance_market_value": 3008.1,
+  "portfolio_exposure_market_value": 3008.1,
+  "diff_before_unification": 66.7,
+  "diff_after_unification": 0.0,
+  "price_warning_count": 0,
+  "positions": [
+    {
+      "symbol": "512800",
+      "name": "银行ETF",
+      "quantity": 1100.0,
+      "cost": 871.2,
+      "latest_close": 0.746,
+      "market_value": 820.6,
+      "unrealized_pnl": -50.6,
+      "as_of_date": "2026-06-26",
+      "price_status": "ok",
+      "position_file_market_value": 828.3,
+      "market_value_diff_vs_position_file": -7.7
+    },
+    {
+      "symbol": "515000",
+      "name": "科技ETF",
+      "quantity": 1000.0,
+      "cost": 1426.43,
+      "latest_close": 1.634,
+      "market_value": 1634.0,
+      "unrealized_pnl": 207.57,
+      "as_of_date": "2026-06-26",
+      "price_status": "ok",
+      "position_file_market_value": 1672.0,
+      "market_value_diff_vs_position_file": -38.0
+    },
+    {
+      "symbol": "512880",
+      "name": "证券ETF",
+      "quantity": 500.0,
+      "cost": 570.67,
+      "latest_close": 1.107,
+      "market_value": 553.5,
+      "unrealized_pnl": -17.17,
+      "as_of_date": "2026-06-26",
+      "price_status": "ok",
+      "position_file_market_value": 574.5,
+      "market_value_diff_vs_position_file": -21.0
+    }
+  ],
+  "forbidden_file_hashes": {
+    "paper_trades_sha256": "3f0e777e5f7e441d2ab9349cf5ed8f58194f07b96dabc866fa5ed8187e072e31",
+    "paper_positions_sha256": "fcfcd80f17fde52cba14e5545e7212932ef499fde29507787038cbc27e39f777",
+    "paper_trade_engine_sha256": "93b7a1ae87412838362463a7c23c233f5232a3363e554827a350999baa394926"
+  },
+  "safety": {
+    "broker_api": false,
+    "real_order": false,
+    "real_account": false,
+    "paper_trades_modified": false,
+    "paper_positions_modified": false
+  }
+}

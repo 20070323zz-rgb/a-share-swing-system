@@ -1,0 +1,7 @@
+benchmark_code,benchmark_name,benchmark_family,role,data_status,data_rows,data_start,data_end,calculation_date,available_return_observations,supports_60d,supports_120d,missing_reason
+510300,沪深300ETF,core_market,A-share large/core market anchor,AVAILABLE,1091,2022-01-04,2026-07-08,2026-07-08,1090,True,True,
+510500,中证500ETF,mid_cap,A-share mid-cap market proxy,AVAILABLE,122,2026-01-05,2026-07-08,2026-07-08,121,True,True,
+512100,中证1000ETF代理,small_cap,A-share small-cap market proxy,AVAILABLE,122,2026-01-05,2026-07-08,2026-07-08,121,True,True,
+159915,创业板ETF,growth,ChiNext growth-board proxy,AVAILABLE,1091,2022-01-04,2026-07-08,2026-07-08,1090,True,True,
+588000,科创50ETF,technology,STAR hard-technology proxy,AVAILABLE,329,2025-03-03,2026-07-08,2026-07-08,328,True,True,
+510880,红利ETF,defensive,Dividend/defensive equity proxy,AVAILABLE,122,2026-01-05,2026-07-08,2026-07-08,121,True,True,

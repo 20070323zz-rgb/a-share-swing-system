@@ -1,0 +1,37 @@
+style_profile,regime,overall_fit_evidence,horizon_consistency,horizon_conflict,overall_reason,sample_count_10d,median_return_10d,benchmark_excess_median_10d,fit_evidence_10d,research_only,execution_allowed
+BOND,OFFENSIVE,INSUFFICIENT,insufficient_core_horizon,False,fewer than 2 core horizons have enough samples,,,,INSUFFICIENT,True,False
+BOND,NEUTRAL,INSUFFICIENT,insufficient_core_horizon,False,fewer than 2 core horizons have enough samples,,,,INSUFFICIENT,True,False
+BOND,DEFENSIVE,INSUFFICIENT,insufficient_core_horizon,False,fewer than 2 core horizons have enough samples,,,,INSUFFICIENT,True,False
+DIVIDEND,OFFENSIVE,NEUTRAL,mixed_or_flat,False,no stable positive/negative direction,417.0,0.003207698476342946,-0.012500558579331363,NEUTRAL,True,False
+DIVIDEND,NEUTRAL,NEUTRAL,mixed_or_flat,False,no stable positive/negative direction,174.0,-0.0016838464836593792,-0.0001594970460830705,WEAK_CONFLICT,True,False
+DIVIDEND,DEFENSIVE,NEUTRAL,mixed_or_flat,False,no stable positive/negative direction,186.0,0.0018709090272672757,-0.015885916796640927,NEUTRAL,True,False
+LOW_VOL,OFFENSIVE,INSUFFICIENT,insufficient_core_horizon,False,fewer than 2 core horizons have enough samples,,,,INSUFFICIENT,True,False
+LOW_VOL,NEUTRAL,INSUFFICIENT,insufficient_core_horizon,False,fewer than 2 core horizons have enough samples,,,,INSUFFICIENT,True,False
+LOW_VOL,DEFENSIVE,INSUFFICIENT,insufficient_core_horizon,False,fewer than 2 core horizons have enough samples,,,,INSUFFICIENT,True,False
+CORE_LARGE_CAP,OFFENSIVE,WEAK_SUPPORT,consistent_positive,False,core horizons positive,278.0,0.009174858713486334,-0.0050253669460505225,WEAK_SUPPORT,True,False
+CORE_LARGE_CAP,NEUTRAL,CONFLICT,consistent_negative,False,core horizons negative,116.0,-0.0037860267627379818,-0.0008468783570467365,CONFLICT,True,False
+CORE_LARGE_CAP,DEFENSIVE,WEAK_SUPPORT,consistent_positive,False,core horizons positive,124.0,0.010600883891580759,-0.005447853293665796,WEAK_SUPPORT,True,False
+CORE_MID_CAP,OFFENSIVE,SUPPORTED,consistent_positive,False,core horizons positive,278.0,0.029399759903961487,0.015308216124464823,SUPPORTED,True,False
+CORE_MID_CAP,NEUTRAL,WEAK_CONFLICT,mixed_core_horizon,True,core horizons mixed; cannot mark CONFLICT,116.0,-0.006176788911231246,-0.002184424382669269,WEAK_CONFLICT,True,False
+CORE_MID_CAP,DEFENSIVE,SUPPORTED,consistent_positive,False,core horizons positive,124.0,0.03332535737831366,0.009110661362524274,SUPPORTED,True,False
+GROWTH_BROAD,OFFENSIVE,INSUFFICIENT,insufficient_core_horizon,False,fewer than 2 core horizons have enough samples,,,,INSUFFICIENT,True,False
+GROWTH_BROAD,NEUTRAL,INSUFFICIENT,insufficient_core_horizon,False,fewer than 2 core horizons have enough samples,,,,INSUFFICIENT,True,False
+GROWTH_BROAD,DEFENSIVE,INSUFFICIENT,insufficient_core_horizon,False,fewer than 2 core horizons have enough samples,,,,INSUFFICIENT,True,False
+GROWTH_THEME,OFFENSIVE,INSUFFICIENT,insufficient_core_horizon,False,fewer than 2 core horizons have enough samples,,,,INSUFFICIENT,True,False
+GROWTH_THEME,NEUTRAL,INSUFFICIENT,insufficient_core_horizon,False,fewer than 2 core horizons have enough samples,,,,INSUFFICIENT,True,False
+GROWTH_THEME,DEFENSIVE,INSUFFICIENT,insufficient_core_horizon,False,fewer than 2 core horizons have enough samples,,,,INSUFFICIENT,True,False
+SECTOR_CYCLICAL,OFFENSIVE,NEUTRAL,mixed_or_flat,False,no stable positive/negative direction,139.0,0.002789400278939924,-0.007988554410347834,NEUTRAL,True,False
+SECTOR_CYCLICAL,NEUTRAL,NEUTRAL,mixed_or_flat,False,no stable positive/negative direction,58.0,-0.006913424709387661,-0.004906150516549051,CONFLICT,True,False
+SECTOR_CYCLICAL,DEFENSIVE,NEUTRAL,mixed_or_flat,False,no stable positive/negative direction,62.0,0.020125052267180088,-0.015112016909187,WEAK_SUPPORT,True,False
+SECTOR_DEFENSIVE,OFFENSIVE,SUPPORTED,consistent_positive,False,core horizons positive,139.0,0.04977375565610864,0.027224881755236578,SUPPORTED,True,False
+SECTOR_DEFENSIVE,NEUTRAL,WEAK_CONFLICT,mixed_core_horizon,True,core horizons mixed; cannot mark CONFLICT,58.0,-0.003655946748710892,-0.0008127884760299586,WEAK_CONFLICT,True,False
+SECTOR_DEFENSIVE,DEFENSIVE,SUPPORTED,consistent_positive,False,core horizons positive,62.0,0.051203806075176606,0.022497996211315784,SUPPORTED,True,False
+HIGH_BETA_THEME,OFFENSIVE,SUPPORTED,consistent_positive,False,core horizons positive,695.0,0.03854389721627394,0.02091877649215243,SUPPORTED,True,False
+HIGH_BETA_THEME,NEUTRAL,WEAK_CONFLICT,mixed_core_horizon,True,core horizons mixed; cannot mark CONFLICT,290.0,-0.013725542966332105,-0.008951787645730831,CONFLICT,True,False
+HIGH_BETA_THEME,DEFENSIVE,SUPPORTED,consistent_positive,False,core horizons positive,310.0,0.053812599769833325,0.02940833724979835,SUPPORTED,True,False
+COMMODITY_CYCLICAL,OFFENSIVE,SUPPORTED,consistent_positive,False,core horizons positive,278.0,0.019863681376493192,0.003131827567350541,SUPPORTED,True,False
+COMMODITY_CYCLICAL,NEUTRAL,NEUTRAL,mixed_or_flat,False,no stable positive/negative direction,116.0,-0.0016756107418717803,0.004072801823083854,NEUTRAL,True,False
+COMMODITY_CYCLICAL,DEFENSIVE,SUPPORTED,consistent_positive,False,core horizons positive,124.0,0.031063809340765025,0.017026361863664737,SUPPORTED,True,False
+QDII_OBSERVATION,OFFENSIVE,INSUFFICIENT,insufficient_core_horizon,False,fewer than 2 core horizons have enough samples,,,,INSUFFICIENT,True,False
+QDII_OBSERVATION,NEUTRAL,INSUFFICIENT,insufficient_core_horizon,False,fewer than 2 core horizons have enough samples,,,,INSUFFICIENT,True,False
+QDII_OBSERVATION,DEFENSIVE,INSUFFICIENT,insufficient_core_horizon,False,fewer than 2 core horizons have enough samples,,,,INSUFFICIENT,True,False

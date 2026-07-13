@@ -1,0 +1,26 @@
+{
+  "generated_at": "2026-07-08 14:02:13",
+  "phase": "Regime Layer Phase 3.5A",
+  "source_audit_passed": true,
+  "time_robustness_classification": "ROBUST_SUPPORT",
+  "etf_level_robustness_classification": "CONFLICTING",
+  "segment_robustness_classification": "PARTIAL_SUPPORT",
+  "horizon_robustness_classification": "ROBUST_SUPPORT",
+  "incremental_value_robustness_preliminary": "PARTIAL_SUPPORT",
+  "high_beta_theme_flags": [
+    "SAMPLE_DEPENDENCE_RISK"
+  ],
+  "commodity_cyclical_flags": [
+    "TRUE_MULTI_REGIME_BEHAVIOR"
+  ],
+  "phase3_original_conclusion_still_directionally_supported": true,
+  "phase3_incremental_value_still_directionally_supported": true,
+  "major_robustness_warning_found": true,
+  "blocking_methodology_issue_found": false,
+  "ready_for_phase_3_5b": true,
+  "ready_for_preview": false,
+  "ready_for_execution": false,
+  "research_only": true,
+  "shadow_only": true,
+  "execution_allowed": false
+}

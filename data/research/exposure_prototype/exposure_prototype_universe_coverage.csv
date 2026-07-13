@@ -1,0 +1,17 @@
+universe_version,symbol,name,qualification_verdict,price_rows,data_start,data_end,calculation_date,is_current_for_calculation_date,research_only,execution_allowed
+universe_v2_qualified_research,159516,半导体设备ETF国泰,QUALIFIED_RESEARCH,329,2025-03-03,2026-07-08,2026-07-08,True,True,False
+universe_v2_qualified_research,159531,中证2000ETF南方,QUALIFIED_RESEARCH,329,2025-03-03,2026-07-08,2026-07-08,True,True,False
+universe_v2_qualified_research,159547,红利低波ETF华夏,QUALIFIED_RESEARCH,329,2025-03-03,2026-07-08,2026-07-08,True,True,False
+universe_v2_qualified_research,159593,中证A50ETF,QUALIFIED_RESEARCH,329,2025-03-03,2026-07-08,2026-07-08,True,True,False
+universe_v2_qualified_research,159608,稀有金属ETF广发,QUALIFIED_RESEARCH,329,2025-03-03,2026-07-08,2026-07-08,True,True,False
+universe_v2_qualified_research,159638,高端装备ETF嘉实,QUALIFIED_RESEARCH,329,2025-03-03,2026-07-08,2026-07-08,True,True,False
+universe_v2_qualified_research,159667,工业母机ETF国泰,QUALIFIED_RESEARCH,329,2025-03-03,2026-07-08,2026-07-08,True,True,False
+universe_v2_qualified_research,159732,消费电子ETF华夏,QUALIFIED_RESEARCH,329,2025-03-03,2026-07-08,2026-07-08,True,True,False
+universe_v2_qualified_research,510050,上证50ETF,QUALIFIED_RESEARCH,329,2025-03-03,2026-07-08,2026-07-08,True,True,False
+universe_v2_qualified_research,515260,电子ETF,QUALIFIED_RESEARCH,329,2025-03-03,2026-07-08,2026-07-08,True,True,False
+universe_v2_qualified_research,515630,保险证券,QUALIFIED_RESEARCH,329,2025-03-03,2026-07-08,2026-07-08,True,True,False
+universe_v2_qualified_research,561360,石油ETF,QUALIFIED_RESEARCH,329,2025-03-03,2026-07-08,2026-07-08,True,True,False
+universe_v2_qualified_research,561560,电力ETF,QUALIFIED_RESEARCH,329,2025-03-03,2026-07-08,2026-07-08,True,True,False
+universe_v2_qualified_research,562550,绿电ETF,QUALIFIED_RESEARCH,329,2025-03-03,2026-07-08,2026-07-08,True,True,False
+universe_v2_qualified_research,588200,科创芯片ETF,QUALIFIED_RESEARCH,329,2025-03-03,2026-07-08,2026-07-08,True,True,False
+universe_v2_qualified_research,588220,科创100ETF基金,QUALIFIED_RESEARCH,329,2025-03-03,2026-07-08,2026-07-08,True,True,False

@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-07-06 22:25:36",
+  "selected_candidate": "ASYMMETRIC_CONFIRM",
+  "selected_candidate_reason": "ASYMMETRIC_CONFIRM selected by fixed research score: switch 44 -> 22, median duration 2.0 -> 5.0, 3d whipsaw 30 -> 5, avg detection lag 0.818182, missed ratio 0.26666666666666666; style_fit_preserved=True.",
+  "raw_regime_still_formal": true,
+  "candidate_is_research_only": true,
+  "candidate_is_shadow_only": true,
+  "ready_for_style_regime_fit_research": true,
+  "ready_for_preview": false,
+  "ready_for_execution": false,
+  "current_date": "2026-07-06",
+  "current_raw_regime": "NEUTRAL",
+  "current_CONFIRM_2D_regime": "NEUTRAL",
+  "current_CONFIRM_3D_regime": "NEUTRAL",
+  "current_ASYMMETRIC_CONFIRM_regime": "NEUTRAL",
+  "current_selected_shadow_regime": "NEUTRAL",
+  "selection_checks": {
+    "style_preserved": true,
+    "lag_ok": true,
+    "whipsaw_ok": true,
+    "median_duration_ok": true,
+    "distribution_ok": true,
+    "selection_eligible": true
+  },
+  "all_candidate_selection_checks": {
+    "CONFIRM_3D": {
+      "style_preserved": true,
+      "lag_ok": false,
+      "whipsaw_ok": true,
+      "median_duration_ok": true,
+      "distribution_ok": true,
+      "selection_eligible": false
+    },
+    "ASYMMETRIC_CONFIRM": {
+      "style_preserved": true,
+      "lag_ok": true,
+      "whipsaw_ok": true,
+      "median_duration_ok": true,
+      "distribution_ok": true,
+      "selection_eligible": true
+    },
+    "CONFIRM_2D": {
+      "style_preserved": true,
+      "lag_ok": true,
+      "whipsaw_ok": true,
+      "median_duration_ok": true,
+      "distribution_ok": true,
+      "selection_eligible": true
+    }
+  },
+  "structural_risk_role": "risk_budget_input_not_candidate_selection_target",
+  "research_only": true,
+  "execution_allowed": false
+}

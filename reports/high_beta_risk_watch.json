@@ -1,0 +1,82 @@
+{
+  "generated_at": "2026-07-04 00:03:53",
+  "observation_only": true,
+  "execution_allowed": false,
+  "state_labels": {
+    "HB_NORMAL": "高波动正常",
+    "HB_WATCH": "高波动观察",
+    "HB_CAUTION": "高波动谨慎",
+    "HB_ELEVATED": "高波动风险升高"
+  },
+  "thresholds": {
+    "high_beta_equity_watch_pct": 0.15,
+    "high_beta_equity_caution_pct": 0.25,
+    "single_high_beta_watch_pct": 0.1,
+    "finance_holdings_watch_pct": 0.4,
+    "finance_equity_watch_pct": 0.15,
+    "recent_drawdown_10d_caution_pct": -0.05,
+    "recent_drawdown_10d_elevated_pct": -0.08,
+    "volatility_10d_watch_pct": 0.035
+  },
+  "summary": {
+    "total_equity": 10003.31,
+    "total_holdings_market_value": 2945.2,
+    "high_beta_position_count": 1,
+    "high_beta_market_value": 577.5,
+    "high_beta_weight_of_equity": 0.05773089107505416,
+    "high_beta_weight_of_holdings": 0.19608176015211193,
+    "finance_real_estate_market_value": 1399.2,
+    "finance_real_estate_weight_of_equity": 0.13987370180470265,
+    "finance_real_estate_weight_of_holdings": 0.4750780931685455,
+    "max_single_high_beta_weight": 0.05773089107505416,
+    "execution_allowed": false,
+    "safety_note": "高波动风险为观察指标，不会自动交易。",
+    "high_beta_exposure_state": "HB_WATCH",
+    "high_beta_exposure_reasons": "金融地产组占持仓市值超过 40%，组合集中度需观察。"
+  },
+  "rows": [
+    {
+      "symbol": "512880",
+      "name": "证券ETF",
+      "group": "金融地产",
+      "type": "high_beta",
+      "quantity": 500.0,
+      "latest_close": 1.155,
+      "market_value": 577.5,
+      "position_weight_of_equity": 0.05773089107505416,
+      "position_weight_of_holdings": 0.19608176015211193,
+      "unrealized_pnl": 6.83,
+      "unrealized_pnl_pct": 0.01196838803511669,
+      "mid_trend": "BUY",
+      "short_swing": "BUY",
+      "rank": 94.493,
+      "rank_change": 3.186,
+      "rank_decay_days": 0,
+      "recent_return_5d": 0.04336043360433606,
+      "recent_return_10d": 0.10000000000000009,
+      "recent_volatility_10d": 0.03407127394503643,
+      "recent_drawdown_10d": -0.017857142857142794,
+      "high_beta_risk_state": "HB_CAUTION",
+      "high_beta_risk_state_cn": "高波动谨慎",
+      "high_beta_risk_level": 2,
+      "high_beta_risk_reasons": "证券/券商类 ETF 属 high_beta，对成交额、风险偏好和市场情绪更敏感。；金融地产组占持仓市值比例偏高，需观察组合集中度。；浮盈保护层进入复核/锁定候选。；当前 high_beta 占总资产 5.77%，占持仓 19.61%；金融地产组占持仓 47.51%。；近 10 日波动率 3.41%，近 10 日回撤 -1.79%。",
+      "recommended_review_action": "高波动谨慎观察；不自动减仓或卖出。",
+      "execution_allowed": false,
+      "data_quality": "ok",
+      "price_rows": 12,
+      "review_state": "HOLD",
+      "profit_protection_state": "PROFIT_PROTECTION_REVIEW",
+      "safety_note": "高波动风险为观察指标，不会自动交易。"
+    }
+  ],
+  "portfolio_exposure_source": "reports/portfolio_exposure.json",
+  "safety": {
+    "broker_api": false,
+    "real_order": false,
+    "real_account": false,
+    "paper_trade_engine_modified": false,
+    "paper_trades_modified": false,
+    "paper_positions_modified": false,
+    "execution_allowed": false
+  }
+}

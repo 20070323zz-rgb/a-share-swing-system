@@ -1,4 +1,4 @@
-# Data provider 状态 2026-06-21 21:00:03
+# Data provider 状态 2026-07-10 21:41:15
 
 本报告只做 provider 诊断，不切换正式日更主源，不写入 data/etf_daily。
 
@@ -14,11 +14,11 @@
 ## Provider 明细
 | provider | configured | usable | message |
 | --- | --- | --- | --- |
-| local_cache | True | True | local cache dir: /Users/dayin/Code/a-share-swing-system/data/etf_daily |
-| baostock | False | False | baostock import failed |
+| local_cache | True | True | local cache dir: <project_root>/data/etf_daily |
+| baostock | True | True | baostock import ok |
 | tushare | True | True | tushare package missing; HTTP API fallback will be used |
 | akshare | True | True | akshare import ok; run akshare_connectivity_check for endpoint health |
-| jqdata | False | False | jqdatasdk import ok; credential values are never printed |
+| jqdata | False | False | jqdatasdk import failed |
 
 ## 安全边界
 - 不打印 token

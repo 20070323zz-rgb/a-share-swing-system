@@ -1,0 +1,45 @@
+{
+  "generated_at": "2026-07-07 23:37:14 CST",
+  "scope": "Project Context Persistence Phase D3 response lost side effect audit",
+  "simulated_response_lost": true,
+  "worktree_inspected": true,
+  "worktree_inspection_command": "git status --short",
+  "expected_outputs": {
+    "A": "reports/project_context_response_lost_recovery_simulation.md",
+    "B": "reports/project_context_response_lost_recovery_simulation.json",
+    "C": "reports/project_context_phase_d3_decision.json"
+  },
+  "output_a_state": "simulated_written_before_disconnect",
+  "output_b_state": "simulated_written_before_disconnect",
+  "output_c_state": "simulated_missing_before_recovery",
+  "validation_state": "simulated_not_fully_run_before_recovery",
+  "status_checkpoint_state": {
+    "before_recovery": "phase_d_resume_checkpoint = Context Phase D3",
+    "after_success_expected": "phase_d_resume_checkpoint = Context Phase D4"
+  },
+  "completed_side_effects": [
+    "reports/project_context_response_lost_recovery_simulation.md",
+    "reports/project_context_response_lost_recovery_simulation.json"
+  ],
+  "missing_side_effects": [
+    "reports/project_context_phase_d3_decision.json",
+    "required validation run",
+    "checkpoint migration to Context Phase D4"
+  ],
+  "expected_output_inspected": true,
+  "validation_artifacts_inspected": true,
+  "decision_file_inspected": true,
+  "checkpoint_inspected": true,
+  "blind_rerun_allowed": false,
+  "response_failure_is_execution_failure": false,
+  "response_failure_is_task_complete": false,
+  "correct_recovery_order": [
+    "inspect worktree",
+    "inspect expected outputs",
+    "inspect validation state",
+    "classify recovery state",
+    "determine minimal resume action",
+    "do not rerun completed work blindly"
+  ],
+  "blocking_conflict_found": false
+}

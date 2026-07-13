@@ -1,4 +1,4 @@
-# 数据源状态报告 2026-06-24 15:44:47
+# 数据源状态报告 2026-07-11 16:43:40
 
 本报告只记录行情数据源状态，不包含任何账号密码/token，不接券商 API，不真实下单。
 
@@ -6,9 +6,9 @@
 - fallback_source: jqdata
 - actual_source_used: baostock
 - jqdata_status: SKIPPED
-- baostock_status: STALE_NO_NEW_ROWS
+- baostock_status: UP_TO_DATE
 - fallback_triggered: False
-- latest_data_date: 2026-06-23
+- latest_data_date: 2026-07-10
 - new_rows: 0
 - pending_symbols: none
 - failed_symbols: none
