@@ -1,6 +1,6 @@
 # A-share Swing System Project Index
 
-生成时间：2026-07-12 17:42:01
+生成时间：2026-07-13 09:51:50
 
 ## 当前阶段
 
@@ -60,8 +60,12 @@ Report File Migration: BLOCKED
 PR #1 Hygiene Cleanup: COMPLETE
 PR #1 Diff Check: CLEAN
 Local Temporary Artifacts: RESOLVED
-Draft PR #1: READY_FOR_FINAL_MERGE_DECISION
-Main Branch Merge: NOT_EXECUTED
+July 2026 Project Checkpoint: COMPLETE
+PR #1: MERGED
+Post-Merge Validation: PASS
+Main Branch: STABLE
+Main Branch Merge: COMPLETE
+Tushare Minimal Staging Proof & PIT Contract: NEXT_CANDIDATE
 Tushare Staging / PIT: NOT_STARTED
 Paper Execution Freshness Gate: ACTIVE
 Guarded Paper Execution Entry: ACTIVE
@@ -201,6 +205,7 @@ Formal Execution: BLOCKED
 
 ## 本轮审计报告
 
+- `reports/project_checkpoint_post_merge_validation_2026-07.md`
 - `reports/pr_final_hygiene_audit_2026-07-12.md`
 - `reports/project_structure_audit.md`
 - `reports/path_dependency_audit.md`

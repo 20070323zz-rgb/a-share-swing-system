@@ -78,8 +78,12 @@ Data Foundation Upgrade NOT_STARTED
 PR #1 Hygiene Cleanup COMPLETE
 PR #1 Diff Check CLEAN
 Local Temporary Artifacts RESOLVED
-Draft PR #1 READY_FOR_FINAL_MERGE_DECISION
-Main Branch Merge NOT_EXECUTED
+July 2026 Project Checkpoint COMPLETE
+PR #1 MERGED
+Post-Merge Validation PASS
+Main Branch STABLE
+Main Branch Merge COMPLETE
+Tushare Minimal Staging Proof & PIT Contract NEXT_CANDIDATE
 Tushare Staging / PIT NOT_STARTED
 Style Framework 2.0 Status FEASIBILITY_STUDY_COMPLETE
 Exposure Framework Development RESEARCH_ONLY_PROTOTYPE_COMPLETE
@@ -919,7 +923,7 @@ The separately authorized Tushare 5000 Data Foundation Audit is `COMPLETE` after
 
 Reports Governance Phase A remains `NOT_STARTED`: the taxonomy feasibility study exists, but the catalog generator, catalog outputs, dependency summary, and Path Registry design required by Phase A do not exist. Report migration remains `BLOCKED`.
 
-PR #1 final hygiene cleanup is `COMPLETE`. The full PR diff check is clean, all 18 confirmed local temporary artifacts were deleted and precisely ignored, and the branch is ready for Main's final merge decision. Formal execution logic, protected paper ledgers, ETF business data, and Tushare staging/PIT remain unchanged or not started; main was not merged.
+PR #1 final hygiene cleanup is `COMPLETE`. PR #1 was merged into `main` with merge commit `40a6017402456d62609169325cb5f1d31a1a140b` at 2026-07-13 09:49:26 CST. Post-merge validation is `PASS` and `main` is `STABLE`. Formal execution logic, protected paper ledgers, and ETF business data were unchanged by the merge/validation batch. The new Tushare Minimal Staging Proof & PIT Contract remains `NEXT_CANDIDATE` and was not started.
 
 ## 9. Current Main Bottlenecks
 
@@ -982,11 +986,15 @@ Data Foundation Upgrade = NOT_STARTED
 PR #1 Hygiene Cleanup = COMPLETE
 PR #1 Diff Check = CLEAN
 Local Temporary Artifacts = RESOLVED
-Draft PR #1 = READY_FOR_FINAL_MERGE_DECISION
-Main Branch Merge = NOT_EXECUTED
+July 2026 Project Checkpoint = COMPLETE
+PR #1 = MERGED
+Post-Merge Validation = PASS
+Main Branch = STABLE
+Main Branch Merge = COMPLETE
+Tushare Minimal Staging Proof & PIT Contract = NEXT_CANDIDATE
 Tushare Staging / PIT = NOT_STARTED
 ```
 
 Do not create adjusted preview. Current `ready_for_preview=false`.
 
-Context updated at: 2026-07-12 17:42:01 CST
+Context updated at: 2026-07-13 09:51:50 CST
