@@ -10,7 +10,7 @@ import os
 from pathlib import Path
 import re
 import time
-from typing import Any, Callable
+from typing import Any, Callable, Mapping
 import urllib.error
 import urllib.request
 from zoneinfo import ZoneInfo
@@ -202,6 +202,65 @@ class TushareMinimalClient:
         remaining = self.request_interval_seconds - (time.monotonic() - self._last_request_monotonic)
         if remaining > 0:
             time.sleep(remaining)
+
+
+class MockTushareClient:
+    """Fixture-only client with no token provider or network transport path."""
+
+    def __init__(
+        self,
+        *,
+        fixture_responses: Mapping[str, Mapping[str, Any]],
+        max_requests: int,
+    ) -> None:
+        self._fixture_responses = fixture_responses
+        self.max_requests = int(max_requests)
+        self.request_count = 0
+
+    @property
+    def token_configured(self) -> bool:
+        return False
+
+    def request(self, interface: str, params: dict[str, Any], fields: str) -> ProbeCall:
+        if self.request_count >= self.max_requests:
+            raise RuntimeError(f"mock request budget exceeded: max_requests={self.max_requests}")
+        self.request_count += 1
+        sanitized_params = sanitize_params(params)
+        query_hash = canonical_hash({"interface": interface, "params": sanitized_params, "fields": fields})
+        retrieved_at = datetime.now(SHANGHAI_TZ).isoformat(timespec="seconds")
+        table = self._fixture_responses.get(interface)
+        if not table:
+            return ProbeCall(
+                interface=interface,
+                request_parameters_sanitized=sanitized_params,
+                request_sequence=self.request_count,
+                response_status="MOCK_RESPONSE_MISSING",
+                permission_status="NOT_APPLICABLE_MOCK",
+                retrieved_at=retrieved_at,
+                query_hash=query_hash,
+                raw_payload_hash="",
+                frame=pd.DataFrame(),
+                raw_payload={},
+                error_class="MOCK_FIXTURE_MISSING",
+                error_message_sanitized=f"No fixture response for interface {interface}.",
+                attempts=1,
+            )
+        payload = {"code": 0, "msg": "", "data": dict(table)}
+        body = json.dumps(payload, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+        frame = pd.DataFrame(table.get("items") or [], columns=table.get("fields") or [])
+        return ProbeCall(
+            interface=interface,
+            request_parameters_sanitized=sanitized_params,
+            request_sequence=self.request_count,
+            response_status="MOCK_RESPONSE_PASS" if not frame.empty else "MOCK_EMPTY",
+            permission_status="NOT_APPLICABLE_MOCK",
+            retrieved_at=retrieved_at,
+            query_hash=query_hash,
+            raw_payload_hash=hashlib.sha256(body).hexdigest(),
+            frame=frame,
+            raw_payload=payload,
+            attempts=1,
+        )
 
 
 def load_token(project_root: Path) -> str:

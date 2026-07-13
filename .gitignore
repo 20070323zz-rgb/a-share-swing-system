@@ -17,6 +17,7 @@ env/
 .vscode/
 .env
 .env.*
+.envTAB
 
 # JavaScript dependencies are restored from package lock files.
 app/frontend/node_modules/

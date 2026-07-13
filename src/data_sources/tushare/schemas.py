@@ -104,12 +104,16 @@ INTERFACE_SCHEMAS: dict[str, InterfaceSchema] = {
 
 PIT_METADATA_FIELDS = (
     "source",
+    "evidence_mode",
     "source_interface",
     "entity_id",
     "observation_date",
     "period_end",
     "announcement_date",
     "source_update_window",
+    "official_release_time",
+    "project_conservative_available_time",
+    "conservative_lag_minutes",
     "retrieved_at",
     "available_at",
     "available_date",

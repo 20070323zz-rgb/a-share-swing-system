@@ -1,8 +1,18 @@
-schema_version: 1
+schema_version: 2
 proof_name: tushare_minimal_staging_proof
 research_only: true
 formal_integration: false
 unified_database_write: false
+
+evidence_contract:
+  require_explicit_mode: true
+  allowed_modes:
+    - real
+    - mock
+  output_namespaces:
+    real: real
+    mock: mock
+  index_weight_reduction_policy_version: PROOF_DATE_WINDOW_V1
 
 runtime:
   staging_root: data/staging/tushare_minimal_proof
@@ -80,4 +90,4 @@ interfaces:
   shibor:
     fields: date,on,1w,2w,1m,3m,6m,9m,1y
     official_doc: https://tushare.pro/document/2?doc_id=149
-    official_update_pattern: daily around 12:00 Asia/Shanghai
+    official_update_pattern: official release 11:00 Asia/Shanghai; project conservative availability 12:00 with 60-minute lag

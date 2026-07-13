@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import csv
 from dataclasses import dataclass
 from datetime import datetime
 import hashlib
@@ -9,13 +10,14 @@ import importlib.util
 import json
 from pathlib import Path
 import re
-from typing import Any, Callable
+from typing import Any, Mapping
+import uuid
 from zoneinfo import ZoneInfo
 
 import pandas as pd
 import yaml
 
-from .client import ProbeCall, TushareMinimalClient, canonical_hash
+from .client import MockTushareClient, ProbeCall, TushareMinimalClient, canonical_hash, load_token
 from .pit_contract import build_pit_records, interface_pit_summary
 from .schemas import INTERFACE_SCHEMAS
 from .validators import ValidationResult, validate_interface_frame
@@ -23,6 +25,10 @@ from .validators import ValidationResult, validate_interface_frame
 
 TZ = ZoneInfo("Asia/Shanghai")
 INTERFACES = tuple(INTERFACE_SCHEMAS)
+EVIDENCE_MODES = {"real", "mock"}
+RUN_ID_PATTERN = re.compile(r"^(real|mock)-\d{8}(?:T\d{6})?-[A-Za-z0-9][A-Za-z0-9._-]*$")
+REAL_STATUSES = {"REAL_PROOF_COMPLETE", "REAL_PROOF_PARTIAL", "REAL_PROOF_FAILED", "REAL_PROOF_BLOCKED"}
+MOCK_STATUSES = {"MOCK_VALIDATION_PASS", "MOCK_VALIDATION_FAILED"}
 
 
 @dataclass
@@ -52,35 +58,96 @@ class ProbeOutcome:
     query_hash: str
     raw_payload_hash: str
     normalized_hash: str
+    reduction_evidence: dict[str, Any]
 
 
 def load_config(path: Path) -> dict[str, Any]:
-    return yaml.safe_load(path.read_text(encoding="utf-8"))
+    config = yaml.safe_load(path.read_text(encoding="utf-8"))
+    if not isinstance(config, dict):
+        raise ValueError("Tushare proof config must be a mapping")
+    contract = config.get("evidence_contract")
+    if not isinstance(contract, dict) or contract.get("require_explicit_mode") is not True:
+        raise ValueError("config must require an explicit evidence_mode")
+    modes = set(contract.get("allowed_modes") or [])
+    if modes != EVIDENCE_MODES:
+        raise ValueError("config evidence_contract.allowed_modes must be exactly real and mock")
+    namespaces = contract.get("output_namespaces") or {}
+    if namespaces != {"real": "real", "mock": "mock"}:
+        raise ValueError("config must isolate real and mock output namespaces")
+    return config
+
+
+def validate_evidence_mode(evidence_mode: str) -> str:
+    if evidence_mode not in EVIDENCE_MODES:
+        raise ValueError("evidence_mode must be explicitly set to real or mock")
+    return evidence_mode
+
+
+def generate_run_id(evidence_mode: str) -> str:
+    mode = validate_evidence_mode(evidence_mode)
+    timestamp = datetime.now(TZ).strftime("%Y%m%dT%H%M%S")
+    return f"{mode}-{timestamp}-{uuid.uuid4().hex[:8]}"
+
+
+def validate_run_id(evidence_mode: str, run_id: str) -> str:
+    mode = validate_evidence_mode(evidence_mode)
+    if not RUN_ID_PATTERN.fullmatch(run_id):
+        raise ValueError("run_id must match <real|mock>-<YYYYMMDD[THHMMSS]>-<suffix>")
+    if not run_id.startswith(f"{mode}-"):
+        raise ValueError(f"{mode} evidence_mode requires a {mode}-* run_id")
+    return run_id
+
+
+def resolve_run_directory(root: Path, config: dict[str, Any], evidence_mode: str, run_id: str) -> Path:
+    mode = validate_evidence_mode(evidence_mode)
+    validated_run_id = validate_run_id(mode, run_id)
+    namespace = config["evidence_contract"]["output_namespaces"][mode]
+    return root / config["runtime"]["staging_root"] / namespace / validated_run_id
 
 
 def run_probe(
     project_root: Path,
     config_path: Path,
     *,
-    client_factory: Callable[..., TushareMinimalClient] = TushareMinimalClient,
+    evidence_mode: str,
+    mock_responses: Mapping[str, Mapping[str, Any]] | None = None,
     run_id: str | None = None,
 ) -> dict[str, Any]:
     root = project_root.resolve()
     config = load_config(config_path)
-    run_id = run_id or datetime.now(TZ).strftime("%Y%m%dT%H%M%S%z")
-    run_dir = root / config["runtime"]["staging_root"] / run_id
-    paths = {name: run_dir / name for name in ("raw", "normalized", "pit", "validation", "manifests")}
+    mode = validate_evidence_mode(evidence_mode)
+    resolved_run_id = validate_run_id(mode, run_id or generate_run_id(mode))
+    runtime = config["runtime"]
+    if mode == "real":
+        if mock_responses is not None:
+            raise ValueError("real evidence_mode rejects mock responses")
+        token = load_token(root)
+        if not token:
+            raise RuntimeError("REAL_PROOF_BLOCKED: secure Tushare token provider returned no token")
+        client: TushareMinimalClient | MockTushareClient = TushareMinimalClient(
+            project_root=root,
+            token=token,
+            max_requests=int(runtime["max_api_requests"]),
+            timeout_seconds=int(runtime["timeout_seconds"]),
+            request_interval_seconds=float(runtime["request_interval_seconds"]),
+            max_network_retries=int(runtime["max_network_retries"]),
+        )
+    else:
+        if mock_responses is None:
+            raise ValueError("mock evidence_mode requires explicit fixture responses")
+        client = MockTushareClient(
+            fixture_responses=mock_responses,
+            max_requests=int(runtime["max_api_requests"]),
+        )
+
+    run_dir = resolve_run_directory(root, config, mode, resolved_run_id)
+    paths = {
+        name: run_dir / name
+        for name in ("raw", "normalized", "pit", "validation", "manifests", "report_evidence")
+    }
     for path in paths.values():
         path.mkdir(parents=True, exist_ok=False)
 
-    runtime = config["runtime"]
-    client = client_factory(
-        project_root=root,
-        max_requests=int(runtime["max_api_requests"]),
-        timeout_seconds=int(runtime["timeout_seconds"]),
-        request_interval_seconds=float(runtime["request_interval_seconds"]),
-        max_network_retries=int(runtime["max_network_retries"]),
-    )
     etfs = select_etf_samples(root, config)
     local_dates = load_local_trading_dates(root, etfs)
     date_to = max(local_dates)
@@ -121,22 +188,52 @@ def run_probe(
     shibor_start = (pd.Timestamp(date_to) - pd.Timedelta(days=int(config["sample_selection"]["shibor_lookback_days"]))).strftime("%Y%m%d")
     call("shibor", {"start_date": shibor_start, "end_date": _compact(date_to)}, f"{shibor_start}:{_compact(date_to)}")
 
-    outcomes = process_calls(calls, call_scopes, paths, local_dates, config)
-    interface_rows = aggregate_interfaces(outcomes, config)
+    outcomes = process_calls(calls, call_scopes, paths, local_dates, config, mode)
+    interface_rows = aggregate_interfaces(outcomes, config, mode)
     pit_rows = aggregate_pit(outcomes, paths)
-    final_status = determine_final_status(interface_rows, client.token_configured)
+    final_status = determine_final_status(interface_rows, mode)
+    per_run_real_call_count = client.request_count if mode == "real" else 0
+    attested_real_call_count = load_attested_real_call_count(root / "reports/tushare_real_run_attestations.csv")
+    batch_aggregate_real_call_count = attested_real_call_count + per_run_real_call_count
+    configured_real_budget = int(runtime["max_api_requests"])
+    if mode == "mock":
+        budget_status = "NOT_APPLICABLE_MOCK"
+    elif batch_aggregate_real_call_count > configured_real_budget:
+        budget_status = "AGGREGATE_BUDGET_WARNING"
+    else:
+        budget_status = "WITHIN_CONFIGURED_REAL_BUDGET"
+    mode_output_names = [
+        "tushare_minimal_staging_proof.md",
+        "tushare_interface_probe_matrix.csv",
+        "tushare_pit_contract_matrix.csv",
+        "tushare_index_weight_reduction_evidence.csv",
+        "tushare_minimal_proof_run_manifest.json",
+        "tushare_minimal_proof_permission_audit.json",
+    ]
+    if mode == "real":
+        mode_output_names.append("tushare_gap_reassessment.md")
+    mode_scoped_outputs = [
+        str((paths["report_evidence"] / name).relative_to(root))
+        for name in mode_output_names
+    ]
     manifest = {
-        "schema_version": 1,
+        "schema_version": 2,
         "proof_name": config["proof_name"],
-        "run_id": run_id,
+        "evidence_mode": mode,
+        "run_id": resolved_run_id,
         "run_started_at": datetime.now(TZ).isoformat(timespec="seconds"),
         "status": final_status,
         "research_only": True,
         "formal_integration": False,
         "unified_database_write": False,
-        "token_configured": client.token_configured,
-        "api_request_count": client.request_count,
-        "api_request_limit": int(runtime["max_api_requests"]),
+        "token_configured": client.token_configured if mode == "real" else False,
+        "total_call_count": client.request_count,
+        "real_api_call_count": per_run_real_call_count,
+        "mock_call_count": client.request_count if mode == "mock" else 0,
+        "per_run_real_call_count": per_run_real_call_count,
+        "batch_aggregate_real_call_count": batch_aggregate_real_call_count,
+        "configured_real_budget": configured_real_budget,
+        "budget_status": budget_status,
         "selected_etfs": etfs,
         "selected_indices": indices,
         "selected_constituents": constituents,
@@ -144,19 +241,15 @@ def run_probe(
         "local_trade_date_max": max(local_dates),
         "legacy_sample_status": config["legacy_samples"],
         "run_scoped_staging": str(run_dir.relative_to(root)),
-        "commit_safe_outputs": [
-            "reports/tushare_minimal_staging_proof.md",
-            "reports/tushare_interface_probe_matrix.csv",
-            "reports/tushare_pit_contract_matrix.csv",
-            "reports/tushare_gap_reassessment.md",
-            "reports/tushare_minimal_proof_run_manifest.json",
-            "reports/tushare_minimal_proof_permission_audit.json",
-        ],
+        "mode_scoped_outputs": mode_scoped_outputs,
+        "commit_safe_outputs": mode_scoped_outputs if mode == "mock" else mode_scoped_outputs + _real_global_output_paths(),
         "interface_summary_hash": canonical_hash(interface_rows),
         "pit_summary_hash": canonical_hash(pit_rows),
+        "index_weight_reduction_summary": _index_weight_reduction_rows(outcomes),
     }
+    validate_evidence_manifest(manifest)
     _write_json(paths["manifests"] / "run_manifest.json", manifest)
-    write_commit_safe_outputs(root, manifest, interface_rows, pit_rows, outcomes, config)
+    write_commit_safe_outputs(root, paths, manifest, interface_rows, pit_rows, outcomes, config)
     return manifest
 
 
@@ -166,13 +259,20 @@ def process_calls(
     paths: dict[str, Path],
     local_dates: list[str],
     config: dict[str, Any],
+    evidence_mode: str,
 ) -> list[ProbeOutcome]:
     outcomes: list[ProbeOutcome] = []
     for sequence, item in enumerate(calls, start=1):
         stem = f"{sequence:02d}_{item.interface}_{_safe_name(scopes[id(item)])}"
         _write_json(paths["raw"] / f"{stem}.json", item.raw_payload)
-        limited_frame = limit_sample_frame(item.interface, item.frame, config)
-        if item.response_status in {"ACCESS_PASS", "EMPTY_UNEXPECTED"}:
+        limited_frame, reduction_evidence = limit_sample_frame(item.interface, item.frame, config)
+        reduction_evidence.update({
+            "evidence_mode": evidence_mode,
+            "sample_scope": scopes[id(item)],
+            "query_start_date": _iso_query_date(item.request_parameters_sanitized.get("start_date")),
+            "query_end_date": _iso_query_date(item.request_parameters_sanitized.get("end_date")),
+        })
+        if item.response_status in {"ACCESS_PASS", "EMPTY_UNEXPECTED", "MOCK_RESPONSE_PASS", "MOCK_EMPTY"}:
             validation = validate_interface_frame(item.interface, limited_frame)
         else:
             validation = ValidationResult(
@@ -182,7 +282,12 @@ def process_calls(
             )
         validation.normalized.to_csv(paths["normalized"] / f"{stem}.csv", index=False, lineterminator="\n")
         normalized_csv = validation.normalized.to_csv(index=False, lineterminator="\n").encode("utf-8")
-        _write_json(paths["validation"] / f"{stem}.json", validation.to_summary())
+        validation_status = validation.status
+        if evidence_mode == "mock":
+            validation_status = "MOCK_VALIDATION_PASS" if validation.status in {"ACCESS_PASS", "EMPTY_EXPECTED"} else "MOCK_VALIDATION_FAILED"
+        validation_summary = validation.to_summary()
+        validation_summary.update({"evidence_mode": evidence_mode, "status": validation_status})
+        _write_json(paths["validation"] / f"{stem}.json", validation_summary)
         pit = build_pit_records(
             item.interface,
             validation.normalized,
@@ -190,9 +295,12 @@ def process_calls(
             query_hash=item.query_hash,
             raw_payload_hash=item.raw_payload_hash,
             local_trading_dates=local_dates,
+            evidence_mode=evidence_mode,
         )
         pit.to_csv(paths["pit"] / f"{stem}.csv", index=False, lineterminator="\n")
         _write_json(paths["manifests"] / f"{stem}.json", {
+            "schema_version": 2,
+            "evidence_mode": evidence_mode,
             "interface": item.interface,
             "request_parameters_sanitized": item.request_parameters_sanitized,
             "request_sequence": item.request_sequence,
@@ -207,6 +315,8 @@ def process_calls(
             "normalized_hash": hashlib.sha256(normalized_csv).hexdigest(),
             "error_class": item.error_class,
             "error_message_sanitized": item.error_message_sanitized,
+            "validation_status": validation_status,
+            **reduction_evidence,
         })
         pit_statuses = sorted(pit["pit_status"].dropna().unique()) if not pit.empty else [INTERFACE_SCHEMAS[item.interface].pit_default]
         response_status = "EMPTY_EXPECTED" if validation.status == "EMPTY_EXPECTED" else item.response_status
@@ -217,7 +327,7 @@ def process_calls(
             permission_status=item.permission_status,
             row_count=item.row_count,
             normalized_row_count=len(validation.normalized),
-            validation_status=validation.status,
+            validation_status=validation_status,
             pit_status="|".join(pit_statuses),
             sample_scope=scopes[id(item)],
             date_min=validation.date_min,
@@ -236,19 +346,21 @@ def process_calls(
             query_hash=item.query_hash,
             raw_payload_hash=item.raw_payload_hash,
             normalized_hash=hashlib.sha256(normalized_csv).hexdigest(),
+            reduction_evidence=reduction_evidence,
         ))
     return outcomes
 
 
-def aggregate_interfaces(outcomes: list[ProbeOutcome], config: dict[str, Any]) -> list[dict[str, Any]]:
+def aggregate_interfaces(outcomes: list[ProbeOutcome], config: dict[str, Any], evidence_mode: str) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     for interface in INTERFACES:
         items = [item for item in outcomes if item.interface == interface]
         if not items:
             rows.append({
-                "interface": interface, "request_count": 0, "sample_count": 0, "row_count": 0, "normalized_row_count": 0,
-                "access_verdict": "DEPENDENCY_UNAVAILABLE", "permission_status": "NOT_TESTED",
-                "schema_verdict": "NOT_TESTED", "pit_status": INTERFACE_SCHEMAS[interface].pit_default,
+                "evidence_mode": evidence_mode, "interface": interface, "request_count": 0, "sample_count": 0, "row_count": 0, "normalized_row_count": 0,
+                "access_verdict": "NOT_APPLICABLE_MOCK" if evidence_mode == "mock" else "DEPENDENCY_UNAVAILABLE",
+                "permission_status": "NOT_APPLICABLE_MOCK" if evidence_mode == "mock" else "NOT_TESTED",
+                "schema_verdict": "MOCK_VALIDATION_FAILED" if evidence_mode == "mock" else "NOT_TESTED", "pit_status": INTERFACE_SCHEMAS[interface].pit_default,
                 "date_min": "", "date_max": "", "sample_scope": "",
                 "official_doc": config["interfaces"][interface]["official_doc"],
                 "official_update_pattern": config["interfaces"][interface]["official_update_pattern"],
@@ -257,7 +369,9 @@ def aggregate_interfaces(outcomes: list[ProbeOutcome], config: dict[str, Any]) -
             })
             continue
         statuses = {item.response_status for item in items}
-        if statuses == {"ACCESS_PASS"}:
+        if evidence_mode == "mock":
+            access = "NOT_APPLICABLE_MOCK"
+        elif statuses == {"ACCESS_PASS"}:
             access = "ACCESS_PASS"
         elif "ACCESS_PASS" in statuses:
             access = "PARTIAL_ACCESS"
@@ -266,6 +380,7 @@ def aggregate_interfaces(outcomes: list[ProbeOutcome], config: dict[str, Any]) -
         else:
             access = sorted(statuses)[0]
         rows.append({
+            "evidence_mode": evidence_mode,
             "interface": interface,
             "request_count": sum(item.call_count for item in items),
             "sample_count": len(items),
@@ -307,15 +422,18 @@ def aggregate_pit(outcomes: list[ProbeOutcome], paths: dict[str, Path]) -> list[
     return rows
 
 
-def determine_final_status(rows: list[dict[str, Any]], token_configured: bool) -> str:
-    if not token_configured:
-        return "BLOCKED_TOKEN_MISSING"
+def determine_final_status(rows: list[dict[str, Any]], evidence_mode: str) -> str:
+    if evidence_mode == "mock":
+        schemas = {row["schema_verdict"] for row in rows}
+        return "MOCK_VALIDATION_PASS" if schemas == {"MOCK_VALIDATION_PASS"} else "MOCK_VALIDATION_FAILED"
     verdicts = {row["access_verdict"] for row in rows}
     if verdicts <= {"PERMISSION_BLOCKED", "DEPENDENCY_UNAVAILABLE"}:
-        return "BLOCKED_PERMISSION_OR_DEPENDENCY"
-    if verdicts == {"ACCESS_PASS"}:
-        return "COMPLETE"
-    return "COMPLETE_WITH_PERMISSION_GAPS"
+        return "REAL_PROOF_BLOCKED"
+    if verdicts == {"ACCESS_PASS"} and all(row["schema_verdict"] == "ACCESS_PASS" for row in rows):
+        return "REAL_PROOF_COMPLETE"
+    if "ACCESS_PASS" in verdicts:
+        return "REAL_PROOF_PARTIAL"
+    return "REAL_PROOF_FAILED"
 
 
 def select_etf_samples(root: Path, config: dict[str, Any]) -> list[dict[str, str]]:
@@ -395,32 +513,59 @@ def select_constituents(frame: pd.DataFrame, config: dict[str, Any]) -> list[str
 
 def write_commit_safe_outputs(
     root: Path,
+    paths: dict[str, Path],
     manifest: dict[str, Any],
     interface_rows: list[dict[str, Any]],
     pit_rows: list[dict[str, Any]],
     outcomes: list[ProbeOutcome],
     config: dict[str, Any],
 ) -> None:
-    reports = root / "reports"
-    run_history = _load_run_history(root / config["runtime"]["staging_root"])
-    batch_request_count = sum(int(item.get("api_request_count", 0)) for item in run_history)
-    pd.DataFrame(interface_rows).to_csv(reports / "tushare_interface_probe_matrix.csv", index=False, lineterminator="\n")
-    pd.DataFrame(pit_rows).to_csv(reports / "tushare_pit_contract_matrix.csv", index=False, lineterminator="\n")
-    _write_json(reports / "tushare_minimal_proof_run_manifest.json", manifest)
+    mode = manifest["evidence_mode"]
+    report_targets = [paths["report_evidence"]]
+    if mode == "real":
+        report_targets.append(root / "reports")
+    reduction_rows = _index_weight_reduction_rows(outcomes)
+    for reports in report_targets:
+        pd.DataFrame(interface_rows).to_csv(reports / "tushare_interface_probe_matrix.csv", index=False, lineterminator="\n")
+        pd.DataFrame(pit_rows).to_csv(reports / "tushare_pit_contract_matrix.csv", index=False, lineterminator="\n")
+        pd.DataFrame(reduction_rows).to_csv(reports / "tushare_index_weight_reduction_evidence.csv", index=False, lineterminator="\n")
+        _write_json(reports / "tushare_minimal_proof_run_manifest.json", manifest)
     permission = {
-        "schema_version": 1, "run_id": manifest["run_id"], "token_value_recorded": False,
-        "request_parameters_contain_token": False, "api_request_count": manifest["api_request_count"],
-        "api_request_limit": manifest["api_request_limit"],
-        "batch_real_api_request_count": batch_request_count,
-        "completed_real_run_ids": [item.get("run_id", "") for item in run_history],
-        "aggregate_budget_status": "WITHIN_SUGGESTED_AGGREGATE" if batch_request_count <= manifest["api_request_limit"] else "AGGREGATE_BUDGET_WARNING",
+        "schema_version": 2, "evidence_mode": mode, "run_id": manifest["run_id"],
+        "token_value_recorded": False, "request_parameters_contain_token": False,
+        "real_api_call_count": manifest["real_api_call_count"],
+        "mock_call_count": manifest["mock_call_count"],
+        "per_run_real_call_count": manifest["per_run_real_call_count"],
+        "batch_aggregate_real_call_count": manifest["batch_aggregate_real_call_count"],
+        "configured_real_budget": manifest["configured_real_budget"],
+        "budget_status": manifest["budget_status"],
         "interfaces": [{"interface": row["interface"], "access_verdict": row["access_verdict"], "permission_status": row["permission_status"]} for row in interface_rows],
     }
-    _write_json(reports / "tushare_minimal_proof_permission_audit.json", permission)
+    for reports in report_targets:
+        _write_json(reports / "tushare_minimal_proof_permission_audit.json", permission)
+
+    if mode == "mock":
+        mock_lines = [
+            "# Tushare Mock Validation Evidence", "",
+            f"- Evidence mode: `{mode}`", f"- Run ID: `{manifest['run_id']}`",
+            f"- Status: `{manifest['status']}`", f"- Mock call count: `{manifest['mock_call_count']}`",
+            "- Real API call count: `0`", "- Permission conclusion: `NOT_APPLICABLE_MOCK`", "",
+            "This fixture-only run did not read a Token provider, instantiate the production client, or make a network request.",
+            "It validates schemas and PIT transformations only and cannot complete the real proof batch.", "",
+            "## Interface Validation", "",
+            "| Interface | Permission | Schema | Raw rows | Proof rows | PIT |", "|---|---|---|---:|---:|---|",
+        ]
+        for row in interface_rows:
+            pit_display = str(row["pit_status"]).replace("|", " / ")
+            mock_lines.append(f"| {row['interface']} | {row['permission_status']} | {row['schema_verdict']} | {row['row_count']} | {row['normalized_row_count']} | {pit_display} |")
+        (paths["report_evidence"] / "tushare_minimal_staging_proof.md").write_text("\n".join(mock_lines) + "\n", encoding="utf-8")
+        return
+
+    reports = root / "reports"
     lines = [
-        "# Tushare Minimal Staging Proof", "", f"- Run ID: `{manifest['run_id']}`",
-        f"- Final status: `{manifest['status']}`", f"- Final-run HTTP request count: `{manifest['api_request_count']} / {manifest['api_request_limit']}`",
-        f"- Batch real HTTP request count: `{batch_request_count}` across `{len(run_history)}` immutable run(s)",
+        "# Tushare Minimal Staging Proof", "", f"- Evidence mode: `{mode}`", f"- Run ID: `{manifest['run_id']}`",
+        f"- Final status: `{manifest['status']}`", f"- Final-run real HTTP request count: `{manifest['per_run_real_call_count']} / {manifest['configured_real_budget']}`",
+        f"- Attested aggregate real HTTP request count: `{manifest['batch_aggregate_real_call_count']}`",
         f"- Run-scoped staging: `{manifest['run_scoped_staging']}` (git-ignored)",
         "- ETF daily SSOT write: `NONE`", "- Formal / Strategy / Replay integration: `NONE`", "",
         "## Interface Results", "", "| Interface | Access | Permission | Raw rows | Proof rows | Schema | PIT |", "|---|---|---|---:|---:|---|---|",
@@ -441,9 +586,10 @@ def write_commit_safe_outputs(
         "- Unresolved: taxonomy publication history and snapshot publication times remain unavailable; the latest trade-date rows also need a future local trading-calendar date before next-day availability can be materialized.",
         "", "## Versioning And Call-Budget Note", "",
         "The final two-period `fund_portfolio` sample did not contain multiple announcement dates for one period. The primary key includes `ann_date`, and the mock test confirms that multiple announcement versions are retained rather than overwritten.",
-        "The final proof run stayed within the hard per-run cap at 17/30 requests. Two earlier immutable corrective runs also made 17 requests each, so this batch used 51 real requests in total and exceeded the suggested aggregate target of 30. No run exceeded the configured hard cap; the deviation is recorded rather than hidden.",
+        f"This real run used {manifest['per_run_real_call_count']}/{manifest['configured_real_budget']} calls. The aggregate real count is {manifest['batch_aggregate_real_call_count']} and is sourced from committed real-run attestations plus this run; mock calls are excluded. Budget status: {manifest['budget_status']}.",
     ])
-    (reports / "tushare_minimal_staging_proof.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    for target in report_targets:
+        (target / "tushare_minimal_staging_proof.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
     passed = [row["interface"] for row in interface_rows if row["access_verdict"] == "ACCESS_PASS"]
     gaps = [row["interface"] for row in interface_rows if row["access_verdict"] != "ACCESS_PASS"]
@@ -471,18 +617,21 @@ def write_commit_safe_outputs(
         "", "## Next Gate", "",
         "Formal staging architecture remains a separate Main approval. It requires permission-gap resolution where relevant, retained run manifests, schema-versioned ingestion, and acceptance tests against the PIT contract.",
     ]
-    (reports / "tushare_gap_reassessment.md").write_text("\n".join(gap_lines) + "\n", encoding="utf-8")
+    for target in report_targets:
+        (target / "tushare_gap_reassessment.md").write_text("\n".join(gap_lines) + "\n", encoding="utf-8")
 
 
 def _combine_success(calls: list[ProbeCall]) -> pd.DataFrame:
-    frames = [call.frame for call in calls if call.response_status == "ACCESS_PASS"]
+    frames = [call.frame for call in calls if call.response_status in {"ACCESS_PASS", "MOCK_RESPONSE_PASS"}]
     return pd.concat(frames, ignore_index=True).drop_duplicates() if frames else pd.DataFrame()
 
 
-def limit_sample_frame(interface: str, frame: pd.DataFrame, config: dict[str, Any]) -> pd.DataFrame:
+def limit_sample_frame(interface: str, frame: pd.DataFrame, config: dict[str, Any]) -> tuple[pd.DataFrame, dict[str, Any]]:
     """Keep normalized proof payloads minimal while retaining raw response hashes."""
+    raw_count = int(len(frame))
+    raw_trade_dates = _sorted_dates(frame["trade_date"]) if "trade_date" in frame else []
     if frame.empty:
-        return frame.copy()
+        return frame.copy(), _reduction_evidence(interface, raw_count, 0, raw_trade_dates, [], config)
     limited = frame.copy()
     if interface == "index_daily" and "trade_date" in limited:
         count = int(config["sample_selection"]["max_trade_dates"])
@@ -495,22 +644,123 @@ def limit_sample_frame(interface: str, frame: pd.DataFrame, config: dict[str, An
         count = int(config["sample_selection"]["fund_report_period_limit"])
         periods = sorted(limited["end_date"].dropna().astype(str).unique())[-count:]
         limited = limited[limited["end_date"].astype(str).isin(periods)]
-    return limited.reset_index(drop=True)
+    limited = limited.reset_index(drop=True)
+    selected_trade_dates = _sorted_dates(limited["trade_date"]) if "trade_date" in limited else []
+    return limited, _reduction_evidence(
+        interface,
+        raw_count,
+        int(len(limited)),
+        raw_trade_dates,
+        selected_trade_dates,
+        config,
+    )
 
 
 def _write_json(path: Path, value: Any) -> None:
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
-def _load_run_history(staging_root: Path) -> list[dict[str, Any]]:
-    manifests = list(staging_root.glob("*/run_manifest.json")) + list(staging_root.glob("*/manifests/run_manifest.json"))
-    history = []
-    for path in sorted(set(manifests)):
-        try:
-            history.append(json.loads(path.read_text(encoding="utf-8")))
-        except (OSError, json.JSONDecodeError):
-            continue
-    return history
+def _reduction_evidence(
+    interface: str,
+    raw_count: int,
+    proof_count: int,
+    raw_trade_dates: list[str],
+    selected_trade_dates: list[str],
+    config: dict[str, Any],
+) -> dict[str, Any]:
+    excluded_trade_dates = sorted(set(raw_trade_dates) - set(selected_trade_dates))
+    reduced = interface == "index_weight" and proof_count < raw_count
+    return {
+        "raw_count": raw_count,
+        "proof_count": proof_count,
+        "excluded_count": raw_count - proof_count,
+        "visible_trade_dates": raw_trade_dates,
+        "selected_trade_dates": selected_trade_dates,
+        "excluded_trade_dates": excluded_trade_dates,
+        "reduction_reason": "PROOF_SAMPLE_DATE_WINDOW_REDUCTION" if reduced else "NO_INDEX_WEIGHT_REDUCTION",
+        "reduction_policy_version": config["evidence_contract"]["index_weight_reduction_policy_version"],
+    }
+
+
+def _index_weight_reduction_rows(outcomes: list[ProbeOutcome]) -> list[dict[str, Any]]:
+    return [dict(item.reduction_evidence) for item in outcomes if item.interface == "index_weight"]
+
+
+def load_attested_real_call_count(path: Path) -> int:
+    if not path.exists():
+        return 0
+    total = 0
+    seen: set[str] = set()
+    try:
+        with path.open(encoding="utf-8", newline="") as handle:
+            for row in csv.DictReader(handle):
+                run_id = str(row.get("run_id", ""))
+                if row.get("evidence_mode") != "real" or run_id in seen:
+                    continue
+                seen.add(run_id)
+                total += int(row.get("real_call_count") or 0)
+    except (OSError, ValueError):
+        return 0
+    return total
+
+
+def validate_evidence_manifest(manifest: dict[str, Any]) -> None:
+    required = {
+        "schema_version", "evidence_mode", "run_id", "status", "run_scoped_staging",
+        "total_call_count", "real_api_call_count", "mock_call_count", "per_run_real_call_count",
+        "batch_aggregate_real_call_count", "configured_real_budget", "budget_status",
+    }
+    missing = sorted(required - set(manifest))
+    if missing:
+        raise ValueError(f"evidence manifest missing fields: {', '.join(missing)}")
+    mode = validate_evidence_mode(str(manifest["evidence_mode"]))
+    validate_run_id(mode, str(manifest["run_id"]))
+    isolated_path = f"/{mode}/{manifest['run_id']}" in f"/{manifest['run_scoped_staging']}"
+    legacy_real_path = (
+        mode == "real"
+        and manifest.get("legacy_storage_layout") is True
+        and str(manifest["run_scoped_staging"]).endswith(f"/{manifest['run_id']}")
+    )
+    if not isolated_path and not legacy_real_path:
+        raise ValueError("manifest run_scoped_staging is not mode isolated and is not an attested legacy real run")
+    if mode == "mock":
+        if manifest["status"] not in MOCK_STATUSES:
+            raise ValueError("mock manifest contains a real proof status")
+        if int(manifest["real_api_call_count"]) != 0 or int(manifest["per_run_real_call_count"]) != 0:
+            raise ValueError("mock manifest cannot record real API calls")
+        if int(manifest["mock_call_count"]) != int(manifest["total_call_count"]):
+            raise ValueError("mock call counts are inconsistent")
+    else:
+        if manifest["status"] not in REAL_STATUSES:
+            raise ValueError("real manifest contains a mock validation status")
+        if int(manifest["mock_call_count"]) != 0:
+            raise ValueError("real manifest cannot record mock calls")
+        if int(manifest["real_api_call_count"]) != int(manifest["total_call_count"]):
+            raise ValueError("real call counts are inconsistent")
+
+
+def _real_global_output_paths() -> list[str]:
+    return [
+        "reports/tushare_minimal_staging_proof.md",
+        "reports/tushare_interface_probe_matrix.csv",
+        "reports/tushare_pit_contract_matrix.csv",
+        "reports/tushare_index_weight_reduction_evidence.csv",
+        "reports/tushare_gap_reassessment.md",
+        "reports/tushare_minimal_proof_run_manifest.json",
+        "reports/tushare_minimal_proof_permission_audit.json",
+    ]
+
+
+def _sorted_dates(values: pd.Series) -> list[str]:
+    parsed = pd.to_datetime(values.astype(str).str.strip(), errors="coerce").dropna()
+    return sorted(parsed.dt.strftime("%Y-%m-%d").unique())
+
+
+def _iso_query_date(value: Any) -> str:
+    if value in (None, ""):
+        return ""
+    parsed = pd.to_datetime(str(value), errors="coerce")
+    return "" if pd.isna(parsed) else parsed.strftime("%Y-%m-%d")
 
 
 def _compact(value: str) -> str:

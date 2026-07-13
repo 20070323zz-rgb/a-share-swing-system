@@ -18,7 +18,7 @@ SOURCE_UPDATE_WINDOWS = {
     "index_member_all": "membership effective dates; historical publication timestamp unavailable",
     "daily_basic": "trading day after market close; row-level release timestamp unavailable",
     "fund_portfolio": "periodic disclosure; ann_date supplied at date granularity",
-    "shibor": "daily around 12:00 Asia/Shanghai",
+    "shibor": "official release 11:00 Asia/Shanghai; project conservative availability 12:00 with 60-minute lag",
 }
 
 
@@ -30,9 +30,12 @@ def build_pit_records(
     query_hash: str,
     raw_payload_hash: str,
     local_trading_dates: Iterable[str],
+    evidence_mode: str,
 ) -> pd.DataFrame:
     if interface not in INTERFACE_SCHEMAS:
         raise KeyError(f"unknown interface: {interface}")
+    if evidence_mode not in {"real", "mock"}:
+        raise ValueError("evidence_mode must be explicitly set to real or mock")
     trading_dates = sorted({_iso(value) for value in local_trading_dates if _iso(value)})
     records = []
     for row in frame.to_dict(orient="records"):
@@ -47,12 +50,16 @@ def build_pit_records(
         records.append(
             {
                 "source": "tushare",
+                "evidence_mode": evidence_mode,
                 "source_interface": interface,
                 "entity_id": _entity_id(interface, row),
                 "observation_date": observation_date,
                 "period_end": period_end,
                 "announcement_date": announcement_date,
                 "source_update_window": SOURCE_UPDATE_WINDOWS[interface],
+                "official_release_time": "11:00 Asia/Shanghai" if interface == "shibor" else "",
+                "project_conservative_available_time": "12:00 Asia/Shanghai" if interface == "shibor" else "",
+                "conservative_lag_minutes": 60 if interface == "shibor" else "",
                 "retrieved_at": retrieved_at,
                 "available_at": available_at,
                 "available_date": available_date,
@@ -71,6 +78,7 @@ def interface_pit_summary(interface: str, pit_records: pd.DataFrame) -> dict[str
     statuses = sorted(set(pit_records.get("pit_status", pd.Series(dtype=str)).dropna().astype(str)))
     return {
         "source": "tushare",
+        "evidence_mode": "|".join(sorted(set(pit_records.get("evidence_mode", pd.Series(dtype=str)).dropna().astype(str)))),
         "source_interface": interface,
         "pit_statuses": statuses or [INTERFACE_SCHEMAS[interface].pit_default],
         "pit_resolved_rows": int((pit_records.get("pit_status", pd.Series(dtype=str)) == "PIT_RESOLVED").sum()),
@@ -111,7 +119,7 @@ def _availability(
             return next_date, next_date, "PIT_CONSERVATIVE", "next observed trading day after close", "HIGH"
         return "", "", "PIT_PARTIAL", "next trading day unavailable in local calendar snapshot", "MEDIUM"
     if interface == "shibor" and observation_date:
-        return observation_date, f"{observation_date}T12:00:00+08:00", "PIT_CONSERVATIVE", "official daily noon update pattern; date-level row has no release timestamp", "MEDIUM"
+        return observation_date, f"{observation_date}T12:00:00+08:00", "PIT_CONSERVATIVE", "OFFICIAL_11AM_PLUS_PROJECT_LAG", "MEDIUM"
     if interface in {"index_weight", "index_member_all"}:
         return "", "", "PIT_PARTIAL", "effective/snapshot date exists but historical publication timestamp is absent", "MEDIUM"
     if interface in {"index_basic", "index_classify"}:
