@@ -2,7 +2,7 @@
 report_id: report_6215d9fa1d5052e2
 report_type: REPORT_CATALOG
 business_date: 2026-07-14
-created_at: 2026-07-14T19:29:42+08:00
+created_at: 2026-07-14T19:32:27+08:00
 status: REBUILT_PENDING_RE_QC
 phase: reports_governance_phase_a
 producer: scripts/governance/build_report_catalog.py
