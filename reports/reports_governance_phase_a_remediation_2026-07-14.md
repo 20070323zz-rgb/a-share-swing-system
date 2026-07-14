@@ -2,7 +2,7 @@
 report_id: report_cb1d3603534cf266
 report_type: GOVERNANCE_REMEDIATION
 business_date: 2026-07-14
-created_at: 2026-07-14T19:28:32+08:00
+created_at: 2026-07-14T19:29:42+08:00
 status: READY_FOR_INDEPENDENT_RE_QC
 phase: reports_governance_phase_a
 producer: scripts/governance/build_phase_a_summary.py

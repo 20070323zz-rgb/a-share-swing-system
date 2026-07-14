@@ -1,9 +1,9 @@
 {
   "report_id": "report_24de2af9e71ce19a",
   "business_date": "2026-07-14",
-  "generated_at": "2026-07-14T19:28:32+08:00",
+  "generated_at": "2026-07-14T19:29:42+08:00",
   "generator_version": "2.0.0",
-  "source_tree_commit": "b8d914e99daafd5a9b8b9731ba7a48ac315faa9d",
+  "source_tree_commit": "15fcf2a92d7143e3f66e5174a9425ac6d92f0be5",
   "record_count": 645,
   "schema_version": 2,
   "artifact_path": "reports/report_naming_compliance_audit_2026-07-14.csv",
