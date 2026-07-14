@@ -56,7 +56,7 @@ def summarize_source_day(
         if item.get("source") == source
         and item.get("trade_date") == trade_date
         and item.get("evidence_mode") == "real"
-        and item.get("response_status") != "DUPLICATE_ATTEMPT_SKIPPED"
+        and item.get("response_status") not in {"DUPLICATE_ATTEMPT_SKIPPED", "BLOCKED_EARLY_PROBE"}
     ]
     latest_by_probe: dict[str, dict[str, Any]] = {}
     for item in sorted(attempts, key=lambda row: str(row.get("completed_at", ""))):
