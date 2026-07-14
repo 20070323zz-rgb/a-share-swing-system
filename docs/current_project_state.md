@@ -934,14 +934,14 @@ The separately authorized proof completed run `real-20260713-minimal-proof-v3` w
 Tushare Minimal Staging Proof = COMPLETE
 Tushare PIT Contract = COMPLETE_WITH_LIMITATIONS
 Evidence Isolation = COMPLETE
-PR #2 = DRAFT_AWAITING_RE_QC
+PR #2 = MERGED
 Accessible interfaces = 8 / 8
 Real API requests = 17 / 30
 Aggregate real API calls = 51 (AGGREGATE_BUDGET_WARNING)
 Mock calls included in real totals = 0
 Formal Staging Architecture = NOT_STARTED
-Tushare Primary Upstream Migration = APPROVED_FOR_FUTURE_ENGINEERING / NOT_STARTED
-ETF Daily Availability Timing Audit = NOT_STARTED
+Tushare Primary Upstream Migration = APPROVED_IN_PRINCIPLE_BUT_NOT_STARTED
+ETF Daily Availability Timing Audit = NEXT / NOT_STARTED
 Data Foundation Upgrade = NOT_STARTED
 Data Promotion = BLOCKED
 Unified Data Upgrade = NOT_STARTED
@@ -950,7 +950,7 @@ Regime 2.0 = NOT_STARTED
 Universe V3 = NOT_STARTED
 Exit Logic = NOT_STARTED
 Style Fit 1.0 = CLOSED
-Next Decision = PR #2 RE-QC
+Next Decision = ETF Daily Availability Timing Audit (separate authorization required)
 ```
 
 PIT handling is intentionally asymmetric: `fund_portfolio` is `PIT_RESOLVED` through retained `ann_date` versions; `daily_basic` and `index_daily` use a conservative next-trading-day contract when the next date exists; Shibor uses official release `11:00` plus the project's 60-minute conservative lag to `12:00` with basis `OFFICIAL_11AM_PLUS_PROJECT_LAG`; `index_weight` and `index_member_all` remain partial; current taxonomy and index metadata remain unresolved for historical publication time. The latest 2026-07-10 daily rows remain partial until a later local trading-calendar date is present. Shibor remains `EXPLANATION_ONLY / INTEREST_RATE_CONTEXT`, not ETF duration exposure.
@@ -958,6 +958,8 @@ PIT handling is intentionally asymmetric: `fund_portfolio` is `PIT_RESOLVED` thr
 All historical real payloads and row-level proof artifacts remain in their existing Git-ignored run directories and were not moved or rewritten. New runs are programmatically separated under `real/<real-run_id>/` and `mock/<mock-run_id>/`, including mode-scoped report evidence. Mock runs cannot read the Token provider, create the production client, emit real permission verdicts, produce `REAL_PROOF_COMPLETE`, overwrite global real reports, or enter the attested real call total. `data/etf_daily/` remains the ETF price Single Source of Truth. No staged response was promoted into Replay, Exposure Phase 2, Strategy, Ranking, Preview, Shadow, Formal, or paper execution.
 
 Three real-run attestations explain `17 + 17 + 17 = 51` calls. The first two individual proof reports were not retained by the historical global-report workflow, so their report hashes are explicitly `UNAVAILABLE / AVAILABLE_EVIDENCE_LIMITED`; no missing evidence was fabricated. The final `index_weight` reduction from 1350 raw rows to 900 proof rows is `PROOF_SAMPLE_DATE_WINDOW_REDUCTION`: the 2026-04-30 snapshot was excluded and the 2026-05-29 and 2026-06-30 snapshots were retained for all three indices.
+
+PR #2 was merged into `main` with merge commit `47d129bfa7a055b7af81f4c57fea3a95d41287c6` at 2026-07-14 14:00:33 CST after the live head and boundary gate remained unchanged. Post-merge validation is `PASS`, `main` is `STABLE`, and Tushare proof evidence is `ACCEPTED`. The ETF SSOT, protected files, model, Replay, Ranking, Score, Exposure, and Formal Execution boundaries were unchanged. No real Tushare API call was made during validation.
 
 ## 9. Current Main Bottlenecks
 
@@ -1028,15 +1030,19 @@ Main Branch Merge = COMPLETE
 Tushare Minimal Staging Proof & PIT Contract = COMPLETE
 Tushare Staging / PIT = COMPLETE_WITH_LIMITATIONS
 Evidence Isolation = COMPLETE
-PR #2 = DRAFT_AWAITING_RE_QC
+PR #2 = MERGED
+PR #2 Merge Commit = 47d129bfa7a055b7af81f4c57fea3a95d41287c6
+PR #2 Post-Merge Validation = PASS
+Tushare Proof Evidence = ACCEPTED
 Tushare Formal Staging Architecture = NOT_STARTED
-Tushare Primary Upstream Migration = APPROVED_FOR_FUTURE_ENGINEERING / NOT_STARTED
-ETF Daily Availability Timing Audit = NOT_STARTED
+Tushare Primary Upstream Migration = APPROVED_IN_PRINCIPLE_BUT_NOT_STARTED
+ETF Daily Availability Timing Audit = NEXT / NOT_STARTED
 Data Foundation Upgrade = NOT_STARTED
 Data Promotion = BLOCKED
-Next Data Foundation Decision = PR #2 RE-QC
+Exposure Phase 2 = NOT_STARTED
+Next Data Foundation Decision = ETF Daily Availability Timing Audit (separate authorization required)
 ```
 
 Do not create adjusted preview. Current `ready_for_preview=false`.
 
-Context updated at: 2026-07-13 10:25:02 CST
+Context updated at: 2026-07-14 14:03:31 CST

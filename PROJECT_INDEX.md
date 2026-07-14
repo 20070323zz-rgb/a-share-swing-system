@@ -199,6 +199,7 @@ Formal Execution: BLOCKED
 - Tushare Index Weight Reduction Evidence：`reports/tushare_index_weight_reduction_evidence.csv`
 - Tushare Real Run Attestations：`reports/tushare_real_run_attestations.md`
 - Tushare Evidence Remediation：`reports/tushare_proof_evidence_remediation.md`
+- Tushare Proof Post-Merge Validation：`reports/tushare_proof_post_merge_validation_2026-07.md`
 - Tushare Gap Reassessment：`reports/tushare_gap_reassessment.md`
 - Tushare PIT Contract：`docs/tushare_pit_contract.md`
 - Tushare Minimal Proof Config：`configs/tushare_minimal_proof.yaml`
