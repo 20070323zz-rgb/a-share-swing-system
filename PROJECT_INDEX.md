@@ -1,6 +1,6 @@
 # A-share Swing System Project Index
 
-生成时间：2026-07-13 17:03:10
+生成时间：2026-07-14 17:03:41
 
 ## 当前阶段
 
@@ -55,8 +55,14 @@ Exposure Framework Phase 1: COMPLETE
 Project Infrastructure Batch Standardization V1: COMPLETE
 Paper Execution Safety Phase 1: COMPLETE
 Tushare 5000 Data Foundation Audit: COMPLETE
-Reports Governance Phase A: NOT_STARTED
+Reports Governance Phase A: COMPLETE
+Report Catalog: ACTIVE_V1
+Report Dependency Registry: ACTIVE_V1
+Report Classification Standard: ACTIVE_V1
+Report Naming Standard: ACTIVE_V1
+Future Report Path Registry: DESIGNED_NOT_IMPLEMENTED
 Report File Migration: BLOCKED
+Report Migration Phase B: NOT_STARTED
 PR #1 Hygiene Cleanup: COMPLETE
 PR #1 Diff Check: CLEAN
 Local Temporary Artifacts: RESOLVED
@@ -68,7 +74,7 @@ Main Branch Merge: COMPLETE
 Tushare Minimal Staging Proof & PIT Contract: COMPLETE
 Tushare Staging / PIT: COMPLETE_WITH_LIMITATIONS
 Tushare Evidence Isolation: COMPLETE
-PR #2: DRAFT_AWAITING_RE_QC
+PR #2: MERGED
 Tushare Formal Staging Architecture: NOT_STARTED
 Tushare Primary Upstream Migration: APPROVED_FOR_FUTURE_ENGINEERING / NOT_STARTED
 ETF Daily Availability Timing Audit: NOT_STARTED
@@ -204,6 +210,14 @@ Formal Execution: BLOCKED
 - Tushare PIT Contract：`docs/tushare_pit_contract.md`
 - Tushare Minimal Proof Config：`configs/tushare_minimal_proof.yaml`
 - Tushare Minimal Proof Runner：`scripts/run_tushare_minimal_proof.py`
+- Report Catalog Builder：`scripts/governance/build_report_catalog.py`
+- Report Dependency Registry Builder：`scripts/governance/build_report_dependency_registry.py`
+- Report Catalog：`reports/report_catalog.md`
+- Report Dependency Registry：`reports/report_dependency_registry.md`
+- Report Classification Standard：`docs/report_classification_standard.md`
+- Report Naming Standard：`docs/report_naming_standard.md`
+- Future Report Path Registry Design：`docs/report_path_registry_design.md`
+- Future Report Migration Plan：`docs/report_migration_plan.md`
 
 这些入口用于新 Codex thread 恢复项目状态。
 
@@ -223,6 +237,9 @@ Formal Execution: BLOCKED
 
 ## 本轮审计报告
 
+- `reports/reports_governance_phase_a_summary.md`
+- `reports/report_catalog.md`
+- `reports/report_dependency_registry.md`
 - `reports/project_checkpoint_post_merge_validation_2026-07.md`
 - `reports/pr_final_hygiene_audit_2026-07-12.md`
 - `reports/project_structure_audit.md`

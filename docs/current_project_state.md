@@ -72,8 +72,14 @@ Guarded Paper Execution Entry ACTIVE
 Stale Data Fallback BLOCKED
 2026-07-10 Stale Trades AUDITED_NON_DESTRUCTIVELY
 Tushare 5000 Data Foundation Audit COMPLETE
-Reports Governance Phase A NOT_STARTED
+Reports Governance Phase A COMPLETE
+Report Catalog ACTIVE_V1
+Report Dependency Registry ACTIVE_V1
+Report Classification Standard ACTIVE_V1
+Report Naming Standard ACTIVE_V1
+Future Report Path Registry DESIGNED_NOT_IMPLEMENTED
 Report File Migration BLOCKED
+Report Migration Phase B NOT_STARTED
 Data Foundation Upgrade NOT_STARTED
 PR #1 Hygiene Cleanup COMPLETE
 PR #1 Diff Check CLEAN
@@ -922,7 +928,7 @@ Protected file hashes unchanged = true
 
 The separately authorized Tushare 5000 Data Foundation Audit is `COMPLETE` after Main review. Capability and priority artifacts are available. No Tushare data integration or data-source upgrade has started; `Data Foundation Upgrade = NOT_STARTED`.
 
-Reports Governance Phase A remains `NOT_STARTED`: the taxonomy feasibility study exists, but the catalog generator, catalog outputs, dependency summary, and Path Registry design required by Phase A do not exist. Report migration remains `BLOCKED`.
+Reports Governance Phase A is `COMPLETE`: deterministic Catalog and Dependency Registry generators, machine/human indexes, classification and naming standards, a future Path Registry design, and a bounded migration plan now exist. This was a zero-move, zero-rename, zero-delete phase; Report File Migration remains `BLOCKED` and Phase B remains `NOT_STARTED`. The independent ETF Daily Availability Timing Audit on Draft PR #3 was not modified.
 
 PR #1 final hygiene cleanup is `COMPLETE`. PR #1 was merged into `main` with merge commit `40a6017402456d62609169325cb5f1d31a1a140b` at 2026-07-13 09:49:26 CST. Post-merge validation is `PASS` and `main` is `STABLE`. Formal execution logic, protected paper ledgers, and ETF business data were unchanged by the merge/validation batch.
 
@@ -986,8 +992,12 @@ New threads must still execute repository bootstrap before substantive edits.
 
 ```text
 Tushare 5000 Data Foundation Audit = COMPLETE
-Reports Governance Phase A = NOT_STARTED
+Reports Governance Phase A = COMPLETE
+Report Catalog = ACTIVE_V1
+Report Dependency Registry = ACTIVE_V1
+Future Report Path Registry = DESIGNED_NOT_IMPLEMENTED
 Report File Migration = BLOCKED
+Report Migration Phase B = NOT_STARTED
 Preview Research = NOT STARTED
 Formal Execution = BLOCKED
 Exposure Framework Phase C = COMPLETE
@@ -1016,8 +1026,14 @@ Guarded Paper Execution Entry = ACTIVE
 Stale Data Fallback = BLOCKED
 2026-07-10 Stale Trades = AUDITED_NON_DESTRUCTIVELY
 Tushare 5000 Data Foundation Audit = COMPLETE
-Reports Governance Phase A = NOT_STARTED
+Reports Governance Phase A = COMPLETE
+Report Catalog = ACTIVE_V1
+Report Dependency Registry = ACTIVE_V1
+Report Classification Standard = ACTIVE_V1
+Report Naming Standard = ACTIVE_V1
+Future Report Path Registry = DESIGNED_NOT_IMPLEMENTED
 Report File Migration = BLOCKED
+Report Migration Phase B = NOT_STARTED
 Data Foundation Upgrade = NOT_STARTED
 PR #1 Hygiene Cleanup = COMPLETE
 PR #1 Diff Check = CLEAN
