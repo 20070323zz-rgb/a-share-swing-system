@@ -324,8 +324,8 @@ def test_index_weight_reduction_keeps_latest_two_dates_and_counts():
     assert len(limited) == len(frame[frame["trade_date"].isin({"20260529", "20260630"})])
 
 
-def test_formal_staging_architecture_remains_not_started():
+def test_timing_audit_active_without_starting_formal_staging():
     status = json.loads((ROOT / "docs/current_phase_status.json").read_text(encoding="utf-8"))
     assert status["tushare_formal_staging_architecture_status"] == "NOT_STARTED"
     assert status["tushare_primary_upstream_migration_status"] == "NOT_STARTED"
-    assert status["etf_daily_availability_timing_audit_status"] == "NOT_STARTED"
+    assert status["etf_daily_availability_timing_audit_status"] == "ACTIVE_COLLECTING"
