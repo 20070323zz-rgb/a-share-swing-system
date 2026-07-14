@@ -1,60 +1,94 @@
 # Future Report Path Registry Design
 
-## Status
+## Status and boundary
 
-`DESIGNED_NOT_IMPLEMENTED`。Phase A 只建立 Catalog 与 Dependency Registry，不创建运行时 Path Registry，不修改任何 reader/writer。
+`COMPLETE_PENDING_QC / RUNTIME_NOT_STARTED`。本设计不创建 `configs/report_paths.yaml`，不接入 reader/writer，不迁移文件，也不授权 Phase B。
 
-## Design goal
-
-未来 Path Registry 以逻辑报告 ID 解耦机器入口、日期归档路径和兼容旧路径。它必须支持审阅、逐批迁移和回滚，不能成为隐藏的自动移动器。
-
-建议未来独立 Batch 创建 `configs/report_paths.yaml`，每个 entry 包含：
+## Complete entry contract
 
 ```yaml
-paper_performance_summary:
-  schema_version: 1
-  role: RUNTIME_INPUT
-  current_path: reports/paper_performance_summary.json
-  stable_alias: reports/paper_performance_summary.json
-  archive_template: reports/daily/portfolio/paper_performance_summary_{business_date}.json
-  producer_ids: [paper_performance]
-  consumer_ids: [dashboard, app_backend]
-  compatibility_paths: []
-  validation_profile: paper_performance_v1
-  migration_status: NOT_STARTED
+registry_schema_version: 1
+report_id: paper_performance_summary
+report_type: PAPER_PERFORMANCE
+cadence: DAILY
+dated_path_template: reports/paper_performance_summary_{business_date}.json
+current_dated_path: reports/paper_performance_summary_2026-07-14.json
+runtime_alias: reports/paper_performance_summary.json
+producer_id: paper_performance
+producer_entrypoint: src/paper_performance.py
+consumers: [dashboard, app_backend]
+schema_reference: schemas/paper_performance_v1.json
+retention_class: PROJECT_LIFETIME
+retention_days: null
+retention_rule: keep_all_validated_business_dates
+archive_policy: MANUAL_AFTER_COMPATIBILITY_GATE
+deletion_policy: NEVER_AUTOMATIC
+immutable_history: true
+atomic_update_required: true
+fallback_policy: DATA_NOT_READY
+compatibility_paths: [reports/paper_performance_summary.json]
+migration_status: NOT_STARTED
+rollback_target: reports/paper_performance_summary.json
+owner: reports_governance
+last_validated_at: null
 ```
 
-## Resolution contract
+## Retention policy
 
-未来 resolver 应只提供：
+允许值：
 
-- `resolve_current(report_id)`：稳定机器入口；
-- `resolve_dated(report_id, business_date, run_id=None)`：不可覆盖日期版；
-- `resolve_compatibility(report_id)`：迁移窗口内的旧入口；
-- `validate_registration(report_id)`：路径、schema、producer/consumer 和冲突检查。
+- `PERMANENT`
+- `PROJECT_LIFETIME`
+- `ROLLING_WINDOW`
+- `UNTIL_MIGRATION_VALIDATED`
+- `TEMPORARY_AUDIT`
+- `MANUAL_REVIEW`
 
-未知 ID、缺失日期、路径越界、重复 writer 或未注册 runtime reader 必须 fail closed。Registry 不得自动把 research artifact 接入 Formal Execution。
+`ROLLING_WINDOW` 必须提供 `retention_days`；其他类别必须提供可审计 `retention_rule`。删除始终需要独立授权，Registry 不得自动删除不可覆盖历史。
 
-## Adoption sequence
+## Resolution and missing-date behavior
 
-1. 以当前 Dependency Registry 建立候选 entry，人工确认 producer/consumer。
-2. 先让单一低风险生成器写日期版，但继续保留原稳定 alias。
-3. 让 reader 从 registry 解析，保留至少一个发布周期的旧路径兼容。
-4. 对 App、Dashboard、周报和 release check 分别验证。
-5. 只有引用计数归零且 rollback evidence 完整后，才可在独立迁移 Batch 讨论旧路径处置。
+- `resolve_current(report_id)` 只返回已验证 runtime alias。
+- `resolve_dated(report_id, business_date, run_id=None)` 只返回精确业务日期产物。
+- `resolve_compatibility(report_id)` 只在声明的兼容期返回旧路径。
+- 未知 ID、缺失 business date、文件不存在、schema 不匹配或重复 writer 必须 fail closed。
+- 指定日期产物不存在时返回 `DATA_NOT_READY`；禁止回退到任意旧文件、最新 mtime 或模糊 `latest`。
+- Registry 文件不可用时，Formal/runtime consumer 必须停止；不得静默绕过 Registry。
 
-## Validation and rollback
+## Atomic alias update
 
-每个 entry 必须有：
+1. producer 写入同目录临时文件；
+2. 验证 schema、business date、record count 与 content hash；
+3. 验证 dated artifact 已不可覆盖落盘；
+4. 使用 `os.replace` 原子更新 alias；
+5. 更新失败时保留旧 alias 并返回失败，不修改 Registry 状态。
 
-- 旧路径与新路径内容哈希/语义一致性；
-- producer 单写者约束；
-- consumer coverage；
-- stable alias 原子更新；
-- 缺失文件 fail-closed 行为；
-- 一键回到旧 `current_path` 的 registry-only rollback；
-- Dashboard build、frontend build、App release check 与 context validation。
+## Cycle prevention
 
-## Concurrent audit boundary
+- Registry 本身由固定 bootstrap 路径读取，不得通过 Registry 定位自己的唯一输入。
+- Registry generator、dated artifact 与 runtime alias 建立有向图；提交前执行 DFS/topological cycle detection。
+- 禁止 `registry -> alias -> generator input -> registry`、alias 自指、producer 双写和 consumer 反向生产边。
+- 检测到 cycle 时 Registry 版本无效，所有迁移 fail closed。
 
-PR #3 的 `tushare_etf_availability_*` 观测文件、配置、脚本和报告在 audit 收集期间全部冻结为独立边界。未来 Registry 设计不得把其 staging snapshot 变成正式报告输入，也不得改写或迁移其 append-only evidence。
+## Migration order
+
+1. 无运行时 consumer 的 low-risk dated artifacts；
+2. governance/audit artifacts；
+3. daily/weekly generators；
+4. Dashboard noncritical inputs；
+5. App runtime inputs；
+6. Formal execution inputs 最后迁移，或继续永久锁定。
+
+每一级必须完成一个发布周期的兼容验证后才能进入下一级。Availability Audit 收集期的 PR #3 路径保持冻结。
+
+## Rollback
+
+- 兼容路径至少保留一个完整发布周期；Formal/runtime 输入按风险延长。
+- alias 可原子回退到已验证 dated artifact。
+- Registry 采用版本化快照，可回退到上一有效版本。
+- 原路径在兼容期内保持可恢复，不进行破坏性删除。
+- Dashboard build、frontend build、App release、周报链、context validation 任一失败时，回退 Registry/alias 并 fail closed。
+
+## Single-point-of-failure controls
+
+Registry 是显式控制平面，不是静默 fallback。运行时发布必须同时保留上一有效 Registry 版本、内容哈希与本地只读 rollback copy；当前版本缺失或损坏时返回控制错误，由人工选择回退版本。系统不得自行猜测路径。
