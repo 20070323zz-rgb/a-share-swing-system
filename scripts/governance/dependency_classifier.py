@@ -349,6 +349,8 @@ def _python_rows(source_file: str, text: str, source_tree_commit: str) -> list[d
                 reference_type, direction, confidence = "DYNAMIC_PATH_PATTERN", "UNKNOWN", "LOW"
             else:
                 reference_type, direction, confidence = "PATH_DECLARATION", "DECLARATION", "MEDIUM"
+            if resolution == "DYNAMIC" and confidence == "HIGH":
+                confidence = "MEDIUM"
             rows.append(
                 _record(
                     source_file=source_file,
@@ -425,6 +427,8 @@ def _line_rows(source_file: str, text: str, source_tree_commit: str, parser_type
                 reference_type, direction, confidence = "DYNAMIC_PATH_PATTERN", "UNKNOWN", "LOW"
             else:
                 reference_type, direction, confidence = "PATH_DECLARATION", "DECLARATION", "MEDIUM"
+            if dynamic and confidence == "HIGH":
+                confidence = "MEDIUM"
             rows.append(
                 _record(
                     source_file=source_file,
