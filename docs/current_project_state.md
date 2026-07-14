@@ -1082,4 +1082,4 @@ Next Data Foundation Decision = ETF Daily Availability Timing Audit (separate au
 
 Do not create adjusted preview. Current `ready_for_preview=false`.
 
-Context updated at: 2026-07-14 14:03:31 CST
+Context updated at: 2026-07-14 19:21:10 CST

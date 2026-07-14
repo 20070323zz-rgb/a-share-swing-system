@@ -50,6 +50,10 @@ PYTHON_CONSUMER_METHODS = {
     "read_json_file",
     "read_csv_rows",
     "tail_text",
+    "_read_json",
+    "_read_csv",
+    "_read_text",
+    "_mtime",
 }
 PYTHON_ATOMIC_METHODS = {"replace", "rename"}
 PYTHON_COPY_METHODS = {"copy", "copy2", "move"}
@@ -223,6 +227,7 @@ def _python_rows(source_file: str, text: str, source_tree_commit: str) -> list[d
     except SyntaxError:
         return _line_rows(source_file, text, source_tree_commit, parser_type="PYTHON_FALLBACK")
     lines = text.splitlines()
+    binding_candidates: dict[str, list[list[Reference]]] = {}
     bindings: dict[str, list[Reference]] = {}
     used: set[tuple[int, str]] = set()
     rows: list[dict] = []
@@ -234,7 +239,16 @@ def _python_rows(source_file: str, text: str, source_tree_commit: str) -> list[d
             targets = node.targets if isinstance(node, ast.Assign) else [node.target]
             for target_node in targets:
                 if isinstance(target_node, ast.Name) and refs:
-                    bindings[target_node.id] = refs
+                    binding_candidates.setdefault(target_node.id, []).append(refs)
+
+    bindings = {}
+    for name, candidates in binding_candidates.items():
+        identities = {
+            tuple((ref.target, ref.resolution) for ref in candidate)
+            for candidate in candidates
+        }
+        if len(identities) == 1:
+            bindings[name] = candidates[0]
 
     for call in (node for node in ast.walk(tree) if isinstance(node, ast.Call)):
         name = _call_name(call)
@@ -251,9 +265,10 @@ def _python_rows(source_file: str, text: str, source_tree_commit: str) -> list[d
         elif name in PYTHON_PRODUCER_METHODS:
             refs = _call_receiver(call, bindings)
             if name in {"to_csv", "to_json", "to_parquet", "write_csv", "write_json"} and call.args:
-                refs += _expr_references(call.args[0], bindings)
-            else:
-                for arg in call.args:
+                refs = _expr_references(call.args[0], bindings)
+            elif name in {"dump", "safe_dump"} and len(call.args) > 1:
+                refs = []
+                for arg in call.args[1:]:
                     refs += _expr_references(arg, bindings)
             operations.append((refs, "PRODUCER"))
         elif name in PYTHON_CONSUMER_METHODS:
@@ -279,7 +294,7 @@ def _python_rows(source_file: str, text: str, source_tree_commit: str) -> list[d
             elif len(args) >= 2:
                 operations.append((_expr_references(args[0], bindings), "CONSUMER"))
                 operations.append((_expr_references(args[1], bindings), "PRODUCER"))
-        elif name in {"fetch", "axios", "get"}:
+        elif name in {"fetch", "axios"}:
             refs: list[Reference] = []
             for arg in call.args:
                 refs += _expr_references(arg, bindings)

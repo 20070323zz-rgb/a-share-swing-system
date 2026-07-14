@@ -27,11 +27,11 @@ except ModuleNotFoundError:
 
 
 SAMPLE_RESULTS = {
-    "APP_RUNTIME_READ": (20, 20),
+    "APP_RUNTIME_READ": (17, 17),
     "DASHBOARD_RUNTIME_READ": (20, 20),
     "PRODUCER_WRITE": (20, 20),
     "DOCUMENTATION_LINK": (20, 20),
-    "DYNAMIC_PATH_PATTERN": (20, 20),
+    "DYNAMIC_PATH_PATTERN": (3, 3),
     "TEST_REFERENCE": (20, 20),
 }
 
