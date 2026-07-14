@@ -192,8 +192,10 @@ def build_availability_reports(project_root: Path, config: dict[str, Any]) -> di
 
 
 def _first_stable_time(rows: list[dict[str, Any]], minimum_interval: int) -> str:
-    ordered = sorted((row for row in rows if _is_complete(row)), key=lambda row: str(row.get("scheduled_at", "")))
+    ordered = sorted(rows, key=lambda row: str(row.get("scheduled_at", "")))
     for index, row in enumerate(ordered[:-1]):
+        if not _is_complete(row):
+            continue
         current_time = _minutes(_hhmm(row.get("scheduled_at", "")))
         later = ordered[index + 1:]
         next_row = later[0]
@@ -201,7 +203,7 @@ def _first_stable_time(rows: list[dict[str, Any]], minimum_interval: int) -> str
         if current_time is None or next_time is None or next_time - current_time < minimum_interval:
             continue
         expected_hash = str(row.get("source_snapshot_hash", ""))
-        if expected_hash and all(str(item.get("source_snapshot_hash", "")) == expected_hash for item in later):
+        if expected_hash and all(_is_complete(item) and str(item.get("source_snapshot_hash", "")) == expected_hash for item in later):
             return _hhmm(row.get("scheduled_at", ""))
     return ""
 

@@ -199,3 +199,13 @@ def test_baostock_budget_blocks_before_import_or_network(tmp_path):
     config["baostock"]["max_calls_per_probe"] = 2
     with pytest.raises(RuntimeError, match="budget"):
         fetch_baostock_daily(universe(), "2026-07-14", config)
+
+
+def test_later_failed_slot_prevents_false_stability(tmp_path):
+    root, config = make_project(tmp_path)
+    for value in config["schedule"]["tushare_times"][:2]:
+        run_availability_probe(root, config, source="tushare", trade_date="2026-07-14", scheduled_time=value, client_factory=factory(), now=datetime.fromisoformat(f"2026-07-14T{value}:00+08:00"), evidence_mode="real")
+    run_availability_probe(root, config, source="tushare", trade_date="2026-07-14", scheduled_time="16:00", client_factory=factory(network_error=TimeoutError("offline")), now=datetime.fromisoformat("2026-07-14T16:00:00+08:00"), evidence_mode="real")
+    row = build_availability_reports(root, config)["tushare_rows"][0]
+    assert row["day_status"] == "COMPLETE"
+    assert row["first_stable_time"] == ""
