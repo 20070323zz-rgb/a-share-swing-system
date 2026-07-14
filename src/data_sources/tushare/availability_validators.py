@@ -53,7 +53,7 @@ def build_universe_mapping(project_root: Path, config: dict[str, Any]) -> tuple[
         "count_source": str(config["universe"]["count_source"]),
         "expected_count": expected,
         "mapped_count": len(records),
-        "mapping_complete": len(records) == expected and not invalid_files and not duplicate_codes and not duplicate_ts_codes,
+        "mapping_complete": len(records) == expected and not invalid_files and not duplicate_codes and not duplicate_ts_codes and not unmapped_roles,
         "sh_count": sum(item.exchange == "SH" for item in records),
         "sz_count": sum(item.exchange == "SZ" for item in records),
         "invalid_files": invalid_files,
