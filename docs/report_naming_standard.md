@@ -82,7 +82,7 @@ Examples:
 
 ## Recommended metadata
 
-新生成链至少记录：
+新生成链必须遵守 `docs/report_metadata_standard.md`，至少记录：
 
 ```text
 report_id
@@ -92,7 +92,10 @@ producer
 source_inputs
 content_sha256
 stable_alias (if any)
+runtime_alias (if any)
 supersedes (if any)
+source_run_id
+retention_class
 schema_version
 ```
 
