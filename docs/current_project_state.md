@@ -80,7 +80,7 @@ Report Naming Standard PROPOSED_ACTIVE_ON_MERGE
 Future Report Path Registry Design COMPLETE_PENDING_QC
 Runtime Report Path Registry NOT_STARTED
 Report File Migration BLOCKED
-Report Migration Phase B NOT_STARTED
+Report Migration Phase B BLOCKED
 Data Foundation Upgrade NOT_STARTED
 PR #1 Hygiene Cleanup COMPLETE
 PR #1 Diff Check CLEAN
@@ -1016,7 +1016,7 @@ Report Dependency Registry = REMEDIATED_PENDING_RE_QC
 Future Report Path Registry Design = COMPLETE_PENDING_QC
 Runtime Report Path Registry = NOT_STARTED
 Report File Migration = BLOCKED
-Report Migration Phase B = NOT_STARTED
+Report Migration Phase B = BLOCKED
 Preview Research = NOT STARTED
 Formal Execution = BLOCKED
 Exposure Framework Phase C = COMPLETE
@@ -1053,7 +1053,7 @@ Report Naming Standard = PROPOSED_ACTIVE_ON_MERGE
 Future Report Path Registry Design = COMPLETE_PENDING_QC
 Runtime Report Path Registry = NOT_STARTED
 Report File Migration = BLOCKED
-Report Migration Phase B = NOT_STARTED
+Report Migration Phase B = BLOCKED
 Data Foundation Upgrade = NOT_STARTED
 PR #1 Hygiene Cleanup = COMPLETE
 PR #1 Diff Check = CLEAN

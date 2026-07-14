@@ -747,7 +747,7 @@
   "report_path_registry_design_status": "COMPLETE_PENDING_QC",
   "report_path_registry_status": "NOT_STARTED",
   "report_file_migration_status": "BLOCKED",
-  "report_migration_phase_b_status": "NOT_STARTED",
+  "report_migration_phase_b_status": "BLOCKED",
   "draft_pr_1_status": "MERGED",
   "pr_1_status": "MERGED",
   "pr_1_merge_commit": "40a6017402456d62609169325cb5f1d31a1a140b",

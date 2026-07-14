@@ -63,7 +63,7 @@ Report Naming Standard: PROPOSED_ACTIVE_ON_MERGE
 Future Report Path Registry Design: COMPLETE_PENDING_QC
 Runtime Report Path Registry: NOT_STARTED
 Report File Migration: BLOCKED
-Report Migration Phase B: NOT_STARTED
+Report Migration Phase B: BLOCKED
 PR #1 Hygiene Cleanup: COMPLETE
 PR #1 Diff Check: CLEAN
 Local Temporary Artifacts: RESOLVED
