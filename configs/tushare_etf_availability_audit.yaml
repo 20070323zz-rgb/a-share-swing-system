@@ -1,0 +1,72 @@
+schema_version: 1
+audit_id: tushare_etf_daily_availability_v1
+timezone: Asia/Shanghai
+status: ACTIVE_COLLECTING
+activation_date: "2026-07-14"
+evidence_mode: real
+ssot_write_allowed: false
+paper_engine_allowed: false
+
+universe:
+  etf_daily_dir: data/etf_daily
+  classification_file: data/etf_classification.csv
+  expected_count: 183
+
+calendar:
+  interface: trade_cal
+  exchange: SSE
+  cache_file: data/staging/tushare_etf_availability/calendar/trade_calendar.json
+  history_dir: data/staging/tushare_etf_availability/calendar/history
+  official_doc: https://tushare.pro/document/2?doc_id=26
+
+tushare:
+  interface: fund_daily
+  fields: ts_code,trade_date,open,high,low,close,pre_close,change,pct_chg,vol,amount
+  official_doc: https://tushare.pro/document/2?doc_id=127
+  max_calls_per_probe: 1
+  timeout_seconds: 25
+  request_interval_seconds: 0.35
+  max_network_retries: 0
+
+baostock:
+  interface: query_history_k_data_plus
+  fields: date,code,open,high,low,close,preclose,volume,amount,tradestatus
+  adjustflag: "3"
+  max_calls_per_probe: 183
+  request_interval_seconds: 0.03
+
+schedule:
+  tolerance_minutes: 4
+  tushare_times:
+    - "15:05"
+    - "15:15"
+    - "15:30"
+    - "15:45"
+    - "16:00"
+    - "16:15"
+    - "16:30"
+    - "17:00"
+    - "17:30"
+    - "18:00"
+  baostock_times:
+    - "15:30"
+    - "16:30"
+    - "17:30"
+    - "18:00"
+
+observation:
+  initial_valid_days: 5
+  extended_valid_days: 10
+  stability_min_interval_minutes: 15
+  late_revision_threshold: "17:30"
+  supported_min_valid_days: 10
+  preliminary_min_valid_days: 5
+  safety_buffer_minutes: 15
+
+storage:
+  root: data/staging/tushare_etf_availability
+  reports_dir: reports
+  status_report: reports/tushare_etf_availability_audit_status.md
+  timing_summary: reports/tushare_etf_availability_timing_summary.csv
+  source_comparison: reports/tushare_vs_baostock_availability.csv
+  universe_mapping: reports/tushare_etf_universe_mapping_validation.csv

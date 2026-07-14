@@ -46,3 +46,6 @@ data/raw/*
 
 # Run-scoped Tushare proof payloads are local evidence, never committed.
 data/staging/tushare_minimal_proof/
+
+# Append-only local timing evidence; summaries are committed separately.
+data/staging/tushare_etf_availability/
