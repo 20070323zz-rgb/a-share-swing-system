@@ -61,6 +61,22 @@ atomic_update_required
 
 Phase A Catalog、Dependency Registry、Naming Audit、Summary 与 Remediation 均为 `PERMANENT`，且不可覆盖。
 
+Availability 临时调查数据必须额外登记：
+
+```yaml
+data_class: TEMPORARY_AUDIT_DATA
+retention_class: UNTIL_MIGRATION_VALIDATED
+secondary_tag: TEMPORARY_AUDIT
+runtime_role: SHADOW_EVIDENCE_ONLY
+canonical: false
+writable_by_formal_pipeline: false
+deletable_during_active_audit: false
+promotion_allowed: false
+retirement_status: RETIREMENT_PENDING_AUTHORIZATION
+```
+
+这些字段用于阻止误提升和误删除，不代表运行时 Path Registry 已接入。日期版长期统计、决策、迁移、retirement readiness/validation 报告及必要 hash/manifest 摘要使用 `PERMANENT`。
+
 ## Alias contract
 
 稳定 alias 只是一项运行时接口，不是历史证据。更新必须执行：临时文件写入 -> schema/business-date/hash 验证 -> `os.replace` 原子切换。失败时保留旧 alias，不得把任意旧日期文件静默当作最新数据。

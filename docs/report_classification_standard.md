@@ -48,6 +48,8 @@ Registry 使用以下引用类型：
 
 - `PRODUCER_WRITE`
 - `CONSUMER_READ`
+- `FILE_COPY_SOURCE`
+- `FILE_MOVE_SOURCE`
 - `APP_RUNTIME_READ`
 - `DASHBOARD_RUNTIME_READ`
 - `TEST_REFERENCE`
@@ -61,6 +63,16 @@ Registry 使用以下引用类型：
 - `UNKNOWN_REFERENCE`
 
 Python 优先使用 AST 识别实际 IO call；Shell 只在明确重定向、tee、读命令或输出参数存在时判断方向；Frontend/App 将 fetch/axios 与 href 分开；Markdown fenced code、历史报告路径和测试 fixture 保持独立类型。静态路径保留具体文件名与源码跨度。动态 glob、f-string、变量模板只记录原模式并标记 `DYNAMIC_PATH_PATTERN`，不得展开或伪造具体依赖。
+
+Shell `cp/mv` 必须按参数位置分类，不得因为命令中出现报告路径就统一视为写入：
+
+- `cp` source 使用 `FILE_COPY_SOURCE / READ`，兼容 actor 为 `CONSUMER`；destination 使用 `PRODUCER_WRITE / WRITE`。
+- `mv` source 使用 `FILE_MOVE_SOURCE / MOVE_SOURCE`，兼容 actor 为 `CONSUMER`；destination 使用 `PRODUCER_WRITE / WRITE`。
+- `-p/-f/-a/--/-t`、多 source、目录 destination、引号、变量和 glob 必须保留 source/destination 语义。
+- 无法可靠推导目录内最终文件名时，只记录动态目录模式并降低 confidence，不得伪造具体文件。
+- `FILE_MOVE_SOURCE` 表示活跃 mutation source；Catalog 必须将其视为依赖，禁止进入无依赖归档候选。
+
+`data/staging/tushare_etf_availability/` 的数据类是 `TEMPORARY_AUDIT_DATA`，只属于 Shadow evidence，不是报告运行时输入或正式数据源。其 lifecycle 与 retirement 权限以 `docs/report_path_registry_design.md` 为唯一治理契约。
 
 每条记录必须包含稳定 `reference_id`、`source_line_start/end`、`normalized_target`、`direction`、`parser_type`、`source_excerpt_hash`、`generator_version` 和 `source_tree_commit`。`reference_id` 不依赖行号；无关前置空行只能改变当前行号，不能改变引用身份。
 

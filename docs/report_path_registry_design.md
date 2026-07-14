@@ -46,6 +46,94 @@ last_validated_at: null
 
 `ROLLING_WINDOW` 必须提供 `retention_days`；其他类别必须提供可审计 `retention_rule`。删除始终需要独立授权，Registry 不得自动删除不可覆盖历史。
 
+## Availability temporary audit data contract
+
+当前临时调查目录的治理登记如下；这是设计契约，不创建运行时 Registry，也不改变 PR #3 数据：
+
+```yaml
+path: data/staging/tushare_etf_availability/
+data_class: TEMPORARY_AUDIT_DATA
+retention_class: UNTIL_MIGRATION_VALIDATED
+secondary_tag: TEMPORARY_AUDIT
+runtime_role: SHADOW_EVIDENCE_ONLY
+canonical: false
+writable_by_formal_pipeline: false
+deletable_during_active_audit: false
+promotion_allowed: false
+retirement_status: RETIREMENT_PENDING_AUTHORIZATION
+```
+
+`data/etf_daily/` 始终是唯一 Canonical SSOT。临时目录不得被 Formal pipeline 写入、读取或提升；`ACTIVE_COLLECTING` 期间禁止删除。本契约不授权当前清理，也不创建自动定时清理任务。
+
+### Lifecycle
+
+状态只能按以下顺序推进，并由长期日期版证据支持：
+
+```text
+ACTIVE_COLLECTING
+-> AUDIT_COMPLETE
+-> MAIN_DECISION_RECORDED
+-> PRIMARY_SOURCE_MIGRATION_COMPLETE
+-> POST_MIGRATION_VALIDATION_PASS
+-> FINAL_AUDIT_ARCHIVE_COMPLETE
+-> RETIREMENT_AUTHORIZED
+-> TEMPORARY_DATA_DELETED
+-> DELETION_AUDIT_PASS
+```
+
+跳过、倒序或缺少证据的迁移均 fail closed。任一删除前置条件不满足时：`RETIREMENT = BLOCKED`。
+
+### Mandatory retirement prerequisites
+
+以下 14 项必须全部满足：
+
+1. `RETIREMENT-PRE-01`：ETF Daily Availability Timing Audit 已完成并记录 `AUDIT_COMPLETE`。
+2. `RETIREMENT-PRE-02`：Main 已记录数据源迁移决策。
+3. `RETIREMENT-PRE-03`：Tushare Primary Upstream Migration 已完成。
+4. `RETIREMENT-PRE-04`：Post-Migration Validation = `PASS`。
+5. `RETIREMENT-PRE-05`：正式 `data/etf_daily/` 仍是唯一 Canonical SSOT。
+6. `RETIREMENT-PRE-06`：关键统计已保存到长期日期版报告。
+7. `RETIREMENT-PRE-07`：FIRST_AVAILABLE、FIRST_COMPLETE、FIRST_STABLE 已归档。
+8. `RETIREMENT-PRE-08`：Tushare 与 BaoStock 对照结论已归档。
+9. `RETIREMENT-PRE-09`：P50、P90、worst case 与安全执行时点已归档。
+10. `RETIREMENT-PRE-10`：必要 manifest hash 与数据质量证据已归档。
+11. `RETIREMENT-PRE-11`：代码、测试、报告和正式链对临时目录的读取依赖为 0。
+12. `RETIREMENT-PRE-12`：Path Registry 或 Dependency Registry 确认临时目录 consumer 为 0。
+13. `RETIREMENT-PRE-13`：回滚所需配置、代码版本和决策记录完整。
+14. `RETIREMENT-PRE-14`：用户/Main 明确授权 Retirement。
+
+不得因为时间过去、磁盘占用、Audit 表面完成或 PR 已合并而自动删除。
+
+### Authorization and responsibilities
+
+- Main：判断迁移完成并验收、批准 Availability Audit Data Retirement、确定长期证据范围。
+- Work：只读执行 retirement readiness audit，生成待删除清单，核对依赖、hash 与归档完整性；只有获得授权后才执行删除与 post-delete validation。
+- Codex：不得在 Audit/Migration 完成时自行删除，不得配置自动删除；只可实现默认 `dry-run` 的受控清理工具。
+- 用户：对最终删除拥有授权权。
+
+受控状态：
+
+- 未授权：`RETIREMENT_PENDING_AUTHORIZATION`
+- 授权且全部检查通过：`RETIREMENT_APPROVED`
+- 删除完成：`TEMPORARY_AUDIT_DATA_RETIRED`
+- 删除后验证失败：`RETIREMENT_VALIDATION_FAILED`
+
+### Retirement evidence
+
+删除前必须生成 `availability_audit_data_retirement_readiness_<YYYY-MM-DD>.md`，至少记录目录、文件数、总大小、日期范围、audit IDs、manifest 数、聚合 hash、当前 consumer、长期归档文件、未满足条件、Main 授权记录和建议删除/保留清单。
+
+删除后必须生成 `availability_audit_data_retirement_validation_<YYYY-MM-DD>.md`，至少记录实际删除数、删除前聚合 hash、删除后目录状态、正式 SSOT hash、正式下载链验证、测试、残余引用、rollback 材料和最终判定。
+
+长期保留：方法文档、日期版统计、决策/迁移报告、readiness/validation 报告及必要 hash/manifest 摘要。经授权可删除：真实 probe 临时快照、中间 normalized、comparator 临时结果、debug 输出、重复 attempt 和本地调度临时日志。
+
+### Post-retirement rollback
+
+1. 删除前必须完成所有必要汇总；供应商原始 payload 删除后不保证可恢复。
+2. 正式系统回滚不得依赖临时调查数据库。
+3. 数据源迁移回滚目标是 BaoStock fallback/reconciliation 配置或既有正式 Canonical SSOT，而不是恢复 Audit staging。
+4. 删除后发现报告缺失时，不得伪造历史 probe；标记 `EVIDENCE_NOT_RECONSTRUCTABLE`，必要时启动新的观察期。
+5. 不为假设性回滚长期保留临时数据库。
+
 ## Resolution and missing-date behavior
 
 - `resolve_current(report_id)` 只返回已验证 runtime alias。
