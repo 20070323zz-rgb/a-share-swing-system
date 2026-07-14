@@ -4,7 +4,9 @@ from __future__ import annotations
 
 from datetime import date, datetime, timedelta
 import json
+import os
 from pathlib import Path
+import subprocess
 import time
 from typing import Any, Callable
 import uuid
@@ -243,7 +245,12 @@ def record_missed_probe(
 
 
 def fetch_baostock_daily(universe: list[UniverseRecord], trade_date: str, config: dict[str, Any]) -> tuple[pd.DataFrame, int, str, str]:
-    import baostock as bs
+    if len(universe) > int(config["baostock"]["max_calls_per_probe"]):
+        raise RuntimeError("BaoStock request budget would be exceeded; no comparator calls were made.")
+    try:
+        import baostock as bs
+    except ModuleNotFoundError:
+        return _fetch_baostock_subprocess(universe, trade_date, config)
 
     login = bs.login()
     if str(login.error_code) != "0":
@@ -272,6 +279,51 @@ def fetch_baostock_daily(universe: list[UniverseRecord], trade_date: str, config
         bs.logout()
     frame = pd.DataFrame(rows, columns=fields.split(",")) if rows else pd.DataFrame(columns=fields.split(","))
     return frame, request_count, "ACCESS_PASS" if not frame.empty else "EMPTY_UNEXPECTED", ""
+
+
+def _fetch_baostock_subprocess(universe: list[UniverseRecord], trade_date: str, config: dict[str, Any]) -> tuple[pd.DataFrame, int, str, str]:
+    interpreter = _baostock_interpreter(Path(__file__).resolve().parents[3])
+    helper = Path(__file__).with_name("baostock_availability_helper.py")
+    request = {
+        "trade_date": trade_date,
+        "codes": [f"{item.exchange.lower()}.{item.etf_code}" for item in universe],
+        "fields": config["baostock"]["fields"],
+        "adjustflag": str(config["baostock"]["adjustflag"]),
+        "request_interval_seconds": float(config["baostock"]["request_interval_seconds"]),
+    }
+    try:
+        completed = subprocess.run(
+            [str(interpreter), str(helper)],
+            input=json.dumps(request),
+            text=True,
+            capture_output=True,
+            timeout=max(60, len(universe) * 3),
+            check=False,
+        )
+    except subprocess.TimeoutExpired:
+        return pd.DataFrame(), 0, "NETWORK_FAILED", "BaoStock helper exceeded its bounded timeout."
+    if completed.returncode != 0:
+        return pd.DataFrame(), 0, "NETWORK_FAILED", f"BaoStock helper failed with exit code {completed.returncode}."
+    try:
+        payload = json.loads(completed.stdout)
+    except json.JSONDecodeError:
+        return pd.DataFrame(), 0, "NETWORK_FAILED", "BaoStock helper returned invalid sanitized output."
+    fields = str(config["baostock"]["fields"]).split(",")
+    frame = pd.DataFrame(payload.get("rows", []), columns=fields)
+    return frame, int(payload.get("request_count", 0)), str(payload.get("status", "NETWORK_FAILED")), str(payload.get("error", ""))[:500]
+
+
+def _baostock_interpreter(project_root: Path) -> Path:
+    configured = os.environ.get("A_SHARE_BAOSTOCK_PYTHON", "")
+    candidates = [
+        Path(configured).expanduser() if configured else None,
+        project_root / ".venv/bin/python",
+        project_root.parent / "a-share-swing-system" / ".venv/bin/python",
+    ]
+    for candidate in candidates:
+        if candidate and candidate.is_file() and os.access(candidate, os.X_OK):
+            return candidate
+    raise RuntimeError("No existing BaoStock-capable Python interpreter was found; no package installation was attempted.")
 
 
 def write_universe_mapping_report(project_root: Path, config: dict[str, Any]) -> dict[str, Any]:

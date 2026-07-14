@@ -24,6 +24,7 @@ from data_sources.tushare.availability_validators import (  # noqa: E402
 )
 from data_sources.tushare.client import TushareMinimalClient  # noqa: E402
 from data_sources.tushare.etf_availability_probe import (  # noqa: E402
+    fetch_baostock_daily,
     record_missed_probe,
     run_availability_probe,
 )
@@ -191,3 +192,10 @@ def test_early_probe_is_blocked_without_api_call(tmp_path):
     result = run_availability_probe(root, config, source="tushare", trade_date="2026-07-14", scheduled_time="15:05", client_factory=lambda **_: (_ for _ in ()).throw(AssertionError("client must not be created")), now=datetime.fromisoformat("2026-07-14T15:04:59+08:00"), evidence_mode="real")
     assert result["response_status"] == "BLOCKED_EARLY_PROBE"
     assert result["request_count"] == 0
+
+
+def test_baostock_budget_blocks_before_import_or_network(tmp_path):
+    _, config = make_project(tmp_path)
+    config["baostock"]["max_calls_per_probe"] = 2
+    with pytest.raises(RuntimeError, match="budget"):
+        fetch_baostock_daily(universe(), "2026-07-14", config)
