@@ -27,7 +27,8 @@ def build_universe_mapping(project_root: Path, config: dict[str, Any]) -> tuple[
 
     records: list[UniverseRecord] = []
     invalid_files: list[str] = []
-    for path in sorted(daily_dir.glob("*.csv")):
+    inventory_files = sorted(daily_dir.glob("*.csv"))
+    for path in inventory_files:
         match = FILE_RE.fullmatch(path.name)
         if not match:
             invalid_files.append(str(path.relative_to(root)))
@@ -47,8 +48,9 @@ def build_universe_mapping(project_root: Path, config: dict[str, Any]) -> tuple[
     duplicate_codes = sorted({code for code in codes if codes.count(code) > 1})
     duplicate_ts_codes = sorted({code for code in ts_codes if ts_codes.count(code) > 1})
     unmapped_roles = sorted(item.etf_code for item in records if item.universe_role == "UNCLASSIFIED")
-    expected = int(config["universe"]["expected_count"])
+    expected = len(inventory_files)
     payload = {
+        "count_source": str(config["universe"]["count_source"]),
         "expected_count": expected,
         "mapped_count": len(records),
         "mapping_complete": len(records) == expected and not invalid_files and not duplicate_codes and not duplicate_ts_codes,

@@ -42,7 +42,6 @@ def make_project(tmp_path: Path) -> tuple[Path, dict]:
         pd.DataFrame({"date": ["2026-07-10"]}).to_csv(root / f"data/etf_daily/{market}_{code}.csv", index=False)
     pd.DataFrame([{"symbol": code, "pool": role} for _, code, role in symbols]).to_csv(root / "data/etf_classification.csv", index=False)
     config = yaml.safe_load((ROOT / "configs/tushare_etf_availability_audit.yaml").read_text(encoding="utf-8"))
-    config["universe"]["expected_count"] = 3
     config["schedule"]["tushare_times"] = ["15:05", "15:30", "16:00"]
     config["schedule"]["baostock_times"] = ["15:30", "16:00"]
     paths = AuditPaths.from_config(root, config)
@@ -86,6 +85,7 @@ def test_repository_universe_maps_all_183_etfs():
     records, result = build_universe_mapping(ROOT, config)
     assert result["mapping_complete"] is True
     assert result["mapped_count"] == 183
+    assert result["count_source"] == "dynamic_etf_daily_file_inventory"
     assert result["sh_count"] + result["sz_count"] == 183
     assert not result["duplicate_ts_codes"]
     assert all(item.ts_code.endswith((".SH", ".SZ")) for item in records)

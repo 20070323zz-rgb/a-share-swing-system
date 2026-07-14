@@ -10,7 +10,7 @@ paper_engine_allowed: false
 universe:
   etf_daily_dir: data/etf_daily
   classification_file: data/etf_classification.csv
-  expected_count: 183
+  count_source: dynamic_etf_daily_file_inventory
 
 calendar:
   interface: trade_cal
