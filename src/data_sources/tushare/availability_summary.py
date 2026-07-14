@@ -209,12 +209,13 @@ def _first_stable_time(rows: list[dict[str, Any]], minimum_interval: int) -> str
 
 
 def _delayed_codes(rows: list[dict[str, Any]]) -> list[str]:
-    if not any(int(row.get("matched_etf_count", 0)) > 0 for row in rows):
+    first_available_index = next((index for index, row in enumerate(rows) if int(row.get("matched_etf_count", 0)) > 0), None)
+    if first_available_index is None:
         return []
     complete_index = next((index for index, row in enumerate(rows) if _is_complete(row)), None)
     if complete_index is None:
-        return sorted({code for row in rows for code in row.get("missing_codes", [])})
-    return sorted({code for row in rows[:complete_index] for code in row.get("missing_codes", [])})
+        return sorted({code for row in rows[first_available_index:] for code in row.get("missing_codes", [])})
+    return sorted({code for row in rows[first_available_index:complete_index] for code in row.get("missing_codes", [])})
 
 
 def _is_complete(row: dict[str, Any]) -> bool:

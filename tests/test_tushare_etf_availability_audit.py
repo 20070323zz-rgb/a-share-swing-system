@@ -211,3 +211,14 @@ def test_later_failed_slot_prevents_false_stability(tmp_path):
     row = build_availability_reports(root, config)["tushare_rows"][0]
     assert row["day_status"] == "COMPLETE"
     assert row["first_stable_time"] == ""
+
+
+def test_all_at_once_arrival_does_not_label_every_etf_delayed(tmp_path):
+    root, config = make_project(tmp_path)
+    run_availability_probe(root, config, source="tushare", trade_date="2026-07-14", scheduled_time="15:05", client_factory=factory(items=[]), now=datetime.fromisoformat("2026-07-14T15:05:00+08:00"), evidence_mode="real")
+    for value in ("15:30", "16:00"):
+        run_availability_probe(root, config, source="tushare", trade_date="2026-07-14", scheduled_time=value, client_factory=factory(), now=datetime.fromisoformat(f"2026-07-14T{value}:00+08:00"), evidence_mode="real")
+    row = build_availability_reports(root, config)["tushare_rows"][0]
+    assert row["first_available_time"] == "15:30"
+    assert row["first_complete_time"] == "15:30"
+    assert row["delayed_codes"] == ""
