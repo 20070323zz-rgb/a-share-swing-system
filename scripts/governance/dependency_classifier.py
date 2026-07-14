@@ -198,7 +198,7 @@ def _shell_token_references(token: str) -> list[Reference]:
     if direct:
         return direct
     variable = SHELL_VARIABLE_RE.fullmatch(token)
-    if variable and "REPORT" in variable.group(1).upper():
+    if variable and variable.group(1).upper().startswith(("REPORT_", "REPORTS_")):
         name = variable.group(1)
         return [Reference(f"reports/${{{name}}}", "DYNAMIC")]
     return []
