@@ -27,6 +27,23 @@ The observation framework is implemented and installed. The timing study is not 
 
 The 15:05 result means the target-date daily table was not yet published through the tested call. It is valid first-slot timing evidence, not a network failure, and it did not trigger BaoStock fallback or any SSOT write.
 
+## Same-Day Progress Through 16:30
+
+| Item | Current result |
+|---|---|
+| Tushare slots recorded | 7 / 10 |
+| Empty Tushare slots | 15:05, 15:15, 15:30, 15:45, 16:00 |
+| Provisional first available | 16:15 |
+| Provisional first complete | 16:15 |
+| Provisional first field-quality complete | 16:15 |
+| 16:15 / 16:30 snapshot relationship | deterministic hashes equal |
+| FIRST_STABLE_TIME | unresolved until all later slots complete |
+| SH / SZ first complete | 16:15 / 16:15 |
+| Individually delayed codes after first availability | none; all 183 arrived together |
+| BaoStock 15:30 / 16:30 | 0 / 183 at both slots |
+
+No stability verdict is inferred from only the 16:15 and 16:30 pair because the remaining 17:00, 17:30, and 18:00 observations can still reveal a revision.
+
 ## Call Budgets
 
 - Tushare calendar refresh: at most one `trade_cal` request per explicit refresh.
@@ -58,8 +75,8 @@ The first launchd kickstart exposed that macOS launchd selected `/usr/bin/python
 
 ## Test Results
 
-- Availability-audit targeted tests: `15 passed`.
-- Full project suite: `68 passed`, `8 subtests passed`.
+- Availability-audit targeted tests: `16 passed`.
+- Full project suite: `69 passed`, `8 subtests passed`.
 - Existing pytest collection warnings: 2 (`TestResult` helper classes in the JQData and QMT diagnostic scripts).
 - Project context: `VALID_WITH_WARNINGS`.
 - Only context warning: existing stale Regime snapshot warning.
@@ -78,4 +95,4 @@ Tushare Primary Upstream Migration = NOT_STARTED
 Formal Execution Logic = UNCHANGED
 ```
 
-The next automatic real Tushare observation is 2026-07-14 15:15 CST, followed by the remaining configured same-day slots. Five completed valid trading days are required for a preliminary verdict; ten are required before a supported candidate can be submitted to Main.
+The next automatic real Tushare observation is 2026-07-14 17:00 CST, followed by 17:30 and 18:00. Five completed valid trading days are required for a preliminary verdict; ten are required before a supported candidate can be submitted to Main.

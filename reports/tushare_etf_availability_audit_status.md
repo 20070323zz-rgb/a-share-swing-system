@@ -1,6 +1,6 @@
 # Tushare ETF Daily Availability Timing Audit Status
 
-- Generated at: `2026-07-14T15:08:05+08:00`
+- Generated at: `2026-07-14T16:34:36+08:00`
 - Audit status: `ACTIVE_COLLECTING`
 - Observation days started: `1`
 - Observation days completed: `0`
@@ -22,7 +22,7 @@
 
 | Trade date | Status | Slots | First available | First complete | First stable | Last revision |
 |---|---|---:|---|---|---|---|
-| 2026-07-14 | IN_PROGRESS | 1/10 | - | - | - | - |
+| 2026-07-14 | IN_PROGRESS | 7/10 | 16:15 | 16:15 | - | - |
 
 ## Cross-Day Statistics And Safety Candidate
 

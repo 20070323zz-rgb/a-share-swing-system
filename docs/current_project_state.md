@@ -981,7 +981,9 @@ Formal Execution Logic = UNCHANGED
 
 Probe manifests and normalized snapshots are append-only and Git-ignored under `data/staging/tushare_etf_availability/`. Only sanitized mapping and timing summaries are committed. The observer does not call `run_daily_close.sh`, the Freshness Gate, or the paper engine. Five valid days can support only a preliminary verdict; ten valid days and Main review are required before a supported timing or upstream recommendation.
 
-The first real `fund_daily` probe ran at 2026-07-14 15:05 CST with exactly one API call. Access permission passed, but the interface returned zero rows for the target date, so the evidence is `EMPTY_UNEXPECTED`, coverage is `0/183`, and no availability or completeness time has yet been reached. The independent LaunchAgent is installed from the isolated audit worktree. Its first runtime-environment check exposed a missing pandas interpreter under launchd and made no vendor call; the wrapper was corrected, and the follow-up duplicate-slot run exited `0` without another API call. The next real scheduled slot is 15:15 CST.
+The first real `fund_daily` probe ran at 2026-07-14 15:05 CST with exactly one API call. Access permission passed, but the interface returned zero rows for the target date, so the evidence is `EMPTY_UNEXPECTED`, coverage is `0/183`, and no availability or completeness time was reached at that slot. Tushare remained empty through 16:00, then reached 183/183 coverage and full field quality at 16:15; the 16:30 snapshot matched. `FIRST_STABLE_TIME` remains unresolved until every later same-day slot finishes. BaoStock remained empty at 15:30 and 16:30.
+
+The independent LaunchAgent is installed from the isolated audit worktree. Its first runtime-environment check exposed a missing pandas interpreter under launchd and made no vendor call; the wrapper was corrected, and the follow-up duplicate-slot run exited `0` without another API call. Subsequent scheduled runs through 16:30 exited successfully. The next real scheduled slot is 17:00 CST.
 
 ## 9. Current Main Bottlenecks
 

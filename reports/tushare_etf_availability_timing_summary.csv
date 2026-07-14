@@ -1,2 +1,2 @@
 trade_date,day_status,tushare_slots_recorded,tushare_slots_expected,first_available_time,first_complete_time,first_quality_complete_time,first_stable_time,last_revision_time,late_revision_risk,sh_first_complete_time,sz_first_complete_time,delayed_codes,max_coverage_ratio,revision_count,evidence_class
-2026-07-14,IN_PROGRESS,1,10,,,,,,False,,,,0.0,0,COLLECTING_INSUFFICIENT_DAYS
+2026-07-14,IN_PROGRESS,7,10,16:15,16:15,16:15,,,False,16:15,16:15,,1.0,0,COLLECTING_INSUFFICIENT_DAYS
