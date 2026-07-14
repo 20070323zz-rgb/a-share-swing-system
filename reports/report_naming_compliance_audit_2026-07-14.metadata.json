@@ -1,0 +1,11 @@
+{
+  "report_id": "report_24de2af9e71ce19a",
+  "business_date": "2026-07-14",
+  "generated_at": "2026-07-14T19:25:23+08:00",
+  "generator_version": "2.0.0",
+  "source_tree_commit": "375eb103d96a13100766e6e89c41b89a5f98afc3",
+  "record_count": 645,
+  "schema_version": 2,
+  "artifact_path": "reports/report_naming_compliance_audit_2026-07-14.csv",
+  "retention_class": "PERMANENT"
+}
