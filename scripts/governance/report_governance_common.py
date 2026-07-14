@@ -13,8 +13,23 @@ import json
 import re
 import subprocess
 from collections import Counter, defaultdict
+from datetime import datetime
 from pathlib import Path
 from typing import Iterable
+from zoneinfo import ZoneInfo
+
+try:
+    from scripts.governance.dependency_classifier import (
+        GENERATOR_VERSION,
+        classify_source_text,
+        extract_report_references as structured_extract_report_references,
+    )
+except ModuleNotFoundError:  # Direct script execution.
+    from dependency_classifier import (  # type: ignore
+        GENERATOR_VERSION,
+        classify_source_text,
+        extract_report_references as structured_extract_report_references,
+    )
 
 
 ROLE_VALUES = (
@@ -48,8 +63,12 @@ REFERENCE_TYPE_VALUES = (
     "DASHBOARD_RUNTIME_READ",
     "TEST_REFERENCE",
     "DOCUMENTATION_LINK",
+    "STATIC_LINK",
+    "EXAMPLE_REFERENCE",
+    "HISTORICAL_REFERENCE",
     "STATE_INDEX_REFERENCE",
     "DYNAMIC_PATH_PATTERN",
+    "PATH_DECLARATION",
     "UNKNOWN_REFERENCE",
 )
 
@@ -62,6 +81,16 @@ CONTROL_REPORT_PATHS = {
     "reports/report_dependency_registry.md",
     "reports/reports_governance_phase_a_summary.md",
 }
+
+CONTROL_REPORT_RE = re.compile(
+    r"^reports/(?:"
+    r"report_catalog_20\d{2}-\d{2}-\d{2}\.(?:csv|json|md)|"
+    r"report_dependency_registry_20\d{2}-\d{2}-\d{2}\.(?:csv|json)|"
+    r"report_dependency_summary_20\d{2}-\d{2}-\d{2}\.md|"
+    r"report_naming_compliance_audit_20\d{2}-\d{2}-\d{2}\.(?:csv|metadata\.json)|"
+    r"reports_governance_phase_a_(?:summary|remediation)_20\d{2}-\d{2}-\d{2}\.md"
+    r")$"
+)
 
 RUNTIME_LOCKED_PATHS = {
     "reports/dashboard_data.json",
@@ -181,6 +210,94 @@ def stable_report_id(current_path: str) -> str:
     return f"report_{digest}"
 
 
+def is_control_report_path(path: str) -> bool:
+    return path in CONTROL_REPORT_PATHS or bool(CONTROL_REPORT_RE.fullmatch(path))
+
+
+def business_date_today() -> str:
+    return datetime.now(ZoneInfo("Asia/Shanghai")).date().isoformat()
+
+
+def source_tree_commit(root: Path) -> str:
+    """Return the latest commit affecting inputs, excluding generated control outputs."""
+
+    command = [
+        "git",
+        "log",
+        "-1",
+        "--format=%H",
+        "--",
+        ".",
+        ":(exclude,glob)reports/report_catalog_*.csv",
+        ":(exclude,glob)reports/report_catalog_*.json",
+        ":(exclude,glob)reports/report_catalog_*.md",
+        ":(exclude,glob)reports/report_dependency_registry_*.csv",
+        ":(exclude,glob)reports/report_dependency_registry_*.json",
+        ":(exclude,glob)reports/report_dependency_summary_*.md",
+        ":(exclude,glob)reports/report_naming_compliance_audit_*",
+        ":(exclude,glob)reports/reports_governance_phase_a_summary_*.md",
+        ":(exclude,glob)reports/reports_governance_phase_a_remediation_*.md",
+    ]
+    value = subprocess.run(command, cwd=root, check=True, capture_output=True, text=True).stdout.strip()
+    return value or subprocess.run(
+        ["git", "rev-parse", "HEAD"], cwd=root, check=True, capture_output=True, text=True
+    ).stdout.strip()
+
+
+def deterministic_created_at(root: Path, commit: str) -> str:
+    raw = subprocess.run(
+        ["git", "show", "-s", "--format=%cI", commit],
+        cwd=root,
+        check=True,
+        capture_output=True,
+        text=True,
+    ).stdout.strip()
+    return datetime.fromisoformat(raw).astimezone(ZoneInfo("Asia/Shanghai")).isoformat(timespec="seconds")
+
+
+def artifact_metadata(root: Path, business_date: str, report_id: str, record_count: int) -> dict:
+    commit = source_tree_commit(root)
+    return {
+        "report_id": report_id,
+        "business_date": business_date,
+        "generated_at": deterministic_created_at(root, commit),
+        "generator_version": GENERATOR_VERSION,
+        "source_tree_commit": commit,
+        "record_count": record_count,
+        "schema_version": 2,
+    }
+
+
+def markdown_front_matter(
+    *,
+    report_id: str,
+    report_type: str,
+    business_date: str,
+    created_at: str,
+    status: str,
+    producer: str,
+    source_run_id: str,
+    retention_class: str = "PERMANENT",
+) -> str:
+    return "\n".join(
+        (
+            "---",
+            f"report_id: {report_id}",
+            f"report_type: {report_type}",
+            f"business_date: {business_date}",
+            f"created_at: {created_at}",
+            f"status: {status}",
+            "phase: reports_governance_phase_a",
+            f"producer: {producer}",
+            f"source_run_id: {source_run_id}",
+            f"retention_class: {retention_class}",
+            "schema_version: 2",
+            "---",
+            "",
+        )
+    )
+
+
 def write_json(path: Path, payload: object) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -228,7 +345,7 @@ def _allowed_scan_path(path: str) -> bool:
 
 def iter_repository_text_files(root: Path) -> Iterable[tuple[str, Path]]:
     for item in _git_file_list(root):
-        if item in CONTROL_REPORT_PATHS or not _allowed_scan_path(item):
+        if is_control_report_path(item) or not _allowed_scan_path(item):
             continue
         path = root / item
         if not path.is_file():
@@ -251,31 +368,7 @@ def _is_dynamic(reference: str) -> bool:
 
 def extract_report_references(line: str) -> list[tuple[str, str]]:
     """Return (reference, resolution) without expanding dynamic patterns."""
-
-    found: dict[str, str] = {}
-    for match in EXPLICIT_REPORT_RE.finditer(line):
-        value = _clean_reference(match.group(1))
-        if value != "reports/":
-            found[value] = "DYNAMIC" if _is_dynamic(value) else "STATIC"
-
-    for match in SHELL_REPORT_DIR_RE.finditer(line):
-        value = _clean_reference("reports/" + match.group(1).strip("/"))
-        found[value] = "DYNAMIC" if _is_dynamic(value) else "STATIC_COMPUTED"
-
-    expression_matches = list(REPORT_DIR_SLASH_RE.finditer(line))
-    expression_matches += list(REPORT_DIR_JOIN_RE.finditer(line))
-    expression_matches += list(REPORT_DIR_METHOD_JOIN_RE.finditer(line))
-    for match in expression_matches:
-        segments = [
-            value.strip("/")
-            for value in QUOTED_VALUE_RE.findall(match.group("tail"))
-            if value.strip("/") and value not in {"r", "w", "a", "rb", "wb", "utf-8", "reports"}
-        ]
-        if segments and segments[-1].endswith(REPORT_EXTENSIONS):
-            value = _clean_reference("reports/" + "/".join(segments))
-            found[value] = "DYNAMIC" if _is_dynamic(value) else "STATIC_COMPUTED"
-
-    return sorted(found.items())
+    return structured_extract_report_references(line)
 
 
 def _producer_line(line: str) -> bool:
@@ -341,56 +434,34 @@ def classify_reference(source_file: str, line: str, resolution: str) -> tuple[st
 
 def scan_dependencies(root: Path) -> list[dict]:
     rows: list[dict] = []
-    seen: set[tuple] = set()
+    commit = source_tree_commit(root)
     for source_file, path in iter_repository_text_files(root):
-        if source_file == "scripts/governance/report_governance_common.py":
+        if source_file.startswith("scripts/governance/"):
             continue
         text = path.read_text(encoding="utf-8", errors="replace")
-        for line_number, line in enumerate(text.splitlines(), start=1):
-            for reference, resolution in extract_report_references(line):
-                reference_type, actor, confidence, impact = classify_reference(source_file, line, resolution)
-                key = (source_file, line_number, reference, reference_type, actor)
-                if key in seen:
-                    continue
-                seen.add(key)
-                rows.append(
-                    {
-                        "source_file": source_file,
-                        "source_line": line_number,
-                        "referenced_report_path": reference,
-                        "reference_type": reference_type,
-                        "consumer_or_producer": actor,
-                        "static_or_dynamic": "DYNAMIC" if resolution == "DYNAMIC" else "STATIC",
-                        "confidence": confidence,
-                        "migration_impact": impact,
-                        "notes": (
-                            "Dynamic pattern retained without fabricating concrete dependencies."
-                            if resolution == "DYNAMIC"
-                            else "Exact path reference."
-                            if resolution == "STATIC"
-                            else "Path reconstructed from a recognizable report-directory expression."
-                        ),
-                    }
-                )
+        rows.extend(classify_source_text(source_file, text, commit))
+    unique = {row["reference_id"]: row for row in rows}
     return sorted(
-        rows,
+        unique.values(),
         key=lambda row: (
-            row["referenced_report_path"],
+            row["normalized_target"],
             row["source_file"],
-            row["source_line"],
+            row["source_line_start"],
             row["reference_type"],
+            row["reference_id"],
         ),
     )
 
 
-def dependency_payload(rows: list[dict]) -> dict:
+def dependency_payload(rows: list[dict], metadata: dict | None = None) -> dict:
     fingerprint = hashlib.sha256(
         json.dumps(rows, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
     ).hexdigest()
     return {
-        "schema_version": 1,
-        "registry_id": "a_share_swing_system_report_dependency_registry_v1",
+        "schema_version": 2,
+        "registry_id": "a_share_swing_system_report_dependency_registry_v2",
         "repository_root": "<project_root>",
+        "metadata": metadata or {},
         "record_count": len(rows),
         "registry_sha256": fingerprint,
         "summary": {
@@ -403,7 +474,7 @@ def dependency_payload(rows: list[dict]) -> dict:
     }
 
 
-def render_dependency_markdown(payload: dict) -> str:
+def render_dependency_markdown(payload: dict, front_matter: str = "") -> str:
     summary = payload["summary"]
     rows = payload["records"]
     type_lines = "\n".join(f"- `{key}`: {value}" for key, value in summary["by_reference_type"].items())
@@ -420,7 +491,7 @@ def render_dependency_markdown(payload: dict) -> str:
         )
     if not high_rows:
         table_lines.append("| - | - | - | - | - |")
-    return f"""# Report Dependency Registry
+    return f"""{front_matter}# Report Dependency Summary
 
 本文件由 `scripts/governance/build_report_dependency_registry.py` 生成。扫描只读取可识别的静态/动态路径表达式；动态模式不会被伪造成具体文件依赖。
 
@@ -443,7 +514,7 @@ def render_dependency_markdown(payload: dict) -> str:
 
 {chr(10).join(table_lines)}
 
-完整逐行 registry 见 `reports/report_dependency_registry.csv` 和 `reports/report_dependency_registry.json`。
+完整逐行 Registry 见同业务日期的 CSV/JSON 机器产物。
 """
 
 
@@ -476,7 +547,7 @@ def iter_report_paths(root: Path) -> list[Path]:
         (
             path
             for path in report_dir.rglob("*")
-            if path.is_file() and relative_path(root, path) not in CONTROL_REPORT_PATHS
+            if path.is_file() and not is_control_report_path(relative_path(root, path))
         ),
         key=lambda path: relative_path(root, path),
     )
@@ -559,7 +630,12 @@ def classify_role(path: str, dependency_rows: list[dict]) -> str:
     )
     if any(token in stem for token in research_tokens):
         return "RESEARCH_ARTIFACT"
-    if any(row["reference_type"] in {"APP_RUNTIME_READ", "DASHBOARD_RUNTIME_READ"} for row in dependency_rows):
+    if any(
+        row["reference_type"] in {"APP_RUNTIME_READ", "DASHBOARD_RUNTIME_READ", "CONSUMER_READ"}
+        and row["direction"] == "CONSUMER"
+        and row["confidence"] in {"HIGH", "MEDIUM"}
+        for row in dependency_rows
+    ):
         return "RUNTIME_INPUT"
     return "UNKNOWN"
 
@@ -629,7 +705,11 @@ def build_catalog_records(root: Path, dependency_rows: list[dict]) -> list[dict]
         role = classify_role(current_path, dependencies)
         current_alias = is_current_alias(current_path)
         runtime_locked = current_path in RUNTIME_LOCKED_PATHS or any(
-            row["reference_type"] in {"APP_RUNTIME_READ", "DASHBOARD_RUNTIME_READ"} for row in dependencies
+            row["reference_type"] in {"APP_RUNTIME_READ", "DASHBOARD_RUNTIME_READ", "CONSUMER_READ"}
+            and row["direction"] == "CONSUMER"
+            and row["confidence"] in {"HIGH", "MEDIUM"}
+            and row["source_file"].startswith(("app/", "dashboard/", "scripts/", "src/"))
+            for row in dependencies
         )
         dated_artifact = role in {"DATED_DAILY", "DATED_WEEKLY", "DATED_MONTHLY"}
         archive_candidate = dated_artifact and not runtime_locked and not current_alias and not dependencies
@@ -704,15 +784,18 @@ def build_catalog_records(root: Path, dependency_rows: list[dict]) -> list[dict]
     return sorted(records, key=lambda row: row["current_path"])
 
 
-def catalog_payload(records: list[dict]) -> dict:
+def catalog_payload(
+    records: list[dict], metadata: dict | None = None, control_plane_exclusions: list[str] | None = None
+) -> dict:
     fingerprint = hashlib.sha256(
         json.dumps(records, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
     ).hexdigest()
     return {
-        "schema_version": 1,
-        "catalog_id": "a_share_swing_system_report_catalog_v1",
+        "schema_version": 2,
+        "catalog_id": "a_share_swing_system_report_catalog_v2",
         "repository_root": "<project_root>",
-        "control_plane_exclusions": sorted(CONTROL_REPORT_PATHS),
+        "metadata": metadata or {},
+        "control_plane_exclusions": sorted(control_plane_exclusions or CONTROL_REPORT_PATHS),
         "record_count": len(records),
         "catalog_sha256": fingerprint,
         "summary": {
@@ -736,7 +819,7 @@ def _markdown_value(value: object) -> str:
     return str(value) if value not in (None, "") else "-"
 
 
-def render_catalog_markdown(payload: dict) -> str:
+def render_catalog_markdown(payload: dict, front_matter: str = "") -> str:
     summary = payload["summary"]
     role_lines = "\n".join(f"- `{key}`: {value}" for key, value in summary["by_role"].items())
     risk_lines = "\n".join(f"- `{key}`: {value}" for key, value in summary["by_migration_risk"].items())
@@ -750,7 +833,7 @@ def render_catalog_markdown(payload: dict) -> str:
             f"`{row['business_date']}` | {row['reference_count']} | `{row['migration_risk']}` | "
             f"{_markdown_value(row['current_alias'])} | {_markdown_value(row['archive_candidate'])} |"
         )
-    return f"""# Report Catalog
+    return f"""{front_matter}# Report Catalog
 
 本文件由 `scripts/governance/build_report_catalog.py` 生成。Catalog 是只读治理索引，不授权移动、重命名或删除报告。
 

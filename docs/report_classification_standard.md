@@ -52,11 +52,17 @@ Registry 使用以下引用类型：
 - `DASHBOARD_RUNTIME_READ`
 - `TEST_REFERENCE`
 - `DOCUMENTATION_LINK`
+- `STATIC_LINK`
+- `EXAMPLE_REFERENCE`
+- `HISTORICAL_REFERENCE`
 - `STATE_INDEX_REFERENCE`
 - `DYNAMIC_PATH_PATTERN`
+- `PATH_DECLARATION`
 - `UNKNOWN_REFERENCE`
 
-静态路径保留具体文件名与行号。动态 glob、f-string、变量模板只记录原模式并标记 `DYNAMIC_PATH_PATTERN`，不得展开或伪造具体依赖。
+Python 优先使用 AST 识别实际 IO call；Shell 只在明确重定向、tee、读命令或输出参数存在时判断方向；Frontend/App 将 fetch/axios 与 href 分开；Markdown fenced code、历史报告路径和测试 fixture 保持独立类型。静态路径保留具体文件名与源码跨度。动态 glob、f-string、变量模板只记录原模式并标记 `DYNAMIC_PATH_PATTERN`，不得展开或伪造具体依赖。
+
+每条记录必须包含稳定 `reference_id`、`source_line_start/end`、`normalized_target`、`direction`、`parser_type`、`source_excerpt_hash`、`generator_version` 和 `source_tree_commit`。`reference_id` 不依赖行号；无关前置空行只能改变当前行号，不能改变引用身份。
 
 ## Catalog metadata contract
 
