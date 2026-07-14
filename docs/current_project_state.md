@@ -72,12 +72,13 @@ Guarded Paper Execution Entry ACTIVE
 Stale Data Fallback BLOCKED
 2026-07-10 Stale Trades AUDITED_NON_DESTRUCTIVELY
 Tushare 5000 Data Foundation Audit COMPLETE
-Reports Governance Phase A COMPLETE
-Report Catalog ACTIVE_V1
-Report Dependency Registry ACTIVE_V1
-Report Classification Standard ACTIVE_V1
-Report Naming Standard ACTIVE_V1
-Future Report Path Registry DESIGNED_NOT_IMPLEMENTED
+Reports Governance Phase A Engineering REMEDIATED / COMPLETE_PENDING_RE_QC
+Report Catalog REBUILT
+Report Dependency Registry REMEDIATED_PENDING_RE_QC
+Report Classification Standard REMEDIATED_PENDING_RE_QC
+Report Naming Standard PROPOSED_ACTIVE_ON_MERGE
+Future Report Path Registry Design COMPLETE_PENDING_QC
+Runtime Report Path Registry NOT_STARTED
 Report File Migration BLOCKED
 Report Migration Phase B NOT_STARTED
 Data Foundation Upgrade NOT_STARTED
@@ -928,7 +929,7 @@ Protected file hashes unchanged = true
 
 The separately authorized Tushare 5000 Data Foundation Audit is `COMPLETE` after Main review. Capability and priority artifacts are available. No Tushare data integration or data-source upgrade has started; `Data Foundation Upgrade = NOT_STARTED`.
 
-Reports Governance Phase A is `COMPLETE`: deterministic Catalog and Dependency Registry generators, machine/human indexes, classification and naming standards, a future Path Registry design, and a bounded migration plan now exist. This was a zero-move, zero-rename, zero-delete phase; Report File Migration remains `BLOCKED` and Phase B remains `NOT_STARTED`. The independent ETF Daily Availability Timing Audit on Draft PR #3 was not modified.
+Reports Governance Phase A Engineering is `REMEDIATED / COMPLETE_PENDING_RE_QC`: dated immutable artifacts, AST/source-aware dependency classification, stable reference identity, golden fixtures, metadata rules and a completed future Path Registry design now exist. This remains a zero-move, zero-rename, zero-delete phase for pre-existing reports; Report File Migration is `BLOCKED`, runtime Path Registry is `NOT_STARTED`, and Phase B is not authorized.
 
 PR #1 final hygiene cleanup is `COMPLETE`. PR #1 was merged into `main` with merge commit `40a6017402456d62609169325cb5f1d31a1a140b` at 2026-07-13 09:49:26 CST. Post-merge validation is `PASS` and `main` is `STABLE`. Formal execution logic, protected paper ledgers, and ETF business data were unchanged by the merge/validation batch.
 
@@ -947,7 +948,8 @@ Aggregate real API calls = 51 (AGGREGATE_BUDGET_WARNING)
 Mock calls included in real totals = 0
 Formal Staging Architecture = NOT_STARTED
 Tushare Primary Upstream Migration = APPROVED_IN_PRINCIPLE_BUT_NOT_STARTED
-ETF Daily Availability Timing Audit = NEXT / NOT_STARTED
+ETF Daily Availability Timing Audit = ACTIVE_COLLECTING (Draft PR #3)
+Tushare = SHADOW_PRIMARY_CANDIDATE
 Data Foundation Upgrade = NOT_STARTED
 Data Promotion = BLOCKED
 Unified Data Upgrade = NOT_STARTED
@@ -966,6 +968,22 @@ All historical real payloads and row-level proof artifacts remain in their exist
 Three real-run attestations explain `17 + 17 + 17 = 51` calls. The first two individual proof reports were not retained by the historical global-report workflow, so their report hashes are explicitly `UNAVAILABLE / AVAILABLE_EVIDENCE_LIMITED`; no missing evidence was fabricated. The final `index_weight` reduction from 1350 raw rows to 900 proof rows is `PROOF_SAMPLE_DATE_WINDOW_REDUCTION`: the 2026-04-30 snapshot was excluded and the 2026-05-29 and 2026-06-30 snapshots were retained for all three indices.
 
 PR #2 was merged into `main` with merge commit `47d129bfa7a055b7af81f4c57fea3a95d41287c6` at 2026-07-14 14:00:33 CST after the live head and boundary gate remained unchanged. Post-merge validation is `PASS`, `main` is `STABLE`, and Tushare proof evidence is `ACCEPTED`. The ETF SSOT, protected files, model, Replay, Ranking, Score, Exposure, and Formal Execution boundaries were unchanged. No real Tushare API call was made during validation.
+
+## 8N. Tushare ETF Daily Availability Timing Audit (parallel Draft PR #3)
+
+The independently authorized Availability Audit remains `ACTIVE_COLLECTING` on Draft PR #3. PR #4 does not copy or modify its code, launchd configuration, staging snapshots or evidence reports. The shared authority view preserves these current facts:
+
+```text
+ETF Daily Availability Timing Audit = ACTIVE_COLLECTING
+Tushare = SHADOW_PRIMARY_CANDIDATE
+BaoStock = COMPARATOR_ONLY
+Primary Upstream Migration = NOT_STARTED
+Data Promotion = BLOCKED
+data/etf_daily = CANONICAL_SSOT
+Formal Execution Logic = UNCHANGED
+```
+
+Recommended order: after PR #4 remediation passes independent Re-QC, merge PR #4 first; PR #3 must then sync `main` and perform a three-way check of the three shared authority files while preserving Reports Governance state.
 
 ## 9. Current Main Bottlenecks
 
@@ -992,10 +1010,11 @@ New threads must still execute repository bootstrap before substantive edits.
 
 ```text
 Tushare 5000 Data Foundation Audit = COMPLETE
-Reports Governance Phase A = COMPLETE
-Report Catalog = ACTIVE_V1
-Report Dependency Registry = ACTIVE_V1
-Future Report Path Registry = DESIGNED_NOT_IMPLEMENTED
+Reports Governance Phase A Engineering = REMEDIATED / COMPLETE_PENDING_RE_QC
+Report Catalog = REBUILT
+Report Dependency Registry = REMEDIATED_PENDING_RE_QC
+Future Report Path Registry Design = COMPLETE_PENDING_QC
+Runtime Report Path Registry = NOT_STARTED
 Report File Migration = BLOCKED
 Report Migration Phase B = NOT_STARTED
 Preview Research = NOT STARTED
@@ -1026,12 +1045,13 @@ Guarded Paper Execution Entry = ACTIVE
 Stale Data Fallback = BLOCKED
 2026-07-10 Stale Trades = AUDITED_NON_DESTRUCTIVELY
 Tushare 5000 Data Foundation Audit = COMPLETE
-Reports Governance Phase A = COMPLETE
-Report Catalog = ACTIVE_V1
-Report Dependency Registry = ACTIVE_V1
-Report Classification Standard = ACTIVE_V1
-Report Naming Standard = ACTIVE_V1
-Future Report Path Registry = DESIGNED_NOT_IMPLEMENTED
+Reports Governance Phase A Engineering = REMEDIATED / COMPLETE_PENDING_RE_QC
+Report Catalog = REBUILT
+Report Dependency Registry = REMEDIATED_PENDING_RE_QC
+Report Classification Standard = REMEDIATED_PENDING_RE_QC
+Report Naming Standard = PROPOSED_ACTIVE_ON_MERGE
+Future Report Path Registry Design = COMPLETE_PENDING_QC
+Runtime Report Path Registry = NOT_STARTED
 Report File Migration = BLOCKED
 Report Migration Phase B = NOT_STARTED
 Data Foundation Upgrade = NOT_STARTED
@@ -1052,7 +1072,8 @@ PR #2 Post-Merge Validation = PASS
 Tushare Proof Evidence = ACCEPTED
 Tushare Formal Staging Architecture = NOT_STARTED
 Tushare Primary Upstream Migration = APPROVED_IN_PRINCIPLE_BUT_NOT_STARTED
-ETF Daily Availability Timing Audit = NEXT / NOT_STARTED
+ETF Daily Availability Timing Audit = ACTIVE_COLLECTING (Draft PR #3)
+Tushare = SHADOW_PRIMARY_CANDIDATE
 Data Foundation Upgrade = NOT_STARTED
 Data Promotion = BLOCKED
 Exposure Phase 2 = NOT_STARTED

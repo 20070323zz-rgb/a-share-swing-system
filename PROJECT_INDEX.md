@@ -55,12 +55,13 @@ Exposure Framework Phase 1: COMPLETE
 Project Infrastructure Batch Standardization V1: COMPLETE
 Paper Execution Safety Phase 1: COMPLETE
 Tushare 5000 Data Foundation Audit: COMPLETE
-Reports Governance Phase A: COMPLETE
-Report Catalog: ACTIVE_V1
-Report Dependency Registry: ACTIVE_V1
-Report Classification Standard: ACTIVE_V1
-Report Naming Standard: ACTIVE_V1
-Future Report Path Registry: DESIGNED_NOT_IMPLEMENTED
+Reports Governance Phase A Engineering: REMEDIATED / COMPLETE_PENDING_RE_QC
+Report Catalog: REBUILT
+Report Dependency Registry: REMEDIATED_PENDING_RE_QC
+Report Classification Standard: REMEDIATED_PENDING_RE_QC
+Report Naming Standard: PROPOSED_ACTIVE_ON_MERGE
+Future Report Path Registry Design: COMPLETE_PENDING_QC
+Runtime Report Path Registry: NOT_STARTED
 Report File Migration: BLOCKED
 Report Migration Phase B: NOT_STARTED
 PR #1 Hygiene Cleanup: COMPLETE
@@ -77,7 +78,8 @@ Tushare Evidence Isolation: COMPLETE
 PR #2: MERGED
 Tushare Formal Staging Architecture: NOT_STARTED
 Tushare Primary Upstream Migration: APPROVED_FOR_FUTURE_ENGINEERING / NOT_STARTED
-ETF Daily Availability Timing Audit: NOT_STARTED
+ETF Daily Availability Timing Audit: ACTIVE_COLLECTING (Draft PR #3)
+Tushare Data Source Role: SHADOW_PRIMARY_CANDIDATE
 Data Foundation Upgrade: NOT_STARTED
 Data Promotion: BLOCKED
 Paper Execution Freshness Gate: ACTIVE
@@ -212,10 +214,14 @@ Formal Execution: BLOCKED
 - Tushare Minimal Proof Runner：`scripts/run_tushare_minimal_proof.py`
 - Report Catalog Builder：`scripts/governance/build_report_catalog.py`
 - Report Dependency Registry Builder：`scripts/governance/build_report_dependency_registry.py`
-- Report Catalog：`reports/report_catalog.md`
-- Report Dependency Registry：`reports/report_dependency_registry.md`
+- Dated Report Catalog：`reports/report_catalog_2026-07-14.md`
+- Dated Report Dependency Summary：`reports/report_dependency_summary_2026-07-14.md`
+- Dated Naming Compliance Audit：`reports/report_naming_compliance_audit_2026-07-14.csv`
+- Dated Phase A Summary：`reports/reports_governance_phase_a_summary_2026-07-14.md`
+- Dated Remediation Report：`reports/reports_governance_phase_a_remediation_2026-07-14.md`
 - Report Classification Standard：`docs/report_classification_standard.md`
 - Report Naming Standard：`docs/report_naming_standard.md`
+- Report Metadata Standard：`docs/report_metadata_standard.md`
 - Future Report Path Registry Design：`docs/report_path_registry_design.md`
 - Future Report Migration Plan：`docs/report_migration_plan.md`
 
