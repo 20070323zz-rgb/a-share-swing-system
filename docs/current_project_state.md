@@ -985,6 +985,8 @@ The first real `fund_daily` probe ran at 2026-07-14 15:05 CST with exactly one A
 
 The independent LaunchAgent is installed from the isolated audit worktree. Its first runtime-environment check exposed a missing pandas interpreter under launchd and made no vendor call; the wrapper was corrected, and the follow-up duplicate-slot run exited `0` without another API call. Subsequent scheduled runs through 16:30 exited successfully. The next real scheduled slot is 17:00 CST.
 
+Draft PR #3 tracks the framework and accumulating sanitized timing summaries on branch `agent/tushare-etf-availability-audit`. It must remain Draft until the observation gate is complete and Main has reviewed the timing evidence.
+
 ## 9. Current Main Bottlenecks
 
 - Paper execution freshness is now guarded. The remaining 2026-07-10 question is correction-policy governance; original ledger rows remain unchanged and no correction is authorized.

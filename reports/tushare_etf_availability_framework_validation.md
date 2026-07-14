@@ -11,6 +11,7 @@ The observation framework is implemented and installed. The timing study is not 
 | Item | Result |
 |---|---|
 | Branch | `agent/tushare-etf-availability-audit` |
+| Draft PR | `#3` |
 | Trade calendar | 2026-07-14 confirmed open by Tushare `trade_cal` |
 | Dynamic Universe mapping | 183 / 183 |
 | Shanghai / Shenzhen | 92 / 91 |
