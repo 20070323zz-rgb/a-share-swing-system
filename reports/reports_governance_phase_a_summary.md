@@ -1,8 +1,11 @@
 # Reports Governance Phase A Summary
 
-完成时间：2026-07-14 17:03:41 CST  
-Base：`origin/main@8d145b4`  
-Branch：`agent/reports-governance-phase-a`  
+完成时间：2026-07-14 17:03:41 CST
+
+Base：`origin/main@8d145b4`
+
+Branch：`agent/reports-governance-phase-a`
+
 Result：`COMPLETE_PENDING_DRAFT_PR_REVIEW`
 
 ## Objective completed
@@ -34,7 +37,8 @@ Phase A 已建立五项基础能力：
 
 Catalog inventory 覆盖 Phase A 开始时的全部 645 个 `reports/**` 文件。Catalog、Dependency Registry 和本 summary 是 control-plane exclusions，避免自引用导致重复运行漂移；排除清单写入 Catalog JSON。
 
-Catalog SHA-256：`6eda1128386c4074320e168bce1286722d077eed4f138d4227bea67a4483e783`。  
+Catalog SHA-256：`6eda1128386c4074320e168bce1286722d077eed4f138d4227bea67a4483e783`。
+
 Dependency Registry SHA-256：`a815a079f5ef50ce04cdc38ced445556976d0e6a0b0fcad7b7506ef0f5cadf53`。
 
 ## Classification and safety behavior

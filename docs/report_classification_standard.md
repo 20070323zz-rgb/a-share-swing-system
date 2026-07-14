@@ -1,7 +1,9 @@
 # Report Classification Standard V1
 
-Batch Name: Reports Governance Phase A - Catalog, Dependency Registry & Naming Standard  
-Batch Type: Governance + Low-Risk Engineering + Validation  
+Batch Name: Reports Governance Phase A - Catalog, Dependency Registry & Naming Standard
+
+Batch Type: Governance + Low-Risk Engineering + Validation
+
 Scope: Zero Move / Zero Rename / Zero Delete
 
 ## Purpose
