@@ -106,6 +106,103 @@ def test_golden_reference_classification_is_exact() -> None:
         ), item["name"]
 
 
+def test_shell_copy_move_directional_fixtures_are_exact() -> None:
+    fixtures = json.loads(
+        (
+            PROJECT_ROOT
+            / "tests/fixtures/report_governance/reference_classification_golden.json"
+        ).read_text(encoding="utf-8")
+    )
+    directional = [item for item in fixtures if item.get("kind") == "shell_direction"]
+    assert len(directional) >= 15
+    assert len([item for item in directional if item["direction"] == "READ"]) >= 6
+    assert len([item for item in directional if item["direction"] == "MOVE_SOURCE"]) >= 4
+    assert len([item for item in directional if item["direction"] in {"WRITE", "PRODUCER"}]) >= 3
+    for item in directional:
+        rows = classify_source_text(item["source_file"], item["source"])
+        target_rows = [row for row in rows if row["normalized_target"] == item["target"]]
+        assert any(
+            row["reference_type"] == item["reference_type"]
+            and row["direction"] == item["direction"]
+            for row in target_rows
+        ), item["name"]
+        forbidden = item.get("forbidden_reference_type")
+        if forbidden:
+            assert not any(row["reference_type"] == forbidden for row in target_rows), item["name"]
+
+
+def test_run_daily_close_backup_and_restore_directions() -> None:
+    script = PROJECT_ROOT / "scripts/run_daily_close.sh"
+    rows = classify_source_text(
+        "scripts/run_daily_close.sh", script.read_text(encoding="utf-8")
+    )
+    backup_targets = {
+        86: "reports/data_source_status.json",
+        87: "reports/data_source_status_report.md",
+        88: "reports/data_update_status.json",
+    }
+    for line, target in backup_targets.items():
+        target_rows = [
+            row
+            for row in rows
+            if row["source_line_start"] == line and row["normalized_target"] == target
+        ]
+        assert any(
+            row["reference_type"] == "FILE_COPY_SOURCE" and row["direction"] == "READ"
+            for row in target_rows
+        )
+        assert not any(row["reference_type"] == "PRODUCER_WRITE" for row in target_rows)
+
+    restore_targets = {
+        123: "reports/data_source_status.json",
+        124: "reports/data_source_status_report.md",
+        125: "reports/data_update_status.json",
+    }
+    for line, target in restore_targets.items():
+        target_rows = [
+            row
+            for row in rows
+            if row["source_line_start"] == line and row["normalized_target"] == target
+        ]
+        assert any(
+            row["reference_type"] == "PRODUCER_WRITE" and row["direction"] == "WRITE"
+            for row in target_rows
+        )
+
+
+def test_availability_audit_data_retirement_contract_is_complete() -> None:
+    design = (PROJECT_ROOT / "docs/report_path_registry_design.md").read_text(encoding="utf-8")
+    required_tokens = {
+        "data/staging/tushare_etf_availability/",
+        "TEMPORARY_AUDIT_DATA",
+        "UNTIL_MIGRATION_VALIDATED",
+        "TEMPORARY_AUDIT",
+        "SHADOW_EVIDENCE_ONLY",
+        "RETIREMENT_PENDING_AUTHORIZATION",
+        "RETIREMENT_APPROVED",
+        "TEMPORARY_AUDIT_DATA_RETIRED",
+        "RETIREMENT_VALIDATION_FAILED",
+        "availability_audit_data_retirement_readiness_<YYYY-MM-DD>.md",
+        "availability_audit_data_retirement_validation_<YYYY-MM-DD>.md",
+        "EVIDENCE_NOT_RECONSTRUCTABLE",
+    }
+    assert not {token for token in required_tokens if token not in design}
+    assert all(f"RETIREMENT-PRE-{index:02d}" in design for index in range(1, 15))
+    lifecycle = [
+        "ACTIVE_COLLECTING",
+        "AUDIT_COMPLETE",
+        "MAIN_DECISION_RECORDED",
+        "PRIMARY_SOURCE_MIGRATION_COMPLETE",
+        "POST_MIGRATION_VALIDATION_PASS",
+        "FINAL_AUDIT_ARCHIVE_COMPLETE",
+        "RETIREMENT_AUTHORIZED",
+        "TEMPORARY_DATA_DELETED",
+        "DELETION_AUDIT_PASS",
+    ]
+    positions = [design.index(state) for state in lifecycle]
+    assert positions == sorted(positions)
+
+
 def test_reference_identity_and_excerpt_hash_survive_unrelated_blank_line() -> None:
     source = 'payload = (REPORT_DIR / "identity.json").read_text()'
     first = classify_source_text("src/example.py", source)[0]
@@ -148,6 +245,8 @@ def test_generators_are_byte_stable_on_repeated_runs() -> None:
         PROJECT_ROOT / f"reports/report_naming_compliance_audit_{BUSINESS_DATE}.metadata.json",
         PROJECT_ROOT / f"reports/reports_governance_phase_a_summary_{BUSINESS_DATE}.md",
         PROJECT_ROOT / f"reports/reports_governance_phase_a_remediation_{BUSINESS_DATE}.md",
+        PROJECT_ROOT
+        / f"reports/reports_governance_phase_a_final_blocker_remediation_{BUSINESS_DATE}.md",
     ]
     committed = {path: path.read_bytes() for path in outputs}
     for command in commands:
