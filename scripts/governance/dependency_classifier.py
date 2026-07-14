@@ -10,11 +10,12 @@ from __future__ import annotations
 import ast
 import hashlib
 import re
+import shlex
 from dataclasses import dataclass
 from pathlib import Path
 
 
-GENERATOR_VERSION = "2.0.0"
+GENERATOR_VERSION = "2.1.0"
 REPORT_EXTENSIONS = (".csv", ".html", ".json", ".md", ".parquet", ".txt", ".yaml", ".yml")
 EXPLICIT_REPORT_RE = re.compile(r"(?<![A-Za-z0-9_.-])/?(reports/[A-Za-z0-9_./*?{}\[\]$-]+)")
 SHELL_REPORT_DIR_RE = re.compile(
@@ -106,7 +107,7 @@ def _normalized_excerpt(excerpt: str) -> str:
 def _impact(reference_type: str) -> str:
     if reference_type in {"APP_RUNTIME_READ", "DASHBOARD_RUNTIME_READ"}:
         return "CRITICAL"
-    if reference_type in {"PRODUCER_WRITE", "CONSUMER_READ"}:
+    if reference_type in {"PRODUCER_WRITE", "CONSUMER_READ", "FILE_COPY_SOURCE", "FILE_MOVE_SOURCE"}:
         return "HIGH"
     if reference_type in {"TEST_REFERENCE", "STATE_INDEX_REFERENCE", "DYNAMIC_PATH_PATTERN"}:
         return "MEDIUM"
@@ -132,6 +133,13 @@ def _record(
     identity = "\n".join((source_file, target, reference_type, direction, normalized))
     reference_id = "ref_" + hashlib.sha256(identity.encode("utf-8")).hexdigest()[:20]
     dynamic = resolution == "DYNAMIC"
+    compatibility_actor = (
+        "PRODUCER"
+        if direction in {"PRODUCER", "WRITE"}
+        else "CONSUMER"
+        if direction in {"CONSUMER", "READ", "MOVE_SOURCE"}
+        else direction
+    )
     return {
         "reference_id": reference_id,
         "source_file": source_file,
@@ -148,7 +156,7 @@ def _record(
         # Compatibility fields retained for Catalog V1 readers.
         "source_line": line_start,
         "referenced_report_path": target,
-        "consumer_or_producer": direction,
+        "consumer_or_producer": compatibility_actor,
         "static_or_dynamic": "DYNAMIC" if dynamic else "STATIC",
         "migration_impact": _impact(reference_type),
         "notes": (
@@ -157,6 +165,189 @@ def _record(
             else "Structured source classification; exact target."
         ),
     }
+
+
+SHELL_CONTROL_TOKENS = {"&&", "||", ";", "|"}
+SHELL_VARIABLE_RE = re.compile(r"^\$(?:\{)?([A-Za-z_][A-Za-z0-9_]*)(?:\})?$")
+
+
+def _shell_tokens(line: str) -> list[str]:
+    lexer = shlex.shlex(line, posix=True, punctuation_chars=";&|")
+    lexer.whitespace_split = True
+    lexer.commenters = "#"
+    return list(lexer)
+
+
+def _shell_segments(tokens: list[str]) -> list[list[str]]:
+    segments: list[list[str]] = []
+    current: list[str] = []
+    for token in tokens:
+        if token in SHELL_CONTROL_TOKENS:
+            if current:
+                segments.append(current)
+                current = []
+        else:
+            current.append(token)
+    if current:
+        segments.append(current)
+    return segments
+
+
+def _shell_token_references(token: str) -> list[Reference]:
+    direct = [Reference(*item) for item in extract_report_references(token)]
+    if direct:
+        return direct
+    variable = SHELL_VARIABLE_RE.fullmatch(token)
+    if variable and "REPORT" in variable.group(1).upper():
+        name = variable.group(1)
+        return [Reference(f"reports/${{{name}}}", "DYNAMIC")]
+    return []
+
+
+def _report_directory_prefix(token: str) -> str | None:
+    value = token.removeprefix("./").rstrip()
+    if value in {"reports", "reports/"}:
+        return "reports/"
+    if value.startswith("reports/") and (value.endswith("/") or not Path(value).suffix):
+        return value.rstrip("/") + "/"
+    if value in {"$REPORT_DIR", "${REPORT_DIR}", "$REPORTS_DIR", "${REPORTS_DIR}"}:
+        return "reports/"
+    return None
+
+
+def _source_basename_pattern(token: str) -> str | None:
+    value = token.rstrip("/")
+    if not value:
+        return None
+    variable = SHELL_VARIABLE_RE.fullmatch(value)
+    if variable:
+        return None
+    name = value.rsplit("/", 1)[-1]
+    return name if name and name not in {".", ".."} else None
+
+
+def _parse_copy_move_operands(segment: list[str], command_index: int) -> tuple[list[str], str, bool] | None:
+    operands: list[str] = []
+    target_directory: str | None = None
+    options_done = False
+    index = command_index + 1
+    while index < len(segment):
+        token = segment[index]
+        if not options_done and token == "--":
+            options_done = True
+        elif not options_done and token in {"-t", "--target-directory"}:
+            index += 1
+            if index >= len(segment):
+                return None
+            target_directory = segment[index]
+        elif not options_done and token.startswith("--target-directory="):
+            target_directory = token.split("=", 1)[1]
+        elif not options_done and token.startswith("-t") and len(token) > 2:
+            target_directory = token[2:]
+        elif not options_done and token.startswith("-") and token != "-":
+            pass
+        else:
+            operands.append(token)
+        index += 1
+
+    if target_directory is not None:
+        return (operands, target_directory, True) if operands else None
+    if len(operands) < 2:
+        return None
+    sources = operands[:-1]
+    destination = operands[-1]
+    return sources, destination, len(sources) > 1 or destination.endswith("/")
+
+
+def _shell_copy_move_rows(
+    source_file: str,
+    line: str,
+    line_number: int,
+    source_tree_commit: str,
+) -> list[dict] | None:
+    try:
+        segments = _shell_segments(_shell_tokens(line))
+    except ValueError:
+        return None
+
+    found_command = False
+    rows: list[dict] = []
+    for segment in segments:
+        command_index = next(
+            (index for index, token in enumerate(segment) if Path(token).name in {"cp", "mv"}),
+            None,
+        )
+        if command_index is None:
+            continue
+        found_command = True
+        operation = Path(segment[command_index]).name
+        parsed = _parse_copy_move_operands(segment, command_index)
+        if parsed is None:
+            continue
+        sources, destination, destination_is_directory = parsed
+        source_direction = "READ" if operation == "cp" else "MOVE_SOURCE"
+        source_type = "FILE_COPY_SOURCE" if operation == "cp" else "FILE_MOVE_SOURCE"
+
+        for source in sources:
+            for ref in _shell_token_references(source):
+                dynamic = ref.resolution == "DYNAMIC"
+                rows.append(
+                    _record(
+                        source_file=source_file,
+                        line_start=line_number,
+                        line_end=line_number,
+                        target=ref.target,
+                        resolution=ref.resolution,
+                        reference_type="DYNAMIC_PATH_PATTERN" if dynamic else source_type,
+                        direction=source_direction,
+                        parser_type="SHELL",
+                        confidence="LOW" if dynamic else "MEDIUM" if ref.resolution == "STATIC_COMPUTED" else "HIGH",
+                        excerpt=line,
+                        source_tree_commit=source_tree_commit,
+                    )
+                )
+
+        destination_prefix = _report_directory_prefix(destination) if destination_is_directory else None
+        destination_refs = [] if destination_prefix else _shell_token_references(destination)
+        for ref in destination_refs:
+            dynamic = ref.resolution == "DYNAMIC"
+            rows.append(
+                _record(
+                    source_file=source_file,
+                    line_start=line_number,
+                    line_end=line_number,
+                    target=ref.target,
+                    resolution=ref.resolution,
+                    reference_type="DYNAMIC_PATH_PATTERN" if dynamic else "PRODUCER_WRITE",
+                    direction="WRITE",
+                    parser_type="SHELL",
+                    confidence="LOW" if dynamic else "MEDIUM" if ref.resolution == "STATIC_COMPUTED" else "HIGH",
+                    excerpt=line,
+                    source_tree_commit=source_tree_commit,
+                )
+            )
+
+        if destination_prefix:
+            for source in sources:
+                basename = _source_basename_pattern(source)
+                target = destination_prefix + (basename or "*")
+                dynamic = _is_dynamic(target) or basename is None
+                rows.append(
+                    _record(
+                        source_file=source_file,
+                        line_start=line_number,
+                        line_end=line_number,
+                        target=target,
+                        resolution="DYNAMIC" if dynamic else "STATIC_COMPUTED",
+                        reference_type="DYNAMIC_PATH_PATTERN" if dynamic else "PRODUCER_WRITE",
+                        direction="WRITE",
+                        parser_type="SHELL",
+                        confidence="LOW" if dynamic else "MEDIUM",
+                        excerpt=line,
+                        source_tree_commit=source_tree_commit,
+                    )
+                )
+    return rows if found_command else None
 
 
 def _expr_references(node: ast.AST | None, bindings: dict[str, list[Reference]]) -> list[Reference]:
@@ -374,6 +565,13 @@ def _line_rows(source_file: str, text: str, source_tree_commit: str, parser_type
     fenced = False
     suffix = Path(source_file).suffix.lower()
     for line_number, line in enumerate(text.splitlines(), start=1):
+        if parser_type == "SHELL":
+            copy_move_rows = _shell_copy_move_rows(
+                source_file, line, line_number, source_tree_commit
+            )
+            if copy_move_rows is not None:
+                rows.extend(copy_move_rows)
+                continue
         if suffix in {".md", ".txt"} and line.strip().startswith("```"):
             fenced = not fenced
         refs = extract_report_references(line)
@@ -409,7 +607,7 @@ def _line_rows(source_file: str, text: str, source_tree_commit: str, parser_type
                     reference_type, direction, confidence = "PATH_DECLARATION", "DECLARATION", "MEDIUM"
             elif suffix in {".sh", ".command"} or source_file == "Makefile":
                 target_token = re.escape(target)
-                if re.search(rf"(?:>>?|\btee(?:\s+-a)?|\b(?:cp|mv)\b[^\n]*)\s+[\"']?{target_token}", line):
+                if re.search(rf"(?:>>?|\btee(?:\s+-a)?)\s+[\"']?{target_token}", line):
                     reference_type, direction, confidence = "PRODUCER_WRITE", "PRODUCER", "HIGH"
                 elif re.search(rf"--(?:output|status-json|report|destination)[=\s]+[\"']?{target_token}", line):
                     reference_type, direction, confidence = "PRODUCER_WRITE", "PRODUCER", "HIGH"

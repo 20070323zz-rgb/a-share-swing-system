@@ -59,6 +59,8 @@ MIGRATION_RISK_VALUES = (
 REFERENCE_TYPE_VALUES = (
     "PRODUCER_WRITE",
     "CONSUMER_READ",
+    "FILE_COPY_SOURCE",
+    "FILE_MOVE_SOURCE",
     "APP_RUNTIME_READ",
     "DASHBOARD_RUNTIME_READ",
     "TEST_REFERENCE",
@@ -88,7 +90,7 @@ CONTROL_REPORT_RE = re.compile(
     r"report_dependency_registry_20\d{2}-\d{2}-\d{2}\.(?:csv|json)|"
     r"report_dependency_summary_20\d{2}-\d{2}-\d{2}\.md|"
     r"report_naming_compliance_audit_20\d{2}-\d{2}-\d{2}\.(?:csv|metadata\.json)|"
-    r"reports_governance_phase_a_(?:summary|remediation)_20\d{2}-\d{2}-\d{2}\.md"
+    r"reports_governance_phase_a_(?:summary|remediation|final_blocker_remediation)_20\d{2}-\d{2}-\d{2}\.md"
     r")$"
 )
 
@@ -244,6 +246,7 @@ def source_tree_commit(root: Path) -> str:
         ":(exclude)reports/reports_governance_phase_a_summary.md",
         ":(exclude,glob)reports/reports_governance_phase_a_summary_*.md",
         ":(exclude,glob)reports/reports_governance_phase_a_remediation_*.md",
+        ":(exclude,glob)reports/reports_governance_phase_a_final_blocker_remediation_*.md",
     ]
     value = subprocess.run(command, cwd=root, check=True, capture_output=True, text=True).stdout.strip()
     return value or subprocess.run(
@@ -638,8 +641,9 @@ def classify_role(path: str, dependency_rows: list[dict]) -> str:
     if any(token in stem for token in research_tokens):
         return "RESEARCH_ARTIFACT"
     if any(
-        row["reference_type"] in {"APP_RUNTIME_READ", "DASHBOARD_RUNTIME_READ", "CONSUMER_READ"}
-        and row["direction"] == "CONSUMER"
+        row["reference_type"]
+        in {"APP_RUNTIME_READ", "DASHBOARD_RUNTIME_READ", "CONSUMER_READ", "FILE_COPY_SOURCE", "FILE_MOVE_SOURCE"}
+        and row["direction"] in {"CONSUMER", "READ", "MOVE_SOURCE"}
         and row["confidence"] in {"HIGH", "MEDIUM"}
         for row in dependency_rows
     ):
@@ -712,8 +716,9 @@ def build_catalog_records(root: Path, dependency_rows: list[dict]) -> list[dict]
         role = classify_role(current_path, dependencies)
         current_alias = is_current_alias(current_path)
         runtime_locked = current_path in RUNTIME_LOCKED_PATHS or any(
-            row["reference_type"] in {"APP_RUNTIME_READ", "DASHBOARD_RUNTIME_READ", "CONSUMER_READ"}
-            and row["direction"] == "CONSUMER"
+            row["reference_type"]
+            in {"APP_RUNTIME_READ", "DASHBOARD_RUNTIME_READ", "CONSUMER_READ", "FILE_COPY_SOURCE", "FILE_MOVE_SOURCE"}
+            and row["direction"] in {"CONSUMER", "READ", "MOVE_SOURCE"}
             and row["confidence"] in {"HIGH", "MEDIUM"}
             and row["source_file"].startswith(("app/", "dashboard/", "scripts/", "src/"))
             for row in dependencies

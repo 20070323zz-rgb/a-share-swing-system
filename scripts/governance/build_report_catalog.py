@@ -94,6 +94,7 @@ def main() -> None:
         f"reports/report_naming_compliance_audit_{date}.metadata.json",
         f"reports/reports_governance_phase_a_summary_{date}.md",
         f"reports/reports_governance_phase_a_remediation_{date}.md",
+        f"reports/reports_governance_phase_a_final_blocker_remediation_{date}.md",
     ]
     payload = catalog_payload(records, metadata, exclusions)
     write_json(root / f"reports/{catalog_stem}.json", payload)
