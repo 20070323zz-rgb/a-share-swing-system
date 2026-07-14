@@ -32,7 +32,7 @@ SAMPLE_RESULTS = {
     "APP_RUNTIME_READ": (15, 15),
     "DASHBOARD_RUNTIME_READ": (15, 15),
     "DOCUMENTATION_LINK": (20, 20),
-    "DYNAMIC_RESOLUTION": (15, 15),
+    "DYNAMIC_RESOLUTION": (15, 14),
     "TEST_REFERENCE": (15, 15),
     "HISTORICAL_REFERENCE": (15, 15),
 }
@@ -139,7 +139,7 @@ The final focused sample uses a new deterministic selection from the regenerated
 
 {chr(10).join(sample_lines)}
 
-No high-impact App/Dashboard runtime or Archive Candidate misclassification was found. `PRODUCER_WRITE` is 30/30 and the 145-row overall sample is 100%. The real repository contains six Shell copy direction records; all six were reviewed, and the committed 18-case direction corpus also passed.
+No high-impact App/Dashboard runtime or Archive Candidate misclassification was found. `PRODUCER_WRITE` is 30/30 and the 145-row overall sample exceeds the 95% threshold. One low-severity dynamic documentation example retained a trailing delimiter in its normalized target; it has no runtime or archive-candidate effect. The real repository contains six Shell copy direction records; all six were reviewed, and the committed 18-case direction corpus also passed.
 
 ## Reproducibility and boundary
 
