@@ -1,0 +1,29 @@
+{
+  "batch_aggregate_real_call_count": 51,
+  "budget_status": "AGGREGATE_BUDGET_WARNING",
+  "completed_real_run_ids": [
+    "real-20260713-minimal-proof",
+    "real-20260713-minimal-proof-v2",
+    "real-20260713-minimal-proof-v3"
+  ],
+  "configured_real_budget": 30,
+  "evidence_mode": "real",
+  "interfaces": [
+    {"access_verdict": "ACCESS_PASS", "interface": "index_basic", "permission_status": "ACCESS_PASS"},
+    {"access_verdict": "ACCESS_PASS", "interface": "index_daily", "permission_status": "ACCESS_PASS"},
+    {"access_verdict": "ACCESS_PASS", "interface": "index_weight", "permission_status": "ACCESS_PASS"},
+    {"access_verdict": "ACCESS_PASS", "interface": "index_classify", "permission_status": "ACCESS_PASS"},
+    {"access_verdict": "ACCESS_PASS", "interface": "index_member_all", "permission_status": "ACCESS_PASS"},
+    {"access_verdict": "ACCESS_PASS", "interface": "daily_basic", "permission_status": "ACCESS_PASS"},
+    {"access_verdict": "ACCESS_PASS", "interface": "fund_portfolio", "permission_status": "ACCESS_PASS"},
+    {"access_verdict": "ACCESS_PASS", "interface": "shibor", "permission_status": "ACCESS_PASS"}
+  ],
+  "mock_call_count": 0,
+  "per_run_real_call_count": 17,
+  "real_api_call_count": 17,
+  "request_parameters_contain_token": false,
+  "run_id": "real-20260713-minimal-proof-v3",
+  "schema_version": 2,
+  "source_of_aggregate": "reports/tushare_real_run_attestations.csv",
+  "token_value_recorded": false
+}

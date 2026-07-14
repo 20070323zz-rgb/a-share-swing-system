@@ -1,0 +1,93 @@
+schema_version: 2
+proof_name: tushare_minimal_staging_proof
+research_only: true
+formal_integration: false
+unified_database_write: false
+
+evidence_contract:
+  require_explicit_mode: true
+  allowed_modes:
+    - real
+    - mock
+  output_namespaces:
+    real: real
+    mock: mock
+  index_weight_reduction_policy_version: PROOF_DATE_WINDOW_V1
+
+runtime:
+  staging_root: data/staging/tushare_minimal_proof
+  max_api_requests: 30
+  timeout_seconds: 25
+  request_interval_seconds: 0.35
+  max_network_retries: 1
+  raw_payload_git_policy: ignored
+
+legacy_samples:
+  - path: data/staging/tushare/tushare_etf_daily_sample.csv
+    status: LEGACY_UNVERIFIED_SAMPLE
+
+sample_selection:
+  universe_registry: configs/universe_versions/universe_v2_registry.yaml
+  benchmark_source: src/exposure/market_exposure_vector.py
+  benchmark_families:
+    - core_market
+    - growth
+    - technology
+  max_etfs: 3
+  max_indices: 3
+  max_trade_dates: 2
+  daily_basic_constituent_limit: 3
+  fund_report_period_limit: 2
+  index_weight_lookback_days: 100
+  fund_portfolio_lookback_days: 120
+  shibor_lookback_days: 14
+  index_markets:
+    - SSE
+    - SZSE
+  index_name_hints:
+    core_market:
+      - 沪深300
+    growth:
+      - 创业板指
+      - 创业板
+    technology:
+      - 科创50
+      - 科创板50
+  industry_member_keyword_priority:
+    - 电子
+    - 银行
+    - 医药
+
+interfaces:
+  index_basic:
+    fields: ts_code,name,fullname,market,publisher,index_type,category,base_date,base_point,list_date,weight_rule,desc,exp_date
+    official_doc: https://tushare.pro/document/2?doc_id=94
+    official_update_pattern: daily metadata refresh
+  index_daily:
+    fields: ts_code,trade_date,close,open,high,low,pre_close,change,pct_chg,vol,amount
+    official_doc: https://tushare.pro/document/2?doc_id=95
+    official_update_pattern: trading days after market close, typically 15:00-17:00 Asia/Shanghai
+  index_weight:
+    fields: index_code,con_code,trade_date,weight
+    official_doc: https://tushare.pro/document/2?doc_id=96
+    official_update_pattern: monthly constituent and weight snapshots
+  index_classify:
+    fields: index_code,industry_name,level,industry_code,is_pub,parent_code,src
+    official_doc: https://tushare.pro/document/2?doc_id=181
+    official_update_pattern: taxonomy releases and revisions
+  index_member_all:
+    fields: l1_code,l1_name,l2_code,l2_name,l3_code,l3_name,ts_code,name,in_date,out_date,is_new
+    official_doc: https://tushare.pro/document/2?doc_id=335
+    official_update_pattern: membership changes with effective dates; historical publication time not row-level
+  daily_basic:
+    fields: ts_code,trade_date,turnover_rate,turnover_rate_f,volume_ratio,pe,pe_ttm,pb,ps,ps_ttm,dv_ratio,dv_ttm,total_share,float_share,free_share,total_mv,circ_mv
+    official_doc: https://tushare.pro/document/2?doc_id=32
+    official_update_pattern: trading days after market close; historical row-level release time not supplied
+  fund_portfolio:
+    fields: ts_code,ann_date,end_date,symbol,mkv,amount,stk_mkv_ratio,stk_float_ratio
+    official_doc: https://tushare.pro/document/2?doc_id=121
+    official_update_pattern: periodic fund disclosure with announcement date
+  shibor:
+    fields: date,on,1w,2w,1m,3m,6m,9m,1y
+    official_doc: https://tushare.pro/document/2?doc_id=149
+    official_update_pattern: official release 11:00 Asia/Shanghai; project conservative availability 12:00 with 60-minute lag

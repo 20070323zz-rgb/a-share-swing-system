@@ -17,6 +17,7 @@ env/
 .vscode/
 .env
 .env.*
+.envTAB
 
 # JavaScript dependencies are restored from package lock files.
 app/frontend/node_modules/
@@ -42,3 +43,6 @@ raw/*
 !raw/.gitkeep
 data/raw/*
 !data/raw/.gitkeep
+
+# Run-scoped Tushare proof payloads are local evidence, never committed.
+data/staging/tushare_minimal_proof/

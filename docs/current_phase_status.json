@@ -3,14 +3,14 @@
   "context_schema_version": 2,
   "project": "a-share-swing-system",
   "repository_root": "<project_root>",
-  "context_updated_at": "2026-07-13 09:51:50 CST",
+  "context_updated_at": "2026-07-13 17:03:10 CST",
   "context_updated_by": "Codex",
-  "context_update_reason": "PR #1 was merged into main with merge commit 40a6017402456d62609169325cb5f1d31a1a140b. Post-merge validation passed; main is stable. Formal Execution logic and protected ledgers remain unchanged. Tushare Minimal Staging Proof and PIT Contract is the next candidate and was not started.",
-  "main_phase": "Paper Execution Safety Phase 1 - Freshness Gate & Non-Destructive Audit",
-  "main_phase_id": "paper_execution_safety_phase_1_freshness_gate_non_destructive_audit",
+  "context_update_reason": "PR #2 evidence governance remediation programmatically isolates real and mock configuration, run IDs, directories, manifests, statuses, reports, call statistics, and tests. The historical real conclusion remains supported by real-only attestations; no real API was called and no next phase started.",
+  "main_phase": "Tushare Minimal Staging Proof & PIT Contract",
+  "main_phase_id": "tushare_minimal_staging_proof_pit_contract",
   "phase_status": "COMPLETE",
-  "phase_started_at": "2026-07-11 16:13:12 CST",
-  "phase_completed_at": "2026-07-11 16:25:15 CST",
+  "phase_started_at": "2026-07-13 10:00:00 CST",
+  "phase_completed_at": "2026-07-13 10:25:02 CST",
   "completed_main_phases": [
     "Regime & Risk Allocation Phase 1",
     "Regime & Risk Allocation Phase 1.5",
@@ -33,7 +33,8 @@
     "Exposure Framework Phase E-A - Market Exposure Redesign",
     "Exposure Framework Phase E-B - Multi-Benchmark Market Exposure Prototype",
     "Exposure Framework Phase F - Exposure Governance & Portfolio Role Definition",
-    "Paper Execution Safety Phase 1 - Freshness Gate & Non-Destructive Audit"
+    "Paper Execution Safety Phase 1 - Freshness Gate & Non-Destructive Audit",
+    "Tushare Minimal Staging Proof & PIT Contract"
   ],
   "current_batch": null,
   "current_batch_id": null,
@@ -55,17 +56,18 @@
     "Exposure Framework Phase E-A",
     "Exposure Framework Phase E-B",
     "Exposure Framework Phase F",
-    "Paper Execution Safety Phase 1"
+    "Paper Execution Safety Phase 1",
+    "Tushare Minimal Staging Proof & PIT Contract"
   ],
   "pending_batches": [],
   "blocked_batches": [],
   "skipped_batches": [],
-  "last_completed_batch": "Paper Execution Safety Phase 1",
+  "last_completed_batch": "Tushare Minimal Staging Proof & PIT Contract",
   "resume_from": null,
   "required_batches": [
-    "Paper Execution Safety Phase 1"
+    "Tushare Minimal Staging Proof & PIT Contract"
   ],
-  "final_closeout_batch": "Paper Execution Safety Phase 1",
+  "final_closeout_batch": "Tushare Minimal Staging Proof & PIT Contract",
   "phase_d_completed_checkpoints": [
     "Context Phase D1",
     "Context Phase D2",
@@ -73,9 +75,9 @@
     "Context Phase D4"
   ],
   "phase_d_resume_checkpoint": null,
-  "next_research_phase": "Tushare Minimal Staging Proof & PIT Contract is NEXT_CANDIDATE and requires a separately authorized Batch; it has not started",
-  "current_phase_report": "reports/paper_execution_freshness_gate_summary.md",
-  "current_phase_decision": "reports/paper_execution_preflight.json",
+  "next_research_phase": "PR #2 DRAFT_AWAITING_RE_QC; no formal staging architecture, migration, availability audit, or Data Foundation Upgrade may start",
+  "current_phase_report": "reports/tushare_proof_evidence_remediation.md",
+  "current_phase_decision": "reports/tushare_minimal_proof_run_manifest.json",
   "style_fit_research_phase_status": "COMPLETE",
   "universe_v1_status": "LOCKED_HISTORICAL_BASELINE",
   "universe_v2_status": "QUALIFIED",
@@ -276,6 +278,20 @@
       "reports/paper_execution_stale_trade_audit_2026-07-10.json",
       "reports/paper_execution_stale_trade_audit_2026-07-10.md",
       "data/audit/paper_execution_audit.jsonl"
+    ],
+    "tushare_minimal_staging_proof_pit_contract": [
+      "configs/tushare_minimal_proof.yaml",
+      "src/data_sources/tushare/client.py",
+      "src/data_sources/tushare/probe.py",
+      "src/data_sources/tushare/schemas.py",
+      "src/data_sources/tushare/validators.py",
+      "src/data_sources/tushare/pit_contract.py",
+      "scripts/run_tushare_minimal_proof.py",
+      "reports/tushare_minimal_staging_proof.md",
+      "reports/tushare_interface_probe_matrix.csv",
+      "reports/tushare_pit_contract_matrix.csv",
+      "reports/tushare_gap_reassessment.md",
+      "docs/tushare_pit_contract.md"
     ]
   },
   "staleness_flags": {
@@ -561,6 +577,15 @@
       "transition_type": "BATCH_COMPLETION",
       "completed_batch": "Paper Execution Safety Phase 1",
       "next_batch": "Main decision: Tushare 5000 Data Foundation Audit, Exit Logic Research, or Portfolio Research design"
+    },
+    {
+      "from_phase": "Paper Execution Safety Phase 1 - Freshness Gate & Non-Destructive Audit",
+      "to_phase": "Tushare Minimal Staging Proof & PIT Contract",
+      "reason": "A separately authorized bounded proof performed 17 real Tushare API calls, validated eight interface schemas, and established a PIT contract without promoting staged data into the ETF SSOT or model layers.",
+      "recorded_at": "2026-07-13 10:25:02 CST",
+      "transition_type": "BATCH_COMPLETION",
+      "completed_batch": "Tushare Minimal Staging Proof & PIT Contract",
+      "next_batch": "MAIN_REVIEW_REQUIRED"
     }
   ],
   "universe_v2_candidate_status": "QUALIFIED",
@@ -719,7 +744,30 @@
   "main_branch_name": "main",
   "main_branch_status": "STABLE",
   "main_branch_merge_status": "COMPLETE",
-  "tushare_minimal_staging_proof_pit_contract_status": "NEXT_CANDIDATE",
-  "tushare_staging_pit_status": "NOT_STARTED",
+  "tushare_minimal_staging_proof_pit_contract_status": "COMPLETE",
+  "tushare_minimal_staging_proof_status": "COMPLETE",
+  "tushare_pit_contract_status": "COMPLETE_WITH_LIMITATIONS",
+  "tushare_staging_pit_status": "COMPLETE_WITH_LIMITATIONS",
+  "tushare_minimal_proof_real_api_request_count": 17,
+  "tushare_minimal_proof_aggregate_real_api_call_count": 51,
+  "tushare_minimal_proof_mock_call_count": 0,
+  "tushare_minimal_proof_accessible_interface_count": 8,
+  "tushare_minimal_proof_run_id": "real-20260713-minimal-proof-v3",
+  "evidence_isolation_status": "COMPLETE",
+  "evidence_isolation_completed_at": "2026-07-13 17:03:10 CST",
+  "draft_pr_2_status": "DRAFT_AWAITING_RE_QC",
+  "tushare_formal_staging_architecture_status": "NOT_STARTED",
+  "tushare_primary_upstream_migration_status": "NOT_STARTED",
+  "tushare_primary_upstream_migration_readiness": "APPROVED_FOR_FUTURE_ENGINEERING",
+  "etf_daily_availability_timing_audit_status": "NOT_STARTED",
+  "data_promotion_status": "BLOCKED",
+  "unified_data_upgrade_status": "NOT_STARTED",
+  "exposure_phase_2_status": "NOT_STARTED",
+  "regime_2_0_status": "NOT_STARTED",
+  "universe_v3_status": "NOT_STARTED",
+  "exit_logic_status": "NOT_STARTED",
+  "style_fit_1_0_status": "CLOSED",
+  "next_data_foundation_decision": "PR_2_RE_QC_REQUIRED",
+  "tushare_formal_staging_architecture_readiness": "NOT_STARTED_REQUIRES_SEPARATE_AUTHORIZATION",
   "tushare_5000_data_foundation_audit_eligibility": "ELIGIBLE_FOR_SEPARATE_AUDIT"
 }

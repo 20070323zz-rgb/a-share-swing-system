@@ -1,6 +1,6 @@
 {
   "validation_status": "VALID_WITH_WARNINGS",
-  "validated_at": "2026-07-12 17:44:07",
+  "validated_at": "2026-07-13 17:17:00",
   "repository_root": "<project_root>",
   "manifest_valid": true,
   "required_context_files_complete": true,
@@ -18,7 +18,7 @@
   "phase_status_stale": false,
   "context_consistency_unknown": false,
   "blocking_conflict_found": false,
-  "current_main_phase": "Paper Execution Safety Phase 1 - Freshness Gate & Non-Destructive Audit",
+  "current_main_phase": "Tushare Minimal Staging Proof & PIT Contract",
   "phase_status": "COMPLETE",
   "current_batch": null,
   "current_batch_status": null,
@@ -30,7 +30,7 @@
     "Context Phase D3",
     "Context Phase D4"
   ],
-  "next_research_phase": "Main decision after GitHub checkpoint: Reports Governance Phase A or Tushare Minimal Staging Proof & PIT Contract; neither has started",
+  "next_research_phase": "PR #2 DRAFT_AWAITING_RE_QC; no formal staging architecture, migration, availability audit, or Data Foundation Upgrade may start",
   "latest_data_date": "2026-07-10",
   "selected_shadow_regime_candidate": "ASYMMETRIC_CONFIRM",
   "latest_known_regime_date": "2026-07-06",
@@ -64,7 +64,8 @@
     "docs/current_phase_status.json",
     "data/research/exposure_prototype/market_exposure_vector_manifest.json",
     "reports/paper_execution_preflight.json",
-    "reports/paper_execution_stale_trade_audit_2026-07-10.json"
+    "reports/paper_execution_stale_trade_audit_2026-07-10.json",
+    "reports/tushare_minimal_proof_run_manifest.json"
   ],
   "bootstrap_read_order": [
     "AGENTS.md",
