@@ -941,7 +941,7 @@ Aggregate real API calls = 51 (AGGREGATE_BUDGET_WARNING)
 Mock calls included in real totals = 0
 Formal Staging Architecture = NOT_STARTED
 Tushare Primary Upstream Migration = APPROVED_IN_PRINCIPLE_BUT_NOT_STARTED
-ETF Daily Availability Timing Audit = NEXT / NOT_STARTED
+ETF Daily Availability Timing Audit = ACTIVE_COLLECTING
 Data Foundation Upgrade = NOT_STARTED
 Data Promotion = BLOCKED
 Unified Data Upgrade = NOT_STARTED
@@ -960,6 +960,28 @@ All historical real payloads and row-level proof artifacts remain in their exist
 Three real-run attestations explain `17 + 17 + 17 = 51` calls. The first two individual proof reports were not retained by the historical global-report workflow, so their report hashes are explicitly `UNAVAILABLE / AVAILABLE_EVIDENCE_LIMITED`; no missing evidence was fabricated. The final `index_weight` reduction from 1350 raw rows to 900 proof rows is `PROOF_SAMPLE_DATE_WINDOW_REDUCTION`: the 2026-04-30 snapshot was excluded and the 2026-05-29 and 2026-06-30 snapshots were retained for all three indices.
 
 PR #2 was merged into `main` with merge commit `47d129bfa7a055b7af81f4c57fea3a95d41287c6` at 2026-07-14 14:00:33 CST after the live head and boundary gate remained unchanged. Post-merge validation is `PASS`, `main` is `STABLE`, and Tushare proof evidence is `ACCEPTED`. The ETF SSOT, protected files, model, Replay, Ranking, Score, Exposure, and Formal Execution boundaries were unchanged. No real Tushare API call was made during validation.
+
+## 8N. Tushare ETF Daily Availability Timing Audit
+
+The independently authorized post-close availability observer is implemented on branch `agent/tushare-etf-availability-audit` and is collecting evidence. It dynamically maps all 183 canonical ETF files to Tushare codes and roles, uses Tushare `trade_cal` rather than weekday inference, calls `fund_daily` once per configured Tushare slot, and retains BaoStock as a lower-frequency read-only comparator.
+
+```text
+ETF Daily Availability Timing Audit = ACTIVE_COLLECTING
+Observation Days Started = 1
+Observation Days Completed = 0
+Timing Evidence = COLLECTING_INSUFFICIENT_DAYS
+Tushare = SHADOW_PRIMARY_CANDIDATE
+BaoStock = COMPARATOR_ONLY
+data/etf_daily = CANONICAL_SSOT
+Tushare Primary Upstream Migration = NOT_STARTED
+Data Foundation Upgrade = NOT_STARTED
+Data Promotion = BLOCKED
+Formal Execution Logic = UNCHANGED
+```
+
+Probe manifests and normalized snapshots are append-only and Git-ignored under `data/staging/tushare_etf_availability/`. Only sanitized mapping and timing summaries are committed. The observer does not call `run_daily_close.sh`, the Freshness Gate, or the paper engine. Five valid days can support only a preliminary verdict; ten valid days and Main review are required before a supported timing or upstream recommendation.
+
+The first real `fund_daily` probe ran at 2026-07-14 15:05 CST with exactly one API call. Access permission passed, but the interface returned zero rows for the target date, so the evidence is `EMPTY_UNEXPECTED`, coverage is `0/183`, and no availability or completeness time has yet been reached. The independent LaunchAgent is installed from the isolated audit worktree. Its first runtime-environment check exposed a missing pandas interpreter under launchd and made no vendor call; the wrapper was corrected, and the follow-up duplicate-slot run exited `0` without another API call. The next real scheduled slot is 15:15 CST.
 
 ## 9. Current Main Bottlenecks
 
@@ -1036,7 +1058,7 @@ PR #2 Post-Merge Validation = PASS
 Tushare Proof Evidence = ACCEPTED
 Tushare Formal Staging Architecture = NOT_STARTED
 Tushare Primary Upstream Migration = APPROVED_IN_PRINCIPLE_BUT_NOT_STARTED
-ETF Daily Availability Timing Audit = NEXT / NOT_STARTED
+ETF Daily Availability Timing Audit = ACTIVE_COLLECTING
 Data Foundation Upgrade = NOT_STARTED
 Data Promotion = BLOCKED
 Exposure Phase 2 = NOT_STARTED

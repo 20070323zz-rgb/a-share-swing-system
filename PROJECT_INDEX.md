@@ -71,7 +71,7 @@ Tushare Evidence Isolation: COMPLETE
 PR #2: DRAFT_AWAITING_RE_QC
 Tushare Formal Staging Architecture: NOT_STARTED
 Tushare Primary Upstream Migration: APPROVED_FOR_FUTURE_ENGINEERING / NOT_STARTED
-ETF Daily Availability Timing Audit: NOT_STARTED
+ETF Daily Availability Timing Audit: ACTIVE_COLLECTING
 Data Foundation Upgrade: NOT_STARTED
 Data Promotion: BLOCKED
 Paper Execution Freshness Gate: ACTIVE
@@ -204,6 +204,15 @@ Formal Execution: BLOCKED
 - Tushare PIT Contract：`docs/tushare_pit_contract.md`
 - Tushare Minimal Proof Config：`configs/tushare_minimal_proof.yaml`
 - Tushare Minimal Proof Runner：`scripts/run_tushare_minimal_proof.py`
+- Tushare ETF Availability Audit Guide：`docs/tushare_etf_availability_audit.md`
+- Tushare ETF Availability Audit Config：`configs/tushare_etf_availability_audit.yaml`
+- Tushare ETF Availability Probe：`scripts/run_tushare_etf_availability_probe.py`
+- Tushare ETF Availability Report Builder：`scripts/build_tushare_etf_availability_report.py`
+- Tushare ETF Availability Status：`reports/tushare_etf_availability_audit_status.md`
+- Tushare ETF Availability Timing Summary：`reports/tushare_etf_availability_timing_summary.csv`
+- Tushare vs BaoStock Availability：`reports/tushare_vs_baostock_availability.csv`
+- Tushare ETF Universe Mapping Validation：`reports/tushare_etf_universe_mapping_validation.csv`
+- Tushare ETF Availability Framework Validation：`reports/tushare_etf_availability_framework_validation.md`
 
 这些入口用于新 Codex thread 恢复项目状态。
 
