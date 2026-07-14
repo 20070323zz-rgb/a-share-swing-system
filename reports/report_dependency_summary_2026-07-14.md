@@ -2,7 +2,7 @@
 report_id: report_6a09902fcfdeadfc
 report_type: DEPENDENCY_SUMMARY
 business_date: 2026-07-14
-created_at: 2026-07-14T19:25:23+08:00
+created_at: 2026-07-14T19:27:36+08:00
 status: REMEDIATED_PENDING_RE_QC
 phase: reports_governance_phase_a
 producer: scripts/governance/build_report_dependency_registry.py
@@ -19,7 +19,7 @@ schema_version: 2
 - Registry records: 6172
 - Distinct referenced paths/patterns: 787
 - Dynamic patterns: 40
-- Registry SHA-256: `98014b6f78e1f89e9341f0cf1b334b7ae3de9a364bff6869a9f63c160dd54411`
+- Registry SHA-256: `39cd30c5af20de7b588e2a873121903a02bc00e676ddc827dcae5af0359fea52`
 
 ### Reference types
 

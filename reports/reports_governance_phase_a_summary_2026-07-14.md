@@ -2,7 +2,7 @@
 report_id: report_12c4ab4294b5c6ac
 report_type: GOVERNANCE_PHASE_SUMMARY
 business_date: 2026-07-14
-created_at: 2026-07-14T19:25:23+08:00
+created_at: 2026-07-14T19:27:36+08:00
 status: REMEDIATED_PENDING_RE_QC
 phase: reports_governance_phase_a
 producer: scripts/governance/build_phase_a_summary.py
