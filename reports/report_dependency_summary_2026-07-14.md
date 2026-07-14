@@ -2,7 +2,7 @@
 report_id: report_6a09902fcfdeadfc
 report_type: DEPENDENCY_SUMMARY
 business_date: 2026-07-14
-created_at: 2026-07-14T19:32:27+08:00
+created_at: 2026-07-14T22:23:35+08:00
 status: REMEDIATED_PENDING_RE_QC
 phase: reports_governance_phase_a
 producer: scripts/governance/build_report_dependency_registry.py
@@ -16,10 +16,10 @@ schema_version: 2
 
 ## Summary
 
-- Registry records: 6172
-- Distinct referenced paths/patterns: 787
-- Dynamic patterns: 40
-- Registry SHA-256: `0288ac8bb434e9f5f7e68228b33671971914e55c95ef7ca72afb0052ab961676`
+- Registry records: 6201
+- Distinct referenced paths/patterns: 795
+- Dynamic patterns: 43
+- Registry SHA-256: `54cb26ed9b7c4ecd57eda707fda857d07467e1701aaa08d10c40ed2deb3eaf2d`
 
 ### Reference types
 
@@ -29,19 +29,20 @@ schema_version: 2
 - `DOCUMENTATION_LINK`: 139
 - `DYNAMIC_PATH_PATTERN`: 3
 - `EXAMPLE_REFERENCE`: 121
+- `FILE_COPY_SOURCE`: 3
 - `HISTORICAL_REFERENCE`: 3747
 - `PATH_DECLARATION`: 842
-- `PRODUCER_WRITE`: 328
+- `PRODUCER_WRITE`: 325
 - `STATE_INDEX_REFERENCE`: 200
 - `STATIC_LINK`: 504
-- `TEST_REFERENCE`: 93
+- `TEST_REFERENCE`: 122
 
 ### Migration impact
 
 - `CRITICAL`: 95
 - `HIGH`: 428
 - `LOW`: 5353
-- `MEDIUM`: 296
+- `MEDIUM`: 325
 
 ## Critical and high-impact references
 
@@ -145,11 +146,11 @@ schema_version: 2
 | `reports/data_source_architecture_audit.md` | `src/data_source_architecture_audit.py` | 37 | `PRODUCER_WRITE` | `HIGH` |
 | `reports/data_source_status.json` | `app/backend/readers.py` | 163 | `APP_RUNTIME_READ` | `CRITICAL` |
 | `reports/data_source_status.json` | `dashboard/build_dashboard.py` | 3485 | `DASHBOARD_RUNTIME_READ` | `CRITICAL` |
-| `reports/data_source_status.json` | `scripts/run_daily_close.sh` | 86 | `PRODUCER_WRITE` | `HIGH` |
+| `reports/data_source_status.json` | `scripts/run_daily_close.sh` | 86 | `FILE_COPY_SOURCE` | `HIGH` |
 | `reports/data_source_status.json` | `scripts/run_daily_close.sh` | 123 | `PRODUCER_WRITE` | `HIGH` |
 | `reports/data_source_status.json` | `src/data_source_architecture_audit.py` | 54 | `CONSUMER_READ` | `HIGH` |
 | `reports/data_source_status.json` | `src/data_sources/source_router.py` | 287 | `PRODUCER_WRITE` | `HIGH` |
-| `reports/data_source_status_report.md` | `scripts/run_daily_close.sh` | 87 | `PRODUCER_WRITE` | `HIGH` |
+| `reports/data_source_status_report.md` | `scripts/run_daily_close.sh` | 87 | `FILE_COPY_SOURCE` | `HIGH` |
 | `reports/data_source_status_report.md` | `scripts/run_daily_close.sh` | 124 | `PRODUCER_WRITE` | `HIGH` |
 | `reports/data_source_status_report.md` | `src/data_sources/source_router.py` | 312 | `PRODUCER_WRITE` | `HIGH` |
 | `reports/data_update_diagnosis_report.md` | `scripts/update_etf_data.py` | 1176 | `PRODUCER_WRITE` | `HIGH` |
@@ -158,7 +159,7 @@ schema_version: 2
 | `reports/data_update_status.json` | `app/backend/readers.py` | 158 | `APP_RUNTIME_READ` | `CRITICAL` |
 | `reports/data_update_status.json` | `app/backend/task_runner.py` | 213 | `APP_RUNTIME_READ` | `CRITICAL` |
 | `reports/data_update_status.json` | `dashboard/build_dashboard.py` | 3465 | `DASHBOARD_RUNTIME_READ` | `CRITICAL` |
-| `reports/data_update_status.json` | `scripts/run_daily_close.sh` | 88 | `PRODUCER_WRITE` | `HIGH` |
+| `reports/data_update_status.json` | `scripts/run_daily_close.sh` | 88 | `FILE_COPY_SOURCE` | `HIGH` |
 | `reports/data_update_status.json` | `scripts/run_daily_close.sh` | 125 | `PRODUCER_WRITE` | `HIGH` |
 | `reports/data_update_status.json` | `src/data_source_architecture_audit.py` | 55 | `CONSUMER_READ` | `HIGH` |
 | `reports/etf_classification_report.md` | `src/etf_classifier.py` | 165 | `PRODUCER_WRITE` | `HIGH` |

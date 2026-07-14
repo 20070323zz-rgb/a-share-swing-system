@@ -2,8 +2,8 @@
 report_id: report_cb1d3603534cf266
 report_type: GOVERNANCE_REMEDIATION
 business_date: 2026-07-14
-created_at: 2026-07-14T19:32:27+08:00
-status: READY_FOR_INDEPENDENT_RE_QC
+created_at: 2026-07-14T22:23:35+08:00
+status: READY_FOR_FINAL_INDEPENDENT_RE_QC
 phase: reports_governance_phase_a
 producer: scripts/governance/build_phase_a_summary.py
 source_run_id: reports-governance-phase-a-remediation-2026-07-14
@@ -21,15 +21,19 @@ schema_version: 2
 5. Recomputed Catalog and migration classifications from remediated dependencies.
 6. Completed retention, cycle prevention, migration order, rollback and missing-date behavior in the Path Registry design.
 7. Reconciled PR #3's active Availability Audit state into the shared authority surfaces without copying its implementation or evidence.
+8. Classified Shell `cp/mv` source and destination by argument position; report sources no longer become false producers.
+9. Defined Availability temporary audit data retention, retirement prerequisites, authorization, evidence and post-retirement rollback.
 
 ## Validation contract
 
 - Golden fixture accuracy: 100%.
-- Human stratified sample: 100/100 (100.0%).
+- Human stratified sample: 144/145 (99.3%).
+- Producer sample: 30/30 (100%).
+- Shell direction: 6/6 real repository records and 18/18 committed directional fixtures.
 - First clean rebuild: required byte-identical.
 - Three-run rebuild: required byte-identical.
 - Full pytest, Dashboard, frontend, App release, context, path/secret, Zero-Move and protected-boundary checks are required before push.
 
 ## State transition
 
-`READY_FOR_INDEPENDENT_RE_QC`. This is not a `MERGE_READY` declaration. PR #4 remains Draft. Report Migration Phase B and runtime Path Registry remain blocked/not started.
+`READY_FOR_FINAL_INDEPENDENT_RE_QC`. This is not a `MERGE_READY` declaration. PR #4 remains Draft. Report Migration Phase B and runtime Path Registry remain blocked/not started. Availability temporary audit data remains retained and untouched.
