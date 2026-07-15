@@ -940,17 +940,21 @@ Real API requests = 17 / 30
 Aggregate real API calls = 51 (AGGREGATE_BUDGET_WARNING)
 Mock calls included in real totals = 0
 Formal Staging Architecture = NOT_STARTED
-Tushare Primary Upstream Migration = APPROVED_IN_PRINCIPLE_BUT_NOT_STARTED
+Tushare Primary Upstream = APPROVED_PRIMARY_UPSTREAM
+Decision Evidence Confidence = LIMITED_TWO_DAY_EVIDENCE
+Decision Authority = USER_AUTHORIZED_EARLY_PROMOTION
+Tushare Primary Upstream Migration = AUTHORIZED_NOT_STARTED
 ETF Daily Availability Timing Audit = ACTIVE_COLLECTING
+Timing Optimization = ACTIVE
 Data Foundation Upgrade = NOT_STARTED
-Data Promotion = BLOCKED
+Data Promotion = BLOCKED_PENDING_IMPLEMENTATION_VALIDATION
 Unified Data Upgrade = NOT_STARTED
 Exposure Phase 2 = NOT_STARTED
 Regime 2.0 = NOT_STARTED
 Universe V3 = NOT_STARTED
 Exit Logic = NOT_STARTED
 Style Fit 1.0 = CLOSED
-Next Decision = ETF Daily Availability Timing Audit (separate authorization required)
+Next Decision = Timing-window and safety-buffer optimization only; source selection is closed
 ```
 
 PIT handling is intentionally asymmetric: `fund_portfolio` is `PIT_RESOLVED` through retained `ann_date` versions; `daily_basic` and `index_daily` use a conservative next-trading-day contract when the next date exists; Shibor uses official release `11:00` plus the project's 60-minute conservative lag to `12:00` with basis `OFFICIAL_11AM_PLUS_PROJECT_LAG`; `index_weight` and `index_member_all` remain partial; current taxonomy and index metadata remain unresolved for historical publication time. The latest 2026-07-10 daily rows remain partial until a later local trading-calendar date is present. Shibor remains `EXPLANATION_ONLY / INTEREST_RATE_CONTEXT`, not ETF duration exposure.
@@ -963,29 +967,32 @@ PR #2 was merged into `main` with merge commit `47d129bfa7a055b7af81f4c57fea3a95
 
 ## 8N. Tushare ETF Daily Availability Timing Audit
 
-The independently authorized post-close availability observer is implemented on branch `agent/tushare-etf-availability-audit` and is collecting evidence. It dynamically maps all 183 canonical ETF files to Tushare codes and roles, uses Tushare `trade_cal` rather than weekday inference, calls `fund_daily` once per configured Tushare slot, and retains BaoStock as a lower-frequency read-only comparator.
+The independently authorized post-close availability observer is implemented on branch `agent/tushare-etf-availability-audit` and is collecting evidence. It dynamically maps all 183 canonical ETF files to Tushare codes and roles, uses Tushare `trade_cal` rather than weekday inference, and calls `fund_daily` once per executed Tushare slot. The user has approved Tushare as the primary upstream architecture decision. This is not a completed migration and does not authorize formal promotion.
 
 ```text
 ETF Daily Availability Timing Audit = ACTIVE_COLLECTING
-Observation Days Started = 1
-Observation Days Completed = 0
-Timing Evidence = COLLECTING_INSUFFICIENT_DAYS
-Tushare = SHADOW_PRIMARY_CANDIDATE
-BaoStock = COMPARATOR_ONLY
+Observation Days Started = 2
+Observation Days Completed = 2
+Statistical Evidence Verdict = INSUFFICIENT_FOR_FIVE_DAY_STABILITY_CERTIFICATION
+Tushare = APPROVED_PRIMARY_UPSTREAM
+Decision Evidence Confidence = LIMITED_TWO_DAY_EVIDENCE
+Decision Authority = USER_AUTHORIZED_EARLY_PROMOTION
+BaoStock = RECONCILIATION_ONLY
 data/etf_daily = CANONICAL_SSOT
-Tushare Primary Upstream Migration = NOT_STARTED
+Tushare Primary Upstream Migration = AUTHORIZED_NOT_STARTED
 Data Foundation Upgrade = NOT_STARTED
-Data Promotion = BLOCKED
+Data Promotion = BLOCKED_PENDING_IMPLEMENTATION_VALIDATION
+Timing Optimization = ACTIVE
 Formal Execution Logic = UNCHANGED
 ```
 
-Probe manifests and normalized snapshots are append-only and Git-ignored under `data/staging/tushare_etf_availability/`. Only sanitized mapping and timing summaries are committed. The observer does not call `run_daily_close.sh`, the Freshness Gate, or the paper engine. Five valid days can support only a preliminary verdict; ten valid days and Main review are required before a supported timing or upstream recommendation.
+Probe manifests and normalized snapshots are append-only and Git-ignored under `data/staging/tushare_etf_availability/`. Only sanitized mapping and timing summaries are committed. The observer does not call `run_daily_close.sh`, the Freshness Gate, or the paper engine. Five valid days can support only preliminary timing optimization; ten valid days remain the supported timing-candidate gate. Neither gate reopens the Tushare architecture decision.
 
-The first real `fund_daily` probe ran at 2026-07-14 15:05 CST with exactly one API call. Access permission passed, but the interface returned zero rows for the target date, so the evidence is `EMPTY_UNEXPECTED`, coverage is `0/183`, and no availability or completeness time was reached at that slot. Tushare remained empty through 16:00, then reached 183/183 coverage and full field quality at 16:15; the 16:30 snapshot matched. `FIRST_STABLE_TIME` remains unresolved until every later same-day slot finishes. BaoStock remained empty at 15:30 and 16:30.
+The two preserved real trading days, 2026-07-14 and 2026-07-15, both remained empty through 16:00, reached 183/183 with full field quality at 16:15, and stayed hash-identical through 18:00. Under the activated confirmation-point rule, `FIRST_AVAILABLE=16:15`, `FIRST_COMPLETE=16:15`, and `FIRST_STABLE=16:30`. The original raw statistics and the prior retrospective 16:15 stability interpretation remain documented in `reports/tushare_primary_upstream_source_decision_2026-07-15.md`.
 
-The independent LaunchAgent is installed from the isolated audit worktree. Its first runtime-environment check exposed a missing pandas interpreter under launchd and made no vendor call; the wrapper was corrected, and the follow-up duplicate-slot run exited `0` without another API call. Subsequent scheduled runs through 16:30 exited successfully. The next real scheduled slot is 17:00 CST.
+From 2026-07-16, core probes run at 16:00, 16:05, 16:10, 16:15, 16:30, and 17:00. The 17:30 and 18:00 slots run conditionally when stability is unresolved or invalidated. The 15:30 point is no longer a daily Availability timing slot; it is retained only for explicit low-frequency interface health checks and excluded from FIRST_AVAILABLE/COMPLETE/STABLE.
 
-Draft PR #3 tracks the framework and accumulating sanitized timing summaries on branch `agent/tushare-etf-availability-audit`. It must remain Draft until the observation gate is complete and Main has reviewed the timing evidence.
+Draft PR #3 tracks the framework, decision report, schedule change, and accumulating sanitized timing summaries on branch `agent/tushare-etf-availability-audit`. Its state is `DRAFT_AWAITING_DECISION_QC`; it must not be merged in this batch.
 
 ## 9. Current Main Bottlenecks
 
@@ -1060,13 +1067,18 @@ PR #2 = MERGED
 PR #2 Merge Commit = 47d129bfa7a055b7af81f4c57fea3a95d41287c6
 PR #2 Post-Merge Validation = PASS
 Tushare Proof Evidence = ACCEPTED
-Tushare Formal Staging Architecture = NOT_STARTED
-Tushare Primary Upstream Migration = APPROVED_IN_PRINCIPLE_BUT_NOT_STARTED
+Tushare Primary Upstream = APPROVED_PRIMARY_UPSTREAM
+Decision Evidence Confidence = LIMITED_TWO_DAY_EVIDENCE
+Decision Authority = USER_AUTHORIZED_EARLY_PROMOTION
+Tushare Formal Staging Architecture = AUTHORIZED_NOT_STARTED
+Tushare Primary Upstream Migration = AUTHORIZED_NOT_STARTED
 ETF Daily Availability Timing Audit = ACTIVE_COLLECTING
+Timing Optimization = ACTIVE
 Data Foundation Upgrade = NOT_STARTED
-Data Promotion = BLOCKED
+Data Promotion = BLOCKED_PENDING_IMPLEMENTATION_VALIDATION
+BaoStock = RECONCILIATION_ONLY
 Exposure Phase 2 = NOT_STARTED
-Next Data Foundation Decision = ETF Daily Availability Timing Audit (separate authorization required)
+Next Data Foundation Decision = Timing-window and safety-buffer optimization only
 ```
 
 Do not create adjusted preview. Current `ready_for_preview=false`.

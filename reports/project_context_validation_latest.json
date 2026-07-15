@@ -1,6 +1,6 @@
 {
   "validation_status": "VALID_WITH_WARNINGS",
-  "validated_at": "2026-07-14 16:36:25",
+  "validated_at": "2026-07-16 00:23:55",
   "repository_root": "<project_root>",
   "manifest_valid": true,
   "required_context_files_complete": true,
@@ -30,7 +30,7 @@
     "Context Phase D3",
     "Context Phase D4"
   ],
-  "next_research_phase": "ETF Daily Availability Timing Audit = ACTIVE_COLLECTING. Complete 5 valid trading days, extend to 10 if unstable, and require Main review before any primary upstream migration decision.",
+  "next_research_phase": "ETF Daily Availability Timing Audit and Timing Optimization = ACTIVE. Complete at least 5 valid trading days to evaluate the formal window and safety buffer; do not reopen the Tushare source-selection decision.",
   "latest_data_date": "2026-07-10",
   "selected_shadow_regime_candidate": "ASYMMETRIC_CONFIRM",
   "latest_known_regime_date": "2026-07-06",

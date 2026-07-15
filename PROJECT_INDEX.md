@@ -69,11 +69,18 @@ Tushare Minimal Staging Proof & PIT Contract: COMPLETE
 Tushare Staging / PIT: COMPLETE_WITH_LIMITATIONS
 Tushare Evidence Isolation: COMPLETE
 PR #2: DRAFT_AWAITING_RE_QC
-Tushare Formal Staging Architecture: NOT_STARTED
-Tushare Primary Upstream Migration: APPROVED_FOR_FUTURE_ENGINEERING / NOT_STARTED
+Tushare Primary Upstream: APPROVED_PRIMARY_UPSTREAM
+Decision Evidence Confidence: LIMITED_TWO_DAY_EVIDENCE
+Decision Authority: USER_AUTHORIZED_EARLY_PROMOTION
+Tushare Formal Staging Architecture: AUTHORIZED_NOT_STARTED
+Tushare Primary Upstream Migration: AUTHORIZED_NOT_STARTED
 ETF Daily Availability Timing Audit: ACTIVE_COLLECTING
+Timing Optimization: ACTIVE
 Data Foundation Upgrade: NOT_STARTED
-Data Promotion: BLOCKED
+Data Promotion: BLOCKED_PENDING_IMPLEMENTATION_VALIDATION
+BaoStock: RECONCILIATION_ONLY
+Canonical SSOT: data/etf_daily/ (UNCHANGED)
+PR #3: DRAFT_AWAITING_DECISION_QC
 Paper Execution Freshness Gate: ACTIVE
 Guarded Paper Execution Entry: ACTIVE
 Stale Data Fallback: BLOCKED
@@ -213,6 +220,7 @@ Formal Execution: BLOCKED
 - Tushare vs BaoStock Availability：`reports/tushare_vs_baostock_availability.csv`
 - Tushare ETF Universe Mapping Validation：`reports/tushare_etf_universe_mapping_validation.csv`
 - Tushare ETF Availability Framework Validation：`reports/tushare_etf_availability_framework_validation.md`
+- Tushare Primary Upstream Source Decision：`reports/tushare_primary_upstream_source_decision_2026-07-15.md`
 
 这些入口用于新 Codex thread 恢复项目状态。
 
