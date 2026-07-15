@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
-"""Render deterministic dated Phase A summary and remediation evidence."""
+"""Render immutable revisioned Phase A summary and semantic-remediation evidence."""
 
 from __future__ import annotations
 
 import argparse
 import json
-from collections import Counter
 from pathlib import Path
 
 try:
@@ -14,8 +13,10 @@ try:
         business_date_today,
         markdown_front_matter,
         project_root_from_script,
+        revisioned_artifact_path,
         stable_report_id,
-        superseded_artifact,
+        superseded_revision_artifact,
+        write_immutable_text,
     )
 except ModuleNotFoundError:
     from report_governance_common import (  # type: ignore
@@ -23,40 +24,38 @@ except ModuleNotFoundError:
         business_date_today,
         markdown_front_matter,
         project_root_from_script,
+        revisioned_artifact_path,
         stable_report_id,
-        superseded_artifact,
+        superseded_revision_artifact,
+        write_immutable_text,
     )
-
-
-SAMPLE_RESULTS = {
-    "PRODUCER_WRITE": (30, 30),
-    "CONSUMER_READ": (20, 20),
-    "APP_RUNTIME_READ": (15, 15),
-    "DASHBOARD_RUNTIME_READ": (15, 15),
-    "DOCUMENTATION_LINK": (20, 20),
-    "DYNAMIC_RESOLUTION": (15, 14),
-    "TEST_REFERENCE": (15, 15),
-    "HISTORICAL_REFERENCE": (15, 15),
-    "SCOPED_DYNAMIC_PRODUCER": (29, 29),
-}
-
-SHELL_DIRECTION_RESULTS = {
-    "REAL_REPOSITORY_POPULATION": (6, 6),
-    "COMMITTED_DIRECTION_FIXTURES": (18, 18),
-}
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--project-root", type=Path, default=project_root_from_script(__file__))
     parser.add_argument("--business-date", default=business_date_today())
+    parser.add_argument("--snapshot-revision", default="v2")
     return parser.parse_args()
 
 
-def _front(root: Path, date: str, path: str, report_type: str, status: str) -> str:
-    path_template = path.replace(date, "{date}")
-    supersedes = superseded_artifact(root, date, path_template)
-    meta = artifact_metadata(root, date, stable_report_id(path), 1, supersedes)
+def _front(
+    root: Path,
+    date: str,
+    path: str,
+    report_type: str,
+    status: str,
+    revision: str,
+    supersedes: str,
+) -> str:
+    meta = artifact_metadata(
+        root,
+        date,
+        stable_report_id(path),
+        1,
+        supersedes,
+        revision,
+    )
     return markdown_front_matter(
         report_id=stable_report_id(path),
         report_type=report_type,
@@ -64,236 +63,120 @@ def _front(root: Path, date: str, path: str, report_type: str, status: str) -> s
         created_at=meta["generated_at"],
         status=status,
         producer="scripts/governance/build_phase_a_summary.py",
-        source_run_id=f"reports-governance-phase-a-remediation-{date}",
+        source_run_id=f"reports-governance-phase-a-semantic-{revision}-{date}",
         supersedes=supersedes,
+        snapshot_revision=revision,
+        immutable=True,
     )
+
+
+def _distribution(title: str, values: dict[str, int]) -> str:
+    lines = [f"### {title}", ""]
+    lines.extend(f"- `{key}`: {value}" for key, value in sorted(values.items()))
+    return "\n".join(lines)
 
 
 def main() -> None:
     args = parse_args()
     root = args.project_root.resolve()
     date = args.business_date
-    catalog = json.loads((root / f"reports/report_catalog_{date}.json").read_text(encoding="utf-8"))
-    registry = json.loads(
-        (root / f"reports/report_dependency_registry_{date}.json").read_text(encoding="utf-8")
+    revision = args.snapshot_revision
+    if not revision.startswith("v") or not revision[1:].isdigit():
+        raise SystemExit("--snapshot-revision must look like v2")
+
+    catalog_path = revisioned_artifact_path("report_catalog", date, "json", revision)
+    registry_path = revisioned_artifact_path(
+        "report_dependency_registry", date, "json", revision
     )
+    catalog = json.loads((root / catalog_path).read_text(encoding="utf-8"))
+    registry = json.loads((root / registry_path).read_text(encoding="utf-8"))
     rows = catalog["records"]
     summary = catalog["summary"]
-    naming = Counter(row["naming_compliance"] for row in rows)
-    sample_total = sum(total for total, _ in SAMPLE_RESULTS.values())
-    sample_correct = sum(correct for _, correct in SAMPLE_RESULTS.values())
-    sample_lines = [
-        "| Reference type | Correct | Accuracy |",
-        "| --- | ---: | ---: |",
+    dynamic_rows = [
+        row for row in rows if "ACTIVE_DYNAMIC_PRODUCER" in row["archive_block_reasons"]
     ]
-    for kind, (total, correct) in SAMPLE_RESULTS.items():
-        sample_lines.append(f"| `{kind}` | {correct}/{total} | {correct / total:.1%} |")
-    sample_lines.append(
-        f"| **Overall** | **{sample_correct}/{sample_total}** | **{sample_correct / sample_total:.1%}** |"
-    )
 
-    dated_artifacts = [
-        f"reports/report_catalog_{date}.csv",
-        f"reports/report_catalog_{date}.json",
-        f"reports/report_catalog_{date}.md",
-        f"reports/report_dependency_registry_{date}.csv",
-        f"reports/report_dependency_summary_{date}.md",
-        f"reports/report_naming_compliance_audit_{date}.csv",
-        f"reports/reports_governance_phase_a_summary_{date}.md",
-        f"reports/reports_governance_phase_a_dynamic_producer_remediation_{date}.md",
-    ]
-    summary_path = f"reports/reports_governance_phase_a_summary_{date}.md"
-    body = f"""{_front(root, date, summary_path, 'GOVERNANCE_PHASE_SUMMARY', 'REMEDIATED_PENDING_FINAL_QC')}# Reports Governance Phase A Summary
+    summary_path = revisioned_artifact_path(
+        "reports_governance_phase_a_summary", date, "md", revision
+    )
+    summary_supersedes = superseded_revision_artifact(
+        root, "reports_governance_phase_a_summary", date, "md", revision
+    )
+    body = f"""{_front(root, date, summary_path, 'GOVERNANCE_PHASE_SUMMARY', 'REMEDIATED_PENDING_FINAL_SEMANTIC_RE_QC', revision, summary_supersedes)}# Reports Governance Phase A Summary
 
 ## State
 
-- Engineering: `REMEDIATED`
-- PR #4: `DRAFT_AWAITING_DYNAMIC_PRODUCER_RE_QC`
-- Report Catalog: `REBUILT_DYNAMIC_PRODUCERS_BLOCK_ARCHIVE`
-- Dependency Registry: `REMEDIATED_PENDING_FINAL_QC`
-- Dynamic Producer Linkage: `IMPLEMENTED_PENDING_QC`
-- Archive Candidate Classification: `REBUILT_PENDING_QC`
-- Availability Temporary Data Lifecycle: `DEFINED`
-- Temporary Audit Database: `RETAIN_UNTIL_MIGRATION_VALIDATED`
-- Naming Standard: `PROPOSED_ACTIVE_ON_MERGE`
-- Path Registry Design: `COMPLETE_PENDING_QC`
+- PR #4: `DRAFT_AWAITING_FINAL_SEMANTIC_RE_QC`
+- Reports Governance Phase A: `REMEDIATED`
+- Date Pattern Validation: `IMPLEMENTED_PENDING_QC`
+- Python Scope Semantics: `IMPLEMENTED_PENDING_QC`
+- Migration Eligibility: `REBUILT_PENDING_QC`
+- Deletion Eligibility: `REBUILT_PENDING_QC`
+- Snapshot Immutability: `ENFORCED_PENDING_QC`
+- Phase B Contract: `COMPLETE_PENDING_QC`
+- PR #3 Authority Preservation: `REMEDIATED_PENDING_QC`
+- Reports Migration Phase B: `BLOCKED`
 - Runtime Path Registry: `NOT_STARTED`
-- Migration Phase B: `BLOCKED`
-- Existing historical reports: `UNCHANGED`
-- ETF Availability Audit: `ACTIVE_COLLECTING`
+- Availability Audit: `ACTIVE_COLLECTING`
+- Availability temporary data: `RETAIN_UNTIL_MIGRATION_VALIDATED`
 
-## Dated immutable deliverables
-
-{chr(10).join(f'- `{item}`' for item in dated_artifacts)}
-
-No undated Catalog, Registry or Phase A summary is retained as a unique artifact. No runtime alias is required for these governance snapshots, so alias mapping is `NOT_APPLICABLE`.
-
-## Recomputed inventory
+## Inventory
 
 - Catalog records: {catalog['record_count']}
 - Dependency records: {registry['record_count']}
-- Distinct targets/patterns: {registry['summary']['distinct_referenced_paths']}
 - Dynamic patterns: {registry['summary']['dynamic_pattern_count']}
 - Runtime locked: {summary['runtime_locked_count']}
 - Current aliases: {summary['current_alias_count']}
-- Low-risk archive candidates: {summary['archive_candidate_count']}
-- Reports matched to active dynamic Producers: {summary['dynamic_producer_matched_report_count']}
 - Unknown roles: {summary['unknown_role_count']}
-- Naming compliant: {naming.get('COMPLIANT', 0)}
-- Naming non-compliant: {naming.get('NON_COMPLIANT', 0)}
+- Concrete active dynamic Producer matches: {len(dynamic_rows)}
+- Deprecated Archive Candidate true count: {summary['archive_candidate_count']}
+- Safe to delete after authorization: {summary['safe_to_delete_after_authorization_count']}
 
-## Human stratified sample
+{_distribution('Dependency safety', summary['by_dependency_safety'])}
 
-The final focused sample uses a new deterministic selection from the regenerated Registry. Each row was reviewed against the current source excerpt, parser semantics, direction and target. Golden fixtures are separate committed test evidence.
+{_distribution('Naming status', summary['by_naming_status'])}
 
-{chr(10).join(sample_lines)}
+{_distribution('Retention status', summary['by_retention_status'])}
 
-No high-impact App/Dashboard runtime or Archive Candidate misclassification was found. `PRODUCER_WRITE` is 30/30 and the 145-row overall sample exceeds the 95% threshold. One low-severity dynamic documentation example retained a trailing delimiter in its normalized target; it has no runtime or archive-candidate effect. The real repository contains six Shell copy direction records; all six were reviewed, and the committed 18-case direction corpus also passed.
+{_distribution('Migration eligibility', summary['by_migration_eligibility'])}
 
-## Reproducibility and boundary
+{_distribution('Deletion eligibility', summary['by_deletion_eligibility'])}
 
-- `reference_id` excludes line numbers and includes normalized source context.
-- Current source lines and excerpt hashes are independently testable.
-- Generated control artifacts are excluded from their own scan.
-- Final clean rebuild must be byte-identical on the first and three consecutive runs.
-- Phase A performs no move, rename or deletion of any pre-existing report.
-- Phase B remains blocked and no runtime Path Registry exists.
+{_distribution('Classification reasons', summary['by_archive_block_reason'])}
+
+## Governance meaning
+
+The deprecated single `archive_candidate` flag is retained only as a compatibility field and is always false. Migration eligibility and deletion eligibility are independent. A naming defect can require a rename without fabricating an active dependency, while active static or dynamic Producers still block migration. Phase A never grants automatic deletion safety.
+
+The complete App, Dashboard, automation, Work/Codex, deprecated-path, compatibility-period, consumer-completeness and rollback contract is stored in repository governance documents. This summary does not start Phase B or a runtime Path Registry.
 """
-    (root / summary_path).write_text(body, encoding="utf-8")
+    write_immutable_text(root / summary_path, body)
 
-    remediation_path = f"reports/reports_governance_phase_a_remediation_{date}.md"
-    remediation = f"""{_front(root, date, remediation_path, 'GOVERNANCE_REMEDIATION', 'READY_FOR_FINAL_INDEPENDENT_RE_QC')}# Reports Governance Phase A Remediation
-
-## Closed blockers
-
-1. Replaced undated PR-only control outputs with immutable dated artifacts.
-2. Replaced broad producer heuristics with Python AST and source-aware Shell/frontend/document parsers.
-3. Added stable `reference_id`, source spans, parser type, excerpt hash, generator version and source-tree commit.
-4. Added committed golden fixtures and rebuild/source-identity regression tests.
-5. Recomputed Catalog and migration classifications from remediated dependencies.
-6. Completed retention, cycle prevention, migration order, rollback and missing-date behavior in the Path Registry design.
-7. Reconciled PR #3's active Availability Audit state into the shared authority surfaces without copying its implementation or evidence.
-8. Classified Shell `cp/mv` source and destination by argument position; report sources no longer become false producers.
-9. Defined Availability temporary audit data retention, retirement prerequisites, authorization, evidence and post-retirement rollback.
-
-## Validation contract
-
-- Golden fixture accuracy: 100%.
-- Human stratified sample: {sample_correct}/{sample_total} ({sample_correct / sample_total:.1%}).
-- Producer sample: 30/30 (100%).
-- Shell direction: 6/6 real repository records and 18/18 committed directional fixtures.
-- First clean rebuild: required byte-identical.
-- Three-run rebuild: required byte-identical.
-- Full pytest, Dashboard, frontend, App release, context, path/secret, Zero-Move and protected-boundary checks are required before push.
-
-## State transition
-
-`READY_FOR_FINAL_INDEPENDENT_RE_QC`. This is not a `MERGE_READY` declaration. PR #4 remains Draft. Report Migration Phase B and runtime Path Registry remain blocked/not started. Availability temporary audit data remains retained and untouched.
-"""
-    (root / remediation_path).write_text(remediation, encoding="utf-8")
-
-    final_path = f"reports/reports_governance_phase_a_final_blocker_remediation_{date}.md"
-    shell_total = sum(total for total, _ in SHELL_DIRECTION_RESULTS.values())
-    shell_correct = sum(correct for _, correct in SHELL_DIRECTION_RESULTS.values())
-    final_report = f"""{_front(root, date, final_path, 'GOVERNANCE_FINAL_BLOCKER_REMEDIATION', 'READY_FOR_FINAL_INDEPENDENT_RE_QC')}# Reports Governance Phase A Final Blocker Remediation
-
-## Closed final blockers
-
-1. Shell `cp/mv` is parsed by command arguments. Copy sources use `FILE_COPY_SOURCE / READ`; move sources use `FILE_MOVE_SOURCE / MOVE_SOURCE`; only destinations use `PRODUCER_WRITE / WRITE`.
-2. `scripts/run_daily_close.sh:86-88` now records three read sources and zero false producers; lines 123-125 remain write destinations.
-3. Availability temporary audit data is `TEMPORARY_AUDIT_DATA / UNTIL_MIGRATION_VALIDATED / SHADOW_EVIDENCE_ONLY`, non-canonical, non-promotable and not deletable during active audit.
-4. Retirement requires all 14 prerequisites, Main/user authorization, dated readiness/validation evidence and dependency-consumer zero checks.
-
-## Focused validation
-
-- Golden fixtures: 100%.
-- Producer sample: 30/30 (100%).
-- Shell direction checks: {shell_correct}/{shell_total} ({shell_correct / shell_total:.1%}); real repository population 6/6, committed corpus 18/18.
-- Overall independent stratified sample: {sample_correct}/{sample_total} ({sample_correct / sample_total:.1%}).
-- Catalog records: {catalog['record_count']}.
-- Dependency records: {registry['record_count']}.
-- Distinct targets/patterns: {registry['summary']['distinct_referenced_paths']}.
-- Dynamic patterns: {registry['summary']['dynamic_pattern_count']}.
-- Runtime locked: {summary['runtime_locked_count']}.
-- Current aliases: {summary['current_alias_count']}.
-- Archive candidates: {summary['archive_candidate_count']}.
-- Unknown roles: {summary['unknown_role_count']}.
-
-## Retirement boundary
-
-No temporary Availability data was deleted or modified. Runtime Path Registry remains `NOT_STARTED`; Report Migration Phase B remains `BLOCKED`; ETF Availability Audit remains `ACTIVE_COLLECTING`. Formal rollback uses BaoStock fallback/reconciliation or the existing Canonical SSOT, never reconstructed audit staging. Missing deleted evidence must be marked `EVIDENCE_NOT_RECONSTRUCTABLE`.
-
-## State transition
-
-`READY_FOR_FINAL_INDEPENDENT_RE_QC`. PR #4 remains Draft. This report does not declare `MERGE_READY` and does not authorize merge, Phase B, runtime Registry activation or temporary-data retirement.
-"""
-    (root / final_path).write_text(final_report, encoding="utf-8")
-
-    dynamic_path = f"reports/reports_governance_phase_a_dynamic_producer_remediation_{date}.md"
-    dynamic_blocked = [
-        row
-        for row in rows
-        if row["archive_block_reason"] == "ACTIVE_DYNAMIC_PRODUCER"
-    ]
-    scoped_fixtures = json.loads(
-        (root / "tests/fixtures/report_governance/scoped_dynamic_producers.json").read_text(
-            encoding="utf-8"
-        )
+    remediation_path = (
+        root / f"reports/reports_governance_phase_a_final_semantic_remediation_{date}.md"
     )
-    positive_scoped_fixtures = [item for item in scoped_fixtures if item.get("expect_producer", True)]
-    trusted_dynamic_producers = [
-        row
-        for row in registry["records"]
-        if row["reference_type"] == "PRODUCER_WRITE"
-        and row["static_or_dynamic"] == "DYNAMIC"
-        and row["dynamic_pattern_kind"] in {"DATE_TEMPLATE", "TIMESTAMP_TEMPLATE", "RUN_ID_TEMPLATE"}
-        and not row["source_file"].startswith("tests/")
-    ]
-    static_producer_sample = [
-        row for row in rows if row["producer_match_type"] in {"STATIC_EXACT", "BOTH"}
-    ][:20]
-    no_producer_sample = [
-        row
-        for row in rows
-        if not row["active_generator"] and row["status"] in {"HISTORICAL", "UNKNOWN"}
-    ][:20]
-    dynamic_report = f"""{_front(root, date, dynamic_path, 'GOVERNANCE_DYNAMIC_PRODUCER_REMEDIATION', 'READY_FOR_INDEPENDENT_DYNAMIC_PRODUCER_RE_QC')}# Reports Governance Phase A Dynamic Producer Remediation
+    remediation = f"""{_front(root, date, remediation_path.relative_to(root).as_posix(), 'GOVERNANCE_FINAL_SEMANTIC_REMEDIATION', 'READY_FOR_FINAL_INDEPENDENT_SEMANTIC_RE_QC', revision, '')}# Reports Governance Phase A Final Semantic Remediation
 
-## Remediation result
+## Closed semantic blockers
 
-- Root cause: the previous analyzer merged same-named variables across all functions, so `path` in daily and weekly generators lost its lexical origin and dynamic write direction.
-- Python bindings are keyed by stable lexical `scope_id` plus name and version.
-- Module, class, function, async-function, lambda and comprehension scopes are isolated; closures resolve through lexical parents without sibling leakage.
-- Dynamic writes emit `PRODUCER_WRITE / WRITE` with scope, binding, structured pattern and Producer entrypoint metadata.
-- Trusted `<DATE>`, `<TIMESTAMP>` and `<RUN_ID>` templates use anchored full-path matching. `<DYNAMIC>` is retained for review and never auto-matched.
-- Each binding records assignment line/kind, normalized expression, static resolution or dynamic template, pattern variables, confidence, version and excerpt hash.
-- Committed scope/dynamic fixture cases: {len(scoped_fixtures)}/{len(scoped_fixtures)} pass; positive dynamic Producer cases: {len(positive_scoped_fixtures)}/{len(positive_scoped_fixtures)}.
-- Reports blocked by active dynamic Producers: {len(dynamic_blocked)}.
-- Remaining Archive Candidates: {summary['archive_candidate_count']}.
+1. Active Producer facts are represented as multiple traceable reasons; all {len(dynamic_rows)} concrete dynamic outputs contain `ACTIVE_DYNAMIC_PRODUCER`.
+2. DATE, MONTH, TIMESTAMP, RUN_ID and unknown dynamics are separate; DATE/MONTH use calendar parsing and unknown values never auto-match.
+3. Method lexical lookup skips CLASS scopes; explicit `self`, `cls` and class-name attributes remain conservative, traceable references.
+4. Dependency safety, naming status, retention, migration eligibility and deletion eligibility are independent fields.
+5. Revisioned snapshots are immutable and fail fast on changed bytes; prior 2026-07-14 snapshots were restored to their first-created contents.
+6. Phase B consumer and task-path contracts are complete but Phase B remains blocked.
+7. PR #3 nested Availability authority state is preserved with deep-merge and conflict rules.
 
-## Real producer linkage
+## Boundaries
 
-{chr(10).join(f"- `{row['source_file']}:{row['source_line_start']}` scope `{row['scope_id']}` -> `{row['dynamic_path_pattern']}` ({row['confidence']})" for row in trusted_dynamic_producers)}
-
-## Dynamically protected reports
-
-{chr(10).join(f"- `{row['current_path']}` via `{row['producer_match_type']}` ({row['dynamic_producer_match_confidence']})" for row in dynamic_blocked)}
-
-All 10 prior Archive Candidates are now matched and blocked with `ACTIVE_DYNAMIC_PRODUCER`; real-path recall is 10/10 and precision is 10/10. Deterministic matcher fixtures cover 20/20 positive concrete dates and 20/20 negative paths, including wrong prefixes/extensions and unknown broad templates. The focused Catalog review also sampled {len(static_producer_sample)}/20 static-Producer files and {len(no_producer_sample)}/20 historical/unknown files without an active Producer; no high-impact false lock was found.
-
-## Rebuild and remaining limits
-
-- First clean rebuild: byte-identical, zero diff.
-- Three consecutive rebuilds: byte-identical; Catalog/Registry aggregate hashes stable.
-- Source lines, excerpt hashes, scope IDs and binding IDs: reproducible against the current source commit.
-- Complex call-return propagation, deletion paths and unresolved control flow remain conservative: no concrete binding is fabricated; branch alternatives become low-confidence multi-bindings.
-- `<DYNAMIC>` does not auto-lock reports and remains a manual-review signal.
-
-## Boundary
-
-No pre-existing report was moved, renamed, deleted or overwritten. Runtime Path Registry remains `NOT_STARTED`; Report Migration Phase B remains `BLOCKED`; Availability Temporary Data Lifecycle remains `DEFINED`; the temporary audit database remains `RETAIN_UNTIL_MIGRATION_VALIDATED`; ETF Daily Availability Timing Audit remains `ACTIVE_COLLECTING`. PR #4 remains Draft and awaits independent dynamic Producer Re-QC.
+No historical report was moved, renamed or deleted. Formal strategy, execution, ETF SSOT, protected ledgers, PR #3 implementation/evidence and Availability staging were not modified. No real data interface was called. PR #4 remains Draft and requires final independent Re-QC.
 """
-    (root / dynamic_path).write_text(dynamic_report, encoding="utf-8")
+    write_immutable_text(remediation_path, remediation)
+    print(
+        "phase a summary built: "
+        f"catalog={catalog['record_count']} registry={registry['record_count']} "
+        f"dynamic_matches={len(dynamic_rows)} revision={revision}"
+    )
 
 
 if __name__ == "__main__":

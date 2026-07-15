@@ -14,10 +14,12 @@ try:
         markdown_front_matter,
         project_root_from_script,
         render_dependency_markdown,
+        revisioned_artifact_path,
         scan_dependencies,
         stable_report_id,
-        superseded_artifact,
+        superseded_revision_artifact,
         write_csv,
+        write_immutable_text,
         write_json,
     )
 except ModuleNotFoundError:  # Direct script execution.
@@ -28,10 +30,12 @@ except ModuleNotFoundError:  # Direct script execution.
         markdown_front_matter,
         project_root_from_script,
         render_dependency_markdown,
+        revisioned_artifact_path,
         scan_dependencies,
         stable_report_id,
-        superseded_artifact,
+        superseded_revision_artifact,
         write_csv,
+        write_immutable_text,
         write_json,
     )
 
@@ -51,6 +55,8 @@ FIELDS = [
     "source_tree_commit",
     "scope_id",
     "parent_scope_id",
+    "syntactic_parent_scope_id",
+    "lexical_resolution_parent_scope_id",
     "scope_type",
     "scope_qualified_name",
     "scope_source_start_line",
@@ -86,6 +92,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--project-root", type=Path, default=project_root_from_script(__file__))
     parser.add_argument("--business-date", default=business_date_today())
+    parser.add_argument("--snapshot-revision", default="v2")
     return parser.parse_args()
 
 
@@ -94,19 +101,31 @@ def main() -> None:
     root = args.project_root.resolve()
     rows = scan_dependencies(root)
     date = args.business_date
-    stem = f"report_dependency_registry_{date}"
-    registry_json = f"reports/{stem}.json"
+    revision = args.snapshot_revision
+    if not revision.startswith("v") or not revision[1:].isdigit():
+        raise SystemExit("--snapshot-revision must look like v2")
+    registry_json = revisioned_artifact_path(
+        "report_dependency_registry", date, "json", revision
+    )
+    registry_csv = revisioned_artifact_path(
+        "report_dependency_registry", date, "csv", revision
+    )
     metadata = artifact_metadata(
         root,
         date,
         stable_report_id(registry_json),
         len(rows),
-        superseded_artifact(root, date, "reports/report_dependency_registry_{date}.json"),
+        superseded_revision_artifact(
+            root, "report_dependency_registry", date, "json", revision
+        ),
+        revision,
     )
     payload = dependency_payload(rows, metadata)
-    write_json(root / f"reports/{stem}.json", payload)
-    write_csv(root / f"reports/{stem}.csv", rows, FIELDS)
-    summary_path = f"reports/report_dependency_summary_{date}.md"
+    write_json(root / registry_json, payload, immutable=True)
+    write_csv(root / registry_csv, rows, FIELDS, immutable=True)
+    summary_path = revisioned_artifact_path(
+        "report_dependency_summary", date, "md", revision
+    )
     front_matter = markdown_front_matter(
         report_id=stable_report_id(summary_path),
         report_type="DEPENDENCY_SUMMARY",
@@ -115,11 +134,12 @@ def main() -> None:
         status="REMEDIATED_PENDING_RE_QC",
         producer="scripts/governance/build_report_dependency_registry.py",
         source_run_id=f"reports-governance-phase-a-remediation-{date}",
-        supersedes=superseded_artifact(root, date, "reports/report_dependency_summary_{date}.md"),
+        supersedes=superseded_revision_artifact(
+            root, "report_dependency_summary", date, "md", revision
+        ),
+        snapshot_revision=revision,
     )
-    (root / summary_path).write_text(
-        render_dependency_markdown(payload, front_matter), encoding="utf-8"
-    )
+    write_immutable_text(root / summary_path, render_dependency_markdown(payload, front_matter))
     print(
         "report dependency registry built: "
         f"records={payload['record_count']} dynamic={payload['summary']['dynamic_pattern_count']}"
