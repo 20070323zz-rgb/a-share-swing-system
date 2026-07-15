@@ -2,7 +2,7 @@
 report_id: report_6215d9fa1d5052e2
 report_type: REPORT_CATALOG
 business_date: 2026-07-14
-created_at: 2026-07-14T22:23:35+08:00
+created_at: 2026-07-14T19:25:23+08:00
 status: REBUILT_PENDING_RE_QC
 phase: reports_governance_phase_a
 producer: scripts/governance/build_report_catalog.py
@@ -19,12 +19,12 @@ schema_version: 2
 ## Summary
 
 - Catalog records: 645
-- Runtime locked: 108
+- Runtime locked: 107
 - Current aliases: 36
 - Dated artifacts: 12
 - Low-risk archive candidates: 10
-- Unknown roles requiring review: 147
-- Catalog SHA-256: `cc5b17ade5bab2b37b2c180785d97a292456200527563d09a69a08a49fd365ac`
+- Unknown roles requiring review: 148
+- Catalog SHA-256: `0e3d796d623b7dedab1861a739e6d6b6c295efce8522a98fc9c768e74aded114`
 
 ### Roles
 
@@ -36,17 +36,17 @@ schema_version: 2
 - `GENERATED_SNAPSHOT`: 8
 - `GOVERNANCE_ARTIFACT`: 42
 - `RESEARCH_ARTIFACT`: 214
-- `RUNTIME_INPUT`: 45
-- `UNKNOWN`: 147
+- `RUNTIME_INPUT`: 44
+- `UNKNOWN`: 148
 - `VALIDATION_ARTIFACT`: 33
 
 ### Migration risks
 
 - `ACTIVE_REFERENCED`: 9
-- `HIGH_DEPENDENCY`: 161
+- `HIGH_DEPENDENCY`: 162
 - `LOW_RISK_ARCHIVE_CANDIDATE`: 10
 - `MEDIUM_DEPENDENCY`: 303
-- `RUNTIME_LOCKED`: 108
+- `RUNTIME_LOCKED`: 107
 - `UNKNOWN_REQUIRES_REVIEW`: 54
 
 ## Inventory
@@ -205,8 +205,8 @@ schema_version: 2
 | `reports/data_source_architecture_audit.json` | `AUDIT_ARTIFACT` | `AD_HOC` | `TUSHARE_DATA_FOUNDATION` | `UNKNOWN` | 7 | `MEDIUM_DEPENDENCY` | no | no |
 | `reports/data_source_architecture_audit.md` | `AUDIT_ARTIFACT` | `AD_HOC` | `TUSHARE_DATA_FOUNDATION` | `UNKNOWN` | 23 | `HIGH_DEPENDENCY` | no | no |
 | `reports/data_source_proposal.md` | `UNKNOWN` | `UNKNOWN` | `TUSHARE_DATA_FOUNDATION` | `UNKNOWN` | 5 | `MEDIUM_DEPENDENCY` | no | no |
-| `reports/data_source_status.json` | `GENERATED_SNAPSHOT` | `CONTINUOUS` | `TUSHARE_DATA_FOUNDATION` | `UNKNOWN` | 19 | `RUNTIME_LOCKED` | no | no |
-| `reports/data_source_status_report.md` | `RUNTIME_INPUT` | `CONTINUOUS` | `TUSHARE_DATA_FOUNDATION` | `2026-07-10` | 13 | `RUNTIME_LOCKED` | no | no |
+| `reports/data_source_status.json` | `GENERATED_SNAPSHOT` | `CONTINUOUS` | `TUSHARE_DATA_FOUNDATION` | `UNKNOWN` | 17 | `RUNTIME_LOCKED` | no | no |
+| `reports/data_source_status_report.md` | `UNKNOWN` | `UNKNOWN` | `TUSHARE_DATA_FOUNDATION` | `2026-07-10` | 11 | `HIGH_DEPENDENCY` | no | no |
 | `reports/data_update_app_task_fix_report.md` | `UNKNOWN` | `UNKNOWN` | `TUSHARE_DATA_FOUNDATION` | `UNKNOWN` | 5 | `MEDIUM_DEPENDENCY` | no | no |
 | `reports/data_update_automation_fix_report.md` | `UNKNOWN` | `UNKNOWN` | `TUSHARE_DATA_FOUNDATION` | `UNKNOWN` | 16 | `HIGH_DEPENDENCY` | no | no |
 | `reports/data_update_diagnosis_report.md` | `AUDIT_ARTIFACT` | `AD_HOC` | `TUSHARE_DATA_FOUNDATION` | `UNKNOWN` | 16 | `HIGH_DEPENDENCY` | no | no |
@@ -215,7 +215,7 @@ schema_version: 2
 | `reports/data_update_status.baostock_fallback.json` | `GENERATED_SNAPSHOT` | `CONTINUOUS` | `TUSHARE_DATA_FOUNDATION` | `UNKNOWN` | 9 | `RUNTIME_LOCKED` | no | no |
 | `reports/data_update_status.datasource_refresh.json` | `GENERATED_SNAPSHOT` | `CONTINUOUS` | `TUSHARE_DATA_FOUNDATION` | `UNKNOWN` | 8 | `MEDIUM_DEPENDENCY` | no | no |
 | `reports/data_update_status.dryrun.json` | `GENERATED_SNAPSHOT` | `CONTINUOUS` | `TUSHARE_DATA_FOUNDATION` | `UNKNOWN` | 9 | `MEDIUM_DEPENDENCY` | no | no |
-| `reports/data_update_status.json` | `GENERATED_SNAPSHOT` | `CONTINUOUS` | `TUSHARE_DATA_FOUNDATION` | `UNKNOWN` | 44 | `RUNTIME_LOCKED` | no | no |
+| `reports/data_update_status.json` | `GENERATED_SNAPSHOT` | `CONTINUOUS` | `TUSHARE_DATA_FOUNDATION` | `UNKNOWN` | 42 | `RUNTIME_LOCKED` | no | no |
 | `reports/effective_sample_coverage_audit.md` | `AUDIT_ARTIFACT` | `AD_HOC` | `UNKNOWN` | `UNKNOWN` | 4 | `MEDIUM_DEPENDENCY` | no | no |
 | `reports/etf_classification_report.md` | `UNKNOWN` | `UNKNOWN` | `UNKNOWN` | `UNKNOWN` | 27 | `HIGH_DEPENDENCY` | no | no |
 | `reports/etf_expansion_cleanup_report.md` | `UNKNOWN` | `UNKNOWN` | `UNIVERSE` | `UNKNOWN` | 5 | `MEDIUM_DEPENDENCY` | no | no |

@@ -5,9 +5,9 @@
   "metadata": {
     "report_id": "report_8336e1687e49d856",
     "business_date": "2026-07-14",
-    "generated_at": "2026-07-14T22:23:35+08:00",
-    "generator_version": "2.1.0",
-    "source_tree_commit": "08ec5ede0012d1b0ec3742a1c57fa927556bae18",
+    "generated_at": "2026-07-14T19:25:23+08:00",
+    "generator_version": "2.0.0",
+    "source_tree_commit": "375eb103d96a13100766e6e89c41b89a5f98afc3",
     "record_count": 645,
     "schema_version": 2
   },
@@ -20,12 +20,11 @@
     "reports/report_dependency_summary_2026-07-14.md",
     "reports/report_naming_compliance_audit_2026-07-14.csv",
     "reports/report_naming_compliance_audit_2026-07-14.metadata.json",
-    "reports/reports_governance_phase_a_final_blocker_remediation_2026-07-14.md",
     "reports/reports_governance_phase_a_remediation_2026-07-14.md",
     "reports/reports_governance_phase_a_summary_2026-07-14.md"
   ],
   "record_count": 645,
-  "catalog_sha256": "cc5b17ade5bab2b37b2c180785d97a292456200527563d09a69a08a49fd365ac",
+  "catalog_sha256": "0e3d796d623b7dedab1861a739e6d6b6c295efce8522a98fc9c768e74aded114",
   "summary": {
     "by_role": {
       "ARCHIVED_ARTIFACT": 45,
@@ -36,23 +35,23 @@
       "GENERATED_SNAPSHOT": 8,
       "GOVERNANCE_ARTIFACT": 42,
       "RESEARCH_ARTIFACT": 214,
-      "RUNTIME_INPUT": 45,
-      "UNKNOWN": 147,
+      "RUNTIME_INPUT": 44,
+      "UNKNOWN": 148,
       "VALIDATION_ARTIFACT": 33
     },
     "by_migration_risk": {
       "ACTIVE_REFERENCED": 9,
-      "HIGH_DEPENDENCY": 161,
+      "HIGH_DEPENDENCY": 162,
       "LOW_RISK_ARCHIVE_CANDIDATE": 10,
       "MEDIUM_DEPENDENCY": 303,
-      "RUNTIME_LOCKED": 108,
+      "RUNTIME_LOCKED": 107,
       "UNKNOWN_REQUIRES_REVIEW": 54
     },
-    "runtime_locked_count": 108,
+    "runtime_locked_count": 107,
     "current_alias_count": 36,
     "dated_artifact_count": 12,
     "archive_candidate_count": 10,
-    "unknown_role_count": 147
+    "unknown_role_count": 148
   },
   "records": [
     {
@@ -4045,10 +4044,9 @@
       "consumer_candidates": [
         "app/backend/readers.py",
         "dashboard/build_dashboard.py",
-        "scripts/run_daily_close.sh",
         "src/data_source_architecture_audit.py"
       ],
-      "reference_count": 19,
+      "reference_count": 17,
       "runtime_locked": true,
       "current_alias": false,
       "dated_artifact": false,
@@ -4064,10 +4062,10 @@
       "current_path": "reports/data_source_status_report.md",
       "filename": "data_source_status_report.md",
       "extension": ".md",
-      "role": "RUNTIME_INPUT",
-      "cadence": "CONTINUOUS",
+      "role": "UNKNOWN",
+      "cadence": "UNKNOWN",
       "topic": "TUSHARE_DATA_FOUNDATION",
-      "status": "ACTIVE",
+      "status": "UNKNOWN",
       "business_date": "2026-07-10",
       "created_date": "2026-06-24",
       "modified_at": "2026-07-12T10:30:12+08:00",
@@ -4075,19 +4073,17 @@
         "scripts/run_daily_close.sh",
         "src/data_sources/source_router.py"
       ],
-      "consumer_candidates": [
-        "scripts/run_daily_close.sh"
-      ],
-      "reference_count": 13,
-      "runtime_locked": true,
+      "consumer_candidates": [],
+      "reference_count": 11,
+      "runtime_locked": false,
       "current_alias": false,
       "dated_artifact": false,
       "archive_candidate": false,
-      "migration_risk": "RUNTIME_LOCKED",
-      "naming_compliance": "LEGACY_STABLE_ALIAS",
-      "metadata_compliance": "COMPLETE",
-      "confidence": "HIGH",
-      "notes": "Keep the current path stable until a registry-backed compatibility layer exists."
+      "migration_risk": "HIGH_DEPENDENCY",
+      "naming_compliance": "NOT_APPLICABLE",
+      "metadata_compliance": "PARTIAL",
+      "confidence": "LOW",
+      "notes": ""
     },
     {
       "report_id": "report_08d31d1cc69361b4",
@@ -4314,10 +4310,9 @@
         "app/backend/readers.py",
         "app/backend/task_runner.py",
         "dashboard/build_dashboard.py",
-        "scripts/run_daily_close.sh",
         "src/data_source_architecture_audit.py"
       ],
-      "reference_count": 44,
+      "reference_count": 42,
       "runtime_locked": true,
       "current_alias": false,
       "dated_artifact": false,
