@@ -56,10 +56,15 @@ Project Infrastructure Batch Standardization V1: COMPLETE
 Paper Execution Safety Phase 1: COMPLETE
 Tushare 5000 Data Foundation Audit: COMPLETE
 Reports Governance Phase A: SUPERSEDED_BY_PHASE_AR
-Reports Governance Phase A-R: ACTIVE
-Report Inventory: IMPLEMENTED_PENDING_INDEPENDENT_QC
-Active Reference Index: IMPLEMENTED_PENDING_INDEPENDENT_QC
-Migration Readiness: PROVISIONAL_PENDING_INDEPENDENT_QC
+Reports Governance Phase A-R: ACTIVE / ARCHITECTURE_ACCEPTED
+PR #5: DRAFT_AWAITING_RE_QC
+Report Inventory: REFRESHED_PENDING_QC
+Structured Scanner: REMEDIATED_PENDING_QC
+Backstop Scanner: REMEDIATED_PENDING_QC
+Scanner Disagreement: MATERIALIZED_PENDING_QC
+Manual Review Evidence: MATERIALIZED_PENDING_QC
+Migration Readiness: REBUILT_PENDING_QC
+Phase B Contract: COMPLETE_PENDING_QC
 Runtime Path Registry: NOT_STARTED
 Report File Migration: BLOCKED
 PR #1 Hygiene Cleanup: COMPLETE
@@ -216,7 +221,8 @@ Formal Execution: BLOCKED
 - Reports Governance Phase B Contract：`docs/reports_governance/phase_b_end_to_end_contract.md`
 - Reports Governance PR #4 Salvage Assessment：`reports/reports_governance_pr4_salvage_assessment_2026-07-15.md`
 - Reports Governance Phase A-R Build Report：`reports/reports_governance_phase_ar_build_2026-07-15.md`
-- Reports Governance Phase A-R Snapshot：`reports/governance/phase_ar/immutable_governance_snapshot_manifest_v1_2026-07-15.json`
+- Reports Governance Phase A-R v1 Snapshot（历史有效 / 已 supersede）：`reports/governance/phase_ar/immutable_governance_snapshot_manifest_v1_2026-07-15.json`
+- Reports Governance Phase A-R v2 Snapshot：`reports/governance/phase_ar/immutable_governance_snapshot_manifest_v2_2026-07-16.json`
 
 这些入口用于新 Codex thread 恢复项目状态。
 

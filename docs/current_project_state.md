@@ -73,10 +73,15 @@ Stale Data Fallback BLOCKED
 2026-07-10 Stale Trades AUDITED_NON_DESTRUCTIVELY
 Tushare 5000 Data Foundation Audit COMPLETE
 Reports Governance Phase A SUPERSEDED_BY_PHASE_AR
-Reports Governance Phase A-R ACTIVE
-Report Inventory IMPLEMENTED_PENDING_INDEPENDENT_QC
-Active Reference Index IMPLEMENTED_PENDING_INDEPENDENT_QC
-Migration Readiness PROVISIONAL_PENDING_INDEPENDENT_QC
+Reports Governance Phase A-R ACTIVE / ARCHITECTURE_ACCEPTED
+PR #5 DRAFT_AWAITING_RE_QC
+Report Inventory REFRESHED_PENDING_QC
+Structured Scanner REMEDIATED_PENDING_QC
+Backstop Scanner REMEDIATED_PENDING_QC
+Scanner Disagreement MATERIALIZED_PENDING_QC
+Manual Review Evidence MATERIALIZED_PENDING_QC
+Migration Readiness REBUILT_PENDING_QC
+Phase B Contract COMPLETE_PENDING_QC
 Runtime Path Registry NOT_STARTED
 Report File Migration BLOCKED
 Data Foundation Upgrade NOT_STARTED
@@ -990,18 +995,28 @@ Tushare remained empty through 16:00, reached 183/183 with full field quality at
 Draft PR #5 cleanly rebuilds report governance from `origin/main` without merging or cherry-picking PR #4. PR #4 is `CLOSED / SUPERSEDED / NOT MERGED`. Its candidate conclusions are rejected; only independently validated design semantics and the 43 false-negative regression facts are retained.
 
 ```text
-Reports Governance Phase A-R = ACTIVE
-Report Inventory = IMPLEMENTED_PENDING_INDEPENDENT_QC
+Reports Governance Phase A-R = ACTIVE / ARCHITECTURE_ACCEPTED
+PR #5 = DRAFT_AWAITING_RE_QC
+Report Inventory = REFRESHED_PENDING_QC
 Inventory Records = 644
-Structured References = 1961
-Backstop References = 4104
-Governance Evidence Records = 6946
+Structured Scanner = REMEDIATED_PENDING_QC
+Structured References = 2575
+Structured Producers = 433
+Structured Consumers = 632
+Markdown Runtime Misclassification = 0
+Backstop Scanner = REMEDIATED_PENDING_QC
+Backstop Query Records = 5152
+Backstop Found Queries = 1501
+Backstop Zero-Result Proofs = 3634
+Governance Evidence Records = 12293
 Unresolved Evidence = 0
 PR #4 Active-Reference Regression Recall = 43/43
-Scanner Disagreements = 35
-Machine-Provisional Candidates = 52
-Full Candidate Review = 52/52 PASS
-Final Provisional Dry-Run Candidates = 52
+Scanner Disagreements = 9 / MATERIALIZED_PENDING_QC
+Machine-Provisional Candidates = 49
+Full Candidate Review = 49/49 PASS
+Final Provisional Dry-Run Candidates = 49
+PROVISIONALLY_SAFE_FOR_PHASE_B_DRY_RUN = 13
+PROVISIONALLY_SAFE_RENAME_REQUIRED = 36
 Archived / Active / Runtime / Unknown Candidate Contamination = 0
 SAFE_TO_DELETE_AFTER_AUTHORIZATION = 0
 Runtime Path Registry = NOT_STARTED
@@ -1009,7 +1024,7 @@ Reports Migration Phase B = BLOCKED
 Zero Move = PASS
 ```
 
-The provisional label authorizes only a future Phase B dry-run. No report has been moved, renamed, deleted, or rewritten. App/Dashboard paths, Formal Execution, logs, and Availability data remain unchanged. Snapshot group hash: `86f1f31c6e128df6eeb4b9a259d822637c58f93f8053a2d8de8ab71bd5b33939`.
+The provisional label authorizes only a future Phase B dry-run. No report has been moved, renamed, deleted, or rewritten. App/Dashboard paths, Formal Execution, logs, and Availability data remain unchanged. The v1 snapshot remains `VALID_HISTORICAL_SNAPSHOT / SUPERSEDED`; the authoritative v2 group hash is stored in `reports/governance/phase_ar/immutable_governance_snapshot_manifest_v2_2026-07-16.json`.
 
 ## 9. Current Main Bottlenecks
 
@@ -1037,10 +1052,15 @@ New threads must still execute repository bootstrap before substantive edits.
 ```text
 Tushare 5000 Data Foundation Audit = COMPLETE
 Reports Governance Phase A = SUPERSEDED_BY_PHASE_AR
-Reports Governance Phase A-R = ACTIVE
-Report Inventory = IMPLEMENTED_PENDING_INDEPENDENT_QC
-Active Reference Index = IMPLEMENTED_PENDING_INDEPENDENT_QC
-Migration Readiness = PROVISIONAL_PENDING_INDEPENDENT_QC
+Reports Governance Phase A-R = ACTIVE / ARCHITECTURE_ACCEPTED
+PR #5 = DRAFT_AWAITING_RE_QC
+Report Inventory = REFRESHED_PENDING_QC
+Structured Scanner = REMEDIATED_PENDING_QC
+Backstop Scanner = REMEDIATED_PENDING_QC
+Scanner Disagreement = MATERIALIZED_PENDING_QC
+Manual Review Evidence = MATERIALIZED_PENDING_QC
+Migration Readiness = REBUILT_PENDING_QC
+Phase B Contract = COMPLETE_PENDING_QC
 Runtime Path Registry = NOT_STARTED
 Report File Migration = BLOCKED
 Preview Research = NOT STARTED
@@ -1072,7 +1092,7 @@ Stale Data Fallback = BLOCKED
 2026-07-10 Stale Trades = AUDITED_NON_DESTRUCTIVELY
 Tushare 5000 Data Foundation Audit = COMPLETE
 Reports Governance Phase A = SUPERSEDED_BY_PHASE_AR
-Reports Governance Phase A-R = ACTIVE
+Reports Governance Phase A-R = ACTIVE / ARCHITECTURE_ACCEPTED
 Report File Migration = BLOCKED
 Data Foundation Upgrade = NOT_STARTED
 PR #1 Hygiene Cleanup = COMPLETE

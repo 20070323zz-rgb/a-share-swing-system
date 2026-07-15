@@ -1,6 +1,9 @@
 {
   "artifact_type": "GOVERNANCE_CONTROL",
   "schema_version": "phase-ar-candidate-manual-review-v1",
+  "snapshot_status": "VALID_HISTORICAL_SNAPSHOT / SUPERSEDED",
+  "superseded_by": "reports/governance/phase_ar/manual_candidate_review_v2_2026-07-16.json",
+  "eligible_for_current_decision": false,
   "review_scope": "100_PERCENT_MACHINE_PROVISIONAL_CANDIDATES",
   "reviewer": "Codex independent Phase A-R review",
   "reviewed_at": "2026-07-15",
