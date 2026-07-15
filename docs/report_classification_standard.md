@@ -29,18 +29,34 @@ Scope: Zero Move / Zero Rename / Zero Delete
 
 分类优先级为：已归档路径 → 明确 runtime lock → stable alias → 明确日期周期 → governance/validation/audit/research 语义 → 可识别运行时读取 → `UNKNOWN`。高风险分类优先于低风险分类。
 
-## Migration risk taxonomy
+## Independent migration, naming and retention dimensions
 
-| Risk | Rule |
+`NOT_DATED_ARTIFACT` is retired as a migration-safety conclusion. A missing date is a naming concern, not evidence that a report is unsafe to migrate. Every Catalog record is evaluated independently along these dimensions:
+
+| Dimension | Controlled values |
 | --- | --- |
-| `RUNTIME_LOCKED` | 明确锁定路径，或被 App/Dashboard runtime 读取 |
-| `HIGH_DEPENDENCY` | 十处及以上可定位引用，需先做兼容层 |
-| `ACTIVE_REFERENCED` | 当前别名且存在活跃引用 |
-| `MEDIUM_DEPENDENCY` | 存在静态引用，但未达到 runtime/high 门槛 |
-| `LOW_RISK_ARCHIVE_CANDIDATE` | 明确日期产物、无引用、非 runtime、非 alias |
-| `UNKNOWN_REQUIRES_REVIEW` | 无足够证据支持安全迁移 |
+| `dependency_safety` | `ACTIVE_PRODUCER`, `ACTIVE_CONSUMER`, `RUNTIME_LOCKED`, `NO_ACTIVE_DEPENDENCY`, `UNKNOWN_DEPENDENCY` |
+| `naming_status` | `COMPLIANT_DATED`, `LEGACY_STABLE_ALIAS`, `NEEDS_DATE_NORMALIZATION`, `NOT_APPLICABLE`, `UNKNOWN` |
+| `retention_status` | `PERMANENT`, `PROJECT_LIFETIME`, `ROLLING_WINDOW`, `UNTIL_MIGRATION_VALIDATED`, `TEMPORARY_AUDIT`, `MANUAL_REVIEW` |
+| `migration_eligibility` | `SAFE_TO_MIGRATE`, `SAFE_TO_MIGRATE_RENAME_REQUIRED`, `MIGRATION_BLOCKED_ACTIVE_DEPENDENCY`, `MIGRATION_BLOCKED_RUNTIME`, `MIGRATION_BLOCKED_UNKNOWN`, `MIGRATION_BLOCKED_RETENTION` |
+| `deletion_eligibility` | `NOT_DELETION_CANDIDATE`, `DELETION_REVIEW_REQUIRED`, `SAFE_TO_DELETE_AFTER_AUTHORIZATION`, `DELETION_BLOCKED` |
 
-`LOW_RISK_ARCHIVE_CANDIDATE` 只表示可进入未来人工验证清单，不表示 Phase A 已批准移动。
+An undated legacy report with no active dependency may be `SAFE_TO_MIGRATE_RENAME_REQUIRED`. Unknown dependency or role is never promoted automatically. Phase A never emits `SAFE_TO_DELETE_AFTER_AUTHORIZATION`; deletion remains a separately authorized future decision.
+
+## Multiple archive-block evidence
+
+`archive_candidate` and `archive_block_reason` remain compatibility fields only and must not drive migration or deletion. The authoritative evidence fields are:
+
+```text
+archive_block_reasons: list[str]
+primary_archive_block_reason: str
+archive_block_evidence_ids: list[str]
+archive_block_evidence: dict[str, list[str]]
+```
+
+Reasons coexist and are ordered by: `ACTIVE_STATIC_PRODUCER`, `ACTIVE_DYNAMIC_PRODUCER`, `RUNTIME_CONSUMER`, `CURRENT_ALIAS`, `STATE_OR_GOVERNANCE_LOCKED`, `ACTIVE_AUDIT_ARTIFACT`, `RETENTION_BLOCKED`, `UNKNOWN_ROLE`, `NEEDS_DATE_NORMALIZATION`, `NO_ACTIVE_DEPENDENCY`. Producer and consumer reasons point to Registry `reference_id` values; rule-derived reasons use deterministic `rule_*` evidence IDs.
+
+The generator must publish distributions for all independent dimensions and explain why the deletion candidate count remains zero or differs. It must never use a large `NOT_DATED_ARTIFACT` bucket to conceal dependency safety.
 
 ## Dependency reference taxonomy
 
@@ -84,8 +100,11 @@ Shell `cp/mv` 必须按参数位置分类，不得因为命令中出现报告路
 report_id, current_path, filename, extension, role, cadence, topic, status,
 business_date, created_date, modified_at, producer_candidates,
 consumer_candidates, reference_count, runtime_locked, current_alias,
-dated_artifact, archive_candidate, migration_risk, naming_compliance,
-metadata_compliance, confidence, notes
+dated_artifact, dependency_safety, naming_status, retention_status,
+migration_eligibility, deletion_eligibility, archive_block_reasons,
+primary_archive_block_reason, archive_block_evidence_ids,
+archive_candidate, migration_risk, naming_compliance, metadata_compliance,
+confidence, notes
 ```
 
 规则：
@@ -96,6 +115,7 @@ metadata_compliance, confidence, notes
 4. 无法确认时写 `UNKNOWN`，不作推断。
 5. 输出按 `current_path`、引用路径和源位置稳定排序。
 6. runtime lock 与未知分类均采用保守处理，不得成为自动归档候选。
+7. `archive_candidate=false` is retained during Phase A for compatibility; it is not an eligibility result.
 
 ## Confidence
 

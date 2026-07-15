@@ -56,6 +56,17 @@ Examples:
 6. 不得把用户本机路径、临时目录名、Token 或环境标识写入文件名。
 7. `business_date` 与 `generated_at` 必须分开；生成时间不能替代业务日期。
 
+## Temporal token semantics
+
+Dynamic dependency patterns use distinct trusted tokens:
+
+- `<DATE>` accepts a complete valid calendar day in `YYYY-MM-DD` or explicitly declared compact `YYYYMMDD`; parsing must reject impossible dates.
+- `<MONTH>` accepts a valid `YYYY-MM`; compact `YYYYMM` is accepted only when the producer template explicitly declares that compact month form.
+- `<TIMESTAMP>` and `<RUN_ID>` are distinct and never match `<DATE>`.
+- `<DYNAMIC>` is used when semantics are not proven and never matches a concrete report automatically.
+
+Only exact semantic names such as `trade_date`, `business_date`, `report_date`, `run_date`, and `week_end_date`, an explicit day-level `strftime`, an explicit date/datetime formatting expression, or a schema declaration may establish `<DATE>`. Generic names such as `candidate`, `value`, `key`, `suffix`, `name`, and `version` remain `<DYNAMIC>`.
+
 ## Date archive plus stable alias
 
 机器读取的稳定入口可以继续使用：

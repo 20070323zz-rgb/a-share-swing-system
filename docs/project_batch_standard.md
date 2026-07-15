@@ -146,6 +146,21 @@ Codex must treat repository state files and project index entries as recovery su
 
 This standard is V1. Future changes should create a new governance batch and update this file with a new version section instead of silently changing the rules.
 
+## Report-path migration batch requirements
+
+A report-path migration batch must declare every report-family Producer and Consumer, including Backend API, Dashboard consumer, App consumer, App补齐数据按钮, launchd/shell automation, daily/weekly generation, tests and Work/Codex. The batch inputs must include the Report Path Registry or approved migration mapping plus a deprecated-path inventory, compatibility period, `consumer-completeness` result and rollback plan.
+
+The App backfill validation must cover button -> Backend API -> generator -> immutable dated artifact -> schema validation -> atomic alias update -> Dashboard/App reread -> displayed business date. `DATA_NOT_READY`, partial artifacts, Freshness Gate bypass, Availability staging writes and silent deprecated fallback are failures.
+
+State rules:
+
+- all file, Producer, Consumer, App, Dashboard, automation, Work/Codex and rollback gates pass: `MIGRATION_COMPLETE`;
+- any gate missing or unverified: `MIGRATION_PARTIAL`;
+- no migration batch may start while Reports Migration Phase B is `BLOCKED`;
+- Formal Execution inputs migrate last or stay `RUNTIME_LOCKED`.
+
+The standard validation stack includes a `deprecated-path` scan and `consumer-completeness` check for each authorized migration family.
+
 ## V1 Status
 
 ```text

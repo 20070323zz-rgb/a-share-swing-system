@@ -137,3 +137,13 @@ Before invoking the paper engine, require all of the following:
 - all critical files are readable and structurally valid.
 
 Any failure blocks the whole engine run. Do not partially execute, use a prior-day fallback, or rewrite historical paper trades. Historical execution issues belong in append-only audit records until Main approves a correction policy.
+
+## 12. Report-path migration is a complete consumer change
+
+Reports Migration Phase B remains blocked until separately authorized. A future migration must follow `docs/report_migration_plan.md` and migrate the Producer, dated artifact, runtime alias/Registry path, Backend API, Dashboard consumer, App consumer, App补齐数据按钮, launchd/shell automation, daily/weekly chain, tests, Work/Codex context, deprecated-path inventory, compatibility period and rollback together.
+
+Every batch must run `consumer-completeness`. Any missing component is `MIGRATION_PARTIAL`; only an end-to-end complete family is `MIGRATION_COMPLETE`. Dashboard/frontend build success alone is not runtime proof.
+
+Before using a migrated path, Work/Codex reads `PROJECT_INDEX.md`, `docs/current_project_state.md`, `docs/current_phase_status.json`, this playbook, `docs/project_batch_standard.md`, and the Report Path Registry or approved migration mapping. Do not infer paths from memory or introduce a second directory convention.
+
+New hard-coded deprecated paths fail the `deprecated-path` scan. Compatibility reads warn until the declared deadline and fail fast after it. `DATA_NOT_READY` never falls back to an arbitrary old file. Formal Execution inputs migrate last or remain `RUNTIME_LOCKED`.

@@ -19,6 +19,9 @@ producer: <entrypoint>
 source_run_id: <stable_run_id>
 retention_class: <retention_class>
 schema_version: <integer>
+snapshot_revision: <v1|v2|...>
+supersedes: <prior revision path or null>
+immutable: true
 ```
 
 CSV 必须由同业务日期的 JSON 或 `<artifact>.metadata.json` 伴随；JSON 顶层必须包含：
@@ -30,6 +33,9 @@ generator_version
 source_tree_commit
 record_count
 schema_version
+snapshot_revision
+supersedes
+immutable
 ```
 
 如存在稳定机器入口，还必须记录：
@@ -49,6 +55,18 @@ atomic_update_required
 - 文件名日期必须等于 `business_date`。
 - `source_tree_commit` 标识生成器实际扫描的最后一个非控制产物提交；控制产物提交本身不进入扫描输入，避免自引用提交哈希循环。
 - `report_id` 由规范化目标路径稳定派生，不依赖行号、mtime 或扫描顺序。
+
+## Immutable dated snapshot contract
+
+Dated governance artifacts are append-only snapshots. A revision marker, when needed, is placed before the date: `<name>_v2_YYYY-MM-DD.<ext>`. The writer follows exactly these rules:
+
+1. If the target does not exist, create it atomically.
+2. If it exists with byte-identical content, treat the rebuild as an idempotent success.
+3. If it exists with different bytes, fail fast; no `force` overwrite option exists.
+4. Changed content requires a new revision whose metadata names the prior snapshot in `supersedes`.
+5. Previously published snapshots, including 2026-07-14 and the v1 2026-07-15 set, are never regenerated in place.
+
+Control-plane scan exclusions are determined by recognized artifact family and metadata, not by a hard-coded file count. Every revision records `snapshot_revision`, `supersedes`, `source_tree_commit`, `generated_at`, and `immutable=true`.
 
 ## Retention classes
 

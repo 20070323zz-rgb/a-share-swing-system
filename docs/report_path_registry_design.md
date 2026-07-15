@@ -180,3 +180,15 @@ ACTIVE_COLLECTING
 ## Single-point-of-failure controls
 
 Registry 是显式控制平面，不是静默 fallback。运行时发布必须同时保留上一有效 Registry 版本、内容哈希与本地只读 rollback copy；当前版本缺失或损坏时返回控制错误，由人工选择回退版本。系统不得自行猜测路径。
+
+## Consumer completeness and runtime migration contract
+
+The Registry record for a migrated report family is incomplete until it identifies the Producer, immutable dated path, runtime alias, Backend API, Dashboard consumer, App consumer, App补齐数据按钮, launchd/shell automation, daily/weekly chain, tests, Work/Codex discovery path, deprecated paths, compatibility period and rollback target.
+
+`consumer-completeness=PASS` requires every Dependency Registry Consumer to have an explicit replacement and end-to-end validation result. An unknown or missing Consumer fails closed and leaves the family `MIGRATION_PARTIAL`; only the complete graph can become `MIGRATION_COMPLETE`.
+
+Dashboard consumer and App consumer reads must resolve through the Registry, a stable alias or a stable Backend API. A successful static build does not prove runtime resolution. The migration fixture must exercise the real resolution boundary and verify the displayed business date.
+
+Every Registry publication includes a deprecated-path inventory. CI/tests reject new hard-coded deprecated paths, compatibility reads emit warnings, and post-compatibility reads fail fast. `DATA_NOT_READY`, schema mismatch, alias failure and missing Registry data never silently fallback to a deprecated or arbitrary older file.
+
+The full Phase B contract and App backfill sequence are authoritative in `docs/report_migration_plan.md`. This design does not implement or activate the runtime Registry.
