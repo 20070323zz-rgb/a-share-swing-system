@@ -26,6 +26,40 @@ Authority reads follow `AGENTS.md`, current code/data, `docs/current_phase_statu
 - At expiry: old paths fail fast; silent fallback is forbidden.
 - Completion requires consumer completeness and zero unauthorized old-path hits.
 
+## DATA_NOT_READY
+
+- `DATA_NOT_READY` is a fail-closed terminal result for the current run; it is never permission to read an arbitrary older dated file.
+- A Producer, Consumer, backfill task, or automation entrypoint must not silently fall back to a deprecated path when current data is unavailable.
+- `DATA_NOT_READY` must not update a runtime alias, switch a Registry entry, or leave a half-completed migration state.
+- Recovery requires the current business-date input to pass the same schema, coverage, and freshness gates as a normal run.
+
+## Freshness Gate and staging isolation
+
+- Data completion, report generation, and runtime alias switching must all pass the Freshness Gate; no migration step may bypass it.
+- If the Freshness Gate fails, the previous formal state and previous stable alias remain unchanged.
+- A failed staging write or schema validation must not contaminate Canonical SSOT, the formal report path, or its active alias.
+- Staging output is noncanonical until validation succeeds and the atomic alias switch completes.
+
+## launchd, shell, and scheduler surface
+
+Every migrated report family must synchronously inspect and test all of the following before completion:
+
+- launchd plist program arguments and environment;
+- shell wrappers and cron-compatible scripts;
+- environment variables and working directory assumptions;
+- stdout and stderr paths;
+- every deprecated-path reference in those surfaces.
+
+Any missed scheduler or shell consumer is `MIGRATION_PARTIAL` and fails closed.
+
+## Immutable dated artifacts and stable aliases
+
+- Every successful generation writes a new immutable dated artifact; the dated path is never overwritten.
+- The dated path business-date component must equal the validated `business_date` in the artifact.
+- Only after schema and freshness validation may the stable alias be updated atomically.
+- App and Dashboard consumers read the approved Registry/stable alias and must not guess the newest dated filename.
+- If alias replacement fails, the previous alias remains intact and the new dated artifact stays nonactive for investigation.
+
 ## Rollback and states
 
 - `MIGRATION_PARTIAL`: any Producer or Consumer remains on the old path, any evidence is unresolved, or compatibility cannot be expired.
