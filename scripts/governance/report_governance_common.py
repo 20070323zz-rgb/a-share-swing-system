@@ -16,7 +16,7 @@ import subprocess
 from collections import Counter, defaultdict
 from datetime import date as calendar_date, datetime, timedelta
 from pathlib import Path
-from typing import Iterable
+from typing import Iterable, Sequence
 from zoneinfo import ZoneInfo
 
 try:
@@ -90,9 +90,24 @@ CONTROL_REPORT_RE = re.compile(
     r"report_catalog_(?:v\d+_)?20\d{2}-\d{2}-\d{2}\.(?:csv|json|md)|"
     r"report_dependency_registry_(?:v\d+_)?20\d{2}-\d{2}-\d{2}\.(?:csv|json)|"
     r"report_dependency_summary_(?:v\d+_)?20\d{2}-\d{2}-\d{2}\.md|"
+    r"report_governance_evidence_registry_(?:v\d+_)?20\d{2}-\d{2}-\d{2}\.(?:csv|json)|"
     r"report_naming_compliance_audit_(?:v\d+_)?20\d{2}-\d{2}-\d{2}\.(?:csv|metadata\.json)|"
-    r"reports_governance_phase_a_(?:summary|remediation|final_blocker_remediation|dynamic_producer_remediation|final_semantic_remediation)_(?:v\d+_)?20\d{2}-\d{2}-\d{2}\.md"
+    r"reports_governance_phase_a_(?:summary|remediation|final_blocker_remediation|dynamic_producer_remediation|final_semantic_remediation|evidence_and_archive_state_remediation)_(?:v\d+_)?20\d{2}-\d{2}-\d{2}\.md"
     r")$"
+)
+
+DEFAULT_ARCHIVE_ROOTS = ("reports/archive/",)
+CLASSIFICATION_SCHEMA_VERSION = 3
+EVIDENCE_REGISTRY_VERSION = "v1"
+
+LOCATION_STATUS_VALUES = (
+    "ACTIVE_ROOT",
+    "ACTIVE_SUBDIRECTORY",
+    "ALREADY_ARCHIVED",
+    "TEMPORARY_STAGING",
+    "RUNTIME_ALIAS_LOCATION",
+    "GOVERNANCE_CONTROL_LOCATION",
+    "UNKNOWN_LOCATION",
 )
 
 RUNTIME_LOCKED_PATHS = {
@@ -205,7 +220,10 @@ def project_root_from_script(script_file: str) -> Path:
 
 
 def relative_path(root: Path, path: Path) -> str:
-    return path.resolve().relative_to(root.resolve()).as_posix()
+    try:
+        return path.relative_to(root).as_posix()
+    except ValueError:
+        return path.absolute().relative_to(root.absolute()).as_posix()
 
 
 def stable_report_id(current_path: str) -> str:
@@ -215,6 +233,65 @@ def stable_report_id(current_path: str) -> str:
 
 def is_control_report_path(path: str) -> bool:
     return path in CONTROL_REPORT_PATHS or bool(CONTROL_REPORT_RE.fullmatch(path))
+
+
+def normalize_governance_path(path: str) -> str:
+    """Normalize a repository-relative governance path without resolving symlinks."""
+
+    value = path.replace("\\", "/").lstrip("/")
+    parts: list[str] = []
+    for part in value.split("/"):
+        if part in {"", "."}:
+            continue
+        if part == "..":
+            if parts:
+                parts.pop()
+            continue
+        parts.append(part)
+    return "/".join(parts)
+
+
+def normalize_archive_roots(archive_roots: Sequence[str]) -> tuple[str, ...]:
+    roots = []
+    for root in archive_roots:
+        normalized = normalize_governance_path(root).rstrip("/") + "/"
+        if normalized == "/" or not normalized.startswith("reports/"):
+            raise ValueError(f"archive root must be repository-relative under reports/: {root}")
+        roots.append(normalized)
+    if not roots:
+        raise ValueError("at least one explicit archive root is required")
+    return tuple(sorted(set(roots)))
+
+
+def load_report_governance_config(root: Path) -> dict:
+    path = root / "configs/report_governance.json"
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    payload["archive_roots"] = list(
+        normalize_archive_roots(payload.get("archive_roots", DEFAULT_ARCHIVE_ROOTS))
+    )
+    return payload
+
+
+def classify_location_status(
+    path: str,
+    archive_roots: Sequence[str] = DEFAULT_ARCHIVE_ROOTS,
+    *,
+    is_symlink: bool = False,
+) -> str:
+    normalized = normalize_governance_path(path)
+    roots = normalize_archive_roots(archive_roots)
+    if any(normalized.startswith(root) for root in roots):
+        return "ALREADY_ARCHIVED"
+    if is_control_report_path(normalized):
+        return "GOVERNANCE_CONTROL_LOCATION"
+    if is_symlink or is_current_alias(normalized):
+        return "RUNTIME_ALIAS_LOCATION"
+    if normalized.startswith(("reports/staging/", "reports/tmp/", "reports/temporary/")):
+        return "TEMPORARY_STAGING"
+    if normalized.startswith("reports/"):
+        remainder = normalized.removeprefix("reports/")
+        return "ACTIVE_SUBDIRECTORY" if "/" in remainder else "ACTIVE_ROOT"
+    return "UNKNOWN_LOCATION"
 
 
 def business_date_today() -> str:
@@ -248,7 +325,7 @@ def superseded_revision_artifact(
         return superseded_artifact(
             root, business_date, f"reports/{base}_{{date}}.{extension}"
         )
-    previous_revision = "" if revision == "v2" else f"v{max(int(revision[1:]) - 1, 1)}"
+    previous_revision = "" if revision in {"v1", "v2"} else f"v{int(revision[1:]) - 1}"
     candidate = revisioned_artifact_path(base, business_date, extension, previous_revision)
     return candidate if (root / candidate).exists() else ""
 
@@ -275,6 +352,8 @@ def source_tree_commit(root: Path) -> str:
         ":(exclude,glob)reports/report_dependency_registry_*.csv",
         ":(exclude,glob)reports/report_dependency_registry_*.json",
         ":(exclude,glob)reports/report_dependency_summary_*.md",
+        ":(exclude,glob)reports/report_governance_evidence_registry_*.csv",
+        ":(exclude,glob)reports/report_governance_evidence_registry_*.json",
         ":(exclude,glob)reports/report_naming_compliance_audit_*",
         ":(exclude)reports/reports_governance_phase_a_summary.md",
         ":(exclude,glob)reports/reports_governance_phase_a_summary_*.md",
@@ -282,6 +361,7 @@ def source_tree_commit(root: Path) -> str:
         ":(exclude,glob)reports/reports_governance_phase_a_final_blocker_remediation_*.md",
         ":(exclude,glob)reports/reports_governance_phase_a_dynamic_producer_remediation_*.md",
         ":(exclude,glob)reports/reports_governance_phase_a_final_semantic_remediation_*.md",
+        ":(exclude,glob)reports/reports_governance_phase_a_evidence_and_archive_state_remediation_*.md",
     ]
     value = subprocess.run(command, cwd=root, check=True, capture_output=True, text=True).stdout.strip()
     return value or subprocess.run(
@@ -316,9 +396,11 @@ def artifact_metadata(
         "generator_version": GENERATOR_VERSION,
         "source_tree_commit": commit,
         "record_count": record_count,
-        "schema_version": 2,
+        "schema_version": CLASSIFICATION_SCHEMA_VERSION,
         "snapshot_revision": snapshot_revision or "v1",
         "immutable": True,
+        "evidence_registry_version": EVIDENCE_REGISTRY_VERSION,
+        "classification_schema_version": CLASSIFICATION_SCHEMA_VERSION,
     }
     if supersedes:
         metadata["supersedes"] = supersedes
@@ -350,9 +432,11 @@ def markdown_front_matter(
             f"producer: {producer}",
             f"source_run_id: {source_run_id}",
             f"retention_class: {retention_class}",
-            "schema_version: 2",
+            f"schema_version: {CLASSIFICATION_SCHEMA_VERSION}",
             f"snapshot_revision: {snapshot_revision}",
             f"immutable: {'true' if immutable else 'false'}",
+            f"evidence_registry_version: {EVIDENCE_REGISTRY_VERSION}",
+            f"classification_schema_version: {CLASSIFICATION_SCHEMA_VERSION}",
     ]
     if supersedes:
         lines.append(f"supersedes: {supersedes}")
@@ -548,8 +632,8 @@ def dependency_payload(rows: list[dict], metadata: dict | None = None) -> dict:
         json.dumps(rows, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
     ).hexdigest()
     return {
-        "schema_version": 2,
-        "registry_id": "a_share_swing_system_report_dependency_registry_v2",
+        "schema_version": CLASSIFICATION_SCHEMA_VERSION,
+        "registry_id": "a_share_swing_system_report_dependency_registry_v3",
         "repository_root": "<project_root>",
         "metadata": metadata or {},
         "record_count": len(rows),
@@ -771,7 +855,10 @@ def naming_compliance(path: str, role: str, current_alias: bool) -> str:
     if current_alias or role in {"RUNTIME_INPUT", "GENERATED_SNAPSHOT"}:
         return "LEGACY_STABLE_ALIAS"
     if role == "ARCHIVED_ARTIFACT":
-        return "NOT_APPLICABLE"
+        base_without_date = re.sub(r"_20\d{2}-\d{2}(?:-\d{2})?$", "", stem)
+        snake = bool(SNAKE_RE.fullmatch(base_without_date))
+        has_terminal_date = bool(TERMINAL_DATE_RE.search(stem) or TERMINAL_MONTH_RE.search(stem))
+        return "COMPLIANT" if snake and has_terminal_date else "NON_COMPLIANT"
     base_without_date = re.sub(r"_20\d{2}-\d{2}(?:-\d{2})?$", "", stem)
     snake = bool(SNAKE_RE.fullmatch(base_without_date))
     if role == "DATED_MONTHLY":
@@ -843,14 +930,54 @@ ARCHIVE_BLOCK_REASON_PRIORITY = (
     "ACTIVE_AUDIT_ARTIFACT",
     "RETENTION_BLOCKED",
     "UNKNOWN_ROLE",
+    "ALREADY_ARCHIVED_LOCATION",
     "NEEDS_DATE_NORMALIZATION",
+    "RETENTION_REVIEW_REQUIRED",
     "NO_ACTIVE_DEPENDENCY",
 )
 
 
+RULE_DEFINITIONS = {
+    "ACTIVE_STATIC_PRODUCER": {"namespace": "DEPENDENCY", "evidence_type": "STATIC_PRODUCER_REFERENCE", "rule_id": "active_static_producer", "rule_version": "v1", "evaluated_field": "dependency_safety"},
+    "ACTIVE_DYNAMIC_PRODUCER": {"namespace": "DEPENDENCY", "evidence_type": "DYNAMIC_PRODUCER_REFERENCE", "rule_id": "active_dynamic_producer", "rule_version": "v1", "evaluated_field": "matched_dynamic_producer_ids"},
+    "RUNTIME_CONSUMER": {"namespace": "STATE_AUTHORITY", "evidence_type": "RUNTIME_CONSUMER_RULE", "rule_id": "runtime_consumer", "rule_version": "v1", "evaluated_field": "runtime_locked"},
+    "CURRENT_ALIAS": {"namespace": "STATE_AUTHORITY", "evidence_type": "ALIAS_RULE", "rule_id": "current_alias", "rule_version": "v1", "evaluated_field": "current_alias"},
+    "STATE_OR_GOVERNANCE_LOCKED": {"namespace": "STATE_AUTHORITY", "evidence_type": "CONTROL_ARTIFACT_RULE", "rule_id": "state_or_governance_locked", "rule_version": "v1", "evaluated_field": "role"},
+    "ACTIVE_AUDIT_ARTIFACT": {"namespace": "REPORT_ROLE", "evidence_type": "CLASSIFICATION_RULE", "rule_id": "active_audit_artifact", "rule_version": "v1", "evaluated_field": "role"},
+    "RETENTION_BLOCKED": {"namespace": "RETENTION", "evidence_type": "RETENTION_RULE", "rule_id": "retention_blocked", "rule_version": "v1", "evaluated_field": "retention_status"},
+    "UNKNOWN_ROLE": {"namespace": "REPORT_ROLE", "evidence_type": "CLASSIFICATION_RULE", "rule_id": "unknown_role", "rule_version": "v1", "evaluated_field": "role"},
+    "ALREADY_ARCHIVED_LOCATION": {"namespace": "LOCATION", "evidence_type": "LOCATION_RULE", "rule_id": "already_archived_location", "rule_version": "v1", "evaluated_field": "location_status"},
+    "NEEDS_DATE_NORMALIZATION": {"namespace": "NAMING", "evidence_type": "NAMING_RULE", "rule_id": "needs_date_normalization", "rule_version": "v1", "evaluated_field": "naming_status"},
+    "RETENTION_REVIEW_REQUIRED": {"namespace": "RETENTION", "evidence_type": "RETENTION_RULE", "rule_id": "retention_review_required", "rule_version": "v1", "evaluated_field": "retention_status"},
+    "NO_ACTIVE_DEPENDENCY": {"namespace": "GOVERNANCE_RULE", "evidence_type": "ELIGIBILITY_RULE", "rule_id": "no_active_dependency", "rule_version": "v1", "evaluated_field": "dependency_safety"},
+}
+
+
+def governance_evidence_id(report_id: str, reason: str, source_record_id: str = "") -> str:
+    definition = RULE_DEFINITIONS[reason]
+    identity = {
+        "report_id": report_id,
+        "reason": reason,
+        "source_record_id": source_record_id,
+        "rule_id": definition["rule_id"],
+        "rule_version": definition["rule_version"],
+    }
+    digest = hashlib.sha256(
+        json.dumps(identity, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    ).hexdigest()[:24]
+    namespace = "DEPENDENCY" if source_record_id else definition["namespace"]
+    return f"evidence_{namespace.lower()}_{digest}"
+
+
 def _rule_evidence_id(report_id: str, reason: str) -> str:
-    digest = hashlib.sha256(f"{report_id}:{reason}".encode("utf-8")).hexdigest()[:20]
-    return f"rule_{digest}"
+    return governance_evidence_id(report_id, reason)
+
+
+def _dependency_evidence_ids(report_id: str, reason: str, rows: Sequence[dict]) -> list[str]:
+    return sorted(
+        governance_evidence_id(report_id, reason, row["reference_id"])
+        for row in rows
+    )
 
 
 def _retention_status(role: str, current_alias: bool, runtime_locked: bool) -> str:
@@ -868,7 +995,9 @@ def _normalized_naming_status(role: str, current_alias: bool, naming: str) -> st
         return "LEGACY_STABLE_ALIAS"
     if role in {"DATED_DAILY", "DATED_WEEKLY", "DATED_MONTHLY"} and naming == "COMPLIANT":
         return "COMPLIANT_DATED"
-    if role in {"RUNTIME_INPUT", "GENERATED_SNAPSHOT", "ARCHIVED_ARTIFACT"}:
+    if role == "ARCHIVED_ARTIFACT":
+        return "NEEDS_DATE_NORMALIZATION" if naming == "NON_COMPLIANT" else "NOT_APPLICABLE"
+    if role in {"RUNTIME_INPUT", "GENERATED_SNAPSHOT"}:
         return "NOT_APPLICABLE"
     if role == "UNKNOWN":
         return "UNKNOWN"
@@ -877,7 +1006,41 @@ def _normalized_naming_status(role: str, current_alias: bool, naming: str) -> st
     return "NOT_APPLICABLE"
 
 
-def build_catalog_records(root: Path, dependency_rows: list[dict]) -> list[dict]:
+def determine_migration_eligibility(
+    *,
+    location_status: str,
+    runtime_locked: bool,
+    current_alias: bool,
+    active_generator: bool,
+    active_consumer: bool,
+    dependency_safety: str,
+    role: str,
+    retention_status: str,
+    naming_status: str,
+) -> str:
+    if location_status == "ALREADY_ARCHIVED":
+        return "MIGRATION_NOT_APPLICABLE_ALREADY_ARCHIVED"
+    if location_status == "GOVERNANCE_CONTROL_LOCATION":
+        return "MIGRATION_NOT_APPLICABLE_CONTROL_ARTIFACT"
+    if runtime_locked or current_alias:
+        return "MIGRATION_BLOCKED_RUNTIME"
+    if active_generator or active_consumer:
+        return "MIGRATION_BLOCKED_ACTIVE_DEPENDENCY"
+    if dependency_safety == "UNKNOWN_DEPENDENCY" or role == "UNKNOWN":
+        return "MIGRATION_BLOCKED_UNKNOWN"
+    if retention_status in {"PERMANENT", "UNTIL_MIGRATION_VALIDATED", "TEMPORARY_AUDIT"}:
+        return "MIGRATION_BLOCKED_RETENTION"
+    if naming_status == "NEEDS_DATE_NORMALIZATION":
+        return "SAFE_TO_MIGRATE_RENAME_REQUIRED"
+    return "SAFE_TO_MIGRATE"
+
+
+def build_catalog_records(
+    root: Path,
+    dependency_rows: list[dict],
+    archive_roots: Sequence[str] = DEFAULT_ARCHIVE_ROOTS,
+) -> list[dict]:
+    archive_roots = normalize_archive_roots(archive_roots)
     by_report: dict[str, list[dict]] = defaultdict(list)
     dynamic_producers: list[dict] = []
     for row in dependency_rows:
@@ -898,6 +1061,11 @@ def build_catalog_records(root: Path, dependency_rows: list[dict]) -> list[dict]
         consumers = sorted({row["source_file"] for row in dependencies if row["consumer_or_producer"] == "CONSUMER"})
         role = classify_role(current_path, dependencies)
         current_alias = is_current_alias(current_path)
+        location_status = classify_location_status(
+            current_path,
+            archive_roots,
+            is_symlink=path.is_symlink(),
+        )
         runtime_locked = current_path in RUNTIME_LOCKED_PATHS or any(
             row["reference_type"]
             in {"APP_RUNTIME_READ", "DASHBOARD_RUNTIME_READ", "CONSUMER_READ", "FILE_COPY_SOURCE", "FILE_MOVE_SOURCE"}
@@ -940,17 +1108,23 @@ def build_catalog_records(root: Path, dependency_rows: list[dict]) -> list[dict]
         report_id = stable_report_id(current_path)
         evidence_by_reason: dict[str, list[str]] = {}
         if active_static_producer:
-            evidence_by_reason["ACTIVE_STATIC_PRODUCER"] = sorted(
-                row["reference_id"]
-                for row in static_dependencies
-                if row["consumer_or_producer"] == "PRODUCER"
+            evidence_by_reason["ACTIVE_STATIC_PRODUCER"] = _dependency_evidence_ids(
+                report_id,
+                "ACTIVE_STATIC_PRODUCER",
+                [row for row in static_dependencies if row["consumer_or_producer"] == "PRODUCER"],
             )
         if active_dynamic_producer:
-            evidence_by_reason["ACTIVE_DYNAMIC_PRODUCER"] = sorted(
-                row["reference_id"] for row in matched_dynamic_producers
+            evidence_by_reason["ACTIVE_DYNAMIC_PRODUCER"] = _dependency_evidence_ids(
+                report_id,
+                "ACTIVE_DYNAMIC_PRODUCER",
+                matched_dynamic_producers,
             )
         if runtime_locked or active_consumer:
-            ids = sorted(row["reference_id"] for row in runtime_consumer_rows)
+            ids = _dependency_evidence_ids(
+                report_id,
+                "RUNTIME_CONSUMER",
+                runtime_consumer_rows,
+            )
             evidence_by_reason["RUNTIME_CONSUMER"] = ids or [
                 _rule_evidence_id(report_id, "RUNTIME_CONSUMER")
             ]
@@ -970,6 +1144,10 @@ def build_catalog_records(root: Path, dependency_rows: list[dict]) -> list[dict]
             ]
         if role == "UNKNOWN":
             evidence_by_reason["UNKNOWN_ROLE"] = [_rule_evidence_id(report_id, "UNKNOWN_ROLE")]
+        if location_status == "ALREADY_ARCHIVED":
+            evidence_by_reason["ALREADY_ARCHIVED_LOCATION"] = [
+                _rule_evidence_id(report_id, "ALREADY_ARCHIVED_LOCATION")
+            ]
         if normalized_naming == "NEEDS_DATE_NORMALIZATION":
             evidence_by_reason["NEEDS_DATE_NORMALIZATION"] = [
                 _rule_evidence_id(report_id, "NEEDS_DATE_NORMALIZATION")
@@ -977,6 +1155,10 @@ def build_catalog_records(root: Path, dependency_rows: list[dict]) -> list[dict]
         if dependency_safety == "NO_ACTIVE_DEPENDENCY":
             evidence_by_reason["NO_ACTIVE_DEPENDENCY"] = [
                 _rule_evidence_id(report_id, "NO_ACTIVE_DEPENDENCY")
+            ]
+        if retention_status in {"ROLLING_WINDOW", "MANUAL_REVIEW"}:
+            evidence_by_reason["RETENTION_REVIEW_REQUIRED"] = [
+                _rule_evidence_id(report_id, "RETENTION_REVIEW_REQUIRED")
             ]
         archive_block_reasons = [
             reason for reason in ARCHIVE_BLOCK_REASON_PRIORITY if reason in evidence_by_reason
@@ -986,20 +1168,21 @@ def build_catalog_records(root: Path, dependency_rows: list[dict]) -> list[dict]
             {item for items in evidence_by_reason.values() for item in items}
         )
 
-        if runtime_locked or current_alias:
-            migration_eligibility = "MIGRATION_BLOCKED_RUNTIME"
-        elif active_generator or active_consumer:
-            migration_eligibility = "MIGRATION_BLOCKED_ACTIVE_DEPENDENCY"
-        elif dependency_safety == "UNKNOWN_DEPENDENCY" or role == "UNKNOWN":
-            migration_eligibility = "MIGRATION_BLOCKED_UNKNOWN"
-        elif retention_status in {"PERMANENT", "UNTIL_MIGRATION_VALIDATED", "TEMPORARY_AUDIT"}:
-            migration_eligibility = "MIGRATION_BLOCKED_RETENTION"
-        elif normalized_naming == "NEEDS_DATE_NORMALIZATION":
-            migration_eligibility = "SAFE_TO_MIGRATE_RENAME_REQUIRED"
-        else:
-            migration_eligibility = "SAFE_TO_MIGRATE"
+        migration_eligibility = determine_migration_eligibility(
+            location_status=location_status,
+            runtime_locked=runtime_locked,
+            current_alias=current_alias,
+            active_generator=active_generator,
+            active_consumer=active_consumer,
+            dependency_safety=dependency_safety,
+            role=role,
+            retention_status=retention_status,
+            naming_status=normalized_naming,
+        )
 
-        if active_generator or active_consumer or runtime_locked or current_alias or role == "UNKNOWN":
+        if location_status == "ALREADY_ARCHIVED":
+            deletion_eligibility = "NOT_DELETION_CANDIDATE"
+        elif active_generator or active_consumer or runtime_locked or current_alias or role == "UNKNOWN":
             deletion_eligibility = "DELETION_BLOCKED"
         elif retention_status in {"ROLLING_WINDOW", "MANUAL_REVIEW"}:
             deletion_eligibility = "DELETION_REVIEW_REQUIRED"
@@ -1060,6 +1243,7 @@ def build_catalog_records(root: Path, dependency_rows: list[dict]) -> list[dict]
                 "cadence": classify_cadence(current_path, role),
                 "topic": topic,
                 "status": status,
+                "location_status": location_status,
                 "business_date": business_date,
                 "created_date": created_dates.get(current_path, "UNKNOWN"),
                 "modified_at": modified_dates.get(current_path, "UNKNOWN"),
@@ -1122,8 +1306,8 @@ def catalog_payload(
         json.dumps(records, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
     ).hexdigest()
     return {
-        "schema_version": 2,
-        "catalog_id": "a_share_swing_system_report_catalog_v2",
+        "schema_version": CLASSIFICATION_SCHEMA_VERSION,
+        "catalog_id": "a_share_swing_system_report_catalog_v3",
         "repository_root": "<project_root>",
         "metadata": metadata or {},
         "control_plane_exclusions": sorted(control_plane_exclusions or CONTROL_REPORT_PATHS),
@@ -1131,6 +1315,9 @@ def catalog_payload(
         "catalog_sha256": fingerprint,
         "summary": {
             "by_role": dict(sorted(Counter(row["role"] for row in records).items())),
+            "by_location_status": dict(
+                sorted(Counter(row["location_status"] for row in records).items())
+            ),
             "by_migration_risk": dict(sorted(Counter(row["migration_risk"] for row in records).items())),
             "by_dependency_safety": dict(
                 sorted(Counter(row["dependency_safety"] for row in records).items())
@@ -1169,7 +1356,21 @@ def catalog_payload(
                 row["matched_dynamic_producer_count"] > 0 for row in records
             ),
             "unknown_role_count": sum(row["role"] == "UNKNOWN" for row in records),
+            "already_archived_count": sum(
+                row["location_status"] == "ALREADY_ARCHIVED" for row in records
+            ),
+            "phase_b_candidate_count": sum(
+                row["migration_eligibility"]
+                in {"SAFE_TO_MIGRATE", "SAFE_TO_MIGRATE_RENAME_REQUIRED"}
+                for row in records
+            ),
         },
+        "phase_b_candidate_paths": [
+            row["current_path"]
+            for row in records
+            if row["migration_eligibility"]
+            in {"SAFE_TO_MIGRATE", "SAFE_TO_MIGRATE_RENAME_REQUIRED"}
+        ],
         "records": records,
     }
 
@@ -1186,6 +1387,9 @@ def render_catalog_markdown(payload: dict, front_matter: str = "") -> str:
     summary = payload["summary"]
     role_lines = "\n".join(f"- `{key}`: {value}" for key, value in summary["by_role"].items())
     risk_lines = "\n".join(f"- `{key}`: {value}" for key, value in summary["by_migration_risk"].items())
+    location_lines = "\n".join(
+        f"- `{key}`: {value}" for key, value in summary["by_location_status"].items()
+    )
     migration_lines = "\n".join(
         f"- `{key}`: {value}" for key, value in summary["by_migration_eligibility"].items()
     )
@@ -1196,12 +1400,12 @@ def render_catalog_markdown(payload: dict, front_matter: str = "") -> str:
         f"- `{key}`: {value}" for key, value in summary["by_archive_block_reason"].items()
     )
     table = [
-        "| Path | Role | Dependency safety | Naming | Retention | Migration | Deletion | Reasons |",
-        "| --- | --- | --- | --- | --- | --- | --- | --- |",
+        "| Path | Role | Location | Dependency safety | Naming | Retention | Migration | Deletion | Reasons |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- | --- |",
     ]
     for row in payload["records"]:
         table.append(
-            f"| `{row['current_path']}` | `{row['role']}` | `{row['dependency_safety']}` | "
+            f"| `{row['current_path']}` | `{row['role']}` | `{row['location_status']}` | `{row['dependency_safety']}` | "
             f"`{row['naming_status']}` | `{row['retention_status']}` | "
             f"`{row['migration_eligibility']}` | `{row['deletion_eligibility']}` | "
             f"{_markdown_value(row['archive_block_reasons'])} |"
@@ -1221,6 +1425,8 @@ def render_catalog_markdown(payload: dict, front_matter: str = "") -> str:
 - Deprecated Archive Candidate flag true: {summary['archive_candidate_count']}
 - Safe-to-delete-after-authorization: {summary['safe_to_delete_after_authorization_count']}
 - Unknown roles requiring review: {summary['unknown_role_count']}
+- Already archived: {summary['already_archived_count']}
+- Phase B candidates: {summary['phase_b_candidate_count']}
 - Catalog SHA-256: `{payload['catalog_sha256']}`
 
 ### Roles
@@ -1230,6 +1436,10 @@ def render_catalog_markdown(payload: dict, front_matter: str = "") -> str:
 ### Migration risks
 
 {risk_lines}
+
+### Location status
+
+{location_lines}
 
 ### Migration eligibility
 

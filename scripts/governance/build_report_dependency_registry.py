@@ -92,7 +92,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--project-root", type=Path, default=project_root_from_script(__file__))
     parser.add_argument("--business-date", default=business_date_today())
-    parser.add_argument("--snapshot-revision", default="v2")
+    parser.add_argument("--snapshot-revision", default="v3")
     return parser.parse_args()
 
 

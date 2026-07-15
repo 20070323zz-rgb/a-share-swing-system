@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "archive_roots": [
+    "reports/archive/"
+  ],
+  "evidence_registry_version": "v1",
+  "classification_schema_version": 3
+}

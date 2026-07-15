@@ -14,6 +14,7 @@ try:
         artifact_metadata,
         business_date_today,
         markdown_front_matter,
+        load_report_governance_config,
         project_root_from_script,
         render_catalog_markdown,
         revisioned_artifact_path,
@@ -31,6 +32,7 @@ except ModuleNotFoundError:  # Direct script execution.
         artifact_metadata,
         business_date_today,
         markdown_front_matter,
+        load_report_governance_config,
         project_root_from_script,
         render_catalog_markdown,
         revisioned_artifact_path,
@@ -52,6 +54,7 @@ FIELDS = [
     "cadence",
     "topic",
     "status",
+    "location_status",
     "business_date",
     "created_date",
     "modified_at",
@@ -89,7 +92,13 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--project-root", type=Path, default=project_root_from_script(__file__))
     parser.add_argument("--business-date", default=business_date_today())
-    parser.add_argument("--snapshot-revision", default="v2")
+    parser.add_argument("--snapshot-revision", default="v3")
+    parser.add_argument(
+        "--archive-root",
+        action="append",
+        dest="archive_roots",
+        help="Explicit repository-relative archive root; repeatable.",
+    )
     return parser.parse_args()
 
 
@@ -108,7 +117,9 @@ def main() -> None:
         dependencies = json.loads(registry_path.read_text(encoding="utf-8"))["records"]
     else:
         dependencies = scan_dependencies(root)
-    records = build_catalog_records(root, dependencies)
+    config = load_report_governance_config(root)
+    archive_roots = args.archive_roots or config["archive_roots"]
+    records = build_catalog_records(root, dependencies, archive_roots)
     catalog_json = revisioned_artifact_path("report_catalog", date, "json", revision)
     catalog_csv = revisioned_artifact_path("report_catalog", date, "csv", revision)
     catalog_md = revisioned_artifact_path("report_catalog", date, "md", revision)
@@ -127,6 +138,12 @@ def main() -> None:
         revisioned_artifact_path("report_dependency_registry", date, "csv", revision),
         registry_json,
         revisioned_artifact_path("report_dependency_summary", date, "md", revision),
+        revisioned_artifact_path(
+            "report_governance_evidence_registry", date, "csv", "v1"
+        ),
+        revisioned_artifact_path(
+            "report_governance_evidence_registry", date, "json", "v1"
+        ),
         revisioned_artifact_path("report_naming_compliance_audit", date, "csv", revision),
         revisioned_artifact_path(
             "report_naming_compliance_audit", date, "metadata.json", revision
@@ -170,10 +187,13 @@ def main() -> None:
         "report_id",
         "current_path",
         "role",
+        "location_status",
         "business_date",
         "current_alias",
         "runtime_locked",
         "naming_compliance",
+        "naming_status",
+        "migration_eligibility",
         "metadata_compliance",
         "notes",
     ]
