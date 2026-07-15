@@ -18,9 +18,9 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Build immutable Reports Governance Phase A-R artifacts.")
     parser.add_argument("--date", required=True, help="Snapshot date in YYYY-MM-DD format")
     parser.add_argument("--output-root", type=Path)
-    parser.add_argument("--review-path", default="configs/report_governance_phase_ar_reviews.json")
+    parser.add_argument("--source-tree-commit", help="Commit whose source tree was scanned; defaults to HEAD")
     args = parser.parse_args()
-    result = build_phase_ar(ROOT, args.date, args.output_root, args.review_path)
+    result = build_phase_ar(ROOT, args.date, args.output_root, source_tree_commit=args.source_tree_commit)
     print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
     return 0
 

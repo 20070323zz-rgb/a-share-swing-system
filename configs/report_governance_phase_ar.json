@@ -1,11 +1,15 @@
 {
   "artifact_type": "GOVERNANCE_CONTROL",
-  "schema_version": "report-governance-phase-ar-config-v1",
-  "catalog_version": "report-inventory-v1",
-  "structured_scanner_version": "structured-reference-scanner-v1",
-  "backstop_scanner_version": "independent-backstop-scanner-v1",
-  "evidence_version": "governance-evidence-index-v1",
-  "classification_version": "migration-readiness-v1",
+  "schema_version": "report-governance-phase-ar-config-v2",
+  "snapshot_revision": "phase-ar-v2-2026-07-16",
+  "supersedes": "phase-ar-v1-2026-07-15",
+  "catalog_version": "report-inventory-v2",
+  "structured_scanner_version": "structured-reference-scanner-v2",
+  "backstop_scanner_version": "independent-backstop-scanner-v2",
+  "evidence_version": "governance-evidence-index-v2",
+  "evidence_schema_version": "governance-evidence-record-v2",
+  "review_schema_version": "manual-candidate-review-v2",
+  "classification_version": "migration-readiness-v2",
   "report_roots": [
     "reports"
   ],
@@ -32,6 +36,8 @@
     "dashboard/node_modules",
     "dist",
     "reports",
+    "scripts/build_report_governance_phase_ar.py",
+    "src/report_governance",
     "tests"
   ],
   "governance_control_roots": [

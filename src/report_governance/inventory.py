@@ -79,7 +79,13 @@ def infer_naming_status(relative_path: str, business_date: str | None, context: 
         return "CURRENT_ALIAS"
     if any(_valid_date(match) for match in DATE_PATTERN.finditer(Path(relative_path).name)):
         return "COMPLIANT_DATED"
-    return "NEEDS_DATE_NORMALIZATION" if business_date is not None else "UNDATED_STABLE_NAME"
+    decision_tokens = ("decision", "verdict", "policy", "standard", "contract", "authority")
+    phase_tokens = ("phase", "framework", "architecture", "protocol", "playbook", "registry", "matrix")
+    if any(token in stem for token in decision_tokens):
+        return "STABLE_DECISION_ARTIFACT"
+    if any(token in stem for token in phase_tokens):
+        return "STABLE_PHASE_ARTIFACT"
+    return "NEEDS_DATE_NORMALIZATION" if business_date is not None else "NOT_APPLICABLE"
 
 
 def infer_retention(role: str, business_date: str | None) -> str:
@@ -134,8 +140,23 @@ def build_inventory(context: RunContext) -> list[dict[str, Any]]:
                     "naming_status": infer_naming_status(relative_path, business_date, context),
                     "retention_status": infer_retention(role, business_date),
                     "location_status": infer_location(relative_path, context),
-                    "schema_version": "report-inventory-record-v1",
+                    "schema_version": "report-inventory-record-v2",
                     "catalog_version": context.config["catalog_version"],
                 }
             )
     return records
+
+
+def validate_inventory_content_hashes(context: RunContext, inventory: list[dict[str, Any]]) -> None:
+    """Fail when any inventory row no longer represents the current file bytes."""
+    mismatches: list[str] = []
+    for record in inventory:
+        path = context.root / record["relative_path"]
+        if not path.is_file():
+            mismatches.append(f"missing:{record['relative_path']}")
+            continue
+        actual = sha256_file(path)
+        if actual != record["content_sha256"]:
+            mismatches.append(f"hash:{record['relative_path']}:{record['content_sha256']}:{actual}")
+    if mismatches:
+        raise ValueError("inventory content hash mismatch: " + "; ".join(mismatches))

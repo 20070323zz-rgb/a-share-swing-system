@@ -3,6 +3,7 @@ from __future__ import annotations
 import ast
 import fnmatch
 import re
+import shlex
 from pathlib import Path
 from typing import Any
 
@@ -46,10 +47,17 @@ class ExpressionResolver:
                 return "reports"
             if node.id.endswith("PROJECT_ROOT"):
                 return ""
+            if node.id.lower() in {"root", "project_root", "repo_root"}:
+                return ""
             return None
         if isinstance(node, ast.Attribute):
             dotted = self._dotted(node)
-            return self.env.get(dotted) or self.env.get(node.attr)
+            resolved = self.env.get(dotted) or self.env.get(node.attr)
+            if resolved is not None:
+                return resolved
+            if node.attr.lower() in {"root", "project_root", "repo_root"}:
+                return ""
+            return None
         if isinstance(node, ast.BinOp) and isinstance(node.op, (ast.Div, ast.Add)):
             left = self.resolve(node.left)
             right = self.resolve(node.right)
@@ -124,6 +132,12 @@ def _reference(
     kind: str,
     direction: str,
     search_value: str,
+    *,
+    reference_class: str | None = None,
+    confidence: str = "HIGH",
+    dynamic_pattern: bool | None = None,
+    operation: str | None = None,
+    access_mode: str | None = None,
 ) -> dict[str, Any]:
     excerpt = excerpt.strip()[:500]
     reference_id = stable_id(
@@ -138,8 +152,19 @@ def _reference(
         "excerpt": excerpt,
         "excerpt_sha256": sha256_bytes(excerpt.encode("utf-8")),
         "reference_kind": kind,
+        "reference_class": reference_class or (
+            "PRODUCER" if direction == "PRODUCER" else "RUNTIME_CONSUMER" if direction in {"CONSUMER", "MOVE_SOURCE"} else "ACTIVE_CONFIG_REFERENCE"
+        ),
         "direction": direction,
+        "access_mode": access_mode or ("WRITE" if direction == "PRODUCER" else "READ" if direction in {"CONSUMER", "MOVE_SOURCE"} else "REFERENCE"),
         "search_value": search_value,
+        "dynamic_pattern": (
+            any(token in search_value.split("reports/", 1)[-1] for token in ("*", "{", "%"))
+            if dynamic_pattern is None
+            else dynamic_pattern
+        ),
+        "confidence": confidence,
+        "operation": operation,
         "scanner": "STRUCTURED",
         "scanner_version": context.config["structured_scanner_version"],
     }
@@ -200,11 +225,36 @@ def _scan_python(
     references: list[dict[str, Any]] = []
     source_path = posix_relative(path, context.root)
 
-    def add(value: str | None, node: ast.AST, kind: str, direction: str) -> None:
+    def add(
+        value: str | None,
+        node: ast.AST,
+        kind: str,
+        direction: str,
+        *,
+        operation: str | None = None,
+        access_mode: str | None = None,
+    ) -> None:
         for report in _report_matches(value, reports):
             line = getattr(node, "lineno", 0)
             excerpt = lines[line - 1] if 0 < line <= len(lines) else ""
-            references.append(_reference(context, report, source_path, line, excerpt, kind, direction, value or ""))
+            report_value = value.split("reports/", 1)[-1] if value else ""
+            dynamic = any(token in report_value for token in ("*", "{", "%"))
+            references.append(
+                _reference(
+                    context,
+                    report,
+                    source_path,
+                    line,
+                    excerpt,
+                    kind,
+                    direction,
+                    value or "",
+                    confidence="MEDIUM" if dynamic else "HIGH",
+                    dynamic_pattern=dynamic,
+                    operation=operation,
+                    access_mode=access_mode,
+                )
+            )
 
     def scoped_nodes(statements: list[ast.stmt]) -> list[ast.AST]:
         output: list[ast.AST] = []
@@ -252,6 +302,32 @@ def _scan_python(
                 if target_name and value is not None:
                     scope_env[target_name] = value
                     add(value, node, "PYTHON_PATH_BINDING", "DECLARATION")
+        collection_values: list[tuple[ast.AST, ast.AST]] = []
+        for node in nodes:
+            if isinstance(node, ast.Dict):
+                collection_values.extend((node, value) for value in node.values)
+            elif isinstance(node, (ast.List, ast.Tuple, ast.Set)):
+                collection_values.extend((node, value) for value in node.elts)
+        for owner, value_node in collection_values:
+            value = resolver.resolve(value_node)
+            if value is not None:
+                add(value, value_node if hasattr(value_node, "lineno") else owner, "PYTHON_CONFIG_VALUE", "DECLARATION")
+        for node in nodes:
+            if not isinstance(node, (ast.Assign, ast.AnnAssign)) or not isinstance(node.value, (ast.Dict, ast.List, ast.Tuple, ast.Set)):
+                continue
+            targets = node.targets if isinstance(node, ast.Assign) else [node.target]
+            names = [
+                target.id
+                for target in targets
+                if isinstance(target, ast.Name)
+            ]
+            if not any(re.search(r"REPORT|ARCHIVE|OUTPUT|PATH|FILE|CANDIDATE|NAME", name, re.I) for name in names):
+                continue
+            for child in ast.walk(node.value):
+                if not isinstance(child, ast.Constant) or not isinstance(child.value, str):
+                    continue
+                if re.fullmatch(r"[A-Za-z0-9_.-]+\.(?:csv|html|json|jsonl|md|parquet|txt|ya?ml)", child.value):
+                    add(f"reports/{child.value}", child, "PYTHON_CONFIG_VALUE", "DECLARATION")
         for node in nodes:
             if not isinstance(node, ast.Call):
                 continue
@@ -259,6 +335,24 @@ def _scan_python(
             short_name = call_name.rsplit(".", 1)[-1]
             producer_values: list[str | None] = []
             consumer_values: list[str | None] = []
+            move_source_values: list[str | None] = []
+            operation = call_name
+            if short_name in {"copy", "copy2", "copyfile"} and len(node.args) >= 2:
+                consumer_values.append(resolver.resolve(node.args[0]))
+                producer_values.append(resolver.resolve(node.args[1]))
+            elif short_name in {"move", "replace", "rename"}:
+                if short_name in {"replace", "rename"} and isinstance(node.func, ast.Attribute) and len(node.args) >= 1:
+                    source_value = resolver.resolve(node.func.value)
+                    destination_value = resolver.resolve(node.args[0])
+                    if source_value is not None and _path_value(source_value):
+                        move_source_values.append(source_value)
+                        producer_values.append(destination_value)
+                    elif len(node.args) >= 2:
+                        move_source_values.append(resolver.resolve(node.args[0]))
+                        producer_values.append(resolver.resolve(node.args[1]))
+                elif len(node.args) >= 2:
+                    move_source_values.append(resolver.resolve(node.args[0]))
+                    producer_values.append(resolver.resolve(node.args[1]))
             if short_name in {"write_text", "write_bytes"} and isinstance(node.func, ast.Attribute):
                 producer_values.append(resolver.resolve(node.func.value))
             elif short_name in {"to_csv", "to_json", "to_parquet", "save", "dump"}:
@@ -266,10 +360,10 @@ def _scan_python(
                     producer_values.append(resolver.resolve(node.func.value))
                 if node.args:
                     producer_values.append(resolver.resolve(node.args[0]))
-            elif short_name in {"_write_json", "write_json", "write_report"} and node.args:
-                producer_values.append(resolver.resolve(node.args[0]))
             elif short_name == "write_payload":
                 producer_values.extend(resolver.resolve(arg) for arg in node.args[:3])
+            elif (short_name in {"_write_json", "write_json", "write_report"} or short_name.startswith("write_")) and node.args:
+                producer_values.append(resolver.resolve(node.args[0]))
             elif short_name == "open":
                 target = resolver.resolve(node.args[0]) if node.args else (
                     resolver.resolve(node.func.value) if isinstance(node.func, ast.Attribute) else None
@@ -281,14 +375,16 @@ def _scan_python(
                     consumer_values.append(target)
             if short_name in {"read_text", "read_bytes"} and isinstance(node.func, ast.Attribute):
                 consumer_values.append(resolver.resolve(node.func.value))
-            elif short_name in {"read_csv", "read_json", "read_parquet", "load"} and node.args:
+            elif (short_name in {"read_csv", "read_json", "read_parquet", "load"} or short_name.startswith("load_")) and node.args:
                 consumer_values.append(resolver.resolve(node.args[0]))
             elif short_name in {"exists", "stat", "is_file"} and isinstance(node.func, ast.Attribute):
                 consumer_values.append(resolver.resolve(node.func.value))
             for value in producer_values:
-                add(value, node, "PYTHON_WRITE", "PRODUCER")
+                add(value, node, "PYTHON_WRITE", "PRODUCER", operation=operation, access_mode="WRITE")
             for value in consumer_values:
-                add(value, node, "PYTHON_READ", "CONSUMER")
+                add(value, node, "PYTHON_READ", "CONSUMER", operation=operation, access_mode="READ")
+            for value in move_source_values:
+                add(value, node, "PYTHON_MOVE_SOURCE", "MOVE_SOURCE", operation=operation, access_mode="READ")
         for statement in statements:
             if isinstance(statement, (ast.FunctionDef, ast.AsyncFunctionDef)) and recurse_functions:
                 scan_scope(statement.body, scope_env, class_name, class_attrs)
@@ -329,6 +425,26 @@ def _scan_shell(context: RunContext, path: Path, reports: list[dict[str, Any]]) 
             bindings[name] = value
             for report in _report_matches(value, reports):
                 references.append(_reference(context, report, source_path, index, line, "SHELL_PATH_BINDING", "DECLARATION", value))
+        embedded_binding = re.search(
+            r"\b[A-Za-z_][A-Za-z0-9_]*\s*=\s*(?:reports|REPORT_DIR)\s*/\s*[\"']([A-Za-z0-9_.-]+)[\"']",
+            line,
+        )
+        if embedded_binding:
+            value = f"reports/{embedded_binding.group(1)}"
+            for report in _report_matches(value, reports):
+                references.append(
+                    _reference(
+                        context,
+                        report,
+                        source_path,
+                        index,
+                        line,
+                        "SHELL_EMBEDDED_PATH_BINDING",
+                        "DECLARATION",
+                        value,
+                        reference_class="ACTIVE_CONFIG_REFERENCE",
+                    )
+                )
         for name, value in sorted(bindings.items()):
             if not re.search(rf"\$\{{?{re.escape(name)}\}}?", line) or match and match.group(1) == name:
                 continue
@@ -338,6 +454,85 @@ def _scan_shell(context: RunContext, path: Path, reports: list[dict[str, Any]]) 
             kind = "SHELL_OUTPUT" if output_cue else "SHELL_INPUT" if input_cue else "SHELL_ARGUMENT"
             for report in _report_matches(value, reports):
                 references.append(_reference(context, report, source_path, index, line, kind, direction, value))
+        expanded_line = _expand_shell_value(line, {**env, **bindings})
+        try:
+            tokens = shlex.split(expanded_line, comments=True, posix=True)
+        except ValueError:
+            tokens = []
+        command_index = next((position for position, token in enumerate(tokens) if token in {"cp", "mv"}), None)
+        if command_index is not None:
+            command = tokens[command_index]
+            operands = [token for token in tokens[command_index + 1 :] if not token.startswith("-")]
+            if len(operands) >= 2:
+                sources, destination = operands[:-1], operands[-1]
+                for value in sources:
+                    for report in _report_matches(value, reports):
+                        references.append(
+                            _reference(
+                                context,
+                                report,
+                                source_path,
+                                index,
+                                line,
+                                "SHELL_FILE_OPERATION_SOURCE",
+                                "MOVE_SOURCE" if command == "mv" else "CONSUMER",
+                                value,
+                                operation=command,
+                                access_mode="READ",
+                                confidence="MEDIUM" if "*" in value else "HIGH",
+                            )
+                        )
+                for report in _report_matches(destination, reports):
+                    references.append(
+                        _reference(
+                            context,
+                            report,
+                            source_path,
+                            index,
+                            line,
+                            "SHELL_FILE_OPERATION_DESTINATION",
+                            "PRODUCER",
+                            destination,
+                            operation=command,
+                            access_mode="WRITE",
+                            confidence="MEDIUM" if "*" in destination else "HIGH",
+                        )
+                    )
+    return references
+
+
+def _scan_markdown(context: RunContext, path: Path, reports: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    references: list[dict[str, Any]] = []
+    source_path = posix_relative(path, context.root)
+    in_code_block = False
+    for index, line in enumerate(read_text_lossy(path).splitlines(), 1):
+        if line.lstrip().startswith("```"):
+            in_code_block = not in_code_block
+        candidates = set(REPORT_FRAGMENT.findall(line))
+        for report in reports:
+            if report["relative_path"] in line or report["filename"] in line:
+                candidates.add(report["relative_path"])
+        for candidate in sorted(candidates):
+            if in_code_block or line.lstrip().startswith("```"):
+                reference_class = "CODE_BLOCK_REFERENCE"
+            elif re.search(r"!?(?:\[[^\]]*\])\([^)]*reports/", line):
+                reference_class = "DOCUMENTATION_REFERENCE"
+            else:
+                reference_class = "DOCUMENTATION_EXAMPLE"
+            for report in _report_matches(candidate, reports):
+                references.append(
+                    _reference(
+                        context,
+                        report,
+                        source_path,
+                        index,
+                        line,
+                        "MARKDOWN_REFERENCE",
+                        "REFERENCE",
+                        candidate,
+                        reference_class=reference_class,
+                    )
+                )
     return references
 
 
@@ -353,7 +548,19 @@ def _scan_config_or_frontend(context: RunContext, path: Path, reports: list[dict
             direction = "CONSUMER" if re.search(r"fetch\s*\(|import\s|href=|read", line, re.I) else "REFERENCE"
             kind = "FRONTEND_RUNTIME_REFERENCE" if direction == "CONSUMER" else "CONFIG_REFERENCE"
             for report in _report_matches(candidate, reports):
-                references.append(_reference(context, report, source_path, index, line, kind, direction, candidate))
+                references.append(
+                    _reference(
+                        context,
+                        report,
+                        source_path,
+                        index,
+                        line,
+                        kind,
+                        direction,
+                        candidate,
+                        reference_class="RUNTIME_CONSUMER" if direction == "CONSUMER" else "ACTIVE_CONFIG_REFERENCE",
+                    )
+                )
     return references
 
 
@@ -368,6 +575,8 @@ def scan_structured_references(context: RunContext, reports: list[dict[str, Any]
             records.extend(_scan_python(context, path, reports, exports))
         elif suffix == ".sh":
             records.extend(_scan_shell(context, path, reports))
+        elif suffix == ".md":
+            records.extend(_scan_markdown(context, path, reports))
         else:
             records.extend(_scan_config_or_frontend(context, path, reports))
     unique = {record["reference_id"]: record for record in records}

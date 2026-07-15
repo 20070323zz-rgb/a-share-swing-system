@@ -4,9 +4,10 @@ import hashlib
 import json
 import subprocess
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import datetime
 from pathlib import Path, PurePosixPath
 from typing import Any, Iterable
+from zoneinfo import ZoneInfo
 
 
 @dataclass(frozen=True)
@@ -16,6 +17,8 @@ class RunContext:
     source_tree_commit: str
     generated_at: str
     run_id: str
+    snapshot_revision: str
+    supersedes: str
 
 
 def load_config(root: Path, path: str = "configs/report_governance_phase_ar.json") -> dict[str, Any]:
@@ -26,13 +29,28 @@ def git_output(root: Path, *args: str) -> str:
     return subprocess.check_output(["git", *args], cwd=root, text=True).strip()
 
 
-def create_run_context(root: Path, config: dict[str, Any]) -> RunContext:
-    commit = git_output(root, "rev-parse", "HEAD")
+def create_run_context(
+    root: Path,
+    config: dict[str, Any],
+    source_tree_commit: str | None = None,
+) -> RunContext:
+    commit = source_tree_commit or git_output(root, "rev-parse", "HEAD")
+    resolved_commit = git_output(root, "rev-parse", f"{commit}^{{commit}}")
+    if resolved_commit != commit:
+        commit = resolved_commit
     commit_time = git_output(root, "show", "-s", "--format=%cI", commit)
-    generated_at = datetime.fromisoformat(commit_time).astimezone(timezone.utc).isoformat()
+    generated_at = datetime.fromisoformat(commit_time).astimezone(ZoneInfo("Asia/Shanghai")).isoformat()
     config_hash = sha256_bytes(canonical_json(config))
     run_id = stable_id("phase-ar-run", commit, config_hash, length=24)
-    return RunContext(root=root, config=config, source_tree_commit=commit, generated_at=generated_at, run_id=run_id)
+    return RunContext(
+        root=root,
+        config=config,
+        source_tree_commit=commit,
+        generated_at=generated_at,
+        run_id=run_id,
+        snapshot_revision=config["snapshot_revision"],
+        supersedes=config["supersedes"],
+    )
 
 
 def canonical_json(value: Any) -> bytes:
@@ -115,9 +133,15 @@ def metadata(context: RunContext, artifact_type: str, version: str, record_count
     return {
         "artifact_type": artifact_type,
         "schema_version": version,
+        "snapshot_revision": context.snapshot_revision,
+        "supersedes": context.supersedes,
         "source_tree_commit": context.source_tree_commit,
         "generated_at": context.generated_at,
         "immutable": True,
+        "structured_scanner_version": context.config["structured_scanner_version"],
+        "backstop_scanner_version": context.config["backstop_scanner_version"],
+        "evidence_schema_version": context.config["evidence_schema_version"],
+        "review_schema_version": context.config["review_schema_version"],
         "run_id": context.run_id,
         "record_count": record_count,
     }
