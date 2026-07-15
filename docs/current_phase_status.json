@@ -740,7 +740,37 @@
   "report_catalog_status": "REBUILT_SEPARATE_MIGRATION_DELETION_PENDING_QC",
   "report_catalog_record_count": 645,
   "report_dependency_registry_status": "REMEDIATED_PENDING_FINAL_SEMANTIC_QC",
-  "report_dependency_registry_record_count": 6330,
+  "report_dependency_registry_record_count": 6370,
+  "report_dependency_dynamic_pattern_count": 120,
+  "report_runtime_locked_count": 108,
+  "report_current_alias_count": 36,
+  "report_unknown_role_count": 148,
+  "report_dependency_safety_distribution": {
+    "ACTIVE_PRODUCER": 262,
+    "NO_ACTIVE_DEPENDENCY": 275,
+    "RUNTIME_LOCKED": 108
+  },
+  "report_naming_status_distribution": {
+    "COMPLIANT_DATED": 12,
+    "LEGACY_STABLE_ALIAS": 36,
+    "NEEDS_DATE_NORMALIZATION": 317,
+    "NOT_APPLICABLE": 132,
+    "UNKNOWN": 148
+  },
+  "report_migration_eligibility_distribution": {
+    "MIGRATION_BLOCKED_ACTIVE_DEPENDENCY": 250,
+    "MIGRATION_BLOCKED_RETENTION": 58,
+    "MIGRATION_BLOCKED_RUNTIME": 128,
+    "MIGRATION_BLOCKED_UNKNOWN": 72,
+    "SAFE_TO_MIGRATE": 50,
+    "SAFE_TO_MIGRATE_RENAME_REQUIRED": 87
+  },
+  "report_deletion_eligibility_distribution": {
+    "DELETION_BLOCKED": 450,
+    "DELETION_REVIEW_REQUIRED": 92,
+    "NOT_DELETION_CANDIDATE": 103,
+    "SAFE_TO_DELETE_AFTER_AUTHORIZATION": 0
+  },
   "report_classification_standard_status": "REMEDIATED_PENDING_FINAL_QC",
   "report_producer_classification_status": "REMEDIATED_PENDING_FINAL_QC",
   "report_dynamic_producer_linkage_status": "IMPLEMENTED_PENDING_QC",
