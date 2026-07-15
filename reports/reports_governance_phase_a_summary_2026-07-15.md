@@ -2,7 +2,7 @@
 report_id: report_34429ebfad281f3f
 report_type: GOVERNANCE_PHASE_SUMMARY
 business_date: 2026-07-15
-created_at: 2026-07-15T11:15:11+08:00
+created_at: 2026-07-15T11:24:56+08:00
 status: REMEDIATED_PENDING_FINAL_QC
 phase: reports_governance_phase_a
 producer: scripts/governance/build_phase_a_summary.py
@@ -46,13 +46,13 @@ No undated Catalog, Registry or Phase A summary is retained as a unique artifact
 ## Recomputed inventory
 
 - Catalog records: 645
-- Dependency records: 6327
-- Distinct targets/patterns: 881
-- Dynamic patterns: 105
+- Dependency records: 6330
+- Distinct targets/patterns: 884
+- Dynamic patterns: 107
 - Runtime locked: 108
 - Current aliases: 36
 - Low-risk archive candidates: 0
-- Reports matched to active dynamic Producers: 10
+- Reports matched to active dynamic Producers: 12
 - Unknown roles: 148
 - Naming compliant: 15
 - Naming non-compliant: 318
@@ -71,8 +71,8 @@ The final focused sample uses a new deterministic selection from the regenerated
 | `DYNAMIC_RESOLUTION` | 14/15 | 93.3% |
 | `TEST_REFERENCE` | 15/15 | 100.0% |
 | `HISTORICAL_REFERENCE` | 15/15 | 100.0% |
-| `SCOPED_DYNAMIC_PRODUCER` | 28/28 | 100.0% |
-| **Overall** | **172/173** | **99.4%** |
+| `SCOPED_DYNAMIC_PRODUCER` | 29/29 | 100.0% |
+| **Overall** | **173/174** | **99.4%** |
 
 No high-impact App/Dashboard runtime or Archive Candidate misclassification was found. `PRODUCER_WRITE` is 30/30 and the 145-row overall sample exceeds the 95% threshold. One low-severity dynamic documentation example retained a trailing delimiter in its normalized target; it has no runtime or archive-candidate effect. The real repository contains six Shell copy direction records; all six were reviewed, and the committed 18-case direction corpus also passed.
 

@@ -2,7 +2,7 @@
 report_id: report_ac5c6aa2f4d21763
 report_type: DEPENDENCY_SUMMARY
 business_date: 2026-07-15
-created_at: 2026-07-15T11:15:11+08:00
+created_at: 2026-07-15T11:24:56+08:00
 status: REMEDIATED_PENDING_RE_QC
 phase: reports_governance_phase_a
 producer: scripts/governance/build_report_dependency_registry.py
@@ -17,10 +17,10 @@ supersedes: reports/report_dependency_summary_2026-07-14.md
 
 ## Summary
 
-- Registry records: 6327
-- Distinct referenced paths/patterns: 881
-- Dynamic patterns: 105
-- Registry SHA-256: `cf48fda21228a65221780e71487c31b582559a9aec4d4379b770087b42edf399`
+- Registry records: 6330
+- Distinct referenced paths/patterns: 884
+- Dynamic patterns: 107
+- Registry SHA-256: `db69e3c45c44aa6209b495bf93d4087fe58fc289b23a6d4a6030348bcfa0daf8`
 
 ### Reference types
 
@@ -36,14 +36,14 @@ supersedes: reports/report_dependency_summary_2026-07-14.md
 - `PRODUCER_WRITE`: 342
 - `STATE_INDEX_REFERENCE`: 201
 - `STATIC_LINK`: 504
-- `TEST_REFERENCE`: 229
+- `TEST_REFERENCE`: 232
 
 ### Migration impact
 
 - `CRITICAL`: 98
 - `HIGH`: 443
 - `LOW`: 5353
-- `MEDIUM`: 433
+- `MEDIUM`: 436
 
 ## Critical and high-impact references
 

@@ -2,7 +2,7 @@
 report_id: report_0c98cac7fa67c0a0
 report_type: GOVERNANCE_FINAL_BLOCKER_REMEDIATION
 business_date: 2026-07-15
-created_at: 2026-07-15T11:15:11+08:00
+created_at: 2026-07-15T11:24:56+08:00
 status: READY_FOR_FINAL_INDEPENDENT_RE_QC
 phase: reports_governance_phase_a
 producer: scripts/governance/build_phase_a_summary.py
@@ -25,11 +25,11 @@ supersedes: reports/reports_governance_phase_a_final_blocker_remediation_2026-07
 - Golden fixtures: 100%.
 - Producer sample: 30/30 (100%).
 - Shell direction checks: 24/24 (100.0%); real repository population 6/6, committed corpus 18/18.
-- Overall independent stratified sample: 172/173 (99.4%).
+- Overall independent stratified sample: 173/174 (99.4%).
 - Catalog records: 645.
-- Dependency records: 6327.
-- Distinct targets/patterns: 881.
-- Dynamic patterns: 105.
+- Dependency records: 6330.
+- Distinct targets/patterns: 884.
+- Dynamic patterns: 107.
 - Runtime locked: 108.
 - Current aliases: 36.
 - Archive candidates: 0.

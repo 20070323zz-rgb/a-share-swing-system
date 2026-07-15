@@ -5,9 +5,9 @@
   "metadata": {
     "report_id": "report_4bfb1a55314aa972",
     "business_date": "2026-07-15",
-    "generated_at": "2026-07-15T11:15:11+08:00",
+    "generated_at": "2026-07-15T11:24:56+08:00",
     "generator_version": "2.2.0",
-    "source_tree_commit": "6d89ecb665ef2d119e65792ce4f5e228b9a202f0",
+    "source_tree_commit": "ccbf0365b72d2cfcb433788644f748f898adfa18",
     "record_count": 645,
     "schema_version": 2,
     "supersedes": "reports/report_catalog_2026-07-14.json"
@@ -27,7 +27,7 @@
     "reports/reports_governance_phase_a_summary_2026-07-15.md"
   ],
   "record_count": 645,
-  "catalog_sha256": "ca65b5469a2ada460b36e80e03ea26e221d1c52a5e5a95b33217cef74348c2fb",
+  "catalog_sha256": "aa1358a9004808edd7c2a4edeee717ac5b7973479add1520cedf53b9fbc54ee1",
   "summary": {
     "by_role": {
       "ARCHIVED_ARTIFACT": 45,
@@ -43,9 +43,9 @@
       "VALIDATION_ARTIFACT": 33
     },
     "by_migration_risk": {
-      "ACTIVE_REFERENCED": 128,
+      "ACTIVE_REFERENCED": 130,
       "HIGH_DEPENDENCY": 163,
-      "MEDIUM_DEPENDENCY": 192,
+      "MEDIUM_DEPENDENCY": 190,
       "RUNTIME_LOCKED": 108,
       "UNKNOWN_REQUIRES_REVIEW": 54
     },
@@ -53,8 +53,8 @@
     "current_alias_count": 36,
     "dated_artifact_count": 12,
     "archive_candidate_count": 0,
-    "active_generator_count": 342,
-    "dynamic_producer_matched_report_count": 10,
+    "active_generator_count": 344,
+    "dynamic_producer_matched_report_count": 12,
     "unknown_role_count": 148
   },
   "records": [
@@ -10314,24 +10314,28 @@
       "business_date": "2026-07-10",
       "created_date": "2026-07-12",
       "modified_at": "2026-07-12T10:29:35+08:00",
-      "producer_candidates": [],
+      "producer_candidates": [
+        "src/execution/paper_freshness_gate.py"
+      ],
       "consumer_candidates": [],
-      "reference_count": 3,
-      "matched_dynamic_producer_count": 0,
-      "matched_dynamic_producer_ids": [],
-      "dynamic_producer_match_confidence": "NONE",
-      "active_generator": false,
-      "producer_match_type": "NONE",
+      "reference_count": 4,
+      "matched_dynamic_producer_count": 1,
+      "matched_dynamic_producer_ids": [
+        "ref_06370e91fcae204eaa46"
+      ],
+      "dynamic_producer_match_confidence": "MEDIUM",
+      "active_generator": true,
+      "producer_match_type": "DYNAMIC_PATTERN",
       "archive_block_reason": "NOT_DATED_ARTIFACT",
       "runtime_locked": false,
       "current_alias": false,
       "dated_artifact": false,
       "archive_candidate": false,
-      "migration_risk": "MEDIUM_DEPENDENCY",
+      "migration_risk": "ACTIVE_REFERENCED",
       "naming_compliance": "COMPLIANT",
-      "metadata_compliance": "PARTIAL",
+      "metadata_compliance": "COMPLETE",
       "confidence": "HIGH",
-      "notes": ""
+      "notes": "Archive blocked by a trusted active dynamic Producer pattern."
     },
     {
       "report_id": "report_13585f22f762ae55",
@@ -10345,24 +10349,28 @@
       "business_date": "2026-07-10",
       "created_date": "2026-07-12",
       "modified_at": "2026-07-12T10:29:35+08:00",
-      "producer_candidates": [],
+      "producer_candidates": [
+        "src/execution/paper_freshness_gate.py"
+      ],
       "consumer_candidates": [],
-      "reference_count": 3,
-      "matched_dynamic_producer_count": 0,
-      "matched_dynamic_producer_ids": [],
-      "dynamic_producer_match_confidence": "NONE",
-      "active_generator": false,
-      "producer_match_type": "NONE",
+      "reference_count": 4,
+      "matched_dynamic_producer_count": 1,
+      "matched_dynamic_producer_ids": [
+        "ref_0387473f0c23bbc57a4a"
+      ],
+      "dynamic_producer_match_confidence": "MEDIUM",
+      "active_generator": true,
+      "producer_match_type": "DYNAMIC_PATTERN",
       "archive_block_reason": "NOT_DATED_ARTIFACT",
       "runtime_locked": false,
       "current_alias": false,
       "dated_artifact": false,
       "archive_candidate": false,
-      "migration_risk": "MEDIUM_DEPENDENCY",
+      "migration_risk": "ACTIVE_REFERENCED",
       "naming_compliance": "COMPLIANT",
-      "metadata_compliance": "PARTIAL",
+      "metadata_compliance": "COMPLETE",
       "confidence": "HIGH",
-      "notes": ""
+      "notes": "Archive blocked by a trusted active dynamic Producer pattern."
     },
     {
       "report_id": "report_2e9b54d34bfe320b",

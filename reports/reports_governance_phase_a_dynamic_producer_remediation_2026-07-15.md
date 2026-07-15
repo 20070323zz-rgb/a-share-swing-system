@@ -2,7 +2,7 @@
 report_id: report_f2b883f2ffec3c95
 report_type: GOVERNANCE_DYNAMIC_PRODUCER_REMEDIATION
 business_date: 2026-07-15
-created_at: 2026-07-15T11:15:11+08:00
+created_at: 2026-07-15T11:24:56+08:00
 status: READY_FOR_INDEPENDENT_DYNAMIC_PRODUCER_RE_QC
 phase: reports_governance_phase_a
 producer: scripts/governance/build_phase_a_summary.py
@@ -20,13 +20,15 @@ schema_version: 2
 - Dynamic writes emit `PRODUCER_WRITE / WRITE` with scope, binding, structured pattern and Producer entrypoint metadata.
 - Trusted `<DATE>`, `<TIMESTAMP>` and `<RUN_ID>` templates use anchored full-path matching. `<DYNAMIC>` is retained for review and never auto-matched.
 - Each binding records assignment line/kind, normalized expression, static resolution or dynamic template, pattern variables, confidence, version and excerpt hash.
-- Committed scope/dynamic fixture cases: 28/28 pass; positive dynamic Producer cases: 27/27.
+- Committed scope/dynamic fixture cases: 29/29 pass; positive dynamic Producer cases: 28/28.
 - Reports blocked by active dynamic Producers: 10.
 - Remaining Archive Candidates: 0.
 
 ## Real producer linkage
 
 - `src/reporting.py:203` scope `scope_c1a0a4a4a82eb1d1` -> `reports/daily_signal_<DATE>.md` (MEDIUM)
+- `src/execution/paper_freshness_gate.py:386` scope `scope_89b2b8834ab92d6e` -> `reports/paper_execution_stale_trade_audit_<DATE>.json` (MEDIUM)
+- `src/execution/paper_freshness_gate.py:413` scope `scope_89b2b8834ab92d6e` -> `reports/paper_execution_stale_trade_audit_<DATE>.md` (MEDIUM)
 - `src/reporting.py:658` scope `scope_de7324c94eb244c2` -> `reports/weekly_review_<DATE>.md` (MEDIUM)
 
 ## Dynamically protected reports

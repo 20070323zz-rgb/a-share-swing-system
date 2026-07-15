@@ -2,7 +2,7 @@
 report_id: report_651ab0b7f69ff3a5
 report_type: GOVERNANCE_REMEDIATION
 business_date: 2026-07-15
-created_at: 2026-07-15T11:15:11+08:00
+created_at: 2026-07-15T11:24:56+08:00
 status: READY_FOR_FINAL_INDEPENDENT_RE_QC
 phase: reports_governance_phase_a
 producer: scripts/governance/build_phase_a_summary.py
@@ -28,7 +28,7 @@ supersedes: reports/reports_governance_phase_a_remediation_2026-07-14.md
 ## Validation contract
 
 - Golden fixture accuracy: 100%.
-- Human stratified sample: 172/173 (99.4%).
+- Human stratified sample: 173/174 (99.4%).
 - Producer sample: 30/30 (100%).
 - Shell direction: 6/6 real repository records and 18/18 committed directional fixtures.
 - First clean rebuild: required byte-identical.

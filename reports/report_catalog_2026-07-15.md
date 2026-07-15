@@ -2,7 +2,7 @@
 report_id: report_3c03b0e6d12b4796
 report_type: REPORT_CATALOG
 business_date: 2026-07-15
-created_at: 2026-07-15T11:15:11+08:00
+created_at: 2026-07-15T11:24:56+08:00
 status: REBUILT_PENDING_RE_QC
 phase: reports_governance_phase_a
 producer: scripts/governance/build_report_catalog.py
@@ -25,7 +25,7 @@ supersedes: reports/report_catalog_2026-07-14.md
 - Dated artifacts: 12
 - Low-risk archive candidates: 0
 - Unknown roles requiring review: 148
-- Catalog SHA-256: `ca65b5469a2ada460b36e80e03ea26e221d1c52a5e5a95b33217cef74348c2fb`
+- Catalog SHA-256: `aa1358a9004808edd7c2a4edeee717ac5b7973479add1520cedf53b9fbc54ee1`
 
 ### Roles
 
@@ -43,9 +43,9 @@ supersedes: reports/report_catalog_2026-07-14.md
 
 ### Migration risks
 
-- `ACTIVE_REFERENCED`: 128
+- `ACTIVE_REFERENCED`: 130
 - `HIGH_DEPENDENCY`: 163
-- `MEDIUM_DEPENDENCY`: 192
+- `MEDIUM_DEPENDENCY`: 190
 - `RUNTIME_LOCKED`: 108
 - `UNKNOWN_REQUIRES_REVIEW`: 54
 
@@ -368,8 +368,8 @@ supersedes: reports/report_catalog_2026-07-14.md
 | `reports/paper_execution_freshness_gate_summary.md` | `VALIDATION_ARTIFACT` | `AD_HOC` | `PAPER_EXECUTION` | `UNKNOWN` | 4 | `MEDIUM_DEPENDENCY` | no | no |
 | `reports/paper_execution_preflight.json` | `RUNTIME_INPUT` | `CONTINUOUS` | `PAPER_EXECUTION` | `UNKNOWN` | 5 | `RUNTIME_LOCKED` | no | no |
 | `reports/paper_execution_preflight.md` | `RUNTIME_INPUT` | `CONTINUOUS` | `PAPER_EXECUTION` | `2026-07-10` | 3 | `RUNTIME_LOCKED` | no | no |
-| `reports/paper_execution_stale_trade_audit_2026-07-10.json` | `AUDIT_ARTIFACT` | `AD_HOC` | `PAPER_EXECUTION` | `2026-07-10` | 3 | `MEDIUM_DEPENDENCY` | no | no |
-| `reports/paper_execution_stale_trade_audit_2026-07-10.md` | `AUDIT_ARTIFACT` | `AD_HOC` | `PAPER_EXECUTION` | `2026-07-10` | 3 | `MEDIUM_DEPENDENCY` | no | no |
+| `reports/paper_execution_stale_trade_audit_2026-07-10.json` | `AUDIT_ARTIFACT` | `AD_HOC` | `PAPER_EXECUTION` | `2026-07-10` | 4 | `ACTIVE_REFERENCED` | no | no |
+| `reports/paper_execution_stale_trade_audit_2026-07-10.md` | `AUDIT_ARTIFACT` | `AD_HOC` | `PAPER_EXECUTION` | `2026-07-10` | 4 | `ACTIVE_REFERENCED` | no | no |
 | `reports/paper_performance_daily.csv` | `RUNTIME_INPUT` | `DAILY` | `PAPER_EXECUTION` | `UNKNOWN` | 11 | `RUNTIME_LOCKED` | no | no |
 | `reports/paper_performance_summary.json` | `RUNTIME_INPUT` | `CONTINUOUS` | `PAPER_EXECUTION` | `UNKNOWN` | 33 | `RUNTIME_LOCKED` | yes | no |
 | `reports/paper_performance_summary.md` | `RUNTIME_INPUT` | `CONTINUOUS` | `PAPER_EXECUTION` | `UNKNOWN` | 20 | `RUNTIME_LOCKED` | yes | no |
