@@ -5,9 +5,9 @@
   "metadata": {
     "report_id": "report_4bfb1a55314aa972",
     "business_date": "2026-07-15",
-    "generated_at": "2026-07-15T11:07:49+08:00",
+    "generated_at": "2026-07-15T11:15:11+08:00",
     "generator_version": "2.2.0",
-    "source_tree_commit": "48bf55f3a6baa8164437ce441d0ced22dcb31454",
+    "source_tree_commit": "6d89ecb665ef2d119e65792ce4f5e228b9a202f0",
     "record_count": 645,
     "schema_version": 2,
     "supersedes": "reports/report_catalog_2026-07-14.json"
