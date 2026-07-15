@@ -1,0 +1,94 @@
+{
+  "artifact_type": "GOVERNANCE_CONTROL",
+  "schema_version": "report-governance-phase-ar-config-v1",
+  "catalog_version": "report-inventory-v1",
+  "structured_scanner_version": "structured-reference-scanner-v1",
+  "backstop_scanner_version": "independent-backstop-scanner-v1",
+  "evidence_version": "governance-evidence-index-v1",
+  "classification_version": "migration-readiness-v1",
+  "report_roots": [
+    "reports"
+  ],
+  "active_source_roots": [
+    "app",
+    "configs",
+    "dashboard",
+    "launchd",
+    "scripts",
+    "src"
+  ],
+  "authority_source_files": [
+    "AGENTS.md",
+    "PROJECT_INDEX.md",
+    "docs/current_phase_status.json",
+    "docs/current_project_state.md"
+  ],
+  "excluded_source_roots": [
+    ".git",
+    ".venv",
+    "app/frontend/build",
+    "app/frontend/dist",
+    "app/frontend/node_modules",
+    "dashboard/node_modules",
+    "dist",
+    "reports",
+    "tests"
+  ],
+  "governance_control_roots": [
+    "reports/governance/phase_ar"
+  ],
+  "archive_roots": [
+    "reports/archive"
+  ],
+  "formal_execution_inputs": [
+    "reports/latest_buy_ranking.md",
+    "reports/latest_paper_portfolio.md",
+    "reports/paper_execution_preflight.json",
+    "reports/paper_execution_preflight.md",
+    "reports/signals.csv"
+  ],
+  "app_dashboard_entrypoints": [
+    "reports/dashboard_data.json",
+    "reports/app_task_status.json",
+    "reports/latest_brief.md"
+  ],
+  "availability_active_prefixes": [
+    "reports/tushare_etf_availability_",
+    "reports/tushare_vs_baostock_"
+  ],
+  "current_alias_tokens": [
+    "current",
+    "latest"
+  ],
+  "allowed_report_extensions": [
+    ".csv",
+    ".html",
+    ".json",
+    ".jsonl",
+    ".md",
+    ".parquet",
+    ".txt",
+    ".yaml",
+    ".yml"
+  ],
+  "source_extensions": [
+    ".cfg",
+    ".html",
+    ".ini",
+    ".js",
+    ".json",
+    ".jsx",
+    ".plist",
+    ".py",
+    ".sh",
+    ".toml",
+    ".ts",
+    ".tsx",
+    ".yaml",
+    ".yml"
+  ],
+  "retention_migration_allowed": [
+    "HISTORICAL_SNAPSHOT"
+  ],
+  "snapshot_output_root": "reports/governance/phase_ar"
+}
