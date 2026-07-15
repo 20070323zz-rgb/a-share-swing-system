@@ -55,7 +55,12 @@ Exposure Framework Phase 1: COMPLETE
 Project Infrastructure Batch Standardization V1: COMPLETE
 Paper Execution Safety Phase 1: COMPLETE
 Tushare 5000 Data Foundation Audit: COMPLETE
-Reports Governance Phase A: NOT_STARTED
+Reports Governance Phase A: SUPERSEDED_BY_PHASE_AR
+Reports Governance Phase A-R: ACTIVE
+Report Inventory: IMPLEMENTED_PENDING_INDEPENDENT_QC
+Active Reference Index: IMPLEMENTED_PENDING_INDEPENDENT_QC
+Migration Readiness: PROVISIONAL_PENDING_INDEPENDENT_QC
+Runtime Path Registry: NOT_STARTED
 Report File Migration: BLOCKED
 PR #1 Hygiene Cleanup: COMPLETE
 PR #1 Diff Check: CLEAN
@@ -71,7 +76,7 @@ Tushare Evidence Isolation: COMPLETE
 PR #2: DRAFT_AWAITING_RE_QC
 Tushare Formal Staging Architecture: NOT_STARTED
 Tushare Primary Upstream Migration: APPROVED_FOR_FUTURE_ENGINEERING / NOT_STARTED
-ETF Daily Availability Timing Audit: NOT_STARTED
+ETF Daily Availability Timing Audit: ACTIVE_COLLECTING
 Data Foundation Upgrade: NOT_STARTED
 Data Promotion: BLOCKED
 Paper Execution Freshness Gate: ACTIVE
@@ -204,6 +209,14 @@ Formal Execution: BLOCKED
 - Tushare PIT Contract：`docs/tushare_pit_contract.md`
 - Tushare Minimal Proof Config：`configs/tushare_minimal_proof.yaml`
 - Tushare Minimal Proof Runner：`scripts/run_tushare_minimal_proof.py`
+- Tushare ETF Availability Audit Guide：`docs/tushare_etf_availability_audit.md`
+- Tushare ETF Availability Audit Config：`configs/tushare_etf_availability_audit.yaml`
+- Tushare ETF Availability Status：`reports/tushare_etf_availability_audit_status.md`
+- Reports Governance Phase A-R Architecture：`docs/reports_governance/phase_ar_architecture.md`
+- Reports Governance Phase B Contract：`docs/reports_governance/phase_b_end_to_end_contract.md`
+- Reports Governance PR #4 Salvage Assessment：`reports/reports_governance_pr4_salvage_assessment_2026-07-15.md`
+- Reports Governance Phase A-R Build Report：`reports/reports_governance_phase_ar_build_2026-07-15.md`
+- Reports Governance Phase A-R Snapshot：`reports/governance/phase_ar/immutable_governance_snapshot_manifest_v1_2026-07-15.json`
 
 这些入口用于新 Codex thread 恢复项目状态。
 

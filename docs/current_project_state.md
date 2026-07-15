@@ -72,7 +72,12 @@ Guarded Paper Execution Entry ACTIVE
 Stale Data Fallback BLOCKED
 2026-07-10 Stale Trades AUDITED_NON_DESTRUCTIVELY
 Tushare 5000 Data Foundation Audit COMPLETE
-Reports Governance Phase A NOT_STARTED
+Reports Governance Phase A SUPERSEDED_BY_PHASE_AR
+Reports Governance Phase A-R ACTIVE
+Report Inventory IMPLEMENTED_PENDING_INDEPENDENT_QC
+Active Reference Index IMPLEMENTED_PENDING_INDEPENDENT_QC
+Migration Readiness PROVISIONAL_PENDING_INDEPENDENT_QC
+Runtime Path Registry NOT_STARTED
 Report File Migration BLOCKED
 Data Foundation Upgrade NOT_STARTED
 PR #1 Hygiene Cleanup COMPLETE
@@ -922,7 +927,7 @@ Protected file hashes unchanged = true
 
 The separately authorized Tushare 5000 Data Foundation Audit is `COMPLETE` after Main review. Capability and priority artifacts are available. No Tushare data integration or data-source upgrade has started; `Data Foundation Upgrade = NOT_STARTED`.
 
-Reports Governance Phase A remains `NOT_STARTED`: the taxonomy feasibility study exists, but the catalog generator, catalog outputs, dependency summary, and Path Registry design required by Phase A do not exist. Report migration remains `BLOCKED`.
+Reports Governance Phase A is superseded by the independent Phase A-R clean rebuild. Inventory, dual Active Reference engines, Evidence, provisional migration readiness, full candidate review, and immutable snapshots are implemented on Draft PR #5. Report migration and the runtime Path Registry remain `BLOCKED / NOT_STARTED`.
 
 PR #1 final hygiene cleanup is `COMPLETE`. PR #1 was merged into `main` with merge commit `40a6017402456d62609169325cb5f1d31a1a140b` at 2026-07-13 09:49:26 CST. Post-merge validation is `PASS` and `main` is `STABLE`. Formal execution logic, protected paper ledgers, and ETF business data were unchanged by the merge/validation batch.
 
@@ -941,7 +946,7 @@ Aggregate real API calls = 51 (AGGREGATE_BUDGET_WARNING)
 Mock calls included in real totals = 0
 Formal Staging Architecture = NOT_STARTED
 Tushare Primary Upstream Migration = APPROVED_IN_PRINCIPLE_BUT_NOT_STARTED
-ETF Daily Availability Timing Audit = NEXT / NOT_STARTED
+ETF Daily Availability Timing Audit = ACTIVE_COLLECTING
 Data Foundation Upgrade = NOT_STARTED
 Data Promotion = BLOCKED
 Unified Data Upgrade = NOT_STARTED
@@ -950,7 +955,7 @@ Regime 2.0 = NOT_STARTED
 Universe V3 = NOT_STARTED
 Exit Logic = NOT_STARTED
 Style Fit 1.0 = CLOSED
-Next Decision = ETF Daily Availability Timing Audit (separate authorization required)
+Next Decision = complete the separately governed Availability observation gate; no upstream migration is authorized
 ```
 
 PIT handling is intentionally asymmetric: `fund_portfolio` is `PIT_RESOLVED` through retained `ann_date` versions; `daily_basic` and `index_daily` use a conservative next-trading-day contract when the next date exists; Shibor uses official release `11:00` plus the project's 60-minute conservative lag to `12:00` with basis `OFFICIAL_11AM_PLUS_PROJECT_LAG`; `index_weight` and `index_member_all` remain partial; current taxonomy and index metadata remain unresolved for historical publication time. The latest 2026-07-10 daily rows remain partial until a later local trading-calendar date is present. Shibor remains `EXPLANATION_ONLY / INTEREST_RATE_CONTEXT`, not ETF duration exposure.
@@ -960,6 +965,51 @@ All historical real payloads and row-level proof artifacts remain in their exist
 Three real-run attestations explain `17 + 17 + 17 = 51` calls. The first two individual proof reports were not retained by the historical global-report workflow, so their report hashes are explicitly `UNAVAILABLE / AVAILABLE_EVIDENCE_LIMITED`; no missing evidence was fabricated. The final `index_weight` reduction from 1350 raw rows to 900 proof rows is `PROOF_SAMPLE_DATE_WINDOW_REDUCTION`: the 2026-04-30 snapshot was excluded and the 2026-05-29 and 2026-06-30 snapshots were retained for all three indices.
 
 PR #2 was merged into `main` with merge commit `47d129bfa7a055b7af81f4c57fea3a95d41287c6` at 2026-07-14 14:00:33 CST after the live head and boundary gate remained unchanged. Post-merge validation is `PASS`, `main` is `STABLE`, and Tushare proof evidence is `ACCEPTED`. The ETF SSOT, protected files, model, Replay, Ranking, Score, Exposure, and Formal Execution boundaries were unchanged. No real Tushare API call was made during validation.
+
+## 8N. Tushare ETF Daily Availability Timing Audit
+
+The independently authorized post-close availability observer is implemented on branch `agent/tushare-etf-availability-audit` and is collecting evidence. The latest authority is PR #3 head `2602248a982ade26fdd4c957255c90d8708b19ef`.
+
+```text
+ETF Daily Availability Timing Audit = ACTIVE_COLLECTING
+Observation Days Started = 1
+Observation Days Completed = 0
+Timing Evidence = COLLECTING_INSUFFICIENT_DAYS
+Provisional First Complete Time = 16:15
+First Stable Time = UNRESOLVED
+Tushare = SHADOW_PRIMARY_CANDIDATE
+BaoStock = COMPARATOR_ONLY
+data/etf_daily = CANONICAL_SSOT
+Tushare Primary Upstream Migration = NOT_STARTED
+```
+
+Tushare remained empty through 16:00, reached 183/183 with full field quality at 16:15, and matched at 16:30. `FIRST_STABLE_TIME` remains unresolved until all later slots complete. This Availability state is preserved as PR #3 authority and is not changed by Reports Governance.
+
+## 8O. Reports Governance Phase A-R
+
+Draft PR #5 cleanly rebuilds report governance from `origin/main` without merging or cherry-picking PR #4. PR #4 is `CLOSED / SUPERSEDED / NOT MERGED`. Its candidate conclusions are rejected; only independently validated design semantics and the 43 false-negative regression facts are retained.
+
+```text
+Reports Governance Phase A-R = ACTIVE
+Report Inventory = IMPLEMENTED_PENDING_INDEPENDENT_QC
+Inventory Records = 644
+Structured References = 1961
+Backstop References = 4104
+Governance Evidence Records = 6946
+Unresolved Evidence = 0
+PR #4 Active-Reference Regression Recall = 43/43
+Scanner Disagreements = 35
+Machine-Provisional Candidates = 52
+Full Candidate Review = 52/52 PASS
+Final Provisional Dry-Run Candidates = 52
+Archived / Active / Runtime / Unknown Candidate Contamination = 0
+SAFE_TO_DELETE_AFTER_AUTHORIZATION = 0
+Runtime Path Registry = NOT_STARTED
+Reports Migration Phase B = BLOCKED
+Zero Move = PASS
+```
+
+The provisional label authorizes only a future Phase B dry-run. No report has been moved, renamed, deleted, or rewritten. App/Dashboard paths, Formal Execution, logs, and Availability data remain unchanged. Snapshot group hash: `86f1f31c6e128df6eeb4b9a259d822637c58f93f8053a2d8de8ab71bd5b33939`.
 
 ## 9. Current Main Bottlenecks
 
@@ -986,7 +1036,12 @@ New threads must still execute repository bootstrap before substantive edits.
 
 ```text
 Tushare 5000 Data Foundation Audit = COMPLETE
-Reports Governance Phase A = NOT_STARTED
+Reports Governance Phase A = SUPERSEDED_BY_PHASE_AR
+Reports Governance Phase A-R = ACTIVE
+Report Inventory = IMPLEMENTED_PENDING_INDEPENDENT_QC
+Active Reference Index = IMPLEMENTED_PENDING_INDEPENDENT_QC
+Migration Readiness = PROVISIONAL_PENDING_INDEPENDENT_QC
+Runtime Path Registry = NOT_STARTED
 Report File Migration = BLOCKED
 Preview Research = NOT STARTED
 Formal Execution = BLOCKED
@@ -1016,7 +1071,8 @@ Guarded Paper Execution Entry = ACTIVE
 Stale Data Fallback = BLOCKED
 2026-07-10 Stale Trades = AUDITED_NON_DESTRUCTIVELY
 Tushare 5000 Data Foundation Audit = COMPLETE
-Reports Governance Phase A = NOT_STARTED
+Reports Governance Phase A = SUPERSEDED_BY_PHASE_AR
+Reports Governance Phase A-R = ACTIVE
 Report File Migration = BLOCKED
 Data Foundation Upgrade = NOT_STARTED
 PR #1 Hygiene Cleanup = COMPLETE
@@ -1036,13 +1092,13 @@ PR #2 Post-Merge Validation = PASS
 Tushare Proof Evidence = ACCEPTED
 Tushare Formal Staging Architecture = NOT_STARTED
 Tushare Primary Upstream Migration = APPROVED_IN_PRINCIPLE_BUT_NOT_STARTED
-ETF Daily Availability Timing Audit = NEXT / NOT_STARTED
+ETF Daily Availability Timing Audit = ACTIVE_COLLECTING
 Data Foundation Upgrade = NOT_STARTED
 Data Promotion = BLOCKED
 Exposure Phase 2 = NOT_STARTED
-Next Data Foundation Decision = ETF Daily Availability Timing Audit (separate authorization required)
+Next Data Foundation Decision = complete the active Availability observation gate; no upstream migration is authorized
 ```
 
 Do not create adjusted preview. Current `ready_for_preview=false`.
 
-Context updated at: 2026-07-14 14:03:31 CST
+Context updated at: 2026-07-15 23:37:34 CST
