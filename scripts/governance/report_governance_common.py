@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import csv
 import hashlib
+import io
 import json
 import re
 import subprocess
@@ -86,11 +87,11 @@ CONTROL_REPORT_PATHS = {
 
 CONTROL_REPORT_RE = re.compile(
     r"^reports/(?:"
-    r"report_catalog_20\d{2}-\d{2}-\d{2}\.(?:csv|json|md)|"
-    r"report_dependency_registry_20\d{2}-\d{2}-\d{2}\.(?:csv|json)|"
-    r"report_dependency_summary_20\d{2}-\d{2}-\d{2}\.md|"
-    r"report_naming_compliance_audit_20\d{2}-\d{2}-\d{2}\.(?:csv|metadata\.json)|"
-    r"reports_governance_phase_a_(?:summary|remediation|final_blocker_remediation|dynamic_producer_remediation)_20\d{2}-\d{2}-\d{2}\.md"
+    r"report_catalog_(?:v\d+_)?20\d{2}-\d{2}-\d{2}\.(?:csv|json|md)|"
+    r"report_dependency_registry_(?:v\d+_)?20\d{2}-\d{2}-\d{2}\.(?:csv|json)|"
+    r"report_dependency_summary_(?:v\d+_)?20\d{2}-\d{2}-\d{2}\.md|"
+    r"report_naming_compliance_audit_(?:v\d+_)?20\d{2}-\d{2}-\d{2}\.(?:csv|metadata\.json)|"
+    r"reports_governance_phase_a_(?:summary|remediation|final_blocker_remediation|dynamic_producer_remediation|final_semantic_remediation)_(?:v\d+_)?20\d{2}-\d{2}-\d{2}\.md"
     r")$"
 )
 
@@ -231,6 +232,27 @@ def superseded_artifact(root: Path, business_date: str, path_template: str) -> s
     return candidate if (root / candidate).exists() else ""
 
 
+def revisioned_artifact_path(base: str, business_date: str, extension: str, revision: str) -> str:
+    revision_token = f"_{revision}" if revision else ""
+    return f"reports/{base}{revision_token}_{business_date}.{extension}"
+
+
+def superseded_revision_artifact(
+    root: Path,
+    base: str,
+    business_date: str,
+    extension: str,
+    revision: str,
+) -> str:
+    if not revision:
+        return superseded_artifact(
+            root, business_date, f"reports/{base}_{{date}}.{extension}"
+        )
+    previous_revision = "" if revision == "v2" else f"v{max(int(revision[1:]) - 1, 1)}"
+    candidate = revisioned_artifact_path(base, business_date, extension, previous_revision)
+    return candidate if (root / candidate).exists() else ""
+
+
 def source_tree_commit(root: Path) -> str:
     """Return the latest commit affecting inputs, excluding generated control outputs."""
 
@@ -259,6 +281,7 @@ def source_tree_commit(root: Path) -> str:
         ":(exclude,glob)reports/reports_governance_phase_a_remediation_*.md",
         ":(exclude,glob)reports/reports_governance_phase_a_final_blocker_remediation_*.md",
         ":(exclude,glob)reports/reports_governance_phase_a_dynamic_producer_remediation_*.md",
+        ":(exclude,glob)reports/reports_governance_phase_a_final_semantic_remediation_*.md",
     ]
     value = subprocess.run(command, cwd=root, check=True, capture_output=True, text=True).stdout.strip()
     return value or subprocess.run(
@@ -283,6 +306,7 @@ def artifact_metadata(
     report_id: str,
     record_count: int,
     supersedes: str | None = None,
+    snapshot_revision: str = "",
 ) -> dict:
     commit = source_tree_commit(root)
     metadata = {
@@ -293,6 +317,8 @@ def artifact_metadata(
         "source_tree_commit": commit,
         "record_count": record_count,
         "schema_version": 2,
+        "snapshot_revision": snapshot_revision or "v1",
+        "immutable": True,
     }
     if supersedes:
         metadata["supersedes"] = supersedes
@@ -310,6 +336,8 @@ def markdown_front_matter(
     source_run_id: str,
     retention_class: str = "PERMANENT",
     supersedes: str = "",
+    snapshot_revision: str = "v1",
+    immutable: bool = True,
 ) -> str:
     lines = [
             "---",
@@ -323,6 +351,8 @@ def markdown_front_matter(
             f"source_run_id: {source_run_id}",
             f"retention_class: {retention_class}",
             "schema_version: 2",
+            f"snapshot_revision: {snapshot_revision}",
+            f"immutable: {'true' if immutable else 'false'}",
     ]
     if supersedes:
         lines.append(f"supersedes: {supersedes}")
@@ -330,17 +360,45 @@ def markdown_front_matter(
     return "\n".join(lines)
 
 
-def write_json(path: Path, payload: object) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+class ImmutableSnapshotError(RuntimeError):
+    pass
 
 
-def write_csv(path: Path, rows: list[dict], fields: list[str]) -> None:
+def _write_immutable_bytes(path: Path, content: bytes) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fields, lineterminator="\n")
-        writer.writeheader()
-        writer.writerows(rows)
+    if path.exists():
+        if path.read_bytes() == content:
+            return
+        raise ImmutableSnapshotError(
+            f"immutable snapshot differs; create a new revision instead: {path}"
+        )
+    path.write_bytes(content)
+
+
+def write_immutable_text(path: Path, content: str) -> None:
+    _write_immutable_bytes(path, content.encode("utf-8"))
+
+
+def write_json(path: Path, payload: object, *, immutable: bool = False) -> None:
+    content = (json.dumps(payload, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
+    if immutable:
+        _write_immutable_bytes(path, content)
+        return
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(content)
+
+
+def write_csv(path: Path, rows: list[dict], fields: list[str], *, immutable: bool = False) -> None:
+    handle = io.StringIO(newline="")
+    writer = csv.DictWriter(handle, fieldnames=fields, lineterminator="\n")
+    writer.writeheader()
+    writer.writerows(rows)
+    content = handle.getvalue().encode("utf-8")
+    if immutable:
+        _write_immutable_bytes(path, content)
+        return
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(content)
 
 
 def _git_file_list(root: Path) -> list[str]:
@@ -724,10 +782,29 @@ def naming_compliance(path: str, role: str, current_alias: bool) -> str:
 
 
 TRUSTED_DYNAMIC_PATTERN_KINDS = {
-    "DATE_TEMPLATE": r"20\d{2}(?:-\d{2}-\d{2}|\d{4}|-\d{2})",
+    "DATE_TEMPLATE": r"20\d{2}(?:-\d{2}-\d{2}|\d{4})",
+    "MONTH_TEMPLATE": r"20\d{2}-\d{2}",
+    "MONTH_COMPACT_TEMPLATE": r"20\d{4}",
     "TIMESTAMP_TEMPLATE": r"20\d{2}(?:-?\d{2}){2}[T_-]?\d{2}(?::?\d{2}){1,2}",
     "RUN_ID_TEMPLATE": r"[A-Za-z0-9][A-Za-z0-9._-]{2,63}",
 }
+
+
+def _valid_temporal_token(kind: str, value: str) -> bool:
+    formats = {
+        "DATE_TEMPLATE": ("%Y-%m-%d", "%Y%m%d"),
+        "MONTH_TEMPLATE": ("%Y-%m",),
+        "MONTH_COMPACT_TEMPLATE": ("%Y%m",),
+    }.get(kind)
+    if formats is None:
+        return True
+    for format_string in formats:
+        try:
+            datetime.strptime(value, format_string)
+            return True
+        except ValueError:
+            continue
+    return False
 
 
 def dynamic_producer_matches_path(row: dict, report_path: str) -> bool:
@@ -743,13 +820,61 @@ def dynamic_producer_matches_path(row: dict, report_path: str) -> bool:
         return False
     token = {
         "DATE_TEMPLATE": "<DATE>",
+        "MONTH_TEMPLATE": "<MONTH>",
+        "MONTH_COMPACT_TEMPLATE": "<MONTH>",
         "TIMESTAMP_TEMPLATE": "<TIMESTAMP>",
         "RUN_ID_TEMPLATE": "<RUN_ID>",
     }[kind]
     if pattern.count(token) != 1:
         return False
-    expression = re.escape(pattern).replace(re.escape(token), TRUSTED_DYNAMIC_PATTERN_KINDS[kind])
-    return bool(re.fullmatch(expression, report_path))
+    expression = re.escape(pattern).replace(
+        re.escape(token), f"(?P<dynamic_value>{TRUSTED_DYNAMIC_PATTERN_KINDS[kind]})"
+    )
+    match = re.fullmatch(expression, report_path)
+    return bool(match and _valid_temporal_token(kind, match.group("dynamic_value")))
+
+
+ARCHIVE_BLOCK_REASON_PRIORITY = (
+    "ACTIVE_STATIC_PRODUCER",
+    "ACTIVE_DYNAMIC_PRODUCER",
+    "RUNTIME_CONSUMER",
+    "CURRENT_ALIAS",
+    "STATE_OR_GOVERNANCE_LOCKED",
+    "ACTIVE_AUDIT_ARTIFACT",
+    "RETENTION_BLOCKED",
+    "UNKNOWN_ROLE",
+    "NEEDS_DATE_NORMALIZATION",
+    "NO_ACTIVE_DEPENDENCY",
+)
+
+
+def _rule_evidence_id(report_id: str, reason: str) -> str:
+    digest = hashlib.sha256(f"{report_id}:{reason}".encode("utf-8")).hexdigest()[:20]
+    return f"rule_{digest}"
+
+
+def _retention_status(role: str, current_alias: bool, runtime_locked: bool) -> str:
+    if role in {"GOVERNANCE_ARTIFACT", "VALIDATION_ARTIFACT"}:
+        return "PERMANENT"
+    if current_alias or runtime_locked or role in {"RUNTIME_INPUT", "CURRENT_ALIAS", "ARCHIVED_ARTIFACT"}:
+        return "PROJECT_LIFETIME"
+    if role in {"DATED_DAILY", "DATED_WEEKLY", "DATED_MONTHLY"}:
+        return "ROLLING_WINDOW"
+    return "MANUAL_REVIEW"
+
+
+def _normalized_naming_status(role: str, current_alias: bool, naming: str) -> str:
+    if current_alias:
+        return "LEGACY_STABLE_ALIAS"
+    if role in {"DATED_DAILY", "DATED_WEEKLY", "DATED_MONTHLY"} and naming == "COMPLIANT":
+        return "COMPLIANT_DATED"
+    if role in {"RUNTIME_INPUT", "GENERATED_SNAPSHOT", "ARCHIVED_ARTIFACT"}:
+        return "NOT_APPLICABLE"
+    if role == "UNKNOWN":
+        return "UNKNOWN"
+    if naming == "NON_COMPLIANT":
+        return "NEEDS_DATE_NORMALIZATION"
+    return "NOT_APPLICABLE"
 
 
 def build_catalog_records(root: Path, dependency_rows: list[dict]) -> list[dict]:
@@ -787,21 +912,104 @@ def build_catalog_records(root: Path, dependency_rows: list[dict]) -> list[dict]
         )
         active_dynamic_producer = bool(matched_dynamic_producers)
         active_generator = active_static_producer or active_dynamic_producer
-        archive_candidate = dated_artifact and not runtime_locked and not current_alias and not dependencies
-        if not dated_artifact:
-            archive_block_reason = "NOT_DATED_ARTIFACT"
-        elif runtime_locked:
-            archive_block_reason = "RUNTIME_LOCKED"
-        elif current_alias:
-            archive_block_reason = "CURRENT_ALIAS"
-        elif active_dynamic_producer:
-            archive_block_reason = "ACTIVE_DYNAMIC_PRODUCER"
-        elif active_static_producer:
-            archive_block_reason = "ACTIVE_STATIC_PRODUCER"
-        elif dependencies:
-            archive_block_reason = "ACTIVE_REFERENCE"
+        runtime_consumer_rows = [
+            row
+            for row in dependencies
+            if row["reference_type"]
+            in {"APP_RUNTIME_READ", "DASHBOARD_RUNTIME_READ", "CONSUMER_READ", "FILE_COPY_SOURCE", "FILE_MOVE_SOURCE"}
+            and row["direction"] in {"CONSUMER", "READ", "MOVE_SOURCE"}
+            and row["confidence"] in {"HIGH", "MEDIUM"}
+        ]
+        active_consumer = bool(runtime_consumer_rows)
+        business_date = extract_business_date(path)
+        topic = classify_topic(current_path)
+        naming = naming_compliance(current_path, role, current_alias)
+        normalized_naming = _normalized_naming_status(role, current_alias, naming)
+        retention_status = _retention_status(role, current_alias, runtime_locked)
+        if runtime_locked:
+            dependency_safety = "RUNTIME_LOCKED"
+        elif active_generator:
+            dependency_safety = "ACTIVE_PRODUCER"
+        elif active_consumer:
+            dependency_safety = "ACTIVE_CONSUMER"
+        elif any(row["reference_type"] == "UNKNOWN_REFERENCE" for row in dependencies):
+            dependency_safety = "UNKNOWN_DEPENDENCY"
         else:
-            archive_block_reason = "NONE"
+            dependency_safety = "NO_ACTIVE_DEPENDENCY"
+
+        report_id = stable_report_id(current_path)
+        evidence_by_reason: dict[str, list[str]] = {}
+        if active_static_producer:
+            evidence_by_reason["ACTIVE_STATIC_PRODUCER"] = sorted(
+                row["reference_id"]
+                for row in static_dependencies
+                if row["consumer_or_producer"] == "PRODUCER"
+            )
+        if active_dynamic_producer:
+            evidence_by_reason["ACTIVE_DYNAMIC_PRODUCER"] = sorted(
+                row["reference_id"] for row in matched_dynamic_producers
+            )
+        if runtime_locked or active_consumer:
+            ids = sorted(row["reference_id"] for row in runtime_consumer_rows)
+            evidence_by_reason["RUNTIME_CONSUMER"] = ids or [
+                _rule_evidence_id(report_id, "RUNTIME_CONSUMER")
+            ]
+        if current_alias:
+            evidence_by_reason["CURRENT_ALIAS"] = [_rule_evidence_id(report_id, "CURRENT_ALIAS")]
+        if role in {"GOVERNANCE_ARTIFACT", "VALIDATION_ARTIFACT"}:
+            evidence_by_reason["STATE_OR_GOVERNANCE_LOCKED"] = [
+                _rule_evidence_id(report_id, "STATE_OR_GOVERNANCE_LOCKED")
+            ]
+        if role == "AUDIT_ARTIFACT" and (active_generator or active_consumer):
+            evidence_by_reason["ACTIVE_AUDIT_ARTIFACT"] = [
+                _rule_evidence_id(report_id, "ACTIVE_AUDIT_ARTIFACT")
+            ]
+        if retention_status in {"PERMANENT", "PROJECT_LIFETIME", "UNTIL_MIGRATION_VALIDATED", "TEMPORARY_AUDIT"}:
+            evidence_by_reason["RETENTION_BLOCKED"] = [
+                _rule_evidence_id(report_id, "RETENTION_BLOCKED")
+            ]
+        if role == "UNKNOWN":
+            evidence_by_reason["UNKNOWN_ROLE"] = [_rule_evidence_id(report_id, "UNKNOWN_ROLE")]
+        if normalized_naming == "NEEDS_DATE_NORMALIZATION":
+            evidence_by_reason["NEEDS_DATE_NORMALIZATION"] = [
+                _rule_evidence_id(report_id, "NEEDS_DATE_NORMALIZATION")
+            ]
+        if dependency_safety == "NO_ACTIVE_DEPENDENCY":
+            evidence_by_reason["NO_ACTIVE_DEPENDENCY"] = [
+                _rule_evidence_id(report_id, "NO_ACTIVE_DEPENDENCY")
+            ]
+        archive_block_reasons = [
+            reason for reason in ARCHIVE_BLOCK_REASON_PRIORITY if reason in evidence_by_reason
+        ]
+        primary_archive_block_reason = archive_block_reasons[0] if archive_block_reasons else "NONE"
+        archive_block_evidence_ids = sorted(
+            {item for items in evidence_by_reason.values() for item in items}
+        )
+
+        if runtime_locked or current_alias:
+            migration_eligibility = "MIGRATION_BLOCKED_RUNTIME"
+        elif active_generator or active_consumer:
+            migration_eligibility = "MIGRATION_BLOCKED_ACTIVE_DEPENDENCY"
+        elif dependency_safety == "UNKNOWN_DEPENDENCY" or role == "UNKNOWN":
+            migration_eligibility = "MIGRATION_BLOCKED_UNKNOWN"
+        elif retention_status in {"PERMANENT", "UNTIL_MIGRATION_VALIDATED", "TEMPORARY_AUDIT"}:
+            migration_eligibility = "MIGRATION_BLOCKED_RETENTION"
+        elif normalized_naming == "NEEDS_DATE_NORMALIZATION":
+            migration_eligibility = "SAFE_TO_MIGRATE_RENAME_REQUIRED"
+        else:
+            migration_eligibility = "SAFE_TO_MIGRATE"
+
+        if active_generator or active_consumer or runtime_locked or current_alias or role == "UNKNOWN":
+            deletion_eligibility = "DELETION_BLOCKED"
+        elif retention_status in {"ROLLING_WINDOW", "MANUAL_REVIEW"}:
+            deletion_eligibility = "DELETION_REVIEW_REQUIRED"
+        else:
+            deletion_eligibility = "NOT_DELETION_CANDIDATE"
+
+        # Deprecated compatibility fields. Phase A no longer uses a single
+        # archive flag as either migration or deletion authorization.
+        archive_candidate = False
+        archive_block_reason = primary_archive_block_reason
         if runtime_locked:
             migration_risk = "RUNTIME_LOCKED"
         elif len(dependencies) >= 10:
@@ -814,9 +1022,6 @@ def build_catalog_records(root: Path, dependency_rows: list[dict]) -> list[dict]
             migration_risk = "LOW_RISK_ARCHIVE_CANDIDATE"
         else:
             migration_risk = "UNKNOWN_REQUIRES_REVIEW"
-        business_date = extract_business_date(path)
-        topic = classify_topic(current_path)
-        naming = naming_compliance(current_path, role, current_alias)
         known_metadata = sum(
             (
                 role != "UNKNOWN",
@@ -847,7 +1052,7 @@ def build_catalog_records(root: Path, dependency_rows: list[dict]) -> list[dict]
             notes.append("Business date was not inferred from filesystem timestamps.")
         records.append(
             {
-                "report_id": stable_report_id(current_path),
+                "report_id": report_id,
                 "current_path": current_path,
                 "filename": path.name,
                 "extension": path.suffix.lower() or "[no_ext]",
@@ -887,6 +1092,15 @@ def build_catalog_records(root: Path, dependency_rows: list[dict]) -> list[dict]
                     else "NONE"
                 ),
                 "archive_block_reason": archive_block_reason,
+                "archive_block_reasons": archive_block_reasons,
+                "primary_archive_block_reason": primary_archive_block_reason,
+                "archive_block_evidence_ids": archive_block_evidence_ids,
+                "archive_block_evidence": evidence_by_reason,
+                "dependency_safety": dependency_safety,
+                "naming_status": normalized_naming,
+                "retention_status": retention_status,
+                "migration_eligibility": migration_eligibility,
+                "deletion_eligibility": deletion_eligibility,
                 "runtime_locked": runtime_locked,
                 "current_alias": current_alias,
                 "dated_artifact": dated_artifact,
@@ -918,10 +1132,38 @@ def catalog_payload(
         "summary": {
             "by_role": dict(sorted(Counter(row["role"] for row in records).items())),
             "by_migration_risk": dict(sorted(Counter(row["migration_risk"] for row in records).items())),
+            "by_dependency_safety": dict(
+                sorted(Counter(row["dependency_safety"] for row in records).items())
+            ),
+            "by_naming_status": dict(
+                sorted(Counter(row["naming_status"] for row in records).items())
+            ),
+            "by_retention_status": dict(
+                sorted(Counter(row["retention_status"] for row in records).items())
+            ),
+            "by_migration_eligibility": dict(
+                sorted(Counter(row["migration_eligibility"] for row in records).items())
+            ),
+            "by_deletion_eligibility": dict(
+                sorted(Counter(row["deletion_eligibility"] for row in records).items())
+            ),
+            "by_archive_block_reason": dict(
+                sorted(
+                    Counter(
+                        reason
+                        for row in records
+                        for reason in row["archive_block_reasons"]
+                    ).items()
+                )
+            ),
             "runtime_locked_count": sum(row["runtime_locked"] for row in records),
             "current_alias_count": sum(row["current_alias"] for row in records),
             "dated_artifact_count": sum(row["dated_artifact"] for row in records),
             "archive_candidate_count": sum(row["archive_candidate"] for row in records),
+            "safe_to_delete_after_authorization_count": sum(
+                row["deletion_eligibility"] == "SAFE_TO_DELETE_AFTER_AUTHORIZATION"
+                for row in records
+            ),
             "active_generator_count": sum(row["active_generator"] for row in records),
             "dynamic_producer_matched_report_count": sum(
                 row["matched_dynamic_producer_count"] > 0 for row in records
@@ -944,15 +1186,25 @@ def render_catalog_markdown(payload: dict, front_matter: str = "") -> str:
     summary = payload["summary"]
     role_lines = "\n".join(f"- `{key}`: {value}" for key, value in summary["by_role"].items())
     risk_lines = "\n".join(f"- `{key}`: {value}" for key, value in summary["by_migration_risk"].items())
+    migration_lines = "\n".join(
+        f"- `{key}`: {value}" for key, value in summary["by_migration_eligibility"].items()
+    )
+    deletion_lines = "\n".join(
+        f"- `{key}`: {value}" for key, value in summary["by_deletion_eligibility"].items()
+    )
+    reason_lines = "\n".join(
+        f"- `{key}`: {value}" for key, value in summary["by_archive_block_reason"].items()
+    )
     table = [
-        "| Path | Role | Cadence | Topic | Business date | References | Risk | Alias | Archive candidate |",
-        "| --- | --- | --- | --- | --- | ---: | --- | --- | --- |",
+        "| Path | Role | Dependency safety | Naming | Retention | Migration | Deletion | Reasons |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- |",
     ]
     for row in payload["records"]:
         table.append(
-            f"| `{row['current_path']}` | `{row['role']}` | `{row['cadence']}` | `{row['topic']}` | "
-            f"`{row['business_date']}` | {row['reference_count']} | `{row['migration_risk']}` | "
-            f"{_markdown_value(row['current_alias'])} | {_markdown_value(row['archive_candidate'])} |"
+            f"| `{row['current_path']}` | `{row['role']}` | `{row['dependency_safety']}` | "
+            f"`{row['naming_status']}` | `{row['retention_status']}` | "
+            f"`{row['migration_eligibility']}` | `{row['deletion_eligibility']}` | "
+            f"{_markdown_value(row['archive_block_reasons'])} |"
         )
     return f"""{front_matter}# Report Catalog
 
@@ -966,7 +1218,8 @@ def render_catalog_markdown(payload: dict, front_matter: str = "") -> str:
 - Runtime locked: {summary['runtime_locked_count']}
 - Current aliases: {summary['current_alias_count']}
 - Dated artifacts: {summary['dated_artifact_count']}
-- Low-risk archive candidates: {summary['archive_candidate_count']}
+- Deprecated Archive Candidate flag true: {summary['archive_candidate_count']}
+- Safe-to-delete-after-authorization: {summary['safe_to_delete_after_authorization_count']}
 - Unknown roles requiring review: {summary['unknown_role_count']}
 - Catalog SHA-256: `{payload['catalog_sha256']}`
 
@@ -977,6 +1230,18 @@ def render_catalog_markdown(payload: dict, front_matter: str = "") -> str:
 ### Migration risks
 
 {risk_lines}
+
+### Migration eligibility
+
+{migration_lines}
+
+### Deletion eligibility
+
+{deletion_lines}
+
+### Classification reasons
+
+{reason_lines}
 
 ## Inventory
 
