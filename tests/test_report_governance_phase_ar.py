@@ -7,6 +7,7 @@ from pathlib import Path
 import pytest
 
 from src.report_governance.backstop_scanner import scan_backstop_references
+from src.report_governance.authority_merge import AuthorityMergeError, apply_owned_overlay
 from src.report_governance.common import create_run_context, load_config, source_files
 from src.report_governance.evidence import build_evidence_index
 from src.report_governance.inventory import build_inventory, infer_business_date
@@ -155,6 +156,16 @@ def test_immutable_writer_is_idempotent_and_fail_fast(tmp_path):
     assert immutable_write(path, b"same\n") == "IDEMPOTENT"
     with pytest.raises(FileExistsError):
         immutable_write(path, b"different\n")
+
+
+def test_authority_merge_preserves_availability_and_unknown_nested_fields():
+    authority = {"availability": {"status": "ACTIVE", "unknown": {"keep": 1}}, "report_status": "OLD"}
+    overlay = {"availability": {"status": "WRONG"}, "report_status": "ACTIVE"}
+    with pytest.raises(AuthorityMergeError):
+        apply_owned_overlay(authority, overlay, {"report_status"})
+    merged = apply_owned_overlay(authority, {"report_status": "ACTIVE"}, {"report_status"})
+    assert merged["availability"] == authority["availability"]
+    assert merged["report_status"] == "ACTIVE"
 
 
 def test_three_clean_rebuilds_are_byte_stable(tmp_path):
