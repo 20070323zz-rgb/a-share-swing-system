@@ -1,0 +1,12 @@
+[
+  {"name": "dependency_evidence_resolves", "kind": "DEPENDENCY", "expect_valid": true},
+  {"name": "audit_role_evidence_resolves", "kind": "REPORT_ROLE", "expect_valid": true},
+  {"name": "retention_evidence_resolves", "kind": "RETENTION", "expect_valid": true},
+  {"name": "runtime_alias_evidence_resolves", "kind": "STATE_AUTHORITY", "expect_valid": true},
+  {"name": "unknown_role_evidence_resolves", "kind": "UNKNOWN_ROLE", "expect_valid": true},
+  {"name": "already_archived_location_resolves", "kind": "LOCATION", "expect_valid": true},
+  {"name": "nonexistent_evidence_id_fails", "kind": "UNRESOLVED_ID", "expect_valid": false},
+  {"name": "duplicate_evidence_id_fails", "kind": "DUPLICATE_ID", "expect_valid": false},
+  {"name": "bad_report_id_fails", "kind": "BAD_REPORT_ID", "expect_valid": false},
+  {"name": "missing_rule_version_fails", "kind": "MISSING_RULE_VERSION", "expect_valid": false}
+]

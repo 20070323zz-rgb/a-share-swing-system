@@ -22,7 +22,7 @@ from scripts.governance.report_governance_common import (
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 BUSINESS_DATE = "2026-07-15"
-REVISION = "v2"
+REVISION = "v3"
 
 
 def test_report_id_is_stable_and_path_derived() -> None:
@@ -337,9 +337,10 @@ def test_committed_registry_lines_and_excerpt_hashes_match_source() -> None:
 
 def test_generators_are_byte_stable_on_repeated_runs() -> None:
     commands = [
-        ["python3", "scripts/governance/build_report_dependency_registry.py", "--business-date", BUSINESS_DATE],
-        ["python3", "scripts/governance/build_report_catalog.py", "--business-date", BUSINESS_DATE],
-        ["python3", "scripts/governance/build_phase_a_summary.py", "--business-date", BUSINESS_DATE],
+        ["python3", "scripts/governance/build_report_dependency_registry.py", "--business-date", BUSINESS_DATE, "--snapshot-revision", REVISION],
+        ["python3", "scripts/governance/build_report_catalog.py", "--business-date", BUSINESS_DATE, "--snapshot-revision", REVISION],
+        ["python3", "scripts/governance/build_report_governance_evidence_registry.py", "--business-date", BUSINESS_DATE],
+        ["python3", "scripts/governance/build_phase_a_summary.py", "--business-date", BUSINESS_DATE, "--snapshot-revision", REVISION],
     ]
     outputs = [
         PROJECT_ROOT / f"reports/report_dependency_registry_{REVISION}_{BUSINESS_DATE}.json",
@@ -350,8 +351,10 @@ def test_generators_are_byte_stable_on_repeated_runs() -> None:
         PROJECT_ROOT / f"reports/report_catalog_{REVISION}_{BUSINESS_DATE}.md",
         PROJECT_ROOT / f"reports/report_naming_compliance_audit_{REVISION}_{BUSINESS_DATE}.csv",
         PROJECT_ROOT / f"reports/report_naming_compliance_audit_{REVISION}_{BUSINESS_DATE}.metadata.json",
+        PROJECT_ROOT / f"reports/report_governance_evidence_registry_v1_{BUSINESS_DATE}.json",
+        PROJECT_ROOT / f"reports/report_governance_evidence_registry_v1_{BUSINESS_DATE}.csv",
         PROJECT_ROOT / f"reports/reports_governance_phase_a_summary_{REVISION}_{BUSINESS_DATE}.md",
-        PROJECT_ROOT / f"reports/reports_governance_phase_a_final_semantic_remediation_{BUSINESS_DATE}.md",
+        PROJECT_ROOT / f"reports/reports_governance_phase_a_evidence_and_archive_state_remediation_{BUSINESS_DATE}.md",
     ]
     committed = {path: path.read_bytes() for path in outputs}
     for command in commands:

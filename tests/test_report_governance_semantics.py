@@ -24,7 +24,7 @@ from scripts.governance.report_governance_common import (
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 BUSINESS_DATE = "2026-07-15"
-REVISION = "v2"
+REVISION = "v3"
 
 
 def _pattern(token: str, kind: str, extension: str = "md") -> dict:
@@ -236,6 +236,7 @@ def test_immutable_snapshot_writer_is_idempotent_and_fail_fast(tmp_path: Path) -
 def test_revisioned_control_artifacts_are_type_recognized() -> None:
     assert is_control_report_path("reports/report_catalog_v2_2026-07-15.json")
     assert is_control_report_path("reports/reports_governance_phase_a_summary_v2_2026-07-15.md")
+    assert is_control_report_path("reports/report_governance_evidence_registry_v1_2026-07-15.json")
     assert not is_control_report_path("reports/unrelated_v2_2026-07-15.md")
 
 
