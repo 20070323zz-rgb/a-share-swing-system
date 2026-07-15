@@ -55,3 +55,23 @@ class AuditPaths:
 
 def iso_time(value: datetime) -> str:
     return value.isoformat(timespec="seconds")
+
+
+def schedule_times(config: dict[str, Any], source: str, trade_date: str) -> list[str]:
+    """Return timing-eligible slots while preserving the legacy evidence contract."""
+    schedule = config["schedule"]
+    if source == "baostock":
+        return list(schedule.get("baostock_times", []))
+    legacy_through = str(schedule.get("legacy_through_date", ""))
+    if legacy_through and trade_date <= legacy_through:
+        return list(schedule.get("legacy_tushare_times", schedule.get("tushare_times", [])))
+    if "core_times" in schedule:
+        return list(schedule["core_times"]) + list(schedule.get("conditional_times", []))
+    return list(schedule.get("tushare_times", []))
+
+
+def active_tushare_times(config: dict[str, Any]) -> list[str]:
+    schedule = config["schedule"]
+    if "core_times" in schedule:
+        return list(schedule["core_times"]) + list(schedule.get("conditional_times", []))
+    return list(schedule.get("tushare_times", []))

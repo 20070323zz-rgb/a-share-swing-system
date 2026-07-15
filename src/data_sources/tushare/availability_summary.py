@@ -10,15 +10,17 @@ from zoneinfo import ZoneInfo
 
 import pandas as pd
 
-from .availability_models import AuditPaths
+from .availability_models import AuditPaths, active_tushare_times, schedule_times
 
 
 TZ = ZoneInfo("Asia/Shanghai")
 REAL_RESPONSE_STATUSES = {"ACCESS_PASS", "EMPTY_UNEXPECTED", "NETWORK_FAILED", "PERMISSION_BLOCKED", "VALIDATION_FAILED"}
+COMPLETED_SLOT_STATUSES = REAL_RESPONSE_STATUSES | {"SKIPPED_STABLE_CONFIRMED"}
 TIMING_COLUMNS = [
     "trade_date", "day_status", "tushare_slots_recorded", "tushare_slots_expected",
     "first_available_time", "first_complete_time", "first_quality_complete_time",
-    "first_stable_time", "last_revision_time", "late_revision_risk",
+    "first_stable_time", "availability_state", "data_readiness_status",
+    "last_revision_time", "late_revision_risk",
     "sh_first_complete_time", "sz_first_complete_time", "delayed_codes",
     "max_coverage_ratio", "revision_count", "evidence_class",
 ]
@@ -48,15 +50,16 @@ def summarize_source_day(
     source: str,
     trade_date: str,
     expected_times: list[str],
-    stability_minutes: int,
     late_revision_threshold: str,
 ) -> dict[str, Any]:
+    eligible_times = set(expected_times)
     attempts = [
         item for item in manifests
         if item.get("source") == source
         and item.get("trade_date") == trade_date
         and item.get("evidence_mode") == "real"
         and item.get("response_status") not in {"DUPLICATE_ATTEMPT_SKIPPED", "BLOCKED_EARLY_PROBE"}
+        and _hhmm(item.get("scheduled_at", "")) in eligible_times
     ]
     latest_by_probe: dict[str, dict[str, Any]] = {}
     for item in sorted(attempts, key=lambda row: str(row.get("completed_at", ""))):
@@ -65,9 +68,10 @@ def summarize_source_day(
     observed_times = {_hhmm(row.get("scheduled_at", "")) for row in rows}
     recorded = len(set(expected_times) & observed_times)
     all_slots_recorded = recorded == len(expected_times)
+    completed_slots = [row for row in rows if row.get("response_status") in COMPLETED_SLOT_STATUSES]
     real_slots = [row for row in rows if row.get("response_status") in REAL_RESPONSE_STATUSES]
-    day_status = "COMPLETE" if all_slots_recorded and len(real_slots) == len(expected_times) else "IN_PROGRESS"
-    if all_slots_recorded and len(real_slots) < len(expected_times):
+    day_status = "COMPLETE" if all_slots_recorded and len(completed_slots) == len(expected_times) else "IN_PROGRESS"
+    if all_slots_recorded and len(completed_slots) < len(expected_times):
         day_status = "INCOMPLETE_WITH_MISSED_PROBES"
 
     available = [row for row in real_slots if int(row.get("matched_etf_count", 0)) > 0]
@@ -75,7 +79,8 @@ def summarize_source_day(
     quality_complete = [row for row in real_slots if _is_quality_complete(row)]
     first_available = min((_hhmm(row.get("scheduled_at", "")) for row in available), default="")
     first_complete = min((_hhmm(row.get("scheduled_at", "")) for row in complete), default="")
-    stable = _first_stable_time(real_slots, stability_minutes) if day_status == "COMPLETE" else ""
+    stable = _first_stable_time(real_slots)
+    availability_state = _observation_state(real_slots)
     revisions = [row for row in real_slots if bool(row.get("material_revision"))]
     last_revision = max((_hhmm(row.get("scheduled_at", "")) for row in revisions), default="")
     late_risk = bool(last_revision and last_revision >= late_revision_threshold)
@@ -94,6 +99,8 @@ def summarize_source_day(
         "first_complete_time": first_complete,
         "first_quality_complete_time": min((_hhmm(row.get("scheduled_at", "")) for row in quality_complete), default=""),
         "first_stable_time": stable,
+        "availability_state": availability_state,
+        "data_readiness_status": "SHADOW_STABLE" if availability_state == "STABLE" else "DATA_NOT_READY",
         "last_revision_time": last_revision,
         "late_revision_risk": late_risk,
         "sh_first_complete_time": min((_hhmm(row.get("scheduled_at", "")) for row in sh_complete), default=""),
@@ -116,8 +123,7 @@ def build_availability_reports(project_root: Path, config: dict[str, Any]) -> di
             manifests,
             source="tushare",
             trade_date=trade_date,
-            expected_times=list(config["schedule"]["tushare_times"]),
-            stability_minutes=int(config["observation"]["stability_min_interval_minutes"]),
+            expected_times=schedule_times(config, "tushare", trade_date),
             late_revision_threshold=str(config["observation"]["late_revision_threshold"]),
         )
         for trade_date in dates
@@ -137,6 +143,8 @@ def build_availability_reports(project_root: Path, config: dict[str, Any]) -> di
             "first_complete_time": row["first_complete_time"],
             "first_quality_complete_time": row["first_quality_complete_time"],
             "first_stable_time": row["first_stable_time"],
+            "availability_state": row["availability_state"],
+            "data_readiness_status": row["data_readiness_status"],
             "last_revision_time": row["last_revision_time"],
             "late_revision_risk": row["late_revision_risk"],
             "sh_first_complete_time": row["sh_first_complete_time"],
@@ -151,13 +159,12 @@ def build_availability_reports(project_root: Path, config: dict[str, Any]) -> di
     comparison_rows: list[dict[str, Any]] = []
     for trade_date in dates:
         source_rows = {}
-        for source, times in (("tushare", config["schedule"]["tushare_times"]), ("baostock", config["schedule"]["baostock_times"])):
+        for source in ("tushare", "baostock"):
             source_rows[source] = summarize_source_day(
                 manifests,
                 source=source,
                 trade_date=trade_date,
-                expected_times=list(times),
-                stability_minutes=int(config["observation"]["stability_min_interval_minutes"]),
+                expected_times=schedule_times(config, source, trade_date),
                 late_revision_threshold=str(config["observation"]["late_revision_threshold"]),
             )
         base_minutes = _minutes(source_rows["tushare"]["first_complete_time"])
@@ -191,21 +198,46 @@ def build_availability_reports(project_root: Path, config: dict[str, Any]) -> di
     return payload
 
 
-def _first_stable_time(rows: list[dict[str, Any]], minimum_interval: int) -> str:
+def _first_stable_time(rows: list[dict[str, Any]]) -> str:
+    """Return the confirmation slot, invalidating it after any later change/failure."""
     ordered = sorted(rows, key=lambda row: str(row.get("scheduled_at", "")))
-    for index, row in enumerate(ordered[:-1]):
-        if not _is_complete(row):
+    candidate = ""
+    previous: dict[str, Any] | None = None
+    for row in ordered:
+        if not _is_quality_complete(row):
+            candidate = ""
+            previous = row
             continue
-        current_time = _minutes(_hhmm(row.get("scheduled_at", "")))
-        later = ordered[index + 1:]
-        next_row = later[0]
-        next_time = _minutes(_hhmm(next_row.get("scheduled_at", "")))
-        if current_time is None or next_time is None or next_time - current_time < minimum_interval:
-            continue
-        expected_hash = str(row.get("source_snapshot_hash", ""))
-        if expected_hash and all(_is_complete(item) and str(item.get("source_snapshot_hash", "")) == expected_hash for item in later):
-            return _hhmm(row.get("scheduled_at", ""))
-    return ""
+        current_hash = str(row.get("source_snapshot_hash", ""))
+        if previous is not None and _is_quality_complete(previous):
+            previous_hash = str(previous.get("source_snapshot_hash", ""))
+            if current_hash and current_hash == previous_hash:
+                if not candidate:
+                    candidate = _hhmm(row.get("scheduled_at", ""))
+            else:
+                candidate = ""
+        else:
+            candidate = ""
+        previous = row
+    return candidate
+
+
+def _observation_state(rows: list[dict[str, Any]]) -> str:
+    if not rows:
+        return "NOT_AVAILABLE"
+    ordered = sorted(rows, key=lambda row: str(row.get("scheduled_at", "")))
+    latest = ordered[-1]
+    if latest.get("response_status") != "ACCESS_PASS":
+        return "NOT_AVAILABLE" if int(latest.get("matched_etf_count", 0)) == 0 else "PARTIAL"
+    if int(latest.get("matched_etf_count", 0)) == 0:
+        return "NOT_AVAILABLE"
+    if not _is_quality_complete(latest):
+        return "PARTIAL"
+    if len(ordered) < 2 or not _is_quality_complete(ordered[-2]):
+        return "COMPLETE_UNCONFIRMED"
+    latest_hash = str(latest.get("source_snapshot_hash", ""))
+    previous_hash = str(ordered[-2].get("source_snapshot_hash", ""))
+    return "STABLE" if latest_hash and latest_hash == previous_hash else "REVISION_DETECTED"
 
 
 def _delayed_codes(rows: list[dict[str, Any]]) -> list[str]:
@@ -240,7 +272,7 @@ def _evidence_class(rows: list[dict[str, Any]], config: dict[str, Any]) -> str:
         if len(valid) < len(completed) or any(row["late_revision_risk"] for row in completed):
             return "EXTEND_TO_10_DAYS"
         return "PRELIMINARY_PASS_MAIN_REVIEW_REQUIRED"
-    return "COLLECTING_INSUFFICIENT_DAYS"
+    return "INSUFFICIENT_FOR_FIVE_DAY_STABILITY_CERTIFICATION"
 
 
 def _cross_day_statistics(rows: list[dict[str, Any]], config: dict[str, Any]) -> dict[str, Any]:
@@ -253,10 +285,10 @@ def _cross_day_statistics(rows: list[dict[str, Any]], config: dict[str, Any]) ->
         "first_complete": _timing_stats([row["first_complete_time"] for row in completed]),
         "first_stable": _timing_stats([row["first_stable_time"] for row in completed]),
         "recommended_first_probe_time": "",
-        "recommended_retry_interval_minutes": int(config["observation"]["stability_min_interval_minutes"]),
-        "recommended_safety_cutoff": str(config["schedule"]["tushare_times"][-1]),
+        "recommended_retry_interval_minutes": int(config["observation"]["candidate_retry_interval_minutes"]),
+        "recommended_safety_cutoff": str(active_tushare_times(config)[-1]),
         "maximum_retry_count": 0,
-        "data_not_ready_rule": "No recommendation before five completed valid trading days.",
+        "data_not_ready_rule": "At 18:00, emit DATA_NOT_READY if no current field-quality-complete stable pair exists; preserve the existing SSOT and do not invoke BaoStock fallback. No timing recommendation is issued before five completed valid trading days.",
         "paper_execution_rule": "No change; the existing freshness gate remains authoritative.",
     }
     stable_p90 = result["first_stable"]["p90"]
@@ -304,32 +336,37 @@ def _status_markdown(payload: dict[str, Any], config: dict[str, Any]) -> str:
         f"- Observation days completed: `{payload['observation_days_completed']}`",
         f"- Valid stable observation days: `{payload['valid_observation_days']}`",
         f"- Timing evidence: `{payload['evidence_class']}`",
-        "- Tushare role: `SHADOW_PRIMARY_CANDIDATE`",
-        "- BaoStock role: `COMPARATOR_ONLY`",
+        "- Tushare role: `APPROVED_PRIMARY_UPSTREAM`",
+        "- Decision evidence confidence: `LIMITED_TWO_DAY_EVIDENCE`",
+        "- Decision authority: `USER_AUTHORIZED_EARLY_PROMOTION`",
+        "- BaoStock role: `RECONCILIATION_ONLY`",
         "- Canonical ETF data: `data/etf_daily/` (unchanged)",
-        "- Primary upstream migration: `NOT_STARTED`",
+        "- Primary upstream migration: `AUTHORIZED_NOT_STARTED`",
+        "- Data promotion: `BLOCKED_PENDING_IMPLEMENTATION_VALIDATION`",
         "- Formal execution logic: `UNCHANGED`",
         "",
         "## Schedule",
         "",
-        f"- Tushare: `{', '.join(config['schedule']['tushare_times'])}` CST",
+        f"- Core Tushare: `{', '.join(config['schedule']['core_times'])}` CST",
+        f"- Conditional Tushare: `{', '.join(config['schedule']['conditional_times'])}` CST",
+        f"- Low-frequency health check (excluded from timing): `{', '.join(config['schedule']['health_check_times'])}` CST",
         f"- BaoStock: `{', '.join(config['schedule']['baostock_times'])}` CST",
         "- A trading day is accepted only when confirmed by the cached Tushare trade calendar.",
         "",
         "## Daily Progress",
         "",
-        "| Trade date | Status | Slots | First available | First complete | First stable | Last revision |",
-        "|---|---|---:|---|---|---|---|",
+        "| Trade date | Status | Observation state | Slots | First available | First complete | First stable | Last revision |",
+        "|---|---|---|---:|---|---|---|---|",
     ]
     if rows:
         for row in rows:
             lines.append(
-                f"| {row['trade_date']} | {row['day_status']} | {row['slots_recorded']}/{row['slots_expected']} | "
+                f"| {row['trade_date']} | {row['day_status']} | {row['availability_state']} | {row['slots_recorded']}/{row['slots_expected']} | "
                 f"{row['first_available_time'] or '-'} | {row['first_complete_time'] or '-'} | "
                 f"{row['first_stable_time'] or '-'} | {row['last_revision_time'] or '-'} |"
             )
     else:
-        lines.append("| - | Waiting for first real probe | 0/10 | - | - | - | - |")
+        lines.append("| - | Waiting for first real probe | NOT_AVAILABLE | 0/8 | - | - | - | - |")
     lines.extend([
         "",
         "## Cross-Day Statistics And Safety Candidate",
@@ -345,9 +382,16 @@ def _status_markdown(payload: dict[str, Any], config: dict[str, Any]) -> str:
         f"- DATA_NOT_READY rule: {payload['cross_day_statistics']['data_not_ready_rule']}",
         f"- Paper execution rule: {payload['cross_day_statistics']['paper_execution_rule']}",
         "",
+        "## Migration Timing Design Candidate",
+        "",
+        f"- First formal staging fetch candidate: `{config['migration_timing_candidate']['first_formal_staging_fetch']}`",
+        f"- Confirmation / validation / atomic-promotion candidate: `{config['migration_timing_candidate']['confirmation_validation_atomic_promotion_candidate']}`",
+        f"- Fail-closed manual-review cutoff: `{config['migration_timing_candidate']['fail_closed_manual_review_cutoff']}`",
+        "- Formal promotion authorized: `false`",
+        "",
         "## Decision Boundary",
         "",
-        "No safety-time or primary-source recommendation is issued before five valid days. Five-day evidence is preliminary; ten valid trading days are required before a supported timing verdict can be proposed to Main.",
+        "Tushare adoption is already approved by user authorization. Five-day and ten-day evidence gates now govern only timing-window optimization and safety-buffer certification; they do not reopen the upstream-source decision. Formal promotion remains blocked until migration implementation and validation pass.",
         "",
     ])
     return "\n".join(lines)

@@ -42,7 +42,9 @@ def make_project(tmp_path: Path) -> tuple[Path, dict]:
         pd.DataFrame({"date": ["2026-07-10"]}).to_csv(root / f"data/etf_daily/{market}_{code}.csv", index=False)
     pd.DataFrame([{"symbol": code, "pool": role} for _, code, role in symbols]).to_csv(root / "data/etf_classification.csv", index=False)
     config = yaml.safe_load((ROOT / "configs/tushare_etf_availability_audit.yaml").read_text(encoding="utf-8"))
-    config["schedule"]["tushare_times"] = ["15:05", "15:30", "16:00"]
+    config["schedule"]["legacy_through_date"] = "2026-07-13"
+    config["schedule"]["core_times"] = ["15:05", "15:30", "16:00"]
+    config["schedule"]["conditional_times"] = []
     config["schedule"]["baostock_times"] = ["15:30", "16:00"]
     paths = AuditPaths.from_config(root, config)
     paths.calendar_cache.parent.mkdir(parents=True, exist_ok=True)
@@ -89,6 +91,18 @@ def test_repository_universe_maps_all_183_etfs():
     assert result["sh_count"] + result["sz_count"] == 183
     assert not result["duplicate_ts_codes"]
     assert all(item.ts_code.endswith((".SH", ".SZ")) for item in records)
+
+
+def test_active_schedule_adds_1605_1610_and_demotes_1530():
+    config = yaml.safe_load((ROOT / "configs/tushare_etf_availability_audit.yaml").read_text(encoding="utf-8"))
+    assert "16:05" in config["schedule"]["core_times"]
+    assert "16:10" in config["schedule"]["core_times"]
+    assert "15:30" not in config["schedule"]["core_times"]
+    assert config["schedule"]["health_check_times"] == ["15:30"]
+    assert config["schedule"]["conditional_times"] == ["17:30", "18:00"]
+    assert config["migration_timing_candidate"]["first_formal_staging_fetch"] == "16:15"
+    assert config["migration_timing_candidate"]["confirmation_validation_atomic_promotion_candidate"] == "16:30"
+    assert config["migration_timing_candidate"]["formal_promotion_authorized"] is False
 
 
 @pytest.mark.parametrize(("items", "expected"), [([], 0), (FIXTURE["items"][:1], 1), (FIXTURE["items"], 3)])
@@ -165,15 +179,16 @@ def test_network_permission_and_missed_probe_are_classified(tmp_path):
     assert all(item["paper_engine_invoked"] is False for item in (network, permission, missed))
 
 
-def test_stability_requires_complete_day_and_unchanged_future_hashes(tmp_path):
+def test_first_stable_is_confirmation_time_not_first_complete_time(tmp_path):
     root, config = make_project(tmp_path)
-    for value in config["schedule"]["tushare_times"]:
+    for value in config["schedule"]["core_times"]:
         run_availability_probe(root, config, source="tushare", trade_date="2026-07-14", scheduled_time=value, client_factory=factory(), now=datetime.fromisoformat(f"2026-07-14T{value}:00+08:00"), evidence_mode="real")
     result = build_availability_reports(root, config)
     row = result["tushare_rows"][0]
     assert row["day_status"] == "COMPLETE"
     assert row["first_complete_time"] == "15:05"
-    assert row["first_stable_time"] == "15:05"
+    assert row["first_stable_time"] == "15:30"
+    assert row["availability_state"] == "STABLE"
     assert result["valid_observation_days"] == 1
 
 
@@ -182,6 +197,7 @@ def test_manifest_contains_required_safety_flags(tmp_path):
     result = run_availability_probe(root, config, source="tushare", trade_date="2026-07-14", scheduled_time="15:05", client_factory=factory(), now=datetime.fromisoformat("2026-07-14T15:05:00+08:00"), evidence_mode="real")
     assert result["token_exposed"] is False
     assert result["wrote_to_ssot"] is False
+    assert result["formal_promotion_attempted"] is False
     assert result["paper_engine_invoked"] is False
     assert result["required_etf_count"] == 3
     assert result["required_universe_snapshot_hash"]
@@ -205,7 +221,7 @@ def test_baostock_budget_blocks_before_import_or_network(tmp_path):
 
 def test_later_failed_slot_prevents_false_stability(tmp_path):
     root, config = make_project(tmp_path)
-    for value in config["schedule"]["tushare_times"][:2]:
+    for value in config["schedule"]["core_times"][:2]:
         run_availability_probe(root, config, source="tushare", trade_date="2026-07-14", scheduled_time=value, client_factory=factory(), now=datetime.fromisoformat(f"2026-07-14T{value}:00+08:00"), evidence_mode="real")
     run_availability_probe(root, config, source="tushare", trade_date="2026-07-14", scheduled_time="16:00", client_factory=factory(network_error=TimeoutError("offline")), now=datetime.fromisoformat("2026-07-14T16:00:00+08:00"), evidence_mode="real")
     row = build_availability_reports(root, config)["tushare_rows"][0]
@@ -222,3 +238,65 @@ def test_all_at_once_arrival_does_not_label_every_etf_delayed(tmp_path):
     assert row["first_available_time"] == "15:30"
     assert row["first_complete_time"] == "15:30"
     assert row["delayed_codes"] == ""
+
+
+def test_1615_complete_1630_confirms_first_stable_at_1630(tmp_path):
+    root, config = make_project(tmp_path)
+    config["schedule"]["core_times"] = ["16:15", "16:30"]
+    for value in config["schedule"]["core_times"]:
+        run_availability_probe(root, config, source="tushare", trade_date="2026-07-14", scheduled_time=value, client_factory=factory(), now=datetime.fromisoformat(f"2026-07-14T{value}:00+08:00"), evidence_mode="real")
+    row = build_availability_reports(root, config)["tushare_rows"][0]
+    assert row["first_complete_time"] == "16:15"
+    assert row["first_stable_time"] == "16:30"
+
+
+def test_hash_change_invalidates_stable_until_next_confirmation(tmp_path):
+    root, config = make_project(tmp_path)
+    config["schedule"]["core_times"] = ["16:05", "16:10", "16:15"]
+    run_availability_probe(root, config, source="tushare", trade_date="2026-07-14", scheduled_time="16:05", client_factory=factory(), now=datetime.fromisoformat("2026-07-14T16:05:00+08:00"), evidence_mode="real")
+    run_availability_probe(root, config, source="tushare", trade_date="2026-07-14", scheduled_time="16:10", client_factory=factory(), now=datetime.fromisoformat("2026-07-14T16:10:00+08:00"), evidence_mode="real")
+    revised = [list(item) for item in FIXTURE["items"]]
+    revised[0][-1] += 1
+    result = run_availability_probe(root, config, source="tushare", trade_date="2026-07-14", scheduled_time="16:15", client_factory=factory(items=revised), now=datetime.fromisoformat("2026-07-14T16:15:00+08:00"), evidence_mode="real")
+    row = build_availability_reports(root, config)["tushare_rows"][0]
+    assert result["observation_state"] == "REVISION_DETECTED"
+    assert row["availability_state"] == "REVISION_DETECTED"
+    assert row["first_stable_time"] == ""
+
+
+def test_conditional_late_probes_stop_after_stable_without_vendor_call(tmp_path):
+    root, config = make_project(tmp_path)
+    config["schedule"]["core_times"] = ["16:15", "16:30"]
+    config["schedule"]["conditional_times"] = ["17:30", "18:00"]
+    for value in config["schedule"]["core_times"]:
+        run_availability_probe(root, config, source="tushare", trade_date="2026-07-14", scheduled_time=value, client_factory=factory(), now=datetime.fromisoformat(f"2026-07-14T{value}:00+08:00"), evidence_mode="real")
+    no_call = lambda **_: (_ for _ in ()).throw(AssertionError("conditional stable stop must not call vendor"))
+    first = run_availability_probe(root, config, source="tushare", trade_date="2026-07-14", scheduled_time="17:30", client_factory=no_call, now=datetime.fromisoformat("2026-07-14T17:30:00+08:00"), evidence_mode="real")
+    second = run_availability_probe(root, config, source="tushare", trade_date="2026-07-14", scheduled_time="18:00", client_factory=no_call, now=datetime.fromisoformat("2026-07-14T18:00:00+08:00"), evidence_mode="real")
+    assert first["response_status"] == "SKIPPED_STABLE_CONFIRMED"
+    assert second["response_status"] == "SKIPPED_STABLE_CONFIRMED"
+    assert first["request_count"] == second["request_count"] == 0
+
+
+def test_tushare_not_available_does_not_trigger_baostock_fallback(tmp_path):
+    root, config = make_project(tmp_path)
+    result = run_availability_probe(
+        root, config, source="tushare", trade_date="2026-07-14", scheduled_time="15:05",
+        client_factory=factory(items=[]),
+        baostock_fetcher=lambda *_: (_ for _ in ()).throw(AssertionError("BaoStock fallback is forbidden")),
+        now=datetime.fromisoformat("2026-07-14T15:05:00+08:00"), evidence_mode="real",
+    )
+    assert result["response_status"] == "EMPTY_UNEXPECTED"
+    assert result["observation_state"] == "NOT_AVAILABLE"
+
+
+def test_data_not_ready_is_fail_closed_and_ssot_unchanged(tmp_path):
+    root, config = make_project(tmp_path)
+    ssot_file = root / "data/etf_daily/sh_510300.csv"
+    before = ssot_file.read_bytes()
+    for value in config["schedule"]["core_times"]:
+        run_availability_probe(root, config, source="tushare", trade_date="2026-07-14", scheduled_time=value, client_factory=factory(items=[]), now=datetime.fromisoformat(f"2026-07-14T{value}:00+08:00"), evidence_mode="real")
+    row = build_availability_reports(root, config)["tushare_rows"][0]
+    assert row["data_readiness_status"] == "DATA_NOT_READY"
+    assert row["first_stable_time"] == ""
+    assert ssot_file.read_bytes() == before

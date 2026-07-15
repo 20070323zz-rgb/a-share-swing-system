@@ -37,7 +37,22 @@ baostock:
 
 schedule:
   tolerance_minutes: 4
-  tushare_times:
+  active_effective_date: "2026-07-16"
+  core_times:
+    - "16:00"
+    - "16:05"
+    - "16:10"
+    - "16:15"
+    - "16:30"
+    - "17:00"
+  conditional_times:
+    - "17:30"
+    - "18:00"
+  health_check_times:
+    - "15:30"
+  health_check_frequency: manual_low_frequency
+  legacy_through_date: "2026-07-15"
+  legacy_tushare_times:
     - "15:05"
     - "15:15"
     - "15:30"
@@ -57,11 +72,29 @@ schedule:
 observation:
   initial_valid_days: 5
   extended_valid_days: 10
-  stability_min_interval_minutes: 15
+  stability_confirmation_observations: 2
+  candidate_retry_interval_minutes: 15
   late_revision_threshold: "17:30"
   supported_min_valid_days: 10
   preliminary_min_valid_days: 5
   safety_buffer_minutes: 15
+
+decision:
+  primary_upstream: APPROVED_PRIMARY_UPSTREAM
+  evidence_confidence: LIMITED_TWO_DAY_EVIDENCE
+  authority: USER_AUTHORIZED_EARLY_PROMOTION
+  migration: AUTHORIZED_NOT_STARTED
+  data_promotion: BLOCKED_PENDING_IMPLEMENTATION_VALIDATION
+  baostock_role: RECONCILIATION_ONLY
+  canonical_ssot: data/etf_daily/
+  timing_optimization: ACTIVE
+
+migration_timing_candidate:
+  first_formal_staging_fetch: "16:15"
+  confirmation_validation_atomic_promotion_candidate: "16:30"
+  fail_closed_manual_review_cutoff: "18:00"
+  formal_promotion_authorized: false
+  status: DESIGN_CANDIDATE_ONLY
 
 storage:
   root: data/staging/tushare_etf_availability

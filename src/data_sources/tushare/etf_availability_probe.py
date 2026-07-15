@@ -143,6 +143,20 @@ def run_availability_probe(
         })
         return _persist_manifest(paths, manifest)
 
+    if (
+        source == "tushare"
+        and scheduled_time in config["schedule"].get("conditional_times", [])
+        and _current_observation_state(paths, trade_date, source, scheduled_at) == "STABLE"
+    ):
+        manifest = _base_manifest(audit_id, probe_id, source, trade_date, scheduled_at, current, universe, mapping, evidence_mode)
+        manifest.update({
+            "response_status": "SKIPPED_STABLE_CONFIRMED",
+            "observation_state": "STABLE",
+            "error_class": "",
+            "error_message_sanitized": "Conditional late probe stopped because the latest two effective complete snapshots were hash-identical and no later failure or revision invalidated them.",
+        })
+        return _persist_manifest(paths, manifest)
+
     started = datetime.now(TZ)
     response_status = "NETWORK_FAILED"
     permission_status = "UNKNOWN"
@@ -212,6 +226,8 @@ def run_availability_probe(
         manifest["last_revision_time"] = iso_time(completed)
     if response_status == "ACCESS_PASS" and normalized.empty:
         manifest["response_status"] = "EMPTY_UNEXPECTED"
+    previous_payload = _read_manifest(paths, previous_manifest)
+    manifest["observation_state"] = _classify_observation_state(manifest, previous_payload)
     return _persist_manifest(paths, manifest, normalized)
 
 
@@ -397,6 +413,7 @@ def _base_manifest(
         "critical_field_error_count": 0,
         "field_complete": False,
         "quality_complete": False,
+        "observation_state": "NOT_AVAILABLE",
         "source_snapshot_hash": "",
         "required_universe_snapshot_hash": mapping["mapping_hash"],
         "revision_count": 0,
@@ -408,6 +425,7 @@ def _base_manifest(
         "error_message_sanitized": "",
         "token_exposed": False,
         "wrote_to_ssot": False,
+        "formal_promotion_attempted": False,
         "paper_engine_invoked": False,
     }
 
@@ -462,6 +480,49 @@ def _load_previous_snapshot(paths: AuditPaths, trade_date: str, source: str, sch
     _, path, payload = max(candidates, key=lambda item: item[0])
     snapshot_path = paths.project_root / payload["snapshot_path"]
     return pd.read_csv(snapshot_path), str(path.relative_to(paths.project_root))
+
+
+def _read_manifest(paths: AuditPaths, relative_path: str) -> dict[str, Any]:
+    if not relative_path:
+        return {}
+    try:
+        return json.loads((paths.project_root / relative_path).read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
+def _classify_observation_state(current: dict[str, Any], previous: dict[str, Any]) -> str:
+    if int(current.get("matched_etf_count", 0)) == 0:
+        return "NOT_AVAILABLE"
+    if not bool(current.get("quality_complete")):
+        return "PARTIAL"
+    if not bool(previous.get("quality_complete")):
+        return "COMPLETE_UNCONFIRMED"
+    current_hash = str(current.get("source_snapshot_hash", ""))
+    previous_hash = str(previous.get("source_snapshot_hash", ""))
+    return "STABLE" if current_hash and current_hash == previous_hash else "REVISION_DETECTED"
+
+
+def _current_observation_state(paths: AuditPaths, trade_date: str, source: str, before: datetime) -> str:
+    directory = paths.staging_root / trade_date / source / "manifests"
+    rows: list[dict[str, Any]] = []
+    for path in directory.glob("*.json") if directory.exists() else []:
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        if str(payload.get("scheduled_at", "")) >= iso_time(before):
+            continue
+        if payload.get("response_status") in {"DUPLICATE_ATTEMPT_SKIPPED", "BLOCKED_EARLY_PROBE", "SKIPPED_STABLE_CONFIRMED"}:
+            continue
+        rows.append(payload)
+    ordered = sorted(rows, key=lambda row: str(row.get("scheduled_at", "")))
+    if len(ordered) < 2:
+        return "COMPLETE_UNCONFIRMED" if ordered and ordered[-1].get("quality_complete") else "NOT_AVAILABLE"
+    latest, previous = ordered[-1], ordered[-2]
+    if latest.get("response_status") != "ACCESS_PASS" or not latest.get("quality_complete"):
+        return "PARTIAL" if int(latest.get("matched_etf_count", 0)) else "NOT_AVAILABLE"
+    return _classify_observation_state(latest, previous)
 
 
 def _calendar_decision(paths: AuditPaths, trade_date: str) -> str:

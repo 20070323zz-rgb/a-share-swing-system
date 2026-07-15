@@ -14,7 +14,7 @@ from zoneinfo import ZoneInfo
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from data_sources.tushare.availability_models import AuditPaths  # noqa: E402
+from data_sources.tushare.availability_models import AuditPaths, active_tushare_times, schedule_times  # noqa: E402
 from data_sources.tushare.availability_summary import build_availability_reports  # noqa: E402
 from data_sources.tushare.etf_availability_probe import (  # noqa: E402
     load_audit_config,
@@ -61,7 +61,7 @@ def main() -> int:
         _reconcile_missed(ROOT, config, paths.calendar_cache, now)
 
     if args.source == "scheduled":
-        scheduled_time = _current_slot(now, list(config["schedule"]["tushare_times"]), int(config["schedule"]["tolerance_minutes"]))
+        scheduled_time = _current_slot(now, active_tushare_times(config), int(config["schedule"]["tolerance_minutes"]))
         if not scheduled_time:
             build_availability_reports(ROOT, config)
             print(json.dumps({"status": "NO_SCHEDULED_SLOT", "now": now.isoformat(timespec="seconds")}, ensure_ascii=False))
@@ -128,7 +128,8 @@ def _reconcile_missed(project_root: Path, config: dict, calendar_path: Path, now
             continue
         if trade_date > now.date().isoformat():
             continue
-        for source, times in (("tushare", config["schedule"]["tushare_times"]), ("baostock", config["schedule"]["baostock_times"])):
+        for source in ("tushare", "baostock"):
+            times = schedule_times(config, source, trade_date)
             for value in times:
                 deadline = datetime.fromisoformat(f"{trade_date}T{value}:00").replace(tzinfo=TZ) + timedelta(minutes=tolerance)
                 if now > deadline:
