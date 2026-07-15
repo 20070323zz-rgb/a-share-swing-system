@@ -64,7 +64,7 @@ def _front(
         created_at=meta["generated_at"],
         status=status,
         producer="scripts/governance/build_phase_a_summary.py",
-        source_run_id=f"reports-governance-phase-a-semantic-{revision}-{date}",
+        source_run_id=f"reports-governance-phase-a-evidence-archive-{revision}-{date}",
         supersedes=supersedes,
         snapshot_revision=revision,
         immutable=True,
@@ -190,7 +190,7 @@ def main() -> None:
     summary_supersedes = superseded_revision_artifact(
         root, "reports_governance_phase_a_summary", date, "md", revision
     )
-    body = f"""{_front(root, date, summary_path, 'GOVERNANCE_PHASE_SUMMARY', 'REMEDIATED_PENDING_FINAL_SEMANTIC_RE_QC', revision, summary_supersedes)}# Reports Governance Phase A Summary
+    body = f"""{_front(root, date, summary_path, 'GOVERNANCE_PHASE_SUMMARY', 'REMEDIATED_PENDING_FINAL_RESULT_RE_QC', revision, summary_supersedes)}# Reports Governance Phase A Summary
 
 ## State
 

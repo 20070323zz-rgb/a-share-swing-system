@@ -401,9 +401,8 @@ def artifact_metadata(
         "immutable": True,
         "evidence_registry_version": EVIDENCE_REGISTRY_VERSION,
         "classification_schema_version": CLASSIFICATION_SCHEMA_VERSION,
+        "supersedes": supersedes or "",
     }
-    if supersedes:
-        metadata["supersedes"] = supersedes
     return metadata
 
 
@@ -438,8 +437,7 @@ def markdown_front_matter(
             f"evidence_registry_version: {EVIDENCE_REGISTRY_VERSION}",
             f"classification_schema_version: {CLASSIFICATION_SCHEMA_VERSION}",
     ]
-    if supersedes:
-        lines.append(f"supersedes: {supersedes}")
+    lines.append(f"supersedes: {supersedes}")
     lines.extend(("---", ""))
     return "\n".join(lines)
 
