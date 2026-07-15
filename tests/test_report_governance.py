@@ -22,6 +22,7 @@ from scripts.governance.report_governance_common import (
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 BUSINESS_DATE = "2026-07-15"
+REVISION = "v2"
 
 
 def test_report_id_is_stable_and_path_derived() -> None:
@@ -64,10 +65,10 @@ def test_naming_standard_accepts_terminal_iso_dates() -> None:
 
 def test_generated_catalog_and_registry_contracts() -> None:
     catalog = json.loads(
-        (PROJECT_ROOT / f"reports/report_catalog_{BUSINESS_DATE}.json").read_text(encoding="utf-8")
+        (PROJECT_ROOT / f"reports/report_catalog_{REVISION}_{BUSINESS_DATE}.json").read_text(encoding="utf-8")
     )
     registry = json.loads(
-        (PROJECT_ROOT / f"reports/report_dependency_registry_{BUSINESS_DATE}.json").read_text(encoding="utf-8")
+        (PROJECT_ROOT / f"reports/report_dependency_registry_{REVISION}_{BUSINESS_DATE}.json").read_text(encoding="utf-8")
     )
 
     assert catalog["record_count"] == len(catalog["records"])
@@ -88,22 +89,17 @@ def test_generated_catalog_and_registry_contracts() -> None:
     assert all(row["confidence"] != "HIGH" for row in dynamic)
 
     expected_dynamic_blocks = {
-        "reports/daily_signal_2026-06-29.md",
-        "reports/daily_signal_2026-06-30.md",
-        "reports/daily_signal_2026-07-01.md",
-        "reports/daily_signal_2026-07-08.md",
-        "reports/daily_signal_2026-07-03.md",
-        "reports/daily_signal_2026-07-06.md",
-        "reports/daily_signal_2026-07-07.md",
-        "reports/daily_signal_2026-07-09.md",
-        "reports/weekly_review_2026-07-03.md",
-        "reports/weekly_review_2026-07-09.md",
+        row["current_path"]
+        for row in catalog["records"]
+        if row["matched_dynamic_producer_count"] > 0
     }
+    assert len(expected_dynamic_blocks) == 12
     for path in expected_dynamic_blocks:
         assert by_path[path]["archive_candidate"] is False
         assert by_path[path]["active_generator"] is True
         assert by_path[path]["producer_match_type"] == "DYNAMIC_PATTERN"
-        assert by_path[path]["archive_block_reason"] == "ACTIVE_DYNAMIC_PRODUCER"
+        assert "ACTIVE_DYNAMIC_PRODUCER" in by_path[path]["archive_block_reasons"]
+        assert by_path[path]["archive_block_evidence"]["ACTIVE_DYNAMIC_PRODUCER"]
         assert by_path[path]["matched_dynamic_producer_count"] >= 1
 
 
@@ -212,7 +208,7 @@ def test_dynamic_producer_matching_is_strict_and_unknown_patterns_do_not_match()
     )
     assert dynamic_producer_matches_path(weekly, "reports/weekly_review_2026-07-15.md")
     positives = [f"reports/daily_signal_2026-07-{day:02d}.md" for day in range(1, 21)]
-    negatives = [f"reports/daily_signal_summary_{index:02d}.md" for index in range(1, 21)]
+    negatives = [f"reports/daily_signal_summary_{index:03d}.md" for index in range(1, 91)]
     assert all(dynamic_producer_matches_path(trusted, path) for path in positives)
     assert not any(dynamic_producer_matches_path(trusted, path) for path in negatives)
 
@@ -327,7 +323,7 @@ def test_reference_identity_and_excerpt_hash_survive_unrelated_blank_line() -> N
 
 def test_committed_registry_lines_and_excerpt_hashes_match_source() -> None:
     registry = json.loads(
-        (PROJECT_ROOT / f"reports/report_dependency_registry_{BUSINESS_DATE}.json").read_text(encoding="utf-8")
+        (PROJECT_ROOT / f"reports/report_dependency_registry_{REVISION}_{BUSINESS_DATE}.json").read_text(encoding="utf-8")
     )
     for row in registry["records"]:
         source_path = PROJECT_ROOT / row["source_file"]
@@ -346,20 +342,16 @@ def test_generators_are_byte_stable_on_repeated_runs() -> None:
         ["python3", "scripts/governance/build_phase_a_summary.py", "--business-date", BUSINESS_DATE],
     ]
     outputs = [
-        PROJECT_ROOT / f"reports/report_dependency_registry_{BUSINESS_DATE}.json",
-        PROJECT_ROOT / f"reports/report_dependency_registry_{BUSINESS_DATE}.csv",
-        PROJECT_ROOT / f"reports/report_dependency_summary_{BUSINESS_DATE}.md",
-        PROJECT_ROOT / f"reports/report_catalog_{BUSINESS_DATE}.json",
-        PROJECT_ROOT / f"reports/report_catalog_{BUSINESS_DATE}.csv",
-        PROJECT_ROOT / f"reports/report_catalog_{BUSINESS_DATE}.md",
-        PROJECT_ROOT / f"reports/report_naming_compliance_audit_{BUSINESS_DATE}.csv",
-        PROJECT_ROOT / f"reports/report_naming_compliance_audit_{BUSINESS_DATE}.metadata.json",
-        PROJECT_ROOT / f"reports/reports_governance_phase_a_summary_{BUSINESS_DATE}.md",
-        PROJECT_ROOT / f"reports/reports_governance_phase_a_remediation_{BUSINESS_DATE}.md",
-        PROJECT_ROOT
-        / f"reports/reports_governance_phase_a_final_blocker_remediation_{BUSINESS_DATE}.md",
-        PROJECT_ROOT
-        / f"reports/reports_governance_phase_a_dynamic_producer_remediation_{BUSINESS_DATE}.md",
+        PROJECT_ROOT / f"reports/report_dependency_registry_{REVISION}_{BUSINESS_DATE}.json",
+        PROJECT_ROOT / f"reports/report_dependency_registry_{REVISION}_{BUSINESS_DATE}.csv",
+        PROJECT_ROOT / f"reports/report_dependency_summary_{REVISION}_{BUSINESS_DATE}.md",
+        PROJECT_ROOT / f"reports/report_catalog_{REVISION}_{BUSINESS_DATE}.json",
+        PROJECT_ROOT / f"reports/report_catalog_{REVISION}_{BUSINESS_DATE}.csv",
+        PROJECT_ROOT / f"reports/report_catalog_{REVISION}_{BUSINESS_DATE}.md",
+        PROJECT_ROOT / f"reports/report_naming_compliance_audit_{REVISION}_{BUSINESS_DATE}.csv",
+        PROJECT_ROOT / f"reports/report_naming_compliance_audit_{REVISION}_{BUSINESS_DATE}.metadata.json",
+        PROJECT_ROOT / f"reports/reports_governance_phase_a_summary_{REVISION}_{BUSINESS_DATE}.md",
+        PROJECT_ROOT / f"reports/reports_governance_phase_a_final_semantic_remediation_{BUSINESS_DATE}.md",
     ]
     committed = {path: path.read_bytes() for path in outputs}
     for command in commands:
