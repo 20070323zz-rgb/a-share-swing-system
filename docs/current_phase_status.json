@@ -3,14 +3,14 @@
   "context_schema_version": 2,
   "project": "a-share-swing-system",
   "repository_root": "<project_root>",
-  "context_updated_at": "2026-07-14 19:21:10 CST",
+  "context_updated_at": "2026-07-15 12:05:06 CST",
   "context_updated_by": "Codex",
-  "context_update_reason": "Reports Governance Phase A dynamic Producer linkage remediation is implemented pending independent Re-QC. The parallel ETF Availability Audit remains ACTIVE_COLLECTING on Draft PR #3; no PR #3 implementation/evidence, ETF SSOT, protected file, formal execution path, or real data interface was touched.",
-  "main_phase": "Tushare Minimal Staging Proof & PIT Contract",
-  "main_phase_id": "tushare_minimal_staging_proof_pit_contract",
-  "phase_status": "COMPLETE",
-  "phase_started_at": "2026-07-13 10:00:00 CST",
-  "phase_completed_at": "2026-07-13 10:25:02 CST",
+  "context_update_reason": "Reports Governance Phase A final semantic normalization is remediated pending independent Re-QC. Availability-owned active phase pointers, progress, observation metadata, source ownership and Draft PR #3 index context are preserved by field-level authority merge; no PR #3 implementation/evidence, ETF SSOT, protected file, formal execution path, or real data interface was touched.",
+  "main_phase": "Tushare ETF Daily Availability Timing Audit",
+  "main_phase_id": "tushare_etf_daily_availability_timing_audit",
+  "phase_status": "IN_PROGRESS",
+  "phase_started_at": "2026-07-14 14:17:00 CST",
+  "phase_completed_at": null,
   "completed_main_phases": [
     "Regime & Risk Allocation Phase 1",
     "Regime & Risk Allocation Phase 1.5",
@@ -36,9 +36,9 @@
     "Paper Execution Safety Phase 1 - Freshness Gate & Non-Destructive Audit",
     "Tushare Minimal Staging Proof & PIT Contract"
   ],
-  "current_batch": null,
-  "current_batch_id": null,
-  "current_batch_status": null,
+  "current_batch": "Tushare ETF Daily Availability Timing Audit",
+  "current_batch_id": "tushare_etf_daily_availability_timing_audit",
+  "current_batch_status": "IN_PROGRESS",
   "completed_batches": [
     "Phase 3.5A",
     "Phase 3.5B",
@@ -63,11 +63,11 @@
   "blocked_batches": [],
   "skipped_batches": [],
   "last_completed_batch": "Tushare Minimal Staging Proof & PIT Contract",
-  "resume_from": null,
+  "resume_from": "Tushare ETF Daily Availability Timing Audit",
   "required_batches": [
-    "Tushare Minimal Staging Proof & PIT Contract"
+    "Tushare ETF Daily Availability Timing Audit"
   ],
-  "final_closeout_batch": "Tushare Minimal Staging Proof & PIT Contract",
+  "final_closeout_batch": "Tushare ETF Daily Availability Timing Audit",
   "phase_d_completed_checkpoints": [
     "Context Phase D1",
     "Context Phase D2",
@@ -75,9 +75,9 @@
     "Context Phase D4"
   ],
   "phase_d_resume_checkpoint": null,
-  "next_research_phase": "ETF Daily Availability Timing Audit = ACTIVE_COLLECTING on Draft PR #3. Reports Governance Phase A remediation awaits independent Re-QC. Migration Phase B, runtime Path Registry, primary upstream migration, Data Foundation Upgrade and data promotion remain blocked or not started.",
-  "current_phase_report": "reports/tushare_proof_post_merge_validation_2026-07.md",
-  "current_phase_decision": "reports/tushare_minimal_proof_run_manifest.json",
+  "next_research_phase": "ETF Daily Availability Timing Audit = ACTIVE_COLLECTING on Draft PR #3; complete 5 valid trading days, extend to 10 if unstable, and require Main review before any primary upstream migration decision. Reports Governance Phase A awaits final independent Re-QC; Migration Phase B and runtime Path Registry remain blocked or not started.",
+  "current_phase_report": "reports/tushare_etf_availability_audit_status.md",
+  "current_phase_decision": "configs/tushare_etf_availability_audit.yaml",
   "style_fit_research_phase_status": "COMPLETE",
   "universe_v1_status": "LOCKED_HISTORICAL_BASELINE",
   "universe_v2_status": "QUALIFIED",
@@ -734,18 +734,25 @@
   "reports_governance_phase_a_completed_at": "2026-07-14 17:03:41 CST",
   "reports_governance_phase_a_remediated_at": "2026-07-14 22:19:22 CST",
   "reports_governance_phase_a_branch": "agent/reports-governance-phase-a",
-  "reports_governance_phase_a_pr_status": "DRAFT_AWAITING_DYNAMIC_PRODUCER_RE_QC",
+  "reports_governance_phase_a_pr_status": "DRAFT_AWAITING_FINAL_SEMANTIC_RE_QC",
   "reports_governance_phase_a_pr_number": 4,
   "reports_governance_phase_a_pr_url": "https://github.com/20070323zz-rgb/a-share-swing-system/pull/4",
-  "report_catalog_status": "REBUILT_DYNAMIC_PRODUCERS_BLOCK_ARCHIVE",
+  "report_catalog_status": "REBUILT_SEPARATE_MIGRATION_DELETION_PENDING_QC",
   "report_catalog_record_count": 645,
-  "report_dependency_registry_status": "REMEDIATED_PENDING_FINAL_QC",
+  "report_dependency_registry_status": "REMEDIATED_PENDING_FINAL_SEMANTIC_QC",
   "report_dependency_registry_record_count": 6330,
   "report_classification_standard_status": "REMEDIATED_PENDING_FINAL_QC",
   "report_producer_classification_status": "REMEDIATED_PENDING_FINAL_QC",
   "report_dynamic_producer_linkage_status": "IMPLEMENTED_PENDING_QC",
-  "report_archive_classification_status": "REBUILT_PENDING_QC",
-  "report_active_dynamic_producer_archive_block_count": 10,
+  "report_archive_classification_status": "DEPRECATED_COMPATIBILITY_ONLY",
+  "report_date_pattern_validation_status": "IMPLEMENTED_PENDING_QC",
+  "report_python_scope_semantics_status": "IMPLEMENTED_PENDING_QC",
+  "report_migration_eligibility_status": "REBUILT_PENDING_QC",
+  "report_deletion_eligibility_status": "REBUILT_PENDING_QC",
+  "report_snapshot_immutability_status": "ENFORCED_PENDING_QC",
+  "report_phase_b_contract_status": "COMPLETE_PENDING_QC",
+  "report_pr_3_authority_preservation_status": "REMEDIATED_PENDING_QC",
+  "report_active_dynamic_producer_archive_block_count": 12,
   "availability_temporary_data_lifecycle_status": "DEFINED",
   "availability_temporary_audit_database_status": "RETAIN_UNTIL_MIGRATION_VALIDATED",
   "availability_temporary_audit_data_path": "data/staging/tushare_etf_availability/",
@@ -824,5 +831,41 @@
   "style_fit_1_0_status": "CLOSED",
   "next_data_foundation_decision": "ETF_DAILY_AVAILABILITY_TIMING_AUDIT",
   "tushare_formal_staging_architecture_readiness": "NOT_STARTED_REQUIRES_SEPARATE_AUTHORIZATION",
-  "tushare_5000_data_foundation_audit_eligibility": "ELIGIBLE_FOR_SEPARATE_AUDIT"
+  "tushare_5000_data_foundation_audit_eligibility": "ELIGIBLE_FOR_SEPARATE_AUDIT",
+  "phase_deliverables": {
+    "reports_governance_phase_a": {
+      "source_owner": "reports_governance",
+      "source_branch": "agent/reports-governance-phase-a",
+      "pull_request": 4,
+      "status": "REMEDIATED",
+      "review_gate": "DRAFT_AWAITING_FINAL_SEMANTIC_RE_QC",
+      "migration_phase_b": "BLOCKED",
+      "runtime_path_registry": "NOT_STARTED"
+    },
+    "tushare_etf_daily_availability_timing_audit": {
+      "source_owner": "availability_audit",
+      "source_branch": "agent/tushare-etf-availability-audit",
+      "pull_request": 3,
+      "status": "ACTIVE_COLLECTING",
+      "current_phase_report": "reports/tushare_etf_availability_audit_status.md",
+      "current_phase_decision": "configs/tushare_etf_availability_audit.yaml",
+      "source_roles": {
+        "tushare": "SHADOW_PRIMARY_CANDIDATE",
+        "baostock": "COMPARATOR_ONLY",
+        "canonical_etf_data_source": "data/etf_daily/"
+      },
+      "observation_metadata": {
+        "days_started": 1,
+        "days_completed": 0,
+        "timing_evidence": "COLLECTING_INSUFFICIENT_DAYS",
+        "first_real_probe_trade_date": "2026-07-14",
+        "first_real_probe_time": "15:05",
+        "first_real_probe_status": "EMPTY_UNEXPECTED",
+        "latest_probe_time": "16:30",
+        "provisional_first_available_time": "16:15",
+        "provisional_first_complete_time": "16:15",
+        "first_stable_time": null
+      }
+    }
+  }
 }

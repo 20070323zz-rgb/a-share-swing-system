@@ -73,12 +73,18 @@ Stale Data Fallback BLOCKED
 2026-07-10 Stale Trades AUDITED_NON_DESTRUCTIVELY
 Tushare 5000 Data Foundation Audit COMPLETE
 Reports Governance Phase A Engineering REMEDIATED
-Report Catalog REBUILT_DYNAMIC_PRODUCERS_BLOCK_ARCHIVE
-Report Dependency Registry REMEDIATED_PENDING_FINAL_QC
+Date Pattern Validation IMPLEMENTED_PENDING_QC
+Python Scope Semantics IMPLEMENTED_PENDING_QC
+Report Catalog REBUILT_SEPARATE_MIGRATION_DELETION_PENDING_QC
+Report Dependency Registry REMEDIATED_PENDING_FINAL_SEMANTIC_QC
 Report Classification Standard REMEDIATED_PENDING_FINAL_QC
 Producer Classification REMEDIATED_PENDING_FINAL_QC
 Dynamic Producer Linkage IMPLEMENTED_PENDING_QC
-Archive Candidate Classification REBUILT_PENDING_QC
+Migration Eligibility REBUILT_PENDING_QC
+Deletion Eligibility REBUILT_PENDING_QC
+Snapshot Immutability ENFORCED_PENDING_QC
+Phase B Contract COMPLETE_PENDING_QC
+PR #3 Authority Preservation REMEDIATED_PENDING_QC
 Availability Temporary Data Lifecycle DEFINED
 Temporary Audit Database RETAIN_UNTIL_MIGRATION_VALIDATED
 Report Naming Standard PROPOSED_ACTIVE_ON_MERGE
@@ -934,7 +940,7 @@ Protected file hashes unchanged = true
 
 The separately authorized Tushare 5000 Data Foundation Audit is `COMPLETE` after Main review. Capability and priority artifacts are available. No Tushare data integration or data-source upgrade has started; `Data Foundation Upgrade = NOT_STARTED`.
 
-Reports Governance Phase A Engineering is `REMEDIATED`: lexical scope-aware Python bindings, structured dynamic path patterns and anchored Producer-to-report matching now block actively generated dated reports from Archive Candidate classification. Dynamic Producer Linkage is `IMPLEMENTED_PENDING_QC` and Archive Candidate Classification is `REBUILT_PENDING_QC`. Dated immutable artifacts, stable reference identity, golden fixtures, metadata rules and the future Path Registry design remain in place. Availability Temporary Data Lifecycle is `DEFINED` and temporary audit data is `RETAIN_UNTIL_MIGRATION_VALIDATED`; no current deletion is authorized. This remains a zero-move, zero-rename, zero-delete phase for pre-existing reports; Report File Migration is `BLOCKED`, runtime Path Registry is `NOT_STARTED`, and Phase B is not authorized.
+Reports Governance Phase A Engineering is `REMEDIATED`: strict DATE/MONTH parsing, lexical method scope, multiple traceable Producer reasons, and separate dependency/naming/retention dimensions are implemented pending final independent Re-QC. The legacy Archive Candidate fields are compatibility-only; Migration Eligibility and Deletion Eligibility are independently `REBUILT_PENDING_QC`. Dated governance snapshots are immutable and revised with version-before-date filenames. Availability Temporary Data Lifecycle is `DEFINED` and temporary audit data is `RETAIN_UNTIL_MIGRATION_VALIDATED`; no current deletion is authorized. This remains a zero-move, zero-rename, zero-delete phase for pre-existing reports; Report File Migration is `BLOCKED`, runtime Path Registry is `NOT_STARTED`, and Phase B is not authorized.
 
 PR #1 final hygiene cleanup is `COMPLETE`. PR #1 was merged into `main` with merge commit `40a6017402456d62609169325cb5f1d31a1a140b` at 2026-07-13 09:49:26 CST. Post-merge validation is `PASS` and `main` is `STABLE`. Formal execution logic, protected paper ledgers, and ETF business data were unchanged by the merge/validation batch.
 
@@ -988,6 +994,10 @@ data/etf_daily = CANONICAL_SSOT
 Formal Execution Logic = UNCHANGED
 ```
 
+Availability owns the active main-phase/current-batch/report/decision pointers, the `phase_deliverables.tushare_etf_daily_availability_timing_audit` object, observation metadata, audit progress, and source-role fields. Reports Governance owns its parallel `phase_deliverables.reports_governance_phase_a` object and all `report_*` / `reports_governance_*` fields. The field-level deep-merge contract preserves unknown legal nested keys and fails fast on type or unowned scalar conflicts.
+
+The PR #3 index surface is retained without copying its branch-owned implementation: audit guide/config, probe, report builder, status, timing summary, Tushare-vs-BaoStock comparison, universe mapping validation, and framework validation remain Draft PR #3 authority. The preserved observation snapshot is 1 day started / 0 completed, `COLLECTING_INSUFFICIENT_DAYS`, first probe `15:05 EMPTY_UNEXPECTED`, latest recorded probe `16:30`, provisional availability/completeness `16:15`, and unresolved `FIRST_STABLE_TIME`.
+
 Recommended order: after PR #4 remediation passes independent Re-QC, merge PR #4 first; PR #3 must then sync `main` and perform a three-way check of the three shared authority files while preserving Reports Governance state.
 
 ## 9. Current Main Bottlenecks
@@ -1016,10 +1026,16 @@ New threads must still execute repository bootstrap before substantive edits.
 ```text
 Tushare 5000 Data Foundation Audit = COMPLETE
 Reports Governance Phase A Engineering = REMEDIATED
-Report Catalog = REBUILT_DYNAMIC_PRODUCERS_BLOCK_ARCHIVE
-Report Dependency Registry = REMEDIATED_PENDING_FINAL_QC
+Date Pattern Validation = IMPLEMENTED_PENDING_QC
+Python Scope Semantics = IMPLEMENTED_PENDING_QC
+Report Catalog = REBUILT_SEPARATE_MIGRATION_DELETION_PENDING_QC
+Report Dependency Registry = REMEDIATED_PENDING_FINAL_SEMANTIC_QC
 Dynamic Producer Linkage = IMPLEMENTED_PENDING_QC
-Archive Candidate Classification = REBUILT_PENDING_QC
+Migration Eligibility = REBUILT_PENDING_QC
+Deletion Eligibility = REBUILT_PENDING_QC
+Snapshot Immutability = ENFORCED_PENDING_QC
+Phase B Contract = COMPLETE_PENDING_QC
+PR #3 Authority Preservation = REMEDIATED_PENDING_QC
 Future Report Path Registry Design = COMPLETE_PENDING_QC
 Runtime Report Path Registry = NOT_STARTED
 Report File Migration = BLOCKED
@@ -1053,12 +1069,18 @@ Stale Data Fallback = BLOCKED
 2026-07-10 Stale Trades = AUDITED_NON_DESTRUCTIVELY
 Tushare 5000 Data Foundation Audit = COMPLETE
 Reports Governance Phase A Engineering = REMEDIATED
-Report Catalog = REBUILT_DYNAMIC_PRODUCERS_BLOCK_ARCHIVE
-Report Dependency Registry = REMEDIATED_PENDING_FINAL_QC
+Date Pattern Validation = IMPLEMENTED_PENDING_QC
+Python Scope Semantics = IMPLEMENTED_PENDING_QC
+Report Catalog = REBUILT_SEPARATE_MIGRATION_DELETION_PENDING_QC
+Report Dependency Registry = REMEDIATED_PENDING_FINAL_SEMANTIC_QC
 Report Classification Standard = REMEDIATED_PENDING_FINAL_QC
 Producer Classification = REMEDIATED_PENDING_FINAL_QC
 Dynamic Producer Linkage = IMPLEMENTED_PENDING_QC
-Archive Candidate Classification = REBUILT_PENDING_QC
+Migration Eligibility = REBUILT_PENDING_QC
+Deletion Eligibility = REBUILT_PENDING_QC
+Snapshot Immutability = ENFORCED_PENDING_QC
+Phase B Contract = COMPLETE_PENDING_QC
+PR #3 Authority Preservation = REMEDIATED_PENDING_QC
 Availability Temporary Data Lifecycle = DEFINED
 Temporary Audit Database = RETAIN_UNTIL_MIGRATION_VALIDATED
 Report Naming Standard = PROPOSED_ACTIVE_ON_MERGE

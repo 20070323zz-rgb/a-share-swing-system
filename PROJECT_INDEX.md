@@ -56,12 +56,18 @@ Project Infrastructure Batch Standardization V1: COMPLETE
 Paper Execution Safety Phase 1: COMPLETE
 Tushare 5000 Data Foundation Audit: COMPLETE
 Reports Governance Phase A Engineering: REMEDIATED
-Report Catalog: REBUILT_DYNAMIC_PRODUCERS_BLOCK_ARCHIVE
-Report Dependency Registry: REMEDIATED_PENDING_FINAL_QC
+Date Pattern Validation: IMPLEMENTED_PENDING_QC
+Python Scope Semantics: IMPLEMENTED_PENDING_QC
+Report Catalog: REBUILT_SEPARATE_MIGRATION_DELETION_PENDING_QC
+Report Dependency Registry: REMEDIATED_PENDING_FINAL_SEMANTIC_QC
 Report Classification Standard: REMEDIATED_PENDING_FINAL_QC
 Producer Classification: REMEDIATED_PENDING_FINAL_QC
 Dynamic Producer Linkage: IMPLEMENTED_PENDING_QC
-Archive Candidate Classification: REBUILT_PENDING_QC
+Migration Eligibility: REBUILT_PENDING_QC
+Deletion Eligibility: REBUILT_PENDING_QC
+Snapshot Immutability: ENFORCED_PENDING_QC
+Phase B Contract: COMPLETE_PENDING_QC
+PR #3 Authority Preservation: REMEDIATED_PENDING_QC
 Availability Temporary Data Lifecycle: DEFINED
 Temporary Audit Database: RETAIN_UNTIL_MIGRATION_VALIDATED
 Report Naming Standard: PROPOSED_ACTIVE_ON_MERGE
@@ -217,12 +223,24 @@ Formal Execution: BLOCKED
 - Tushare PIT Contract：`docs/tushare_pit_contract.md`
 - Tushare Minimal Proof Config：`configs/tushare_minimal_proof.yaml`
 - Tushare Minimal Proof Runner：`scripts/run_tushare_minimal_proof.py`
+- Tushare ETF Availability Audit Guide（Draft PR #3 authority）：`docs/tushare_etf_availability_audit.md`
+- Tushare ETF Availability Audit Config（Draft PR #3 authority）：`configs/tushare_etf_availability_audit.yaml`
+- Tushare ETF Availability Probe（Draft PR #3 authority）：`scripts/run_tushare_etf_availability_probe.py`
+- Tushare ETF Availability Report Builder（Draft PR #3 authority）：`scripts/build_tushare_etf_availability_report.py`
+- Tushare ETF Availability Status（Draft PR #3 authority）：`reports/tushare_etf_availability_audit_status.md`
+- Tushare ETF Availability Timing Summary（Draft PR #3 authority）：`reports/tushare_etf_availability_timing_summary.csv`
+- Tushare vs BaoStock Availability（Draft PR #3 authority）：`reports/tushare_vs_baostock_availability.csv`
+- Tushare ETF Universe Mapping Validation（Draft PR #3 authority）：`reports/tushare_etf_universe_mapping_validation.csv`
+- Tushare ETF Availability Framework Validation（Draft PR #3 authority）：`reports/tushare_etf_availability_framework_validation.md`
 - Report Catalog Builder：`scripts/governance/build_report_catalog.py`
 - Report Dependency Registry Builder：`scripts/governance/build_report_dependency_registry.py`
-- Dated Report Catalog：`reports/report_catalog_2026-07-15.md`
-- Dated Report Dependency Summary：`reports/report_dependency_summary_2026-07-15.md`
-- Dated Naming Compliance Audit：`reports/report_naming_compliance_audit_2026-07-15.csv`
-- Dated Phase A Summary：`reports/reports_governance_phase_a_summary_2026-07-15.md`
+- Authority-aware State Merge：`scripts/governance/authority_merge.py`
+- Report Authority Merge Standard：`docs/report_authority_merge_standard.md`
+- Revisioned Report Catalog：`reports/report_catalog_v2_2026-07-15.md`
+- Revisioned Report Dependency Summary：`reports/report_dependency_summary_v2_2026-07-15.md`
+- Revisioned Naming Compliance Audit：`reports/report_naming_compliance_audit_v2_2026-07-15.csv`
+- Revisioned Phase A Summary：`reports/reports_governance_phase_a_summary_v2_2026-07-15.md`
+- Final Semantic Remediation：`reports/reports_governance_phase_a_final_semantic_remediation_2026-07-15.md`
 - Dated Remediation Report：`reports/reports_governance_phase_a_remediation_2026-07-15.md`
 - Dynamic Producer Remediation：`reports/reports_governance_phase_a_dynamic_producer_remediation_2026-07-15.md`
 - Report Classification Standard：`docs/report_classification_standard.md`
@@ -230,6 +248,12 @@ Formal Execution: BLOCKED
 - Report Metadata Standard：`docs/report_metadata_standard.md`
 - Future Report Path Registry Design：`docs/report_path_registry_design.md`
 - Future Report Migration Plan：`docs/report_migration_plan.md`
+
+## Report Path Migration Task Contract
+
+Reports Migration Phase B remains `BLOCKED`. Any future authorized migration task must read `PROJECT_INDEX.md`, `docs/current_project_state.md`, `docs/current_phase_status.json`, `docs/operational_playbook.md`, `docs/project_batch_standard.md`, and the Report Path Registry or approved migration mapping before resolving report paths.
+
+Each report family must include Producer, immutable dated artifact, runtime alias/Registry path, Backend API, Dashboard consumer, App consumer, App补齐数据按钮, launchd/shell automation, daily/weekly chain, tests, Work/Codex, deprecated-path inventory, compatibility period, `consumer-completeness` and rollback. Any missing item is `MIGRATION_PARTIAL`; only the complete end-to-end graph is `MIGRATION_COMPLETE`.
 
 这些入口用于新 Codex thread 恢复项目状态。
 
