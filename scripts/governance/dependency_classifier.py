@@ -15,7 +15,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 
-GENERATOR_VERSION = "2.2.0"
+GENERATOR_VERSION = "3.0.0"
 REPORT_EXTENSIONS = (".csv", ".html", ".json", ".md", ".parquet", ".txt", ".yaml", ".yml")
 EXPLICIT_REPORT_RE = re.compile(r"(?<![A-Za-z0-9_.-])/?(reports/[A-Za-z0-9_./*?{}\[\]$-]+)")
 SHELL_REPORT_DIR_RE = re.compile(
@@ -99,6 +99,7 @@ class ScopeFrame:
     scope_type: str
     qualified_name: str
     parent: "ScopeFrame | None"
+    lexical_parent: "ScopeFrame | None"
     bindings: dict[str, Binding]
     source_start_line: int = 0
     source_end_line: int = 0
@@ -195,6 +196,10 @@ def _record(
         "source_tree_commit": source_tree_commit,
         "scope_id": scope.scope_id if scope else "",
         "parent_scope_id": scope.parent.scope_id if scope and scope.parent else "",
+        "syntactic_parent_scope_id": scope.parent.scope_id if scope and scope.parent else "",
+        "lexical_resolution_parent_scope_id": (
+            scope.lexical_parent.scope_id if scope and scope.lexical_parent else ""
+        ),
         "scope_type": scope.scope_type if scope else "",
         "scope_qualified_name": scope.qualified_name if scope else "",
         "scope_source_start_line": scope.source_start_line if scope else 0,
@@ -216,12 +221,12 @@ def _record(
         ),
         "resolved_static_path": target if resolution != "DYNAMIC" else "",
         "static_prefix": (
-            re.split(r"<(?:DATE|TIMESTAMP|RUN_ID|DYNAMIC)>", reference.dynamic_path_pattern, 1)[0]
+            re.split(r"<(?:DATE|MONTH|TIMESTAMP|RUN_ID|DYNAMIC)>", reference.dynamic_path_pattern, 1)[0]
             if reference and reference.dynamic_path_pattern
             else ""
         ),
         "static_suffix": (
-            re.split(r"<(?:DATE|TIMESTAMP|RUN_ID|DYNAMIC)>", reference.dynamic_path_pattern, 1)[-1]
+            re.split(r"<(?:DATE|MONTH|TIMESTAMP|RUN_ID|DYNAMIC)>", reference.dynamic_path_pattern, 1)[-1]
             if reference and reference.dynamic_path_pattern
             else ""
         ),
@@ -423,18 +428,60 @@ def _shell_copy_move_rows(
     return rows if found_command else None
 
 
+DATE_VARIABLE_NAMES = {
+    "audit_date",
+    "as_of_date",
+    "business_date",
+    "data_date",
+    "end_date",
+    "report_date",
+    "run_date",
+    "start_date",
+    "trade_date",
+    "week_end_date",
+}
+MONTH_VARIABLE_NAMES = {"business_month", "month", "period_month", "report_month", "run_month"}
+TIMESTAMP_VARIABLE_NAMES = {
+    "created_at",
+    "date_time",
+    "datetime",
+    "generated_at",
+    "timestamp",
+}
+RUN_ID_VARIABLE_NAMES = {"run_id", "runid"}
+
+
+def _semantic_name(node: ast.AST) -> str:
+    """Return the explicit semantic identifier without substring guessing."""
+
+    current = node
+    if isinstance(current, ast.Call) and isinstance(current.func, ast.Attribute):
+        current = current.func.value
+    while isinstance(current, ast.Attribute):
+        current = current.value
+    return current.id.lower() if isinstance(current, ast.Name) else ""
+
+
 def _placeholder(node: ast.AST, format_spec: str = "") -> tuple[str, str, str]:
     raw_name = ast.unparse(node) if hasattr(ast, "unparse") else "expr"
-    name = raw_name.lower()
-    if any(token in format_spec for token in ("%H", "%M", "%S")) or any(
-        token in name for token in ("timestamp", "datetime", "date_time")
-    ):
+    semantic_name = _semantic_name(node)
+    directives = set(re.findall(r"%[A-Za-z]", format_spec))
+    has_clock = bool(directives & {"%H", "%I", "%M", "%S", "%f", "%z"})
+    has_year = bool(directives & {"%Y", "%y"})
+    has_month = "%m" in directives
+    has_day = bool(directives & {"%d", "%j"})
+    if has_clock or semantic_name in TIMESTAMP_VARIABLE_NAMES:
         return "{" + raw_name + "}", "<TIMESTAMP>", "TIMESTAMP_TEMPLATE"
-    if any(token in format_spec for token in ("%Y", "%y", "%m", "%d")) or any(
-        token in name for token in ("date", "day", "week_end")
-    ):
+    if has_year and has_month and has_day:
         return "{" + raw_name + "}", "<DATE>", "DATE_TEMPLATE"
-    if "run_id" in name or name == "runid":
+    if has_year and has_month and not has_day:
+        kind = "MONTH_COMPACT_TEMPLATE" if "-" not in format_spec else "MONTH_TEMPLATE"
+        return "{" + raw_name + "}", "<MONTH>", kind
+    if semantic_name in DATE_VARIABLE_NAMES:
+        return "{" + raw_name + "}", "<DATE>", "DATE_TEMPLATE"
+    if semantic_name in MONTH_VARIABLE_NAMES:
+        return "{" + raw_name + "}", "<MONTH>", "MONTH_TEMPLATE"
+    if semantic_name in RUN_ID_VARIABLE_NAMES:
         return "{" + raw_name + "}", "<RUN_ID>", "RUN_ID_TEMPLATE"
     return "{" + raw_name + "}", "<DYNAMIC>", "UNKNOWN_DYNAMIC"
 
@@ -493,10 +540,37 @@ def _lookup_binding(frame: ScopeFrame, name: str) -> list[Reference]:
         if name in current.bindings:
             binding = current.bindings[name]
             return [_decorate_binding(ref, binding, frame.scope_id) for ref in binding.values]
-        current = current.parent
+        current = current.lexical_parent
     if name.upper() in {"REPORT_DIR", "REPORTS_DIR"}:
         return [Reference("reports", "STATIC_COMPUTED")]
     return []
+
+
+def _enclosing_class(frame: ScopeFrame) -> ScopeFrame | None:
+    current: ScopeFrame | None = frame
+    while current is not None:
+        if current.scope_type == "CLASS":
+            return current
+        current = current.parent
+    return None
+
+
+def _explicit_class_attribute(node: ast.Attribute, frame: ScopeFrame) -> list[Reference]:
+    """Resolve only explicit ``self/cls/ClassName.attr`` class references."""
+
+    if not isinstance(node.value, ast.Name):
+        return []
+    class_frame = _enclosing_class(frame)
+    if class_frame is None:
+        return []
+    owner = node.value.id
+    class_name = class_frame.qualified_name.rsplit(".", 1)[-1]
+    if owner not in {"self", "cls", class_name}:
+        return []
+    binding = class_frame.bindings.get(node.attr)
+    if binding is None:
+        return []
+    return [_decorate_binding(ref, binding, frame.scope_id) for ref in binding.values]
 
 
 def _attribute_name(node: ast.AST) -> str:
@@ -529,6 +603,10 @@ def _expr_references(node: ast.AST | None, frame: ScopeFrame) -> list[Reference]
         return []
     if isinstance(node, ast.Name):
         return _lookup_binding(frame, node.id)
+    if isinstance(node, ast.Attribute):
+        explicit = _explicit_class_attribute(node, frame)
+        if explicit:
+            return explicit
     if isinstance(node, ast.Constant):
         if isinstance(node.value, (str, int, float)):
             value = str(node.value)
@@ -709,14 +787,24 @@ class _PythonAnalyzer:
         self.used: set[tuple[int, str]] = set()
         self.tree = tree
 
-    def _scope(self, node: ast.AST, scope_type: str, name: str, parent: ScopeFrame | None) -> ScopeFrame:
+    def _scope(
+        self,
+        node: ast.AST,
+        scope_type: str,
+        name: str,
+        parent: ScopeFrame | None,
+        lexical_parent: ScopeFrame | None = None,
+    ) -> ScopeFrame:
         qualified = name if parent is None or parent.qualified_name == "<module>" else f"{parent.qualified_name}.{name}"
         identity = f"{self.source_file}:{scope_type}:{qualified}:{getattr(node, 'lineno', 1)}:{getattr(node, 'end_lineno', len(self.lines))}"
+        if lexical_parent is None and parent is not None:
+            lexical_parent = parent
         return ScopeFrame(
             "scope_" + hashlib.sha256(identity.encode()).hexdigest()[:16],
             scope_type,
             qualified,
             parent,
+            lexical_parent,
             {},
             getattr(node, "lineno", 1),
             getattr(node, "end_lineno", len(self.lines)),
@@ -887,6 +975,7 @@ class _PythonAnalyzer:
                 frame.scope_type,
                 frame.qualified_name,
                 frame.parent,
+                frame.lexical_parent,
                 dict(baseline),
                 frame.source_start_line,
                 frame.source_end_line,
@@ -917,6 +1006,7 @@ class _PythonAnalyzer:
                 frame.scope_type,
                 frame.qualified_name,
                 frame.parent,
+                frame.lexical_parent,
                 merged,
                 frame.source_start_line,
                 frame.source_end_line,
@@ -931,7 +1021,14 @@ class _PythonAnalyzer:
                 self._process_expr(decorator, frame)
             for default in [*node.args.defaults, *node.args.kw_defaults]:
                 self._process_expr(default, frame)
-            child = self._scope(node, "ASYNC_FUNCTION" if isinstance(node, ast.AsyncFunctionDef) else "FUNCTION", node.name, frame)
+            lexical_parent = frame.lexical_parent if frame.scope_type == "CLASS" else frame
+            child = self._scope(
+                node,
+                "ASYNC_FUNCTION" if isinstance(node, ast.AsyncFunctionDef) else "FUNCTION",
+                node.name,
+                frame,
+                lexical_parent,
+            )
             for arg in [*node.args.posonlyargs, *node.args.args, *node.args.kwonlyargs]:
                 self._bind(child, arg.arg, [], arg)
             if node.args.vararg:
