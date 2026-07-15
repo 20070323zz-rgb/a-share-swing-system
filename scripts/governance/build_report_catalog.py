@@ -52,6 +52,12 @@ FIELDS = [
     "producer_candidates",
     "consumer_candidates",
     "reference_count",
+    "matched_dynamic_producer_count",
+    "matched_dynamic_producer_ids",
+    "dynamic_producer_match_confidence",
+    "active_generator",
+    "producer_match_type",
+    "archive_block_reason",
     "runtime_locked",
     "current_alias",
     "dated_artifact",
@@ -103,6 +109,7 @@ def main() -> None:
         csv_row = dict(row)
         csv_row["producer_candidates"] = "|".join(row["producer_candidates"])
         csv_row["consumer_candidates"] = "|".join(row["consumer_candidates"])
+        csv_row["matched_dynamic_producer_ids"] = "|".join(row["matched_dynamic_producer_ids"])
         csv_rows.append(csv_row)
     write_csv(root / f"reports/{catalog_stem}.csv", csv_rows, FIELDS)
     catalog_path = f"reports/{catalog_stem}.md"

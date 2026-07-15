@@ -90,7 +90,7 @@ CONTROL_REPORT_RE = re.compile(
     r"report_dependency_registry_20\d{2}-\d{2}-\d{2}\.(?:csv|json)|"
     r"report_dependency_summary_20\d{2}-\d{2}-\d{2}\.md|"
     r"report_naming_compliance_audit_20\d{2}-\d{2}-\d{2}\.(?:csv|metadata\.json)|"
-    r"reports_governance_phase_a_(?:summary|remediation|final_blocker_remediation)_20\d{2}-\d{2}-\d{2}\.md"
+    r"reports_governance_phase_a_(?:summary|remediation|final_blocker_remediation|dynamic_producer_remediation)_20\d{2}-\d{2}-\d{2}\.md"
     r")$"
 )
 
@@ -247,6 +247,7 @@ def source_tree_commit(root: Path) -> str:
         ":(exclude,glob)reports/reports_governance_phase_a_summary_*.md",
         ":(exclude,glob)reports/reports_governance_phase_a_remediation_*.md",
         ":(exclude,glob)reports/reports_governance_phase_a_final_blocker_remediation_*.md",
+        ":(exclude,glob)reports/reports_governance_phase_a_dynamic_producer_remediation_*.md",
     ]
     value = subprocess.run(command, cwd=root, check=True, capture_output=True, text=True).stdout.strip()
     return value or subprocess.run(
@@ -265,9 +266,15 @@ def deterministic_created_at(root: Path, commit: str) -> str:
     return datetime.fromisoformat(raw).astimezone(ZoneInfo("Asia/Shanghai")).isoformat(timespec="seconds")
 
 
-def artifact_metadata(root: Path, business_date: str, report_id: str, record_count: int) -> dict:
+def artifact_metadata(
+    root: Path,
+    business_date: str,
+    report_id: str,
+    record_count: int,
+    supersedes: str | None = None,
+) -> dict:
     commit = source_tree_commit(root)
-    return {
+    metadata = {
         "report_id": report_id,
         "business_date": business_date,
         "generated_at": deterministic_created_at(root, commit),
@@ -276,6 +283,9 @@ def artifact_metadata(root: Path, business_date: str, report_id: str, record_cou
         "record_count": record_count,
         "schema_version": 2,
     }
+    if supersedes:
+        metadata["supersedes"] = supersedes
+    return metadata
 
 
 def markdown_front_matter(
@@ -288,9 +298,9 @@ def markdown_front_matter(
     producer: str,
     source_run_id: str,
     retention_class: str = "PERMANENT",
+    supersedes: str = "",
 ) -> str:
-    return "\n".join(
-        (
+    lines = [
             "---",
             f"report_id: {report_id}",
             f"report_type: {report_type}",
@@ -302,10 +312,11 @@ def markdown_front_matter(
             f"source_run_id: {source_run_id}",
             f"retention_class: {retention_class}",
             "schema_version: 2",
-            "---",
-            "",
-        )
-    )
+    ]
+    if supersedes:
+        lines.append(f"supersedes: {supersedes}")
+    lines.extend(("---", ""))
+    return "\n".join(lines)
 
 
 def write_json(path: Path, payload: object) -> None:
@@ -701,16 +712,52 @@ def naming_compliance(path: str, role: str, current_alias: bool) -> str:
     return "NOT_APPLICABLE" if snake else "NON_COMPLIANT"
 
 
+TRUSTED_DYNAMIC_PATTERN_KINDS = {
+    "DATE_TEMPLATE": r"20\d{2}(?:-\d{2}-\d{2}|\d{4}|-\d{2})",
+    "TIMESTAMP_TEMPLATE": r"20\d{2}(?:-?\d{2}){2}[T_-]?\d{2}(?::?\d{2}){1,2}",
+    "RUN_ID_TEMPLATE": r"[A-Za-z0-9][A-Za-z0-9._-]{2,63}",
+}
+
+
+def dynamic_producer_matches_path(row: dict, report_path: str) -> bool:
+    """Narrowly match a trusted structured producer pattern to one report path."""
+
+    if row.get("reference_type") != "PRODUCER_WRITE":
+        return False
+    if row.get("consumer_or_producer") != "PRODUCER" or row.get("static_or_dynamic") != "DYNAMIC":
+        return False
+    pattern = row.get("dynamic_path_pattern", "")
+    kind = row.get("dynamic_pattern_kind", "")
+    if not pattern or "<DYNAMIC>" in pattern or kind not in TRUSTED_DYNAMIC_PATTERN_KINDS:
+        return False
+    token = {
+        "DATE_TEMPLATE": "<DATE>",
+        "TIMESTAMP_TEMPLATE": "<TIMESTAMP>",
+        "RUN_ID_TEMPLATE": "<RUN_ID>",
+    }[kind]
+    if pattern.count(token) != 1:
+        return False
+    expression = re.escape(pattern).replace(re.escape(token), TRUSTED_DYNAMIC_PATTERN_KINDS[kind])
+    return bool(re.fullmatch(expression, report_path))
+
+
 def build_catalog_records(root: Path, dependency_rows: list[dict]) -> list[dict]:
     by_report: dict[str, list[dict]] = defaultdict(list)
+    dynamic_producers: list[dict] = []
     for row in dependency_rows:
         if row["static_or_dynamic"] == "STATIC":
             by_report[row["referenced_report_path"]].append(row)
+        elif row.get("reference_type") == "PRODUCER_WRITE" and row.get("consumer_or_producer") == "PRODUCER":
+            dynamic_producers.append(row)
     created_dates, modified_dates = git_report_dates(root)
     records: list[dict] = []
     for path in iter_report_paths(root):
         current_path = relative_path(root, path)
-        dependencies = by_report.get(current_path, [])
+        static_dependencies = by_report.get(current_path, [])
+        matched_dynamic_producers = [
+            row for row in dynamic_producers if dynamic_producer_matches_path(row, current_path)
+        ]
+        dependencies = [*static_dependencies, *matched_dynamic_producers]
         producers = sorted({row["source_file"] for row in dependencies if row["consumer_or_producer"] == "PRODUCER"})
         consumers = sorted({row["source_file"] for row in dependencies if row["consumer_or_producer"] == "CONSUMER"})
         role = classify_role(current_path, dependencies)
@@ -724,12 +771,31 @@ def build_catalog_records(root: Path, dependency_rows: list[dict]) -> list[dict]
             for row in dependencies
         )
         dated_artifact = role in {"DATED_DAILY", "DATED_WEEKLY", "DATED_MONTHLY"}
+        active_static_producer = any(
+            row["consumer_or_producer"] == "PRODUCER" for row in static_dependencies
+        )
+        active_dynamic_producer = bool(matched_dynamic_producers)
+        active_generator = active_static_producer or active_dynamic_producer
         archive_candidate = dated_artifact and not runtime_locked and not current_alias and not dependencies
+        if not dated_artifact:
+            archive_block_reason = "NOT_DATED_ARTIFACT"
+        elif runtime_locked:
+            archive_block_reason = "RUNTIME_LOCKED"
+        elif current_alias:
+            archive_block_reason = "CURRENT_ALIAS"
+        elif active_dynamic_producer:
+            archive_block_reason = "ACTIVE_DYNAMIC_PRODUCER"
+        elif active_static_producer:
+            archive_block_reason = "ACTIVE_STATIC_PRODUCER"
+        elif dependencies:
+            archive_block_reason = "ACTIVE_REFERENCE"
+        else:
+            archive_block_reason = "NONE"
         if runtime_locked:
             migration_risk = "RUNTIME_LOCKED"
         elif len(dependencies) >= 10:
             migration_risk = "HIGH_DEPENDENCY"
-        elif dependencies and current_alias:
+        elif active_generator or (dependencies and current_alias):
             migration_risk = "ACTIVE_REFERENCED"
         elif dependencies:
             migration_risk = "MEDIUM_DEPENDENCY"
@@ -764,6 +830,8 @@ def build_catalog_records(root: Path, dependency_rows: list[dict]) -> list[dict]
             notes.append("Keep the current path stable until a registry-backed compatibility layer exists.")
         if archive_candidate:
             notes.append("Candidate only; Phase A performs no move or rename.")
+        if active_dynamic_producer:
+            notes.append("Archive blocked by a trusted active dynamic Producer pattern.")
         if business_date == "UNKNOWN":
             notes.append("Business date was not inferred from filesystem timestamps.")
         records.append(
@@ -782,6 +850,32 @@ def build_catalog_records(root: Path, dependency_rows: list[dict]) -> list[dict]
                 "producer_candidates": producers,
                 "consumer_candidates": consumers,
                 "reference_count": len(dependencies),
+                "matched_dynamic_producer_count": len(matched_dynamic_producers),
+                "matched_dynamic_producer_ids": sorted(
+                    {row["reference_id"] for row in matched_dynamic_producers}
+                ),
+                "dynamic_producer_match_confidence": (
+                    "HIGH"
+                    if matched_dynamic_producers
+                    and all(row["confidence"] == "HIGH" for row in matched_dynamic_producers)
+                    else "MEDIUM"
+                    if matched_dynamic_producers
+                    and all(row["confidence"] in {"HIGH", "MEDIUM"} for row in matched_dynamic_producers)
+                    else "LOW"
+                    if matched_dynamic_producers
+                    else "NONE"
+                ),
+                "active_generator": active_generator,
+                "producer_match_type": (
+                    "BOTH"
+                    if active_static_producer and active_dynamic_producer
+                    else "DYNAMIC_PATTERN"
+                    if active_dynamic_producer
+                    else "STATIC_EXACT"
+                    if active_static_producer
+                    else "NONE"
+                ),
+                "archive_block_reason": archive_block_reason,
                 "runtime_locked": runtime_locked,
                 "current_alias": current_alias,
                 "dated_artifact": dated_artifact,
@@ -817,6 +911,10 @@ def catalog_payload(
             "current_alias_count": sum(row["current_alias"] for row in records),
             "dated_artifact_count": sum(row["dated_artifact"] for row in records),
             "archive_candidate_count": sum(row["archive_candidate"] for row in records),
+            "active_generator_count": sum(row["active_generator"] for row in records),
+            "dynamic_producer_matched_report_count": sum(
+                row["matched_dynamic_producer_count"] > 0 for row in records
+            ),
             "unknown_role_count": sum(row["role"] == "UNKNOWN" for row in records),
         },
         "records": records,
