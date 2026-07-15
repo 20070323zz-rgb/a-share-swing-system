@@ -1,0 +1,11 @@
+{
+  "schema_version": "negative-reference-cases-v1",
+  "cases": [
+    {"name":"ordinary_document_link","source_kind":"documentation","expected_runtime_dependency":false},
+    {"name":"similar_filename_prefix","source_kind":"active_source","expected_producer":false},
+    {"name":"different_extension","source_kind":"active_source","expected_exact_match":false},
+    {"name":"archive_directory_file","location_status":"ALREADY_ARCHIVED","expected_status":"NOT_APPLICABLE_ALREADY_ARCHIVED"},
+    {"name":"governance_control_artifact","location_status":"GOVERNANCE_CONTROL","expected_inventory_member":false},
+    {"name":"old_dated_snapshot_without_reference","expected_runtime_dependency":false}
+  ]
+}
