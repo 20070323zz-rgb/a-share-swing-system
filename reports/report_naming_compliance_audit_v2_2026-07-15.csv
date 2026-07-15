@@ -1,0 +1,646 @@
+report_id,current_path,role,business_date,current_alias,runtime_locked,naming_compliance,metadata_compliance,notes
+report_5a04bb9ef00cd952,reports/.gitkeep,UNKNOWN,UNKNOWN,False,False,NON_COMPLIANT,MISSING,Business date was not inferred from filesystem timestamps.
+report_f1e9145e8e4b97c3,reports/account_status.csv,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_be54b9ded80053c1,reports/afternoon_open_check.json,VALIDATION_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_c7ab4153d284fe8b,reports/afternoon_open_check.md,VALIDATION_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_fde55b76c43f6e48,reports/akshare_connectivity_check.json,VALIDATION_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_8c107768bda75ff9,reports/akshare_connectivity_check.md,VALIDATION_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_f97b54cde4357365,reports/alpha_factor_enhancement_metrics.json,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_9f5fc5ee7c25e345,reports/alpha_factor_enhancement_research.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_92ca12df9b45380d,reports/alpha_factor_enhancement_summary.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_fe23135291c7a1c8,reports/app_backfill_button_fix_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_6efea198709f6457,reports/app_data_backfill_button_audit.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_c5e518dedb861a62,reports/app_independent_launch_fix_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_38d7fba0a00ed653,reports/app_launch_diagnostics.json,AUDIT_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_d9ae40e2255b43cb,reports/app_launch_diagnostics.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_d1014d29c246baf5,reports/app_launch_fix_report.json,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_1df3cd10620d35e2,reports/app_launch_fix_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_031f3627aa007651,reports/app_local_release_phase1_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_2f45e4c22f399c21,reports/app_task_status.json,GENERATED_SNAPSHOT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_46fd64605759e672,reports/archive/chatgpt_packets/chatgpt_analysis_packet_2026-06-27.md,ARCHIVED_ARTIFACT,2026-06-27,False,False,NOT_APPLICABLE,PARTIAL,
+report_36cf87fd7d26774d,reports/archive/chatgpt_packets/chatgpt_report_summary_2026-06-27.md,ARCHIVED_ARTIFACT,2026-06-27,False,False,NOT_APPLICABLE,PARTIAL,
+report_1a9172e683ecd817,reports/archive/chatgpt_packets/chatgpt_weekly_analysis_packet_2026-06-26.json,ARCHIVED_ARTIFACT,2026-06-26,False,False,NOT_APPLICABLE,PARTIAL,
+report_892eea6bd63c4871,reports/archive/chatgpt_packets/chatgpt_weekly_analysis_packet_2026-06-26.md,ARCHIVED_ARTIFACT,2026-06-26,False,False,NOT_APPLICABLE,PARTIAL,
+report_84c9797f59eb6853,reports/archive/chatgpt_packets/chatgpt_weekly_analysis_packet_2026-06-29.json,ARCHIVED_ARTIFACT,2026-06-29,False,False,NOT_APPLICABLE,PARTIAL,
+report_70ac2eaa350b0f3b,reports/archive/chatgpt_packets/chatgpt_weekly_analysis_packet_2026-06-29.md,ARCHIVED_ARTIFACT,2026-06-29,False,False,NOT_APPLICABLE,PARTIAL,
+report_0c59beb62ecdc6db,reports/archive/chatgpt_packets/chatgpt_weekly_analysis_packet_2026-06-30.json,ARCHIVED_ARTIFACT,2026-06-30,False,False,NOT_APPLICABLE,PARTIAL,
+report_afd918c11e2693db,reports/archive/chatgpt_packets/chatgpt_weekly_analysis_packet_2026-06-30.md,ARCHIVED_ARTIFACT,2026-06-30,False,False,NOT_APPLICABLE,PARTIAL,
+report_294077fdc2eba60a,reports/archive/chatgpt_packets/chatgpt_weekly_analysis_packet_2026-07-01.json,ARCHIVED_ARTIFACT,2026-07-01,False,False,NOT_APPLICABLE,PARTIAL,
+report_e0f18ed873a2dfa3,reports/archive/chatgpt_packets/chatgpt_weekly_analysis_packet_2026-07-01.md,ARCHIVED_ARTIFACT,2026-07-01,False,False,NOT_APPLICABLE,PARTIAL,
+report_9547970f3371a324,reports/archive/chatgpt_packets/chatgpt_weekly_analysis_packet_2026-07-03.json,ARCHIVED_ARTIFACT,2026-07-03,False,False,NOT_APPLICABLE,PARTIAL,
+report_df1e4b5dd6af2330,reports/archive/chatgpt_packets/chatgpt_weekly_analysis_packet_2026-07-03.md,ARCHIVED_ARTIFACT,2026-07-03,False,False,NOT_APPLICABLE,PARTIAL,
+report_3c50c461c511d2f2,reports/archive/chatgpt_packets/chatgpt_weekly_analysis_packet_2026-07-09.json,ARCHIVED_ARTIFACT,2026-07-09,False,False,NOT_APPLICABLE,PARTIAL,
+report_9721d6abe6195774,reports/archive/chatgpt_packets/chatgpt_weekly_analysis_packet_2026-07-09.md,ARCHIVED_ARTIFACT,2026-07-09,False,False,NOT_APPLICABLE,PARTIAL,
+report_9c8b6b91bc91eebe,reports/archive/chatgpt_packets/chatgpt_weekly_report_summary_2026-06-27.md,ARCHIVED_ARTIFACT,2026-06-27,False,False,NOT_APPLICABLE,PARTIAL,
+report_01bb2b803c7c1945,reports/archive/daily/daily_signal_2026-06-01.md,ARCHIVED_ARTIFACT,2026-06-01,False,False,NOT_APPLICABLE,PARTIAL,
+report_95f216f59d834085,reports/archive/daily/daily_signal_2026-06-02.md,ARCHIVED_ARTIFACT,2026-06-02,False,False,NOT_APPLICABLE,PARTIAL,
+report_6f362b9195087754,reports/archive/daily/daily_signal_2026-06-03.md,ARCHIVED_ARTIFACT,2026-06-03,False,False,NOT_APPLICABLE,PARTIAL,
+report_b1b260fcd7b21dfa,reports/archive/daily/daily_signal_2026-06-09.md,ARCHIVED_ARTIFACT,2026-06-09,False,False,NOT_APPLICABLE,PARTIAL,
+report_e7c25c675e877076,reports/archive/daily/daily_signal_2026-06-10.md,ARCHIVED_ARTIFACT,2026-06-10,False,False,NOT_APPLICABLE,PARTIAL,
+report_65fee8630a800257,reports/archive/daily/daily_signal_2026-06-11.md,ARCHIVED_ARTIFACT,2026-06-11,False,False,NOT_APPLICABLE,PARTIAL,
+report_759b66e147aafab9,reports/archive/daily/daily_signal_2026-06-12.md,ARCHIVED_ARTIFACT,2026-06-12,False,False,NOT_APPLICABLE,PARTIAL,
+report_43c30e8d4a2ebe8f,reports/archive/daily/daily_signal_2026-06-15.md,ARCHIVED_ARTIFACT,2026-06-15,False,False,NOT_APPLICABLE,PARTIAL,
+report_75f984a01e81ec41,reports/archive/daily/daily_signal_2026-06-16.md,ARCHIVED_ARTIFACT,2026-06-16,False,False,NOT_APPLICABLE,PARTIAL,
+report_27c7060df4df1d5c,reports/archive/daily/daily_signal_2026-06-17.md,ARCHIVED_ARTIFACT,2026-06-17,False,False,NOT_APPLICABLE,PARTIAL,
+report_580d747843091712,reports/archive/daily/daily_signal_2026-06-18.md,ARCHIVED_ARTIFACT,2026-06-18,False,False,NOT_APPLICABLE,PARTIAL,
+report_dc91a4d53c47bbed,reports/archive/daily/daily_signal_2026-06-22.md,ARCHIVED_ARTIFACT,2026-06-22,False,False,NOT_APPLICABLE,PARTIAL,
+report_5615b588aad8be8a,reports/archive/daily/daily_signal_2026-06-23.md,ARCHIVED_ARTIFACT,2026-06-23,False,False,NOT_APPLICABLE,PARTIAL,
+report_50073d8336ce634b,reports/archive/daily/daily_signal_2026-06-24.md,ARCHIVED_ARTIFACT,2026-06-24,False,False,NOT_APPLICABLE,PARTIAL,
+report_6ee2cf5141671171,reports/archive/daily/daily_signal_2026-06-25.md,ARCHIVED_ARTIFACT,2026-06-25,False,False,NOT_APPLICABLE,PARTIAL,
+report_b91a0726c20e5f9f,reports/archive/daily/daily_signal_2026-06-26.md,ARCHIVED_ARTIFACT,2026-06-26,False,False,NOT_APPLICABLE,PARTIAL,
+report_9082ca08d1dc0925,reports/archive/legacy_misc/app_backfill_button_fix_20260624.md,ARCHIVED_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_0eb389e5f38691a0,reports/archive/research_phases/app_polish_phase1_launch_stability_report.md,ARCHIVED_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_d27bd81726c06c49,reports/archive/research_phases/app_release_phase2_shortcut_equity_backfill_report.md,ARCHIVED_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_3540130cd6f39707,reports/archive/research_phases/phase3a_fastapi_react_app_report.md,ARCHIVED_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_937bf2555fdca624,reports/archive/research_phases/phase3b_app_control_room_upgrade_report.md,ARCHIVED_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_7d3f337066b573ee,reports/archive/research_phases/phase3c_desktop_app_mvp_report.md,ARCHIVED_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_b011966730cd3aa8,reports/archive/weekly/weekly_review_2026-06-01.md,ARCHIVED_ARTIFACT,2026-06-01,False,False,NOT_APPLICABLE,PARTIAL,
+report_81ea6394208c1ab6,reports/archive/weekly/weekly_review_2026-06-02.md,ARCHIVED_ARTIFACT,2026-06-02,False,False,NOT_APPLICABLE,PARTIAL,
+report_faaba8558b319073,reports/archive/weekly/weekly_review_2026-06-03.md,ARCHIVED_ARTIFACT,2026-06-03,False,False,NOT_APPLICABLE,PARTIAL,
+report_bf74a3ec48f17a5d,reports/archive/weekly/weekly_review_2026-06-09.md,ARCHIVED_ARTIFACT,2026-06-09,False,False,NOT_APPLICABLE,PARTIAL,
+report_5ab0009b3cbf3581,reports/archive/weekly/weekly_review_2026-06-11.md,ARCHIVED_ARTIFACT,2026-06-11,False,False,NOT_APPLICABLE,PARTIAL,
+report_8fc40d4b1d76bbf9,reports/archive/weekly/weekly_review_2026-06-12.md,ARCHIVED_ARTIFACT,2026-06-12,False,False,NOT_APPLICABLE,PARTIAL,
+report_96e6b7383ed53cf0,reports/archive/weekly/weekly_review_2026-06-25.md,ARCHIVED_ARTIFACT,2026-06-25,False,False,NOT_APPLICABLE,PARTIAL,
+report_3a4f3e2216115402,reports/archive/weekly/weekly_review_2026-06-26.md,ARCHIVED_ARTIFACT,2026-06-26,False,False,NOT_APPLICABLE,PARTIAL,
+report_099706c6eec24de5,reports/archive_candidate_list.csv,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_a15b864c112aad40,reports/archive_candidate_list.json,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_84248b4d2bc15038,reports/archive_candidate_list.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_ad55b0e1faf8459f,reports/archive_manifest_after.json,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_da9a28c1abdc4e1b,reports/archive_manifest_after.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_b5e62b79db4f7496,reports/archive_manifest_before.json,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_bd08f09952f0124a,reports/archive_manifest_before.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_a77ec3d7b408dcfc,reports/automation_four_node_sync_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_af6d7b921ec3348f,reports/b1_strategy_enhancement_preview_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_1f4fcf9763802cb4,reports/b2_strategy_preview_tracking_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_41e53754c9f8f046,reports/backtest_capital_sensitivity.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_10d6c4a056323e06,reports/backtest_capital_sensitivity.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_9c23900fca185fea,reports/backtest_consistency_check.json,VALIDATION_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_8082784becf84d0d,reports/backtest_consistency_check.md,VALIDATION_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_e4d5a96361b6b41b,reports/backtest_cost_diagnostics.csv,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_1bf10cf8d9656d6b,reports/backtest_cost_diagnostics.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_68407a339f905d75,reports/backtest_diagnostics_summary.json,AUDIT_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_843dbdc004a00a7c,reports/backtest_drawdown_diagnostics.csv,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_daa72a93f4364420,reports/backtest_drawdown_diagnostics.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_3d9e96866a677912,reports/backtest_equity_curve.csv,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_08534e798b7d2443,reports/backtest_execution_timing_sensitivity.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_2e084a50fa898ae9,reports/backtest_execution_timing_sensitivity.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_a89e34a94e17ae8b,reports/backtest_exit_reason_summary.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_955e02ca1ee84a4c,reports/backtest_expand_pool_decision.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_48756a1cf082732d,reports/backtest_metrics.json,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_e03d320855308b98,reports/backtest_phase4a_report.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_391686851a0bed42,reports/backtest_positions.csv,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_4ecd9ee5afb70ea7,reports/backtest_ranking_effectiveness.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_03300afafd0590f2,reports/backtest_ranking_effectiveness.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_9ee1ee38c35f7a24,reports/backtest_readiness_report.md,VALIDATION_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_2fd91b6546653ffb,reports/backtest_result.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_d5cabd5ae2339057,reports/backtest_summary.csv,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_e88ab06ed97f687c,reports/backtest_summary.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_81b2517a04235289,reports/backtest_symbol_contribution.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_61fa3cdb3e0bafb7,reports/backtest_symbol_contribution.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_dac318a81804ad48,reports/backtest_trade_distribution.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_b31f4f526581248d,reports/backtest_trade_distribution.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_6b5fb295345bd683,reports/backtest_trade_pool_report.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_1e91fb9b8b891ab2,reports/backtest_trades.csv,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_ca64f2ca23a99484,reports/backtest_turnover_by_month.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_550f35aeb747b8d3,reports/backtest_turnover_diagnostics.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_9ecbec9eacfbdf16,reports/backtest_yearly_summary.csv,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_418b6f9748dfb425,reports/baostock_app_backfill_fix_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_f57a4cfdf8f3e671,reports/baostock_daily_source_optimization_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_28d84e79f2094ade,reports/baostock_diagnosis.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_4b7dda5b18d8895e,reports/benchmark_redundancy_analysis.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_71543b1926e2a627,reports/broad_base_balance_preview.csv,RUNTIME_INPUT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_f07765e04ad6a1e1,reports/broad_base_balance_preview.json,RUNTIME_INPUT,UNKNOWN,True,True,LEGACY_STABLE_ALIAS,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_eb6355741d527a2a,reports/broad_base_balance_preview.md,CURRENT_ALIAS,UNKNOWN,True,False,LEGACY_STABLE_ALIAS,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_a01e4415892c31c8,reports/buy_ranking_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_27a63f61d5158a72,reports/buy_ranking_risk_profile_analysis.json,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_60d74703b9e49aeb,reports/buy_ranking_risk_profile_analysis.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_5e8a3a740c48f791,reports/buy_signal_ranking.md,CURRENT_ALIAS,UNKNOWN,True,True,LEGACY_STABLE_ALIAS,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_78abe18c96d27f0a,reports/catchup_scheduler_status.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_2228bce170c7d6eb,reports/chatgpt_weekly_analysis_packet_latest.json,RUNTIME_INPUT,2026-07-09,True,True,LEGACY_STABLE_ALIAS,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists.
+report_6b8bcb9a3b30b1aa,reports/chatgpt_weekly_analysis_packet_latest.md,RUNTIME_INPUT,UNKNOWN,True,True,LEGACY_STABLE_ALIAS,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_d7b2c9b812423423,reports/codex_daily_research_prompt.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_aff3365b193e34f7,reports/codex_weekly_research_prompt.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_9231f0c20afeb26f,reports/current_buy_top10_style_regime_fit.csv,CURRENT_ALIAS,UNKNOWN,True,False,LEGACY_STABLE_ALIAS,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_2a32dc2e7d650663,reports/current_buy_top10_style_regime_fit.json,CURRENT_ALIAS,UNKNOWN,True,True,LEGACY_STABLE_ALIAS,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_a7e250d2f35ce8db,reports/current_buy_top10_style_regime_fit.md,CURRENT_ALIAS,UNKNOWN,True,False,LEGACY_STABLE_ALIAS,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_d5af5353753f88df,reports/current_portfolio_style_regime_fit.json,CURRENT_ALIAS,UNKNOWN,True,True,LEGACY_STABLE_ALIAS,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_86f4742aaed45930,reports/current_portfolio_style_regime_fit.md,CURRENT_ALIAS,UNKNOWN,True,False,LEGACY_STABLE_ALIAS,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_0782aa7c924ea18b,reports/current_positions_strategy_fit_report.md,CURRENT_ALIAS,UNKNOWN,True,False,LEGACY_STABLE_ALIAS,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_9f5e152ee69df5e9,reports/daily_data_update_diagnosis_report.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_2e9a285a60bbff5f,reports/daily_rolling_backtest.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_442854852568436a,reports/daily_rolling_backtest.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_de240d0cca4a3966,reports/daily_signal_2026-06-29.md,DATED_DAILY,2026-06-29,False,False,COMPLIANT,COMPLETE,Archive blocked by a trusted active dynamic Producer pattern.
+report_3102be4af514cd72,reports/daily_signal_2026-06-30.md,DATED_DAILY,2026-06-30,False,False,COMPLIANT,COMPLETE,Archive blocked by a trusted active dynamic Producer pattern.
+report_ae638627f733bc7e,reports/daily_signal_2026-07-01.md,DATED_DAILY,2026-07-01,False,False,COMPLIANT,COMPLETE,Archive blocked by a trusted active dynamic Producer pattern.
+report_75534359e4389ac0,reports/daily_signal_2026-07-03.md,DATED_DAILY,2026-07-03,False,False,COMPLIANT,COMPLETE,Archive blocked by a trusted active dynamic Producer pattern.
+report_dd815ab91c90ef1b,reports/daily_signal_2026-07-06.md,DATED_DAILY,2026-07-06,False,False,COMPLIANT,COMPLETE,Archive blocked by a trusted active dynamic Producer pattern.
+report_65d845194a56e894,reports/daily_signal_2026-07-07.md,DATED_DAILY,2026-07-07,False,False,COMPLIANT,COMPLETE,Archive blocked by a trusted active dynamic Producer pattern.
+report_b974d502f7c2a02a,reports/daily_signal_2026-07-08.md,DATED_DAILY,2026-07-08,False,False,COMPLIANT,COMPLETE,Archive blocked by a trusted active dynamic Producer pattern.
+report_57f1412e78c3c3c4,reports/daily_signal_2026-07-09.md,DATED_DAILY,2026-07-09,False,False,COMPLIANT,COMPLETE,Archive blocked by a trusted active dynamic Producer pattern.
+report_27ae71d8b76edbd2,reports/dashboard_app_future_plan.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_eebd8847b5ae25c9,reports/dashboard_data.json,GENERATED_SNAPSHOT,UNKNOWN,True,True,LEGACY_STABLE_ALIAS,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_3c193f023351a706,reports/dashboard_redesign_research.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_c33a0059fc8edb5d,reports/data_coverage_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_ba111076c8c3a7b6,reports/data_download_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_ab40fe3ca413551f,reports/data_freshness_execution_reality.md,VALIDATION_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_3bb8d9cd90bffd97,reports/data_health_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_f46ac0e0cf1d2963,reports/data_provider_design.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_4b3f629534a61de7,reports/data_provider_status.json,GENERATED_SNAPSHOT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_7cb9f737f40dea78,reports/data_provider_status.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_6e976651e7c46fac,reports/data_quality_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_0e898dfa13244089,reports/data_source_architecture_audit.json,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_0f346b99c7aabff8,reports/data_source_architecture_audit.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_f268e618d055a29e,reports/data_source_proposal.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_1e4ae4a5cbf19c47,reports/data_source_status.json,GENERATED_SNAPSHOT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_a62edd5a3b378a51,reports/data_source_status_report.md,RUNTIME_INPUT,2026-07-10,False,True,LEGACY_STABLE_ALIAS,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists.
+report_08d31d1cc69361b4,reports/data_update_app_task_fix_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_b8efecfadf1c0554,reports/data_update_automation_fix_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_2195a22f7b0c2c07,reports/data_update_diagnosis_report.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_96c5a147fec79e00,reports/data_update_log.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_309c8699e40cedb6,reports/data_update_probe_fast.json,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_f58ae482fd7eb903,reports/data_update_status.baostock_fallback.json,GENERATED_SNAPSHOT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_144a79a16ee8a4a8,reports/data_update_status.datasource_refresh.json,GENERATED_SNAPSHOT,UNKNOWN,False,False,LEGACY_STABLE_ALIAS,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_6fe9a73ff05dfa58,reports/data_update_status.dryrun.json,GENERATED_SNAPSHOT,UNKNOWN,False,False,LEGACY_STABLE_ALIAS,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_b65026a608981906,reports/data_update_status.json,GENERATED_SNAPSHOT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_55081679f256adfc,reports/effective_sample_coverage_audit.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_1bdc7323d530573f,reports/etf_classification_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_088a1fb8d2d2b97f,reports/etf_expansion_cleanup_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_8b932a03ace6c0e3,reports/etf_expansion_import_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_ff59ac08e2bbc803,reports/etf_expansion_import_results.csv,RUNTIME_INPUT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_d2bc71d224c91f91,reports/etf_expansion_pipeline_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_203c96a310b9e4b8,reports/etf_expansion_quarantine_list.csv,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_5249e24112b9094c,reports/etf_expansion_staging_validation_report.md,VALIDATION_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_44b17aaaa52d8cb6,reports/etf_pool_expansion_plan.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_bdd6ddcc0ecadf9b,reports/etf_pool_research_matrix.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_664e63a2e4d80b55,reports/etf_pool_research_report.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_57266c6e7a7f7307,reports/etf_risk_profile.csv,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_ff66cd8a2ea212a9,reports/etf_risk_profile.json,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_1d92a799a4cba133,reports/etf_risk_profile.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_3da359a9dbf90eef,reports/etf_risk_profile_consistency_audit.json,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_fba0211ef367cbd3,reports/etf_risk_profile_consistency_audit.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_26802078d87f5d5d,reports/etf_risk_profile_source_audit.json,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_02cfa2b95ed1a66b,reports/etf_risk_profile_source_audit.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_46b42de0d64571d9,reports/etf_rotation_exit_rule_research.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_b8a4f1b89728fe33,reports/etf_rotation_mature_model_reference.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_8b9b75e9d21cd8aa,reports/etf_rotation_strategy_research.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_e9feaa119fcb1140,reports/etf_strategy_news_sentiment_research.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_ca1751e8855eecaa,reports/etf_style_unknown_audit.csv,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_4dba4cd2a830a252,reports/etf_style_unknown_audit.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_09663ada20b0ff83,reports/etf_type_aware_model_metrics.json,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_58f633f4737d12a1,reports/etf_type_aware_model_research.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_e9be1fc3c6f23994,reports/etf_type_aware_model_summary.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_7a0fc6167166e403,reports/etf_type_classification_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_120740f659f9ebae,reports/etf_volatility_profile.csv,RUNTIME_INPUT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_d9177c155a0f668d,reports/etf_volatility_profile.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_4e072285b6e8d6ea,reports/execution_layer_integration_plan.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_478ecde0644ee38d,reports/exit_rule_backtest_design.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_5a05b33899d0e63d,reports/exit_rule_by_etf_type.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_dec4cd9dfc3573c0,reports/exit_rule_candidates.json,RUNTIME_INPUT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_f639d3a1d3358ea3,reports/exit_rule_candidates.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_f4e785de8eeaf8d7,reports/exit_rule_research.csv,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_79bf791a06a011ac,reports/exit_rule_research_report.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_33b1b96235007d32,reports/exit_rule_research_results.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_af978b6238735ae8,reports/exposure_candidate_matrix.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_2fc011ef703a70b9,reports/exposure_data_contract.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_09d00308b0235a1c,reports/exposure_framework_feasibility_study.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_c0668d4c85e3695d,reports/exposure_gap_analysis.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_c4d0431c7aecbca2,reports/exposure_governance_framework.md,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_c1c0c27e109754e3,reports/exposure_permission_matrix.md,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_6de411a7ba90ade0,reports/exposure_phase_c_readiness.md,VALIDATION_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_7720479eedcbe5d5,reports/exposure_point_in_time_rules.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_932702df3f82f039,reports/exposure_portfolio_role_definition.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_59d900417f6f19b6,reports/exposure_prototype_data_quality.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_6f72ef7cf253bab6,reports/exposure_prototype_summary.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_0241e10eaaf03e96,reports/exposure_redundancy_analysis.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_d93f365254d3a677,reports/exposure_research_readiness.md,VALIDATION_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_ad3c02d6287fd7db,reports/exposure_taxonomy_design.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_9e8286e23202844f,reports/exposure_validation_metrics.json,VALIDATION_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_f234af0eb0bdb041,reports/exposure_validation_summary.md,VALIDATION_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_10afb1064adf790a,reports/exposure_window_stability.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_1ed981e997ec12ce,reports/factor_analysis_report.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_4a3ee804db1f8e0e,reports/file_classification_plan.csv,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_e9bfdea18fb76ccc,reports/file_classification_plan.json,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_dacfce147847f028,reports/file_classification_plan.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_36ba5d6983abd208,reports/first_paper_buy_plan.md,RUNTIME_INPUT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_1f89040c0f4356b9,reports/first_paper_trade_review.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_7951f3e887e24789,reports/frontend_css_cleanup_audit.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_c0eca5298f0d2a6c,reports/generalization_evaluation_plan.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_b6d6e4ad3378feeb,reports/generalization_verdict.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_d5cc6eaa3c482cb4,reports/high_beta_risk_watch.csv,RUNTIME_INPUT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_8078277431be054f,reports/high_beta_risk_watch.json,RUNTIME_INPUT,UNKNOWN,True,True,LEGACY_STABLE_ALIAS,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_7c9222d6f549a8e8,reports/high_beta_risk_watch.md,CURRENT_ALIAS,UNKNOWN,True,False,LEGACY_STABLE_ALIAS,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_544cbfc10f03326d,reports/holding_period_research.csv,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_4689411ac8a18efc,reports/holding_period_research_report.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_c5f2544db13912cb,reports/holding_period_research_results.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_62fdbc4bc6693cbc,reports/industry_etf_diagnosis.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_95f65505798c702a,reports/intelligence_data_source_plan.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_af5be14e14623666,reports/jqdata_connection_diagnosis.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_1bd4a185db6be8e7,reports/jqdata_import_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_07f6357a278b6689,reports/jqdata_local_compare_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_dad1e0aced28fbe9,reports/jqdata_primary_daily_source_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_61f00d0dc83dd250,reports/jqdata_test_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_fa13857693c6ba6b,reports/jqdata_unit_diagnosis_report.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_966517bba6732f28,reports/latest_brief.md,CURRENT_ALIAS,UNKNOWN,True,False,LEGACY_STABLE_ALIAS,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_f9449a23bc479fb7,reports/latest_buy_ranking.md,CURRENT_ALIAS,UNKNOWN,True,True,LEGACY_STABLE_ALIAS,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_f3e3a3c112b5fe2e,reports/latest_daily.md,CURRENT_ALIAS,UNKNOWN,True,False,LEGACY_STABLE_ALIAS,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_9cce3167073c924e,reports/latest_data_coverage.md,CURRENT_ALIAS,UNKNOWN,True,True,LEGACY_STABLE_ALIAS,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_75fe4a4d23b1761b,reports/latest_data_health.md,CURRENT_ALIAS,UNKNOWN,True,True,LEGACY_STABLE_ALIAS,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_a532b3f82055ed22,reports/latest_factor_analysis.md,CURRENT_ALIAS,UNKNOWN,True,False,LEGACY_STABLE_ALIAS,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_94f4bcf4b36ca1b7,reports/latest_model_research.md,CURRENT_ALIAS,UNKNOWN,True,False,LEGACY_STABLE_ALIAS,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_c3504218fc76fd53,reports/latest_paper_portfolio.md,CURRENT_ALIAS,UNKNOWN,True,False,LEGACY_STABLE_ALIAS,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_69a38d11b1b09932,reports/latest_ranking.md,CURRENT_ALIAS,UNKNOWN,True,False,LEGACY_STABLE_ALIAS,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_524426c82334faa8,reports/latest_short_swing.md,CURRENT_ALIAS,UNKNOWN,True,False,LEGACY_STABLE_ALIAS,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_a9b9e083c2b26449,reports/latest_weekly.md,CURRENT_ALIAS,UNKNOWN,True,False,LEGACY_STABLE_ALIAS,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_29c5901de67d29d4,reports/launchd_catchup_bugfix_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_ed77b49112200884,reports/launchd_catchup_upgrade_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_ad3e1f1e8de57747,reports/launchd_install_test_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_0cc5ad91b131de3c,reports/local_validation.md,VALIDATION_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_5d1395cfd725b1d3,reports/manual_download_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_4194e50670fadd42,reports/manual_download_validation_report.md,VALIDATION_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_191ca7312d4669e3,reports/manual_failed_diagnosis_report.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_416a9dc56c86d0a6,reports/manual_import_integrity_audit.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_f69bec96808cc10c,reports/manual_import_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_ace2cb23ee15c51f,reports/market_breadth_regime_analysis.json,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_03beb510200bf609,reports/market_breadth_regime_analysis.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_fe179ea15f88b0cf,reports/market_exposure_data_contract.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_73b83d023dc7ff2e,reports/market_exposure_redesign.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_22a3b333887ffee4,reports/market_exposure_vector_summary.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_0b8c0333020e828f,reports/market_regime_audit_decision.json,AUDIT_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_612d67e273a53689,reports/market_regime_audit_decision.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_efad9374dfbefdc9,reports/market_regime_distribution.json,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_6e19d649ae48cf37,reports/market_regime_distribution.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_f63c2a3b879deafb,reports/market_regime_replay.json,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_0ab6c2adbef7d222,reports/market_regime_replay.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_d7a0bbb96377456d,reports/market_regime_source_audit.json,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_822a2b4678e16e67,reports/market_regime_source_audit.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_dbf20cc18dceeb84,reports/market_regime_stability.json,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_5056f8c4b1d9ca35,reports/market_regime_stability.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_f66c5e402bc43830,reports/market_regime_stabilization.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_35953ad633de2ffa,reports/market_regime_stabilization.json,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_10f2a907e5dd22eb,reports/market_regime_stabilization.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_239409d6662d98c0,reports/market_state.csv,RUNTIME_INPUT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_cec4db27f2571c43,reports/market_state_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_731108a4c2d50c57,reports/midday_check.json,VALIDATION_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_f409e1c1c6d13c00,reports/midday_check.md,VALIDATION_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_569daf1555ef81ca,reports/missed_opportunity_by_filter_reason.csv,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_2251ecfd32537730,reports/missed_opportunity_by_filter_reason.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_b34f6654e161120c,reports/missed_opportunity_observation_rules.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_8b8b6d7a0e5bbca9,reports/missed_opportunity_tracker.csv,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_f3fb2b0d2d933e7b,reports/missed_opportunity_tracker.json,RUNTIME_INPUT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_87e7bfaa68bd9ca2,reports/missed_opportunity_tracker.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_62657381500a19b2,reports/model_data_maturity_analysis.json,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_96020677cf7fb958,reports/model_data_maturity_analysis.md,RESEARCH_ARTIFACT,2022-01-04,False,False,NON_COMPLIANT,PARTIAL,
+report_9ef9f725396f2504,reports/model_data_maturity_tables.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_a86a395173022494,reports/model_dataset.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_4aad0f5a6c3a743e,reports/model_enhancement_decision_report.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_2dabb4329e30ad58,reports/model_overfit_guardrails.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_49499f3ec83ae634,reports/model_research_quality_review.json,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_c3c8caf5a66aac05,reports/model_research_quality_review.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_677ee2e8076e0531,reports/model_research_report.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_b66c17d676505634,reports/model_shadow_comparison.csv,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_b9a34c04887e460d,reports/model_shadow_comparison.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_96577302e783ae32,reports/monthly_model_review.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_040983adc5bdc80d,reports/multi_benchmark_framework.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_7d28a8e26690a7ca,reports/news_data_source_plan.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_0cb4e5ec69803350,reports/news_sentiment_framework.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_7513b45de9aeae4b,reports/next_stage_strategy_optimization_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_95453c7c2bdd91e9,reports/no_lookahead_data_rules.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_ab80ec17bf9ffbd5,reports/open_check.json,VALIDATION_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_bfff3fcce1a322c0,reports/open_check.md,VALIDATION_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_2b84f79dbe0bc3a4,reports/paper_equity_curve.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_3ca810d7d5e46a44,reports/paper_equity_curve_backfill_audit.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_91c5233c585ce134,reports/paper_equity_curve_backfilled.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_951743f217d7f179,reports/paper_equity_curve_gap_explanation.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_e9898768e823ca9f,reports/paper_execution_freshness_gate_summary.md,VALIDATION_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_ca17c7008c60677f,reports/paper_execution_preflight.json,RUNTIME_INPUT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_3568fcc279a8d931,reports/paper_execution_preflight.md,RUNTIME_INPUT,2026-07-10,False,True,LEGACY_STABLE_ALIAS,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists.
+report_2b4b509646287779,reports/paper_execution_stale_trade_audit_2026-07-10.json,AUDIT_ARTIFACT,2026-07-10,False,False,COMPLIANT,COMPLETE,Archive blocked by a trusted active dynamic Producer pattern.
+report_13585f22f762ae55,reports/paper_execution_stale_trade_audit_2026-07-10.md,AUDIT_ARTIFACT,2026-07-10,False,False,COMPLIANT,COMPLETE,Archive blocked by a trusted active dynamic Producer pattern.
+report_2e9b54d34bfe320b,reports/paper_performance_daily.csv,RUNTIME_INPUT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_6bfa362b6a3a79a4,reports/paper_performance_summary.json,RUNTIME_INPUT,UNKNOWN,True,True,LEGACY_STABLE_ALIAS,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_c5b664cb05ee7d65,reports/paper_performance_summary.md,RUNTIME_INPUT,UNKNOWN,True,True,LEGACY_STABLE_ALIAS,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_435e0338216983d2,reports/paper_portfolio_metrics_audit.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_e864ed5620207aaa,reports/paper_trade_engine_design_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_1f6b1b70334ca624,reports/paper_trade_engine_report.md,UNKNOWN,2026-07-09,False,False,NOT_APPLICABLE,PARTIAL,
+report_b3d1df710f6c87eb,reports/paper_trade_plan.csv,RUNTIME_INPUT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_30e74b89c742290a,reports/paper_trade_plan.md,RUNTIME_INPUT,2026-07-09,False,True,LEGACY_STABLE_ALIAS,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists.
+report_920327676f2cf72d,reports/paper_trade_pnl.csv,RUNTIME_INPUT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_638ab555099d8af9,reports/paper_trade_pnl.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_317142431bcba4a3,reports/parameter_sweep.csv,RUNTIME_INPUT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_6abee09f8492b9b5,reports/parameter_sweep_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_e68869894e6a1c70,reports/path_dependency_audit.json,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_ac410db14204d5d6,reports/path_dependency_audit.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_83fee377da6535c0,reports/path_sanitization_audit.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_e2f71c17dd44da86,reports/persistence_breakout_shadow_observation_rules.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_d3adcec27ad4ba0c,reports/persistence_breakout_shadow_portfolio.csv,RUNTIME_INPUT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_afa43d936af66528,reports/persistence_breakout_shadow_portfolio.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_a15eb57894bdfd22,reports/persistence_breakout_shadow_signal.csv,RUNTIME_INPUT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_21aa4273923fbc35,reports/persistence_breakout_shadow_signal.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_71c22171bab9ffc2,reports/persistence_breakout_shadow_summary.json,RUNTIME_INPUT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_87ffb518e67b143f,reports/phase1_paper_trading_closure_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_3677e3ede9f554ab,reports/phase2c_execution_layer_light_integration_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_abfb41c82228932e,reports/phase35b_recovery_validation.md,VALIDATION_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_4e604ec5d733d483,reports/phase4c_alpha_model_comparison.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_13c95e1d73f2e0cb,reports/phase4c_alpha_model_comparison.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_01001afbade8527c,reports/phase4c_alpha_model_decision.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_c3ae2cf01af724e7,reports/phase4c_alpha_summary.json,RUNTIME_INPUT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_8477fac98567fadb,reports/phase4c_data_next_step.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_978e57874e17d235,reports/phase4c_data_summary.json,RUNTIME_INPUT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_e14028cf1fc47fb2,reports/portfolio_exposure.csv,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_b3b93b7575da49f6,reports/portfolio_exposure.json,RUNTIME_INPUT,UNKNOWN,True,True,LEGACY_STABLE_ALIAS,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_7cf6a41aadd43817,reports/portfolio_exposure.md,CURRENT_ALIAS,UNKNOWN,True,False,LEGACY_STABLE_ALIAS,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_3fff3a0766f93b64,reports/portfolio_exposure_report.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_4aef9702063d2d0e,reports/position_review_state.csv,RUNTIME_INPUT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_1a46562d8e84e860,reports/position_review_state.json,RUNTIME_INPUT,UNKNOWN,True,True,LEGACY_STABLE_ALIAS,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_5a5116e2a01924ed,reports/position_review_state.md,CURRENT_ALIAS,UNKNOWN,True,False,LEGACY_STABLE_ALIAS,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_100b9730f2684d79,reports/post_expansion_automation_sync_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_5fd262fb0134529e,reports/pr_final_hygiene_audit_2026-07-12.md,AUDIT_ARTIFACT,2026-07-12,False,False,COMPLIANT,PARTIAL,
+report_a975d92c88d3d8c7,reports/profit_protection_preview.csv,RUNTIME_INPUT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_ad2d6c6dcec26775,reports/profit_protection_preview.json,RUNTIME_INPUT,UNKNOWN,True,True,LEGACY_STABLE_ALIAS,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_564f1b05b4820960,reports/profit_protection_preview.md,CURRENT_ALIAS,UNKNOWN,True,False,LEGACY_STABLE_ALIAS,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_1ab0abce2e05e9a9,reports/project_checkpoint_post_merge_validation_2026-07.md,VALIDATION_ARTIFACT,2026-07,False,False,NON_COMPLIANT,PARTIAL,
+report_71a12dda87447e44,reports/project_cleanup_roadmap.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_57e9124dd8a4abce,reports/project_context_bootstrap_audit.json,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_3458c772eeec5552,reports/project_context_bootstrap_audit.md,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_b789a1670574ec8a,reports/project_context_existing_state_audit.json,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_717903a48d8af6dd,reports/project_context_existing_state_audit.md,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_830f223cd8eaf778,reports/project_context_foundation_consistency_audit.json,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_2ffb6476b0cb92e7,reports/project_context_foundation_consistency_audit.md,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_331f8180e8750bbe,reports/project_context_persistence_final.json,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_81a67153f037dc54,reports/project_context_persistence_final.md,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_8d4129e0b33b7aec,reports/project_context_phase_c_source_audit.json,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_8701a39673b22abe,reports/project_context_phase_c_source_audit.md,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_d5f064fb1077d70b,reports/project_context_phase_d2_decision.json,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_58ee103941915be9,reports/project_context_phase_d2_decision.md,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_84b455d5916c0a52,reports/project_context_phase_d3_decision.json,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_b3c545c20701bb63,reports/project_context_phase_d3_decision.md,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_a0ddbcfc163bc16b,reports/project_context_phase_d3_source_audit.json,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_cbd9ec6f19d0076d,reports/project_context_phase_d3_source_audit.md,GOVERNANCE_ARTIFACT,2026-07-07,False,False,NOT_APPLICABLE,PARTIAL,
+report_f8477b2d3fa822b4,reports/project_context_recovery_correctness_score.json,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_ad7d6ada9edf7292,reports/project_context_recovery_correctness_score.md,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_d4bfd4a47ad47221,reports/project_context_recovery_drill_decision.json,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_f930ca99bfa61147,reports/project_context_recovery_drill_decision.md,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_5e6dea695274c81a,reports/project_context_recovery_final_truth_summary.json,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_97798b3cb62e5d44,reports/project_context_recovery_final_truth_summary.md,GOVERNANCE_ARTIFACT,2026-07-07,False,False,NOT_APPLICABLE,PARTIAL,
+report_70cfdab5aa61372a,reports/project_context_response_lost_duplication_risk.json,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_479b2418a0191c13,reports/project_context_response_lost_duplication_risk.md,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_af3ea3e98bb04818,reports/project_context_response_lost_recovery_matrix.json,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_44c872fdfcd4c945,reports/project_context_response_lost_recovery_matrix.md,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_a643fdbb6a6bbdc7,reports/project_context_response_lost_recovery_simulation.json,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_b30db0f99909b218,reports/project_context_response_lost_recovery_simulation.md,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_2f79765c07aba17a,reports/project_context_response_lost_side_effect_audit.json,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_fc4d1a997a3e2c9a,reports/project_context_response_lost_side_effect_audit.md,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_9f800e534e96863a,reports/project_context_schema_audit.json,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_a3607d803edecd4c,reports/project_context_schema_audit.md,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_abd30f24ef66297a,reports/project_context_sync_protocol_audit.json,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_c60b1649515e9845,reports/project_context_sync_protocol_audit.md,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_ea8b03254a46de8c,reports/project_context_validation_latest.json,CURRENT_ALIAS,UNKNOWN,True,False,LEGACY_STABLE_ALIAS,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_5d659d9039de8764,reports/project_context_validation_latest.md,CURRENT_ALIAS,UNKNOWN,True,False,LEGACY_STABLE_ALIAS,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_10d518cfb30d08f6,reports/project_structure_audit.json,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_79ebca6154fdaa13,reports/project_structure_audit.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_a94aa081bebf2328,reports/project_weekly_report_2026-07-10.md,DATED_WEEKLY,2026-07-10,False,False,COMPLIANT,PARTIAL,
+report_be641168dd85bde3,reports/qmt_test_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_df35bf7244c813ff,reports/ranking_factor_diagnostics.csv,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_71d96d219f55b9f7,reports/ranking_factor_diagnostics.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_9fb2a984688ff385,reports/ranking_logic_audit.json,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_30dd6510c8b97200,reports/ranking_logic_audit.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_67c3477b947ea768,reports/ranking_model_v2_backtest_report.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_d8a97ac19b4835f4,reports/ranking_model_v2_candidates.json,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_5ec1ff7d69fb9447,reports/ranking_model_v2_decision_report.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_5612142bb73267bf,reports/ranking_model_v2_design.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_2b256338064d2cec,reports/ranking_model_v2_equity_curve.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_5f32ba555f75cfa8,reports/ranking_model_v2_execution_assumption.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_f56b4c1669c4a5f1,reports/ranking_model_v2_metrics.json,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_08d2a00b21c4ad16,reports/ranking_model_v2_positions.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_c8c62ce9df8881bd,reports/ranking_model_v2_summary.csv,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_872b79e4f720d9c4,reports/ranking_model_v2_trades.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_d815bf9737dd2a8c,reports/ranking_model_v2_yearly_summary.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_047d04804c83916e,reports/ranking_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_d417d02e3c0867e1,reports/ranking_signal_research_summary.json,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_491485f65885b05a,reports/recommended_project_layout.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_7c050e55aa2255c8,reports/regime_aware_model_metrics.json,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_8b824bebb12a52a2,reports/regime_aware_model_research.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_618f05930aced5a8,reports/regime_aware_model_summary.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_9e8e62bcbbf48840,reports/regime_layer_phase2_5_stabilization.json,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_6219b5e1546e2e36,reports/regime_layer_phase2_5_stabilization.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_a81ac84f8d05c5d4,reports/regime_layer_phase2_market_audit.json,AUDIT_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_0c59ad3e7775950f,reports/regime_layer_phase2_market_audit.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_972b7c2e6de9886a,reports/regime_layer_phase3_5a_decision.json,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_3a408de1a5ffa71b,reports/regime_layer_phase3_5a_decision.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_7a306376c448c725,reports/regime_layer_phase3_5b_decision.json,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_1c3dc4e82bacd616,reports/regime_layer_phase3_5b_decision.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_07877f8371fd605b,reports/regime_layer_phase3_style_fit.json,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_eb167919fa3f5cde,reports/regime_layer_phase3_style_fit.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_7005a7d561ee25e4,reports/regime_realized_risk_forward_return.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_376efabd031bffd5,reports/regime_realized_risk_forward_return.json,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_28215b951ee77922,reports/regime_realized_risk_forward_return.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_f83582c59526fe77,reports/regime_risk_phase1_5_style_structural_profile.json,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_63b3405b4b05ecf6,reports/regime_risk_phase1_5_style_structural_profile.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_e5ae6ad8ae326c5f,reports/regime_risk_phase1_etf_profile.json,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_84e245bbff7897f4,reports/regime_risk_phase1_etf_profile.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_9dff0c927aa8eab6,reports/regime_stabilization_candidate_decision.json,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_6a2f0f01c2080ec4,reports/regime_stabilization_candidate_decision.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_aa3a45bdff140c61,reports/regime_stabilization_comparison.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_536fcddd361f874f,reports/regime_stabilization_comparison.json,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_85f2657b5faaf7f6,reports/regime_stabilization_comparison.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_73a375353d8859f6,reports/regime_stabilization_detection_lag.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_f6c4849ac09162ea,reports/regime_stabilization_detection_lag.json,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_cb7b1fd45b7dc93a,reports/regime_stabilization_detection_lag.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_23bd3b4044b54778,reports/regime_stabilization_source_audit.json,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_381eb3b8edd191b3,reports/regime_stabilization_source_audit.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_2e279cc4a521ecb1,reports/regime_structural_risk_forward_return.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_fdfd66b0f79c4963,reports/regime_structural_risk_forward_return.json,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_b288dfb86525e61a,reports/regime_structural_risk_forward_return.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_b4c7288e4aac7ba3,reports/regime_style_forward_return.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_ccd0976f895edb93,reports/regime_style_forward_return.json,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_8bd7618eb94dd010,reports/regime_style_forward_return.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_84bb280b32d305df,reports/replay_checkpoint_plan.md,VALIDATION_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_d93b8ef8a90d4ec1,reports/report_index.json,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_53934531eb933dc8,reports/report_index.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_140a6344482fa31b,reports/report_taxonomy_feasibility_study.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_cac3b2e87cc65c0a,reports/representative_etf_regime_behavior.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_f051a5a4219ddab0,reports/review_state_audit.json,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_23bc686ad6e7ee0f,reports/review_state_audit.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_d7671476de80d3a6,reports/risk_on_empty_signal_analysis.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_59de62045918eac4,reports/risk_on_empty_signal_analysis.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_e5155b2b503115bb,reports/risk_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_d647eeeb17498ce9,reports/selected_vs_filtered_forward_return.csv,RUNTIME_INPUT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_73c393e60ef6fe8c,reports/selected_vs_filtered_forward_return.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_1b1d3ab3ddd5c423,reports/sell_signal_review.csv,RUNTIME_INPUT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_20048c42587c6513,reports/sell_signal_review.md,CURRENT_ALIAS,UNKNOWN,True,False,LEGACY_STABLE_ALIAS,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_73977434bcec31ae,reports/sell_signal_review_design_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_3a7ef7c7bd4dc820,reports/sell_signal_review_history.csv,RUNTIME_INPUT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_17fa4b880d97a388,reports/shadcn_card_density_audit.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_6a35cf178f093231,reports/shadcn_ui_compatibility_audit.json,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_66fabfbdb5fe33d5,reports/shadcn_ui_compatibility_audit.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_b1d03de07657dd12,reports/shadcn_ui_migration_phase1.json,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_316c6de2705acb70,reports/shadcn_ui_migration_phase1.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_1f96f089429b621b,reports/shadcn_ui_migration_phase2.json,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_085693d2a5b36300,reports/shadcn_ui_migration_phase2.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_9800fd5c8a696a29,reports/shadow_observation_weekly.csv,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_55ada740fbde626a,reports/shadow_observation_weekly.json,RUNTIME_INPUT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_8ad373b6a448fe2a,reports/shadow_observation_weekly.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_2d64bbf702bbbbcd,reports/signals.csv,RUNTIME_INPUT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_3e141bad7ccc6c22,reports/stabilized_regime_structural_risk_check.json,VALIDATION_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_3faaa7971b2fc85e,reports/stabilized_regime_structural_risk_check.md,VALIDATION_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_1ff74d526a40b13f,reports/stabilized_regime_style_forward_return.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_dbbe23c5c973eb1f,reports/stabilized_regime_style_forward_return.json,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_60405f9c0e6741d4,reports/stabilized_regime_style_forward_return.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_21a50ab2d035622a,reports/strategy_compare_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_d4c7a058ba80222a,reports/strategy_enhancement_preview.csv,RUNTIME_INPUT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_ca1c167141403e02,reports/strategy_enhancement_preview.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_160c91132c52cc34,reports/strategy_preview_shadow_portfolio.csv,RUNTIME_INPUT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_f04fee6b361c18f8,reports/strategy_preview_shadow_portfolio.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_50392c5ca0081b54,reports/strategy_preview_tracking.csv,RUNTIME_INPUT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_1896492e4680c734,reports/strategy_preview_tracking_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_dc569772bcd1ea5d,reports/structural_vs_realized_risk_analysis.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_704abcf2189bbf7b,reports/structural_vs_realized_risk_analysis.json,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_5cff8fd387953bd7,reports/structural_vs_realized_risk_analysis.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_828c0995a2130520,reports/style_fit_commodity_cyclical_audit.csv,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_93d66262afca43a1,reports/style_fit_commodity_cyclical_audit.json,AUDIT_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_f5f42b8000c70edb,reports/style_fit_commodity_cyclical_audit.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_4621a8e57cd9abf2,reports/style_fit_commodity_cyclical_qualification.json,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_f6015ea29b6dfd17,reports/style_fit_commodity_cyclical_qualification.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_20b8113847886877,reports/style_fit_etf_level_robustness.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_818c5b00f7ddc013,reports/style_fit_etf_level_robustness.json,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_1613b86e269a487b,reports/style_fit_etf_level_robustness.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_9c02dc9166e8d94f,reports/style_fit_evidence_qualification_summary.json,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_e34d719584afb887,reports/style_fit_evidence_qualification_summary.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_3634a03e762107f3,reports/style_fit_failure_attribution.json,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_2153b3da3b1d746b,reports/style_fit_failure_attribution.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_03f7402f790473de,reports/style_fit_failure_postmortem.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_b317c832521dd677,reports/style_fit_failure_tree.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_3c3c352961254c6e,reports/style_fit_future_preview_research_scope.json,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_94dce308846b581b,reports/style_fit_future_preview_research_scope.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_2bf97751c5c5654e,reports/style_fit_governance_framework.md,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_82f940f373f122d7,reports/style_fit_high_beta_theme_audit.csv,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_f04fc675c0ec34f3,reports/style_fit_high_beta_theme_audit.json,AUDIT_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_ab640749ebb24750,reports/style_fit_high_beta_theme_audit.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_53e9b63bb0a25b48,reports/style_fit_high_beta_theme_qualification.json,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_69aa8cf001be1378,reports/style_fit_high_beta_theme_qualification.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_ae7ab5040dbeeaed,reports/style_fit_horizon_robustness.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_86c712b65400b412,reports/style_fit_horizon_robustness.json,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_687889aeccbe4f62,reports/style_fit_horizon_robustness.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_1c6c309985931871,reports/style_fit_incremental_signal_final_decision.json,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_ad404afeb17a6401,reports/style_fit_incremental_signal_final_decision.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_38f1f8c07e829833,reports/style_fit_incremental_value_robustness.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_3688f309fcf6fa7d,reports/style_fit_incremental_value_robustness.json,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_1292d75ae6b2af4a,reports/style_fit_incremental_value_robustness.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_a04d175ca8e8d09b,reports/style_fit_permission_matrix.md,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_17543aca52734711,reports/style_fit_regime_segment_robustness.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_10349b10d7ea9915,reports/style_fit_regime_segment_robustness.json,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_2e46ee5fb41ade48,reports/style_fit_regime_segment_robustness.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_7c7490d958f06e68,reports/style_fit_robustness_core_summary.json,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_56d1798f6404311d,reports/style_fit_robustness_core_summary.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_650838e46ed24a6d,reports/style_fit_robustness_evidence_integrity_audit.json,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_19934e107f17e85f,reports/style_fit_robustness_evidence_integrity_audit.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_901e43486f7f24b6,reports/style_fit_robustness_source_audit.json,AUDIT_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_d99a337fac431785,reports/style_fit_robustness_source_audit.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_48bd051369b1b5f5,reports/style_fit_signal_interaction.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_bfbb0ad0436e94b5,reports/style_fit_signal_interaction.json,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_75af8e2b1c07e3ea,reports/style_fit_signal_interaction.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_f6e3013172c724eb,reports/style_fit_time_robustness.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_3faa57279a0cc921,reports/style_fit_time_robustness.json,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_154d2d3044d1a340,reports/style_fit_time_robustness.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_11810df959e18e37,reports/style_regime_differentiation.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_055a00c9e30b7ed4,reports/style_regime_differentiation.json,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_ed9ea74b6c4c00dd,reports/style_regime_differentiation.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_827e56cc8481181f,reports/style_regime_evidence_qualification_matrix.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_161ea47b117e63a0,reports/style_regime_evidence_qualification_matrix.json,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_d0567c73d8a9da6a,reports/style_regime_evidence_qualification_matrix.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_fe80195a7f3b749b,reports/style_regime_fit_matrix.csv,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_fe4749f8cffec961,reports/style_regime_fit_matrix.json,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_85cd0f95fc311e85,reports/style_regime_fit_matrix.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_d113a52fe9877ccd,reports/style_regime_fit_phase_decision.json,GOVERNANCE_ARTIFACT,UNKNOWN,False,True,NOT_APPLICABLE,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_920f4c317615a1ba,reports/style_regime_fit_phase_decision.md,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_56984784f21555cc,reports/style_regime_fit_source_audit.json,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_6b3c7b3c745adbb6,reports/style_regime_fit_source_audit.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_d3bafe7c13ab422f,reports/style_regime_fit_summary.json,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_b4ede68031dc8360,reports/style_regime_fit_summary.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_62b148c39c385345,reports/top10_candidate_filter_analysis.csv,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_70f5ac06bb743966,reports/top10_candidate_filter_analysis.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_f4cda5aa1e976b2d,reports/topn_selection_diagnostics.csv,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_e07e9c5347f03d0f,reports/topn_selection_diagnostics.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_be4dc7943c4eb993,reports/trade_execution_realism_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_c252731db34dbd2f,reports/trade_review_audit.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_dde6d1ad3c974133,reports/trade_review_details.csv,RUNTIME_INPUT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_652ade288d1a04c8,reports/trade_review_details.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_7ee0bd87045c3555,reports/trade_review_lessons.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_fa61424984ba2200,reports/trade_review_open_positions.csv,RUNTIME_INPUT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_8d1df4fb7d67108b,reports/trade_review_open_positions.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_38014d461cb152c8,reports/trade_review_summary.json,RUNTIME_INPUT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_fdef827327e418ca,reports/trade_review_summary.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_8c738df9a13d0b80,reports/trading_weekly_report_2026-07-10.md,DATED_WEEKLY,2026-07-10,False,False,COMPLIANT,PARTIAL,
+report_f4b3dbc508516d3d,reports/tushare_baostock_compare.csv,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_ae07947f33b2f061,reports/tushare_baostock_compare.json,RUNTIME_INPUT,UNKNOWN,False,True,LEGACY_STABLE_ALIAS,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_9dd3e9cb612ea333,reports/tushare_baostock_compare.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_6d6bdd2d22c58c00,reports/tushare_capability_gap_audit.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_b3c1051d827757cc,reports/tushare_config_check.json,VALIDATION_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_640c59e2bb68f618,reports/tushare_config_check.md,VALIDATION_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_8c00d4681bb7238c,reports/tushare_gap_reassessment.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_70069a2d59296f98,reports/tushare_index_weight_reduction_evidence.csv,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_6232ae58107d693c,reports/tushare_interface_probe_matrix.csv,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_fcdfaeeaba0e7969,reports/tushare_minimal_proof_permission_audit.json,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_95dfc08066daf752,reports/tushare_minimal_proof_run_manifest.json,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_84ecd9cc2bfe09b5,reports/tushare_minimal_staging_proof.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_ba9fad0595fc4436,reports/tushare_no_lookahead_check.md,VALIDATION_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_02c7e01693cd6c4b,reports/tushare_pit_contract_matrix.csv,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_f0a93a158bb277fd,reports/tushare_priority_matrix.csv,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_6169d02b5a2ec871,reports/tushare_proof_evidence_remediation.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_44d98fcad2f1015c,reports/tushare_proof_post_merge_validation_2026-07.md,VALIDATION_ARTIFACT,2026-07,False,False,NON_COMPLIANT,PARTIAL,
+report_d505c70791799706,reports/tushare_real_run_attestations.csv,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_7dec88f37a121b5f,reports/tushare_real_run_attestations.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_9229f15c417114b7,reports/tushare_staging_check.json,VALIDATION_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_24347ede8ae72d45,reports/tushare_staging_check.md,VALIDATION_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_bc2e9b43e242fd20,reports/ui_visual_calibration_monochrome.json,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_f118f84f2d17b804,reports/ui_visual_calibration_monochrome.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_d388034582632a4b,reports/universe_quality_review.csv,RESEARCH_ARTIFACT,UNKNOWN,False,True,NON_COMPLIANT,COMPLETE,Keep the current path stable until a registry-backed compatibility layer exists. Business date was not inferred from filesystem timestamps.
+report_4f4e83e9ac01371d,reports/universe_quality_review.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_c7c1c93f7a4a240c,reports/universe_registry.md,GOVERNANCE_ARTIFACT,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_90a9ff45134580a9,reports/universe_v2_candidate_qualification.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_1c571e953cf76f87,reports/universe_v2_coverage_gap_analysis.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_3ee039bca5d3f9e1,reports/universe_v2_expansion_plan.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_16b430ea7ffd4483,reports/universe_v2_full_replay.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_86fca348cf854e01,reports/universe_v2_replay/v1_vs_v2_evidence_migration.csv,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_8bd83fb9bce02dc5,reports/universe_v2_replay/v1_vs_v2_generalization.json,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_cad58b0beba43db6,reports/universe_v2_replay/v2_commodity_robustness.csv,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_89118fbddef30fe5,reports/universe_v2_replay/v2_commodity_robustness.json,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_0348e00c03cf268e,reports/universe_v2_replay/v2_etf_level_robustness.csv,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_a1cf51a79f006b90,reports/universe_v2_replay/v2_etf_level_robustness.json,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_b1d3796a070424be,reports/universe_v2_replay/v2_evidence_qualification_matrix.csv,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_5fa08da7dc453e54,reports/universe_v2_replay/v2_evidence_qualification_matrix.json,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_a93cef3cef4eee13,reports/universe_v2_replay/v2_high_beta_robustness.csv,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_2a67f3c5e041e7fd,reports/universe_v2_replay/v2_high_beta_robustness.json,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_d4eb14a4d536a66f,reports/universe_v2_replay/v2_horizon_robustness.csv,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_9d1b3d25c568dc7c,reports/universe_v2_replay/v2_horizon_robustness.json,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_c2f28eae9cba4a3f,reports/universe_v2_replay/v2_incremental_robustness.csv,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_667728312ab6ae6c,reports/universe_v2_replay/v2_incremental_robustness.json,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_3fcfdc4d6c2b31cc,reports/universe_v2_replay/v2_replay_coverage_validation.json,VALIDATION_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_3504fc2cac5bb29b,reports/universe_v2_replay/v2_segment_robustness.csv,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_3129cd3fe02077ae,reports/universe_v2_replay/v2_segment_robustness.json,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_c20025883248d0bd,reports/universe_v2_replay/v2_style_fit_regime_segments.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_40d24270c289661b,reports/universe_v2_replay/v2_style_fit_robustness_base.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_315ff4e99185f425,reports/universe_v2_replay/v2_style_fit_robustness_core_summary.json,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_63a31d676de66045,reports/universe_v2_replay/v2_style_fit_robustness_source_audit.json,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_10acd3b0287cd5f8,reports/universe_v2_replay/v2_style_forward_rows.csv,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_c8b43dde61ad1cd4,reports/universe_v2_replay/v2_style_regime_differentiation.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_a0584a3ad111b255,reports/universe_v2_replay/v2_style_regime_differentiation.json,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_1eb029381db8985a,reports/universe_v2_replay/v2_style_regime_fit_matrix.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_a5fa2bb20159ef0d,reports/universe_v2_replay/v2_style_regime_fit_matrix.json,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_700b4cbb70d01478,reports/universe_v2_replay/v2_style_regime_fit_summary.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_4616565edbc91f0f,reports/universe_v2_replay/v2_style_regime_fit_summary.json,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_8b3647c33c826c06,reports/universe_v2_replay/v2_time_robustness.csv,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_b46d516ea7ba6df6,reports/universe_v2_replay/v2_time_robustness.json,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_9e41a77b4e8094bf,reports/universe_v2_replay_plan.md,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_51d544f3b7a21f4d,reports/v1_vs_v2_generalization.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_c1c53f7f521d00ff,reports/v2_underperformance_attribution.csv,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_44500051707a84ea,reports/v2_underperformance_attribution.json,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_1944058c4ed79c2e,reports/v2_underperformance_attribution.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_d7ebca1eb59128ec,reports/valuation_consistency_audit.json,AUDIT_ARTIFACT,2026-06-26,False,True,NON_COMPLIANT,PARTIAL,Keep the current path stable until a registry-backed compatibility layer exists.
+report_b48be5025980e62b,reports/valuation_consistency_audit.md,AUDIT_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_d41750843b419249,reports/valuation_consistency_check.md,VALIDATION_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_a095fc3c71616358,reports/watchlist_health_report.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,MISSING,Business date was not inferred from filesystem timestamps.
+report_4e4a55d8c57b5296,reports/weekly_full_backtest_results.csv,RESEARCH_ARTIFACT,UNKNOWN,False,False,NON_COMPLIANT,COMPLETE,Business date was not inferred from filesystem timestamps.
+report_6e9ba020de9d256f,reports/weekly_full_review.md,UNKNOWN,UNKNOWN,False,False,NOT_APPLICABLE,PARTIAL,Business date was not inferred from filesystem timestamps.
+report_1dbe726bcfae3b13,reports/weekly_review_2026-07-03.md,DATED_WEEKLY,2026-07-03,False,False,COMPLIANT,PARTIAL,Archive blocked by a trusted active dynamic Producer pattern.
+report_66ce91508e5ab750,reports/weekly_review_2026-07-09.md,DATED_WEEKLY,2026-07-09,False,False,COMPLIANT,PARTIAL,Archive blocked by a trusted active dynamic Producer pattern.
