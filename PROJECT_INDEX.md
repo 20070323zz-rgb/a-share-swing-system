@@ -59,14 +59,17 @@ Reports Governance Phase A Engineering: REMEDIATED
 Date Pattern Validation: IMPLEMENTED_PENDING_QC
 Python Scope Semantics: IMPLEMENTED_PENDING_QC
 Report Catalog: REBUILT_SEPARATE_MIGRATION_DELETION_PENDING_QC
-Report Dependency Registry: REMEDIATED_PENDING_FINAL_SEMANTIC_QC
+Report Dependency Registry: REMEDIATED_PENDING_FINAL_RESULT_QC
+Governance Evidence Registry: IMPLEMENTED_PENDING_QC
+Evidence Traceability: COMPLETE_PENDING_QC
+Already Archived Classification: IMPLEMENTED_PENDING_QC
 Report Classification Standard: REMEDIATED_PENDING_FINAL_QC
 Producer Classification: REMEDIATED_PENDING_FINAL_QC
 Dynamic Producer Linkage: IMPLEMENTED_PENDING_QC
 Migration Eligibility: REBUILT_PENDING_QC
-Deletion Eligibility: REBUILT_PENDING_QC
-Snapshot Immutability: ENFORCED_PENDING_QC
-Phase B Contract: COMPLETE_PENDING_QC
+Deletion Eligibility: UNCHANGED_CONSERVATIVE
+Snapshot Immutability: ENFORCED
+Phase B Contract: COMPLETE
 PR #3 Authority Preservation: REMEDIATED_PENDING_QC
 Availability Temporary Data Lifecycle: DEFINED
 Temporary Audit Database: RETAIN_UNTIL_MIGRATION_VALIDATED
@@ -236,10 +239,13 @@ Formal Execution: BLOCKED
 - Report Dependency Registry Builder：`scripts/governance/build_report_dependency_registry.py`
 - Authority-aware State Merge：`scripts/governance/authority_merge.py`
 - Report Authority Merge Standard：`docs/report_authority_merge_standard.md`
-- Revisioned Report Catalog：`reports/report_catalog_v2_2026-07-15.md`
-- Revisioned Report Dependency Summary：`reports/report_dependency_summary_v2_2026-07-15.md`
-- Revisioned Naming Compliance Audit：`reports/report_naming_compliance_audit_v2_2026-07-15.csv`
-- Revisioned Phase A Summary：`reports/reports_governance_phase_a_summary_v2_2026-07-15.md`
+- Revisioned Report Catalog：`reports/report_catalog_v3_2026-07-15.md`
+- Revisioned Report Dependency Summary：`reports/report_dependency_summary_v3_2026-07-15.md`
+- Unified Governance Evidence Registry：`reports/report_governance_evidence_registry_v1_2026-07-15.json`
+- Evidence Integrity Validator：`scripts/governance/validate_report_governance_evidence.py`
+- Revisioned Naming Compliance Audit：`reports/report_naming_compliance_audit_v3_2026-07-15.csv`
+- Revisioned Phase A Summary：`reports/reports_governance_phase_a_summary_v3_2026-07-15.md`
+- Evidence and Archived-State Remediation：`reports/reports_governance_phase_a_evidence_and_archive_state_remediation_2026-07-15.md`
 - Final Semantic Remediation：`reports/reports_governance_phase_a_final_semantic_remediation_2026-07-15.md`
 - Dated Remediation Report：`reports/reports_governance_phase_a_remediation_2026-07-15.md`
 - Dynamic Producer Remediation：`reports/reports_governance_phase_a_dynamic_producer_remediation_2026-07-15.md`
