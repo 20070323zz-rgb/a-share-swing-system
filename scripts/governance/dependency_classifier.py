@@ -425,7 +425,7 @@ def _shell_copy_move_rows(
 
 def _placeholder(node: ast.AST, format_spec: str = "") -> tuple[str, str, str]:
     raw_name = ast.unparse(node) if hasattr(ast, "unparse") else "expr"
-    name = raw_name.rsplit(".", 1)[-1].lower()
+    name = raw_name.lower()
     if any(token in format_spec for token in ("%H", "%M", "%S")) or any(
         token in name for token in ("timestamp", "datetime", "date_time")
     ):

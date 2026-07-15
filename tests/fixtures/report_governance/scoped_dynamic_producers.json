@@ -256,5 +256,14 @@
     "scope_name": "build",
     "binding_name": "path",
     "expect_producer": false
+  },
+  {
+    "name": "isoformat_date_call",
+    "source": "from pathlib import Path\ndef build(audit_date):\n    path = Path('reports') / f'audit_{audit_date.isoformat()}.json'\n    path.write_text('{}')\n",
+    "target": "reports/audit_{audit_date.isoformat()}.json",
+    "pattern": "reports/audit_<DATE>.json",
+    "scope_type": "FUNCTION",
+    "scope_name": "build",
+    "binding_name": "path"
   }
 ]
