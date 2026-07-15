@@ -18,6 +18,7 @@ try:
         render_catalog_markdown,
         scan_dependencies,
         stable_report_id,
+        superseded_artifact,
         write_csv,
         write_json,
     )
@@ -32,6 +33,7 @@ except ModuleNotFoundError:  # Direct script execution.
         render_catalog_markdown,
         scan_dependencies,
         stable_report_id,
+        superseded_artifact,
         write_csv,
         write_json,
     )
@@ -88,7 +90,14 @@ def main() -> None:
         dependencies = scan_dependencies(root)
     records = build_catalog_records(root, dependencies)
     catalog_stem = f"report_catalog_{date}"
-    metadata = artifact_metadata(root, date, stable_report_id(f"reports/{catalog_stem}.json"), len(records))
+    catalog_json = f"reports/{catalog_stem}.json"
+    metadata = artifact_metadata(
+        root,
+        date,
+        stable_report_id(catalog_json),
+        len(records),
+        superseded_artifact(root, date, "reports/report_catalog_{date}.json"),
+    )
     exclusions = [
         f"reports/report_catalog_{date}.csv",
         f"reports/report_catalog_{date}.json",
@@ -101,6 +110,7 @@ def main() -> None:
         f"reports/reports_governance_phase_a_summary_{date}.md",
         f"reports/reports_governance_phase_a_remediation_{date}.md",
         f"reports/reports_governance_phase_a_final_blocker_remediation_{date}.md",
+        f"reports/reports_governance_phase_a_dynamic_producer_remediation_{date}.md",
     ]
     payload = catalog_payload(records, metadata, exclusions)
     write_json(root / f"reports/{catalog_stem}.json", payload)
@@ -121,6 +131,7 @@ def main() -> None:
         status="REBUILT_PENDING_RE_QC",
         producer="scripts/governance/build_report_catalog.py",
         source_run_id=f"reports-governance-phase-a-remediation-{date}",
+        supersedes=superseded_artifact(root, date, "reports/report_catalog_{date}.md"),
     )
     (root / catalog_path).write_text(
         render_catalog_markdown(payload, catalog_front_matter), encoding="utf-8"
@@ -140,7 +151,13 @@ def main() -> None:
     naming_rows = [{field: row[field] for field in naming_fields} for row in records]
     naming_path = f"reports/report_naming_compliance_audit_{date}.csv"
     write_csv(root / naming_path, naming_rows, naming_fields)
-    naming_meta = artifact_metadata(root, date, stable_report_id(naming_path), len(naming_rows))
+    naming_meta = artifact_metadata(
+        root,
+        date,
+        stable_report_id(naming_path),
+        len(naming_rows),
+        superseded_artifact(root, date, "reports/report_naming_compliance_audit_{date}.metadata.json"),
+    )
     naming_meta["artifact_path"] = naming_path
     naming_meta["retention_class"] = "PERMANENT"
     write_json(root / f"reports/report_naming_compliance_audit_{date}.metadata.json", naming_meta)

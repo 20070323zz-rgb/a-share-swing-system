@@ -19,7 +19,7 @@
   {"name":"py_path_replace_18","source_file":"src/f.py","source":"tmp.replace(REPORT_DIR / \"producer_18.md\")","target":"reports/producer_18.md","reference_type":"PRODUCER_WRITE","direction":"PRODUCER"},
   {"name":"py_path_rename_19","source_file":"src/f.py","source":"tmp.rename(REPORT_DIR / \"producer_19.md\")","target":"reports/producer_19.md","reference_type":"PRODUCER_WRITE","direction":"PRODUCER"},
   {"name":"py_atomic_alias_20","source_file":"src/f.py","source":"alias = REPORT_DIR / \"current_alias.json\"\nos.replace(tmp, alias)","target":"reports/current_alias.json","reference_type":"PRODUCER_WRITE","direction":"PRODUCER"},
-  {"name":"py_dynamic_producer_21","source_file":"src/f.py","source":"frame.to_csv(REPORT_DIR / f\"daily_{run_date}.csv\")","target":"reports/daily_{run_date}.csv","reference_type":"DYNAMIC_PATH_PATTERN","direction":"PRODUCER"},
+  {"name":"py_dynamic_producer_21","source_file":"src/f.py","source":"frame.to_csv(REPORT_DIR / f\"daily_{run_date}.csv\")","target":"reports/daily_{run_date}.csv","reference_type":"PRODUCER_WRITE","direction":"WRITE"},
 
   {"name":"py_read_text_01","source_file":"src/f.py","source":"(REPORT_DIR / \"consumer_01.md\").read_text()","target":"reports/consumer_01.md","reference_type":"CONSUMER_READ","direction":"CONSUMER"},
   {"name":"py_read_bytes_02","source_file":"src/f.py","source":"Path(\"reports/consumer_02.json\").read_bytes()","target":"reports/consumer_02.json","reference_type":"CONSUMER_READ","direction":"CONSUMER"},
@@ -38,7 +38,7 @@
   {"name":"py_dashboard_runtime_15","source_file":"dashboard/build_dashboard.py","source":"pd.read_csv(REPORT_DIR / \"consumer_15.csv\")","target":"reports/consumer_15.csv","reference_type":"DASHBOARD_RUNTIME_READ","direction":"CONSUMER"},
   {"name":"py_app_text_16","source_file":"app/backend/readers.py","source":"(REPORT_DIR / \"consumer_16.md\").read_text()","target":"reports/consumer_16.md","reference_type":"APP_RUNTIME_READ","direction":"CONSUMER"},
   {"name":"py_dashboard_json_17","source_file":"dashboard/build_dashboard.py","source":"read_json(REPORT_DIR / \"consumer_17.json\")","target":"reports/consumer_17.json","reference_type":"DASHBOARD_RUNTIME_READ","direction":"CONSUMER"},
-  {"name":"py_dynamic_consumer_18","source_file":"src/f.py","source":"pd.read_csv(REPORT_DIR / f\"daily_{run_date}.csv\")","target":"reports/daily_{run_date}.csv","reference_type":"DYNAMIC_PATH_PATTERN","direction":"CONSUMER"},
+  {"name":"py_dynamic_consumer_18","source_file":"src/f.py","source":"pd.read_csv(REPORT_DIR / f\"daily_{run_date}.csv\")","target":"reports/daily_{run_date}.csv","reference_type":"CONSUMER_READ","direction":"CONSUMER"},
   {"name":"py_app_bound_19","source_file":"app/backend/readers.py","source":"path = REPORT_DIR / \"consumer_19.json\"\nread_json(path)","target":"reports/consumer_19.json","reference_type":"APP_RUNTIME_READ","direction":"CONSUMER"},
   {"name":"py_dashboard_bound_20","source_file":"dashboard/build_dashboard.py","source":"path = REPORT_DIR / \"consumer_20.csv\"\npd.read_csv(path)","target":"reports/consumer_20.csv","reference_type":"DASHBOARD_RUNTIME_READ","direction":"CONSUMER"},
 

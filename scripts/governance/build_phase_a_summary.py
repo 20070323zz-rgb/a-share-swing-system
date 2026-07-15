@@ -15,6 +15,7 @@ try:
         markdown_front_matter,
         project_root_from_script,
         stable_report_id,
+        superseded_artifact,
     )
 except ModuleNotFoundError:
     from report_governance_common import (  # type: ignore
@@ -23,6 +24,7 @@ except ModuleNotFoundError:
         markdown_front_matter,
         project_root_from_script,
         stable_report_id,
+        superseded_artifact,
     )
 
 
@@ -35,6 +37,7 @@ SAMPLE_RESULTS = {
     "DYNAMIC_RESOLUTION": (15, 14),
     "TEST_REFERENCE": (15, 15),
     "HISTORICAL_REFERENCE": (15, 15),
+    "SCOPED_DYNAMIC_PRODUCER": (24, 24),
 }
 
 SHELL_DIRECTION_RESULTS = {
@@ -51,7 +54,9 @@ def parse_args() -> argparse.Namespace:
 
 
 def _front(root: Path, date: str, path: str, report_type: str, status: str) -> str:
-    meta = artifact_metadata(root, date, stable_report_id(path), 1)
+    path_template = path.replace(date, "{date}")
+    supersedes = superseded_artifact(root, date, path_template)
+    meta = artifact_metadata(root, date, stable_report_id(path), 1, supersedes)
     return markdown_front_matter(
         report_id=stable_report_id(path),
         report_type=report_type,
@@ -60,6 +65,7 @@ def _front(root: Path, date: str, path: str, report_type: str, status: str) -> s
         status=status,
         producer="scripts/governance/build_phase_a_summary.py",
         source_run_id=f"reports-governance-phase-a-remediation-{date}",
+        supersedes=supersedes,
     )
 
 
@@ -94,18 +100,19 @@ def main() -> None:
         f"reports/report_dependency_summary_{date}.md",
         f"reports/report_naming_compliance_audit_{date}.csv",
         f"reports/reports_governance_phase_a_summary_{date}.md",
+        f"reports/reports_governance_phase_a_dynamic_producer_remediation_{date}.md",
     ]
     summary_path = f"reports/reports_governance_phase_a_summary_{date}.md"
     body = f"""{_front(root, date, summary_path, 'GOVERNANCE_PHASE_SUMMARY', 'REMEDIATED_PENDING_FINAL_QC')}# Reports Governance Phase A Summary
 
 ## State
 
-- Engineering: `REMEDIATED`
-- PR #4: `DRAFT_AWAITING_FINAL_RE_QC`
-- Report Catalog: `REBUILT`
-- Dependency Registry: `REMEDIATED_PENDING_FINAL_QC`
-- Producer Classification: `REMEDIATED_PENDING_FINAL_QC`
-- Availability Temporary Data Lifecycle: `DEFINED_PENDING_QC`
+- Engineering: `DYNAMIC_PRODUCER_LINKAGE_IMPLEMENTED`
+- PR #4: `DRAFT_AWAITING_DYNAMIC_PRODUCER_RE_QC`
+- Report Catalog: `REBUILT_DYNAMIC_PRODUCERS_BLOCK_ARCHIVE`
+- Dependency Registry: `REBUILT_PENDING_INDEPENDENT_RE_QC`
+- Producer Classification: `DYNAMIC_LINKAGE_IMPLEMENTED_PENDING_RE_QC`
+- Availability Temporary Data Lifecycle: `DEFINED`
 - Temporary Audit Database: `RETAIN_UNTIL_MIGRATION_VALIDATED`
 - Naming Standard: `PROPOSED_ACTIVE_ON_MERGE`
 - Path Registry Design: `COMPLETE_PENDING_QC`
@@ -129,6 +136,7 @@ No undated Catalog, Registry or Phase A summary is retained as a unique artifact
 - Runtime locked: {summary['runtime_locked_count']}
 - Current aliases: {summary['current_alias_count']}
 - Low-risk archive candidates: {summary['archive_candidate_count']}
+- Reports matched to active dynamic Producers: {summary['dynamic_producer_matched_report_count']}
 - Unknown roles: {summary['unknown_role_count']}
 - Naming compliant: {naming.get('COMPLIANT', 0)}
 - Naming non-compliant: {naming.get('NON_COMPLIANT', 0)}
@@ -219,6 +227,34 @@ No temporary Availability data was deleted or modified. Runtime Path Registry re
 `READY_FOR_FINAL_INDEPENDENT_RE_QC`. PR #4 remains Draft. This report does not declare `MERGE_READY` and does not authorize merge, Phase B, runtime Registry activation or temporary-data retirement.
 """
     (root / final_path).write_text(final_report, encoding="utf-8")
+
+    dynamic_path = f"reports/reports_governance_phase_a_dynamic_producer_remediation_{date}.md"
+    dynamic_blocked = [
+        row
+        for row in rows
+        if row["archive_block_reason"] == "ACTIVE_DYNAMIC_PRODUCER"
+    ]
+    dynamic_report = f"""{_front(root, date, dynamic_path, 'GOVERNANCE_DYNAMIC_PRODUCER_REMEDIATION', 'READY_FOR_INDEPENDENT_DYNAMIC_PRODUCER_RE_QC')}# Reports Governance Phase A Dynamic Producer Remediation
+
+## Remediation result
+
+- Python bindings are keyed by stable lexical `scope_id` plus name and version.
+- Module, class, function, async-function, lambda and comprehension scopes are isolated; closures resolve through lexical parents without sibling leakage.
+- Dynamic writes emit `PRODUCER_WRITE / WRITE` with scope, binding, structured pattern and Producer entrypoint metadata.
+- Trusted `<DATE>`, `<TIMESTAMP>` and `<RUN_ID>` templates use anchored full-path matching. `<DYNAMIC>` is retained for review and never auto-matched.
+- Committed scope/dynamic fixture cases: 24/24 pass.
+- Reports blocked by active dynamic Producers: {len(dynamic_blocked)}.
+- Remaining Archive Candidates: {summary['archive_candidate_count']}.
+
+## Dynamically protected reports
+
+{chr(10).join(f"- `{row['current_path']}` via `{row['producer_match_type']}` ({row['dynamic_producer_match_confidence']})" for row in dynamic_blocked)}
+
+## Boundary
+
+No existing report was moved, renamed, deleted or overwritten. Runtime Path Registry remains `NOT_STARTED`; Report Migration Phase B remains `BLOCKED`; Availability Temporary Data Lifecycle remains `DEFINED`; the temporary audit database remains `RETAIN_UNTIL_MIGRATION_VALIDATED`; ETF Daily Availability Timing Audit remains `ACTIVE_COLLECTING`. PR #4 remains Draft and awaits independent dynamic Producer Re-QC.
+"""
+    (root / dynamic_path).write_text(dynamic_report, encoding="utf-8")
 
 
 if __name__ == "__main__":

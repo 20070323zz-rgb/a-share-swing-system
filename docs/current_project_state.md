@@ -72,12 +72,12 @@ Guarded Paper Execution Entry ACTIVE
 Stale Data Fallback BLOCKED
 2026-07-10 Stale Trades AUDITED_NON_DESTRUCTIVELY
 Tushare 5000 Data Foundation Audit COMPLETE
-Reports Governance Phase A Engineering REMEDIATED / COMPLETE_PENDING_FINAL_RE_QC
-Report Catalog REBUILT
-Report Dependency Registry REMEDIATED_PENDING_FINAL_QC
-Report Classification Standard REMEDIATED_PENDING_FINAL_QC
-Producer Classification REMEDIATED_PENDING_FINAL_QC
-Availability Temporary Data Lifecycle DEFINED_PENDING_QC
+Reports Governance Phase A Engineering DYNAMIC_PRODUCER_LINKAGE_IMPLEMENTED / PENDING_INDEPENDENT_RE_QC
+Report Catalog REBUILT_DYNAMIC_PRODUCERS_BLOCK_ARCHIVE
+Report Dependency Registry REBUILT_PENDING_INDEPENDENT_RE_QC
+Report Classification Standard DYNAMIC_LINKAGE_IMPLEMENTED_PENDING_RE_QC
+Producer Classification DYNAMIC_LINKAGE_IMPLEMENTED_PENDING_RE_QC
+Availability Temporary Data Lifecycle DEFINED
 Temporary Audit Database RETAIN_UNTIL_MIGRATION_VALIDATED
 Report Naming Standard PROPOSED_ACTIVE_ON_MERGE
 Future Report Path Registry Design COMPLETE_PENDING_QC
@@ -932,7 +932,7 @@ Protected file hashes unchanged = true
 
 The separately authorized Tushare 5000 Data Foundation Audit is `COMPLETE` after Main review. Capability and priority artifacts are available. No Tushare data integration or data-source upgrade has started; `Data Foundation Upgrade = NOT_STARTED`.
 
-Reports Governance Phase A Engineering is `REMEDIATED / COMPLETE_PENDING_FINAL_RE_QC`: dated immutable artifacts, AST/source-aware dependency classification, stable reference identity, golden fixtures, metadata rules and a completed future Path Registry design now exist. Shell `cp/mv` source/destination semantics are remediated pending final QC. Availability temporary audit data is `RETAIN_UNTIL_MIGRATION_VALIDATED`; no current deletion is authorized. This remains a zero-move, zero-rename, zero-delete phase for pre-existing reports; Report File Migration is `BLOCKED`, runtime Path Registry is `NOT_STARTED`, and Phase B is not authorized.
+Reports Governance Phase A Engineering is `DYNAMIC_PRODUCER_LINKAGE_IMPLEMENTED / PENDING_INDEPENDENT_RE_QC`: lexical scope-aware Python bindings, structured dynamic path patterns and anchored Producer-to-report matching now block actively generated dated reports from Archive Candidate classification. Dated immutable artifacts, stable reference identity, golden fixtures, metadata rules and the future Path Registry design remain in place. Availability Temporary Data Lifecycle is `DEFINED` and temporary audit data is `RETAIN_UNTIL_MIGRATION_VALIDATED`; no current deletion is authorized. This remains a zero-move, zero-rename, zero-delete phase for pre-existing reports; Report File Migration is `BLOCKED`, runtime Path Registry is `NOT_STARTED`, and Phase B is not authorized.
 
 PR #1 final hygiene cleanup is `COMPLETE`. PR #1 was merged into `main` with merge commit `40a6017402456d62609169325cb5f1d31a1a140b` at 2026-07-13 09:49:26 CST. Post-merge validation is `PASS` and `main` is `STABLE`. Formal execution logic, protected paper ledgers, and ETF business data were unchanged by the merge/validation batch.
 
@@ -1013,9 +1013,9 @@ New threads must still execute repository bootstrap before substantive edits.
 
 ```text
 Tushare 5000 Data Foundation Audit = COMPLETE
-Reports Governance Phase A Engineering = REMEDIATED / COMPLETE_PENDING_FINAL_RE_QC
-Report Catalog = REBUILT
-Report Dependency Registry = REMEDIATED_PENDING_FINAL_QC
+Reports Governance Phase A Engineering = DYNAMIC_PRODUCER_LINKAGE_IMPLEMENTED / PENDING_INDEPENDENT_RE_QC
+Report Catalog = REBUILT_DYNAMIC_PRODUCERS_BLOCK_ARCHIVE
+Report Dependency Registry = REBUILT_PENDING_INDEPENDENT_RE_QC
 Future Report Path Registry Design = COMPLETE_PENDING_QC
 Runtime Report Path Registry = NOT_STARTED
 Report File Migration = BLOCKED
@@ -1048,12 +1048,12 @@ Guarded Paper Execution Entry = ACTIVE
 Stale Data Fallback = BLOCKED
 2026-07-10 Stale Trades = AUDITED_NON_DESTRUCTIVELY
 Tushare 5000 Data Foundation Audit = COMPLETE
-Reports Governance Phase A Engineering = REMEDIATED / COMPLETE_PENDING_FINAL_RE_QC
-Report Catalog = REBUILT
-Report Dependency Registry = REMEDIATED_PENDING_FINAL_QC
-Report Classification Standard = REMEDIATED_PENDING_FINAL_QC
-Producer Classification = REMEDIATED_PENDING_FINAL_QC
-Availability Temporary Data Lifecycle = DEFINED_PENDING_QC
+Reports Governance Phase A Engineering = DYNAMIC_PRODUCER_LINKAGE_IMPLEMENTED / PENDING_INDEPENDENT_RE_QC
+Report Catalog = REBUILT_DYNAMIC_PRODUCERS_BLOCK_ARCHIVE
+Report Dependency Registry = REBUILT_PENDING_INDEPENDENT_RE_QC
+Report Classification Standard = DYNAMIC_LINKAGE_IMPLEMENTED_PENDING_RE_QC
+Producer Classification = DYNAMIC_LINKAGE_IMPLEMENTED_PENDING_RE_QC
+Availability Temporary Data Lifecycle = DEFINED
 Temporary Audit Database = RETAIN_UNTIL_MIGRATION_VALIDATED
 Report Naming Standard = PROPOSED_ACTIVE_ON_MERGE
 Future Report Path Registry Design = COMPLETE_PENDING_QC

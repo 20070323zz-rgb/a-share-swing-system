@@ -16,6 +16,7 @@ try:
         render_dependency_markdown,
         scan_dependencies,
         stable_report_id,
+        superseded_artifact,
         write_csv,
         write_json,
     )
@@ -29,6 +30,7 @@ except ModuleNotFoundError:  # Direct script execution.
         render_dependency_markdown,
         scan_dependencies,
         stable_report_id,
+        superseded_artifact,
         write_csv,
         write_json,
     )
@@ -82,7 +84,14 @@ def main() -> None:
     rows = scan_dependencies(root)
     date = args.business_date
     stem = f"report_dependency_registry_{date}"
-    metadata = artifact_metadata(root, date, stable_report_id(f"reports/{stem}.json"), len(rows))
+    registry_json = f"reports/{stem}.json"
+    metadata = artifact_metadata(
+        root,
+        date,
+        stable_report_id(registry_json),
+        len(rows),
+        superseded_artifact(root, date, "reports/report_dependency_registry_{date}.json"),
+    )
     payload = dependency_payload(rows, metadata)
     write_json(root / f"reports/{stem}.json", payload)
     write_csv(root / f"reports/{stem}.csv", rows, FIELDS)
@@ -95,6 +104,7 @@ def main() -> None:
         status="REMEDIATED_PENDING_RE_QC",
         producer="scripts/governance/build_report_dependency_registry.py",
         source_run_id=f"reports-governance-phase-a-remediation-{date}",
+        supersedes=superseded_artifact(root, date, "reports/report_dependency_summary_{date}.md"),
     )
     (root / summary_path).write_text(
         render_dependency_markdown(payload, front_matter), encoding="utf-8"

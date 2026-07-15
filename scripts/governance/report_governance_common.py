@@ -13,7 +13,7 @@ import json
 import re
 import subprocess
 from collections import Counter, defaultdict
-from datetime import datetime
+from datetime import date as calendar_date, datetime, timedelta
 from pathlib import Path
 from typing import Iterable
 from zoneinfo import ZoneInfo
@@ -218,6 +218,17 @@ def is_control_report_path(path: str) -> bool:
 
 def business_date_today() -> str:
     return datetime.now(ZoneInfo("Asia/Shanghai")).date().isoformat()
+
+
+def superseded_artifact(root: Path, business_date: str, path_template: str) -> str:
+    """Return the immediately prior dated artifact when it exists."""
+
+    try:
+        previous = (calendar_date.fromisoformat(business_date) - timedelta(days=1)).isoformat()
+    except ValueError:
+        return ""
+    candidate = path_template.format(date=previous)
+    return candidate if (root / candidate).exists() else ""
 
 
 def source_tree_commit(root: Path) -> str:

@@ -58,6 +58,7 @@ PYTHON_CONSUMER_METHODS = {
 }
 PYTHON_ATOMIC_METHODS = {"replace", "rename"}
 PYTHON_COPY_METHODS = {"copy", "copy2", "move"}
+MAX_PATH_VALUES = 32
 
 
 @dataclass(frozen=True)
@@ -477,6 +478,8 @@ def _combine_values(left: list[Reference], right: list[Reference], separator: st
             rhs_pattern = rhs.dynamic_path_pattern or rhs.target
             pattern = lhs_pattern.rstrip("/") + separator + rhs_pattern.lstrip("/")
             result.append(_derived_reference(raw, pattern, [lhs, rhs]))
+            if len(result) >= MAX_PATH_VALUES:
+                return result
     return result
 
 
@@ -513,11 +516,13 @@ def _expr_references(node: ast.AST | None, frame: ScopeFrame) -> list[Reference]
             values = _combine_values(values, segment, "")
         return values
     if isinstance(node, ast.BinOp) and isinstance(node.op, (ast.Div, ast.Add)):
-        return _combine_values(
-            _expr_references(node.left, frame),
-            _expr_references(node.right, frame),
-            "/" if isinstance(node.op, ast.Div) else "",
-        )
+        left = _expr_references(node.left, frame)
+        right = _expr_references(node.right, frame)
+        if isinstance(node.op, ast.Div) and not left and any(
+            item.target.strip("/") == "reports" for item in right
+        ):
+            return [Reference("reports", "STATIC_COMPUTED")]
+        return _combine_values(left, right, "/" if isinstance(node.op, ast.Div) else "")
     if isinstance(node, ast.BinOp) and isinstance(node.op, ast.Mod):
         left = _expr_references(node.left, frame)
         values = node.right.elts if isinstance(node.right, (ast.Tuple, ast.List)) else [node.right]
@@ -564,7 +569,25 @@ def _expr_references(node: ast.AST | None, frame: ScopeFrame) -> list[Reference]
                     raw = raw.replace(match.group(0), raw_token, 1)
                     pattern = re.sub(r"\{[^{}]*\}", pattern_token, pattern, count=1)
                     kinds.append(kind)
-                result.append(_derived_reference(raw, pattern, [base, Reference("", "DYNAMIC", pattern, _merge_pattern_kind(kinds))]))
+                derived = _derived_reference(
+                    raw,
+                    pattern,
+                    [base, Reference("", "DYNAMIC", pattern, _merge_pattern_kind(kinds[1:]))],
+                )
+                result.append(
+                    Reference(
+                        target=derived.target,
+                        resolution=derived.resolution,
+                        dynamic_path_pattern=derived.dynamic_path_pattern,
+                        pattern_kind=_merge_pattern_kind(kinds[1:]),
+                        binding_id=derived.binding_id,
+                        binding_name=derived.binding_name,
+                        binding_version=derived.binding_version,
+                        binding_scope_id=derived.binding_scope_id,
+                        binding_origin_scope_id=derived.binding_origin_scope_id,
+                        binding_confidence=derived.binding_confidence,
+                    )
+                )
             return result
         if method == "with_name" and receiver and node.args:
             names = _expr_references(node.args[0], frame)
@@ -597,16 +620,22 @@ def _expr_references(node: ast.AST | None, frame: ScopeFrame) -> list[Reference]
         result: list[Reference] = []
         for item in node.args:
             result.extend(_expr_references(item, frame))
+            if len(result) >= MAX_PATH_VALUES:
+                return result[:MAX_PATH_VALUES]
         return result
     if isinstance(node, (ast.List, ast.Tuple, ast.Set)):
         result: list[Reference] = []
         for item in node.elts:
             result.extend(_expr_references(item, frame))
+            if len(result) >= MAX_PATH_VALUES:
+                return result[:MAX_PATH_VALUES]
         return result
     if isinstance(node, ast.Dict):
         result: list[Reference] = []
         for item in [*node.keys, *node.values]:
             result.extend(_expr_references(item, frame))
+            if len(result) >= MAX_PATH_VALUES:
+                return result[:MAX_PATH_VALUES]
         return result
     direct = [Reference(*item) for item in extract_report_references(ast.unparse(node))]
     return direct
@@ -648,6 +677,11 @@ class _PythonAnalyzer:
         return ScopeFrame("scope_" + hashlib.sha256(identity.encode()).hexdigest()[:16], scope_type, qualified, parent, {})
 
     def _bind(self, frame: ScopeFrame, name: str, values: list[Reference], node: ast.AST, confidence: str = "HIGH") -> None:
+        unique_values = {
+            (value.target, value.dynamic_path_pattern, value.pattern_kind): value
+            for value in values[:MAX_PATH_VALUES]
+        }
+        values = list(unique_values.values())
         previous = frame.bindings.get(name)
         version = previous.version + 1 if previous else 1
         signature = "|".join(f"{value.target}:{value.dynamic_path_pattern}" for value in values)
@@ -908,6 +942,8 @@ class _PythonAnalyzer:
                     reference_type, direction, confidence = "DYNAMIC_PATH_PATTERN", "UNKNOWN", "LOW"
                 else:
                     reference_type, direction, confidence = "PATH_DECLARATION", "DECLARATION", "MEDIUM"
+                if resolution == "DYNAMIC" and confidence == "HIGH":
+                    confidence = "MEDIUM"
                 self.rows.append(
                     _record(
                         source_file=self.source_file,

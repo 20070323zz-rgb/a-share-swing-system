@@ -55,12 +55,12 @@ Exposure Framework Phase 1: COMPLETE
 Project Infrastructure Batch Standardization V1: COMPLETE
 Paper Execution Safety Phase 1: COMPLETE
 Tushare 5000 Data Foundation Audit: COMPLETE
-Reports Governance Phase A Engineering: REMEDIATED / COMPLETE_PENDING_FINAL_RE_QC
-Report Catalog: REBUILT
-Report Dependency Registry: REMEDIATED_PENDING_FINAL_QC
-Report Classification Standard: REMEDIATED_PENDING_FINAL_QC
-Producer Classification: REMEDIATED_PENDING_FINAL_QC
-Availability Temporary Data Lifecycle: DEFINED_PENDING_QC
+Reports Governance Phase A Engineering: DYNAMIC_PRODUCER_LINKAGE_IMPLEMENTED / PENDING_INDEPENDENT_RE_QC
+Report Catalog: REBUILT_DYNAMIC_PRODUCERS_BLOCK_ARCHIVE
+Report Dependency Registry: REBUILT_PENDING_INDEPENDENT_RE_QC
+Report Classification Standard: DYNAMIC_LINKAGE_IMPLEMENTED_PENDING_RE_QC
+Producer Classification: DYNAMIC_LINKAGE_IMPLEMENTED_PENDING_RE_QC
+Availability Temporary Data Lifecycle: DEFINED
 Temporary Audit Database: RETAIN_UNTIL_MIGRATION_VALIDATED
 Report Naming Standard: PROPOSED_ACTIVE_ON_MERGE
 Future Report Path Registry Design: COMPLETE_PENDING_QC
@@ -217,11 +217,12 @@ Formal Execution: BLOCKED
 - Tushare Minimal Proof Runner：`scripts/run_tushare_minimal_proof.py`
 - Report Catalog Builder：`scripts/governance/build_report_catalog.py`
 - Report Dependency Registry Builder：`scripts/governance/build_report_dependency_registry.py`
-- Dated Report Catalog：`reports/report_catalog_2026-07-14.md`
-- Dated Report Dependency Summary：`reports/report_dependency_summary_2026-07-14.md`
-- Dated Naming Compliance Audit：`reports/report_naming_compliance_audit_2026-07-14.csv`
-- Dated Phase A Summary：`reports/reports_governance_phase_a_summary_2026-07-14.md`
-- Dated Remediation Report：`reports/reports_governance_phase_a_remediation_2026-07-14.md`
+- Dated Report Catalog：`reports/report_catalog_2026-07-15.md`
+- Dated Report Dependency Summary：`reports/report_dependency_summary_2026-07-15.md`
+- Dated Naming Compliance Audit：`reports/report_naming_compliance_audit_2026-07-15.csv`
+- Dated Phase A Summary：`reports/reports_governance_phase_a_summary_2026-07-15.md`
+- Dated Remediation Report：`reports/reports_governance_phase_a_remediation_2026-07-15.md`
+- Dynamic Producer Remediation：`reports/reports_governance_phase_a_dynamic_producer_remediation_2026-07-15.md`
 - Report Classification Standard：`docs/report_classification_standard.md`
 - Report Naming Standard：`docs/report_naming_standard.md`
 - Report Metadata Standard：`docs/report_metadata_standard.md`

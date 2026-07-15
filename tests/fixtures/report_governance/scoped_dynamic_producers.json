@@ -1,0 +1,223 @@
+[
+  {
+    "name": "module_binding",
+    "source": "from pathlib import Path\nrun_date = '2026-07-15'\npath = Path('reports') / f'module_{run_date}.md'\npath.write_text('x')\n",
+    "target": "reports/module_{run_date}.md",
+    "pattern": "reports/module_<DATE>.md",
+    "scope_type": "MODULE",
+    "scope_name": "<module>",
+    "binding_name": "path"
+  },
+  {
+    "name": "sibling_function_a",
+    "source": "from pathlib import Path\ndef first(run_date):\n    path = Path('reports') / f'first_{run_date}.md'\n    path.write_text('x')\ndef second(run_date):\n    path = Path('reports') / f'second_{run_date}.md'\n    path.write_text('x')\n",
+    "target": "reports/first_{run_date}.md",
+    "pattern": "reports/first_<DATE>.md",
+    "scope_type": "FUNCTION",
+    "scope_name": "first",
+    "binding_name": "path"
+  },
+  {
+    "name": "sibling_function_b",
+    "source": "from pathlib import Path\ndef first(run_date):\n    path = Path('reports') / f'first_{run_date}.md'\n    path.write_text('x')\ndef second(run_date):\n    path = Path('reports') / f'second_{run_date}.md'\n    path.write_text('x')\n",
+    "target": "reports/second_{run_date}.md",
+    "pattern": "reports/second_<DATE>.md",
+    "scope_type": "FUNCTION",
+    "scope_name": "second",
+    "binding_name": "path"
+  },
+  {
+    "name": "nested_closure",
+    "source": "from pathlib import Path\ndef outer(run_date):\n    path = Path('reports') / f'closure_{run_date}.md'\n    def inner():\n        path.write_text('x')\n",
+    "target": "reports/closure_{run_date}.md",
+    "pattern": "reports/closure_<DATE>.md",
+    "scope_type": "FUNCTION",
+    "scope_name": "outer.inner",
+    "binding_name": "path"
+  },
+  {
+    "name": "inner_shadowing",
+    "source": "from pathlib import Path\ndef outer(run_date):\n    path = Path('reports') / f'outer_{run_date}.md'\n    def inner(run_date):\n        path = Path('reports') / f'inner_{run_date}.md'\n        path.write_text('x')\n",
+    "target": "reports/inner_{run_date}.md",
+    "pattern": "reports/inner_<DATE>.md",
+    "scope_type": "FUNCTION",
+    "scope_name": "outer.inner",
+    "binding_name": "path"
+  },
+  {
+    "name": "same_scope_reassignment",
+    "source": "from pathlib import Path\ndef build(run_date):\n    path = Path('reports') / f'old_{run_date}.md'\n    path = Path('reports') / f'new_{run_date}.md'\n    path.write_text('x')\n",
+    "target": "reports/new_{run_date}.md",
+    "pattern": "reports/new_<DATE>.md",
+    "scope_type": "FUNCTION",
+    "scope_name": "build",
+    "binding_name": "path",
+    "binding_version": 2
+  },
+  {
+    "name": "branch_merge_left",
+    "source": "from pathlib import Path\ndef build(run_date, flag):\n    if flag:\n        path = Path('reports') / f'left_{run_date}.md'\n    else:\n        path = Path('reports') / f'right_{run_date}.md'\n    path.write_text('x')\n",
+    "target": "reports/left_{run_date}.md",
+    "pattern": "reports/left_<DATE>.md",
+    "scope_type": "FUNCTION",
+    "scope_name": "build",
+    "binding_name": "path",
+    "binding_confidence": "LOW"
+  },
+  {
+    "name": "branch_merge_right",
+    "source": "from pathlib import Path\ndef build(run_date, flag):\n    if flag:\n        path = Path('reports') / f'left_{run_date}.md'\n    else:\n        path = Path('reports') / f'right_{run_date}.md'\n    path.write_text('x')\n",
+    "target": "reports/right_{run_date}.md",
+    "pattern": "reports/right_<DATE>.md",
+    "scope_type": "FUNCTION",
+    "scope_name": "build",
+    "binding_name": "path",
+    "binding_confidence": "LOW"
+  },
+  {
+    "name": "path_division",
+    "source": "from pathlib import Path\ndef build(trade_date):\n    (Path('reports') / f'div_{trade_date}.json').write_text('{}')\n",
+    "target": "reports/div_{trade_date}.json",
+    "pattern": "reports/div_<DATE>.json",
+    "scope_type": "FUNCTION",
+    "scope_name": "build",
+    "binding_name": ""
+  },
+  {
+    "name": "joinpath",
+    "source": "from pathlib import Path\ndef build(trade_date):\n    path = Path('reports').joinpath(f'join_{trade_date}.md')\n    path.write_text('x')\n",
+    "target": "reports/join_{trade_date}.md",
+    "pattern": "reports/join_<DATE>.md",
+    "scope_type": "FUNCTION",
+    "scope_name": "build",
+    "binding_name": "path"
+  },
+  {
+    "name": "os_path_join",
+    "source": "import os\ndef build(trade_date):\n    path = os.path.join('reports', f'os_join_{trade_date}.md')\n    open(path, 'w').write('x')\n",
+    "target": "reports/os_join_{trade_date}.md",
+    "pattern": "reports/os_join_<DATE>.md",
+    "scope_type": "FUNCTION",
+    "scope_name": "build",
+    "binding_name": "path"
+  },
+  {
+    "name": "str_format",
+    "source": "from pathlib import Path\ndef build(business_date):\n    path = Path('reports') / 'formatted_{}.md'.format(business_date)\n    path.write_text('x')\n",
+    "target": "reports/formatted_{business_date}.md",
+    "pattern": "reports/formatted_<DATE>.md",
+    "scope_type": "FUNCTION",
+    "scope_name": "build",
+    "binding_name": "path"
+  },
+  {
+    "name": "percent_format",
+    "source": "from pathlib import Path\ndef build(business_date):\n    path = Path('reports') / ('percent_%s.md' % business_date)\n    path.write_text('x')\n",
+    "target": "reports/percent_{business_date}.md",
+    "pattern": "reports/percent_<DATE>.md",
+    "scope_type": "FUNCTION",
+    "scope_name": "build",
+    "binding_name": "path"
+  },
+  {
+    "name": "string_concat",
+    "source": "from pathlib import Path\ndef build(run_date):\n    path = Path('reports') / ('concat_' + f'{run_date}' + '.md')\n    path.write_text('x')\n",
+    "target": "reports/concat_{run_date}.md",
+    "pattern": "reports/concat_<DATE>.md",
+    "scope_type": "FUNCTION",
+    "scope_name": "build",
+    "binding_name": "path"
+  },
+  {
+    "name": "alias_forwarding",
+    "source": "from pathlib import Path\ndef build(run_date):\n    path = Path('reports') / f'alias_{run_date}.md'\n    forwarded = path\n    forwarded.write_text('x')\n",
+    "target": "reports/alias_{run_date}.md",
+    "pattern": "reports/alias_<DATE>.md",
+    "scope_type": "FUNCTION",
+    "scope_name": "build",
+    "binding_name": "forwarded"
+  },
+  {
+    "name": "with_name",
+    "source": "from pathlib import Path\ndef build(run_date):\n    base = Path('reports') / 'base.md'\n    path = base.with_name(f'renamed_{run_date}.md')\n    path.write_text('x')\n",
+    "target": "reports/renamed_{run_date}.md",
+    "pattern": "reports/renamed_<DATE>.md",
+    "scope_type": "FUNCTION",
+    "scope_name": "build",
+    "binding_name": "path"
+  },
+  {
+    "name": "with_suffix",
+    "source": "from pathlib import Path\ndef build(run_date):\n    base = Path('reports') / f'suffix_{run_date}.txt'\n    path = base.with_suffix('.md')\n    path.write_text('x')\n",
+    "target": "reports/suffix_{run_date}.md",
+    "pattern": "reports/suffix_<DATE>.md",
+    "scope_type": "FUNCTION",
+    "scope_name": "build",
+    "binding_name": "path"
+  },
+  {
+    "name": "with_open_handle",
+    "source": "import json\nfrom pathlib import Path\ndef build(run_date):\n    path = Path('reports') / f'handle_{run_date}.json'\n    with open(path, 'w') as handle:\n        json.dump({}, handle)\n",
+    "target": "reports/handle_{run_date}.json",
+    "pattern": "reports/handle_<DATE>.json",
+    "scope_type": "FUNCTION",
+    "scope_name": "build",
+    "binding_name": "handle"
+  },
+  {
+    "name": "lambda_scope",
+    "source": "from pathlib import Path\nwriter = lambda run_date: (Path('reports') / f'lambda_{run_date}.md').write_text('x')\n",
+    "target": "reports/lambda_{run_date}.md",
+    "pattern": "reports/lambda_<DATE>.md",
+    "scope_type": "LAMBDA",
+    "scope_name": "<lambda>@2",
+    "binding_name": ""
+  },
+  {
+    "name": "comprehension_scope",
+    "source": "from pathlib import Path\ndef build(run_dates):\n    return [(Path('reports') / f'comp_{run_date}.md').write_text('x') for run_date in run_dates]\n",
+    "target": "reports/comp_{run_date}.md",
+    "pattern": "reports/comp_<DATE>.md",
+    "scope_type": "COMPREHENSION",
+    "scope_name": "build.<listcomp>@3",
+    "binding_name": ""
+  },
+  {
+    "name": "async_function_scope",
+    "source": "from pathlib import Path\nasync def build(run_date):\n    path = Path('reports') / f'async_{run_date}.md'\n    path.write_text('x')\n",
+    "target": "reports/async_{run_date}.md",
+    "pattern": "reports/async_<DATE>.md",
+    "scope_type": "ASYNC_FUNCTION",
+    "scope_name": "build",
+    "binding_name": "path"
+  },
+  {
+    "name": "class_method_scope",
+    "source": "from pathlib import Path\nclass Writer:\n    def build(self, run_date):\n        path = Path('reports') / f'class_{run_date}.md'\n        path.write_text('x')\n",
+    "target": "reports/class_{run_date}.md",
+    "pattern": "reports/class_<DATE>.md",
+    "scope_type": "FUNCTION",
+    "scope_name": "Writer.build",
+    "binding_name": "path"
+  },
+  {
+    "name": "timestamp_pattern",
+    "source": "from pathlib import Path\ndef build(timestamp):\n    path = Path('reports') / f'snapshot_{timestamp}.json'\n    path.write_text('{}')\n",
+    "target": "reports/snapshot_{timestamp}.json",
+    "pattern": "reports/snapshot_<TIMESTAMP>.json",
+    "scope_type": "FUNCTION",
+    "scope_name": "build",
+    "binding_name": "path",
+    "pattern_kind": "TIMESTAMP_TEMPLATE"
+  },
+  {
+    "name": "unknown_dynamic_is_retained",
+    "source": "from pathlib import Path\ndef build(label):\n    path = Path('reports') / f'unknown_{label}.md'\n    path.write_text('x')\n",
+    "target": "reports/unknown_{label}.md",
+    "pattern": "reports/unknown_<DYNAMIC>.md",
+    "scope_type": "FUNCTION",
+    "scope_name": "build",
+    "binding_name": "path",
+    "pattern_kind": "UNKNOWN_DYNAMIC"
+  }
+]

@@ -11,6 +11,7 @@ from scripts.governance.report_governance_common import (
     MIGRATION_RISK_VALUES,
     REFERENCE_TYPE_VALUES,
     ROLE_VALUES,
+    dynamic_producer_matches_path,
     extract_business_date,
     extract_report_references,
     is_control_report_path,
@@ -20,7 +21,7 @@ from scripts.governance.report_governance_common import (
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-BUSINESS_DATE = "2026-07-14"
+BUSINESS_DATE = "2026-07-15"
 
 
 def test_report_id_is_stable_and_path_derived() -> None:
@@ -86,6 +87,25 @@ def test_generated_catalog_and_registry_contracts() -> None:
     assert dynamic
     assert all(row["confidence"] != "HIGH" for row in dynamic)
 
+    expected_dynamic_blocks = {
+        "reports/daily_signal_2026-06-29.md",
+        "reports/daily_signal_2026-06-30.md",
+        "reports/daily_signal_2026-07-01.md",
+        "reports/daily_signal_2026-07-08.md",
+        "reports/daily_signal_2026-07-03.md",
+        "reports/daily_signal_2026-07-06.md",
+        "reports/daily_signal_2026-07-07.md",
+        "reports/daily_signal_2026-07-09.md",
+        "reports/weekly_review_2026-07-03.md",
+        "reports/weekly_review_2026-07-09.md",
+    }
+    for path in expected_dynamic_blocks:
+        assert by_path[path]["archive_candidate"] is False
+        assert by_path[path]["active_generator"] is True
+        assert by_path[path]["producer_match_type"] == "DYNAMIC_PATTERN"
+        assert by_path[path]["archive_block_reason"] == "ACTIVE_DYNAMIC_PRODUCER"
+        assert by_path[path]["matched_dynamic_producer_count"] >= 1
+
 
 def test_golden_reference_classification_is_exact() -> None:
     fixtures = json.loads(
@@ -104,6 +124,63 @@ def test_golden_reference_classification_is_exact() -> None:
             and row["direction"] == item["direction"]
             for row in rows
         ), item["name"]
+
+
+def test_scoped_dynamic_producer_fixtures_are_exact() -> None:
+    fixtures = json.loads(
+        (
+            PROJECT_ROOT
+            / "tests/fixtures/report_governance/scoped_dynamic_producers.json"
+        ).read_text(encoding="utf-8")
+    )
+    assert len(fixtures) >= 20
+    assert {item["scope_type"] for item in fixtures} >= {
+        "MODULE",
+        "FUNCTION",
+        "ASYNC_FUNCTION",
+        "LAMBDA",
+        "COMPREHENSION",
+    }
+    for item in fixtures:
+        rows = classify_source_text("src/scoped_fixture.py", item["source"])
+        matches = [
+            row
+            for row in rows
+            if row["normalized_target"] == item["target"]
+            and row["reference_type"] == "PRODUCER_WRITE"
+            and row["direction"] == "WRITE"
+            and row["scope_type"] == item["scope_type"]
+            and row["scope_qualified_name"] == item["scope_name"]
+            and row["dynamic_path_pattern"] == item["pattern"]
+            and row["binding_name"] == item["binding_name"]
+        ]
+        assert matches, item["name"]
+        row = matches[0]
+        assert row["dynamic_pattern_kind"] == item.get("pattern_kind", "DATE_TEMPLATE"), item["name"]
+        if "binding_version" in item:
+            assert row["binding_version"] == item["binding_version"], item["name"]
+        if "binding_confidence" in item:
+            assert row["binding_confidence"] == item["binding_confidence"], item["name"]
+
+
+def test_dynamic_producer_matching_is_strict_and_unknown_patterns_do_not_match() -> None:
+    trusted = {
+        "reference_type": "PRODUCER_WRITE",
+        "consumer_or_producer": "PRODUCER",
+        "static_or_dynamic": "DYNAMIC",
+        "dynamic_path_pattern": "reports/daily_signal_<DATE>.md",
+        "dynamic_pattern_kind": "DATE_TEMPLATE",
+    }
+    assert dynamic_producer_matches_path(trusted, "reports/daily_signal_2026-07-15.md")
+    assert not dynamic_producer_matches_path(trusted, "reports/daily_signal_latest.md")
+    assert not dynamic_producer_matches_path(trusted, "reports/prefix_daily_signal_2026-07-15.md")
+    assert not dynamic_producer_matches_path(trusted, "reports/daily_signal_2026-07-15.csv")
+    unknown = dict(
+        trusted,
+        dynamic_path_pattern="reports/daily_signal_<DYNAMIC>.md",
+        dynamic_pattern_kind="UNKNOWN_DYNAMIC",
+    )
+    assert not dynamic_producer_matches_path(unknown, "reports/daily_signal_2026-07-15.md")
 
 
 def test_shell_copy_move_directional_fixtures_are_exact() -> None:
@@ -247,6 +324,8 @@ def test_generators_are_byte_stable_on_repeated_runs() -> None:
         PROJECT_ROOT / f"reports/reports_governance_phase_a_remediation_{BUSINESS_DATE}.md",
         PROJECT_ROOT
         / f"reports/reports_governance_phase_a_final_blocker_remediation_{BUSINESS_DATE}.md",
+        PROJECT_ROOT
+        / f"reports/reports_governance_phase_a_dynamic_producer_remediation_{BUSINESS_DATE}.md",
     ]
     committed = {path: path.read_bytes() for path in outputs}
     for command in commands:
