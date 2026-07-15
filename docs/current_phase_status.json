@@ -740,7 +740,7 @@
   "report_catalog_status": "REBUILT_DYNAMIC_PRODUCERS_BLOCK_ARCHIVE",
   "report_catalog_record_count": 645,
   "report_dependency_registry_status": "REMEDIATED_PENDING_FINAL_QC",
-  "report_dependency_registry_record_count": 6327,
+  "report_dependency_registry_record_count": 6330,
   "report_classification_standard_status": "REMEDIATED_PENDING_FINAL_QC",
   "report_producer_classification_status": "REMEDIATED_PENDING_FINAL_QC",
   "report_dynamic_producer_linkage_status": "IMPLEMENTED_PENDING_QC",
