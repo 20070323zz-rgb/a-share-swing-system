@@ -55,11 +55,13 @@ Exposure Framework Phase 1: COMPLETE
 Project Infrastructure Batch Standardization V1: COMPLETE
 Paper Execution Safety Phase 1: COMPLETE
 Tushare 5000 Data Foundation Audit: COMPLETE
-Reports Governance Phase A Engineering: DYNAMIC_PRODUCER_LINKAGE_IMPLEMENTED / PENDING_INDEPENDENT_RE_QC
+Reports Governance Phase A Engineering: REMEDIATED
 Report Catalog: REBUILT_DYNAMIC_PRODUCERS_BLOCK_ARCHIVE
-Report Dependency Registry: REBUILT_PENDING_INDEPENDENT_RE_QC
-Report Classification Standard: DYNAMIC_LINKAGE_IMPLEMENTED_PENDING_RE_QC
-Producer Classification: DYNAMIC_LINKAGE_IMPLEMENTED_PENDING_RE_QC
+Report Dependency Registry: REMEDIATED_PENDING_FINAL_QC
+Report Classification Standard: REMEDIATED_PENDING_FINAL_QC
+Producer Classification: REMEDIATED_PENDING_FINAL_QC
+Dynamic Producer Linkage: IMPLEMENTED_PENDING_QC
+Archive Candidate Classification: REBUILT_PENDING_QC
 Availability Temporary Data Lifecycle: DEFINED
 Temporary Audit Database: RETAIN_UNTIL_MIGRATION_VALIDATED
 Report Naming Standard: PROPOSED_ACTIVE_ON_MERGE

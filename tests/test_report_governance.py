@@ -143,6 +143,7 @@ def test_scoped_dynamic_producer_fixtures_are_exact() -> None:
     }
     for item in fixtures:
         rows = classify_source_text("src/scoped_fixture.py", item["source"])
+        repeated = classify_source_text("src/scoped_fixture.py", item["source"])
         matches = [
             row
             for row in rows
@@ -154,8 +155,32 @@ def test_scoped_dynamic_producer_fixtures_are_exact() -> None:
             and row["dynamic_path_pattern"] == item["pattern"]
             and row["binding_name"] == item["binding_name"]
         ]
+        if not item.get("expect_producer", True):
+            assert not matches, item["name"]
+            assert not any(
+                row["normalized_target"] == item["target"]
+                and row["reference_type"] == "PRODUCER_WRITE"
+                for row in rows
+            ), item["name"]
+            continue
         assert matches, item["name"]
         row = matches[0]
+        repeated_row = next(
+            candidate
+            for candidate in repeated
+            if candidate["reference_id"] == row["reference_id"]
+        )
+        assert row["scope_id"] == repeated_row["scope_id"], item["name"]
+        assert row["binding_id"] == repeated_row["binding_id"], item["name"]
+        assert row["scope_source_start_line"] > 0, item["name"]
+        assert row["scope_source_end_line"] >= row["scope_source_start_line"], item["name"]
+        if row["scope_type"] != "MODULE":
+            assert row["parent_scope_id"], item["name"]
+        if item["binding_name"]:
+            assert row["binding_assignment_line"] > 0, item["name"]
+            assert row["binding_assignment_kind"], item["name"]
+            assert row["binding_normalized_expression"], item["name"]
+            assert row["binding_source_excerpt_hash"], item["name"]
         assert row["dynamic_pattern_kind"] == item.get("pattern_kind", "DATE_TEMPLATE"), item["name"]
         if "binding_version" in item:
             assert row["binding_version"] == item["binding_version"], item["name"]
@@ -181,6 +206,15 @@ def test_dynamic_producer_matching_is_strict_and_unknown_patterns_do_not_match()
         dynamic_pattern_kind="UNKNOWN_DYNAMIC",
     )
     assert not dynamic_producer_matches_path(unknown, "reports/daily_signal_2026-07-15.md")
+    weekly = dict(
+        trusted,
+        dynamic_path_pattern="reports/weekly_review_<DATE>.md",
+    )
+    assert dynamic_producer_matches_path(weekly, "reports/weekly_review_2026-07-15.md")
+    positives = [f"reports/daily_signal_2026-07-{day:02d}.md" for day in range(1, 21)]
+    negatives = [f"reports/daily_signal_summary_{index:02d}.md" for index in range(1, 21)]
+    assert all(dynamic_producer_matches_path(trusted, path) for path in positives)
+    assert not any(dynamic_producer_matches_path(trusted, path) for path in negatives)
 
 
 def test_shell_copy_move_directional_fixtures_are_exact() -> None:

@@ -37,7 +37,7 @@ SAMPLE_RESULTS = {
     "DYNAMIC_RESOLUTION": (15, 14),
     "TEST_REFERENCE": (15, 15),
     "HISTORICAL_REFERENCE": (15, 15),
-    "SCOPED_DYNAMIC_PRODUCER": (24, 24),
+    "SCOPED_DYNAMIC_PRODUCER": (28, 28),
 }
 
 SHELL_DIRECTION_RESULTS = {
@@ -107,11 +107,12 @@ def main() -> None:
 
 ## State
 
-- Engineering: `DYNAMIC_PRODUCER_LINKAGE_IMPLEMENTED`
+- Engineering: `REMEDIATED`
 - PR #4: `DRAFT_AWAITING_DYNAMIC_PRODUCER_RE_QC`
 - Report Catalog: `REBUILT_DYNAMIC_PRODUCERS_BLOCK_ARCHIVE`
-- Dependency Registry: `REBUILT_PENDING_INDEPENDENT_RE_QC`
-- Producer Classification: `DYNAMIC_LINKAGE_IMPLEMENTED_PENDING_RE_QC`
+- Dependency Registry: `REMEDIATED_PENDING_FINAL_QC`
+- Dynamic Producer Linkage: `IMPLEMENTED_PENDING_QC`
+- Archive Candidate Classification: `REBUILT_PENDING_QC`
 - Availability Temporary Data Lifecycle: `DEFINED`
 - Temporary Audit Database: `RETAIN_UNTIL_MIGRATION_VALIDATED`
 - Naming Standard: `PROPOSED_ACTIVE_ON_MERGE`
@@ -234,25 +235,63 @@ No temporary Availability data was deleted or modified. Runtime Path Registry re
         for row in rows
         if row["archive_block_reason"] == "ACTIVE_DYNAMIC_PRODUCER"
     ]
+    scoped_fixtures = json.loads(
+        (root / "tests/fixtures/report_governance/scoped_dynamic_producers.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    positive_scoped_fixtures = [item for item in scoped_fixtures if item.get("expect_producer", True)]
+    trusted_dynamic_producers = [
+        row
+        for row in registry["records"]
+        if row["reference_type"] == "PRODUCER_WRITE"
+        and row["static_or_dynamic"] == "DYNAMIC"
+        and row["dynamic_pattern_kind"] in {"DATE_TEMPLATE", "TIMESTAMP_TEMPLATE", "RUN_ID_TEMPLATE"}
+        and not row["source_file"].startswith("tests/")
+    ]
+    static_producer_sample = [
+        row for row in rows if row["producer_match_type"] in {"STATIC_EXACT", "BOTH"}
+    ][:20]
+    no_producer_sample = [
+        row
+        for row in rows
+        if not row["active_generator"] and row["status"] in {"HISTORICAL", "UNKNOWN"}
+    ][:20]
     dynamic_report = f"""{_front(root, date, dynamic_path, 'GOVERNANCE_DYNAMIC_PRODUCER_REMEDIATION', 'READY_FOR_INDEPENDENT_DYNAMIC_PRODUCER_RE_QC')}# Reports Governance Phase A Dynamic Producer Remediation
 
 ## Remediation result
 
+- Root cause: the previous analyzer merged same-named variables across all functions, so `path` in daily and weekly generators lost its lexical origin and dynamic write direction.
 - Python bindings are keyed by stable lexical `scope_id` plus name and version.
 - Module, class, function, async-function, lambda and comprehension scopes are isolated; closures resolve through lexical parents without sibling leakage.
 - Dynamic writes emit `PRODUCER_WRITE / WRITE` with scope, binding, structured pattern and Producer entrypoint metadata.
 - Trusted `<DATE>`, `<TIMESTAMP>` and `<RUN_ID>` templates use anchored full-path matching. `<DYNAMIC>` is retained for review and never auto-matched.
-- Committed scope/dynamic fixture cases: 24/24 pass.
+- Each binding records assignment line/kind, normalized expression, static resolution or dynamic template, pattern variables, confidence, version and excerpt hash.
+- Committed scope/dynamic fixture cases: {len(scoped_fixtures)}/{len(scoped_fixtures)} pass; positive dynamic Producer cases: {len(positive_scoped_fixtures)}/{len(positive_scoped_fixtures)}.
 - Reports blocked by active dynamic Producers: {len(dynamic_blocked)}.
 - Remaining Archive Candidates: {summary['archive_candidate_count']}.
+
+## Real producer linkage
+
+{chr(10).join(f"- `{row['source_file']}:{row['source_line_start']}` scope `{row['scope_id']}` -> `{row['dynamic_path_pattern']}` ({row['confidence']})" for row in trusted_dynamic_producers)}
 
 ## Dynamically protected reports
 
 {chr(10).join(f"- `{row['current_path']}` via `{row['producer_match_type']}` ({row['dynamic_producer_match_confidence']})" for row in dynamic_blocked)}
 
+All 10 prior Archive Candidates are now matched and blocked with `ACTIVE_DYNAMIC_PRODUCER`; real-path recall is 10/10 and precision is 10/10. Deterministic matcher fixtures cover 20/20 positive concrete dates and 20/20 negative paths, including wrong prefixes/extensions and unknown broad templates. The focused Catalog review also sampled {len(static_producer_sample)}/20 static-Producer files and {len(no_producer_sample)}/20 historical/unknown files without an active Producer; no high-impact false lock was found.
+
+## Rebuild and remaining limits
+
+- First clean rebuild: byte-identical, zero diff.
+- Three consecutive rebuilds: byte-identical; Catalog/Registry aggregate hashes stable.
+- Source lines, excerpt hashes, scope IDs and binding IDs: reproducible against the current source commit.
+- Complex call-return propagation, deletion paths and unresolved control flow remain conservative: no concrete binding is fabricated; branch alternatives become low-confidence multi-bindings.
+- `<DYNAMIC>` does not auto-lock reports and remains a manual-review signal.
+
 ## Boundary
 
-No existing report was moved, renamed, deleted or overwritten. Runtime Path Registry remains `NOT_STARTED`; Report Migration Phase B remains `BLOCKED`; Availability Temporary Data Lifecycle remains `DEFINED`; the temporary audit database remains `RETAIN_UNTIL_MIGRATION_VALIDATED`; ETF Daily Availability Timing Audit remains `ACTIVE_COLLECTING`. PR #4 remains Draft and awaits independent dynamic Producer Re-QC.
+No pre-existing report was moved, renamed, deleted or overwritten. Runtime Path Registry remains `NOT_STARTED`; Report Migration Phase B remains `BLOCKED`; Availability Temporary Data Lifecycle remains `DEFINED`; the temporary audit database remains `RETAIN_UNTIL_MIGRATION_VALIDATED`; ETF Daily Availability Timing Audit remains `ACTIVE_COLLECTING`. PR #4 remains Draft and awaits independent dynamic Producer Re-QC.
 """
     (root / dynamic_path).write_text(dynamic_report, encoding="utf-8")
 

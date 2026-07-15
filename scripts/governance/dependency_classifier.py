@@ -73,6 +73,10 @@ class Reference:
     binding_scope_id: str = ""
     binding_origin_scope_id: str = ""
     binding_confidence: str = ""
+    binding_assignment_line: int = 0
+    binding_assignment_kind: str = ""
+    binding_normalized_expression: str = ""
+    binding_source_excerpt_hash: str = ""
 
 
 @dataclass
@@ -83,6 +87,10 @@ class Binding:
     scope_id: str
     values: list[Reference]
     confidence: str = "HIGH"
+    assignment_line: int = 0
+    assignment_kind: str = ""
+    normalized_expression: str = ""
+    source_excerpt_hash: str = ""
 
 
 @dataclass
@@ -92,6 +100,8 @@ class ScopeFrame:
     qualified_name: str
     parent: "ScopeFrame | None"
     bindings: dict[str, Binding]
+    source_start_line: int = 0
+    source_end_line: int = 0
 
 
 def _clean_reference(raw: str) -> str:
@@ -184,16 +194,37 @@ def _record(
         "generator_version": GENERATOR_VERSION,
         "source_tree_commit": source_tree_commit,
         "scope_id": scope.scope_id if scope else "",
+        "parent_scope_id": scope.parent.scope_id if scope and scope.parent else "",
         "scope_type": scope.scope_type if scope else "",
         "scope_qualified_name": scope.qualified_name if scope else "",
+        "scope_source_start_line": scope.source_start_line if scope else 0,
+        "scope_source_end_line": scope.source_end_line if scope else 0,
         "binding_id": reference.binding_id if reference else "",
         "binding_name": reference.binding_name if reference else "",
         "binding_version": reference.binding_version if reference else 0,
         "binding_scope_id": reference.binding_scope_id if reference else "",
         "binding_origin_scope_id": reference.binding_origin_scope_id if reference else "",
         "binding_confidence": reference.binding_confidence if reference else "",
+        "binding_assignment_line": reference.binding_assignment_line if reference else 0,
+        "binding_assignment_kind": reference.binding_assignment_kind if reference else "",
+        "binding_normalized_expression": reference.binding_normalized_expression if reference else "",
+        "binding_source_excerpt_hash": reference.binding_source_excerpt_hash if reference else "",
         "dynamic_path_pattern": reference.dynamic_path_pattern if reference else "",
         "dynamic_pattern_kind": reference.pattern_kind if reference else "",
+        "pattern_variables": "|".join(
+            re.findall(r"\{([^{}]+)\}", reference.target) if reference else []
+        ),
+        "resolved_static_path": target if resolution != "DYNAMIC" else "",
+        "static_prefix": (
+            re.split(r"<(?:DATE|TIMESTAMP|RUN_ID|DYNAMIC)>", reference.dynamic_path_pattern, 1)[0]
+            if reference and reference.dynamic_path_pattern
+            else ""
+        ),
+        "static_suffix": (
+            re.split(r"<(?:DATE|TIMESTAMP|RUN_ID|DYNAMIC)>", reference.dynamic_path_pattern, 1)[-1]
+            if reference and reference.dynamic_path_pattern
+            else ""
+        ),
         "producer_entrypoint": source_file if reference_type == "PRODUCER_WRITE" else "",
         # Compatibility fields retained for Catalog V1 readers.
         "source_line": line_start,
@@ -430,6 +461,10 @@ def _derived_reference(raw: str, pattern: str, parts: list[Reference]) -> Refere
         binding_scope_id=metadata.binding_scope_id if metadata else "",
         binding_origin_scope_id=metadata.binding_origin_scope_id if metadata else "",
         binding_confidence=metadata.binding_confidence if metadata else "",
+        binding_assignment_line=metadata.binding_assignment_line if metadata else 0,
+        binding_assignment_kind=metadata.binding_assignment_kind if metadata else "",
+        binding_normalized_expression=metadata.binding_normalized_expression if metadata else "",
+        binding_source_excerpt_hash=metadata.binding_source_excerpt_hash if metadata else "",
     )
 
 
@@ -445,6 +480,10 @@ def _decorate_binding(ref: Reference, binding: Binding, current_scope_id: str) -
         binding_scope_id=current_scope_id,
         binding_origin_scope_id=binding.scope_id,
         binding_confidence=binding.confidence,
+        binding_assignment_line=binding.assignment_line,
+        binding_assignment_kind=binding.assignment_kind,
+        binding_normalized_expression=binding.normalized_expression,
+        binding_source_excerpt_hash=binding.source_excerpt_hash,
     )
 
 
@@ -586,6 +625,10 @@ def _expr_references(node: ast.AST | None, frame: ScopeFrame) -> list[Reference]
                         binding_scope_id=derived.binding_scope_id,
                         binding_origin_scope_id=derived.binding_origin_scope_id,
                         binding_confidence=derived.binding_confidence,
+                        binding_assignment_line=derived.binding_assignment_line,
+                        binding_assignment_kind=derived.binding_assignment_kind,
+                        binding_normalized_expression=derived.binding_normalized_expression,
+                        binding_source_excerpt_hash=derived.binding_source_excerpt_hash,
                     )
                 )
             return result
@@ -614,15 +657,10 @@ def _expr_references(node: ast.AST | None, frame: ScopeFrame) -> list[Reference]
                 raw, pattern, kind = _placeholder(node.func.value, fmt.target)
                 result.append(Reference(raw, "DYNAMIC", pattern, kind))
             return result
-        direct = [Reference(*item) for item in extract_report_references(ast.unparse(node))]
-        if direct:
-            return direct
-        result: list[Reference] = []
-        for item in node.args:
-            result.extend(_expr_references(item, frame))
-            if len(result) >= MAX_PATH_VALUES:
-                return result[:MAX_PATH_VALUES]
-        return result
+        # An arbitrary function's return value is unknown even when one of its
+        # arguments is a report path. Propagating the argument would fabricate
+        # a deterministic binding and can create false Producers.
+        return []
     if isinstance(node, (ast.List, ast.Tuple, ast.Set)):
         result: list[Reference] = []
         for item in node.elts:
@@ -674,7 +712,15 @@ class _PythonAnalyzer:
     def _scope(self, node: ast.AST, scope_type: str, name: str, parent: ScopeFrame | None) -> ScopeFrame:
         qualified = name if parent is None or parent.qualified_name == "<module>" else f"{parent.qualified_name}.{name}"
         identity = f"{self.source_file}:{scope_type}:{qualified}:{getattr(node, 'lineno', 1)}:{getattr(node, 'end_lineno', len(self.lines))}"
-        return ScopeFrame("scope_" + hashlib.sha256(identity.encode()).hexdigest()[:16], scope_type, qualified, parent, {})
+        return ScopeFrame(
+            "scope_" + hashlib.sha256(identity.encode()).hexdigest()[:16],
+            scope_type,
+            qualified,
+            parent,
+            {},
+            getattr(node, "lineno", 1),
+            getattr(node, "end_lineno", len(self.lines)),
+        )
 
     def _bind(self, frame: ScopeFrame, name: str, values: list[Reference], node: ast.AST, confidence: str = "HIGH") -> None:
         unique_values = {
@@ -686,6 +732,15 @@ class _PythonAnalyzer:
         version = previous.version + 1 if previous else 1
         signature = "|".join(f"{value.target}:{value.dynamic_path_pattern}" for value in values)
         identity = f"{frame.scope_id}:{name}:{version}:{getattr(node, 'lineno', 0)}:{signature}"
+        expression_node = getattr(node, "value", None)
+        normalized_expression = (
+            ast.unparse(expression_node)
+            if expression_node is not None
+            else " | ".join(value.dynamic_path_pattern or value.target for value in values)
+            or "UNKNOWN"
+        )
+        line = getattr(node, "lineno", 0)
+        excerpt = self.lines[line - 1] if line and line <= len(self.lines) else ""
         frame.bindings[name] = Binding(
             "binding_" + hashlib.sha256(identity.encode()).hexdigest()[:16],
             name,
@@ -693,6 +748,10 @@ class _PythonAnalyzer:
             frame.scope_id,
             values,
             confidence,
+            line,
+            "MULTI_BINDING" if confidence == "LOW" and len(values) > 1 else type(node).__name__.upper(),
+            _normalized_excerpt(normalized_expression),
+            hashlib.sha256(_normalized_excerpt(excerpt).encode()).hexdigest() if excerpt else "",
         )
 
     def _bind_target(self, frame: ScopeFrame, target: ast.AST, values: list[Reference], node: ast.AST, confidence: str = "HIGH") -> None:
@@ -823,7 +882,15 @@ class _PythonAnalyzer:
         baseline = dict(frame.bindings)
         outcomes: list[dict[str, Binding]] = []
         for statements in branches:
-            branch_frame = ScopeFrame(frame.scope_id, frame.scope_type, frame.qualified_name, frame.parent, dict(baseline))
+            branch_frame = ScopeFrame(
+                frame.scope_id,
+                frame.scope_type,
+                frame.qualified_name,
+                frame.parent,
+                dict(baseline),
+                frame.source_start_line,
+                frame.source_end_line,
+            )
             self._process_body(statements, branch_frame)
             outcomes.append(branch_frame.bindings)
         names = set(baseline)
@@ -845,7 +912,15 @@ class _PythonAnalyzer:
                 if candidate:
                     for value in candidate.values:
                         values[(value.target, value.dynamic_path_pattern, value.pattern_kind)] = value
-            temp = ScopeFrame(frame.scope_id, frame.scope_type, frame.qualified_name, frame.parent, merged)
+            temp = ScopeFrame(
+                frame.scope_id,
+                frame.scope_type,
+                frame.qualified_name,
+                frame.parent,
+                merged,
+                frame.source_start_line,
+                frame.source_end_line,
+            )
             self._bind(temp, name, list(values.values()), node, "LOW")
             merged[name] = temp.bindings[name]
         frame.bindings = merged

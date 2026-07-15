@@ -219,5 +219,42 @@
     "scope_name": "build",
     "binding_name": "path",
     "pattern_kind": "UNKNOWN_DYNAMIC"
+  },
+  {
+    "name": "module_same_name_binding",
+    "source": "from pathlib import Path\npath = Path('reports') / 'module_same.md'\npath.write_text('x')\ndef build(run_date):\n    path = Path('reports') / f'function_same_{run_date}.md'\n    path.write_text('x')\n",
+    "target": "reports/function_same_{run_date}.md",
+    "pattern": "reports/function_same_<DATE>.md",
+    "scope_type": "FUNCTION",
+    "scope_name": "build",
+    "binding_name": "path"
+  },
+  {
+    "name": "dataframe_to_csv",
+    "source": "from pathlib import Path\ndef build(frame, trade_date):\n    path = Path('reports') / f'frame_{trade_date}.csv'\n    frame.to_csv(path)\n",
+    "target": "reports/frame_{trade_date}.csv",
+    "pattern": "reports/frame_<DATE>.csv",
+    "scope_type": "FUNCTION",
+    "scope_name": "build",
+    "binding_name": "path"
+  },
+  {
+    "name": "os_replace_destination",
+    "source": "import os\nfrom pathlib import Path\ndef build(run_date):\n    temporary = Path('reports') / 'temporary.json'\n    destination = Path('reports') / f'atomic_{run_date}.json'\n    os.replace(temporary, destination)\n",
+    "target": "reports/atomic_{run_date}.json",
+    "pattern": "reports/atomic_<DATE>.json",
+    "scope_type": "FUNCTION",
+    "scope_name": "build",
+    "binding_name": "destination"
+  },
+  {
+    "name": "unknown_call_return_does_not_forge_binding",
+    "source": "from pathlib import Path\ndef build(run_date):\n    path = choose(Path('reports') / f'forged_{run_date}.md')\n    path.write_text('x')\n",
+    "target": "reports/forged_{run_date}.md",
+    "pattern": "reports/forged_<DATE>.md",
+    "scope_type": "FUNCTION",
+    "scope_name": "build",
+    "binding_name": "path",
+    "expect_producer": false
   }
 ]
