@@ -13,6 +13,7 @@ import yaml
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
+CONFIG_PATH = PROJECT_ROOT / "configs/tushare_primary_app_update.yaml"
 SRC_DIR = PROJECT_ROOT / "src"
 if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
@@ -20,18 +21,16 @@ if str(SRC_DIR) not in sys.path:
 from data_sources.tushare.app_update import SUCCESS_CODES, run_tushare_primary_update  # noqa: E402
 
 
-def parse_args() -> argparse.Namespace:
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Tushare-primary ETF daily candidate updater")
     parser.add_argument("--trade-date", required=True, help="expected Tushare fund_daily trade date")
-    parser.add_argument("--config", default="configs/tushare_primary_app_update.yaml")
     parser.add_argument("--status-json", default="reports/data_update_status.json")
-    return parser.parse_args()
+    return parser.parse_args(argv)
 
 
 def main() -> int:
     args = parse_args()
-    config_path = _resolve(args.config)
-    config = yaml.safe_load(config_path.read_text(encoding="utf-8"))
+    config = yaml.safe_load(CONFIG_PATH.read_text(encoding="utf-8"))
     result = run_tushare_primary_update(PROJECT_ROOT, config, args.trade_date)
     status_path = _resolve(args.status_json)
     status_path.parent.mkdir(parents=True, exist_ok=True)

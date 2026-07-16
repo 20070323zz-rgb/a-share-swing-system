@@ -95,9 +95,9 @@ export default function DataCenter({ dataHealth, status, onRun }) {
           </section>
           <Section title="数据状态" eyebrow="本地行情">
             <div className="description-list">
-              <div><span>主上游</span><strong>{text(dataHealth?.primary_source || "TUSHARE")}</strong><small>PRIMARY_UPSTREAM</small></div>
+              <div><span>主上游</span><strong>{text(dataHealth?.primary_provider || "TUSHARE")}</strong><small>PRIMARY_UPSTREAM</small></div>
               <div><span>正式数据库</span><strong>data/etf_daily/</strong><small>唯一 SSOT</small></div>
-              <div><span>Fallback</span><strong>已禁用</strong><small>BaoStock 仅对账，JQData 不回退</small></div>
+              <div><span>Fallback</span><strong>{dataHealth?.fallback_enabled ? "已启用" : "已禁用"}</strong><small>BaoStock 仅对账，JQData 不回退</small></div>
               <div><span>券商连接</span><strong>未连接</strong><small>数据任务不接券商</small></div>
             </div>
             <div className="inline-alert">{liveInventorySummary}</div>

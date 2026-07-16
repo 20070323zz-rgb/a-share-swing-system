@@ -8,11 +8,14 @@ import pandas as pd
 import pytest
 import yaml
 
+from app.backend import readers as app_readers
 from app.backend import task_runner
 from app.backend.safe_tasks import SAFE_TASKS
+from scripts import update_etf_data_tushare as production_cli
 from src.data_sources.tushare.app_update import (
     FORMAL_COLUMNS,
     directory_manifest,
+    parse_formal_promotion_enabled,
     run_tushare_primary_update,
 )
 from src.data_sources.tushare.client import ProbeCall
@@ -121,6 +124,32 @@ def no_half_transaction_dirs(root: Path) -> bool:
     return not runs.exists() or not any(runs.iterdir())
 
 
+def assert_public_reason_sanitized(result: dict, root: Path, token: str = "qc-secret-token") -> None:
+    reason = str(result.get("reason", ""))
+    assert str(root) not in reason
+    assert token not in reason
+    assert "Traceback" not in reason
+    assert "most recent call last" not in reason
+
+
+@pytest.mark.parametrize(
+    ("value", "expected"),
+    [
+        (False, False),
+        ("false", False),
+        (True, True),
+        ("true", True),
+        (None, False),
+        ("", False),
+        ("invalid", False),
+        ("TRUE", False),
+        (1, False),
+    ],
+)
+def test_formal_promotion_enabled_uses_strict_fail_closed_parsing(value, expected):
+    assert parse_formal_promotion_enabled(value) is expected
+
+
 def test_183_of_183_builds_complete_candidate_with_promotion_disabled(tmp_path):
     root, config, codes = make_project(tmp_path)
     before = directory_manifest(root / "data/etf_daily")
@@ -208,6 +237,29 @@ def test_provider_failures_are_fail_closed_without_fallback(tmp_path, call, expe
     assert no_half_transaction_dirs(root)
 
 
+def test_provider_exception_returns_stable_sanitized_reason(tmp_path):
+    root, config, _ = make_project(tmp_path)
+    before = directory_manifest(root / "data/etf_daily")
+
+    class FailingClient:
+        request_count = 0
+
+        def request(self, *_):
+            raise OSError(f"network failure at {root}; token=qc-secret-token\nTraceback (most recent call last):")
+
+    result = run_tushare_primary_update(
+        root,
+        config,
+        TRADE_DATE,
+        client_factory=lambda **_: FailingClient(),
+    )
+    assert result["result_code"] == "PROVIDER_AUTH_ERROR"
+    assert result["reason"] == "Tushare provider authentication failed"
+    assert_public_reason_sanitized(result, root)
+    assert directory_manifest(root / "data/etf_daily") == before
+    assert no_half_transaction_dirs(root)
+
+
 def test_field_validation_failure_preserves_ssot(tmp_path):
     root, config, codes = make_project(tmp_path)
     bad = snapshot(codes)
@@ -236,7 +288,7 @@ def test_candidate_generation_failure_preserves_ssot(tmp_path):
     before = directory_manifest(root / "data/etf_daily")
 
     def fail_builder(*_):
-        raise OSError("candidate disk failure")
+        raise OSError(f"candidate disk failure at {root}; TUSHARE_TOKEN=qc-secret-token\nTraceback (most recent call last):")
 
     result = run_tushare_primary_update(
         root,
@@ -246,7 +298,9 @@ def test_candidate_generation_failure_preserves_ssot(tmp_path):
         candidate_builder=fail_builder,
     )
     assert result["result_code"] == "PROMOTION_FAILED"
+    assert result["reason"] == "candidate generation failed; SSOT preserved"
     assert result["failure_stage"] == "candidate_generation"
+    assert_public_reason_sanitized(result, root)
     assert directory_manifest(root / "data/etf_daily") == before
     assert no_half_transaction_dirs(root)
 
@@ -264,7 +318,7 @@ def test_directory_switch_failure_rolls_back_and_verifies_manifest(tmp_path):
             before_manifests = list((Path(src).parent / "staging/tushare_primary_app_update/manifests").glob("*/before_manifest.json"))
             assert len(before_manifests) == 1
         if calls == 2:
-            raise OSError("injected candidate switch failure")
+            raise OSError(f"cannot move {src} to {dst}; token=qc-secret-token\nTraceback (most recent call last):")
         os.replace(src, dst)
 
     result = run_tushare_primary_update(
@@ -275,7 +329,9 @@ def test_directory_switch_failure_rolls_back_and_verifies_manifest(tmp_path):
         rename=fail_candidate_switch,
     )
     assert result["result_code"] == "PROMOTION_FAILED"
+    assert result["reason"] == "directory promotion failed; rollback restored original SSOT"
     assert result["rollback_verified"] is True
+    assert_public_reason_sanitized(result, root)
     assert (root / result["manifest_paths"]["before"]).is_file()
     assert (root / result["manifest_paths"]["candidate"]).is_file()
     assert (root / result["manifest_paths"]["rollback"]).is_file()
@@ -293,7 +349,7 @@ def test_rollback_failure_raises_explicit_alarm_and_emergency_restores_ssot(tmp_
         nonlocal calls
         calls += 1
         if calls in {2, 3}:
-            raise OSError(f"injected rename failure {calls}")
+            raise OSError(f"injected rename failure {calls} at {src}; token=qc-secret-token\nTraceback (most recent call last):")
         os.replace(src, dst)
 
     result = run_tushare_primary_update(
@@ -304,7 +360,9 @@ def test_rollback_failure_raises_explicit_alarm_and_emergency_restores_ssot(tmp_
         rename=fail_switch_and_primary_rollback,
     )
     assert result["result_code"] == "ROLLBACK_FAILED"
+    assert result["reason"] == "directory rollback failed; manual recovery review required"
     assert result["emergency_restore_succeeded"] is True
+    assert_public_reason_sanitized(result, root)
     assert directory_manifest(root / "data/etf_daily") == before
     assert no_half_transaction_dirs(root)
 
@@ -316,7 +374,24 @@ def test_app_task_keeps_name_and_has_no_baostock_or_jqdata_command():
     assert "update_etf_data_tushare.py" in command
     assert "baostock" not in command
     assert "jqdata" not in command
+    assert "--config" not in command
+    assert "configs/tushare_primary_app_update.yaml" not in command
     assert len(task.commands) == 6
+
+
+def test_production_cli_pins_config_and_rejects_config_override():
+    root = Path(__file__).parents[1]
+    assert production_cli.CONFIG_PATH == root / "configs/tushare_primary_app_update.yaml"
+    with pytest.raises(SystemExit):
+        production_cli.parse_args([
+            "--trade-date",
+            TRADE_DATE,
+            "--config",
+            "configs/unsafe_override.yaml",
+        ])
+    source = (root / "scripts/update_etf_data_tushare.py").read_text(encoding="utf-8")
+    assert "os.environ" not in source
+    assert "getenv" not in source
 
 
 def test_app_status_returns_tushare_provider(tmp_path, monkeypatch):
@@ -341,6 +416,69 @@ def test_app_status_returns_tushare_provider(tmp_path, monkeypatch):
     assert payload["ssot_manifest_hash"] == "manifest-hash"
 
 
+def test_app_main_status_ignores_legacy_provider_and_fallback(monkeypatch):
+    legacy = {
+        "primary_source": "baostock",
+        "actual_source_used": "baostock",
+        "fallback_triggered": True,
+        "baostock_status": "UP_TO_DATE",
+        "jqdata_status": "FALLBACK_READY",
+    }
+    update = {
+        "provider": "TUSHARE",
+        "actual_source_used": "TUSHARE",
+        "status": "candidate_ready",
+        "fallback_triggered": False,
+    }
+    monkeypatch.setattr(app_readers, "dashboard_data", lambda: {})
+    monkeypatch.setattr(app_readers, "data_update_status", lambda: update)
+    monkeypatch.setattr(app_readers, "data_source_status", lambda: legacy)
+    monkeypatch.setattr(app_readers, "execution_safety_snapshot", lambda: {})
+
+    payload = app_readers.status_snapshot()
+    assert payload["primary_provider"] == "TUSHARE"
+    assert payload["actual_source_used"] == "TUSHARE"
+    assert payload["fallback_enabled"] is False
+    assert payload["fallback_triggered"] is False
+    assert payload["baostock_role"] == "RECONCILIATION_ONLY"
+    assert payload["jqdata_fallback"] == "DISABLED"
+    assert "baostock_status" not in payload
+    assert "jqdata_status" not in payload
+    assert payload["legacy_reconciliation"]["baostock_status"] == "UP_TO_DATE"
+
+
+def test_data_health_main_status_ignores_legacy_provider_and_fallback(monkeypatch):
+    legacy = {
+        "actual_source_used": "baostock",
+        "fallback_triggered": True,
+        "baostock_status": "UP_TO_DATE",
+        "jqdata_status": "FALLBACK_READY",
+    }
+    update = {
+        "provider": "TUSHARE",
+        "actual_source_used": "TUSHARE",
+        "status": "candidate_ready",
+        "fallback_triggered": False,
+        "actual_api_calls": 1,
+    }
+    monkeypatch.setattr(app_readers, "dashboard_data", lambda: {})
+    monkeypatch.setattr(app_readers, "data_update_status", lambda: update)
+    monkeypatch.setattr(app_readers, "data_source_status", lambda: legacy)
+    monkeypatch.setattr(app_readers, "tail_text", lambda *_: "")
+    monkeypatch.setattr(app_readers, "etf_inventory_snapshot", lambda: [])
+
+    payload = app_readers.data_health_snapshot()
+    assert payload["primary_provider"] == "TUSHARE"
+    assert payload["actual_source_used"] == "TUSHARE"
+    assert payload["fallback_enabled"] is False
+    assert payload["fallback_triggered"] is False
+    assert payload["baostock_role"] == "RECONCILIATION_ONLY"
+    assert payload["jqdata_fallback"] == "DISABLED"
+    assert "baostock_status" not in payload
+    assert "jqdata_status" not in payload
+    assert payload["legacy_reconciliation"]["jqdata_status"] == "FALLBACK_READY"
+
+
 def test_config_disables_formal_promotion_and_fallback_by_default():
     config = yaml.safe_load((Path(__file__).parents[1] / "configs/tushare_primary_app_update.yaml").read_text(encoding="utf-8"))
     assert config["promotion"]["formal_promotion_enabled"] is False
@@ -357,8 +495,17 @@ def test_app_dashboard_and_models_keep_reading_canonical_ssot():
     readers = (root / "app/backend/readers.py").read_text(encoding="utf-8")
     dashboard = (root / "dashboard/build_dashboard.py").read_text(encoding="utf-8")
     model_config = (root / "src/config.py").read_text(encoding="utf-8")
+    data_center = (root / "app/frontend/src/pages/DataCenter.jsx").read_text(encoding="utf-8")
+    data_health_panel = (root / "app/frontend/src/components/DataHealthPanel.jsx").read_text(encoding="utf-8")
     assert 'ETF_DAILY_DIR = DATA_DIR / "etf_daily"' in readers
     assert '(DATA_DIR / "etf_daily").glob("*.csv")' in dashboard
     assert 'ETF_DAILY_DIR = DATA_DIR / "etf_daily"' in model_config
     assert "tushare_primary_app_update" not in dashboard
     assert "tushare_primary_app_update" not in model_config
+    assert "primary_provider" in data_center
+    assert "fallback_enabled" in data_center
+    assert "primary_provider" in data_health_panel
+    assert "fallback_enabled" in data_health_panel
+    assert "baostock_status" not in data_health_panel
+    assert "jqdata_status" not in data_health_panel
+    assert "fallback_triggered" not in data_health_panel

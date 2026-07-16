@@ -186,8 +186,6 @@ SAFE_TASKS: dict[str, TaskSpec] = {
                 "scripts/update_etf_data_tushare.py",
                 "--trade-date",
                 _daily_update_end(),
-                "--config",
-                "configs/tushare_primary_app_update.yaml",
                 "--status-json",
                 "reports/data_update_status.json",
             ),

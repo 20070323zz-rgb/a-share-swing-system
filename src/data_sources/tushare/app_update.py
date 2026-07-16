@@ -12,6 +12,7 @@ from dataclasses import dataclass
 from datetime import datetime
 import hashlib
 import json
+import logging
 import os
 from pathlib import Path
 import re
@@ -23,10 +24,11 @@ import pandas as pd
 
 from .availability_models import SNAPSHOT_FIELDS, UniverseRecord
 from .availability_validators import build_universe_mapping, validate_snapshot
-from .client import ProbeCall, TushareMinimalClient, sanitize_message
+from .client import ProbeCall, TushareMinimalClient
 
 
 TZ = ZoneInfo("Asia/Shanghai")
+LOGGER = logging.getLogger(__name__)
 FORMAL_COLUMNS = [
     "date", "code", "open", "high", "low", "close", "preclose", "volume",
     "amount", "adjustflag", "turn", "tradestatus", "pctChg", "isST",
@@ -55,6 +57,18 @@ class PromotionResult:
     emergency_restore_succeeded: bool = False
 
 
+def parse_formal_promotion_enabled(value: Any) -> bool:
+    """Accept only explicit booleans or the exact strings ``true``/``false``."""
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, str):
+        if value == "true":
+            return True
+        if value == "false":
+            return False
+    return False
+
+
 def run_tushare_primary_update(
     project_root: Path,
     config: dict[str, Any],
@@ -70,7 +84,9 @@ def run_tushare_primary_update(
     ssot_dir = root / config["universe"]["etf_daily_dir"]
     staging_root = root / config["storage"]["staging_root"]
     expected_count = int(config["universe"]["expected_count"])
-    promotion_enabled = bool(config["promotion"].get("formal_promotion_enabled", False))
+    promotion_config = config.get("promotion")
+    promotion_value = promotion_config.get("formal_promotion_enabled") if isinstance(promotion_config, dict) else None
+    promotion_enabled = parse_formal_promotion_enabled(promotion_value)
     base = _base_status(requested_date, promotion_enabled)
     initial_ssot_manifest = directory_manifest(ssot_dir)
     base["ssot_manifest_hash"] = initial_ssot_manifest["manifest_hash"]
@@ -114,16 +130,22 @@ def run_tushare_primary_update(
             str(config["provider"]["fields"]),
         )
     except Exception as exc:  # provider boundary must be fail-closed
+        _log_internal_failure("provider_request", exc, root)
         shutil.rmtree(run_root, ignore_errors=True)
         code = _exception_code(exc)
-        return _failed(base, code, _safe_message(exc, root), actual_api_calls=int(getattr(client, "request_count", 0)))
+        return _failed(
+            base,
+            code,
+            _public_failure_reason(code),
+            actual_api_calls=int(getattr(client, "request_count", 0)),
+        )
 
     base["actual_api_calls"] = int(getattr(client, "request_count", 0))
     base["tushare_api_calls"] = base["actual_api_calls"]
     provider_failure = _provider_failure_code(call)
     if provider_failure:
         shutil.rmtree(run_root, ignore_errors=True)
-        return _failed(base, provider_failure, _safe_message(call.error_message_sanitized or call.response_status, root))
+        return _failed(base, provider_failure, _public_failure_reason(provider_failure))
 
     raw_path = run_root / "raw_fund_daily.csv"
     call.frame.to_csv(raw_path, index=False, lineterminator="\n")
@@ -152,8 +174,14 @@ def run_tushare_primary_update(
     try:
         candidate_meta = builder(ssot_dir, candidate_dir, universe, validated, requested_date)
     except Exception as exc:  # candidate creation is part of the promotion boundary
+        _log_internal_failure("candidate_generation", exc, root)
         shutil.rmtree(run_root, ignore_errors=True)
-        return _failed(base, "PROMOTION_FAILED", _safe_message(exc, root), failure_stage="candidate_generation")
+        return _failed(
+            base,
+            "PROMOTION_FAILED",
+            "candidate generation failed; SSOT preserved",
+            failure_stage="candidate_generation",
+        )
 
     base.update({
         "candidate_file_count": candidate_meta["file_count"],
@@ -327,8 +355,14 @@ def promote_candidate_directory(
         shutil.rmtree(backup_dir)
         return PromotionResult("PROMOTED", "directory transaction completed", before["manifest_hash"], after["manifest_hash"])
     except Exception as promotion_exc:  # rollback is mandatory once the old directory moved
+        _log_internal_failure("directory_promotion", promotion_exc, _project_root_for_ssot(ssot_dir))
         if not moved_old:
-            return PromotionResult("PROMOTION_FAILED", sanitize_message(str(promotion_exc)), before["manifest_hash"], before["manifest_hash"])
+            return PromotionResult(
+                "PROMOTION_FAILED",
+                "directory promotion failed; SSOT preserved",
+                before["manifest_hash"],
+                before["manifest_hash"],
+            )
         try:
             if ssot_dir.exists():
                 rename(ssot_dir, failed_dir)
@@ -340,13 +374,26 @@ def promote_candidate_directory(
                 return PromotionResult("ROLLBACK_FAILED", "rollback manifest verification failed", before["manifest_hash"], restored["manifest_hash"], False)
             if failed_dir.exists():
                 shutil.rmtree(failed_dir)
-            return PromotionResult("PROMOTION_FAILED", sanitize_message(str(promotion_exc)), before["manifest_hash"], restored["manifest_hash"], True)
+            return PromotionResult(
+                "PROMOTION_FAILED",
+                "directory promotion failed; rollback restored original SSOT",
+                before["manifest_hash"],
+                restored["manifest_hash"],
+                True,
+            )
         except Exception as rollback_exc:
+            _log_internal_failure("directory_rollback", rollback_exc, _project_root_for_ssot(ssot_dir))
             emergency_ok, restored_hash = _emergency_restore(backup_dir, ssot_dir, failed_dir, before, expected_files)
             if ssot_dir.exists():
                 _write_json(evidence_dir / "rollback_manifest.json", directory_manifest(ssot_dir))
-            message = f"rollback failed: {sanitize_message(str(rollback_exc))}"
-            return PromotionResult("ROLLBACK_FAILED", message, before["manifest_hash"], restored_hash, emergency_ok, emergency_ok)
+            return PromotionResult(
+                "ROLLBACK_FAILED",
+                "directory rollback failed; manual recovery review required",
+                before["manifest_hash"],
+                restored_hash,
+                emergency_ok,
+                emergency_ok,
+            )
 
 
 def directory_manifest(directory: Path) -> dict[str, Any]:
@@ -429,6 +476,16 @@ def _exception_code(exc: Exception) -> str:
     if any(marker in message for marker in ("token", "auth", "permission", "权限")):
         return "PROVIDER_AUTH_ERROR"
     return "PROVIDER_NETWORK_ERROR"
+
+
+def _public_failure_reason(code: str) -> str:
+    return {
+        "PROVIDER_AUTH_ERROR": "Tushare provider authentication failed",
+        "PROVIDER_NETWORK_ERROR": "Tushare provider network request failed",
+        "PROVIDER_RATE_LIMITED": "Tushare provider rate limit exceeded",
+        "FIELD_VALIDATION_FAILED": "Tushare provider response failed field validation",
+        "DATA_NOT_READY": "Tushare data is not ready",
+    }.get(code, "Tushare update failed closed")
 
 
 def _emergency_restore(
@@ -534,7 +591,19 @@ def _relative(path: Path, root: Path) -> str:
         return "<outside_project_root>"
 
 
-def _safe_message(value: Any, root: Path) -> str:
-    text = sanitize_message(str(value))
+def _project_root_for_ssot(ssot_dir: Path) -> Path:
+    return ssot_dir.parent.parent
+
+
+def _log_internal_failure(stage: str, value: Any, root: Path) -> None:
+    LOGGER.debug("%s: %s", stage, _sanitize_internal_detail(value, root))
+
+
+def _sanitize_internal_detail(value: Any, root: Path) -> str:
+    text = str(value).replace("\n", " ")
     text = text.replace(str(root), "<project_root>")
-    return re.sub(r"/Users/[^/\s]+", "<user_home>", text)[:500]
+    text = re.sub(r"/Users/[^\s,;]+", "<user_path>", text)
+    text = re.sub(r"/(?:private/)?var/folders/[^\s,;]+", "<worktree_path>", text)
+    text = re.sub(r"(?i)((?:tushare_)?token\s*[=:]\s*)[^\s,;]+", r"\1***", text)
+    text = re.sub(r"(?i)traceback\s*\(most recent call last\):.*", "<traceback omitted>", text)
+    return text[:500]
