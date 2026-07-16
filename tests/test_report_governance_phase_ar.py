@@ -104,7 +104,7 @@ def test_inventory_is_deterministic_complete_and_hash_valid(governance_state):
     context = governance_state["context"]
     inventory = governance_state["inventory"]
     assert inventory == build_inventory(context)
-    assert len(inventory) == 644
+    assert len(inventory) == 651
     assert len({item["report_id"] for item in inventory}) == len(inventory)
     assert not any(item["relative_path"].startswith("reports/governance/phase_ar/") for item in inventory)
     validate_inventory_content_hashes(context, inventory)

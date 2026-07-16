@@ -1001,9 +1001,12 @@ Draft PR #5 cleanly rebuilds report governance without merging or cherry-picking
 ```text
 Reports Governance Phase A-R = ACTIVE / ARCHITECTURE_ACCEPTED
 PR #5 = DRAFT_AWAITING_RE_QC
-Report Inventory = REFRESHED_PENDING_QC
+Report Inventory = 651 / REFRESHED_PENDING_QC
 Structured Scanner = REMEDIATED_PENDING_QC
 Backstop Scanner = REMEDIATED_PENDING_QC
+Structured References = 2593
+Backstop Query Records = 5208
+Governance Evidence Records = 12416
 PR #4 Active-Reference Regression Recall = 43/43
 Scanner Disagreements = 9 / MATERIALIZED_PENDING_QC
 Machine-Provisional Candidates = 49

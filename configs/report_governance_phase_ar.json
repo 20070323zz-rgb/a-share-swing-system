@@ -60,7 +60,8 @@
   ],
   "availability_active_prefixes": [
     "reports/tushare_etf_availability_",
-    "reports/tushare_vs_baostock_"
+    "reports/tushare_vs_baostock_",
+    "reports/tushare_primary_"
   ],
   "current_alias_tokens": [
     "current",
