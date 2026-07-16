@@ -4,15 +4,15 @@
 - schema_version: `report-inventory-v2`
 - snapshot_revision: `phase-ar-v2-2026-07-16`
 - supersedes: `phase-ar-v1-2026-07-15`
-- source_tree_commit: `ce060be9b62d921cef3f069f172c0f8f81fcf66e`
-- generated_at: `2026-07-16T00:28:07+08:00`
+- source_tree_commit: `ad15231fe6a675282b703d24eece38d45d1511f3`
+- generated_at: `2026-07-16T15:23:44+08:00`
 - immutable: `True`
 - structured_scanner_version: `structured-reference-scanner-v2`
 - backstop_scanner_version: `independent-backstop-scanner-v2`
 - evidence_schema_version: `governance-evidence-record-v2`
 - review_schema_version: `manual-candidate-review-v2`
-- run_id: `phase-ar-run_f3a2ee16e7c2f35d8af7bba1`
-- record_count: `644`
+- run_id: `phase-ar-run_7addd70ff34558ccaaad7223`
+- record_count: `651`
 
 | report_id | relative_path | role | naming_status | retention_status | location_status |
 | --- | --- | --- | --- | --- | --- |
@@ -593,6 +593,10 @@
 | report_df02e57369e2791c0aae | reports/tushare_capability_gap_audit.md | AUDIT_EVIDENCE | NOT_APPLICABLE | MANUAL_REVIEW | REPORTS_ROOT |
 | report_e1caeaa3e76ddead470c | reports/tushare_config_check.json | REPORT_DATASET | NEEDS_DATE_NORMALIZATION | HISTORICAL_SNAPSHOT | REPORTS_ROOT |
 | report_53bfc35fb53b6bd352ed | reports/tushare_config_check.md | HUMAN_REPORT | NOT_APPLICABLE | MANUAL_REVIEW | REPORTS_ROOT |
+| report_b8933ba7d7c7f6c4576e | reports/tushare_etf_availability_audit_status.md | AVAILABILITY_ACTIVE_ARTIFACT | NOT_APPLICABLE | ACTIVE_PROJECT_LIFETIME | REPORTS_ROOT |
+| report_9985c08590a910d3c5c1 | reports/tushare_etf_availability_framework_validation.md | AVAILABILITY_ACTIVE_ARTIFACT | STABLE_PHASE_ARTIFACT | ACTIVE_PROJECT_LIFETIME | REPORTS_ROOT |
+| report_90ea7effe94997742af3 | reports/tushare_etf_availability_timing_summary.csv | AVAILABILITY_ACTIVE_ARTIFACT | NOT_APPLICABLE | ACTIVE_PROJECT_LIFETIME | REPORTS_ROOT |
+| report_d01a8f79cb15a0e241f0 | reports/tushare_etf_universe_mapping_validation.csv | REPORT_DATASET | NOT_APPLICABLE | MANUAL_REVIEW | REPORTS_ROOT |
 | report_547c17386a6aed10b34e | reports/tushare_gap_reassessment.md | HUMAN_REPORT | NOT_APPLICABLE | MANUAL_REVIEW | REPORTS_ROOT |
 | report_9efb6896332ca9fa7cda | reports/tushare_index_weight_reduction_evidence.csv | REPORT_DATASET | NOT_APPLICABLE | MANUAL_REVIEW | REPORTS_ROOT |
 | report_0a9cd6b41676fad4de4e | reports/tushare_interface_probe_matrix.csv | REPORT_DATASET | STABLE_PHASE_ARTIFACT | MANUAL_REVIEW | REPORTS_ROOT |
@@ -601,6 +605,8 @@
 | report_036270785fd3d8999a12 | reports/tushare_minimal_staging_proof.md | HUMAN_REPORT | NOT_APPLICABLE | MANUAL_REVIEW | REPORTS_ROOT |
 | report_54f99b1a89f393e23832 | reports/tushare_no_lookahead_check.md | HUMAN_REPORT | NOT_APPLICABLE | MANUAL_REVIEW | REPORTS_ROOT |
 | report_d86125dfefb81a6477cd | reports/tushare_pit_contract_matrix.csv | REPORT_DATASET | STABLE_DECISION_ARTIFACT | MANUAL_REVIEW | REPORTS_ROOT |
+| report_cb2e32660b868d5c0c6b | reports/tushare_primary_app_update_implementation_2026-07-16.md | AVAILABILITY_ACTIVE_ARTIFACT | COMPLIANT_DATED | ACTIVE_PROJECT_LIFETIME | REPORTS_ROOT |
+| report_73f7f99ccbd4fb0a111b | reports/tushare_primary_upstream_source_decision_2026-07-15.md | AVAILABILITY_ACTIVE_ARTIFACT | COMPLIANT_DATED | ACTIVE_PROJECT_LIFETIME | REPORTS_ROOT |
 | report_c36bcdebe7ce3e5153b0 | reports/tushare_priority_matrix.csv | REPORT_DATASET | STABLE_PHASE_ARTIFACT | MANUAL_REVIEW | REPORTS_ROOT |
 | report_eb1ec6435be0d876755c | reports/tushare_proof_evidence_remediation.md | HUMAN_REPORT | NOT_APPLICABLE | MANUAL_REVIEW | REPORTS_ROOT |
 | report_bcf87d54a1e562ed5b7f | reports/tushare_proof_post_merge_validation_2026-07.md | HUMAN_REPORT | NOT_APPLICABLE | MANUAL_REVIEW | REPORTS_ROOT |
@@ -608,6 +614,7 @@
 | report_3b8551823732bdad7a85 | reports/tushare_real_run_attestations.md | HUMAN_REPORT | NOT_APPLICABLE | MANUAL_REVIEW | REPORTS_ROOT |
 | report_2ca905422648d326b165 | reports/tushare_staging_check.json | REPORT_DATASET | NEEDS_DATE_NORMALIZATION | HISTORICAL_SNAPSHOT | REPORTS_ROOT |
 | report_fdbf925f138cb35e6791 | reports/tushare_staging_check.md | HUMAN_REPORT | NOT_APPLICABLE | MANUAL_REVIEW | REPORTS_ROOT |
+| report_7fbebcd06f6d6963f793 | reports/tushare_vs_baostock_availability.csv | AVAILABILITY_ACTIVE_ARTIFACT | NOT_APPLICABLE | ACTIVE_PROJECT_LIFETIME | REPORTS_ROOT |
 | report_406ba2bd5d109e2264c0 | reports/ui_visual_calibration_monochrome.json | REPORT_DATASET | NOT_APPLICABLE | MANUAL_REVIEW | REPORTS_ROOT |
 | report_a3c36a5af01c0eddff9f | reports/ui_visual_calibration_monochrome.md | HUMAN_REPORT | NOT_APPLICABLE | MANUAL_REVIEW | REPORTS_ROOT |
 | report_5ebc4ede8eb2b4e2cee9 | reports/universe_quality_review.csv | REPORT_DATASET | NOT_APPLICABLE | MANUAL_REVIEW | REPORTS_ROOT |

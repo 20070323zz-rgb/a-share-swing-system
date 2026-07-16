@@ -4,15 +4,15 @@
 - schema_version: `migration-readiness-v2`
 - snapshot_revision: `phase-ar-v2-2026-07-16`
 - supersedes: `phase-ar-v1-2026-07-15`
-- source_tree_commit: `ce060be9b62d921cef3f069f172c0f8f81fcf66e`
-- generated_at: `2026-07-16T00:28:07+08:00`
+- source_tree_commit: `ad15231fe6a675282b703d24eece38d45d1511f3`
+- generated_at: `2026-07-16T15:23:44+08:00`
 - immutable: `True`
 - structured_scanner_version: `structured-reference-scanner-v2`
 - backstop_scanner_version: `independent-backstop-scanner-v2`
 - evidence_schema_version: `governance-evidence-record-v2`
 - review_schema_version: `manual-candidate-review-v2`
-- run_id: `phase-ar-run_f3a2ee16e7c2f35d8af7bba1`
-- record_count: `644`
+- run_id: `phase-ar-run_7addd70ff34558ccaaad7223`
+- record_count: `651`
 
 | relative_path | migration_readiness | deletion_readiness | machine_provisional_before_review |
 | --- | --- | --- | --- |
@@ -593,6 +593,10 @@
 | reports/tushare_capability_gap_audit.md | BLOCKED_RETENTION | DELETION_BLOCKED | False |
 | reports/tushare_config_check.json | BLOCKED_ACTIVE_PRODUCER | DELETION_BLOCKED | False |
 | reports/tushare_config_check.md | BLOCKED_ACTIVE_PRODUCER | DELETION_BLOCKED | False |
+| reports/tushare_etf_availability_audit_status.md | BLOCKED_RUNTIME | DELETION_BLOCKED | False |
+| reports/tushare_etf_availability_framework_validation.md | BLOCKED_RUNTIME | DELETION_BLOCKED | False |
+| reports/tushare_etf_availability_timing_summary.csv | BLOCKED_RUNTIME | DELETION_BLOCKED | False |
+| reports/tushare_etf_universe_mapping_validation.csv | BLOCKED_BACKSTOP_REFERENCE | DELETION_BLOCKED | False |
 | reports/tushare_gap_reassessment.md | BLOCKED_BACKSTOP_REFERENCE | DELETION_BLOCKED | False |
 | reports/tushare_index_weight_reduction_evidence.csv | BLOCKED_ACTIVE_PRODUCER | DELETION_BLOCKED | False |
 | reports/tushare_interface_probe_matrix.csv | BLOCKED_ACTIVE_PRODUCER | DELETION_BLOCKED | False |
@@ -601,6 +605,8 @@
 | reports/tushare_minimal_staging_proof.md | BLOCKED_BACKSTOP_REFERENCE | DELETION_BLOCKED | False |
 | reports/tushare_no_lookahead_check.md | BLOCKED_ACTIVE_PRODUCER | DELETION_BLOCKED | False |
 | reports/tushare_pit_contract_matrix.csv | BLOCKED_ACTIVE_PRODUCER | DELETION_BLOCKED | False |
+| reports/tushare_primary_app_update_implementation_2026-07-16.md | BLOCKED_RUNTIME | DELETION_BLOCKED | False |
+| reports/tushare_primary_upstream_source_decision_2026-07-15.md | BLOCKED_RUNTIME | DELETION_BLOCKED | False |
 | reports/tushare_priority_matrix.csv | BLOCKED_RETENTION | DELETION_BLOCKED | False |
 | reports/tushare_proof_evidence_remediation.md | BLOCKED_RETENTION | DELETION_BLOCKED | False |
 | reports/tushare_proof_post_merge_validation_2026-07.md | BLOCKED_RETENTION | DELETION_BLOCKED | False |
@@ -608,6 +614,7 @@
 | reports/tushare_real_run_attestations.md | BLOCKED_BACKSTOP_REFERENCE | DELETION_BLOCKED | False |
 | reports/tushare_staging_check.json | BLOCKED_ACTIVE_PRODUCER | DELETION_BLOCKED | False |
 | reports/tushare_staging_check.md | BLOCKED_ACTIVE_PRODUCER | DELETION_BLOCKED | False |
+| reports/tushare_vs_baostock_availability.csv | BLOCKED_RUNTIME | DELETION_BLOCKED | False |
 | reports/ui_visual_calibration_monochrome.json | BLOCKED_RETENTION | DELETION_BLOCKED | False |
 | reports/ui_visual_calibration_monochrome.md | BLOCKED_RETENTION | DELETION_BLOCKED | False |
 | reports/universe_quality_review.csv | BLOCKED_ACTIVE_PRODUCER | DELETION_BLOCKED | False |

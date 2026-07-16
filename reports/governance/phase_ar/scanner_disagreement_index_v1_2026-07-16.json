@@ -3,76 +3,18 @@
     "artifact_type": "SCANNER_DISAGREEMENT_INDEX",
     "backstop_scanner_version": "independent-backstop-scanner-v2",
     "evidence_schema_version": "governance-evidence-record-v2",
-    "generated_at": "2026-07-16T00:28:07+08:00",
+    "generated_at": "2026-07-16T15:23:44+08:00",
     "immutable": true,
     "record_count": 9,
     "review_schema_version": "manual-candidate-review-v2",
-    "run_id": "phase-ar-run_f3a2ee16e7c2f35d8af7bba1",
+    "run_id": "phase-ar-run_7addd70ff34558ccaaad7223",
     "schema_version": "scanner-disagreement-index-v1",
     "snapshot_revision": "phase-ar-v2-2026-07-16",
-    "source_tree_commit": "ce060be9b62d921cef3f069f172c0f8f81fcf66e",
+    "source_tree_commit": "ad15231fe6a675282b703d24eece38d45d1511f3",
     "structured_scanner_version": "structured-reference-scanner-v2",
     "supersedes": "phase-ar-v1-2026-07-15"
   },
   "records": [
-    {
-      "backstop_evidence_ids": [
-        "evidence_1514c39cf4e60fae2bc7"
-      ],
-      "backstop_result": {
-        "active_query_count": 1,
-        "dynamic_pattern": false,
-        "statuses": [
-          "AMBIGUOUS_REFERENCE"
-        ]
-      },
-      "disagreement_id": "scanner-disagreement_163a1b26e6a9483db0e6",
-      "disagreement_type": "REFERENCE_CLASS_DISAGREEMENT",
-      "report_id": "report_2a67663a5c07b636e30b",
-      "report_path": "reports/project_context_persistence_final.md",
-      "resolution_status": "UNRESOLVED",
-      "reviewer_evidence_ids": [
-        "evidence_28da2d911a964037adaa"
-      ],
-      "reviewer_verdict": "PENDING_SCANNER_REMEDIATION",
-      "severity": "HIGH",
-      "source_tree_commit": "ce060be9b62d921cef3f069f172c0f8f81fcf66e",
-      "structured_evidence_ids": [],
-      "structured_result": {
-        "directions": [],
-        "dynamic_pattern": false,
-        "runtime_reference_count": 0
-      }
-    },
-    {
-      "backstop_evidence_ids": [
-        "evidence_263390dad21a8c187824"
-      ],
-      "backstop_result": {
-        "active_query_count": 1,
-        "dynamic_pattern": false,
-        "statuses": [
-          "AMBIGUOUS_REFERENCE"
-        ]
-      },
-      "disagreement_id": "scanner-disagreement_177692d6479fbff28582",
-      "disagreement_type": "REFERENCE_CLASS_DISAGREEMENT",
-      "report_id": "report_3b8551823732bdad7a85",
-      "report_path": "reports/tushare_real_run_attestations.md",
-      "resolution_status": "UNRESOLVED",
-      "reviewer_evidence_ids": [
-        "evidence_d94bd5cd420d8e8af0be"
-      ],
-      "reviewer_verdict": "PENDING_SCANNER_REMEDIATION",
-      "severity": "HIGH",
-      "source_tree_commit": "ce060be9b62d921cef3f069f172c0f8f81fcf66e",
-      "structured_evidence_ids": [],
-      "structured_result": {
-        "directions": [],
-        "dynamic_pattern": false,
-        "runtime_reference_count": 0
-      }
-    },
     {
       "backstop_evidence_ids": [
         "evidence_7950a78ea186346d6c6e"
@@ -94,7 +36,7 @@
       ],
       "reviewer_verdict": "PENDING_SCANNER_REMEDIATION",
       "severity": "HIGH",
-      "source_tree_commit": "ce060be9b62d921cef3f069f172c0f8f81fcf66e",
+      "source_tree_commit": "ad15231fe6a675282b703d24eece38d45d1511f3",
       "structured_evidence_ids": [],
       "structured_result": {
         "directions": [],
@@ -123,7 +65,7 @@
       ],
       "reviewer_verdict": "PENDING_SCANNER_REMEDIATION",
       "severity": "HIGH",
-      "source_tree_commit": "ce060be9b62d921cef3f069f172c0f8f81fcf66e",
+      "source_tree_commit": "ad15231fe6a675282b703d24eece38d45d1511f3",
       "structured_evidence_ids": [],
       "structured_result": {
         "directions": [],
@@ -152,7 +94,7 @@
       ],
       "reviewer_verdict": "PENDING_SCANNER_REMEDIATION",
       "severity": "HIGH",
-      "source_tree_commit": "ce060be9b62d921cef3f069f172c0f8f81fcf66e",
+      "source_tree_commit": "ad15231fe6a675282b703d24eece38d45d1511f3",
       "structured_evidence_ids": [],
       "structured_result": {
         "directions": [],
@@ -181,7 +123,65 @@
       ],
       "reviewer_verdict": "PENDING_SCANNER_REMEDIATION",
       "severity": "HIGH",
-      "source_tree_commit": "ce060be9b62d921cef3f069f172c0f8f81fcf66e",
+      "source_tree_commit": "ad15231fe6a675282b703d24eece38d45d1511f3",
+      "structured_evidence_ids": [],
+      "structured_result": {
+        "directions": [],
+        "dynamic_pattern": false,
+        "runtime_reference_count": 0
+      }
+    },
+    {
+      "backstop_evidence_ids": [
+        "evidence_492ac06ac9a3560f3338"
+      ],
+      "backstop_result": {
+        "active_query_count": 1,
+        "dynamic_pattern": false,
+        "statuses": [
+          "AMBIGUOUS_REFERENCE"
+        ]
+      },
+      "disagreement_id": "scanner-disagreement_5348f21ed3fb7571487a",
+      "disagreement_type": "REFERENCE_CLASS_DISAGREEMENT",
+      "report_id": "report_3b8551823732bdad7a85",
+      "report_path": "reports/tushare_real_run_attestations.md",
+      "resolution_status": "UNRESOLVED",
+      "reviewer_evidence_ids": [
+        "evidence_b5e50cceaad2d7b5d6ed"
+      ],
+      "reviewer_verdict": "PENDING_SCANNER_REMEDIATION",
+      "severity": "HIGH",
+      "source_tree_commit": "ad15231fe6a675282b703d24eece38d45d1511f3",
+      "structured_evidence_ids": [],
+      "structured_result": {
+        "directions": [],
+        "dynamic_pattern": false,
+        "runtime_reference_count": 0
+      }
+    },
+    {
+      "backstop_evidence_ids": [
+        "evidence_6d0d07edd8f4d4874c43"
+      ],
+      "backstop_result": {
+        "active_query_count": 1,
+        "dynamic_pattern": false,
+        "statuses": [
+          "AMBIGUOUS_REFERENCE"
+        ]
+      },
+      "disagreement_id": "scanner-disagreement_68b7a78d8cb147bb822d",
+      "disagreement_type": "REFERENCE_CLASS_DISAGREEMENT",
+      "report_id": "report_2a67663a5c07b636e30b",
+      "report_path": "reports/project_context_persistence_final.md",
+      "resolution_status": "UNRESOLVED",
+      "reviewer_evidence_ids": [
+        "evidence_66c71f3559a677ce8fe2"
+      ],
+      "reviewer_verdict": "PENDING_SCANNER_REMEDIATION",
+      "severity": "HIGH",
+      "source_tree_commit": "ad15231fe6a675282b703d24eece38d45d1511f3",
       "structured_evidence_ids": [],
       "structured_result": {
         "directions": [],
@@ -210,7 +210,7 @@
       ],
       "reviewer_verdict": "PENDING_SCANNER_REMEDIATION",
       "severity": "HIGH",
-      "source_tree_commit": "ce060be9b62d921cef3f069f172c0f8f81fcf66e",
+      "source_tree_commit": "ad15231fe6a675282b703d24eece38d45d1511f3",
       "structured_evidence_ids": [],
       "structured_result": {
         "directions": [],
@@ -239,7 +239,7 @@
       ],
       "reviewer_verdict": "PENDING_SCANNER_REMEDIATION",
       "severity": "HIGH",
-      "source_tree_commit": "ce060be9b62d921cef3f069f172c0f8f81fcf66e",
+      "source_tree_commit": "ad15231fe6a675282b703d24eece38d45d1511f3",
       "structured_evidence_ids": [],
       "structured_result": {
         "directions": [],
@@ -249,7 +249,7 @@
     },
     {
       "backstop_evidence_ids": [
-        "evidence_44e2c306ab944f61b719"
+        "evidence_401e77d63404df91f9b2"
       ],
       "backstop_result": {
         "active_query_count": 1,
@@ -258,17 +258,17 @@
           "AMBIGUOUS_REFERENCE"
         ]
       },
-      "disagreement_id": "scanner-disagreement_a3918d0e509a61a14fee",
+      "disagreement_id": "scanner-disagreement_add2e2af107dcd857499",
       "disagreement_type": "REFERENCE_CLASS_DISAGREEMENT",
       "report_id": "report_0448d78733a79b4c616f",
       "report_path": "reports/project_context_recovery_drill_decision.md",
       "resolution_status": "UNRESOLVED",
       "reviewer_evidence_ids": [
-        "evidence_d1cca2e92a36f3b4998a"
+        "evidence_9b70cd82d75d5612d86d"
       ],
       "reviewer_verdict": "PENDING_SCANNER_REMEDIATION",
       "severity": "HIGH",
-      "source_tree_commit": "ce060be9b62d921cef3f069f172c0f8f81fcf66e",
+      "source_tree_commit": "ad15231fe6a675282b703d24eece38d45d1511f3",
       "structured_evidence_ids": [],
       "structured_result": {
         "directions": [],

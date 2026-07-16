@@ -2,9 +2,9 @@
 
 - snapshot_revision: `phase-ar-v2-2026-07-16`
 - supersedes: `phase-ar-v1-2026-07-15`
-- source_tree_commit: `ce060be9b62d921cef3f069f172c0f8f81fcf66e`
-- generated_at: `2026-07-16T00:28:07+08:00`
-- run_id: `phase-ar-run_f3a2ee16e7c2f35d8af7bba1`
+- source_tree_commit: `ad15231fe6a675282b703d24eece38d45d1511f3`
+- generated_at: `2026-07-16T15:23:44+08:00`
+- run_id: `phase-ar-run_7addd70ff34558ccaaad7223`
 - immutable: `true`
 - superseded_snapshot_status: `VALID_HISTORICAL_SNAPSHOT / SUPERSEDED`
 - phase_b: `BLOCKED`
@@ -13,22 +13,22 @@
 
 ## Inventory
 
-- reports: `644`
+- reports: `651`
 - content_hash_mismatches: `0`
 - archived: `45`
 - unknown_role: `0`
 
 ## Independent scanners
 
-- structured_references: `2575`
+- structured_references: `2593`
 - structured_producers: `433`
 - structured_consumers: `632`
-- markdown_references: `116`
+- markdown_references: `123`
 - markdown_runtime_misclassifications: `0`
-- backstop_query_records: `5152`
-- backstop_found_queries: `1501`
-- backstop_ambiguous_queries: `17`
-- backstop_zero_result_proofs: `3634`
+- backstop_query_records: `5208`
+- backstop_found_queries: `1523`
+- backstop_ambiguous_queries: `18`
+- backstop_zero_result_proofs: `3667`
 - scanner_disagreements: `9`
 
 ### Disagreement distribution
@@ -39,7 +39,7 @@
 
 ## Evidence and readiness
 
-- evidence_records: `12293`
+- evidence_records: `12416`
 - unresolved_evidence: `0`
 - orphan_evidence: `0`
 - duplicate_evidence_ids: `0`
@@ -57,9 +57,9 @@
 | BLOCKED_ACTIVE_CONSUMER | 12 |
 | BLOCKED_ACTIVE_PRODUCER | 387 |
 | BLOCKED_ALIAS | 18 |
-| BLOCKED_BACKSTOP_REFERENCE | 66 |
+| BLOCKED_BACKSTOP_REFERENCE | 67 |
 | BLOCKED_RETENTION | 44 |
-| BLOCKED_RUNTIME | 23 |
+| BLOCKED_RUNTIME | 29 |
 | NOT_APPLICABLE_ALREADY_ARCHIVED | 45 |
 | PROVISIONALLY_SAFE_FOR_PHASE_B_DRY_RUN | 13 |
 | PROVISIONALLY_SAFE_RENAME_REQUIRED | 36 |
