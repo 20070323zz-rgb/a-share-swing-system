@@ -4,14 +4,14 @@
 - schema_version: `manual-candidate-review-v2`
 - snapshot_revision: `phase-ar-v2-2026-07-16`
 - supersedes: `phase-ar-v1-2026-07-15`
-- source_tree_commit: `edc8d69c34f0e3e78a4a938bbe66256442d8f2e5`
-- generated_at: `2026-07-16T15:28:05+08:00`
+- source_tree_commit: `ecef39d7ca11be874cee36d381d7f684af1253e3`
+- generated_at: `2026-07-16T15:32:22+08:00`
 - immutable: `True`
 - structured_scanner_version: `structured-reference-scanner-v2`
 - backstop_scanner_version: `independent-backstop-scanner-v2`
 - evidence_schema_version: `governance-evidence-record-v2`
 - review_schema_version: `manual-candidate-review-v2`
-- run_id: `phase-ar-run_24b49a9ade71c9ba451b0fd2`
+- run_id: `phase-ar-run_83d02c66ce437dfd0671ef85`
 - record_count: `49`
 
 | report_path | producer_verdict | consumer_verdict | retention_verdict | naming_verdict | final_reviewer_verdict |

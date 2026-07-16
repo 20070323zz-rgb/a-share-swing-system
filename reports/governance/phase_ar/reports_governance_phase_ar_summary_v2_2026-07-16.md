@@ -2,9 +2,9 @@
 
 - snapshot_revision: `phase-ar-v2-2026-07-16`
 - supersedes: `phase-ar-v1-2026-07-15`
-- source_tree_commit: `edc8d69c34f0e3e78a4a938bbe66256442d8f2e5`
-- generated_at: `2026-07-16T15:28:05+08:00`
-- run_id: `phase-ar-run_24b49a9ade71c9ba451b0fd2`
+- source_tree_commit: `ecef39d7ca11be874cee36d381d7f684af1253e3`
+- generated_at: `2026-07-16T15:32:22+08:00`
+- run_id: `phase-ar-run_83d02c66ce437dfd0671ef85`
 - immutable: `true`
 - superseded_snapshot_status: `VALID_HISTORICAL_SNAPSHOT / SUPERSEDED`
 - phase_b: `BLOCKED`

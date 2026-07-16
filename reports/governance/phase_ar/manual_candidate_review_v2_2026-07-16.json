@@ -3,14 +3,14 @@
     "artifact_type": "MANUAL_CANDIDATE_REVIEW",
     "backstop_scanner_version": "independent-backstop-scanner-v2",
     "evidence_schema_version": "governance-evidence-record-v2",
-    "generated_at": "2026-07-16T15:28:05+08:00",
+    "generated_at": "2026-07-16T15:32:22+08:00",
     "immutable": true,
     "record_count": 49,
     "review_schema_version": "manual-candidate-review-v2",
-    "run_id": "phase-ar-run_24b49a9ade71c9ba451b0fd2",
+    "run_id": "phase-ar-run_83d02c66ce437dfd0671ef85",
     "schema_version": "manual-candidate-review-v2",
     "snapshot_revision": "phase-ar-v2-2026-07-16",
-    "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+    "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
     "structured_scanner_version": "structured-reference-scanner-v2",
     "supersedes": "phase-ar-v1-2026-07-15"
   },
@@ -64,7 +64,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_c8436bc88dedf0761460",
+      "manual_review_evidence_id": "evidence_d527a578cccca431a30a",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -81,9 +81,9 @@
       "report_id": "report_a35b9194f1baf2b0060f",
       "report_path": "reports/app_backfill_button_fix_report.md",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "9c2f41810cc09c68a2e767b52489a1ebd948863bdbc372f13aa3935f888cdbd8",
+      "review_evidence_hash": "9501b0b1d1736f575061902fc81376643ca04518e50f95e1835ca9aa515e7228",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -97,7 +97,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_e38ad20a9c0ff82a2e1d"
@@ -178,7 +178,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_7f387d6a237cfdab0331",
+      "manual_review_evidence_id": "evidence_67a747d61b82948c68d0",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -195,9 +195,9 @@
       "report_id": "report_89aaa4f082af93dbc276",
       "report_path": "reports/app_data_backfill_button_audit.md",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "8f18162b749bfb77fa0cee3173b6d6a0ca7e1b47cadee71e1a9521467680fd89",
+      "review_evidence_hash": "b62d33db4c8cb9e8ec938fad083fc50c8537e7c5d17a35c54a6ae9955a4d687a",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -211,7 +211,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_7ceec8f9c268e81e1645"
@@ -292,7 +292,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_fa6c36c2e016fb47d209",
+      "manual_review_evidence_id": "evidence_30e77788c19aeff322ed",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -309,9 +309,9 @@
       "report_id": "report_b7259ab4b5a149c74bad",
       "report_path": "reports/app_independent_launch_fix_report.md",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "1ed2031a372e1765c15457d4bf44aecd33b0234abb7fc62cec7629a4cf726ba7",
+      "review_evidence_hash": "f9343cf5e9a0ba93161b6117e1d70ffef14f94df3a67199aba3186a69eb138bb",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -325,7 +325,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_706a59355d430d8fda27"
@@ -406,7 +406,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_d6669bd347fd1525b989",
+      "manual_review_evidence_id": "evidence_a6e449c46d015303cd6d",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -423,9 +423,9 @@
       "report_id": "report_b136be50bf77fe3a3125",
       "report_path": "reports/app_launch_fix_report.json",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "84863f4f81ce5791a8a2ce59bbe1354c51bda72cf2e7cfe7eb9ea295ca43f0ef",
+      "review_evidence_hash": "59765f179928f86e4300abf1de51eb7d9f52d31d14d46d2d75a2d99efa25a920",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -439,7 +439,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_30c3d6ca4d749bc4862d"
@@ -520,7 +520,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_4f1c8f676729829bc800",
+      "manual_review_evidence_id": "evidence_279b154914eb7499b672",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -537,9 +537,9 @@
       "report_id": "report_6185b9226deb1ee338e8",
       "report_path": "reports/app_launch_fix_report.md",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "f97d6923db9af20997bfc11d1e59e8971d7839d8c2a579992fdc6587c50abd77",
+      "review_evidence_hash": "2be7cd944327b9ac5f0cc16d90699b5e4689b46de5c8598b075524935e580380",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -553,7 +553,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_827c7fae9196a76b10d6"
@@ -634,7 +634,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_c1ea7587c4d1e9e958eb",
+      "manual_review_evidence_id": "evidence_33770f9b33ed1bcd8ca2",
       "naming_verdict": "STABLE_PHASE_ARTIFACT",
       "path_construct_query": {
         "evidence_ids": [
@@ -651,9 +651,9 @@
       "report_id": "report_b257a3a4c4dd6f920a00",
       "report_path": "reports/app_local_release_phase1_report.md",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "43b849c8730f3df64bd41e800cca7d419e0a56507f10790355e001e049a94666",
+      "review_evidence_hash": "b83a9793b1f66de1eb6b61285ae3f6111bd4f163622471e4d3a35668411ea409",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -667,7 +667,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_1a5e2315a1b6f840663b"
@@ -748,7 +748,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_204031dc52d6ea606ab5",
+      "manual_review_evidence_id": "evidence_c347aa27422b6ec1c4b3",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -765,9 +765,9 @@
       "report_id": "report_ab08555b7fb963e36897",
       "report_path": "reports/baostock_app_backfill_fix_report.md",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "cdb4ed47be546b360b2117ca3b50312acf014662d61c4f79fbd589d3b6909035",
+      "review_evidence_hash": "badde74df27e28ff1bb4d071140d36145d8fbf052a42f7220eaab47629d625a9",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -781,7 +781,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_9ba2c1d01aec1ff11183"
@@ -862,7 +862,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_0d668e12b932164cef9d",
+      "manual_review_evidence_id": "evidence_082516755cef3fdb7054",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -879,9 +879,9 @@
       "report_id": "report_cf2965878fe4adf28abb",
       "report_path": "reports/data_update_probe_fast.json",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "07c4a3bff776b6920b2afdfe31c1a90162370598ad8f70d7073c73932d4b1bb1",
+      "review_evidence_hash": "a8624e180af505976984efb19e9d9f590b24cfeced4d64c7e6b78834e3b52e8e",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -895,7 +895,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_fa9f7ef27028ed0b3ae5"
@@ -976,7 +976,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_0c9fd36441185806145a",
+      "manual_review_evidence_id": "evidence_50d2f6773b66057bf08a",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -993,9 +993,9 @@
       "report_id": "report_6f899885680326100e96",
       "report_path": "reports/first_paper_trade_review.md",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "15e3a87664e031209a5395b2de19cd7f60b41f53c5d5afb3f11f92dd74040137",
+      "review_evidence_hash": "d406d4053a44e69f353bc18c6c12a217839c5ed936c6e4634d766b7d49435713",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -1009,7 +1009,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_e4712a2b50a24acab2ab"
@@ -1090,7 +1090,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_8be72f2b6f2a51d938e5",
+      "manual_review_evidence_id": "evidence_f75a9ae9c618e9e383f2",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -1107,9 +1107,9 @@
       "report_id": "report_a2003e34c925487eea2e",
       "report_path": "reports/frontend_css_cleanup_audit.md",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "0b3d7d3e36c9ddb82deec0beda4c67fa361cef6d1875b0e2f5cf086c4dbd8998",
+      "review_evidence_hash": "130d2bcea826ec760e30175e4fe9a0d9cadbdc407a2304ad3fcd2100e39b0e17",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -1123,7 +1123,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_5ece3fb081793bb1bb01"
@@ -1204,7 +1204,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_95457911a79c3b64a38c",
+      "manual_review_evidence_id": "evidence_4661be92ad98b1d35bb7",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -1221,9 +1221,9 @@
       "report_id": "report_6b557d4a54b7fc5cb868",
       "report_path": "reports/jqdata_connection_diagnosis.md",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "55497562542656bfdb860d7f9e687da648f49eee5220ccbe68ee65aca1dc18e0",
+      "review_evidence_hash": "8643fc769c1c1140aea7eb671b1311e3d653a2ce23b12ab540e4479ea47c218b",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -1237,7 +1237,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_c7552b423663e93f6b8a"
@@ -1318,7 +1318,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_7e2514d55a8fd46cc9dd",
+      "manual_review_evidence_id": "evidence_86eccfc93340f69fecf3",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -1335,9 +1335,9 @@
       "report_id": "report_436d181ef11d3c212e2e",
       "report_path": "reports/launchd_install_test_report.md",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "7af2898e9643b31c5319ed3049d4035b03309d6186368d116d028500d56d93b8",
+      "review_evidence_hash": "4e0facee361c296e94ef18889ccc65511b0c1204ed4afcc6c04f63948d135382",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -1351,7 +1351,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_8ae533ea85417c4b48c0"
@@ -1432,7 +1432,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_069564743c4d5a3009a1",
+      "manual_review_evidence_id": "evidence_9227613a08a60e9f7cd7",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -1449,9 +1449,9 @@
       "report_id": "report_4efad2394d64558c0202",
       "report_path": "reports/post_expansion_automation_sync_report.md",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "a5b0636199cddfdc6e882a4b337c95697224688c5e59c8e3136adce97fcdf962",
+      "review_evidence_hash": "ccb99f085303fbac0790612403a2dabfede318fd4ad0c8243cf05fdadfca59f3",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -1465,7 +1465,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_01f66b85a7ab3eaae530"
@@ -1550,7 +1550,7 @@
         "result_status": "FOUND_REFERENCE"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_4a566197c2301d9f2b6b",
+      "manual_review_evidence_id": "evidence_190b1c6ce08ea7db49f6",
       "naming_verdict": "COMPLIANT_DATED",
       "path_construct_query": {
         "evidence_ids": [
@@ -1567,9 +1567,9 @@
       "report_id": "report_3c7560ba58195a991454",
       "report_path": "reports/pr_final_hygiene_audit_2026-07-12.md",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "215beeb6d12d456d0e683c7716c939d02880c9ab33b1b452f92a92b727e55ad2",
+      "review_evidence_hash": "4e616cfccb0615683ea10b8a5661b4bb351c1ba8b17b82c485175a8723865e73",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -1583,7 +1583,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_0816f88ef86cbab6ebb6"
@@ -1663,7 +1663,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_4a21e73dd4f5cf9e6912",
+      "manual_review_evidence_id": "evidence_fea014c73d1a1342dd63",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -1680,9 +1680,9 @@
       "report_id": "report_550255b93cb320f57d81",
       "report_path": "reports/project_context_bootstrap_audit.json",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "c08b34168b49e9575e700da24cc5e1d559dc7bdf2326f9df62f5385b3c94c654",
+      "review_evidence_hash": "fafae95a425796e601aae07222b4aa1a078d00d6d80196de999e4ae680609dbf",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -1696,7 +1696,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_e3194e66d24815326273"
@@ -1777,7 +1777,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_86d3109774a19645ddae",
+      "manual_review_evidence_id": "evidence_dd8245f4a52a0800ab36",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -1794,9 +1794,9 @@
       "report_id": "report_6f7b52ab30e867912f87",
       "report_path": "reports/project_context_bootstrap_audit.md",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "770d95d41a623c391bd2d7c80e3509f05f512103a4f3674d14cb7ce3616a74df",
+      "review_evidence_hash": "357bf05288f22044e8fabafe6cf4f65de78fa4c668c2c4d672ae20c4f84f45f7",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -1810,7 +1810,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_707d0099bd3e82af9e0d"
@@ -1891,7 +1891,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_ddee9d9a246f5d3468e3",
+      "manual_review_evidence_id": "evidence_f1793a0cdf5632843beb",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -1908,9 +1908,9 @@
       "report_id": "report_b0eeadeeb4a8b7c0bac2",
       "report_path": "reports/project_context_existing_state_audit.json",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "53c5738f42c914ed4eb262d2033017f01b3a7c2e21a501cb65d683d27ad4534d",
+      "review_evidence_hash": "b4a5bd964ba4369f861b177074cdba438e97e8300ca24970210368d1a1e51dc6",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -1924,7 +1924,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_24354b5dc2ec884bea21"
@@ -2005,7 +2005,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_3daf093503967fa8b0de",
+      "manual_review_evidence_id": "evidence_111e856c9784fc7b8257",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -2022,9 +2022,9 @@
       "report_id": "report_5243a580d489d48149c6",
       "report_path": "reports/project_context_existing_state_audit.md",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "bc38c54d56375d5ee2a17959682a15d34c10cc614658746f97e1eccf2fbc2b0e",
+      "review_evidence_hash": "45a70b887aae59f47f0ac5b254adb1657f47520cefa4f5674f3eb43b78161688",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -2038,7 +2038,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_a91eb0d411c648c47fd7"
@@ -2119,7 +2119,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_ec140526448ab1910b86",
+      "manual_review_evidence_id": "evidence_99ca780f57e62a983b7d",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -2136,9 +2136,9 @@
       "report_id": "report_c228f050a97d995d8111",
       "report_path": "reports/project_context_foundation_consistency_audit.json",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "9ad3ae2b70e0bdbf1ad61c72a7095949ca86212b6df972edeafa621c9e79c854",
+      "review_evidence_hash": "25e64b7b7f5202bfb19d6dbd825787dd280fb7703aa58574e50f2a0bc0c87bb9",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -2152,7 +2152,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_6df4486712fbfb2adf4a"
@@ -2233,7 +2233,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_76a7aba1ae8604da6f4e",
+      "manual_review_evidence_id": "evidence_5979d87bf2ff9e92c58f",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -2250,9 +2250,9 @@
       "report_id": "report_c4836181f6393ec16932",
       "report_path": "reports/project_context_foundation_consistency_audit.md",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "e9a6b4730aa512c97799a13de56cb40dacdd428b9991f6cfcc09d1059821de95",
+      "review_evidence_hash": "fb1e03bd0a70fcecb00c43c329c403291845c01970d12b80ec85d8562e87db58",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -2266,7 +2266,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_d355e3e9aa713994da32"
@@ -2347,7 +2347,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_1b893aa1d1c896a654b7",
+      "manual_review_evidence_id": "evidence_8608caadfa3a87954e9b",
       "naming_verdict": "STABLE_PHASE_ARTIFACT",
       "path_construct_query": {
         "evidence_ids": [
@@ -2364,9 +2364,9 @@
       "report_id": "report_26e864675140963524df",
       "report_path": "reports/project_context_phase_c_source_audit.json",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "185646bc766c273c9d724527b0830fe44ab229fd3c5b3f683226d88678ac49c0",
+      "review_evidence_hash": "f39fbaa9a17fe7e092755766e9151878d1ed302d04d7ca97e54457dd77f34ebd",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -2380,7 +2380,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_b1cdc3a4ed63ee98883e"
@@ -2461,7 +2461,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_fcd291d84eeb92447f7e",
+      "manual_review_evidence_id": "evidence_5daaf7ac3f2158fca484",
       "naming_verdict": "STABLE_PHASE_ARTIFACT",
       "path_construct_query": {
         "evidence_ids": [
@@ -2478,9 +2478,9 @@
       "report_id": "report_74f6da9b3697e7baf5e3",
       "report_path": "reports/project_context_phase_c_source_audit.md",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "eb0f514d274895a8b70df9137203c6e87fb050017bd219d879f65b6fec50e17e",
+      "review_evidence_hash": "f9d5410aba39debf6637ab112bf20e3e64e75237efea5d19daa5676be710bf9a",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -2494,7 +2494,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_855559c4bea98e18d5dc"
@@ -2575,7 +2575,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_6aed642e65ecbd312fd5",
+      "manual_review_evidence_id": "evidence_3ba4e5a27ce73c0229c8",
       "naming_verdict": "STABLE_PHASE_ARTIFACT",
       "path_construct_query": {
         "evidence_ids": [
@@ -2592,9 +2592,9 @@
       "report_id": "report_7113941f103885de9f7b",
       "report_path": "reports/project_context_phase_d3_source_audit.json",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "4ccd330d999f44e200fee043d92ab94c489857a324c1928077fa72ecfdcaa550",
+      "review_evidence_hash": "442493d0a6b316bd180cafef3677eb25289485bee6cbb1773dc65d1cb7b4fec3",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -2608,7 +2608,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_4c8981f403dac29b1261"
@@ -2689,7 +2689,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_3a7d5967ef7a9c8ab631",
+      "manual_review_evidence_id": "evidence_a2a9626b7fda4f5b91de",
       "naming_verdict": "STABLE_PHASE_ARTIFACT",
       "path_construct_query": {
         "evidence_ids": [
@@ -2706,9 +2706,9 @@
       "report_id": "report_be1af1dc487a6c00da0b",
       "report_path": "reports/project_context_phase_d3_source_audit.md",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "c87c9c01c50d22a0faebaf1b4d200756f15fbd79399d62e1d0259d9c31c9f688",
+      "review_evidence_hash": "e39bd1baae2964aff88526943fe4e75df7ead9803b8cd5ac5e5207ebfc659aed",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -2722,7 +2722,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_f2897f06bb9b4af831ec"
@@ -2803,7 +2803,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_bf9105c9f37c39525420",
+      "manual_review_evidence_id": "evidence_fa7e796a3b1fa15bfd3f",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -2820,9 +2820,9 @@
       "report_id": "report_ac0e01eec71e8336bc71",
       "report_path": "reports/project_context_response_lost_duplication_risk.json",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "ed909811dbfc8e6f6eabfc01c972e70a2fb81e12b530d1900750c5f3f3b3b647",
+      "review_evidence_hash": "0560961da8bd58f8e0b22c4bb7c188720666bdbf4ce9a2918880c372943a7a5f",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -2836,7 +2836,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_96b9338185811b0728a2"
@@ -2917,7 +2917,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_9186265a526decde9f82",
+      "manual_review_evidence_id": "evidence_5838c657a4d50d068dfa",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -2934,9 +2934,9 @@
       "report_id": "report_848c29e5e637f24f8573",
       "report_path": "reports/project_context_response_lost_duplication_risk.md",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "c8e46eed161499f43db4021cd15e5d36b464cdde99dd8c5611f6144f7a3eb9ee",
+      "review_evidence_hash": "6d222873b1c3e9f9f330ebb04865f1f806383ee736d9ae601960add0401476e0",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -2950,7 +2950,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_63dd2c155c26bddf8a87"
@@ -3031,7 +3031,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_715f933189dc8f1ec978",
+      "manual_review_evidence_id": "evidence_2b1b6217690a20eeb21a",
       "naming_verdict": "STABLE_PHASE_ARTIFACT",
       "path_construct_query": {
         "evidence_ids": [
@@ -3048,9 +3048,9 @@
       "report_id": "report_381d89b4f1ecd67aa20a",
       "report_path": "reports/project_context_response_lost_recovery_matrix.json",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "f247c07e29e399cf3d4b2d62f347c2b9009f62acd5b7878ace70d6aa7766cf7b",
+      "review_evidence_hash": "18837b4653d68337ebfe1a8c1d5c8c158927f1eef661f563eb1c87d7db7c8174",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -3064,7 +3064,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_f67149c907620c9464bf"
@@ -3145,7 +3145,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_27ff9fb69028583b252d",
+      "manual_review_evidence_id": "evidence_3a9b471963e278ff50d7",
       "naming_verdict": "STABLE_PHASE_ARTIFACT",
       "path_construct_query": {
         "evidence_ids": [
@@ -3162,9 +3162,9 @@
       "report_id": "report_fc50202fd293696c749f",
       "report_path": "reports/project_context_response_lost_recovery_matrix.md",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "7c28aad981eb5f79d4568559c389caa537abc4383453455ee0c3349af53b259c",
+      "review_evidence_hash": "5cc650b4b082e23bbdbd0b250a7390e60396e1b886c856cd96749c158c8ca637",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -3178,7 +3178,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_13ea0ab39ffe89dfaa09"
@@ -3259,7 +3259,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_4592382e8dc69c3a4f0a",
+      "manual_review_evidence_id": "evidence_4368e95689aefe058c15",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -3276,9 +3276,9 @@
       "report_id": "report_8be20cb0cbfafb0ada8d",
       "report_path": "reports/project_context_response_lost_recovery_simulation.json",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "22396a8588232e117a1015db84e5c14066a0a7a74454e87b3623a6d0f702fedb",
+      "review_evidence_hash": "8ac68b3662259d214cadf26c558df9ad8832c2ce9b4fdfd9ebd90f704558e936",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -3292,7 +3292,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_2e10dc7d15061bef9b25"
@@ -3373,7 +3373,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_a94d51cfc96789123916",
+      "manual_review_evidence_id": "evidence_2ecf4d66ff89eda2ea21",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -3390,9 +3390,9 @@
       "report_id": "report_bd6b9f585a823f86aec0",
       "report_path": "reports/project_context_response_lost_recovery_simulation.md",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "e084ed8ba45ffecec284042fee0d7ca61373f83f4781581a691b48b3bb060355",
+      "review_evidence_hash": "8299f6fe25cb13598868563057d3fc5c0c4b7bb75c1466a65f2a9bd653401a3d",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -3406,7 +3406,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_ccbef75e6f629226ff31"
@@ -3487,7 +3487,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_805d5ca3789e0bd019cc",
+      "manual_review_evidence_id": "evidence_20fc6165ccabd5418e3e",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -3504,9 +3504,9 @@
       "report_id": "report_cef573801b49766dd6bb",
       "report_path": "reports/project_context_response_lost_side_effect_audit.json",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "292b38256978895a5c43808ec1d96b9da621fef93ad2a2c0ac3d6c5936073d07",
+      "review_evidence_hash": "7cc1b5dcb86b5ef2bc8176dff4ce9b5cf7d6027dd5adc78ccee8545e20f1af11",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -3520,7 +3520,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_b4dddc72febc1e7e28f2"
@@ -3601,7 +3601,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_c7122f266907b8b708a5",
+      "manual_review_evidence_id": "evidence_fbd71847309233f5c03e",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -3618,9 +3618,9 @@
       "report_id": "report_22131f1afb1a5d0ddcdb",
       "report_path": "reports/project_context_response_lost_side_effect_audit.md",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "57f40b99a50036e3b11f13360581244b31869189ead1a533f142e9ed46cf6238",
+      "review_evidence_hash": "db1318660f7bb31a6efcfedac6c3ed89119ab5d8cd354ef7cc569cc8687c0cc2",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -3634,7 +3634,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_40f96295a3c720a2ed06"
@@ -3715,7 +3715,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_7bf1fa26b4671687db8d",
+      "manual_review_evidence_id": "evidence_295440b1cdfb42913596",
       "naming_verdict": "STABLE_PHASE_ARTIFACT",
       "path_construct_query": {
         "evidence_ids": [
@@ -3732,9 +3732,9 @@
       "report_id": "report_891865643613330941e5",
       "report_path": "reports/project_context_sync_protocol_audit.json",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "49cbb4557771df02d67c5d22754952276fcd5a2bf5cf27fd77a07c5e0014d9f1",
+      "review_evidence_hash": "bb58c7fb0094b12f8aef25d6911d2b84261a31a523b1aa5028f8b62256d1e795",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -3748,7 +3748,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_3efbde228506c3e6022a"
@@ -3829,7 +3829,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_3d11cdee31ea0b94c836",
+      "manual_review_evidence_id": "evidence_5b075c1ee5a0701dd742",
       "naming_verdict": "STABLE_PHASE_ARTIFACT",
       "path_construct_query": {
         "evidence_ids": [
@@ -3846,9 +3846,9 @@
       "report_id": "report_e0b5a354f74d8e57f350",
       "report_path": "reports/project_context_sync_protocol_audit.md",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "5ac60e16a9b675b3a2d8ce64fbaee4417ea81b3b46f1fcf2c06485b6d8a27574",
+      "review_evidence_hash": "a8888d655ea74f9c6213ce17232febae0acee3737fc98a62afbfe6b21cf0b9cf",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -3862,7 +3862,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_fafe5b79a9c8dc666fdd"
@@ -3947,7 +3947,7 @@
         "result_status": "FOUND_REFERENCE"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_732127eda2fa5821ffb3",
+      "manual_review_evidence_id": "evidence_fb2c88f706839ed4d06a",
       "naming_verdict": "COMPLIANT_DATED",
       "path_construct_query": {
         "evidence_ids": [
@@ -3964,9 +3964,9 @@
       "report_id": "report_35c0902628e828642666",
       "report_path": "reports/project_weekly_report_2026-07-10.md",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "c94516e168d7e86446db4996c7b9c9355361eb4f73237aaed6cd24733ebc71cc",
+      "review_evidence_hash": "9b2f1034e6923401acc6312a4e912b0e6f76113f71d3a81bf64424db506bdb3b",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -3980,7 +3980,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_6a1d97029d1d68c53f90"
@@ -4060,7 +4060,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_08eaea53667d7e4a4464",
+      "manual_review_evidence_id": "evidence_af373eeafc926d68ee9a",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -4077,9 +4077,9 @@
       "report_id": "report_4804f0448c1fe84826b2",
       "report_path": "reports/shadcn_card_density_audit.md",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "7788a84ae3ce31d8be620de7ab6e4f8c6a8983d315a5024e227b0b4906162f38",
+      "review_evidence_hash": "5187028266f92c83e189607bdd5172f11d4ba3b3e5211942595d87da4d6f1308",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -4093,7 +4093,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_ad6ff0410408bdea6981"
@@ -4174,7 +4174,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_47841eda28db6083d890",
+      "manual_review_evidence_id": "evidence_f14cde3b51e529bb20a0",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -4191,9 +4191,9 @@
       "report_id": "report_58d4ab5b9392dc974b45",
       "report_path": "reports/shadcn_ui_compatibility_audit.md",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "131f7f4f3be01e8b0fb14d8248ce4918b15ea8e16ee4a291ed7dc1dd9b831db1",
+      "review_evidence_hash": "b8ad7ee033a26e08de22cfc05b5b4ed02dd28ab8cd174b2a8d8795eba41932ca",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -4207,7 +4207,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_273400e5de7077905ba8"
@@ -4292,7 +4292,7 @@
         "result_status": "FOUND_REFERENCE"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_82aca5727fbc5863ac16",
+      "manual_review_evidence_id": "evidence_89663070dc683c0aa11c",
       "naming_verdict": "COMPLIANT_DATED",
       "path_construct_query": {
         "evidence_ids": [
@@ -4309,9 +4309,9 @@
       "report_id": "report_beb52ec4c0fb7bbb87a3",
       "report_path": "reports/trading_weekly_report_2026-07-10.md",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "c6d69632ac727374d0d19145bee305d4b2a2c194b95c7f635a79faa7152f1ac8",
+      "review_evidence_hash": "d6823c76713a2c279c327194c388a66477926092a6533d99c606fc95f60b0255",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -4325,7 +4325,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_8740e9586915a450544b"
@@ -4405,7 +4405,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_93db7cf9f4d563fb1829",
+      "manual_review_evidence_id": "evidence_c69fcbdc0d6f5a5c309c",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -4422,9 +4422,9 @@
       "report_id": "report_307649483b2fc8789648",
       "report_path": "reports/universe_v2_replay/v2_commodity_robustness.json",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "4567921525ad49eab639f399991138f43ca1559d5d10f1aec425226004f05624",
+      "review_evidence_hash": "920f7a18436af823dfa285d9ca2bc4ca7a33f105563b7fd900395dce32df892b",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -4438,7 +4438,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_b6de18e8d33d81a7f2e2"
@@ -4519,7 +4519,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_ae35c651f38bc20fa6c8",
+      "manual_review_evidence_id": "evidence_62b5ded50e58ee73977c",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -4536,9 +4536,9 @@
       "report_id": "report_c569d85440ac2c71eb58",
       "report_path": "reports/universe_v2_replay/v2_etf_level_robustness.json",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "32d5c365351ba8c75016e2c080d7bb8802e679dbee4ef2b373891a7ff11aa7a9",
+      "review_evidence_hash": "95ddad4fe799268c9609266dcd1271e2aad89534e2a5c8fee8a279a40bfb57aa",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -4552,7 +4552,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_e8c0bc9e1872170ec8d8"
@@ -4633,7 +4633,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_6560cea2085333226a7e",
+      "manual_review_evidence_id": "evidence_58550070b1c2ea8ff13e",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -4650,9 +4650,9 @@
       "report_id": "report_ba3d616221554c64ae83",
       "report_path": "reports/universe_v2_replay/v2_high_beta_robustness.json",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "2c378fc6b74c2bcd1b2595f118729d8acdf5985462e0d24d590c8916010a27dd",
+      "review_evidence_hash": "957c906ce697abb5b61e7b82904b517d70fb1287f6798d2d7b6cf6e1b8ecb65d",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -4666,7 +4666,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_c40532b8c5144ad36538"
@@ -4747,7 +4747,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_d8a0457a57b527720b14",
+      "manual_review_evidence_id": "evidence_7bb257b46ce6b109249f",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -4764,9 +4764,9 @@
       "report_id": "report_ea45e10ca1389bdac801",
       "report_path": "reports/universe_v2_replay/v2_horizon_robustness.json",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "73cb1e10ab014025b672a3c1fd882751c04710c396c50189544a3b274631c57d",
+      "review_evidence_hash": "9cda6de7b91fb2834dc77862283c21ea9928d85cfba9257b1f43cee7aa4d6f0a",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -4780,7 +4780,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_371f20dddbb1bbc12b75"
@@ -4861,7 +4861,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_45d7bdf814d4d580a572",
+      "manual_review_evidence_id": "evidence_afd9ec6d446e2ee7804b",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -4878,9 +4878,9 @@
       "report_id": "report_f2af56ef059878c39e9c",
       "report_path": "reports/universe_v2_replay/v2_incremental_robustness.json",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "4e730047f718cb8f24349e0bedcd05d596b88ecfa223f827ab0792728dbac77b",
+      "review_evidence_hash": "ac43abe55fbd08a6dfb2cb43688916481fdc3918c4b5ca158f86f468da790db3",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -4894,7 +4894,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_ef5f2a32256418ea5226"
@@ -4975,7 +4975,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_cd61850a993650691403",
+      "manual_review_evidence_id": "evidence_bcf79565324f0062c234",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -4992,9 +4992,9 @@
       "report_id": "report_b64008f45040e90c602c",
       "report_path": "reports/universe_v2_replay/v2_segment_robustness.json",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "3f908d7e32c5193d4f68fa44ef44e56fff41bee1f9949ba567537c071eeb7367",
+      "review_evidence_hash": "e5908e1c6166a2701170c64014c555b6b44382a158ce50ae88053a5d003db79f",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -5008,7 +5008,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_e13423abff26d2e0a28e"
@@ -5089,7 +5089,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_3ecae0e440ea28c8fd6d",
+      "manual_review_evidence_id": "evidence_16ac3cd89ec8e741de6d",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -5106,9 +5106,9 @@
       "report_id": "report_e8febf3447c3d7905f72",
       "report_path": "reports/universe_v2_replay/v2_style_fit_robustness_source_audit.json",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "abb4c484c9050280b2a802080e4efd896c9dc3ee2c167aa27b57245aec39c702",
+      "review_evidence_hash": "6ae72086c8a699bf577873e639d0ee4724ba5ca8cb3cbf92b7a18a4d7272e6a6",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -5122,7 +5122,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_6ef00531ff4e11818ee9"
@@ -5203,7 +5203,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_aeff8aa47951a200f40b",
+      "manual_review_evidence_id": "evidence_2828c94e504997c90bf4",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -5220,9 +5220,9 @@
       "report_id": "report_56e2d1382f521a8107f8",
       "report_path": "reports/universe_v2_replay/v2_style_regime_differentiation.json",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "cfd2517b2338fdf43beda029ab46aa0ecd74f0f0e565a8cfcd173326f3a73c36",
+      "review_evidence_hash": "338efb0cd0f4aaf69e0f9e89e42700a0b654f25d609494e9a776e7d6c8d4ed96",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -5236,7 +5236,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_55d15788f45e370983ad"
@@ -5317,7 +5317,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_8592111ada489d1ee611",
+      "manual_review_evidence_id": "evidence_260a6218717872806fb4",
       "naming_verdict": "STABLE_PHASE_ARTIFACT",
       "path_construct_query": {
         "evidence_ids": [
@@ -5334,9 +5334,9 @@
       "report_id": "report_41f375b1c795c03d30d9",
       "report_path": "reports/universe_v2_replay/v2_style_regime_fit_matrix.json",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "25a752030b8c1bc7f31b149457ec5837d0f61c6dacf4f028fbb78ec6c2d3f61b",
+      "review_evidence_hash": "5a7ea4b5b9d7150f0787a5c96166a12ff25af063d36fdaf27a877f074f88da3e",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -5350,7 +5350,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_3e39b74c9e844b4491bd"
@@ -5431,7 +5431,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_3215e323f59b68d08f55",
+      "manual_review_evidence_id": "evidence_fa0c82edd46da780cf8b",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -5448,9 +5448,9 @@
       "report_id": "report_ea5ba8b56dea0ae35402",
       "report_path": "reports/universe_v2_replay/v2_style_regime_fit_summary.json",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "8b444c828130392426e24c4aa716a6817f3aad5e28b6ce906d6f9b726e3330e5",
+      "review_evidence_hash": "da9f4f8ed0850cd8b79f8915fff0076bc815f95d0ebb9f4d03165dec59d4fb21",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -5464,7 +5464,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_0c5b75a80591ade9134f"
@@ -5545,7 +5545,7 @@
         "result_status": "ZERO_RESULT_PROOF"
       },
       "final_reviewer_verdict": "PASS",
-      "manual_review_evidence_id": "evidence_422f49cc6ad7dd1ca52d",
+      "manual_review_evidence_id": "evidence_7e5aed70665d54e647c3",
       "naming_verdict": "RENAME_REQUIRED",
       "path_construct_query": {
         "evidence_ids": [
@@ -5562,9 +5562,9 @@
       "report_id": "report_e52f3bb45a3e216973c8",
       "report_path": "reports/universe_v2_replay/v2_time_robustness.json",
       "retention_verdict": "HISTORICAL_SNAPSHOT_ELIGIBLE",
-      "review_evidence_hash": "567f92a3e2153e3e51c985ade8f2c3d0bee7f4beaf8500aba2140f5797ea7687",
+      "review_evidence_hash": "a50404c404aa9c7cf2244801e96a84dabafbf71e4ff771ed961a3fe6a5c53a93",
       "review_schema_version": "manual-candidate-review-v2",
-      "reviewed_at": "2026-07-16T15:28:05+08:00",
+      "reviewed_at": "2026-07-16T15:32:22+08:00",
       "reviewer": "Codex Phase A-R bounded remediation",
       "runtime_verdict": "NO_RUNTIME_LOCK",
       "shell_token_query": {
@@ -5578,7 +5578,7 @@
         "result_count": 0,
         "result_status": "ZERO_RESULT_PROOF"
       },
-      "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
       "stem_query": {
         "evidence_ids": [
           "evidence_707cb888c1a51f0094ba"
