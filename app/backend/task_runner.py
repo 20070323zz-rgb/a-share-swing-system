@@ -66,6 +66,11 @@ def read_status() -> dict[str, Any]:
                             "data_update_processed_symbols": data_status.get("processed_symbols", 0),
                             "data_update_up_to_date_count": data_status.get("up_to_date_count", 0),
                             "data_update_actual_api_calls": data_status.get("actual_api_calls", 0),
+                            "data_update_provider": data_status.get("provider", ""),
+                            "data_update_result_code": data_status.get("result_code", ""),
+                            "data_update_business_date": data_status.get("business_date", ""),
+                            "data_update_updated_count": data_status.get("updated_count", 0),
+                            "data_update_ssot_manifest_hash": data_status.get("ssot_manifest_hash", ""),
                             "data_update_requested_end": data_status.get("requested_end", enriched.get("data_update_requested_end", "")),
                         }
                     )
@@ -192,6 +197,11 @@ def _run_task(task_id: str, task_name: str) -> None:
         "data_update_processed_symbols": data_update_status.get("processed_symbols", ""),
         "data_update_up_to_date_count": data_update_status.get("up_to_date_count", ""),
         "data_update_actual_api_calls": data_update_status.get("actual_api_calls", ""),
+        "data_update_provider": data_update_status.get("provider", ""),
+        "data_update_result_code": data_update_status.get("result_code", ""),
+        "data_update_business_date": data_update_status.get("business_date", ""),
+        "data_update_updated_count": data_update_status.get("updated_count", ""),
+        "data_update_ssot_manifest_hash": data_update_status.get("ssot_manifest_hash", ""),
         "log_path": str(log_path),
         "modifies_paper_positions": task.modifies_paper_positions,
         "real_trade": task.real_trade,
@@ -223,6 +233,11 @@ def _task_data_update_status(task_name: str) -> dict[str, Any]:
         "processed_symbols": payload.get("processed_symbols", 0),
         "up_to_date_count": payload.get("up_to_date_count", 0),
         "actual_api_calls": payload.get("actual_api_calls", payload.get("baostock_api_calls", 0)),
+        "provider": payload.get("provider", payload.get("actual_source_used", "")),
+        "result_code": payload.get("result_code", ""),
+        "business_date": payload.get("business_date", payload.get("requested_end", "")),
+        "updated_count": payload.get("updated_count", payload.get("up_to_date_count", 0)),
+        "ssot_manifest_hash": payload.get("ssot_manifest_hash", payload.get("after_manifest_hash", payload.get("before_manifest_hash", ""))),
         "stale_vs_requested": payload.get("stale_vs_requested", False),
     }
 

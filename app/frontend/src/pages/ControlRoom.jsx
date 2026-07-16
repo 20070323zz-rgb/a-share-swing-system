@@ -62,8 +62,8 @@ export default function ControlRoom({ status, dataHealth, portfolio, signals, re
           <div className="tape-grid">
             <div><span>市场状态</span><strong>{text(status?.market_state)}</strong></div>
             <div><span>组合暴露</span><strong>{text(status?.portfolio_exposure?.status || status?.portfolio_exposure?.exposure_status)}</strong></div>
-            <div><span>BaoStock</span><strong>{text(dataHealth?.baostock_status)}</strong></div>
-            <div><span>JQData</span><strong>{text(dataHealth?.jqdata_status)}</strong></div>
+            <div><span>Tushare</span><strong>PRIMARY_UPSTREAM</strong></div>
+            <div><span>正式数据</span><strong>data/etf_daily/</strong></div>
             <div><span>研究样本</span><strong>{research?.sample_count ?? 0}</strong></div>
             <div><span>调整后排名执行</span><strong>{status?.execution_safety?.adjusted_rank_score_execution_enabled ? "开启" : "关闭"}</strong></div>
           </div>

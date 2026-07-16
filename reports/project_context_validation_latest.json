@@ -1,6 +1,6 @@
 {
   "validation_status": "VALID_WITH_WARNINGS",
-  "validated_at": "2026-07-16 00:05:56",
+  "validated_at": "2026-07-16 00:23:55",
   "repository_root": "<project_root>",
   "manifest_valid": true,
   "required_context_files_complete": true,
@@ -30,7 +30,7 @@
     "Context Phase D3",
     "Context Phase D4"
   ],
-  "next_research_phase": "ETF Daily Availability Timing Audit = ACTIVE_COLLECTING. Complete 5 valid trading days, extend to 10 if unstable, and require Main review before any primary upstream migration decision.",
+  "next_research_phase": "ETF Daily Availability Timing Audit and Timing Optimization = ACTIVE. Complete at least 5 valid trading days to evaluate the formal window and safety buffer; do not reopen the Tushare source-selection decision.",
   "latest_data_date": "2026-07-10",
   "selected_shadow_regime_candidate": "ASYMMETRIC_CONFIRM",
   "latest_known_regime_date": "2026-07-06",
@@ -64,13 +64,7 @@
     "docs/current_phase_status.json",
     "data/research/exposure_prototype/market_exposure_vector_manifest.json",
     "reports/paper_execution_preflight.json",
-    "reports/paper_execution_stale_trade_audit_2026-07-10.json",
-    "reports/governance/phase_ar/report_inventory_v1_2026-07-15.json",
-    "reports/governance/phase_ar/active_reference_index_v1_2026-07-15.json",
-    "reports/governance/phase_ar/governance_evidence_index_v1_2026-07-15.json",
-    "reports/governance/phase_ar/migration_readiness_v1_2026-07-15.json",
-    "reports/governance/phase_ar/candidate_full_review_v1_2026-07-15.json",
-    "reports/governance/phase_ar/immutable_governance_snapshot_manifest_v1_2026-07-15.json"
+    "reports/paper_execution_stale_trade_audit_2026-07-10.json"
   ],
   "bootstrap_read_order": [
     "AGENTS.md",

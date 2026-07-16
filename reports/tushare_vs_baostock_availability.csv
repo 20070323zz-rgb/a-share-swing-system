@@ -1,0 +1,5 @@
+trade_date,source,day_status,first_available_time,first_complete_time,first_stable_time,max_coverage_ratio,error_statuses,later_than_tushare_minutes
+2026-07-14,tushare,COMPLETE,16:15,16:15,16:30,1.0,EMPTY_UNEXPECTED,
+2026-07-14,baostock,COMPLETE,18:00,18:00,,1.0,EMPTY_UNEXPECTED;NETWORK_FAILED,105
+2026-07-15,tushare,COMPLETE,16:15,16:15,16:30,1.0,EMPTY_UNEXPECTED,
+2026-07-15,baostock,COMPLETE,17:30,17:30,,1.0,EMPTY_UNEXPECTED,75
