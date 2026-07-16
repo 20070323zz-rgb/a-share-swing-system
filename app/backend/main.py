@@ -123,7 +123,7 @@ def api_task_status() -> dict:
 
 @app.post("/api/tasks/run")
 def api_run_task(payload: RunTaskRequest) -> dict:
-    return start_task(payload.task_name)
+    return start_task(payload.task_name, payload.target_business_date)
 
 
 if FRONTEND_DIST.exists():

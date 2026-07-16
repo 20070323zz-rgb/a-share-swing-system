@@ -6,6 +6,7 @@ paths, credentials, or trading instructions.
 
 from __future__ import annotations
 
+import json
 import os
 import sys
 from dataclasses import dataclass, field
@@ -16,6 +17,18 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 VENV_PYTHON = PROJECT_ROOT / ".venv" / "bin" / "python"
 PYTHON = str(VENV_PYTHON if VENV_PYTHON.exists() else Path(sys.executable))
+STABLE_DATE_TOKEN = "__LATEST_STABLE_BUSINESS_DATE__"
+
+
+class StableObservationUnavailableError(RuntimeError):
+    pass
+
+
+class TargetDateMismatchError(ValueError):
+    def __init__(self, requested: str, latest_stable: str):
+        super().__init__(f"requested target {requested!r} does not match latest stable business date {latest_stable!r}")
+        self.requested = requested
+        self.latest_stable = latest_stable
 
 
 @dataclass(frozen=True)
@@ -60,6 +73,72 @@ def _daily_update_end() -> str:
     if now.hour < 18:
         return _previous_weekday(today).isoformat()
     return today.isoformat()
+
+
+def latest_stable_observation(project_root: Path | None = None) -> dict[str, str] | None:
+    """Return the latest day confirmed by two consecutive complete equal snapshots."""
+    root = (project_root or PROJECT_ROOT).resolve()
+    evidence_root = root / "data/staging/tushare_etf_availability"
+    for day_dir in sorted(evidence_root.glob("????-??-??"), reverse=True):
+        rows: list[dict] = []
+        for path in sorted((day_dir / "tushare/manifests").glob("*.json")):
+            try:
+                payload = json.loads(path.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError):
+                continue
+            if payload.get("evidence_mode") == "real":
+                rows.append(payload)
+        latest_by_probe: dict[str, dict] = {}
+        for row in sorted(rows, key=lambda item: str(item.get("completed_at", ""))):
+            latest_by_probe[str(row.get("probe_id", ""))] = row
+        previous: dict | None = None
+        stable: dict | None = None
+        for row in sorted(latest_by_probe.values(), key=lambda item: str(item.get("scheduled_at", ""))):
+            if not _is_stable_quality_snapshot(row):
+                previous = row
+                stable = None
+                continue
+            current_hash = str(row.get("source_snapshot_hash", ""))
+            if previous is not None and _is_stable_quality_snapshot(previous):
+                previous_hash = str(previous.get("source_snapshot_hash", ""))
+                stable = row if current_hash and current_hash == previous_hash else None
+            else:
+                stable = None
+            previous = row
+        if stable is not None:
+            return {
+                "business_date": day_dir.name,
+                "manifest_hash": str(stable.get("source_snapshot_hash", "")),
+                "confirmed_at": str(stable.get("scheduled_at", "")),
+            }
+    return None
+
+
+def resolve_backfill_target(requested_date: str | None, project_root: Path | None = None) -> dict[str, str]:
+    observation = latest_stable_observation(project_root)
+    if observation is None:
+        raise StableObservationUnavailableError("no FIRST_STABLE observation is available")
+    latest_stable = observation["business_date"]
+    requested = str(requested_date or latest_stable)
+    try:
+        normalized = date.fromisoformat(requested).isoformat()
+    except ValueError as exc:
+        raise TargetDateMismatchError(requested, latest_stable) from exc
+    if normalized != latest_stable:
+        raise TargetDateMismatchError(normalized, latest_stable)
+    return observation
+
+
+def _is_stable_quality_snapshot(row: dict) -> bool:
+    required = int(row.get("required_etf_count", 0) or 0)
+    return (
+        row.get("response_status") == "ACCESS_PASS"
+        and required == 183
+        and int(row.get("matched_etf_count", 0) or 0) == required
+        and bool(row.get("quality_complete"))
+        and bool(row.get("field_complete"))
+        and bool(row.get("trade_date_valid"))
+    )
 
 
 def _recent_start() -> str:
@@ -185,7 +264,7 @@ SAFE_TASKS: dict[str, TaskSpec] = {
                 PYTHON,
                 "scripts/update_etf_data_tushare.py",
                 "--trade-date",
-                _daily_update_end(),
+                STABLE_DATE_TOKEN,
                 "--status-json",
                 "reports/data_update_status.json",
             ),
@@ -441,10 +520,29 @@ FORBIDDEN_TASK_NAMES = {
 }
 
 
-def get_task(task_name: str) -> TaskSpec | None:
+def get_task(task_name: str, target_business_date: str | None = None) -> TaskSpec | None:
     if task_name in FORBIDDEN_TASK_NAMES:
         return None
-    return SAFE_TASKS.get(task_name)
+    task = SAFE_TASKS.get(task_name)
+    if task is None or task_name != "backfill_etf_data":
+        return task
+    if not target_business_date:
+        raise StableObservationUnavailableError("backfill_etf_data requires a resolved FIRST_STABLE business date")
+    commands = [
+        CommandSpec(
+            [target_business_date if arg == STABLE_DATE_TOKEN else arg for arg in command.args],
+            dict(command.env),
+        )
+        for command in task.commands
+    ]
+    return TaskSpec(
+        task.name,
+        task.description,
+        task.safe_note,
+        task.modifies_paper_positions,
+        task.real_trade,
+        commands,
+    )
 
 
 def merged_env(extra: dict[str, str] | None = None) -> dict[str, str]:

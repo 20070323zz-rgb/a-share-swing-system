@@ -3,14 +3,16 @@ from __future__ import annotations
 import json
 import os
 from pathlib import Path
+import subprocess
 
 import pandas as pd
 import pytest
 import yaml
 
 from app.backend import readers as app_readers
+from app.backend import safe_tasks
 from app.backend import task_runner
-from app.backend.safe_tasks import SAFE_TASKS
+from app.backend.safe_tasks import SAFE_TASKS, get_task, resolve_backfill_target
 from scripts import update_etf_data_tushare as production_cli
 from src.data_sources.tushare.app_update import (
     FORMAL_COLUMNS,
@@ -377,6 +379,61 @@ def test_app_task_keeps_name_and_has_no_baostock_or_jqdata_command():
     assert "--config" not in command
     assert "configs/tushare_primary_app_update.yaml" not in command
     assert len(task.commands) == 6
+
+
+def test_app_runtime_python_can_import_pyyaml():
+    completed = subprocess.run(
+        [safe_tasks.PYTHON, "-c", "import yaml; print(yaml.__version__)"],
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    assert completed.returncode == 0, completed.stderr
+    assert completed.stdout.strip()
+
+
+def test_latest_stable_date_drives_backfill_task_date(tmp_path):
+    manifests = tmp_path / "data/staging/tushare_etf_availability/2026-07-16/tushare/manifests"
+    manifests.mkdir(parents=True)
+    for minute in (10, 15, 30):
+        payload = {
+            "probe_id": f"2026-07-16T16{minute:02d}_tushare",
+            "source": "tushare",
+            "evidence_mode": "real",
+            "trade_date": TRADE_DATE,
+            "scheduled_at": f"2026-07-16T16:{minute:02d}:00+08:00",
+            "completed_at": f"2026-07-16T16:{minute:02d}:01+08:00",
+            "response_status": "ACCESS_PASS",
+            "required_etf_count": 183,
+            "matched_etf_count": 183,
+            "quality_complete": True,
+            "field_complete": True,
+            "trade_date_valid": True,
+            "source_snapshot_hash": "stable-manifest-hash",
+        }
+        (manifests / f"{minute}.json").write_text(json.dumps(payload), encoding="utf-8")
+
+    observation = resolve_backfill_target(TRADE_DATE, tmp_path)
+    task = get_task("backfill_etf_data", observation["business_date"])
+    assert task is not None
+    assert observation["business_date"] == TRADE_DATE
+    assert observation["manifest_hash"] == "stable-manifest-hash"
+    assert task.commands[0].args[task.commands[0].args.index("--trade-date") + 1] == TRADE_DATE
+
+
+def test_target_date_mismatch_is_fail_closed(monkeypatch):
+    monkeypatch.setattr(
+        task_runner,
+        "resolve_backfill_target",
+        lambda _: (_ for _ in ()).throw(safe_tasks.TargetDateMismatchError(PREVIOUS_DATE, TRADE_DATE)),
+    )
+    result = task_runner.start_task("backfill_etf_data", PREVIOUS_DATE)
+    assert result == {
+        "accepted": False,
+        "result_code": "TARGET_DATE_MISMATCH",
+        "requested_business_date": PREVIOUS_DATE,
+        "latest_stable_business_date": TRADE_DATE,
+    }
 
 
 def test_production_cli_pins_config_and_rejects_config_override():
