@@ -1,0 +1,49 @@
+schema_version: 1
+pipeline_id: tushare_primary_app_update_v1
+
+provider:
+  name: TUSHARE
+  role: PRIMARY_UPSTREAM
+  interface: fund_daily
+  fields: ts_code,trade_date,open,high,low,close,pre_close,change,pct_chg,vol,amount
+  timeout_seconds: 25
+  request_interval_seconds: 0.35
+  max_network_retries: 0
+  max_requests: 1
+
+universe:
+  etf_daily_dir: data/etf_daily
+  classification_file: data/etf_classification.csv
+  count_source: dynamic_etf_daily_file_inventory
+  expected_count: 183
+
+storage:
+  staging_root: data/staging/tushare_primary_app_update
+  status_json: reports/data_update_status.json
+  candidate_role: EPHEMERAL_NON_SSOT
+
+freshness_gate:
+  require_exact_trade_date: true
+  require_all_etfs: true
+
+promotion:
+  formal_promotion_enabled: false
+  require_same_filesystem: true
+  before_manifest_required: true
+  directory_transaction_only: true
+  verify_rollback_manifest: true
+
+cleanup:
+  remove_backup_after_verified_success: true
+  remove_partial_candidate_after_verified_rollback: true
+  preserve_backup_on_unverified_rollback: true
+  candidate_retention: KEEP_UNTIL_MANUAL_QC
+  manifest_retention: APPEND_ONLY
+  availability_staging_untouched: true
+
+policy:
+  canonical_ssot: data/etf_daily/
+  baostock_role: RECONCILIATION_ONLY
+  jqdata_fallback: DISABLED
+  silent_fallback: false
+  staging_is_formal_database: false

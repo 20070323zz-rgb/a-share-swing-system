@@ -106,7 +106,7 @@ export default function TaskPanel({ taskStatus, onRun, compact = false, allowedT
         </div>
         <p>{latest ? `${latest.description || latest.task_name} · ${latest.duration_label || "暂无耗时"}` : "暂无任务记录"}</p>
         {latest?.data_update_status ? (
-          <small>{`价格日 ${latest.data_update_latest_local_date || "暂无"} / 目标 ${latest.data_update_requested_end || "暂无"} · 检查 ${latest.data_update_processed_symbols ?? "暂无"} 只 · 已更新 ${latest.data_update_up_to_date_count ?? "暂无"} 只 · 新增 ${latest.data_update_added_rows ?? "暂无"} 行 · 请求 ${latest.data_update_actual_api_calls ?? "暂无"} 次`}</small>
+          <small>{`数据源 ${latest.data_update_provider || "暂无"} · 价格日 ${latest.data_update_latest_local_date || "暂无"} / 目标 ${latest.data_update_requested_end || "暂无"} · 检查 ${latest.data_update_processed_symbols ?? "暂无"} 只 · 已更新 ${latest.data_update_up_to_date_count ?? "暂无"} 只 · 新增 ${latest.data_update_added_rows ?? "暂无"} 行 · 请求 ${latest.data_update_actual_api_calls ?? "暂无"} 次`}</small>
         ) : null}
         {latest?.log_path ? <small>{`日志路径：${latest.log_path}`}</small> : null}
         {latest?.warning ? <pre>{latest.warning}</pre> : null}

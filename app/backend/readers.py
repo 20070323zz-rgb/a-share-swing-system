@@ -302,10 +302,34 @@ def system_status_snapshot(data: dict[str, Any], update: dict[str, Any], sources
     }
 
 
+def formal_update_source_policy() -> dict[str, Any]:
+    return {
+        "primary_provider": "TUSHARE",
+        "primary_source": "TUSHARE",
+        "actual_source_used": "TUSHARE",
+        "fallback_enabled": False,
+        "fallback_source": "DISABLED",
+        "fallback_triggered": False,
+        "source_priority": ["TUSHARE"],
+        "baostock_role": "RECONCILIATION_ONLY",
+        "jqdata_fallback": "DISABLED",
+    }
+
+
+def legacy_reconciliation_status(sources: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "legacy_actual_source_used": sources.get("actual_source_used"),
+        "legacy_fallback_triggered": bool(sources.get("fallback_triggered", False)),
+        "baostock_status": sources.get("baostock_status"),
+        "jqdata_status": sources.get("jqdata_status"),
+    }
+
+
 def status_snapshot() -> dict[str, Any]:
     data = dashboard_data()
     update = data_update_status()
     sources = data_source_status()
+    policy_sources = formal_update_source_policy()
     summary = data.get("paper_summary", {}) if isinstance(data, dict) else {}
     market_state = data.get("market_state", {}) if isinstance(data, dict) else {}
     exposure = data.get("portfolio_exposure", {}) if isinstance(data, dict) else {}
@@ -317,7 +341,7 @@ def status_snapshot() -> dict[str, Any]:
     chatgpt_weekly_packet_summary = data.get("chatgpt_weekly_packet_summary", {}) if isinstance(data, dict) else {}
     engine = data.get("paper_trade_engine", {}) if isinstance(data, dict) else {}
     automation = data.get("automation_status", data.get("automation_nodes", [])) if isinstance(data, dict) else []
-    system = system_status_snapshot(data, update, sources)
+    system = system_status_snapshot(data, update, policy_sources)
     safety = execution_safety_snapshot()
     app_control = data.get("app_control_room", {}) if isinstance(data, dict) else {}
     return {
@@ -332,11 +356,14 @@ def status_snapshot() -> dict[str, Any]:
         "data_update_status": update.get("status") or update.get("severity") or "unknown",
         "data_update_new_rows": update.get("added_rows", 0),
         "data_update_failed_count": update.get("failed_count", 0),
-        "data_sources": sources,
-        "actual_source_used": sources.get("actual_source_used") or update.get("actual_source_used") or update.get("source_used"),
-        "fallback_triggered": bool(sources.get("fallback_triggered", update.get("fallback_triggered", False))),
-        "jqdata_status": sources.get("jqdata_status", update.get("jqdata_status")),
-        "baostock_status": sources.get("baostock_status", update.get("baostock_status")),
+        "data_sources": policy_sources,
+        "primary_provider": "TUSHARE",
+        "actual_source_used": "TUSHARE",
+        "fallback_enabled": False,
+        "fallback_triggered": False,
+        "baostock_role": "RECONCILIATION_ONLY",
+        "jqdata_fallback": "DISABLED",
+        "legacy_reconciliation": legacy_reconciliation_status(sources),
         "automation_status": automation,
         "paper_trade_engine_status": engine.get("state", {}).get("status") if isinstance(engine.get("state"), dict) else engine.get("status", "unknown"),
         "market_state": market_state.get("market_state", "unknown") if isinstance(market_state, dict) else "unknown",
@@ -478,6 +505,7 @@ def data_health_snapshot() -> dict[str, Any]:
     data = dashboard_data()
     update = data_update_status()
     sources = data_source_status()
+    policy_sources = formal_update_source_policy()
     health = data.get("health_summary", {}) if isinstance(data, dict) else {}
     coverage_md = tail_text(REPORT_DIR / "latest_data_coverage.md", 80)
     health_md = tail_text(REPORT_DIR / "latest_data_health.md", 80)
@@ -497,20 +525,24 @@ def data_health_snapshot() -> dict[str, Any]:
         "failed_count": update.get("failed_count", 0),
         "status": update.get("status") or update.get("severity") or health.get("status", "unknown"),
         "diagnosis": update.get("reason") or update.get("recommendation") or "",
-        "data_sources": sources,
-        "primary_source": sources.get("primary_source", "jqdata"),
-        "fallback_source": sources.get("fallback_source", "baostock"),
-        "actual_source_used": sources.get("actual_source_used") or update.get("actual_source_used") or update.get("source_used"),
-        "jqdata_status": sources.get("jqdata_status", update.get("jqdata_status")),
-        "baostock_status": sources.get("baostock_status", update.get("baostock_status")),
-        "fallback_triggered": bool(sources.get("fallback_triggered", update.get("fallback_triggered", False))),
-        "failed_symbols": sources.get("failed_symbols", update.get("failed_symbols", [])),
-        "unresolved_symbols": sources.get("unresolved_symbols", update.get("unresolved_symbols", [])),
-        "source_priority": sources.get("source_priority", ["jqdata", "baostock", "tushare"]),
+        "data_sources": policy_sources,
+        "primary_provider": "TUSHARE",
+        "primary_source": "TUSHARE",
+        "fallback_enabled": False,
+        "fallback_source": "DISABLED",
+        "actual_source_used": "TUSHARE",
+        "fallback_triggered": False,
+        "failed_symbols": update.get("failed_symbols", []),
+        "unresolved_symbols": update.get("unresolved_symbols", []),
+        "source_priority": ["TUSHARE"],
+        "baostock_role": "RECONCILIATION_ONLY",
+        "jqdata_fallback": "DISABLED",
+        "legacy_reconciliation": legacy_reconciliation_status(sources),
         "coverage_tail": coverage_md,
         "health_tail": health_md,
-        "baostock_api_calls": update.get("baostock_api_calls", 0),
-        "actual_api_calls": update.get("actual_api_calls", update.get("baostock_api_calls", 0)),
+        "baostock_api_calls": 0,
+        "jqdata_api_calls": 0,
+        "actual_api_calls": update.get("actual_api_calls", 0),
         "processed_symbols": update.get("processed_symbols", 0),
         "up_to_date_count": update.get("up_to_date_count", 0),
         "requested_end": update.get("requested_end"),

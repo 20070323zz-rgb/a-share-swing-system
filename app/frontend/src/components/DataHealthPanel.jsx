@@ -13,10 +13,10 @@ function sourceVariant(status) {
 export default function DataHealthPanel({ data }) {
   const priority = data?.source_priority || [];
   const rows = [
-    ["实际数据源", data?.actual_source_used || "暂无", `优先级：${priority.join(" → ") || "暂无"}`],
-    ["BaoStock", data?.baostock_status || "暂无", data?.data_sources?.baostock_message || "日常主源"],
-    ["JQData", data?.jqdata_status || "暂无", data?.data_sources?.jqdata_message || "备用 / 历史源"],
-    ["备用切换", data?.fallback_triggered ? "已触发" : "未触发", "本轮不接券商接口"]
+    ["主数据源", data?.primary_provider || "TUSHARE", `优先级：${priority.join(" → ") || "TUSHARE"}`],
+    ["Fallback", data?.fallback_enabled ? "ENABLED" : "DISABLED", "正式更新链无自动回退"],
+    ["BaoStock", data?.baostock_role || "RECONCILIATION_ONLY", "仅保留对账角色"],
+    ["JQData fallback", data?.jqdata_fallback || "DISABLED", "不进入正式更新链"]
   ];
   return (
     <Section title="数据健康" eyebrow="ETF 日线数据源">
