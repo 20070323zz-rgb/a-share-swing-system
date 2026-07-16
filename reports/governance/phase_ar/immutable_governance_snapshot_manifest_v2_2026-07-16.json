@@ -1,0 +1,102 @@
+{
+  "files": [
+    {
+      "content_sha256": "963cf2221ca9acc3334f75df076098ce311a79df32e87407712ba68a47248466",
+      "relative_path": "active_reference_index_v2_2026-07-16.csv"
+    },
+    {
+      "content_sha256": "a4969a2f4f37ac4fa193b70f7c0847626898d6e65b37084f2922280313d32795",
+      "relative_path": "active_reference_index_v2_2026-07-16.json"
+    },
+    {
+      "content_sha256": "0da3c3f5c2e1fa2a37fcf7d6905fe91310a563450b5823fb051410e0d468ab52",
+      "relative_path": "backstop_reference_index_v2_2026-07-16.csv"
+    },
+    {
+      "content_sha256": "664bfcc417c0b8cba10f2294da11a063234c8caac919630d938ae240cfb49217",
+      "relative_path": "backstop_reference_index_v2_2026-07-16.json"
+    },
+    {
+      "content_sha256": "d8a42351b47e75ee371085cdf0661c24098a32c8e29e42876a1507a54479daeb",
+      "relative_path": "governance_evidence_index_v2_2026-07-16.csv"
+    },
+    {
+      "content_sha256": "e56d66b635609a5064d42f44aff5e8fd6dd5618f76d05cfea751b37456e14788",
+      "relative_path": "governance_evidence_index_v2_2026-07-16.json"
+    },
+    {
+      "content_sha256": "ba18504077adabf92eec1bccd223de7b8796ba2e456c7c450ed8aed4bf166c1b",
+      "relative_path": "manual_candidate_review_v2_2026-07-16.json"
+    },
+    {
+      "content_sha256": "87ec018c7fd0048c4893e5ee0a084cf2371941970827033ee604037b41acbcb3",
+      "relative_path": "manual_candidate_review_v2_2026-07-16.md"
+    },
+    {
+      "content_sha256": "3f5cba24ead7ae5692ed631e62aaabcc5ebe67066aa32f3f0432f2681c45946c",
+      "relative_path": "migration_readiness_v2_2026-07-16.csv"
+    },
+    {
+      "content_sha256": "baf6ef4e8cd2e2767db5d753ff71afdee27e4b6a3a47b792b3e1219654e3a46a",
+      "relative_path": "migration_readiness_v2_2026-07-16.json"
+    },
+    {
+      "content_sha256": "d6e1fcaf59d0dfd64c4de0a2accd1ba604d43719b20ada683efb49c96f819fc7",
+      "relative_path": "migration_readiness_v2_2026-07-16.md"
+    },
+    {
+      "content_sha256": "de20c07e795499bb2878d9095545f373dfd8b69c65b8208db9f427cb388b0941",
+      "relative_path": "report_inventory_v2_2026-07-16.csv"
+    },
+    {
+      "content_sha256": "efd23c21a5355e468bb537effde8f39d3c79e4c065d2117666e8bf78f73c4ef0",
+      "relative_path": "report_inventory_v2_2026-07-16.json"
+    },
+    {
+      "content_sha256": "d4e60bcf730c1236d9b295fe60addedc68c8cd26696830e0571db10f77c7d52a",
+      "relative_path": "report_inventory_v2_2026-07-16.md"
+    },
+    {
+      "content_sha256": "471fe1980b204128fd1e7842d523f67db9fac46c788f9f2128e1e0b5d40a3634",
+      "relative_path": "reports_governance_phase_ar_summary_v2_2026-07-16.md"
+    },
+    {
+      "content_sha256": "7c025634bfdbb55c719070a6be0b379d61a8afb1ee6b73735723f81c80485d6b",
+      "relative_path": "scanner_disagreement_index_v1_2026-07-16.csv"
+    },
+    {
+      "content_sha256": "8b6eb7f82817b245719226ada0aab9423da96a0e19596b6ae4bd2de4ab8af0d0",
+      "relative_path": "scanner_disagreement_index_v1_2026-07-16.json"
+    },
+    {
+      "content_sha256": "089a6c9cb213a59d1c52b894a6d18cac36bb6f80f9268cabd14d2d33953e6c32",
+      "relative_path": "structured_reference_index_v2_2026-07-16.csv"
+    },
+    {
+      "content_sha256": "0909bd4a9cc30f3c76ef3325c1ecf5dfd0a7eee94357d124a45ac37c42c40c9b",
+      "relative_path": "structured_reference_index_v2_2026-07-16.json"
+    },
+    {
+      "content_sha256": "aa7738a10b6b98c42b5e6cfe6df1898c17e4f04c1f2c7a4cfbad6c9047cf4fea",
+      "relative_path": "structured_scanner_precision_review_v1_2026-07-16.json"
+    }
+  ],
+  "group_manifest_sha256": "c243ca32727f649dc79ec2f76d8c6081937d2e632e0cd6119d49cfd8c004f999",
+  "metadata": {
+    "artifact_type": "IMMUTABLE_GOVERNANCE_SNAPSHOT",
+    "backstop_scanner_version": "independent-backstop-scanner-v2",
+    "evidence_schema_version": "governance-evidence-record-v2",
+    "generated_at": "2026-07-16T15:32:22+08:00",
+    "immutable": true,
+    "record_count": 20,
+    "review_schema_version": "manual-candidate-review-v2",
+    "run_id": "phase-ar-run_83d02c66ce437dfd0671ef85",
+    "schema_version": "phase-ar-snapshot-manifest-v2",
+    "snapshot_revision": "phase-ar-v2-2026-07-16",
+    "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
+    "structured_scanner_version": "structured-reference-scanner-v2",
+    "supersedes": "phase-ar-v1-2026-07-15"
+  },
+  "prior_snapshot_status": "VALID_HISTORICAL_SNAPSHOT / SUPERSEDED",
+  "snapshot_date": "2026-07-16"
+}

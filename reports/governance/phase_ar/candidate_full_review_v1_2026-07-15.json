@@ -1,0 +1,845 @@
+{
+  "metadata": {
+    "artifact_type": "CANDIDATE_FULL_REVIEW",
+    "generated_at": "2026-07-15T15:33:15+00:00",
+    "immutable": true,
+    "record_count": 52,
+    "run_id": "phase-ar-run_6a475018620c44bce838701d",
+    "schema_version": "candidate-full-review-v1",
+    "source_tree_commit": "5d7c3d753a50f8b047f188a22177828c5efdd2c4"
+  },
+  "records": [
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/app_backfill_button_fix_report.md",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/app_data_backfill_button_audit.md",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/app_independent_launch_fix_report.md",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/app_launch_fix_report.json",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/app_launch_fix_report.md",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/app_local_release_phase1_report.md",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/baostock_app_backfill_fix_report.md",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/data_update_probe_fast.json",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/first_paper_trade_review.md",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/frontend_css_cleanup_audit.md",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/jqdata_connection_diagnosis.md",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/launchd_install_test_report.md",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/post_expansion_automation_sync_report.md",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/project_context_bootstrap_audit.json",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/project_context_bootstrap_audit.md",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/project_context_existing_state_audit.json",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/project_context_existing_state_audit.md",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/project_context_foundation_consistency_audit.json",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/project_context_foundation_consistency_audit.md",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/project_context_phase_c_source_audit.json",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/project_context_phase_c_source_audit.md",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/project_context_phase_d2_decision.md",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/project_context_phase_d3_decision.md",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/project_context_phase_d3_source_audit.json",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/project_context_phase_d3_source_audit.md",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/project_context_recovery_correctness_score.md",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/project_context_recovery_final_truth_summary.md",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/project_context_response_lost_duplication_risk.json",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/project_context_response_lost_duplication_risk.md",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/project_context_response_lost_recovery_matrix.json",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/project_context_response_lost_recovery_matrix.md",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/project_context_response_lost_recovery_simulation.json",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/project_context_response_lost_recovery_simulation.md",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/project_context_response_lost_side_effect_audit.json",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/project_context_response_lost_side_effect_audit.md",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/project_context_schema_audit.md",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/project_context_sync_protocol_audit.json",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/project_context_sync_protocol_audit.md",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/shadcn_card_density_audit.md",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/shadcn_ui_compatibility_audit.md",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/universe_v2_replay/v2_commodity_robustness.json",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/universe_v2_replay/v2_etf_level_robustness.json",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/universe_v2_replay/v2_evidence_qualification_matrix.json",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/universe_v2_replay/v2_high_beta_robustness.json",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/universe_v2_replay/v2_horizon_robustness.json",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/universe_v2_replay/v2_incremental_robustness.json",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/universe_v2_replay/v2_segment_robustness.json",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/universe_v2_replay/v2_style_fit_robustness_source_audit.json",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/universe_v2_replay/v2_style_regime_differentiation.json",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/universe_v2_replay/v2_style_regime_fit_matrix.json",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/universe_v2_replay/v2_style_regime_fit_summary.json",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    },
+    {
+      "backstop_scanner_result": 0,
+      "basename_search": "ZERO",
+      "config_search": "ZERO",
+      "consumer_check": "ZERO",
+      "dynamic_prefix_search": "NOT_APPLICABLE",
+      "exact_source_search": "ZERO",
+      "producer_check": "ZERO",
+      "report_path": "reports/universe_v2_replay/v2_time_robustness.json",
+      "review_evidence": [
+        "structured=0",
+        "backstop=0"
+      ],
+      "reviewer_verdict": "PASS",
+      "structured_scanner_result": 0
+    }
+  ]
+}

@@ -994,6 +994,35 @@ From 2026-07-16, core probes run at 16:00, 16:05, 16:10, 16:15, 16:30, and 17:00
 
 Draft PR #3 tracks the framework, decision report, schedule change, and accumulating sanitized timing summaries on branch `agent/tushare-etf-availability-audit`. Its state is `DRAFT_AWAITING_DECISION_QC`; it must not be merged in this batch.
 
+## 8O. Reports Governance Phase A-R
+
+Draft PR #5 cleanly rebuilds report governance without merging or cherry-picking PR #4. PR #4 is `CLOSED / SUPERSEDED / NOT MERGED`. Its candidate conclusions are rejected; only independently validated design semantics and the 43 false-negative regression facts are retained.
+
+```text
+Reports Governance Phase A-R = ACTIVE / ARCHITECTURE_ACCEPTED
+PR #5 = READY_FOR_REVIEW / MERGE_READY
+Report Inventory = 651 / REFRESHED_QC_PASS
+Structured Scanner = REMEDIATED_QC_PASS
+Backstop Scanner = REMEDIATED_QC_PASS
+Structured References = 2593
+Backstop Query Records = 5208
+Governance Evidence Records = 12416
+PR #4 Active-Reference Regression Recall = 43/43
+Scanner Disagreements = 9 / MATERIALIZED_FAIL_CLOSED_QC_PASS
+Machine-Provisional Candidates = 49
+Full Candidate Review = 49/49 PASS
+Final Provisional Dry-Run Candidates = 49
+PROVISIONALLY_SAFE_FOR_PHASE_B_DRY_RUN = 13
+PROVISIONALLY_SAFE_RENAME_REQUIRED = 36
+Archived / Active / Runtime / Unknown Candidate Contamination = 0
+SAFE_TO_DELETE_AFTER_AUTHORIZATION = 0
+Runtime Path Registry = NOT_STARTED
+Reports Migration Phase B = BLOCKED
+Zero Move = PASS
+```
+
+The provisional label authorizes only a future Phase B dry-run. No report has been moved, renamed, deleted, or rewritten. App/Dashboard paths, Formal Execution, logs, and Availability data remain unchanged. The v1 snapshot remains `VALID_HISTORICAL_SNAPSHOT / SUPERSEDED`; the authoritative v2 group hash is stored in `reports/governance/phase_ar/immutable_governance_snapshot_manifest_v2_2026-07-16.json`.
+
 ## 9. Current Main Bottlenecks
 
 - Paper execution freshness is now guarded. The remaining 2026-07-10 question is correction-policy governance; original ledger rows remain unchanged and no correction is authorized.

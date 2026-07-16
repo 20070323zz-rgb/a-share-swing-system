@@ -55,7 +55,17 @@ Exposure Framework Phase 1: COMPLETE
 Project Infrastructure Batch Standardization V1: COMPLETE
 Paper Execution Safety Phase 1: COMPLETE
 Tushare 5000 Data Foundation Audit: COMPLETE
-Reports Governance Phase A: NOT_STARTED
+Reports Governance Phase A: SUPERSEDED_BY_PHASE_AR
+Reports Governance Phase A-R: ACTIVE / ARCHITECTURE_ACCEPTED
+PR #5: READY_FOR_REVIEW / MERGE_READY
+Report Inventory: REFRESHED_QC_PASS
+Structured Scanner: REMEDIATED_QC_PASS
+Backstop Scanner: REMEDIATED_QC_PASS
+Scanner Disagreement: MATERIALIZED_FAIL_CLOSED_QC_PASS
+Manual Review Evidence: MATERIALIZED_QC_PASS
+Migration Readiness: REBUILT_QC_PASS
+Phase B Contract: COMPLETE_QC_PASS
+Runtime Path Registry: NOT_STARTED
 Report File Migration: BLOCKED
 PR #1 Hygiene Cleanup: COMPLETE
 PR #1 Diff Check: CLEAN
@@ -221,6 +231,12 @@ Formal Execution: BLOCKED
 - Tushare ETF Universe Mapping Validation：`reports/tushare_etf_universe_mapping_validation.csv`
 - Tushare ETF Availability Framework Validation：`reports/tushare_etf_availability_framework_validation.md`
 - Tushare Primary Upstream Source Decision：`reports/tushare_primary_upstream_source_decision_2026-07-15.md`
+- Reports Governance Phase A-R Architecture：`docs/reports_governance/phase_ar_architecture.md`
+- Reports Governance Phase B Contract：`docs/reports_governance/phase_b_end_to_end_contract.md`
+- Reports Governance PR #4 Salvage Assessment：`reports/reports_governance_pr4_salvage_assessment_2026-07-15.md`
+- Reports Governance Phase A-R Build Report：`reports/reports_governance_phase_ar_build_2026-07-15.md`
+- Reports Governance Phase A-R v1 Snapshot（历史有效 / 已 supersede）：`reports/governance/phase_ar/immutable_governance_snapshot_manifest_v1_2026-07-15.json`
+- Reports Governance Phase A-R v2 Snapshot：`reports/governance/phase_ar/immutable_governance_snapshot_manifest_v2_2026-07-16.json`
 
 这些入口用于新 Codex thread 恢复项目状态。
 

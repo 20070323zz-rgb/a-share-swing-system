@@ -1,0 +1,280 @@
+{
+  "metadata": {
+    "artifact_type": "SCANNER_DISAGREEMENT_INDEX",
+    "backstop_scanner_version": "independent-backstop-scanner-v2",
+    "evidence_schema_version": "governance-evidence-record-v2",
+    "generated_at": "2026-07-16T15:32:22+08:00",
+    "immutable": true,
+    "record_count": 9,
+    "review_schema_version": "manual-candidate-review-v2",
+    "run_id": "phase-ar-run_83d02c66ce437dfd0671ef85",
+    "schema_version": "scanner-disagreement-index-v1",
+    "snapshot_revision": "phase-ar-v2-2026-07-16",
+    "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
+    "structured_scanner_version": "structured-reference-scanner-v2",
+    "supersedes": "phase-ar-v1-2026-07-15"
+  },
+  "records": [
+    {
+      "backstop_evidence_ids": [
+        "evidence_7950a78ea186346d6c6e"
+      ],
+      "backstop_result": {
+        "active_query_count": 1,
+        "dynamic_pattern": false,
+        "statuses": [
+          "AMBIGUOUS_REFERENCE"
+        ]
+      },
+      "disagreement_id": "scanner-disagreement_2bb02e34c209e7a32df9",
+      "disagreement_type": "REFERENCE_CLASS_DISAGREEMENT",
+      "report_id": "report_d5d1aed20bc385cdde61",
+      "report_path": "reports/project_context_recovery_final_truth_summary.md",
+      "resolution_status": "UNRESOLVED",
+      "reviewer_evidence_ids": [
+        "evidence_c9fec181dab926d5151b"
+      ],
+      "reviewer_verdict": "PENDING_SCANNER_REMEDIATION",
+      "severity": "HIGH",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
+      "structured_evidence_ids": [],
+      "structured_result": {
+        "directions": [],
+        "dynamic_pattern": false,
+        "runtime_reference_count": 0
+      }
+    },
+    {
+      "backstop_evidence_ids": [
+        "evidence_81ddb6afe4947f9aff4d"
+      ],
+      "backstop_result": {
+        "active_query_count": 1,
+        "dynamic_pattern": false,
+        "statuses": [
+          "AMBIGUOUS_REFERENCE"
+        ]
+      },
+      "disagreement_id": "scanner-disagreement_2c25bd3536baf2ed14f8",
+      "disagreement_type": "REFERENCE_CLASS_DISAGREEMENT",
+      "report_id": "report_698f1389d4cf2461652d",
+      "report_path": "reports/project_context_phase_d2_decision.md",
+      "resolution_status": "UNRESOLVED",
+      "reviewer_evidence_ids": [
+        "evidence_57f930faaff67e2f2b4c"
+      ],
+      "reviewer_verdict": "PENDING_SCANNER_REMEDIATION",
+      "severity": "HIGH",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
+      "structured_evidence_ids": [],
+      "structured_result": {
+        "directions": [],
+        "dynamic_pattern": false,
+        "runtime_reference_count": 0
+      }
+    },
+    {
+      "backstop_evidence_ids": [
+        "evidence_3ce6f2060ccc65bf7352"
+      ],
+      "backstop_result": {
+        "active_query_count": 1,
+        "dynamic_pattern": false,
+        "statuses": [
+          "AMBIGUOUS_REFERENCE"
+        ]
+      },
+      "disagreement_id": "scanner-disagreement_45d302c359f9e19761ee",
+      "disagreement_type": "REFERENCE_CLASS_DISAGREEMENT",
+      "report_id": "report_6d09213e6fe8162c0177",
+      "report_path": "reports/project_context_recovery_correctness_score.md",
+      "resolution_status": "UNRESOLVED",
+      "reviewer_evidence_ids": [
+        "evidence_3b51ef446f5b55c3973a"
+      ],
+      "reviewer_verdict": "PENDING_SCANNER_REMEDIATION",
+      "severity": "HIGH",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
+      "structured_evidence_ids": [],
+      "structured_result": {
+        "directions": [],
+        "dynamic_pattern": false,
+        "runtime_reference_count": 0
+      }
+    },
+    {
+      "backstop_evidence_ids": [
+        "evidence_501c6ebb7ddad62c6339"
+      ],
+      "backstop_result": {
+        "active_query_count": 1,
+        "dynamic_pattern": false,
+        "statuses": [
+          "AMBIGUOUS_REFERENCE"
+        ]
+      },
+      "disagreement_id": "scanner-disagreement_49b07719eaf4ac92ad9e",
+      "disagreement_type": "REFERENCE_CLASS_DISAGREEMENT",
+      "report_id": "report_3f049e4a09aba2575d38",
+      "report_path": "reports/universe_v2_replay/v2_evidence_qualification_matrix.json",
+      "resolution_status": "UNRESOLVED",
+      "reviewer_evidence_ids": [
+        "evidence_127c67d7f6f6409d946d"
+      ],
+      "reviewer_verdict": "PENDING_SCANNER_REMEDIATION",
+      "severity": "HIGH",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
+      "structured_evidence_ids": [],
+      "structured_result": {
+        "directions": [],
+        "dynamic_pattern": false,
+        "runtime_reference_count": 0
+      }
+    },
+    {
+      "backstop_evidence_ids": [
+        "evidence_492ac06ac9a3560f3338"
+      ],
+      "backstop_result": {
+        "active_query_count": 1,
+        "dynamic_pattern": false,
+        "statuses": [
+          "AMBIGUOUS_REFERENCE"
+        ]
+      },
+      "disagreement_id": "scanner-disagreement_5348f21ed3fb7571487a",
+      "disagreement_type": "REFERENCE_CLASS_DISAGREEMENT",
+      "report_id": "report_3b8551823732bdad7a85",
+      "report_path": "reports/tushare_real_run_attestations.md",
+      "resolution_status": "UNRESOLVED",
+      "reviewer_evidence_ids": [
+        "evidence_b5e50cceaad2d7b5d6ed"
+      ],
+      "reviewer_verdict": "PENDING_SCANNER_REMEDIATION",
+      "severity": "HIGH",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
+      "structured_evidence_ids": [],
+      "structured_result": {
+        "directions": [],
+        "dynamic_pattern": false,
+        "runtime_reference_count": 0
+      }
+    },
+    {
+      "backstop_evidence_ids": [
+        "evidence_6d0d07edd8f4d4874c43"
+      ],
+      "backstop_result": {
+        "active_query_count": 1,
+        "dynamic_pattern": false,
+        "statuses": [
+          "AMBIGUOUS_REFERENCE"
+        ]
+      },
+      "disagreement_id": "scanner-disagreement_68b7a78d8cb147bb822d",
+      "disagreement_type": "REFERENCE_CLASS_DISAGREEMENT",
+      "report_id": "report_2a67663a5c07b636e30b",
+      "report_path": "reports/project_context_persistence_final.md",
+      "resolution_status": "UNRESOLVED",
+      "reviewer_evidence_ids": [
+        "evidence_66c71f3559a677ce8fe2"
+      ],
+      "reviewer_verdict": "PENDING_SCANNER_REMEDIATION",
+      "severity": "HIGH",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
+      "structured_evidence_ids": [],
+      "structured_result": {
+        "directions": [],
+        "dynamic_pattern": false,
+        "runtime_reference_count": 0
+      }
+    },
+    {
+      "backstop_evidence_ids": [
+        "evidence_58c2548cf94c696d77f1"
+      ],
+      "backstop_result": {
+        "active_query_count": 1,
+        "dynamic_pattern": false,
+        "statuses": [
+          "AMBIGUOUS_REFERENCE"
+        ]
+      },
+      "disagreement_id": "scanner-disagreement_729cd4dec5d8096fc4d9",
+      "disagreement_type": "REFERENCE_CLASS_DISAGREEMENT",
+      "report_id": "report_878d0adf91119df7027d",
+      "report_path": "reports/project_context_schema_audit.md",
+      "resolution_status": "UNRESOLVED",
+      "reviewer_evidence_ids": [
+        "evidence_eff815344a34378a0109"
+      ],
+      "reviewer_verdict": "PENDING_SCANNER_REMEDIATION",
+      "severity": "HIGH",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
+      "structured_evidence_ids": [],
+      "structured_result": {
+        "directions": [],
+        "dynamic_pattern": false,
+        "runtime_reference_count": 0
+      }
+    },
+    {
+      "backstop_evidence_ids": [
+        "evidence_dc609c55554126715730"
+      ],
+      "backstop_result": {
+        "active_query_count": 1,
+        "dynamic_pattern": false,
+        "statuses": [
+          "AMBIGUOUS_REFERENCE"
+        ]
+      },
+      "disagreement_id": "scanner-disagreement_8e5ba61a6022bc29af86",
+      "disagreement_type": "REFERENCE_CLASS_DISAGREEMENT",
+      "report_id": "report_94633770462477bb7157",
+      "report_path": "reports/project_context_phase_d3_decision.md",
+      "resolution_status": "UNRESOLVED",
+      "reviewer_evidence_ids": [
+        "evidence_e2efb0c40c3a502fcff9"
+      ],
+      "reviewer_verdict": "PENDING_SCANNER_REMEDIATION",
+      "severity": "HIGH",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
+      "structured_evidence_ids": [],
+      "structured_result": {
+        "directions": [],
+        "dynamic_pattern": false,
+        "runtime_reference_count": 0
+      }
+    },
+    {
+      "backstop_evidence_ids": [
+        "evidence_401e77d63404df91f9b2"
+      ],
+      "backstop_result": {
+        "active_query_count": 1,
+        "dynamic_pattern": false,
+        "statuses": [
+          "AMBIGUOUS_REFERENCE"
+        ]
+      },
+      "disagreement_id": "scanner-disagreement_add2e2af107dcd857499",
+      "disagreement_type": "REFERENCE_CLASS_DISAGREEMENT",
+      "report_id": "report_0448d78733a79b4c616f",
+      "report_path": "reports/project_context_recovery_drill_decision.md",
+      "resolution_status": "UNRESOLVED",
+      "reviewer_evidence_ids": [
+        "evidence_9b70cd82d75d5612d86d"
+      ],
+      "reviewer_verdict": "PENDING_SCANNER_REMEDIATION",
+      "severity": "HIGH",
+      "source_tree_commit": "ecef39d7ca11be874cee36d381d7f684af1253e3",
+      "structured_evidence_ids": [],
+      "structured_result": {
+        "directions": [],
+        "dynamic_pattern": false,
+        "runtime_reference_count": 0
+      }
+    }
+  ]
+}
