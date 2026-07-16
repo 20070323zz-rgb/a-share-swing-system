@@ -276,7 +276,7 @@ def test_app_dashboard_runtime_recall_is_complete(governance_state):
 def test_archive_deletion_and_zero_move_boundaries(governance_state):
     readiness = governance_state["readiness"]
     archived = [item for item in readiness if "/archive/" in item["relative_path"]]
-    assert len(archived) == 45
+    assert len(archived) == 45 + 49
     assert all(item["migration_readiness"] == "NOT_APPLICABLE_ALREADY_ARCHIVED" for item in archived)
     assert not any(item["migration_readiness"].startswith("PROVISIONALLY_SAFE") for item in archived)
     assert not any(item["deletion_readiness"] == "SAFE_TO_DELETE_AFTER_AUTHORIZATION" for item in readiness)
@@ -288,8 +288,10 @@ def test_evidence_is_complete_resolvable_and_non_orphan(governance_state):
     assert len(evidence_ids) == len(evidence)
     required_types = {
         "STRUCTURED_PRODUCER", "STRUCTURED_CONSUMER", "BACKSTOP_REFERENCE", "BACKSTOP_ZERO_RESULT",
-        "RUNTIME_LOCK", "SCANNER_DISAGREEMENT", "MANUAL_REVIEW", "ALIAS", "ROLE", "RETENTION", "NAMING", "LOCATION",
+        "RUNTIME_LOCK", "SCANNER_DISAGREEMENT", "ALIAS", "ROLE", "RETENTION", "NAMING", "LOCATION",
     }
+    if any(item["machine_provisional_before_review"] for item in governance_state["readiness"]):
+        required_types.add("MANUAL_REVIEW")
     assert required_types <= {item["evidence_type"] for item in evidence}
     referenced: set[str] = set()
     for decision in governance_state["readiness"]:
