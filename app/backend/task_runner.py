@@ -11,7 +11,14 @@ from pathlib import Path
 from typing import Any
 
 from .readers import PROJECT_ROOT, REPORT_DIR
-from .safe_tasks import get_task, merged_env
+from .safe_tasks import (
+    StableObservationUnavailableError,
+    TargetDateMismatchError,
+    TaskSpec,
+    get_task,
+    merged_env,
+    resolve_backfill_target,
+)
 
 
 LOG_DIR = PROJECT_ROOT / "logs" / "app_tasks"
@@ -87,9 +94,23 @@ def write_status(payload: dict[str, Any]) -> None:
     STATUS_FILE.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
-def start_task(task_name: str) -> dict[str, Any]:
+def start_task(task_name: str, target_business_date: str | None = None) -> dict[str, Any]:
     global _RUNNING_THREAD
-    task = get_task(task_name)
+    stable_observation: dict[str, str] = {}
+    if task_name == "backfill_etf_data":
+        try:
+            stable_observation = resolve_backfill_target(target_business_date)
+        except TargetDateMismatchError as exc:
+            return {
+                "accepted": False,
+                "result_code": "TARGET_DATE_MISMATCH",
+                "requested_business_date": exc.requested,
+                "latest_stable_business_date": exc.latest_stable,
+            }
+        except StableObservationUnavailableError:
+            return {"accepted": False, "result_code": "DATA_NOT_READY"}
+        target_business_date = stable_observation["business_date"]
+    task = get_task(task_name, target_business_date)
     if task is None:
         return {"accepted": False, "error": f"task {task_name!r} is not in the safe whitelist"}
     with _LOCK:
@@ -116,6 +137,8 @@ def start_task(task_name: str) -> dict[str, Any]:
             "real_trade": task.real_trade,
             "duration_seconds": None,
             "duration_label": "running",
+            "target_business_date": target_business_date or "",
+            "stable_observation_hash": stable_observation.get("manifest_hash", ""),
         }
         write_status({"running": True, "latest_task": latest_task, "history": history[-10:]})
         LOG_DIR.mkdir(parents=True, exist_ok=True)
@@ -125,15 +148,12 @@ def start_task(task_name: str) -> dict[str, Any]:
             f"safety: {task.safe_note}\n",
             encoding="utf-8",
         )
-        _RUNNING_THREAD = threading.Thread(target=_run_task, args=(task_id, task.name), daemon=True)
+        _RUNNING_THREAD = threading.Thread(target=_run_task, args=(task_id, task), daemon=True)
         _RUNNING_THREAD.start()
     return {"accepted": True, "task": latest_task}
 
 
-def _run_task(task_id: str, task_name: str) -> None:
-    task = get_task(task_name)
-    if task is None:
-        return
+def _run_task(task_id: str, task: TaskSpec) -> None:
     LOG_DIR.mkdir(parents=True, exist_ok=True)
     log_path = LOG_DIR / f"{task_id}_{task.name}.log"
     stdout_all: list[str] = []
@@ -170,7 +190,8 @@ def _run_task(task_id: str, task_name: str) -> None:
     except Exception:
         pass
     status_before_finish = read_status()
-    started_at = status_before_finish.get("latest_task", {}).get("started_at")
+    task_before_finish = status_before_finish.get("latest_task", {})
+    started_at = task_before_finish.get("started_at")
     finished_at = _now()
     duration_seconds, duration_label = _duration(started_at, finished_at)
     data_update_status = _task_data_update_status(task.name)
@@ -207,6 +228,8 @@ def _run_task(task_id: str, task_name: str) -> None:
         "real_trade": task.real_trade,
         "duration_seconds": duration_seconds,
         "duration_label": duration_label,
+        "target_business_date": task_before_finish.get("target_business_date", ""),
+        "stable_observation_hash": task_before_finish.get("stable_observation_hash", ""),
     }
     history = status_before_finish.get("history", [])
     if not isinstance(history, list):

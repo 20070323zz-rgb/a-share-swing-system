@@ -182,14 +182,16 @@ print("PYTHONHOME:", os.environ.get("PYTHONHOME", ""))
 print("sys.path:", sys.path)
 import fastapi
 import uvicorn
+import yaml
 print("fastapi:", getattr(fastapi, "__version__", "unknown"))
 print("uvicorn:", getattr(uvicorn, "__version__", "unknown"))
+print("PyYAML:", getattr(yaml, "__version__", "unknown"))
 PY
 then
-  error "项目 .venv 缺少 fastapi 或 uvicorn。"
+  error "项目 .venv 缺少 fastapi、uvicorn 或 PyYAML。"
   error "依赖检查详情：$DEPS_CHECK_LOG"
-  error "请执行：.venv/bin/pip install fastapi uvicorn"
-  write_launch_status "error" "Python 依赖缺失：fastapi 或 uvicorn。"
+  error "请执行：.venv/bin/pip install fastapi uvicorn PyYAML"
+  write_launch_status "error" "Python 依赖缺失：fastapi、uvicorn 或 PyYAML。"
   exit 1
 fi
 

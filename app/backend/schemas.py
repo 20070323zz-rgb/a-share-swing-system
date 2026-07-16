@@ -43,3 +43,7 @@ AllowedTaskName = Literal[
 
 class RunTaskRequest(BaseModel):
     task_name: AllowedTaskName = Field(..., description="Whitelisted task name only.")
+    target_business_date: str | None = Field(
+        None,
+        description="Optional ISO date; backfill_etf_data must match the latest FIRST_STABLE observation.",
+    )
