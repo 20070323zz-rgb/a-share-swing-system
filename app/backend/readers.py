@@ -306,6 +306,14 @@ def status_snapshot() -> dict[str, Any]:
     data = dashboard_data()
     update = data_update_status()
     sources = data_source_status()
+    policy_sources = {
+        **sources,
+        "primary_source": "TUSHARE",
+        "fallback_source": "DISABLED",
+        "source_priority": ["TUSHARE"],
+        "baostock_role": "RECONCILIATION_ONLY",
+        "jqdata_fallback": "DISABLED",
+    }
     summary = data.get("paper_summary", {}) if isinstance(data, dict) else {}
     market_state = data.get("market_state", {}) if isinstance(data, dict) else {}
     exposure = data.get("portfolio_exposure", {}) if isinstance(data, dict) else {}
@@ -332,8 +340,8 @@ def status_snapshot() -> dict[str, Any]:
         "data_update_status": update.get("status") or update.get("severity") or "unknown",
         "data_update_new_rows": update.get("added_rows", 0),
         "data_update_failed_count": update.get("failed_count", 0),
-        "data_sources": sources,
-        "actual_source_used": sources.get("actual_source_used") or update.get("actual_source_used") or update.get("source_used"),
+        "data_sources": policy_sources,
+        "actual_source_used": update.get("actual_source_used") or update.get("source_used") or sources.get("actual_source_used"),
         "fallback_triggered": bool(sources.get("fallback_triggered", update.get("fallback_triggered", False))),
         "jqdata_status": sources.get("jqdata_status", update.get("jqdata_status")),
         "baostock_status": sources.get("baostock_status", update.get("baostock_status")),
@@ -478,6 +486,14 @@ def data_health_snapshot() -> dict[str, Any]:
     data = dashboard_data()
     update = data_update_status()
     sources = data_source_status()
+    policy_sources = {
+        **sources,
+        "primary_source": "TUSHARE",
+        "fallback_source": "DISABLED",
+        "source_priority": ["TUSHARE"],
+        "baostock_role": "RECONCILIATION_ONLY",
+        "jqdata_fallback": "DISABLED",
+    }
     health = data.get("health_summary", {}) if isinstance(data, dict) else {}
     coverage_md = tail_text(REPORT_DIR / "latest_data_coverage.md", 80)
     health_md = tail_text(REPORT_DIR / "latest_data_health.md", 80)
@@ -497,16 +513,18 @@ def data_health_snapshot() -> dict[str, Any]:
         "failed_count": update.get("failed_count", 0),
         "status": update.get("status") or update.get("severity") or health.get("status", "unknown"),
         "diagnosis": update.get("reason") or update.get("recommendation") or "",
-        "data_sources": sources,
-        "primary_source": sources.get("primary_source", "jqdata"),
-        "fallback_source": sources.get("fallback_source", "baostock"),
-        "actual_source_used": sources.get("actual_source_used") or update.get("actual_source_used") or update.get("source_used"),
+        "data_sources": policy_sources,
+        "primary_source": "TUSHARE",
+        "fallback_source": "DISABLED",
+        "actual_source_used": update.get("actual_source_used") or update.get("source_used") or sources.get("actual_source_used"),
         "jqdata_status": sources.get("jqdata_status", update.get("jqdata_status")),
         "baostock_status": sources.get("baostock_status", update.get("baostock_status")),
         "fallback_triggered": bool(sources.get("fallback_triggered", update.get("fallback_triggered", False))),
         "failed_symbols": sources.get("failed_symbols", update.get("failed_symbols", [])),
         "unresolved_symbols": sources.get("unresolved_symbols", update.get("unresolved_symbols", [])),
-        "source_priority": sources.get("source_priority", ["jqdata", "baostock", "tushare"]),
+        "source_priority": ["TUSHARE"],
+        "baostock_role": "RECONCILIATION_ONLY",
+        "jqdata_fallback": "DISABLED",
         "coverage_tail": coverage_md,
         "health_tail": health_md,
         "baostock_api_calls": update.get("baostock_api_calls", 0),
