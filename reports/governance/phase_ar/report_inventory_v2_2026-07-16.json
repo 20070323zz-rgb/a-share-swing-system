@@ -3,14 +3,14 @@
     "artifact_type": "REPORT_INVENTORY",
     "backstop_scanner_version": "independent-backstop-scanner-v2",
     "evidence_schema_version": "governance-evidence-record-v2",
-    "generated_at": "2026-07-16T15:23:44+08:00",
+    "generated_at": "2026-07-16T15:28:05+08:00",
     "immutable": true,
     "record_count": 651,
     "review_schema_version": "manual-candidate-review-v2",
-    "run_id": "phase-ar-run_7addd70ff34558ccaaad7223",
+    "run_id": "phase-ar-run_24b49a9ade71c9ba451b0fd2",
     "schema_version": "report-inventory-v2",
     "snapshot_revision": "phase-ar-v2-2026-07-16",
-    "source_tree_commit": "ad15231fe6a675282b703d24eece38d45d1511f3",
+    "source_tree_commit": "edc8d69c34f0e3e78a4a938bbe66256442d8f2e5",
     "structured_scanner_version": "structured-reference-scanner-v2",
     "supersedes": "phase-ar-v1-2026-07-15"
   },
@@ -6322,7 +6322,7 @@
     {
       "business_date": null,
       "catalog_version": "report-inventory-v2",
-      "content_sha256": "64b12e53b7d6a7c2326cc3bf8c30d6b9c44b4b6281029efe4c2c86ed61dab964",
+      "content_sha256": "a389da025afea4feb9d5816da88e8c9dbe6cb45b2bca6b55da8a61bc266cf662",
       "created_from_content": false,
       "extension": ".json",
       "filename": "project_context_validation_latest.json",
@@ -6333,12 +6333,12 @@
       "retention_status": "ACTIVE_PROJECT_LIFETIME",
       "role": "CURRENT_ALIAS",
       "schema_version": "report-inventory-record-v2",
-      "size": 3495
+      "size": 4603
     },
     {
       "business_date": null,
       "catalog_version": "report-inventory-v2",
-      "content_sha256": "1cfb4e83dbcad84945709e36df3d21a122970920f311ebd1a814f524a5fe8151",
+      "content_sha256": "f8c5e4c97aea52d3a040683fbc7202b131fa83f4318e7e021d1451f8eeab6ac7",
       "created_from_content": false,
       "extension": ".md",
       "filename": "project_context_validation_latest.md",
