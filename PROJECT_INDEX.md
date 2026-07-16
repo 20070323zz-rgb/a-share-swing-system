@@ -30,8 +30,8 @@
 - BUY ranking：`reports/buy_signal_ranking.md`
 - 卖出复核：`reports/sell_signal_review.md`
 - 周报分析包：`reports/chatgpt_weekly_analysis_packet_latest.md`
-- 项目周报：`reports/project_weekly_report_2026-07-10.md`
-- 模拟交易周报：`reports/trading_weekly_report_2026-07-10.md`
+- 项目周报：`reports/archive/weekly/project_weekly_report_2026-07-10.md`
+- 模拟交易周报：`reports/archive/weekly/trading_weekly_report_2026-07-10.md`
 - 数据健康：`reports/latest_data_health.md`
 - 数据覆盖：`reports/latest_data_coverage.md`
 
@@ -257,7 +257,7 @@ Formal Execution: BLOCKED
 ## 本轮审计报告
 
 - `reports/project_checkpoint_post_merge_validation_2026-07.md`
-- `reports/pr_final_hygiene_audit_2026-07-12.md`
+- `reports/archive/legacy_misc/pr_final_hygiene_audit_2026-07-12.md`
 - `reports/project_structure_audit.md`
 - `reports/path_dependency_audit.md`
 - `reports/file_classification_plan.md`
