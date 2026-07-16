@@ -1,15 +1,15 @@
 # Project Context Validation Latest
 
 - validation_status: VALID_WITH_WARNINGS
-- validated_at: 2026-07-13 17:17:00
+- validated_at: 2026-07-16 00:23:55
 - repository_root: `<project_root>`
 - blocking_conflict_found: False
 
 ## 当前恢复点
 
-- Main Phase: Tushare Minimal Staging Proof & PIT Contract
-- Current Batch: None
-- Resume From: None
+- Main Phase: Tushare ETF Daily Availability Timing Audit
+- Current Batch: Tushare ETF Daily Availability Timing Audit
+- Resume From: Tushare ETF Daily Availability Timing Audit
 - Selected Shadow Regime Candidate: ASYMMETRIC_CONFIRM
 
 ## Latest Known Regime Snapshot

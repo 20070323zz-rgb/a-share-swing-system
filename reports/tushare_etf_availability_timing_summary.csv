@@ -1,0 +1,3 @@
+trade_date,day_status,tushare_slots_recorded,tushare_slots_expected,first_available_time,first_complete_time,first_quality_complete_time,first_stable_time,availability_state,data_readiness_status,last_revision_time,late_revision_risk,sh_first_complete_time,sz_first_complete_time,delayed_codes,max_coverage_ratio,revision_count,evidence_class
+2026-07-14,COMPLETE,10,10,16:15,16:15,16:15,16:30,STABLE,SHADOW_STABLE,,False,16:15,16:15,,1.0,0,INSUFFICIENT_FOR_FIVE_DAY_STABILITY_CERTIFICATION
+2026-07-15,COMPLETE,10,10,16:15,16:15,16:15,16:30,STABLE,SHADOW_STABLE,,False,16:15,16:15,,1.0,0,INSUFFICIENT_FOR_FIVE_DAY_STABILITY_CERTIFICATION
