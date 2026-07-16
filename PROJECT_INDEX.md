@@ -57,14 +57,14 @@ Paper Execution Safety Phase 1: COMPLETE
 Tushare 5000 Data Foundation Audit: COMPLETE
 Reports Governance Phase A: SUPERSEDED_BY_PHASE_AR
 Reports Governance Phase A-R: ACTIVE / ARCHITECTURE_ACCEPTED
-PR #5: DRAFT_AWAITING_RE_QC
-Report Inventory: REFRESHED_PENDING_QC
-Structured Scanner: REMEDIATED_PENDING_QC
-Backstop Scanner: REMEDIATED_PENDING_QC
-Scanner Disagreement: MATERIALIZED_PENDING_QC
-Manual Review Evidence: MATERIALIZED_PENDING_QC
-Migration Readiness: REBUILT_PENDING_QC
-Phase B Contract: COMPLETE_PENDING_QC
+PR #5: READY_FOR_REVIEW / MERGE_READY
+Report Inventory: REFRESHED_QC_PASS
+Structured Scanner: REMEDIATED_QC_PASS
+Backstop Scanner: REMEDIATED_QC_PASS
+Scanner Disagreement: MATERIALIZED_FAIL_CLOSED_QC_PASS
+Manual Review Evidence: MATERIALIZED_QC_PASS
+Migration Readiness: REBUILT_QC_PASS
+Phase B Contract: COMPLETE_QC_PASS
 Runtime Path Registry: NOT_STARTED
 Report File Migration: BLOCKED
 PR #1 Hygiene Cleanup: COMPLETE
