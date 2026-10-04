@@ -1,0 +1,310 @@
+{
+  "absolute_tr_outcome": {
+    "DAILY_TR_BASE": {
+      "assumed_cost_multiplier": "1",
+      "average_cash_ratio": "0.1088551163108571065096746813",
+      "average_unallocated_cash_after_rebalance": "256.0412935400867678958785249",
+      "cancel_reason_counts": {
+        "BELOW_MIN_BUY_LOT": 255
+      },
+      "cancelled_order_count": 255,
+      "commission": "5075",
+      "cutoff_unexecuted_plan_count": 0,
+      "daily_equity_row_count": 3260,
+      "dividend_event_entitlement_count": 11,
+      "filled_order_count": 1015,
+      "final_equity": "32637.5056074",
+      "first_execution_date": "2013-04-22",
+      "first_signal_date": "2013-04-19",
+      "frequency": "DAILY",
+      "initial_capital": "12000",
+      "invalid_signal_count": 4,
+      "invalid_signal_days": [
+        {
+          "date": "2015-04-13",
+          "reason": "510500_TR_OR_RET20_UNAVAILABLE"
+        },
+        {
+          "date": "2015-04-14",
+          "reason": "510500_TR_OR_RET20_UNAVAILABLE"
+        },
+        {
+          "date": "2015-04-15",
+          "reason": "510500_TR_OR_RET20_UNAVAILABLE"
+        },
+        {
+          "date": "2021-02-08",
+          "reason": "159915_TR_OR_RET20_UNAVAILABLE"
+        }
+      ],
+      "last_research_date": "2026-09-15",
+      "max_drawdown": "-0.5623317562256961010345052094",
+      "mean_post_trade_target_gap": "0.004138535856871282761744653871",
+      "minimum_commission_hit_rate": "1",
+      "quantity_actions_applied": [
+        {
+          "date_applied": "2015-04-14",
+          "event_id": "510500-2015-04-14-conversion"
+        },
+        {
+          "date_applied": "2022-08-29",
+          "event_id": "510500-2022-08-26-split"
+        }
+      ],
+      "rebalance_event_count": 461,
+      "scenario": "DAILY_TR_BASE",
+      "slippage_cost": "3185.5363926",
+      "total_assumed_cost": "8260.5363926",
+      "total_dividend_cash_entitled": "1943.2000",
+      "total_dividend_cash_released": "1943.2000",
+      "total_return_net_return": "1.71979213395"
+    },
+    "DAILY_TR_COST_STRESS_1P5X": {
+      "assumed_cost_multiplier": "1.5",
+      "average_cash_ratio": "0.1092586655392352772777089484",
+      "average_unallocated_cash_after_rebalance": "239.3743070481995661605206074",
+      "cancel_reason_counts": {
+        "BELOW_MIN_BUY_LOT": 251
+      },
+      "cancelled_order_count": 251,
+      "commission": "7575.0",
+      "cutoff_unexecuted_plan_count": 0,
+      "daily_equity_row_count": 3260,
+      "dividend_event_entitlement_count": 11,
+      "filled_order_count": 1010,
+      "final_equity": "27068.21071690",
+      "first_execution_date": "2013-04-22",
+      "first_signal_date": "2013-04-19",
+      "frequency": "DAILY",
+      "initial_capital": "12000",
+      "invalid_signal_count": 4,
+      "invalid_signal_days": [
+        {
+          "date": "2015-04-13",
+          "reason": "510500_TR_OR_RET20_UNAVAILABLE"
+        },
+        {
+          "date": "2015-04-14",
+          "reason": "510500_TR_OR_RET20_UNAVAILABLE"
+        },
+        {
+          "date": "2015-04-15",
+          "reason": "510500_TR_OR_RET20_UNAVAILABLE"
+        },
+        {
+          "date": "2021-02-08",
+          "reason": "159915_TR_OR_RET20_UNAVAILABLE"
+        }
+      ],
+      "last_research_date": "2026-09-15",
+      "max_drawdown": "-0.5838168572300902626873662213",
+      "mean_post_trade_target_gap": "0.004276796005277901112787357367",
+      "minimum_commission_hit_rate": "1",
+      "quantity_actions_applied": [
+        {
+          "date_applied": "2015-04-14",
+          "event_id": "510500-2015-04-14-conversion"
+        },
+        {
+          "date_applied": "2022-08-29",
+          "event_id": "510500-2022-08-26-split"
+        }
+      ],
+      "rebalance_event_count": 461,
+      "scenario": "DAILY_TR_COST_STRESS_1P5X",
+      "slippage_cost": "4304.40728310",
+      "total_assumed_cost": "11879.40728310",
+      "total_dividend_cash_entitled": "1742.6000",
+      "total_dividend_cash_released": "1742.6000",
+      "total_return_net_return": "1.255684226408333333333333333"
+    },
+    "WEEKLY_TR_BASE": {
+      "assumed_cost_multiplier": "1",
+      "average_cash_ratio": "0.1082976046138881931384350170",
+      "average_unallocated_cash_after_rebalance": "267.1403370647804878048780488",
+      "cancel_reason_counts": {
+        "BELOW_MIN_BUY_LOT": 77
+      },
+      "cancelled_order_count": 77,
+      "commission": "2420",
+      "cutoff_unexecuted_plan_count": 0,
+      "daily_equity_row_count": 3260,
+      "dividend_event_entitlement_count": 14,
+      "filled_order_count": 484,
+      "final_equity": "42461.2063714",
+      "first_execution_date": "2013-04-22",
+      "first_signal_date": "2013-04-19",
+      "frequency": "WEEKLY",
+      "initial_capital": "12000",
+      "invalid_signal_count": 0,
+      "invalid_signal_days": [],
+      "last_research_date": "2026-09-15",
+      "max_drawdown": "-0.5037863803055831549740053205",
+      "mean_post_trade_target_gap": "0.004077278512911097234869378402",
+      "minimum_commission_hit_rate": "1",
+      "quantity_actions_applied": [
+        {
+          "date_applied": "2015-04-14",
+          "event_id": "510500-2015-04-14-conversion"
+        },
+        {
+          "date_applied": "2022-08-29",
+          "event_id": "510500-2022-08-26-split"
+        }
+      ],
+      "rebalance_event_count": 205,
+      "scenario": "WEEKLY_TR_BASE",
+      "slippage_cost": "1512.7556286",
+      "total_assumed_cost": "3932.7556286",
+      "total_dividend_cash_entitled": "3049.9000",
+      "total_dividend_cash_released": "3049.9000",
+      "total_return_net_return": "2.538433864283333333333333333"
+    },
+    "WEEKLY_TR_COST_STRESS_1P5X": {
+      "assumed_cost_multiplier": "1.5",
+      "average_cash_ratio": "0.1089135524840362262230930770",
+      "average_unallocated_cash_after_rebalance": "278.6861288763414634146341463",
+      "cancel_reason_counts": {
+        "BELOW_MIN_BUY_LOT": 86
+      },
+      "cancelled_order_count": 86,
+      "commission": "3600.0",
+      "cutoff_unexecuted_plan_count": 0,
+      "daily_equity_row_count": 3260,
+      "dividend_event_entitlement_count": 14,
+      "filled_order_count": 480,
+      "final_equity": "39254.82004820",
+      "first_execution_date": "2013-04-22",
+      "first_signal_date": "2013-04-19",
+      "frequency": "WEEKLY",
+      "initial_capital": "12000",
+      "invalid_signal_count": 0,
+      "invalid_signal_days": [],
+      "last_research_date": "2026-09-15",
+      "max_drawdown": "-0.5106180044100983088240619116",
+      "mean_post_trade_target_gap": "0.004356367282866236643033236584",
+      "minimum_commission_hit_rate": "1",
+      "quantity_actions_applied": [
+        {
+          "date_applied": "2015-04-14",
+          "event_id": "510500-2015-04-14-conversion"
+        },
+        {
+          "date_applied": "2022-08-29",
+          "event_id": "510500-2022-08-26-split"
+        }
+      ],
+      "rebalance_event_count": 205,
+      "scenario": "WEEKLY_TR_COST_STRESS_1P5X",
+      "slippage_cost": "2171.98395180",
+      "total_assumed_cost": "5771.98395180",
+      "total_dividend_cash_entitled": "2891.6000",
+      "total_dividend_cash_released": "2891.6000",
+      "total_return_net_return": "2.271235004016666666666666667"
+    }
+  },
+  "changed_protected_files": [],
+  "complete_replay": true,
+  "deterministic_byte_identical": true,
+  "mechanism_diagnosis": "DEFERRED",
+  "next_research_recommendation": "CANDIDATE_FOR_PM_002_MECHANISM_DIAGNOSIS",
+  "parameter_tuning": "NOT_AUTHORIZED",
+  "pm_002_executed": false,
+  "protected_file_count": 356,
+  "recommended_research_state": "HIGH_FIDELITY_RELATIVE_ADVANTAGE_PRESERVED",
+  "relative_implementation_comparison": {
+    "base_relative_direction_preserved": true,
+    "base_weekly_minus_daily": {
+      "absolute_mdd_delta": "-0.0585453759201129460604998889",
+      "dividend_entitlement_delta_cny": "1106.7000",
+      "final_equity_delta_cny": "9823.7007640",
+      "mdd_2pp_guardrail_pass": true,
+      "return_delta": "0.818641730333333333333333333"
+    },
+    "price_only_base_delta": "0.750480692316666666666666667",
+    "price_only_stress_delta": "0.929177416579166666666666666",
+    "stress_relative_direction_preserved": true,
+    "stress_weekly_minus_daily": {
+      "absolute_mdd_delta": "-0.0731988528199919538633043097",
+      "dividend_entitlement_delta_cny": "1149.0000",
+      "final_equity_delta_cny": "12186.60933130",
+      "mdd_2pp_guardrail_pass": true,
+      "return_delta": "1.015550777608333333333333334"
+    },
+    "tr_base_delta_minus_price_only_base_delta": "0.068161038016666666666666666",
+    "tr_stress_delta_minus_price_only_stress_delta": "0.086373361029166666666666668"
+  },
+  "research_cutoff": "2026-09-15",
+  "scenario_hashes": {
+    "DAILY_TR_BASE": [
+      {
+        "daily_equity.csv": "b3b04a28dc230f41b71a1349e21fa362880576727888ec03145731035b2044a9",
+        "dividend_accounting.csv": "6c5328867eb41a46a87952d54adeb437e5a8354f198cd02604031ab2ceab9d8f",
+        "holdings_valuation.csv": "c51b818f58f0fc34ba4d132f1b5ec4c3ef2f8f4d50a252bb430b83407158e4ed",
+        "orders.csv": "f02b85eb3c835a1f0e256aa111cb742b47111e3041ff03783621a2b71c265b04",
+        "summary.json": "33a1b6cd9e4be5b5d2751fc7d5efd40889b2f3d0aa4a929e4301c99aad775cb0"
+      },
+      {
+        "daily_equity.csv": "b3b04a28dc230f41b71a1349e21fa362880576727888ec03145731035b2044a9",
+        "dividend_accounting.csv": "6c5328867eb41a46a87952d54adeb437e5a8354f198cd02604031ab2ceab9d8f",
+        "holdings_valuation.csv": "c51b818f58f0fc34ba4d132f1b5ec4c3ef2f8f4d50a252bb430b83407158e4ed",
+        "orders.csv": "f02b85eb3c835a1f0e256aa111cb742b47111e3041ff03783621a2b71c265b04",
+        "summary.json": "33a1b6cd9e4be5b5d2751fc7d5efd40889b2f3d0aa4a929e4301c99aad775cb0"
+      }
+    ],
+    "DAILY_TR_COST_STRESS_1P5X": [
+      {
+        "daily_equity.csv": "81f7d64bed1d93a68ef7700c638690de1496f4f86bd8f1f7bda2f0746124c791",
+        "dividend_accounting.csv": "15723e491d0e3ce4838045d0ea70c02a5cc92b57d8624fe73da2ec2dcc4eea88",
+        "holdings_valuation.csv": "4f28a076d588ef1ddc4524f8637cedae7e75740e01d5b3f6cd464e010772f66f",
+        "orders.csv": "3efb34694030d077593e64f23a6661992dae3b384ba03d98697b3e12189c9c10",
+        "summary.json": "611e47d4a5c57ca11715cdaa56d8266f9d98f2b4e5a6f59d661317d952c6a118"
+      },
+      {
+        "daily_equity.csv": "81f7d64bed1d93a68ef7700c638690de1496f4f86bd8f1f7bda2f0746124c791",
+        "dividend_accounting.csv": "15723e491d0e3ce4838045d0ea70c02a5cc92b57d8624fe73da2ec2dcc4eea88",
+        "holdings_valuation.csv": "4f28a076d588ef1ddc4524f8637cedae7e75740e01d5b3f6cd464e010772f66f",
+        "orders.csv": "3efb34694030d077593e64f23a6661992dae3b384ba03d98697b3e12189c9c10",
+        "summary.json": "611e47d4a5c57ca11715cdaa56d8266f9d98f2b4e5a6f59d661317d952c6a118"
+      }
+    ],
+    "WEEKLY_TR_BASE": [
+      {
+        "daily_equity.csv": "eef18be03ad3020c63775b8e48863ee6a8d73f258ee563634f239c8dec1fe7aa",
+        "dividend_accounting.csv": "d4588bc009cceeb90b3d37cce729cbdfb55e77aa7654534f0657bfcfaacf296e",
+        "holdings_valuation.csv": "f09a5df1f0aa82182dbe7cbf954f03dafe6b226fae2f24b9d5f09fcbf46223a0",
+        "orders.csv": "526aa7a906fb28e03cf71135af1d3b931c3af18dda79c58f272b323b52049bb5",
+        "summary.json": "e43c5a2bfd2b054c2356eea066e746a6f18dfa871aeaa912c81eef112f49fc7b"
+      },
+      {
+        "daily_equity.csv": "eef18be03ad3020c63775b8e48863ee6a8d73f258ee563634f239c8dec1fe7aa",
+        "dividend_accounting.csv": "d4588bc009cceeb90b3d37cce729cbdfb55e77aa7654534f0657bfcfaacf296e",
+        "holdings_valuation.csv": "f09a5df1f0aa82182dbe7cbf954f03dafe6b226fae2f24b9d5f09fcbf46223a0",
+        "orders.csv": "526aa7a906fb28e03cf71135af1d3b931c3af18dda79c58f272b323b52049bb5",
+        "summary.json": "e43c5a2bfd2b054c2356eea066e746a6f18dfa871aeaa912c81eef112f49fc7b"
+      }
+    ],
+    "WEEKLY_TR_COST_STRESS_1P5X": [
+      {
+        "daily_equity.csv": "1eaae71f6efce7cc68804db7c4a5d0cafd9d8da3de1f431f90ee071688059f58",
+        "dividend_accounting.csv": "d643b8ba7bb7679b860411ca6b2cc5491bf11f4632f9c6caf810105b395341d5",
+        "holdings_valuation.csv": "5b9efa1926f711dc7fd3781bc2ad3e87dfba5184af9e34321a94ae613e8cfa69",
+        "orders.csv": "857aa9b36c1c152812f7e679140bf66ef8db5d9fc455465cbe1bc313c1733e07",
+        "summary.json": "3043948954a44e31892f7e55f3626ed3b70b48c2bbd8e7f6c2148c1ace9039c8"
+      },
+      {
+        "daily_equity.csv": "1eaae71f6efce7cc68804db7c4a5d0cafd9d8da3de1f431f90ee071688059f58",
+        "dividend_accounting.csv": "d643b8ba7bb7679b860411ca6b2cc5491bf11f4632f9c6caf810105b395341d5",
+        "holdings_valuation.csv": "5b9efa1926f711dc7fd3781bc2ad3e87dfba5184af9e34321a94ae613e8cfa69",
+        "orders.csv": "857aa9b36c1c152812f7e679140bf66ef8db5d9fc455465cbe1bc313c1733e07",
+        "summary.json": "3043948954a44e31892f7e55f3626ed3b70b48c2bbd8e7f6c2148c1ace9039c8"
+      }
+    ]
+  },
+  "task": "TASK-RES-FREQ-TR-003",
+  "verdict": "PASSED_WITH_WARNINGS",
+  "warnings": [
+    "Official payment dates do not establish pre-open spendability; conservative next-trading-cycle release is frozen.",
+    "Broker-specific fractional-cent posting is not evidenced; exact Decimal research accrual is used."
+  ]
+}

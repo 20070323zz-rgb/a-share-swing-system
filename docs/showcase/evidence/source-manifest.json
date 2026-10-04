@@ -1,0 +1,105 @@
+{
+  "display_date": "2026-10-04",
+  "historical_research_cutoff": "2026-09-15",
+  "scope": "research presentation snapshots; no complete reproduction claim",
+  "snapshots": [
+    {
+      "file": "res_freq_tr_003_screen_2026-09-26.md",
+      "original_repository_path": "reports/res_freq_tr_003_screen_2026-09-26.md",
+      "sha256": "9ae8e2454f6ac34870c629de0fd86c0191574cd96f942a267f83154c9d24cbfa"
+    },
+    {
+      "file": "res_freq_tr_003_summary_2026-09-26.json",
+      "original_repository_path": "reports/res_freq_tr_003_summary_2026-09-26.json",
+      "sha256": "09f710813b9e366d5f152934a0571e8bed1d89b18144af17aece7fe5ba365e57"
+    },
+    {
+      "file": "res_freq_pm_002a_mechanism_2026-09-27.md",
+      "original_repository_path": "reports/res_freq_pm_002a_mechanism_2026-09-27.md",
+      "sha256": "65fa95a5bd7014522148e5c20baeba2df6dbb8e67197c32bc12455fc85c360c7"
+    },
+    {
+      "file": "res_freq_pm_002a_summary_2026-09-27.json",
+      "original_repository_path": "reports/res_freq_pm_002a_summary_2026-09-27.json",
+      "sha256": "2725429e932236d339e347ac16c63392f545afb0dc34000efa0e0a013b2de163"
+    },
+    {
+      "file": "res_freq_pm_002b_pnl_attribution_2026-09-27.md",
+      "original_repository_path": "reports/res_freq_pm_002b_pnl_attribution_2026-09-27.md",
+      "sha256": "901d253fb8c01de929da8ca5fbc87c9b85231769d18626d53db2ab9a25de4cb8"
+    },
+    {
+      "file": "res_freq_pm_002b_summary_2026-09-27.json",
+      "original_repository_path": "reports/res_freq_pm_002b_summary_2026-09-27.json",
+      "sha256": "199ee0b11f01025b20fbe8ee666c804f9dd767850974db40c4d6dfdb3608208f"
+    },
+    {
+      "file": "res_freq_pm_002c1_robustness_2026-09-28.md",
+      "original_repository_path": "reports/res_freq_pm_002c1_robustness_2026-09-28.md",
+      "sha256": "aaf62291fd59506d8116458752ef1eadbc16e0343add21a454e04ef1c02655e6"
+    },
+    {
+      "file": "res_freq_pm_002c1_summary_2026-09-28.json",
+      "original_repository_path": "reports/res_freq_pm_002c1_summary_2026-09-28.json",
+      "sha256": "d466553d9a7af89f0cb775d7d4c2913b6a513968b96c02a3f8e995b51fb6990c"
+    },
+    {
+      "file": "res_freq_oos_001_freeze_2026-10-02.md",
+      "original_repository_path": "reports/res_freq_oos_001_freeze_2026-10-02.md",
+      "sha256": "beefe2883865bab87199328cc48fc9623c588ddbfc38ffb913259ed3977b38b1"
+    },
+    {
+      "file": "res_freq_oos_eng_001b_readiness_2026-10-04.md",
+      "original_repository_path": "reports/res_freq_oos_eng_001b_readiness_2026-10-04.md",
+      "sha256": "0f3257b27a09f39011a5609ee19165363b3125b54421bd49441853020687dff0"
+    },
+    {
+      "file": "p2_risk_adjusted_momentum_robustness_2026-07-19_report.md",
+      "original_repository_path": "reports/p2_risk_adjusted_momentum_robustness_2026-07-19_report.md",
+      "sha256": "b505dda4cf69ae487aea0967a38faaa7c2514f50ce0b4743ff932e6fbacb05a4"
+    },
+    {
+      "file": "p2_risk_adjusted_momentum_robustness_2026-07-19_decision.json",
+      "original_repository_path": "reports/p2_risk_adjusted_momentum_robustness_2026-07-19_decision.json",
+      "sha256": "a9455938c5fd674bbbbfa6d6e5ccdafcdf48d58dd018a75ceb47da2502538aa3"
+    },
+    {
+      "file": "res_freq_pm_002b_group_stats_2026-09-27.csv",
+      "original_repository_path": "reports/res_freq_pm_002b_group_stats_2026-09-27.csv",
+      "sha256": "9320a15c89a613c617c1eba47efcef1cc74b118e6e7f97cb3fe6a7266f3b5a52"
+    }
+  ],
+  "derived_data": [
+    {
+      "file": "historical-account-equity.csv",
+      "operation": "exact selection of scenario,date,research_equity; all four scenarios retained",
+      "source_repository_path": "reports/res_freq_tr_003_daily_equity_2026-09-26.csv",
+      "source_sha256": "6ae90502c2aa7d9f210ca497bba530308db735e0a7ad255187b6f97ed19cd8ae",
+      "sha256": "b1efbb9d1a3e48b6481ab1b6677ced0411cfd9d12eb9cee1c61b7de4fb89f42b"
+    }
+  ],
+  "figures": [
+    {
+      "file": "figures/equity-and-drawdown.png",
+      "sha256": "6f33075edfa47d08fd8560276ae8cba80ac65a32f17feabf7ebf7804d047c4f5",
+      "inputs": [
+        "historical-account-equity.csv",
+        "res_freq_tr_003_summary_2026-09-26.json"
+      ]
+    },
+    {
+      "file": "figures/frequency-and-cost.png",
+      "sha256": "ab7daf2c65753d92fe7c5beaa9df0b169d916478b314e374023b78dc9e32fc64",
+      "inputs": [
+        "res_freq_tr_003_summary_2026-09-26.json"
+      ]
+    },
+    {
+      "file": "figures/mechanism-robustness.png",
+      "sha256": "f29cf9c01da1a13e6644647f8d26ebf258212a236dc26a00c7712b4ea79bb10c",
+      "inputs": [
+        "res_freq_pm_002c1_summary_2026-09-28.json"
+      ]
+    }
+  ]
+}

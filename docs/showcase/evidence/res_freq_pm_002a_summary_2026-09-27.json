@@ -1,0 +1,108 @@
+{
+  "absolute_return_attribution_performed": false,
+  "all_daily_dates_assigned_to_one_interval": true,
+  "all_daily_events_uniquely_classified": true,
+  "base_stress_target_chronology_identical": true,
+  "changed_protected_files": [],
+  "daily_extra_assumed_cost": "4970.1172100",
+  "daily_extra_cost_divided_by_total_cost_gap": "1.148421669448503514814365490",
+  "daily_extra_filled_order_count": 607,
+  "daily_filled_orders_reconciled": 1015,
+  "daily_minus_weekly_total_assumed_cost": "4327.7807640",
+  "daily_post_initial_target_changes": 460,
+  "daily_target_changes_per_complete_interval": {
+    "0": 409,
+    "1": 151,
+    "2": 83,
+    "3+": 44
+  },
+  "extra_order_match_rule": "one-to-one match of filled Daily and Weekly orders within signal-date interval, exact old/new Top2 transition, ETF, and side; share quantities may differ",
+  "future_hypothesis_candidate": "A separately frozen study could test whether a ranking buffer reduces turnover; no buffer or threshold was tested here.",
+  "gap_quantile_rule": "linear interpolation over sorted Decimal values at p*(n-1); no threshold testing",
+  "initial_allocation_treatment": "included as one of 461 frozen Daily target events and first interval rebalance count, excluded from intrainterval target-change count and whipsaw sequence",
+  "max_daily_target_changes_in_one_complete_interval": 5,
+  "mechanism_diagnosis": "PM_002A_DESCRIPTIVE_COMPLETE",
+  "median_not_confirmed_minus_confirmed": "-0.00163096302198597640832996550",
+  "parameter_tuning": "NOT_AUTHORIZED",
+  "protected_file_count": 368,
+  "rank23_gap_distribution": {
+    "all_valid_daily_signals": {
+      "count": 3256,
+      "max": "0.229629591520977288768410888",
+      "mean": "0.02603364079198678612596909864",
+      "median": "0.02003055775774173904700939330",
+      "min": "0.000010702698495253658933614",
+      "p25": "0.009015043194259770061602151450",
+      "p75": "0.03638449795760495586658040900"
+    },
+    "confirmed_by_weekly": {
+      "count": 264,
+      "max": "0.0668515812050779296682923201",
+      "mean": "0.009877749738244789508773077273",
+      "median": "0.0062891664495469478452683595",
+      "min": "0.000011991457229878197696643",
+      "p25": "0.002981084526899177134780366750",
+      "p75": "0.01345803235891760738871051980"
+    },
+    "daily_rebalance_events": {
+      "count": 461,
+      "max": "0.0978641656910984164972350293",
+      "mean": "0.008716754184842087684208844128",
+      "median": "0.0056425899451736451135054420",
+      "min": "0.000010702698495253658933614",
+      "p25": "0.002623794280160163967735143300",
+      "p75": "0.01152669858074345050587846600"
+    },
+    "not_confirmed_by_weekly": {
+      "count": 143,
+      "max": "0.0978641656910984164972350293",
+      "mean": "0.007399027878979993258532175762",
+      "median": "0.00465820342756097143693839400",
+      "min": "0.000035473384772257098231558",
+      "p25": "0.001952843124097422614239653950",
+      "p75": "0.009027933434236230612559490950"
+    },
+    "whipsaw_events": {
+      "count": 277,
+      "max": "0.0978641656910984164972350293",
+      "mean": "0.008465447383130302152907380058",
+      "median": "0.00562447475776245415017416870",
+      "min": "0.000011991457229878197696643",
+      "p25": "0.002621061532785326179156116200",
+      "p75": "0.01083715208681773155836901240"
+    }
+  },
+  "recommended_next_research_state": "CANDIDATE_FOR_PM_002B_PNL_ATTRIBUTION",
+  "research_cutoff": "2026-09-15",
+  "signal_2015_04_15_invalid": true,
+  "source_sha256": {
+    "tr_002_contract": "b632215b1902d4d3ae9dcbce31102c029286361c268468ed74dd05fa75c44294",
+    "tr_003_orders": "adf279f2a281635d52536b560e05c3bf9781f52c095eb43ec18c234de7920806",
+    "tr_003_summary": "09f710813b9e366d5f152934a0571e8bed1d89b18144af17aece7fe5ba365e57"
+  },
+  "task": "TASK-RES-FREQ-PM-002A",
+  "total_daily_rebalance_events": 461,
+  "trailing_censored_interval_count": 1,
+  "verdict": "PASSED_WITH_WARNINGS",
+  "warnings": [
+    "Extra-order matching is a fixed one-to-one order-pattern comparison within signal intervals; it does not match share quantities or attribute final P&L causally.",
+    "The incomplete final week is retained as a censored row and excluded from complete-week interval rates."
+  ],
+  "weekly_confirmation_counts": {
+    "CONFIRMED_BY_WEEKLY": 264,
+    "DIFFERENT_WEEKLY_TARGET": 54,
+    "NOT_CONFIRMED_BY_WEEKLY": 143
+  },
+  "weekly_confirmation_definition": "strictly next later legal Weekly checkpoint; exact Top2 set comparison to Daily new/old target",
+  "weekly_confirmation_rates": {
+    "CONFIRMED_BY_WEEKLY": "0.5726681127982646420824295011",
+    "DIFFERENT_WEEKLY_TARGET": "0.1171366594360086767895878525",
+    "NOT_CONFIRMED_BY_WEEKLY": "0.3101952277657266811279826464"
+  },
+  "weekly_filled_orders_reconciled": 484,
+  "weekly_interval_count": 687,
+  "weekly_interval_definition": "disjoint actual trading-day assignments (prior weekly checkpoint, next weekly checkpoint], with initial checkpoint as first anchor; incomplete final week separately censored",
+  "weekly_target_change_events": 205,
+  "whipsaw_interval_count": 111,
+  "whipsaw_interval_rate": "0.1615720524017467248908296943"
+}

@@ -1,0 +1,241 @@
+{
+  "all_branches_same_start_state": true,
+  "all_canceled_orders_remain_canceled": true,
+  "all_daily_actual_reconciliations_exact": true,
+  "all_daily_change_statistics": {
+    "gross_path_effect_bps": {
+      "count": 278,
+      "max": "291.9317540888674907570554320",
+      "mean": "-1.006705257589303604946805083",
+      "median": "0",
+      "min": "-294.2877284781916036640163491",
+      "negative_count": 135,
+      "negative_rate": "0.4856115107913669064748201439",
+      "p25": "-27.06365415905134154644868569",
+      "p75": "19.75463647319777836618069540",
+      "positive_count": 104,
+      "positive_rate": "0.3741007194244604316546762590"
+    },
+    "net_intrawweek_effect_bps": {
+      "count": 278,
+      "max": "285.0799763730686983391344921",
+      "mean": "-10.30457148960353012359543017",
+      "median": "-7.494889379776649259720614395",
+      "min": "-310.0705374179923149642293699",
+      "negative_count": 153,
+      "negative_rate": "0.5503597122302158273381294964",
+      "p25": "-38.22345128170680972272101699",
+      "p75": "9.683677739887047859036086676",
+      "positive_count": 86,
+      "positive_rate": "0.3093525179856115107913669065"
+    },
+    "trading_friction_effect_bps": {
+      "count": 278,
+      "max": "0",
+      "mean": "-9.297866232014226518648625112",
+      "median": "-7.55571056521239368945708905",
+      "min": "-37.51392263543266333302687257",
+      "negative_count": 239,
+      "negative_rate": "0.8597122302158273381294964029",
+      "p25": "-12.91502572015882336894428528",
+      "p75": "-6.174273801949503491702195019",
+      "positive_count": 0,
+      "positive_rate": "0"
+    }
+  },
+  "all_interval_reconciliations_exact": true,
+  "all_shadow_fills_equal_frozen_actual": true,
+  "changed_protected_files": [],
+  "common_start_rule": "after frozen prior Weekly-checkpoint orders execute on next actual trading day and after that day's close valuation/dividend accounting, before any order from that day's new signal",
+  "complete_attribution_intervals": 687,
+  "daily_change_intervals": 278,
+  "dividend_quantity_invalid_signal_invariants": "PRESERVED",
+  "effect_counts_daily_change": {
+    "gross_negative": 135,
+    "gross_positive": 104,
+    "gross_zero": 39,
+    "net_negative": 153,
+    "net_positive": 86,
+    "net_zero": 39
+  },
+  "end_rule": "next Weekly checkpoint close after valuation, before execution of its new signal",
+  "future_hypothesis_candidate": "Ranking buffer may be considered only in a separately frozen task; no rule or threshold was tested here.",
+  "gap_descriptions": [
+    {
+      "group": "NET_POSITIVE_DAILY_CHANGE",
+      "interval_count": 86,
+      "median_interval_rank23_gap": "0.01231316249863227666486572595"
+    },
+    {
+      "group": "NET_NEGATIVE_DAILY_CHANGE",
+      "interval_count": 153,
+      "median_interval_rank23_gap": "0.009378878133809667362139681200"
+    },
+    {
+      "group": "DAILY_WHIPSAW",
+      "interval_count": 111,
+      "median_interval_rank23_gap": "0.007194761106239391184819809000"
+    },
+    {
+      "group": "DAILY_CHANGE_NON_WHIPSAW",
+      "interval_count": 167,
+      "median_interval_rank23_gap": "0.01230746423307818295092399100"
+    }
+  ],
+  "group_statistics": {
+    "DAILY_CHANGE_NON_WHIPSAW": {
+      "gross_path_effect_bps": {
+        "count": 167,
+        "max": "291.9317540888674907570554320",
+        "mean": "14.26891713708128794200819044",
+        "median": "0.0",
+        "min": "-194.3370308768706951034316662",
+        "negative_count": 49,
+        "negative_rate": "0.2934131736526946107784431138",
+        "p25": "-5.97105762794493699333460949",
+        "p75": "38.51353159510336052400459116",
+        "positive_count": 79,
+        "positive_rate": "0.4730538922155688622754491018"
+      },
+      "net_intrawweek_effect_bps": {
+        "count": 167,
+        "max": "285.0799763730686983391344921",
+        "mean": "8.262621197121565671332587695",
+        "median": "0.0",
+        "min": "-206.2516478158647507050635076",
+        "negative_count": 61,
+        "negative_rate": "0.3652694610778443113772455090",
+        "p25": "-14.86264874148485283485112328",
+        "p75": "32.00430016675855315688252320",
+        "positive_count": 67,
+        "positive_rate": "0.4011976047904191616766467066"
+      },
+      "trading_friction_effect_bps": {
+        "count": 167,
+        "max": "0",
+        "mean": "-6.006295939959722270675602784",
+        "median": "-6.671483398592242039146890774",
+        "min": "-14.66063753471221672757396699",
+        "negative_count": 128,
+        "negative_rate": "0.7664670658682634730538922156",
+        "p25": "-7.825636862141823287482241245",
+        "p75": "-5.438107871306990296363097405",
+        "positive_count": 0,
+        "positive_rate": "0"
+      }
+    },
+    "DAILY_WHIPSAW": {
+      "gross_path_effect_bps": {
+        "count": 111,
+        "max": "241.0687566678972685946989978",
+        "mean": "-23.98894795948109449090612274",
+        "median": "-18.53435308663200419135014754",
+        "min": "-294.2877284781916036640163491",
+        "negative_count": 86,
+        "negative_rate": "0.7747747747747747747747747748",
+        "p25": "-45.76322482098331977993479622",
+        "p75": "-3.267956232651368118861138866",
+        "positive_count": 25,
+        "positive_rate": "0.2252252252252252252252252252"
+      },
+      "net_intrawweek_effect_bps": {
+        "count": 111,
+        "max": "221.8224132361274332568004572",
+        "mean": "-38.23899652278453010335199759",
+        "median": "-31.76532884908304602870589489",
+        "min": "-310.0705374179923149642293699",
+        "negative_count": 92,
+        "negative_rate": "0.8288288288288288288288288288",
+        "p25": "-59.4489783267610613088437744",
+        "p75": "-16.57191659083137550189056198",
+        "positive_count": 19,
+        "positive_rate": "0.1711711711711711711711711712"
+      },
+      "trading_friction_effect_bps": {
+        "count": 111,
+        "max": "-5.420087242438670483227316985",
+        "mean": "-14.25004856330343561244587490",
+        "median": "-13.76038174714505521580097155",
+        "min": "-37.51392263543266333302687257",
+        "negative_count": 111,
+        "negative_rate": "1",
+        "p25": "-16.81248070686053865682298754",
+        "p75": "-11.28740804464921284777551296",
+        "positive_count": 0,
+        "positive_rate": "0"
+      }
+    },
+    "NO_DAILY_TARGET_CHANGE": {
+      "gross_path_effect_bps": {
+        "count": 409,
+        "max": "0",
+        "mean": "0",
+        "median": "0.0",
+        "min": "0",
+        "negative_count": 0,
+        "negative_rate": "0",
+        "p25": "0.00",
+        "p75": "0.00",
+        "positive_count": 0,
+        "positive_rate": "0"
+      },
+      "net_intrawweek_effect_bps": {
+        "count": 409,
+        "max": "0",
+        "mean": "0",
+        "median": "0.0",
+        "min": "0",
+        "negative_count": 0,
+        "negative_rate": "0",
+        "p25": "0.00",
+        "p75": "0.00",
+        "positive_count": 0,
+        "positive_rate": "0"
+      },
+      "trading_friction_effect_bps": {
+        "count": 409,
+        "max": "0",
+        "mean": "0",
+        "median": "0.0",
+        "min": "0",
+        "negative_count": 0,
+        "negative_rate": "0",
+        "p25": "0.00",
+        "p75": "0.00",
+        "positive_count": 0,
+        "positive_rate": "0"
+      }
+    }
+  },
+  "local_reset": true,
+  "non_compounded": true,
+  "parameter_tuning": "NOT_AUTHORIZED",
+  "protected_file_count": 380,
+  "recommended_mechanism_state": "MECHANISM_SUPPORTED: PATH_NOISE_PLUS_TRADING_FRICTION",
+  "recommended_next_research_action": "Create a separately frozen mechanism-robustness/statistical validation task before considering any strategy rule; do not start it automatically.",
+  "research_cutoff": "2026-09-15",
+  "source_sha256": {
+    "pm_002a_intervals": "b462e60ae87c6524643af461eea8d3bc1ec78754e2b91041dc62fb661d0284e0",
+    "tr_003_daily_equity": "6ae90502c2aa7d9f210ca497bba530308db735e0a7ad255187b6f97ed19cd8ae",
+    "tr_003_orders": "adf279f2a281635d52536b560e05c3bf9781f52c095eb43ec18c234de7920806",
+    "tr_003_summary": "09f710813b9e366d5f152934a0571e8bed1d89b18144af17aece7fe5ba365e57"
+  },
+  "task": "TASK-RES-FREQ-PM-002B",
+  "total_local_gross_path_effect_cny": "-2123.3000000",
+  "total_local_net_effect_cny": "-8568.7029900",
+  "total_local_trading_friction_effect_cny": "-6445.4029900",
+  "trailing_censored_intervals_excluded": 1,
+  "verdict": "PASSED_WITH_WARNINGS",
+  "warnings": [
+    "Every interval resets to the Daily actual account state; sums are non-compounded local diagnostics and do not decompose the 9823.70 CNY final Weekly-Daily equity gap.",
+    "The common start is next actual trading-day close after checkpoint-generated orders, retaining frozen close valuation and dividend state."
+  ],
+  "whipsaw_intervals": 111,
+  "whipsaw_minus_nonwhipsaw_median_bps": {
+    "gross_path": "-18.53435308663200419135014754",
+    "net": "-31.76532884908304602870589489",
+    "trading_friction": "-7.088898348552813176654080776"
+  },
+  "zero_change_intervals": 409,
+  "zero_change_sanity_passed": true
+}

@@ -1,0 +1,157 @@
+{
+  "complete_interval_count": 687,
+  "component_stability_under_rule": {
+    "friction": true,
+    "gross_path": true,
+    "net": true
+  },
+  "conservative_interpretation_rule": "For each component: 97.5 percentile < 0, >=95% bootstrap negative, and all 278 leave-one-out differences < 0; all three components required for SUPPORTED.",
+  "daily_change_interval_count": 278,
+  "descriptive_support": {
+    "rank23_gap_supporting_exploratory": {
+      "net_negative": {
+        "count": 153,
+        "median_interval_rank23_gap": "0.00937887813380966736213968120"
+      },
+      "net_positive": {
+        "count": 86,
+        "median_interval_rank23_gap": "0.01231316249863227666486572595"
+      },
+      "nonwhipsaw_daily_change": {
+        "count": 167,
+        "median_interval_rank23_gap": "0.01230746423307818295092399100"
+      },
+      "whipsaw": {
+        "count": 111,
+        "median_interval_rank23_gap": "0.00719476110623939118481980900"
+      }
+    },
+    "sign_counts": {
+      "DAILY_CHANGE_NON_WHIPSAW": {
+        "gross_path": {
+          "negative": 49,
+          "positive": 79,
+          "zero": 39
+        },
+        "net": {
+          "negative": 61,
+          "positive": 67,
+          "zero": 39
+        }
+      },
+      "DAILY_WHIPSAW": {
+        "gross_path": {
+          "negative": 86,
+          "positive": 25,
+          "zero": 0
+        },
+        "net": {
+          "negative": 92,
+          "positive": 19,
+          "zero": 0
+        }
+      }
+    }
+  },
+  "interpretation": "净效果、摩擦前路径与交易摩擦的 whipsaw 中位差在多数预定重采样中保持负方向；逐一区间移除的结果同向。因此较差的 whipsaw 局部结果没有明显依赖单个异常区间。",
+  "leave_one_out": {
+    "friction": {
+      "full_sample_difference_bps": "-7.088898348552813176654080776",
+      "maximum_absolute_shift_bps": "0.135182106736586051922366310",
+      "maximum_difference_bps": "-6.953716241816227124731714466",
+      "minimum_difference_bps": "-7.09799711601319309493067659",
+      "most_influential_interval_group": "DAILY_WHIPSAW",
+      "most_influential_interval_id": "W0017",
+      "most_influential_tie_count": 55,
+      "negative_fraction": "1",
+      "negative_runs": 278
+    },
+    "gross_path": {
+      "full_sample_difference_bps": "-18.53435308663200419135014754",
+      "maximum_absolute_shift_bps": "0.95113702059828863532158728",
+      "maximum_difference_bps": "-18.48066863096819009639707159",
+      "minimum_difference_bps": "-19.48549010723029282667173482",
+      "most_influential_interval_group": "DAILY_WHIPSAW",
+      "most_influential_interval_id": "W0017",
+      "most_influential_tie_count": 55,
+      "negative_fraction": "1",
+      "negative_runs": 278
+    },
+    "net": {
+      "full_sample_difference_bps": "-31.76532884908304602870589489",
+      "maximum_absolute_shift_bps": "0.11475467368696752674265783",
+      "maximum_difference_bps": "-31.76219579473506762429029217",
+      "minimum_difference_bps": "-31.88008352277001355544855272",
+      "most_influential_interval_group": "DAILY_WHIPSAW",
+      "most_influential_interval_id": "W0017",
+      "most_influential_tie_count": 55,
+      "negative_fraction": "1",
+      "negative_runs": 278
+    }
+  },
+  "leave_one_out_run_count": 278,
+  "moving_block_bootstrap": {
+    "friction": {
+      "bootstrap_median_estimate_bps": "-7.032906383387257017053135015",
+      "negative_fraction": "1",
+      "negative_replications": 10000,
+      "observed_difference_bps": "-7.088898348552813176654080776",
+      "percentile_2_5_bps": "-7.670432978690863340373850865",
+      "percentile_97_5_bps": "-6.138383753065637860357798826"
+    },
+    "gross_path": {
+      "bootstrap_median_estimate_bps": "-20.43662712782858146199332209",
+      "negative_fraction": "1",
+      "negative_replications": 10000,
+      "observed_difference_bps": "-18.53435308663200419135014754",
+      "percentile_2_5_bps": "-28.30373871940515554120090754",
+      "percentile_97_5_bps": "-14.85044217404665875323373603"
+    },
+    "net": {
+      "bootstrap_median_estimate_bps": "-31.99483819645698108219121055",
+      "negative_fraction": "1",
+      "negative_replications": 10000,
+      "observed_difference_bps": "-31.76532884908304602870589489",
+      "percentile_2_5_bps": "-40.42468468927075697731635634",
+      "percentile_97_5_bps": "-28.43129446062071689094766480"
+    }
+  },
+  "moving_block_bootstrap_design": {
+    "block_length_complete_weekly_intervals": 8,
+    "negative_fraction_is_not_p_value": true,
+    "percentile": "linear interpolation at p*(n-1)",
+    "random_seed": 20260928021,
+    "replications": 10000,
+    "sampling": "overlapping non-circular blocks on full 687-interval chronology, with replacement; concatenate and truncate last block to 687"
+  },
+  "nonwhipsaw_daily_change_interval_count": 167,
+  "parameter_tuning": "NOT_AUTHORIZED",
+  "path_negative_loss_top10_share": "0.3075688612813524618513343386",
+  "primary_outcome": "net_intrawweek_effect_bps",
+  "recommended_next_action": "FREEZE_TEWM_V1_AND_PREPARE_PROSPECTIVE_OOS_OBSERVATION",
+  "research_cutoff": "2026-09-15",
+  "robustness_state": "IN_SAMPLE_MECHANISM_ROBUSTNESS_SUPPORTED",
+  "scope": "IN_SAMPLE_MECHANISM_ROBUSTNESS_ONLY",
+  "secondary_outcomes": [
+    "gross_path_effect_bps",
+    "trading_friction_effect_bps"
+  ],
+  "source_sha256": {
+    "pm_002a_intervals": "b462e60ae87c6524643af461eea8d3bc1ec78754e2b91041dc62fb661d0284e0",
+    "pm_002b_group_statistics": "9320a15c89a613c617c1eba47efcef1cc74b118e6e7f97cb3fe6a7266f3b5a52",
+    "pm_002b_intervals": "6e1441f6cd96281319a28601119acf5853a0304da0de1477547e4347bdb3a170",
+    "pm_002b_summary": "199ee0b11f01025b20fbe8ee666c804f9dd767850974db40c4d6dfdb3608208f"
+  },
+  "strategy_v2": "NOT_CREATED",
+  "tail_concentration_note": "Top absolute interval magnitudes divided by absolute signed local total; values above 1 can occur through cancellation.",
+  "task": "TASK-RES-FREQ-PM-002C1",
+  "trailing_censored_interval_excluded_count": 1,
+  "verdict": "PASSED_WITH_WARNINGS",
+  "warnings": [
+    "Only in-sample historical robustness; not OOS or strategy validation.",
+    "The pre-frozen 8-interval moving block design is one dependence protection window, not a sensitivity search.",
+    "Absolute tail concentration ratios can exceed 100% because positive and negative local effects cancel."
+  ],
+  "whipsaw_interval_count": 111,
+  "zero_change_reference_interval_count": 409
+}
